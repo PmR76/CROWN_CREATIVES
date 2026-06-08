@@ -1,0 +1,107 @@
+/* ============================================================
+   CROWN CREATIVES — FINAL TICKER SYSTEM (PRODUCTION READY)
+   Transparent, non-wrapping, infinite scroll, fully isolated
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. TICKER WRAPPER — TRANSPARENT + STABLE HEIGHT
+------------------------------------------------------------ */
+
+.ticker-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 42px; /* consistent height */
+  margin: 40px auto 20px;
+  z-index: 5;
+  background: transparent;
+  pointer-events: none; /* prevents footer interference */
+}
+
+
+/* ------------------------------------------------------------
+   2. FADE MASKS — CINEMATIC EDGES
+------------------------------------------------------------ */
+
+.ticker-fade-left,
+.ticker-fade-right {
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ticker-fade-left {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.9), transparent);
+}
+
+.ticker-fade-right {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,0.9), transparent);
+}
+
+
+/* ------------------------------------------------------------
+   3. TICKER TRACK — THE MOVING STRIP
+------------------------------------------------------------ */
+
+.ticker {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.ticker-track {
+  display: inline-flex;
+  flex-shrink: 0;
+  white-space: nowrap;
+  gap: 80px;
+  width: max-content; /* ⭐ prevents wrapping */
+  animation: ticker-scroll 25s linear infinite;
+}
+
+
+/* ------------------------------------------------------------
+   4. TICKER TEXT — MAGICAL GLOW
+------------------------------------------------------------ */
+
+.ticker-track span {
+  font-size: 1.15rem;
+  color: #ffffff;
+  opacity: 0.95;
+  text-shadow: 0 0 10px rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  font-family: 'Cinzel Decorative', serif;
+  pointer-events: none;
+}
+
+
+/* ------------------------------------------------------------
+   5. KEYFRAMES — SMOOTH INFINITE MOTION
+------------------------------------------------------------ */
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+/* ------------------------------------------------------------
+   6. MOBILE RESPONSIVENESS
+------------------------------------------------------------ */
+
+@media (max-width: 768px) {
+  .ticker-track span {
+    font-size: 0.95rem;
+  }
+
+  .ticker-fade-left,
+  .ticker-fade-right {
+    width: 50px;
+  }
+}

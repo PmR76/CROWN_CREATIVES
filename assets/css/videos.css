@@ -1,0 +1,126 @@
+/* ============================================================
+   Crown Creatives — Videos Page
+   Cinematic Reels (0.3s fade), clean, modern, artistic.
+   Independent from EVOLVE OS.
+   ============================================================ */
+
+/* Page Hero */
+.videos-hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.videos-hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.videos-hero p {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+/* Grid Layout */
+.videos-main {
+  padding: 40px 20px 80px;
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Reel Card */
+.reel-card {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #111;
+  transition: transform 0.2s ease;
+}
+
+.reel-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Visual Container */
+.reel-visual {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Static Image */
+.reel-still {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Motion Preview */
+.reel-motion {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Hover Behaviour */
+.reel-card:hover .reel-still {
+  opacity: 0;
+}
+
+.reel-card:hover .reel-motion {
+  opacity: 1;
+}
+
+/* Shimmer Overlay */
+.reel-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.25) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: transform 0.3s ease;
+}
+
+.reel-card:hover .reel-shimmer {
+  animation: shimmerMove 1.2s ease forwards;
+}
+
+@keyframes shimmerMove {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Meta */
+.reel-meta {
+  padding: 16px;
+  text-align: center;
+}
+
+.reel-meta h3 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}

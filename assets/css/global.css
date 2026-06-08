@@ -1,0 +1,159 @@
+/* ============================================================
+   GLOBAL FONT — CINZEL DECORATIVE
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+
+/* ============================================================
+   GLOBAL RESET + TYPOGRAPHY
+   ============================================================ */
+html, body {
+  font-family: 'Cinzel Decorative', serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  letter-spacing: 0.4px;
+  text-align: center;
+  transition: background 1s ease, color 1s ease;
+}
+
+/* ============================================================
+   UNIVERSAL CROWN MAGIC SYSTEM (ADVANCED)
+   Applies to ANY image whose filename contains "crown"
+   ============================================================ */
+
+img[src*="crown"],
+svg[src*="crown"] {
+  position: relative;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
+  animation: crownShimmer 6s ease-in-out infinite;
+  transition: filter 2s ease, transform 2s ease;
+  z-index: 5;
+}
+
+/* Stronger glow in night mode */
+body.dark-mode img[src*="crown"],
+body.dark-mode svg[src*="crown"] {
+  filter: drop-shadow(0 0 22px rgba(255,255,255,1));
+  transform: scale(1.04);
+}
+
+/* ============================================================
+   SHIMMER PULSE
+   ============================================================ */
+
+@keyframes crownShimmer {
+  0%   { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
+  50%  { filter: drop-shadow(0 0 18px rgba(255,255,255,0.9)); }
+  100% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
+}
+
+/* ============================================================
+   LIGHT SWEEP (MAGICAL BEAM)
+   ============================================================ */
+
+img[src*="crown"]::after,
+svg[src*="crown"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.6) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: crownSweep 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes crownSweep {
+  0%   { left: -150%; opacity: 0; }
+  40%  { left: -150%; opacity: 0; }
+  55%  { left: 150%; opacity: 0.8; }
+  70%  { left: 150%; opacity: 0; }
+  100% { left: -150%; opacity: 0; }
+}
+
+/* ============================================================
+   SPARKLE TWINKLE
+   ============================================================ */
+
+img[src*="crown"]::before,
+svg[src*="crown"]::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 60%) 20% 30% / 6px 6px,
+    radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 60%) 70% 60% / 4px 4px,
+    radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 60%) 50% 80% / 5px 5px;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: sparkleTwinkle 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkleTwinkle {
+  0%, 20%   { opacity: 0; transform: scale(1); }
+  25%       { opacity: 0.6; transform: scale(1.05); }
+  30%       { opacity: 0; transform: scale(1); }
+  60%       { opacity: 0; }
+  65%       { opacity: 0.5; transform: scale(1.03); }
+  70%       { opacity: 0; transform: scale(1); }
+  100%      { opacity: 0; }
+}
+
+/* ============================================================
+   GLOBAL SOFT FADE INTO HEADER (TOGGLED BY BODY CLASS)
+   ============================================================ */
+
+main {
+  position: relative;
+  z-index: 2;
+}
+
+/* Only fade when body has .fade-header */
+body.fade-header main {
+  mask-image: linear-gradient(
+    to top,
+    rgba(0,0,0,1) 78%,
+    rgba(0,0,0,0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgba(0,0,0,1) 78%,
+    rgba(0,0,0,0) 100%
+  );
+}
+#evolve-panel,
+#evolve-orb {
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+}
+
+.videos-hero {
+  pointer-events: none !important;
+}
+.videos-hero,
+.videos-hero * {
+  pointer-events: none !important;
+}
+#evolve-panel,
+#evolve-orb {
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+}
+
+.videos-hero,
+.videos-hero * {
+  pointer-events: none !important;
+}

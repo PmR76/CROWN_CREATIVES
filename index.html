@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crown Creatives</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (footer BEFORE home.css so home.css can override it) -->
+  <link rel="stylesheet" href="/assets/css/header.css">
+  <link rel="stylesheet" href="/assets/css/footer.css">
+  <link rel="stylesheet" href="/assets/css/home.css">
+
+</head>
+<body>
+
+  <!-- BACKGROUNDS -->
+  <div class="day-background"></div>
+  <div class="night-background"></div>
+  <div class="day-clouds"></div>
+  <div class="night-nebula"></div>
+
+  <!-- HEADER -->
+  <header class="cc-header">
+    <div class="cc-header-inner">
+
+      <div class="cc-title-block">
+        <img src="/assets/icons/head-crown.svg" alt="Crown Creatives Logo" class="cc-logo shimmer-crown">
+        <h1 class="cc-site-title">CROWN CREATIVES</h1>
+        <p class="cc-tagline">ARTISTRY · RESILIENCE · IMAGINATION</p>
+      </div>
+
+      <button class="cc-theme-toggle" id="themeToggle">
+        <img src="/assets/icons/sun-moon-magic.svg" alt="Toggle Theme" class="cc-theme-icon">
+      </button>
+
+    </div>
+
+    <nav class="cc-nav">
+      <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/about.html">ABOUT</a></li>
+        <li><a href="/gallery.html">GALLERY</a></li>
+        <li><a href="/projects.html">PROJECTS</a></li>
+        <li><a href="/videos.html">VIDEOS</a></li>
+        <li><a href="/podcasts.html">PODCASTS</a></li>
+        <li><a href="/blog.html">BLOG</a></li>
+        <li><a href="/contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main>
+
+    <section class="hero-section">
+
+      <!-- FLEX LAYOUT: LEFT GALLERY — CROWN — RIGHT GALLERY -->
+      <div class="hero-flex">
+
+        <!-- LEFT GALLERY -->
+        <div class="gallery-lane gallery-left">
+          <div class="gallery-lane-inner"></div>
+        </div>
+
+        <!-- CROWN -->
+        <div class="hero-crown-wrapper">
+          <img src="/assets/icons/day-crown.svg" alt="Day Crown" class="hero-crown crown-day">
+          <img src="/assets/icons/night-crown.svg" alt="Night Crown" class="hero-crown crown-night">
+        </div>
+
+        <!-- RIGHT GALLERY -->
+        <div class="gallery-lane gallery-right">
+          <div class="gallery-lane-inner"></div>
+        </div>
+
+      </div>
+
+      <!-- TAGLINE CARDS -->
+      <section class="tagline-cards">
+        <div class="tag-card">
+          <h3>Artistry</h3>
+          <p>Creativity expressed through craft, vision, and imagination.</p>
+        </div>
+
+        <div class="tag-card">
+          <h3>Resilience</h3>
+          <p>Strength to rise, rebuild, and transform challenges into growth.</p>
+        </div>
+
+        <div class="tag-card">
+          <h3>Imagination</h3>
+          <p>The spark that turns ideas into reality and stories into worlds.</p>
+        </div>
+      </section>
+
+      <!-- INSPIRATION TICKER -->
+      <div class="ticker-wrapper">
+        <div class="ticker-fade-left"></div>
+        <div class="ticker-fade-right"></div>
+
+        <div class="ticker">
+          <div class="ticker-track">
+            <span>✨ Imagination becomes reality ✨</span>
+            <span>✨ Artistry • Resilience • Imagination ✨</span>
+            <span>✨ Stories that rise from the ashes ✨</span>
+            <span>✨ Creativity is a form of courage ✨</span>
+            <span>✨ You are capable of magic ✨</span>
+          </div>
+        </div>
+      </div>
+
+    </section> <!-- ⭐ FIXED: this closing tag was missing -->
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="cc-footer">
+
+    <div class="footer-icons">
+
+      <a href="https://www.facebook.com/people/Crown-Creatives/61556386467490/" target="_blank">
+        <img src="/assets/icons/facebook-magic.svg" alt="Facebook" class="footer-icon">
+      </a>
+
+      <a href="https://www.instagram.com/crown_creatives_uk/" target="_blank">
+        <img src="/assets/icons/instagram-magic.svg" alt="Instagram" class="footer-icon">
+      </a>
+
+      <a href="mailto:crowncreatives@outlook.com">
+        <img src="/assets/icons/email-magic.svg" alt="Email" class="footer-icon">
+      </a>
+
+      <a href="https://copilot.microsoft.com" target="_blank">
+        <img src="/assets/icons/copilot-magic.svg" alt="Copilot" class="footer-icon">
+      </a>
+
+    </div>
+
+    <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+      <img src="/assets/icons/up-arrow-magic.svg" alt="Back to top" class="footer-icon">
+    </button>
+
+    <div class="footer-text">
+      © Crown Creatives
+    </div>
+
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/hero-gallery.js"></script>
+
+  <!-- TICKER DUPLICATION SCRIPT (must be last) -->
+  <script>
+  window.addEventListener("load", () => {
+    const track = document.querySelector(".ticker-track");
+    if (!track) return;
+    const clone = track.cloneNode(true);
+    track.parentElement.appendChild(clone);
+  });
+  </script>
+
+</body>
+</html>

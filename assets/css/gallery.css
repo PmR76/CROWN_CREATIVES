@@ -1,0 +1,104 @@
+/* --- GALLERY PAGE WRAPPER --- */
+.gallery-page-wrapper {
+  max-width: 1300px;
+  margin: 120px auto 80px;
+  padding: 0 20px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.gallery-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 48px;
+  color: white;
+  text-shadow: 0 0 18px rgba(255,255,255,0.8);
+  margin-bottom: 10px;
+}
+
+.gallery-subtitle {
+  font-size: 20px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 40px;
+}
+
+/* --- GRID --- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* Fade‑in animation */
+.gallery-item {
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.gallery-item:nth-child(odd) { animation-delay: 0.1s; }
+.gallery-item:nth-child(even) { animation-delay: 0.2s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-item:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 30px rgba(255,255,255,0.4);
+}
+
+.gallery-thumb {
+  width: 100%;
+  padding-bottom: 75%;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+/* --- LIGHTBOX --- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(255,255,255,0.4);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  font-size: 48px;
+  color: white;
+  cursor: pointer;
+  text-shadow: 0 0 12px rgba(255,255,255,0.9);
+}
