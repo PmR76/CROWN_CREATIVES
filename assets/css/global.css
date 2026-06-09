@@ -157,3 +157,14 @@ body.fade-header main {
 .videos-hero * {
   pointer-events: none !important;
 }
+.day-background {
+  background: linear-gradient(
+    180deg,
+    rgba(255,120,40,0.55) 0%,    /* bright orange */
+    rgba(255,90,30,0.50) 25%,    /* warm sunset orange */
+    rgba(255,60,50,0.45) 50%,    /* ember red */
+    rgba(220,40,120,0.40) 75%,   /* red-magenta glow */
+    rgba(160,30,180,0.35) 100%   /* dusk violet */
+  );
+  opacity: 1;
+}
