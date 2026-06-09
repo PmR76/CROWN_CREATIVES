@@ -1,0 +1,163 @@
+# MOTHER // CSS DIAGNOSTIC REPORT
+
+**Timestamp:** 2026-06-09T21:06:36.665Z
+
+## Duplicate selectors
+
+- `.reel-card`
+  - assets\css\videos.css
+  - assets\css\home.css
+- `.reel-card:hover`
+  - assets\css\videos.css
+  - assets\css\home.css
+- `0%`
+  - assets\css\videos.css
+  - assets\css\ticker.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\global.css
+  - assets\css\global.css
+  - assets\css\footer.css
+- `100%`
+  - assets\css\videos.css
+  - assets\css\ticker.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\global.css
+  - assets\css\global.css
+  - assets\css\global.css
+  - assets\css\footer.css
+- `.ticker-wrapper`
+  - assets\css\ticker.css
+  - assets\css\home.css
+  - assets\css\footer.css
+- `.ticker-fade-left,
+.ticker-fade-right`
+  - assets\css\ticker.css
+  - assets\css\home.css
+  - assets\css\footer.css
+- `.ticker-fade-left`
+  - assets\css\ticker.css
+  - assets\css\home.css
+  - assets\css\footer.css
+- `.ticker-fade-right`
+  - assets\css\ticker.css
+  - assets\css\home.css
+  - assets\css\footer.css
+- `.ticker`
+  - assets\css\ticker.css
+  - assets\css\home.css
+  - assets\css\footer.css
+- `.ticker-track`
+  - assets\css\ticker.css
+  - assets\css\home.css
+  - assets\css\footer.css
+- `.ticker-track span`
+  - assets\css\ticker.css
+  - assets\css\ticker.css
+  - assets\css\home.css
+  - assets\css\footer.css
+  - assets\css\footer.css
+- `.ticker-fade-left,
+  .ticker-fade-right`
+  - assets\css\ticker.css
+  - assets\css\footer.css
+- `to`
+  - assets\css\home.css
+  - assets\css\gallery.css
+- `50%`
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\global.css
+- `.hero-section`
+  - assets\css\home.css
+  - assets\css\home.css
+- `.hero-crown-wrapper,
+  .hero-crown`
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+- `.hero-flex`
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\home.css
+- `.gallery-lane`
+  - assets\css\home.css
+  - assets\css\home.css
+  - assets\css\global.css
+- `.gallery-image`
+  - assets\css\home.css
+  - assets\css\gallery.css
+- `.gallery-image.active`
+  - assets\css\home.css
+  - assets\css\gallery.css
+- `.cc-footer`
+  - assets\css\home.css
+  - assets\css\footer.css
+  - assets\css\footer.css
+- `.footer-icons`
+  - assets\css\home.css
+  - assets\css\footer.css
+  - assets\css\footer.css
+- `.footer-icon`
+  - assets\css\home.css
+  - assets\css\footer.css
+- `.footer-text`
+  - assets\css\home.css
+  - assets\css\footer.css
+  - assets\css\footer.css
+- `.back-to-top`
+  - assets\css\home.css
+  - assets\css\footer.css
+  - assets\css\footer.css
+- `.gallery-grid`
+  - assets\css\home.css
+  - assets\css\gallery.css
+- `.theme-toggle`
+  - assets\css\home.css
+  - assets\css\header.css
+- `html, body`
+  - assets\css\global.css
+  - assets\css\global.css
+  - assets\css\global.css
+- `70%`
+  - assets\css\global.css
+  - assets\css\global.css
+
+## Issues
+
+- **Overflow risk** — `.day-background,
+.night-background` in `assets\css\home.css` (width: 120vw, height: 120vh)
+- **Overflow risk** — `.day-clouds` in `assets\css\home.css` (width: 160vw, height: 160vh)
+- **Overflow risk** — `.night-nebula` in `assets\css\home.css` (width: 160vw, height: 160vh)
+- **High z-index** — `.theme-toggle` in `assets\css\home.css` (z-index: 999)
+- **High z-index** — `.cc-header` in `assets\css\header.css` (z-index: 1000)
+- **High z-index** — `.theme-toggle` in `assets\css\header.css` (z-index: 2000)
+- **High z-index** — `#evolve-panel,
+#evolve-orb` in `assets\css\global.css` (z-index: 999999)
+- **High z-index** — `.lightbox` in `assets\css\gallery.css` (z-index: 9999)

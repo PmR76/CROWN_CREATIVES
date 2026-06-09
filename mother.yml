@@ -1,0 +1,34 @@
+name: MOTHER // CSS Guardian
+
+on:
+  push:
+    paths:
+      - "assets/css/**"
+      - "tools/mother/**"
+  pull_request:
+    paths:
+      - "assets/css/**"
+      - "tools/mother/**"
+
+jobs:
+  mother-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install deps
+        run: npm install
+
+      - name: Run MOTHER
+        run: node tools/mother/mother-scan.js
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mother-report
+          path: tools/mother/mother-report.md

@@ -7,8 +7,11 @@ echo CHANNEL: DIAGNOSTIC
 echo MODE: OVERFLOW + DUPLICATION SCAN
 echo.
 
-REM Go to project root
-cd /d "%~dp0..\.."
+REM Ensure we are in the project root
+cd /d "%~dp0"
+
+echo ▌ WORKING DIRECTORY: %cd%
+echo.
 
 REM Run scanner
 node tools/mother/mother-scan.js
