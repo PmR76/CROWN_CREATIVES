@@ -1,6 +1,10 @@
 # MOTHER // CSS DIAGNOSTIC REPORT
 
-**Timestamp:** 2026-06-09T21:06:36.665Z
+**Timestamp:** 2026-06-09T21:32:47.768Z
+
+## Hero integrity
+
+- Hero stack detected and structurally complete.
 
 ## Duplicate selectors
 
@@ -151,13 +155,13 @@
 
 ## Issues
 
-- **Overflow risk** — `.day-background,
-.night-background` in `assets\css\home.css` (width: 120vw, height: 120vh)
-- **Overflow risk** — `.day-clouds` in `assets\css\home.css` (width: 160vw, height: 160vh)
-- **Overflow risk** — `.night-nebula` in `assets\css\home.css` (width: 160vw, height: 160vh)
-- **High z-index** — `.theme-toggle` in `assets\css\home.css` (z-index: 999)
-- **High z-index** — `.cc-header` in `assets\css\header.css` (z-index: 1000)
-- **High z-index** — `.theme-toggle` in `assets\css\header.css` (z-index: 2000)
-- **High z-index** — `#evolve-panel,
-#evolve-orb` in `assets\css\global.css` (z-index: 999999)
-- **High z-index** — `.lightbox` in `assets\css\gallery.css` (z-index: 9999)
+- **overflow-risk** — `.day-background,
+.night-background` in `assets\css\home.css` (width: 120vw, height: 120vh) — Fixed element with viewport-relative size may cause horizontal/vertical scroll.
+- **overflow-risk** — `.day-clouds` in `assets\css\home.css` (width: 160vw, height: 160vh) — Fixed element with viewport-relative size may cause horizontal/vertical scroll.
+- **overflow-risk** — `.night-nebula` in `assets\css\home.css` (width: 160vw, height: 160vh) — Fixed element with viewport-relative size may cause horizontal/vertical scroll.
+- **z-index-high** — `.theme-toggle` in `assets\css\home.css` (z-index: 999) — High z-index may cause layering conflicts with hero/footer.
+- **z-index-high** — `.cc-header` in `assets\css\header.css` (z-index: 1000) — High z-index may cause layering conflicts with hero/footer.
+- **z-index-high** — `.theme-toggle` in `assets\css\header.css` (z-index: 2000) — High z-index may cause layering conflicts with hero/footer.
+- **z-index-high** — `#evolve-panel,
+#evolve-orb` in `assets\css\global.css` (z-index: 999999) — High z-index may cause layering conflicts with hero/footer.
+- **z-index-high** — `.lightbox` in `assets\css\gallery.css` (z-index: 9999) — High z-index may cause layering conflicts with hero/footer.
