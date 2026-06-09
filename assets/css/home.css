@@ -13,40 +13,38 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 140vw;
-  height: 140vh;
+  width: 120vw;
+  height: 120vh;
   z-index: -999;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 8s ease;
+  transition: opacity 6s ease;
 }
 
+/* BURNT SUNRISE — NO WHITE BLEED */
 .day-background {
   background: linear-gradient(
     180deg,
-    rgba(200,60,40,0.55) 0%,
-    rgba(220,50,100,0.50) 22%,
-    rgba(200,30,140,0.45) 45%,
-    rgba(150,20,170,0.42) 70%,
-    rgba(90,10,150,0.40) 100%
+    rgba(255,120,40,1) 0%,     /* bright burnt orange */
+    rgba(255,90,30,1) 22%,     /* warm orange */
+    rgba(255,60,50,1) 45%,     /* ember red */
+    rgba(220,40,120,1) 70%,    /* magenta glow */
+    rgba(160,30,180,1) 100%    /* dusk violet */
   );
   opacity: 1;
 }
 
+/* NIGHT SKY — NO TRANSPARENT HOLES */
 .night-background {
   background: radial-gradient(
     circle at 50% 20%,
-    rgba(200,80,255,0.60) 0%,
-    rgba(140,40,220,0.55) 18%,
-    rgba(80,0,160,0.55) 40%,
-    rgba(30,0,80,0.85) 70%,
-    rgba(5,0,25,0.97) 100%
+    rgba(200,80,255,1) 0%,
+    rgba(140,40,220,1) 25%,
+    rgba(80,0,160,1) 50%,
+    rgba(30,0,80,1) 75%,
+    rgba(5,0,25,1) 100%
   );
 }
-
-body.dark-mode .day-background { opacity: 0; }
-body.dark-mode .night-background { opacity: 1; }
-
 
 /* ------------------------------------------------------------
    2. DAY MIST — SOFT FLOATING HAZE
@@ -836,7 +834,7 @@ body.dark-mode .crown-night { opacity: 1; }
   100% { transform: translateX(0) translateY(0); }
 }
 /* ------------------------------------------------------------
-   20. CINEMATIC PAGE TRANSITIONS — FIXED
+   20. CINEMATIC PAGE TRANSITIONS — FINAL CLEAN VERSION
 ------------------------------------------------------------ */
 
 .page-fade {
@@ -844,7 +842,7 @@ body.dark-mode .crown-night { opacity: 1; }
   transform: scale(1.02);
   filter: blur(6px);
   transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
-  background: transparent !important; /* prevents white flash */
+  background: transparent !important;
 }
 
 .page-fade.loaded {
@@ -853,7 +851,7 @@ body.dark-mode .crown-night { opacity: 1; }
   filter: blur(0);
 }
 
-/* Light sweep overlay — FIXED */
+/* Light sweep overlay — unified, safe, no white bar */
 .page-sweep {
   position: fixed;
   inset: 0;
@@ -861,18 +859,19 @@ body.dark-mode .crown-night { opacity: 1; }
   background: linear-gradient(
     120deg,
     transparent 0%,
-    rgba(255,255,255,0.12) 50%,
+    rgba(255,255,255,0.10) 50%,
     transparent 100%
   );
-  transform: translateX(-200%); /* moved further off-screen */
+  transform: translateX(-200%);
   animation: sweepMove 1s ease forwards;
-  z-index: 20; /* lowered so it cannot block content */
+  z-index: 20;
 }
 
 @keyframes sweepMove {
-  0% { transform: translateX(-200%); }
+  0%   { transform: translateX(-200%); }
   100% { transform: translateX(200%); }
 }
+
 
 /* ------------------------------------------------------------
    21. MAGICAL SCROLL-TRIGGERED ANIMATIONS
@@ -918,8 +917,10 @@ body.dark-mode .crown-night { opacity: 1; }
   transform: scale(1);
   filter: drop-shadow(0 0 22px rgba(255,255,255,0.9));
 }
+
+
 /* ------------------------------------------------------------
-   22. NEON CRT OVERLAY (DEV SUITE AESTHETIC)
+   22. NEON CRT OVERLAY (DEV SUITE AESTHETIC) — SAFE VERSION
 ------------------------------------------------------------ */
 
 .crt-overlay {
@@ -927,27 +928,28 @@ body.dark-mode .crown-night { opacity: 1; }
   position: fixed;
   inset: 0;
   z-index: 5;
-  opacity: 0.08; /* reduced */
+  opacity: 0.06;
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(255,255,255,0.04) 0px,
-      rgba(255,255,255,0.04) 1px,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 1px,
       transparent 2px,
       transparent 4px
     );
-  mix-blend-mode: overlay; /* safer than screen */
+  mix-blend-mode: overlay; /* avoids white sheet bug */
 }
 
+
 /* ------------------------------------------------------------
-   NEON DAY/NIGHT TOGGLE (UPGRADED)
+   23. NEON DAY/NIGHT TOGGLE (UPGRADED + ANIMATED ICON SUPPORT)
 ------------------------------------------------------------ */
 
 .theme-toggle {
   position: absolute;
   top: 18px;
   right: 24px;
-  width: 64px;     /* larger */
+  width: 64px;
   height: 64px;
   border-radius: 50%;
   background: radial-gradient(circle, #fff 0%, #ccc 40%, #888 100%);
