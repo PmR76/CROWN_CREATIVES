@@ -102,3 +102,26 @@
   cursor: pointer;
   text-shadow: 0 0 12px rgba(255,255,255,0.9);
 }
+.gallery-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.gallery-image.active {
+  opacity: 1;
+}
+
+.fade-in {
+  opacity: 1 !important;
+}
+
+.fade-out {
+  opacity: 0 !important;
+}
