@@ -1,0 +1,18 @@
+{
+  "cssGlobs": [
+    "assets/css/**/*.css"
+  ],
+  "overflowMaxVW": 100,
+  "overflowMaxVH": 100,
+  "zIndexWarnThreshold": 100,
+  "mobileBreakpoint": 900,
+  "heroSelectors": [
+    ".hero-flex",
+    ".hero-section",
+    ".day-background",
+    ".night-background",
+    ".day-clouds",
+    ".night-nebula",
+    ".magic-particles"
+  ]
+}
