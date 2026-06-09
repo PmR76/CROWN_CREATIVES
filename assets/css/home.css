@@ -926,25 +926,19 @@ body.dark-mode .crown-night { opacity: 1; }
   pointer-events: none;
   position: fixed;
   inset: 0;
-  z-index: 999;
-  opacity: 0.12;
+  z-index: 5;
+  opacity: 0.08; /* reduced */
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(255,255,255,0.05) 0px,
-      rgba(255,255,255,0.05) 1px,
+      rgba(255,255,255,0.04) 0px,
+      rgba(255,255,255,0.04) 1px,
       transparent 2px,
       transparent 4px
     );
-  mix-blend-mode: screen;
-  animation: crtPulse 6s ease-in-out infinite;
+  mix-blend-mode: overlay; /* safer than screen */
 }
 
-@keyframes crtPulse {
-  0% { opacity: 0.10; }
-  50% { opacity: 0.18; }
-  100% { opacity: 0.10; }
-}
 /* ------------------------------------------------------------
    NEON DAY/NIGHT TOGGLE (UPGRADED)
 ------------------------------------------------------------ */
