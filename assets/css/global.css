@@ -3,6 +3,7 @@
 ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
 
+
 /* ============================================================
    GLOBAL RESET + TYPOGRAPHY
 ============================================================ */
@@ -18,8 +19,10 @@ html, body {
   transition: background 1s ease, color 1s ease;
 }
 
+
 /* ============================================================
    UNIVERSAL CROWN MAGIC SYSTEM
+   Applies to ANY image or SVG containing "crown"
 ============================================================ */
 img[src*="crown"],
 svg[src*="crown"] {
@@ -30,17 +33,20 @@ svg[src*="crown"] {
   z-index: 5;
 }
 
+/* Stronger glow in night mode */
 body.dark-mode img[src*="crown"],
 body.dark-mode svg[src*="crown"] {
   filter: drop-shadow(0 0 22px rgba(255,255,255,1));
   transform: scale(1.04);
 }
 
+/* Crown shimmer animation */
 @keyframes crownShimmer {
   0%   { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
   50%  { filter: drop-shadow(0 0 18px rgba(255,255,255,0.9)); }
   100% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
 }
+
 
 /* ============================================================
    LIGHT SWEEP (MAGICAL BEAM)
@@ -66,9 +72,12 @@ svg[src*="crown"]::after {
 
 @keyframes crownSweep {
   0%   { left: -150%; opacity: 0; }
+  40%  { left: -150%; opacity: 0; }
   55%  { left: 150%; opacity: 0.8; }
+  70%  { left: 150%; opacity: 0; }
   100% { left: -150%; opacity: 0; }
 }
+
 
 /* ============================================================
    SPARKLE TWINKLE
@@ -92,12 +101,18 @@ svg[src*="crown"]::before {
 }
 
 @keyframes sparkleTwinkle {
-  25%  { opacity: 0.6; transform: scale(1.05); }
-  65%  { opacity: 0.5; transform: scale(1.03); }
+  0%, 20%   { opacity: 0; transform: scale(1); }
+  25%       { opacity: 0.6; transform: scale(1.05); }
+  30%       { opacity: 0; transform: scale(1); }
+  60%       { opacity: 0; }
+  65%       { opacity: 0.5; transform: scale(1.03); }
+  70%       { opacity: 0; transform: scale(1); }
+  100%      { opacity: 0; }
 }
 
+
 /* ============================================================
-   GLOBAL SOFT FADE INTO HEADER
+   GLOBAL SOFT FADE INTO HEADER (OPTIONAL)
 ============================================================ */
 main {
   position: relative;
@@ -105,6 +120,29 @@ main {
 }
 
 body.fade-header main {
-  mask-image: linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(
+    to top,
+    rgba(0,0,0,1) 78%,
+    rgba(0,0,0,0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgba(0,0,0,1) 78%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
+
+/* ============================================================
+   SPECIAL OVERRIDES FOR EVOLVE PANEL (SAFE)
+============================================================ */
+#evolve-panel,
+#evolve-orb {
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+}
+
+.videos-hero,
+.videos-hero * {
+  pointer-events: none !important;
 }
