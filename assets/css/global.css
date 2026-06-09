@@ -1,11 +1,11 @@
 /* ============================================================
    GLOBAL FONT — CINZEL DECORATIVE
-   ============================================================ */
+============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
 
 /* ============================================================
    GLOBAL RESET + TYPOGRAPHY
-   ============================================================ */
+============================================================ */
 html, body {
   font-family: 'Cinzel Decorative', serif;
   margin: 0;
@@ -19,10 +19,8 @@ html, body {
 }
 
 /* ============================================================
-   UNIVERSAL CROWN MAGIC SYSTEM (ADVANCED)
-   Applies to ANY image whose filename contains "crown"
-   ============================================================ */
-
+   UNIVERSAL CROWN MAGIC SYSTEM
+============================================================ */
 img[src*="crown"],
 svg[src*="crown"] {
   position: relative;
@@ -32,16 +30,11 @@ svg[src*="crown"] {
   z-index: 5;
 }
 
-/* Stronger glow in night mode */
 body.dark-mode img[src*="crown"],
 body.dark-mode svg[src*="crown"] {
   filter: drop-shadow(0 0 22px rgba(255,255,255,1));
   transform: scale(1.04);
 }
-
-/* ============================================================
-   SHIMMER PULSE
-   ============================================================ */
 
 @keyframes crownShimmer {
   0%   { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
@@ -51,8 +44,7 @@ body.dark-mode svg[src*="crown"] {
 
 /* ============================================================
    LIGHT SWEEP (MAGICAL BEAM)
-   ============================================================ */
-
+============================================================ */
 img[src*="crown"]::after,
 svg[src*="crown"]::after {
   content: "";
@@ -74,16 +66,13 @@ svg[src*="crown"]::after {
 
 @keyframes crownSweep {
   0%   { left: -150%; opacity: 0; }
-  40%  { left: -150%; opacity: 0; }
   55%  { left: 150%; opacity: 0.8; }
-  70%  { left: 150%; opacity: 0; }
   100% { left: -150%; opacity: 0; }
 }
 
 /* ============================================================
    SPARKLE TWINKLE
-   ============================================================ */
-
+============================================================ */
 img[src*="crown"]::before,
 svg[src*="crown"]::before {
   content: "";
@@ -103,68 +92,19 @@ svg[src*="crown"]::before {
 }
 
 @keyframes sparkleTwinkle {
-  0%, 20%   { opacity: 0; transform: scale(1); }
-  25%       { opacity: 0.6; transform: scale(1.05); }
-  30%       { opacity: 0; transform: scale(1); }
-  60%       { opacity: 0; }
-  65%       { opacity: 0.5; transform: scale(1.03); }
-  70%       { opacity: 0; transform: scale(1); }
-  100%      { opacity: 0; }
+  25%  { opacity: 0.6; transform: scale(1.05); }
+  65%  { opacity: 0.5; transform: scale(1.03); }
 }
 
 /* ============================================================
-   GLOBAL SOFT FADE INTO HEADER (TOGGLED BY BODY CLASS)
-   ============================================================ */
-
+   GLOBAL SOFT FADE INTO HEADER
+============================================================ */
 main {
   position: relative;
   z-index: 2;
 }
 
-/* Only fade when body has .fade-header */
 body.fade-header main {
-  mask-image: linear-gradient(
-    to top,
-    rgba(0,0,0,1) 78%,
-    rgba(0,0,0,0) 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to top,
-    rgba(0,0,0,1) 78%,
-    rgba(0,0,0,0) 100%
-  );
-}
-#evolve-panel,
-#evolve-orb {
-  z-index: 999999 !important;
-  pointer-events: auto !important;
-}
-
-.videos-hero {
-  pointer-events: none !important;
-}
-.videos-hero,
-.videos-hero * {
-  pointer-events: none !important;
-}
-#evolve-panel,
-#evolve-orb {
-  z-index: 999999 !important;
-  pointer-events: auto !important;
-}
-
-.videos-hero,
-.videos-hero * {
-  pointer-events: none !important;
-}
-.day-background {
-  background: linear-gradient(
-    180deg,
-    rgba(255,120,40,0.55) 0%,    /* bright orange */
-    rgba(255,90,30,0.50) 25%,    /* warm sunset orange */
-    rgba(255,60,50,0.45) 50%,    /* ember red */
-    rgba(220,40,120,0.40) 75%,   /* red-magenta glow */
-    rgba(160,30,180,0.35) 100%   /* dusk violet */
-  );
-  opacity: 1;
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
 }
