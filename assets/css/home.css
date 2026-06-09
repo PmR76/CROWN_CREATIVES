@@ -861,17 +861,17 @@ body.dark-mode .crown-night { opacity: 1; }
   background: linear-gradient(
     120deg,
     transparent 0%,
-    rgba(255,255,255,0.18) 50%,
+    rgba(255,255,255,0.12) 50%,
     transparent 100%
   );
-  transform: translateX(-150%); /* moved further off-screen */
-  animation: sweepMove 1.2s ease forwards;
-  z-index: 50; /* lowered so it cannot block content */
+  transform: translateX(-200%); /* moved further off-screen */
+  animation: sweepMove 1s ease forwards;
+  z-index: 20; /* lowered so it cannot block content */
 }
 
 @keyframes sweepMove {
-  0% { transform: translateX(-150%); }
-  100% { transform: translateX(150%); }
+  0% { transform: translateX(-200%); }
+  100% { transform: translateX(200%); }
 }
 
 /* ------------------------------------------------------------
