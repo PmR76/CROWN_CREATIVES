@@ -22,11 +22,12 @@
     ".hero-section",
     ".hero-flex",
     ".hero-crown",
+    ".hero-crown-wrapper",
+    ".gallery-lane",
     ".day-background",
     ".night-background",
     ".day-clouds",
     ".night-nebula",
-    ".magic-particles",
-    ".gallery-lane"
+    ".magic-particles"
   ]
 }

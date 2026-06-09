@@ -1,6 +1,8 @@
 {
-  "timestamp": "2026-06-09T21:32:47.768Z",
+  "timestamp": "2026-06-09T22:00:51.520Z",
   "filesScanned": 7,
+  "htmlFilesScanned": 1,
+  "jsFilesScanned": 3,
   "duplicates": [
     {
       "selector": ".reel-card",
@@ -543,6 +545,60 @@
       "file": "assets\\css\\gallery.css",
       "zIndex": 9999,
       "message": "High z-index may cause layering conflicts with hero/footer."
+    },
+    {
+      "type": "js-selector-usage",
+      "file": "assets\\js\\theme.js",
+      "selector": ".animated-toggle-icon",
+      "message": "JS uses this selector; ensure it exists in HTML."
+    },
+    {
+      "type": "js-selector-usage",
+      "file": "assets\\js\\theme.js",
+      "selector": ".day-background",
+      "message": "JS uses this selector; ensure it exists in HTML."
+    },
+    {
+      "type": "js-selector-usage",
+      "file": "assets\\js\\theme.js",
+      "selector": ".night-background",
+      "message": "JS uses this selector; ensure it exists in HTML."
+    },
+    {
+      "type": "js-selector-usage",
+      "file": "assets\\js\\theme.js",
+      "selector": ".day-clouds",
+      "message": "JS uses this selector; ensure it exists in HTML."
+    },
+    {
+      "type": "js-selector-usage",
+      "file": "assets\\js\\theme.js",
+      "selector": ".night-nebula",
+      "message": "JS uses this selector; ensure it exists in HTML."
+    },
+    {
+      "type": "js-selector-usage",
+      "file": "assets\\js\\theme.js",
+      "selector": ".crown-day",
+      "message": "JS uses this selector; ensure it exists in HTML."
+    },
+    {
+      "type": "js-selector-usage",
+      "file": "assets\\js\\theme.js",
+      "selector": ".crown-night",
+      "message": "JS uses this selector; ensure it exists in HTML."
+    },
+    {
+      "type": "js-selector-usage",
+      "file": "assets\\js\\hero-gallery.js",
+      "selector": ".gallery-left .gallery-lane-inner",
+      "message": "JS uses this selector; ensure it exists in HTML."
+    },
+    {
+      "type": "js-selector-usage",
+      "file": "assets\\js\\hero-gallery.js",
+      "selector": ".gallery-right .gallery-lane-inner",
+      "message": "JS uses this selector; ensure it exists in HTML."
     }
   ],
   "heroStatus": {
@@ -550,5 +606,47 @@
     "hasHeroFlex": true,
     "hasHeroCrown": true,
     "hasGalleryLane": true
-  }
+  },
+  "fixSuggestions": [
+    {
+      "selector": ".day-background,\r\n.night-background",
+      "file": "assets\\css\\home.css",
+      "suggestion": "Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize."
+    },
+    {
+      "selector": ".day-clouds",
+      "file": "assets\\css\\home.css",
+      "suggestion": "Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize."
+    },
+    {
+      "selector": ".night-nebula",
+      "file": "assets\\css\\home.css",
+      "suggestion": "Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize."
+    },
+    {
+      "selector": ".theme-toggle",
+      "file": "assets\\css\\home.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
+      "selector": ".cc-header",
+      "file": "assets\\css\\header.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
+      "selector": ".theme-toggle",
+      "file": "assets\\css\\header.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
+      "selector": "#evolve-panel,\r\n#evolve-orb",
+      "file": "assets\\css\\global.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
+      "selector": ".lightbox",
+      "file": "assets\\css\\gallery.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    }
+  ]
 }

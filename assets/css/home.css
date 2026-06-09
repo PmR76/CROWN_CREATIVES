@@ -1,44 +1,40 @@
 /* ============================================================
-   CROWN CREATIVES — HOMEPAGE CINEMATIC ENVIRONMENT
-   Final Production home.css (Gradients + Mist + Nebula)
+   PART 1 — CINEMATIC ENVIRONMENT CORE
+   Backgrounds • Mist • Nebula • Hero Crown • Hero Gallery
    ============================================================ */
 
-
-/* ------------------------------------------------------------
-   1. DAY + NIGHT BACKGROUND GRADIENTS (NO IMAGES)
------------------------------------------------------------- */
+/* --- DAY + NIGHT BACKGROUND GRADIENTS (Overflow‑Safe) --- */
 
 .day-background,
 .night-background {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 120vw;
-  height: 120vh;
-  z-index: -999;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: scale(1.2);
+  transform-origin: center;
   pointer-events: none;
   opacity: 0;
+  z-index: -999;
   transition: opacity 6s ease;
 }
 
-/* BURNT SUNRISE — NO WHITE BLEED */
 .day-background {
   background: linear-gradient(
     180deg,
-    rgba(255,120,40,1) 0%,     /* bright burnt orange */
-    rgba(255,90,30,1) 22%,     /* warm orange */
-    rgba(255,60,50,1) 45%,     /* ember red */
-    rgba(220,40,120,1) 70%,    /* magenta glow */
-    rgba(160,30,180,1) 100%    /* dusk violet */
+    rgba(255,120,40,1),
+    rgba(255,90,30,1) 22%,
+    rgba(255,60,50,1) 45%,
+    rgba(220,40,120,1) 70%,
+    rgba(160,30,180,1) 100%
   );
   opacity: 1;
 }
 
-/* NIGHT SKY — NO TRANSPARENT HOLES */
 .night-background {
   background: radial-gradient(
     circle at 50% 20%,
-    rgba(200,80,255,1) 0%,
+    rgba(200,80,255,1),
     rgba(140,40,220,1) 25%,
     rgba(80,0,160,1) 50%,
     rgba(30,0,80,1) 75%,
@@ -46,101 +42,83 @@
   );
 }
 
-/* ------------------------------------------------------------
-   2. DAY MIST — SOFT FLOATING HAZE
------------------------------------------------------------- */
+/* --- DAY CLOUDS (Overflow‑Safe Mist Layer) --- */
 
 .day-clouds {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 160vw;
-  height: 160vh;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: scale(1.6);
+  transform-origin: center;
   pointer-events: none;
-  z-index: -998;
   opacity: 0.35;
+  z-index: -998;
   background:
-    radial-gradient(circle at 20% 40%, rgba(255,255,255,0.25) 0%, transparent 60%),
-    radial-gradient(circle at 60% 30%, rgba(255,255,255,0.20) 0%, transparent 65%),
-    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.15) 0%, transparent 70%);
+    radial-gradient(circle at 20% 40%, rgba(255,255,255,0.25), transparent 60%),
+    radial-gradient(circle at 60% 30%, rgba(255,255,255,0.20), transparent 65%),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.15), transparent 70%);
   filter: blur(25px);
   animation: cloudDrift 60s linear infinite;
 }
 
 @keyframes cloudDrift {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-40%); }
+  from { transform: translateX(0) scale(1.6); }
+  to   { transform: translateX(-40%) scale(1.6); }
 }
 
-body.dark-mode .day-clouds {
-  opacity: 0;
-  transition: opacity 4s ease;
-}
-
-
-/* ------------------------------------------------------------
-   3. NIGHT NEBULA — COSMIC PURPLE GLOW
------------------------------------------------------------- */
+/* --- NIGHT NEBULA (Overflow‑Safe Cosmic Glow) --- */
 
 .night-nebula {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 160vw;
-  height: 160vh;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: scale(1.6);
+  transform-origin: center;
   pointer-events: none;
-  z-index: -998;
   opacity: 0;
+  z-index: -998;
   background:
-    radial-gradient(circle at 30% 40%, rgba(120,80,255,0.25) 0%, transparent 60%),
-    radial-gradient(circle at 70% 60%, rgba(60,120,255,0.20) 0%, transparent 65%),
-    radial-gradient(circle at 50% 80%, rgba(180,60,255,0.15) 0%, transparent 70%);
+    radial-gradient(circle at 30% 40%, rgba(120,80,255,0.25), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(60,120,255,0.20), transparent 65%),
+    radial-gradient(circle at 50% 80%, rgba(180,60,255,0.15), transparent 70%);
   filter: blur(40px);
   animation: nebulaShift 80s ease-in-out infinite alternate;
 }
 
 @keyframes nebulaShift {
-  0%   { opacity: 0.15; transform: scale(1); }
-  50%  { opacity: 0.28; transform: scale(1.05); }
-  100% { opacity: 0.18; transform: scale(1.02); }
+  0%   { opacity: 0.15; transform: scale(1.6); }
+  50%  { opacity: 0.28; transform: scale(1.68); }
+  100% { opacity: 0.18; transform: scale(1.62); }
 }
 
-body.dark-mode .night-nebula {
-  opacity: 1;
-  transition: opacity 4s ease;
-}
-
-
-/* ------------------------------------------------------------
-   4. HERO CROWN — 420PX DESKTOP, LOCKED CENTRE
------------------------------------------------------------- */
+/* --- HERO CROWN SYSTEM --- */
 
 .hero-section {
   position: relative;
   padding: 80px 0 40px;
   text-align: center;
+  overflow-x: hidden;
   z-index: 3;
 }
 
-.hero-crown-wrapper {
-  position: relative;
-  width: 420px;
-  height: 420px;
+.hero-crown-wrapper,
+.hero-crown {
+  width: 504px;
+  height: 504px;
   margin: 0 auto;
-  z-index: 5;
 }
 
 .hero-crown {
   position: absolute;
-  top: 0;
   left: 50%;
+  top: 0;
   transform: translateX(-50%);
-  width: 420px;
-  height: 420px;
   object-fit: contain;
   opacity: 0;
-  transition: opacity 8s ease, filter 8s ease;
   filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
+  transition: opacity 8s ease, filter 8s ease;
   animation: crownShimmer 6s ease-in-out infinite;
 }
 
@@ -156,47 +134,23 @@ body.dark-mode .crown-night { opacity: 1; }
   100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)); }
 }
 
-
-/* ------------------------------------------------------------
-   HERO CROWN — 20% CINEMATIC UPSCALE (NEW)
------------------------------------------------------------- */
-
-.hero-crown-wrapper,
-.hero-crown {
-  width: 504px;   /* 420 × 1.2 */
-  height: 504px;  /* 420 × 1.2 */
-}
-
-
-/* Responsive crown scaling */
+/* Responsive scaling */
 @media (max-width: 900px) {
   .hero-crown-wrapper,
-  .hero-crown {
-    width: 320px;
-    height: 320px;
-  }
+  .hero-crown { width: 320px; height: 320px; }
 }
 
 @media (max-width: 600px) {
   .hero-crown-wrapper,
-  .hero-crown {
-    width: 260px;
-    height: 260px;
-  }
+  .hero-crown { width: 260px; height: 260px; }
 }
 
 @media (max-width: 400px) {
   .hero-crown-wrapper,
-  .hero-crown {
-    width: 200px;
-    height: 200px;
-  }
+  .hero-crown { width: 200px; height: 200px; }
 }
 
-
-/* ------------------------------------------------------------
-   5. HERO GALLERY — NARROW ELEGANT LANES (25%)
------------------------------------------------------------- */
+/* --- HERO GALLERY LANES --- */
 
 .hero-flex {
   display: flex;
@@ -204,17 +158,19 @@ body.dark-mode .crown-night { opacity: 1; }
   align-items: center;
   gap: 40px;
   margin-top: 40px;
+  max-width: 100vw;
+  overflow: hidden;
   z-index: 4;
 }
 
 .gallery-lane {
-  position: relative;
   width: 25%;
   height: 260px;
   border-radius: 16px;
   overflow: hidden;
-  background-color: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.3);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  position: relative;
 }
 
 .gallery-lane-inner {
@@ -227,7 +183,6 @@ body.dark-mode .crown-night { opacity: 1; }
   inset: 0;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 2s ease;
 }
@@ -237,20 +192,15 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 @media (max-width: 900px) {
-  .hero-flex {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .gallery-lane {
-    width: 80%;
-  }
+  .hero-flex { flex-direction: column; gap: 20px; }
+  .gallery-lane { width: 80%; }
 }
+/* ============================================================
+   PART 2 — UI ELEMENTS + CONTENT SECTIONS
+   Taglines • Footer • Reels • Carousel • Grid • About • Contact
+   ============================================================ */
 
-
-/* ------------------------------------------------------------
-   6. TAGLINE CARDS — FROSTED GLASS
------------------------------------------------------------- */
+/* --- TAGLINE CARDS --- */
 
 .tagline-cards {
   margin: 60px auto 40px;
@@ -259,8 +209,8 @@ body.dark-mode .crown-night { opacity: 1; }
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  z-index: 3;
   position: relative;
+  z-index: 3;
 }
 
 .tag-card {
@@ -286,14 +236,10 @@ body.dark-mode .crown-night { opacity: 1; }
   line-height: 1.5;
 }
 
-
-/* ------------------------------------------------------------
-   7. FOOTER — TRANSPARENT + MAGICAL GLOW ICONS
------------------------------------------------------------- */
+/* --- FOOTER --- */
 
 .cc-footer {
-  background: transparent !important;
-  border-top: none !important;
+  background: transparent;
   padding: 20px 0 30px;
   display: flex;
   flex-direction: column;
@@ -316,15 +262,12 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 .footer-text {
-  color: #ffffff;
-  font-size: 14.3px;
+  color: #fff;
+  font-size: 14px;
   text-shadow: 0 0 6px rgba(0,0,0,0.7);
 }
 
-
-/* ------------------------------------------------------------
-   8. BACK TO TOP BUTTON
------------------------------------------------------------- */
+/* --- BACK TO TOP BUTTON --- */
 
 .back-to-top {
   position: absolute;
@@ -341,130 +284,7 @@ body.dark-mode .crown-night { opacity: 1; }
   filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
 }
 
-
-/* ------------------------------------------------------------
-   9. HEADER CROWN SHIMMER
------------------------------------------------------------- */
-
-.shimmer-crown {
-  filter: drop-shadow(0 0 18px rgba(255,255,255,0.9));
-  animation: headerCrownShimmer 6s ease-in-out infinite;
-}
-
-@keyframes headerCrownShimmer {
-  0%   { filter: drop-shadow(0 0 12px rgba(255,255,255,0.7)); }
-  50%  { filter: drop-shadow(0 0 26px rgba(255,255,255,1)); }
-  100% { filter: drop-shadow(0 0 12px rgba(255,255,255,0.7)); }
-}
-
-
-/* ------------------------------------------------------------
-   10. CONTACT CROWN
------------------------------------------------------------- */
-
-.contact-crown-wrapper {
-  text-align: center;
-  margin: 40px auto 20px;
-}
-
-.contact-crown {
-  width: 500px;
-  max-width: 80%;
-  height: auto;
-  filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
-}
-
-
-/* ------------------------------------------------------------
-   11. VIDEO EMBED (YOUTUBE / VIMEO)
------------------------------------------------------------- */
-
-.video-embed {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 18px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 0 30px rgba(255,255,255,0.25);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.video-embed:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 40px rgba(255,255,255,0.45);
-}
-
-.video-embed iframe {
-  width: 100%;
-  height: 420px;
-  border-radius: 12px;
-  border: none;
-}
-
-
-/* ------------------------------------------------------------
-   12. INSPIRATIONAL TICKER
------------------------------------------------------------- */
-
-.ticker-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  margin: 40px 0;
-  padding: 12px 0;
-}
-
-.ticker-fade-left,
-.ticker-fade-right {
-  position: absolute;
-  top: 0;
-  width: 120px;
-  height: 100%;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.ticker-fade-left {
-  left: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
-}
-
-.ticker-fade-right {
-  right: 0;
-  background: linear-gradient(to left, rgba(0,0,0,0.8), transparent);
-}
-
-.ticker {
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.ticker-track {
-  display: inline-flex;
-  gap: 4rem;
-  animation: tickerScroll 40s linear infinite;
-  padding-left: 100%;
-}
-
-.ticker-track span {
-  font-size: 1.3rem;
-  color: #fff;
-  letter-spacing: 1px;
-  text-shadow: 0 0 8px rgba(255,255,255,0.6);
-  opacity: 0.95;
-}
-
-@keyframes tickerScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
-
-/* ------------------------------------------------------------
-   13. MAGICAL REELS STRIP (FINAL VERSION)
------------------------------------------------------------- */
+/* --- MAGICAL REELS STRIP --- */
 
 .reels-magic-wrapper {
   position: relative;
@@ -473,7 +293,6 @@ body.dark-mode .crown-night { opacity: 1; }
   overflow: hidden;
 }
 
-/* Floating crown */
 .reels-crown {
   text-align: center;
   margin-bottom: -20px;
@@ -492,7 +311,6 @@ body.dark-mode .crown-night { opacity: 1; }
   100% { transform: translateY(0); }
 }
 
-/* Horizontal strip */
 .reels-strip {
   display: flex;
   gap: 28px;
@@ -502,23 +320,19 @@ body.dark-mode .crown-night { opacity: 1; }
   scrollbar-width: none;
 }
 
-.reels-strip::-webkit-scrollbar {
-  display: none;
-}
+.reels-strip::-webkit-scrollbar { display: none; }
 
-/* Magical reel card */
 .reel-card {
   min-width: 320px;
-  max-width: 320px;
   height: 560px;
   border-radius: 20px;
-  position: relative;
   overflow: hidden;
   background: rgba(255,255,255,0.12);
   border: 2px solid rgba(255,255,255,0.25);
   backdrop-filter: blur(14px);
   box-shadow: 0 0 35px rgba(255,255,255,0.25);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
 }
 
 .reel-card:hover {
@@ -526,33 +340,6 @@ body.dark-mode .crown-night { opacity: 1; }
   box-shadow: 0 0 50px rgba(255,255,255,0.55);
 }
 
-/* Animated border */
-.reel-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  padding: 2px;
-  background: linear-gradient(
-    120deg,
-    rgba(255,200,0,0.9),
-    rgba(255,100,200,0.9),
-    rgba(120,80,255,0.9),
-    rgba(255,200,0,0.9)
-  );
-  background-size: 300% 300%;
-  animation: magicBorder 8s ease infinite;
-  z-index: 1;
-  pointer-events: none;
-}
-
-@keyframes magicBorder {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Reel iframe */
 .reel-card iframe {
   width: 100%;
   height: 100%;
@@ -562,25 +349,7 @@ body.dark-mode .crown-night { opacity: 1; }
   z-index: 2;
 }
 
-/* Floating sparkles */
-.reels-sparkles {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
-  background-size: 6px 6px;
-  opacity: 0.25;
-  animation: sparkleDrift 12s linear infinite;
-}
-
-@keyframes sparkleDrift {
-  0% { transform: translateX(0) translateY(0); }
-  50% { transform: translateX(-40px) translateY(-20px); }
-  100% { transform: translateX(0) translateY(0); }
-}
-/* ------------------------------------------------------------
-   14. MAGICAL VIDEO CAROUSEL
------------------------------------------------------------- */
+/* --- VIDEO CAROUSEL --- */
 
 .video-carousel {
   overflow-x: auto;
@@ -589,9 +358,7 @@ body.dark-mode .crown-night { opacity: 1; }
   scrollbar-width: none;
 }
 
-.video-carousel::-webkit-scrollbar {
-  display: none;
-}
+.video-carousel::-webkit-scrollbar { display: none; }
 
 .carousel-track {
   display: flex;
@@ -624,25 +391,7 @@ body.dark-mode .crown-night { opacity: 1; }
   border-radius: 18px;
 }
 
-/* Floating sparkles overlay */
-.carousel-sparkles {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
-  background-size: 6px 6px;
-  opacity: 0.22;
-  animation: carouselSparkleDrift 14s linear infinite;
-}
-
-@keyframes carouselSparkleDrift {
-  0% { transform: translateX(0) translateY(0); }
-  50% { transform: translateX(-30px) translateY(-15px); }
-  100% { transform: translateX(0) translateY(0); }
-}
-/* ------------------------------------------------------------
-   15. GALLERY GRID (OPTIONAL FUTURE SECTION)
------------------------------------------------------------- */
+/* --- GALLERY GRID --- */
 
 .gallery-grid {
   max-width: 1200px;
@@ -654,7 +403,6 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 .gallery-grid-item {
-  position: relative;
   border-radius: 18px;
   overflow: hidden;
   background: rgba(255,255,255,0.12);
@@ -675,10 +423,7 @@ body.dark-mode .crown-night { opacity: 1; }
   object-fit: cover;
 }
 
-
-/* ------------------------------------------------------------
-   16. ABOUT SECTION — FLOATING PANELS
------------------------------------------------------------- */
+/* --- ABOUT SECTION --- */
 
 .about-section {
   max-width: 1100px;
@@ -707,21 +452,7 @@ body.dark-mode .crown-night { opacity: 1; }
   box-shadow: 0 0 50px rgba(255,255,255,0.45);
 }
 
-.about-panel h2 {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 32px;
-  margin-bottom: 16px;
-}
-
-.about-panel p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-
-/* ------------------------------------------------------------
-   17. CONTACT FORM — GLASS UI
------------------------------------------------------------- */
+/* --- CONTACT FORM --- */
 
 .contact-section {
   max-width: 900px;
@@ -780,61 +511,13 @@ body.dark-mode .crown-night { opacity: 1; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+/* ============================================================
+   PART 3 — ANIMATIONS • PAGE TRANSITIONS • CRT OVERLAY • TOGGLE
+   ============================================================ */
 
 
 /* ------------------------------------------------------------
-   18. SOCIAL BANNER — FLOATING ICON STRIP
------------------------------------------------------------- */
-
-.social-banner {
-  margin: 80px auto;
-  text-align: center;
-  position: relative;
-  z-index: 3;
-}
-
-.social-banner-icons {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.social-banner-icons img {
-  width: 60px;
-  height: 60px;
-  filter: drop-shadow(0 0 14px rgba(255,255,255,0.9));
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.social-banner-icons img:hover {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 22px rgba(255,255,255,1));
-}
-
-
-/* ------------------------------------------------------------
-   19. FINAL MAGIC — FLOATING PARTICLES
------------------------------------------------------------- */
-
-.magic-particles {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
-  background-size: 8px 8px;
-  opacity: 0.18;
-  animation: particleDrift 18s linear infinite;
-  z-index: 2;
-}
-
-@keyframes particleDrift {
-  0% { transform: translateX(0) translateY(0); }
-  50% { transform: translateX(-60px) translateY(-30px); }
-  100% { transform: translateX(0) translateY(0); }
-}
-/* ------------------------------------------------------------
-   20. CINEMATIC PAGE TRANSITIONS — FINAL CLEAN VERSION
+   PAGE TRANSITIONS — FADE + LIGHT SWEEP
 ------------------------------------------------------------ */
 
 .page-fade {
@@ -842,7 +525,6 @@ body.dark-mode .crown-night { opacity: 1; }
   transform: scale(1.02);
   filter: blur(6px);
   transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
-  background: transparent !important;
 }
 
 .page-fade.loaded {
@@ -851,7 +533,6 @@ body.dark-mode .crown-night { opacity: 1; }
   filter: blur(0);
 }
 
-/* Light sweep overlay — unified, safe, no white bar */
 .page-sweep {
   position: fixed;
   inset: 0;
@@ -874,7 +555,7 @@ body.dark-mode .crown-night { opacity: 1; }
 
 
 /* ------------------------------------------------------------
-   21. MAGICAL SCROLL-TRIGGERED ANIMATIONS
+   SCROLL‑TRIGGERED ANIMATIONS
 ------------------------------------------------------------ */
 
 .scroll-reveal {
@@ -890,7 +571,7 @@ body.dark-mode .crown-night { opacity: 1; }
   filter: blur(0);
 }
 
-/* Optional drift effect */
+/* Drift reveal */
 .scroll-drift {
   opacity: 0;
   transform: translateY(60px) translateX(-20px);
@@ -920,7 +601,7 @@ body.dark-mode .crown-night { opacity: 1; }
 
 
 /* ------------------------------------------------------------
-   22. NEON CRT OVERLAY (DEV SUITE AESTHETIC) — SAFE VERSION
+   CRT OVERLAY — DEV SUITE AESTHETIC
 ------------------------------------------------------------ */
 
 .crt-overlay {
@@ -937,12 +618,12 @@ body.dark-mode .crown-night { opacity: 1; }
       transparent 2px,
       transparent 4px
     );
-  mix-blend-mode: overlay; /* avoids white sheet bug */
+  mix-blend-mode: overlay;
 }
 
 
 /* ------------------------------------------------------------
-   23. NEON DAY/NIGHT TOGGLE (UPGRADED + ANIMATED ICON SUPPORT)
+   NEON DAY/NIGHT TOGGLE — GLOW + INTERACTION
 ------------------------------------------------------------ */
 
 .theme-toggle {
@@ -976,21 +657,4 @@ body.dark-mode .theme-toggle {
     0 0 18px rgba(150,80,255,1),
     0 0 30px rgba(120,40,255,0.9),
     inset 0 0 18px rgba(180,120,255,1);
-}
-.hero-flex {
-  max-width: 100vw;
-  overflow: hidden;
-}
-.hero-section {
-  overflow-x: hidden;
-}
-/* DEBUG MODE — DISABLE ALL FIXED LAYERS */
-.day-background,
-.night-background,
-.day-clouds,
-.night-nebula,
-.magic-particles,
-.crt-overlay,
-.page-sweep {
-  display: none !important;
 }
