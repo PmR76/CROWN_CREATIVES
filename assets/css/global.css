@@ -152,3 +152,7 @@ html, body {
 .gallery-lane {
   width: 22%;
 }
+
+html, body {
+  overflow-x: hidden !important;
+}

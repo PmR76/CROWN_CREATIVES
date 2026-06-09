@@ -984,3 +984,13 @@ body.dark-mode .theme-toggle {
 .hero-section {
   overflow-x: hidden;
 }
+/* DEBUG MODE — DISABLE ALL FIXED LAYERS */
+.day-background,
+.night-background,
+.day-clouds,
+.night-nebula,
+.magic-particles,
+.crt-overlay,
+.page-sweep {
+  display: none !important;
+}
