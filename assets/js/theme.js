@@ -49,3 +49,36 @@ if (toggleBtn) {
     applyTheme(newTheme);
   });
 }
+// PAGE FADE-IN
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("loaded");
+});
+
+// LIGHT SWEEP ON LOAD
+window.addEventListener("load", () => {
+  const sweep = document.createElement("div");
+  sweep.className = "page-sweep";
+  document.body.appendChild(sweep);
+});
+// SCROLL REVEAL ENGINE
+const revealElements = document.querySelectorAll(
+  ".scroll-reveal, .scroll-drift, .scroll-glow"
+);
+
+function revealOnScroll() {
+  const trigger = window.innerHeight * 0.85;
+
+  revealElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < trigger) {
+      el.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+// NEON TOGGLE LOGIC
+document.getElementById("themeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
