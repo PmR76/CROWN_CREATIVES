@@ -146,3 +146,9 @@ body.fade-header main {
 .videos-hero * {
   pointer-events: none !important;
 }
+html, body {
+  overflow-x: hidden !important;
+}
+.gallery-lane {
+  width: 22%;
+}
