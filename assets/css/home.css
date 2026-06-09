@@ -159,6 +159,17 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 
+/* ------------------------------------------------------------
+   HERO CROWN — 20% CINEMATIC UPSCALE (NEW)
+------------------------------------------------------------ */
+
+.hero-crown-wrapper,
+.hero-crown {
+  width: 504px;   /* 420 × 1.2 */
+  height: 504px;  /* 420 × 1.2 */
+}
+
+
 /* Responsive crown scaling */
 @media (max-width: 900px) {
   .hero-crown-wrapper,
@@ -569,8 +580,6 @@ body.dark-mode .crown-night { opacity: 1; }
   50% { transform: translateX(-40px) translateY(-20px); }
   100% { transform: translateX(0) translateY(0); }
 }
-
-
 /* ------------------------------------------------------------
    14. MAGICAL VIDEO CAROUSEL
 ------------------------------------------------------------ */
@@ -596,3 +605,377 @@ body.dark-mode .crown-night { opacity: 1; }
   min-width: 480px;
   height: 300px;
   border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 30px rgba(255,255,255,0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+}
+
+.carousel-card:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 0 45px rgba(255,255,255,0.45);
+}
+
+.carousel-card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 18px;
+}
+
+/* Floating sparkles overlay */
+.carousel-sparkles {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+  background-size: 6px 6px;
+  opacity: 0.22;
+  animation: carouselSparkleDrift 14s linear infinite;
+}
+
+@keyframes carouselSparkleDrift {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-30px) translateY(-15px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+/* ------------------------------------------------------------
+   15. GALLERY GRID (OPTIONAL FUTURE SECTION)
+------------------------------------------------------------ */
+
+.gallery-grid {
+  max-width: 1200px;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+  padding: 0 20px;
+}
+
+.gallery-grid-item {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 30px rgba(255,255,255,0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-grid-item:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 0 45px rgba(255,255,255,0.45);
+}
+
+.gallery-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ------------------------------------------------------------
+   16. ABOUT SECTION — FLOATING PANELS
+------------------------------------------------------------ */
+
+.about-section {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 3;
+}
+
+.about-panel {
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 35px rgba(255,255,255,0.25);
+  max-width: 900px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-panel:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 50px rgba(255,255,255,0.45);
+}
+
+.about-panel h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.about-panel p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+
+/* ------------------------------------------------------------
+   17. CONTACT FORM — GLASS UI
+------------------------------------------------------------ */
+
+.contact-section {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 20px;
+  position: relative;
+  z-index: 3;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 35px rgba(255,255,255,0.25);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  font-size: 16px;
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.3);
+}
+
+.contact-form textarea {
+  height: 160px;
+  resize: none;
+}
+
+.contact-form button {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(120deg, #ffcc00, #ff66cc, #9966ff);
+  background-size: 300% 300%;
+  animation: magicButton 8s ease infinite;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+@keyframes magicButton {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* ------------------------------------------------------------
+   18. SOCIAL BANNER — FLOATING ICON STRIP
+------------------------------------------------------------ */
+
+.social-banner {
+  margin: 80px auto;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.social-banner-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.social-banner-icons img {
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 0 14px rgba(255,255,255,0.9));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.social-banner-icons img:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 22px rgba(255,255,255,1));
+}
+
+
+/* ------------------------------------------------------------
+   19. FINAL MAGIC — FLOATING PARTICLES
+------------------------------------------------------------ */
+
+.magic-particles {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+  background-size: 8px 8px;
+  opacity: 0.18;
+  animation: particleDrift 18s linear infinite;
+  z-index: 2;
+}
+
+@keyframes particleDrift {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-60px) translateY(-30px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+/* ------------------------------------------------------------
+   20. CINEMATIC PAGE TRANSITIONS
+------------------------------------------------------------ */
+
+.page-fade {
+  opacity: 0;
+  transform: scale(1.02);
+  filter: blur(6px);
+  transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
+}
+
+.page-fade.loaded {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Light sweep overlay */
+.page-sweep {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.25) 50%,
+    transparent 100%
+  );
+  transform: translateX(-120%);
+  animation: sweepMove 1.6s ease forwards;
+  z-index: 9999;
+}
+
+@keyframes sweepMove {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+/* ------------------------------------------------------------
+   21. MAGICAL SCROLL-TRIGGERED ANIMATIONS
+------------------------------------------------------------ */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(8px);
+  transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Optional drift effect */
+.scroll-drift {
+  opacity: 0;
+  transform: translateY(60px) translateX(-20px);
+  filter: blur(10px);
+  transition: all 1.4s ease;
+}
+
+.scroll-drift.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+  filter: blur(0);
+}
+
+/* Glow reveal */
+.scroll-glow {
+  opacity: 0;
+  transform: scale(0.95);
+  filter: drop-shadow(0 0 0 rgba(255,255,255,0));
+  transition: all 1.4s ease;
+}
+
+.scroll-glow.visible {
+  opacity: 1;
+  transform: scale(1);
+  filter: drop-shadow(0 0 22px rgba(255,255,255,0.9));
+}
+/* ------------------------------------------------------------
+   22. NEON CRT OVERLAY (DEV SUITE AESTHETIC)
+------------------------------------------------------------ */
+
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  opacity: 0.12;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.05) 1px,
+      transparent 2px,
+      transparent 4px
+    );
+  mix-blend-mode: screen;
+  animation: crtPulse 6s ease-in-out infinite;
+}
+
+@keyframes crtPulse {
+  0% { opacity: 0.10; }
+  50% { opacity: 0.18; }
+  100% { opacity: 0.10; }
+}
+/* ------------------------------------------------------------
+   NEON DAY/NIGHT TOGGLE (UPGRADED)
+------------------------------------------------------------ */
+
+.theme-toggle {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  width: 64px;     /* larger */
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #ccc 40%, #888 100%);
+  box-shadow:
+    0 0 12px rgba(255,255,255,0.9),
+    0 0 22px rgba(255,255,255,0.6),
+    inset 0 0 12px rgba(255,255,255,0.8);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  z-index: 999;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 18px rgba(255,255,255,1),
+    0 0 30px rgba(255,255,255,0.9),
+    inset 0 0 18px rgba(255,255,255,1);
+}
+
+body.dark-mode .theme-toggle {
+  background: radial-gradient(circle, #6a00ff 0%, #3a0099 60%, #120033 100%);
+  box-shadow:
+    0 0 18px rgba(150,80,255,1),
+    0 0 30px rgba(120,40,255,0.9),
+    inset 0 0 18px rgba(180,120,255,1);
+}
