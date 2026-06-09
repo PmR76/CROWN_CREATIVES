@@ -1,6 +1,6 @@
-# MOTHER // CSS DIAGNOSTIC REPORT
+# MOTHER // OPS DIAGNOSTIC REPORT
 
-**Timestamp:** 2026-06-09T21:32:47.768Z
+**Timestamp:** 2026-06-09T22:00:51.520Z
 
 ## Hero integrity
 
@@ -165,3 +165,25 @@
 - **z-index-high** — `#evolve-panel,
 #evolve-orb` in `assets\css\global.css` (z-index: 999999) — High z-index may cause layering conflicts with hero/footer.
 - **z-index-high** — `.lightbox` in `assets\css\gallery.css` (z-index: 9999) — High z-index may cause layering conflicts with hero/footer.
+- **js-selector-usage** — `.animated-toggle-icon` in `assets\js\theme.js` — JS uses this selector; ensure it exists in HTML.
+- **js-selector-usage** — `.day-background` in `assets\js\theme.js` — JS uses this selector; ensure it exists in HTML.
+- **js-selector-usage** — `.night-background` in `assets\js\theme.js` — JS uses this selector; ensure it exists in HTML.
+- **js-selector-usage** — `.day-clouds` in `assets\js\theme.js` — JS uses this selector; ensure it exists in HTML.
+- **js-selector-usage** — `.night-nebula` in `assets\js\theme.js` — JS uses this selector; ensure it exists in HTML.
+- **js-selector-usage** — `.crown-day` in `assets\js\theme.js` — JS uses this selector; ensure it exists in HTML.
+- **js-selector-usage** — `.crown-night` in `assets\js\theme.js` — JS uses this selector; ensure it exists in HTML.
+- **js-selector-usage** — `.gallery-left .gallery-lane-inner` in `assets\js\hero-gallery.js` — JS uses this selector; ensure it exists in HTML.
+- **js-selector-usage** — `.gallery-right .gallery-lane-inner` in `assets\js\hero-gallery.js` — JS uses this selector; ensure it exists in HTML.
+
+## Fix suggestions
+
+- `.day-background,
+.night-background` in `assets\css\home.css` — Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize.
+- `.day-clouds` in `assets\css\home.css` — Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize.
+- `.night-nebula` in `assets\css\home.css` — Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize.
+- `.theme-toggle` in `assets\css\home.css` — Consider reducing z-index below 500 or documenting intentional overlay.
+- `.cc-header` in `assets\css\header.css` — Consider reducing z-index below 500 or documenting intentional overlay.
+- `.theme-toggle` in `assets\css\header.css` — Consider reducing z-index below 500 or documenting intentional overlay.
+- `#evolve-panel,
+#evolve-orb` in `assets\css\global.css` — Consider reducing z-index below 500 or documenting intentional overlay.
+- `.lightbox` in `assets\css\gallery.css` — Consider reducing z-index below 500 or documenting intentional overlay.
