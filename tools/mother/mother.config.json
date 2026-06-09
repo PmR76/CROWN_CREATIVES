@@ -2,17 +2,31 @@
   "cssGlobs": [
     "assets/css/**/*.css"
   ],
+
+  "htmlGlobs": [
+    "*.html"
+  ],
+
+  "jsGlobs": [
+    "assets/js/**/*.js"
+  ],
+
   "overflowMaxVW": 100,
   "overflowMaxVH": 100,
-  "zIndexWarnThreshold": 100,
+
+  "zIndexWarnThreshold": 500,
+
   "mobileBreakpoint": 900,
+
   "heroSelectors": [
-    ".hero-flex",
     ".hero-section",
+    ".hero-flex",
+    ".hero-crown",
     ".day-background",
     ".night-background",
     ".day-clouds",
     ".night-nebula",
-    ".magic-particles"
+    ".magic-particles",
+    ".gallery-lane"
   ]
 }

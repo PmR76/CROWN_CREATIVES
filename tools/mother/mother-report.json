@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-09T21:06:36.665Z",
+  "timestamp": "2026-06-09T21:32:47.768Z",
   "filesScanned": 7,
   "duplicates": [
     {
@@ -490,51 +490,65 @@
       "selector": ".day-background,\r\n.night-background",
       "file": "assets\\css\\home.css",
       "widthVW": "120vw",
-      "heightVH": "120vh"
+      "heightVH": "120vh",
+      "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
     },
     {
       "type": "overflow-risk",
       "selector": ".day-clouds",
       "file": "assets\\css\\home.css",
       "widthVW": "160vw",
-      "heightVH": "160vh"
+      "heightVH": "160vh",
+      "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
     },
     {
       "type": "overflow-risk",
       "selector": ".night-nebula",
       "file": "assets\\css\\home.css",
       "widthVW": "160vw",
-      "heightVH": "160vh"
+      "heightVH": "160vh",
+      "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
     },
     {
       "type": "z-index-high",
       "selector": ".theme-toggle",
       "file": "assets\\css\\home.css",
-      "zIndex": 999
+      "zIndex": 999,
+      "message": "High z-index may cause layering conflicts with hero/footer."
     },
     {
       "type": "z-index-high",
       "selector": ".cc-header",
       "file": "assets\\css\\header.css",
-      "zIndex": 1000
+      "zIndex": 1000,
+      "message": "High z-index may cause layering conflicts with hero/footer."
     },
     {
       "type": "z-index-high",
       "selector": ".theme-toggle",
       "file": "assets\\css\\header.css",
-      "zIndex": 2000
+      "zIndex": 2000,
+      "message": "High z-index may cause layering conflicts with hero/footer."
     },
     {
       "type": "z-index-high",
       "selector": "#evolve-panel,\r\n#evolve-orb",
       "file": "assets\\css\\global.css",
-      "zIndex": 999999
+      "zIndex": 999999,
+      "message": "High z-index may cause layering conflicts with hero/footer."
     },
     {
       "type": "z-index-high",
       "selector": ".lightbox",
       "file": "assets\\css\\gallery.css",
-      "zIndex": 9999
+      "zIndex": 9999,
+      "message": "High z-index may cause layering conflicts with hero/footer."
     }
-  ]
+  ],
+  "heroStatus": {
+    "hasHeroSection": true,
+    "hasHeroFlex": true,
+    "hasHeroCrown": true,
+    "hasGalleryLane": true
+  }
 }
