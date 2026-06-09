@@ -1,11 +1,34 @@
 #!/usr/bin/env node
-// MOTHER — Crown Creatives CSS Intelligence Core
+// MOTHER — Crown Creatives CSS Intelligence Core (Self‑Healing + Hero Integrity + Mobile Safety)
 
 import fs from "fs";
 import path from "path";
-import glob from "glob";
-import postcss from "postcss";
+import { execSync } from "child_process";
 
+// ───────────────────────────────────────────────
+//  SELF‑HEALING DEPENDENCY LOADER
+// ───────────────────────────────────────────────
+async function ensureModule(pkg) {
+  try {
+    return await import(pkg);
+  } catch {
+    console.log(`▌ >> DEPENDENCY MISSING: ${pkg}`);
+    console.log("▌ >> INITIATING SELF‑REPAIR...");
+    execSync(`npm install ${pkg}`, { stdio: "inherit" });
+    return await import(pkg);
+  }
+}
+
+const [{ glob }, postcssModule] = await Promise.all([
+  ensureModule("glob"),
+  ensureModule("postcss")
+]);
+
+const postcss = postcssModule.default || postcssModule;
+
+// ───────────────────────────────────────────────
+//  LOAD CONFIG
+// ───────────────────────────────────────────────
 const CONFIG_PATH = path.join(process.cwd(), "tools/mother/mother.config.json");
 const config = JSON.parse(fs.readFileSync(CONFIG_PATH, "utf8"));
 
@@ -14,10 +37,24 @@ const cssFiles = glob.sync(config.cssGlobs, { absolute: true });
 const selectorMap = new Map();
 const issues = [];
 
+// HERO INTEGRITY STATUS
+const heroStatus = {
+  hasHeroSection: false,
+  hasHeroFlex: false,
+  hasHeroCrown: false,
+  hasGalleryLane: false
+};
+
+// ───────────────────────────────────────────────
+//  CRT LOGGING
+// ───────────────────────────────────────────────
 function logCRT(line = "") {
   console.log(`▌ ${line}`);
 }
 
+// ───────────────────────────────────────────────
+//  SCAN A SINGLE CSS FILE
+// ───────────────────────────────────────────────
 async function scanFile(filePath) {
   const css = fs.readFileSync(filePath, "utf8");
   const root = postcss.parse(css);
@@ -30,11 +67,20 @@ async function scanFile(filePath) {
     if (!selectorMap.has(selector)) selectorMap.set(selector, []);
     selectorMap.get(selector).push({ file: loc });
 
+    // HERO INTEGRITY DETECTION
+    if (selector.includes(".hero-section")) heroStatus.hasHeroSection = true;
+    if (selector.includes(".hero-flex")) heroStatus.hasHeroFlex = true;
+    if (selector.includes(".hero-crown")) heroStatus.hasHeroCrown = true;
+    if (selector.includes(".gallery-lane")) heroStatus.hasGalleryLane = true;
+
     // Inspect declarations
     let posFixed = false;
     let widthVW = null;
     let heightVH = null;
     let zIndex = null;
+    let overflowX = null;
+    let overflowY = null;
+    let minWidthPX = null;
 
     rule.walkDecls(decl => {
       const { prop, value } = decl;
@@ -43,6 +89,13 @@ async function scanFile(filePath) {
       if (prop === "width" && value.includes("vw")) widthVW = value;
       if (prop === "height" && value.includes("vh")) heightVH = value;
       if (prop === "z-index") zIndex = parseInt(value, 10);
+      if (prop === "overflow-x") overflowX = value;
+      if (prop === "overflow-y") overflowY = value;
+
+      // MOBILE SAFETY
+      if (prop === "min-width" && value.endsWith("px")) {
+        minWidthPX = parseInt(value, 10);
+      }
     });
 
     // Overflow risk
@@ -52,7 +105,19 @@ async function scanFile(filePath) {
         selector,
         file: loc,
         widthVW,
-        heightVH
+        heightVH,
+        message: "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
+      });
+    }
+
+    // Global overflow safety
+    if ((selector === "body" || selector === "html") &&
+        (overflowX !== "hidden" && overflowY !== "hidden")) {
+      issues.push({
+        type: "global-overflow",
+        selector,
+        file: loc,
+        message: "Consider overflow-x: hidden to prevent cinematic layers from leaking."
       });
     }
 
@@ -62,12 +127,27 @@ async function scanFile(filePath) {
         type: "z-index-high",
         selector,
         file: loc,
-        zIndex
+        zIndex,
+        message: "High z-index may cause layering conflicts with hero/footer."
+      });
+    }
+
+    // MOBILE LAYOUT RISK
+    if (minWidthPX && minWidthPX > 480) {
+      issues.push({
+        type: "mobile-layout-risk",
+        selector,
+        file: loc,
+        minWidthPX,
+        message: "Min-width above 480px may break small phones."
       });
     }
   });
 }
 
+// ───────────────────────────────────────────────
+//  MAIN EXECUTION
+// ───────────────────────────────────────────────
 (async () => {
   console.log("┌───────────────────────────────────────────────┐");
   console.log("│  MOTHER // CROWN CREATIVES CSS DIAGNOSTICS   │");
@@ -93,7 +173,8 @@ async function scanFile(filePath) {
     timestamp: new Date().toISOString(),
     filesScanned: cssFiles.length,
     duplicates,
-    issues
+    issues,
+    heroStatus
   };
 
   // Write JSON
@@ -114,12 +195,26 @@ async function scanFile(filePath) {
   logCRT("");
   logCRT("DETAIL: tools/mother/mother-report.md");
 })();
-  
+
+// ───────────────────────────────────────────────
+//  MARKDOWN REPORT BUILDER
+// ───────────────────────────────────────────────
 function buildMarkdownReport(report) {
   let md = "";
   md += "# MOTHER // CSS DIAGNOSTIC REPORT\n\n";
   md += `**Timestamp:** ${report.timestamp}\n\n`;
 
+  // HERO INTEGRITY
+  md += "## Hero integrity\n\n";
+  const h = report.heroStatus;
+
+  if (!h.hasHeroSection || !h.hasHeroFlex || !h.hasHeroCrown || !h.hasGalleryLane) {
+    md += "- **Warning:** Hero stack incomplete. Check `.hero-section`, `.hero-flex`, `.hero-crown`, `.gallery-lane`.\n\n";
+  } else {
+    md += "- Hero stack detected and structurally complete.\n\n";
+  }
+
+  // DUPLICATES
   md += "## Duplicate selectors\n\n";
   if (!report.duplicates.length) {
     md += "- None detected.\n\n";
@@ -133,6 +228,7 @@ function buildMarkdownReport(report) {
     md += "\n";
   }
 
+  // ISSUES
   md += "## Issues\n\n";
   if (!report.issues.length) {
     md += "- None detected.\n";
@@ -140,12 +236,25 @@ function buildMarkdownReport(report) {
   }
 
   for (const issue of report.issues) {
-    if (issue.type === "overflow-risk") {
-      md += `- **Overflow risk** — \`${issue.selector}\` in \`${issue.file}\` `;
-      md += `(width: ${issue.widthVW || "n/a"}, height: ${issue.heightVH || "n/a"})\n`;
-    } else if (issue.type === "z-index-high") {
-      md += `- **High z-index** — \`${issue.selector}\` in \`${issue.file}\` (z-index: ${issue.zIndex})\n`;
+    md += `- **${issue.type}** — \`${issue.selector}\` in \`${issue.file}\``;
+
+    if (issue.widthVW || issue.heightVH) {
+      md += ` (width: ${issue.widthVW || "n/a"}, height: ${issue.heightVH || "n/a"})`;
     }
+
+    if (issue.zIndex) {
+      md += ` (z-index: ${issue.zIndex})`;
+    }
+
+    if (issue.minWidthPX) {
+      md += ` (min-width: ${issue.minWidthPX}px)`;
+    }
+
+    if (issue.message) {
+      md += ` — ${issue.message}`;
+    }
+
+    md += "\n";
   }
 
   return md;
