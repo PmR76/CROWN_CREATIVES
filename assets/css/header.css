@@ -66,45 +66,40 @@
 }
 
 /* ============================================================
-   THEME TOGGLE — MAGICAL GLOW + SHIMMER + PERFECT SIZE
+   ANIMATED THEME TOGGLE — SUN/MOON
    ============================================================ */
 
-.cc-theme-toggle {
+.theme-toggle {
   position: absolute;
   right: 40px;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
-  pointer-events: auto;
   z-index: 2000;
 }
 
 .cc-theme-icon {
-  width: 54px !important;
-  height: 54px !important;
+  width: 64px;
+  height: 64px;
   transition: transform 0.35s ease, filter 0.6s ease, opacity 0.6s ease;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.75));
+  filter: drop-shadow(0 0 14px rgba(255,255,255,0.85));
 }
 
 /* Hover pulse */
-.cc-theme-toggle:hover .cc-theme-icon {
+.theme-toggle:hover .cc-theme-icon {
   transform: scale(1.12);
-  filter: drop-shadow(0 0 20px rgba(255,255,255,1));
+  filter: drop-shadow(0 0 22px rgba(255,255,255,1));
 }
 
-/* Night mode shimmer */
+/* Night mode glow */
 body.dark-mode .cc-theme-icon {
-  filter: drop-shadow(0 0 18px rgba(255,255,255,1));
-  animation: toggleShimmer 5s ease-in-out infinite;
-}
-
-@keyframes toggleShimmer {
-  0%   { filter: drop-shadow(0 0 14px rgba(255,255,255,0.9)); }
-  50%  { filter: drop-shadow(0 0 28px rgba(255,255,255,1)); }
-  100% { filter: drop-shadow(0 0 14px rgba(255,255,255,0.9)); }
+  filter: drop-shadow(0 0 22px rgba(180,120,255,1));
 }
 
 /* ============================================================

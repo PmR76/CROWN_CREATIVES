@@ -5,6 +5,7 @@
 // DOM elements
 const body = document.body;
 const toggleBtn = document.getElementById("themeToggle");
+const toggleIcon = document.querySelector(".animated-toggle-icon");
 
 const dayBg = document.querySelector(".day-background");
 const nightBg = document.querySelector(".night-background");
@@ -21,7 +22,13 @@ const crownNight = document.querySelector(".crown-night");
 function applyTheme(theme) {
   const isNight = theme === "night";
 
-  body.classList.toggle("night-mode", isNight);
+  // SINGLE MODE CLASS
+  body.classList.toggle("dark-mode", isNight);
+
+  // Apply .night class to SVG icon
+  if (toggleIcon) {
+    toggleIcon.classList.toggle("night", isNight);
+  }
 
   if (dayBg) dayBg.style.opacity = isNight ? "0" : "1";
   if (nightBg) nightBg.style.opacity = isNight ? "1" : "0";
@@ -44,11 +51,12 @@ applyTheme(savedTheme);
 // -------------------------------
 if (toggleBtn) {
   toggleBtn.addEventListener("click", () => {
-    const newTheme = body.classList.contains("night-mode") ? "day" : "night";
+    const newTheme = body.classList.contains("dark-mode") ? "day" : "night";
     localStorage.setItem("cc-theme", newTheme);
     applyTheme(newTheme);
   });
 }
+
 // PAGE FADE-IN
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("loaded");
@@ -60,6 +68,7 @@ window.addEventListener("load", () => {
   sweep.className = "page-sweep";
   document.body.appendChild(sweep);
 });
+
 // SCROLL REVEAL ENGINE
 const revealElements = document.querySelectorAll(
   ".scroll-reveal, .scroll-drift, .scroll-glow"
@@ -78,7 +87,3 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
-// NEON TOGGLE LOGIC
-document.getElementById("themeToggle").addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});

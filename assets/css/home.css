@@ -836,7 +836,7 @@ body.dark-mode .crown-night { opacity: 1; }
   100% { transform: translateX(0) translateY(0); }
 }
 /* ------------------------------------------------------------
-   20. CINEMATIC PAGE TRANSITIONS
+   20. CINEMATIC PAGE TRANSITIONS — FIXED
 ------------------------------------------------------------ */
 
 .page-fade {
@@ -844,6 +844,7 @@ body.dark-mode .crown-night { opacity: 1; }
   transform: scale(1.02);
   filter: blur(6px);
   transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
+  background: transparent !important; /* prevents white flash */
 }
 
 .page-fade.loaded {
@@ -852,7 +853,7 @@ body.dark-mode .crown-night { opacity: 1; }
   filter: blur(0);
 }
 
-/* Light sweep overlay */
+/* Light sweep overlay — FIXED */
 .page-sweep {
   position: fixed;
   inset: 0;
@@ -860,18 +861,19 @@ body.dark-mode .crown-night { opacity: 1; }
   background: linear-gradient(
     120deg,
     transparent 0%,
-    rgba(255,255,255,0.25) 50%,
+    rgba(255,255,255,0.18) 50%,
     transparent 100%
   );
-  transform: translateX(-120%);
-  animation: sweepMove 1.6s ease forwards;
-  z-index: 9999;
+  transform: translateX(-150%); /* moved further off-screen */
+  animation: sweepMove 1.2s ease forwards;
+  z-index: 50; /* lowered so it cannot block content */
 }
 
 @keyframes sweepMove {
-  0% { transform: translateX(-120%); }
-  100% { transform: translateX(120%); }
+  0% { transform: translateX(-150%); }
+  100% { transform: translateX(150%); }
 }
+
 /* ------------------------------------------------------------
    21. MAGICAL SCROLL-TRIGGERED ANIMATIONS
 ------------------------------------------------------------ */
