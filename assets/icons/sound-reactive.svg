@@ -1,0 +1,41 @@
+<svg width="100%" height="100%" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <g id="wave1" stroke="white" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M8 32c6-12 6-12 12 0s6 12 12 0" />
+  </g>
+  <g id="wave2" stroke="white" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M32 32c6-12 6-12 12 0s6 12 12 0" />
+  </g>
+
+  <style>
+    #wave1, #wave2 {
+      opacity: 0.6;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
+      transition: opacity 0.3s ease, filter 0.3s ease;
+    }
+
+    .on #wave1, .on #wave2 {
+      opacity: 1;
+      filter: drop-shadow(0 0 12px rgba(255,255,255,1));
+    }
+
+    .reactive #wave1 {
+      animation: pulse1 1.6s ease-in-out infinite;
+    }
+
+    .reactive #wave2 {
+      animation: pulse2 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulse1 {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+
+    @keyframes pulse2 {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+  </style>
+</svg>
