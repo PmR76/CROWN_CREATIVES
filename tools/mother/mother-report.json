@@ -1,31 +1,9 @@
 {
-  "timestamp": "2026-06-09T22:00:51.520Z",
-  "filesScanned": 7,
+  "timestamp": "2026-06-10T00:16:48.723Z",
+  "filesScanned": 8,
   "htmlFilesScanned": 1,
   "jsFilesScanned": 3,
   "duplicates": [
-    {
-      "selector": ".reel-card",
-      "defs": [
-        {
-          "file": "assets\\css\\videos.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        }
-      ]
-    },
-    {
-      "selector": ".reel-card:hover",
-      "defs": [
-        {
-          "file": "assets\\css\\videos.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        }
-      ]
-    },
     {
       "selector": "0%",
       "defs": [
@@ -36,39 +14,6 @@
           "file": "assets\\css\\ticker.css"
         },
         {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
           "file": "assets\\css\\global.css"
         },
         {
@@ -76,6 +21,33 @@
         },
         {
           "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
         }
       ]
     },
@@ -89,39 +61,6 @@
           "file": "assets\\css\\ticker.css"
         },
         {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
           "file": "assets\\css\\global.css"
         },
         {
@@ -132,6 +71,33 @@
         },
         {
           "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
         }
       ]
     },
@@ -140,9 +106,6 @@
       "defs": [
         {
           "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -156,9 +119,6 @@
           "file": "assets\\css\\ticker.css"
         },
         {
-          "file": "assets\\css\\home.css"
-        },
-        {
           "file": "assets\\css\\footer.css"
         }
       ]
@@ -168,9 +128,6 @@
       "defs": [
         {
           "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -184,9 +141,6 @@
           "file": "assets\\css\\ticker.css"
         },
         {
-          "file": "assets\\css\\home.css"
-        },
-        {
           "file": "assets\\css\\footer.css"
         }
       ]
@@ -198,9 +152,6 @@
           "file": "assets\\css\\ticker.css"
         },
         {
-          "file": "assets\\css\\home.css"
-        },
-        {
           "file": "assets\\css\\footer.css"
         }
       ]
@@ -210,9 +161,6 @@
       "defs": [
         {
           "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -227,9 +175,6 @@
         },
         {
           "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -251,78 +196,7 @@
       ]
     },
     {
-      "selector": "to",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\gallery.css"
-        }
-      ]
-    },
-    {
-      "selector": "50%",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
-        }
-      ]
-    },
-    {
-      "selector": ".hero-section",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        }
-      ]
-    },
-    {
       "selector": ".hero-crown-wrapper,\r\n  .hero-crown",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        }
-      ]
-    },
-    {
-      "selector": ".hero-flex",
       "defs": [
         {
           "file": "assets\\css\\home.css"
@@ -345,7 +219,21 @@
           "file": "assets\\css\\home.css"
         },
         {
+          "file": "assets\\css\\home.css"
+        },
+        {
           "file": "assets\\css\\global.css"
+        }
+      ]
+    },
+    {
+      "selector": ".hero-flex",
+      "defs": [
+        {
+          "file": "assets\\css\\home.css"
+        },
+        {
+          "file": "assets\\css\\home.css"
         }
       ]
     },
@@ -372,84 +260,6 @@
       ]
     },
     {
-      "selector": ".cc-footer",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".footer-icons",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".footer-icon",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".footer-text",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".back-to-top",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".gallery-grid",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\gallery.css"
-        }
-      ]
-    },
-    {
       "selector": ".theme-toggle",
       "defs": [
         {
@@ -461,16 +271,34 @@
       ]
     },
     {
-      "selector": "html, body",
+      "selector": "50%",
       "defs": [
         {
           "file": "assets\\css\\global.css"
         },
         {
-          "file": "assets\\css\\global.css"
+          "file": "assets\\css\\cinematic.css"
         },
         {
-          "file": "assets\\css\\global.css"
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
         }
       ]
     },
@@ -484,6 +312,61 @@
           "file": "assets\\css\\global.css"
         }
       ]
+    },
+    {
+      "selector": "to",
+      "defs": [
+        {
+          "file": "assets\\css\\gallery.css"
+        },
+        {
+          "file": "assets\\css\\cinematic.css"
+        }
+      ]
+    },
+    {
+      "selector": ".cc-footer",
+      "defs": [
+        {
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
+    },
+    {
+      "selector": ".footer-icons",
+      "defs": [
+        {
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
+    },
+    {
+      "selector": ".back-to-top",
+      "defs": [
+        {
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
+    },
+    {
+      "selector": ".footer-text",
+      "defs": [
+        {
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
     }
   ],
   "issues": [
@@ -491,24 +374,16 @@
       "type": "overflow-risk",
       "selector": ".day-background,\r\n.night-background",
       "file": "assets\\css\\home.css",
-      "widthVW": "120vw",
-      "heightVH": "120vh",
-      "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
-    },
-    {
-      "type": "overflow-risk",
-      "selector": ".day-clouds",
-      "file": "assets\\css\\home.css",
-      "widthVW": "160vw",
-      "heightVH": "160vh",
+      "widthVW": "100vw",
+      "heightVH": "100vh",
       "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
     },
     {
       "type": "overflow-risk",
       "selector": ".night-nebula",
       "file": "assets\\css\\home.css",
-      "widthVW": "160vw",
-      "heightVH": "160vh",
+      "widthVW": "100vw",
+      "heightVH": "100vh",
       "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
     },
     {
@@ -610,11 +485,6 @@
   "fixSuggestions": [
     {
       "selector": ".day-background,\r\n.night-background",
-      "file": "assets\\css\\home.css",
-      "suggestion": "Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize."
-    },
-    {
-      "selector": ".day-clouds",
       "file": "assets\\css\\home.css",
       "suggestion": "Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize."
     },
