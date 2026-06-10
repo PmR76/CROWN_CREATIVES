@@ -2,7 +2,7 @@
    CROWN CREATIVES — HOMEPAGE CINEMATIC ENVIRONMENT
    home.css (Structure + Visual Layers Only)
    Animations moved to cinematic.css
-   ============================================================ */
+============================================================ */
 
 
 /* ------------------------------------------------------------
@@ -125,7 +125,51 @@ body.dark-mode .crown-night { opacity: 1; }
 
 
 /* ------------------------------------------------------------
-   4. HERO GALLERY LANES
+   4. EVOLVED LAYOUT CONTAINER SYSTEM (v5‑Optimised)
+   Homepage‑specific containers only
+------------------------------------------------------------ */
+
+.hero-section,
+.hero,
+.hero-wrapper,
+.hero-flex,
+.gallery,
+.gallery-wrapper,
+.gallery-lane,
+.gallery-lane-inner {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Remove forced heights */
+.hero-section,
+.hero,
+.hero-wrapper {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: hidden;
+}
+
+/* Gallery structure */
+.gallery,
+.gallery-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.gallery-lane {
+    max-width: 100%;
+}
+
+
+/* ------------------------------------------------------------
+   5. HERO GALLERY LANES
 ------------------------------------------------------------ */
 
 .hero-flex {
@@ -174,15 +218,7 @@ body.dark-mode .crown-night { opacity: 1; }
 
 
 /* ------------------------------------------------------------
-   5. UI ELEMENTS (Taglines, Footer, Reels, Carousel, Grid, About, Contact)
------------------------------------------------------------- */
-
-/* (Your UI sections remain unchanged — they are correct and safe) */
-
-
-/* ------------------------------------------------------------
    6. PAGE TRANSITIONS + CRT OVERLAY + THEME TOGGLE
-   (Animations removed — handled in cinematic.css)
 ------------------------------------------------------------ */
 
 .page-fade {
