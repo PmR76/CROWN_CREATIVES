@@ -1,0 +1,47 @@
+name: Build Sound Manifest
+
+on:
+  push:
+    paths:
+      - "assets/sounds/**"
+      - ".github/workflows/sound-manifest.yml"
+  workflow_dispatch:
+
+jobs:
+  build-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate sound-manifest.json
+        run: |
+          cd assets/sounds
+          echo "{" > sound-manifest.json
+          echo '  "sounds": [' >> sound-manifest.json
+
+          first=true
+          for file in *.mp3; do
+            if [ "$first" = true ]; then
+              echo "    \"${file}\"" >> sound-manifest.json
+              first=false
+            else
+              echo "    ,\"${file}\"" >> sound-manifest.json
+            fi
+          done
+
+          echo "  ]" >> sound-manifest.json
+          echo "}" >> sound-manifest.json
+
+      - name: Commit updated manifest
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add assets/sounds/sound-manifest.json
+          git commit -m "Auto-update sound manifest" || echo "No changes to commit"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
