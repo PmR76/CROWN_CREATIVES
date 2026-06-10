@@ -65,7 +65,7 @@ body.dark-mode .night-background { opacity: 1; }
 
 
 /* ------------------------------------------------------------
-   3. HERO CROWN — LOWERED BY 15MM (now -57px)
+   3. HERO CROWN — 20% LARGER + PERFECTLY CENTRED
 ------------------------------------------------------------ */
 
 .hero-section {
@@ -77,20 +77,23 @@ body.dark-mode .night-background { opacity: 1; }
 }
 
 .hero-crown-wrapper {
-  position: relative;
-  width: 420px;
-  height: 420px;
-  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 504px;   /* 20% larger */
+  height: 504px;  /* 20% larger */
+  margin: 0;
   z-index: 5;
 }
 
 .hero-crown {
   position: absolute;
-  top: -57px; /* lowered from -153px */
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 420px;
-  height: 420px;
+  width: 504px;   /* 20% larger */
+  height: 504px;  /* 20% larger */
+  transform: translate(-50%, -50%);
   object-fit: contain;
   opacity: 0;
   transition: opacity 8s ease, filter 8s ease;
@@ -103,36 +106,35 @@ body.dark-mode .night-background { opacity: 1; }
 body.dark-mode .crown-day { opacity: 0; }
 body.dark-mode .crown-night { opacity: 1; }
 
+
+/* Responsive crown scaling */
 @media (max-width: 900px) {
   .hero-crown-wrapper,
   .hero-crown {
-    width: 320px;
-    height: 320px;
-    top: -20px;
+    width: 380px;
+    height: 380px;
   }
 }
 
 @media (max-width: 600px) {
   .hero-crown-wrapper,
   .hero-crown {
-    width: 260px;
-    height: 260px;
-    top: -10px;
+    width: 300px;
+    height: 300px;
   }
 }
 
 @media (max-width: 400px) {
   .hero-crown-wrapper,
   .hero-crown {
-    width: 200px;
-    height: 200px;
-    top: 0;
+    width: 240px;
+    height: 240px;
   }
 }
 
 
 /* ------------------------------------------------------------
-   4. HERO GALLERY — LOWERED BY 15MM (now -57px)
+   4. HERO GALLERY — UNCHANGED (per your request)
 ------------------------------------------------------------ */
 
 .hero-flex {
@@ -140,7 +142,7 @@ body.dark-mode .crown-night { opacity: 1; }
   justify-content: center;
   align-items: center;
   gap: 40px;
-  margin-top: -57px; /* lowered from -153px */
+  margin-top: -57px; /* unchanged */
   z-index: 4;
 }
 
