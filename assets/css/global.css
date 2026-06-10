@@ -154,10 +154,15 @@ body.fade-header main {
    GALLERY LANE (SAFE WIDTH)
 ============================================================ */
 .gallery-lane {
-  width: 22%;
-  max-width: 22%;
+    width: 22%;
+    max-width: 22%;
+    height: 240px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.3);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    position: relative;
 }
-
 
 /* ============================================================
    FOOTER PROTECTION
@@ -190,4 +195,14 @@ footer i,
 .back-to-top img,
 .back-to-top svg {
   max-width: none !important;
+}
+/* Prevent icons from shrinking */
+footer img,
+footer svg,
+footer i,
+.back-to-top img,
+.back-to-top svg {
+    max-width: none !important;
+    width: auto !important;
+    height: auto !important;
 }
