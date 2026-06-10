@@ -91,7 +91,7 @@
 .hero-crown {
   position: absolute;
   left: 50%;
-  top: -40px; /* raised crown */
+  top: -40px; /* raised */
   transform: translateX(-50%);
   object-fit: contain;
   opacity: 0;
@@ -305,7 +305,8 @@ body.debug .page-sweep {
 ------------------------------------------------------------ */
 
 section,
-.section {
+.section,
+.content-section {
   min-height: auto !important;
   height: auto !important;
 }
