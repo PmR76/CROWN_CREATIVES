@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog – Crown Creatives</title>
+
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/header.css">
+  <link rel="stylesheet" href="/assets/css/footer.css">
+  <link rel="stylesheet" href="/assets/css/home.css">
+
+  <style>
+    .blog-wrapper {
+      max-width: 900px;
+      margin: 160px auto 80px;
+      padding: 0 20px;
+      text-align: left;
+      position: relative;
+      z-index: 3;
+    }
+
+    .blog-title {
+      font-size: 48px;
+      color: white;
+      text-align: center;
+      text-shadow: 0 0 18px rgba(255,255,255,0.8);
+      margin-bottom: 10px;
+    }
+
+    .blog-subtitle {
+      text-align: center;
+      font-size: 20px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 40px;
+    }
+
+    .blog-post {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .blog-post:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 30px rgba(255,255,255,0.4);
+    }
+
+    .blog-post h2 {
+      margin-top: 0;
+      font-size: 28px;
+      color: white;
+      text-shadow: 0 0 12px rgba(255,255,255,0.7);
+    }
+
+    .blog-post p {
+      color: rgba(255,255,255,0.9);
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    .blog-date {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="magic-fade-overlay"></div>
+
+  <!-- BACKGROUNDS -->
+  <div class="day-background"></div>
+  <div class="night-background"></div>
+  <div class="day-clouds"></div>
+  <div class="night-nebula"></div>
+
+  <!-- HEADER -->
+  <header class="cc-header">
+    <div class="cc-header-inner">
+      <div class="cc-title-block">
+        <img src="/assets/icons/head-crown.svg" class="cc-logo shimmer-crown">
+        <h1 class="cc-site-title">CROWN CREATIVES</h1>
+        <p class="cc-tagline">ARTISTRY · RESILIENCE · IMAGINATION</p>
+      </div>
+
+      <button class="cc-theme-toggle" id="themeToggle">
+        <img src="/assets/icons/sun-moon-magic.svg" class="cc-theme-icon shimmer-crown">
+      </button>
+    </div>
+
+    <nav class="cc-nav">
+      <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/about.html">ABOUT</a></li>
+        <li><a href="/gallery.html">GALLERY</a></li>
+        <li><a href="/projects.html">PROJECTS</a></li>
+        <li><a href="/videos.html">VIDEOS</a></li>
+        <li><a href="/podcasts.html">PODCASTS</a></li>
+        <li><a href="/blog.html" class="active">BLOG</a></li>
+        <li><a href="/contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="blog-wrapper">
+
+      <h1 class="blog-title">Blog</h1>
+      <p class="blog-subtitle">Thoughts, stories, updates, and creative insights</p>
+
+      <!-- BLOG POST 1 -->
+      <div class="blog-post">
+        <div class="blog-date">Posted: Coming Soon</div>
+        <h2>First Post Placeholder</h2>
+        <p>
+          Your blog posts will appear here. Each post can include stories, updates, creative notes,
+          behind‑the‑scenes insights, or reflections from your journey.
+        </p>
+      </div>
+
+      <!-- BLOG POST 2 -->
+      <div class="blog-post">
+        <div class="blog-date">Posted: Coming Soon</div>
+        <h2>Another Post Placeholder</h2>
+        <p>
+          Add as many posts as you like — simply duplicate a <code>.blog-post</code> block and edit the content.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="cc-footer">
+    <div class="footer-icons">
+      <a href="https://www.facebook.com/people/Crown-Creatives/61556386467490/" target="_blank">
+        <img src="/assets/icons/facebook-magic.svg" class="footer-icon">
+      </a>
+      <a href="https://www.instagram.com/crown_creatives_uk/" target="_blank">
+        <img src="/assets/icons/instagram-magic.svg" class="footer-icon">
+      </a>
+      <a href="mailto:crowncreatives@outlook.com">
+        <img src="/assets/icons/email-magic.svg" class="footer-icon">
+      </a>
+      <a href="https://copilot.microsoft.com" target="_blank">
+        <img src="/assets/icons/copilot-magic.svg" class="footer-icon">
+      </a>
+    </div>
+
+    <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+      <img src="/assets/icons/up-arrow-magic.svg" class="footer-icon">
+    </button>
+
+    <div class="footer-text">© Crown Creatives</div>
+  </footer>
+
+  <script src="/assets/js/theme.js"></script>
+</body>
+</html>

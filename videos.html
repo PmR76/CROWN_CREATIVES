@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-realm="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CROWN CREATIVES · VIDEOS</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Global Site Styles -->
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/header.css">
+  <link rel="stylesheet" href="/assets/css/footer.css">
+
+  <!-- EVOLVE OS v3.2 — Styles -->
+  <link rel="stylesheet" href="/assets/evolve/evolve-panel.css">
+  <link rel="stylesheet" href="/assets/evolve/evolve-devsuite.css">
+  <link rel="stylesheet" href="/assets/evolve/evolve-recovery.css">
+  <link rel="stylesheet" href="/assets/evolve/evolve-ticker.css">
+
+  <!-- Page Styles -->
+  <link rel="stylesheet" href="/assets/css/videos.css">
+
+  <!-- EVOLVE OS v3.2 — Core Loader -->
+  <script src="/assets/evolve/evolve-core.v3.2.0.js" defer></script>
+
+  <!-- ⭐ IMPORTANT: DO NOT manually load DevSuite here.
+       EVCORE loads DevSuite v3.3.1 automatically from the manifest. -->
+</head>
+
+<body>
+  <div class="magic-fade-overlay"></div>
+
+  <!-- REALM LAYERS -->
+  <div id="evolve-realm-layers">
+    <div class="realm-layer realm-day"></div>
+    <div class="realm-layer realm-night"></div>
+    <div class="realm-layer realm-cinematic"></div>
+    <div class="realm-layer realm-clouds"></div>
+    <div class="realm-layer realm-nebula"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="cc-header">
+    <div class="cc-header-inner">
+      <div class="cc-title-block">
+        <img src="/assets/icons/head-crown.svg" class="cc-logo shimmer-crown">
+        <h1 class="cc-site-title">CROWN CREATIVES</h1>
+        <p class="cc-tagline">ARTISTRY · RESILIENCE · IMAGINATION</p>
+      </div>
+
+      <button class="cc-theme-toggle" id="themeToggle">
+        <img src="/assets/icons/sun-moon-magic.svg" class="cc-theme-icon shimmer-crown">
+      </button>
+    </div>
+
+    <nav class="cc-nav">
+      <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/about.html">ABOUT</a></li>
+        <li><a href="/gallery.html">GALLERY</a></li>
+        <li><a href="/projects.html">PROJECTS</a></li>
+        <li><a href="/videos.html" class="active">VIDEOS</a></li>
+        <li><a href="/podcasts.html">PODCASTS</a></li>
+        <li><a href="/blog.html">BLOG</a></li>
+        <li><a href="/contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <section class="videos-hero">
+      <h1>Latest Reels</h1>
+      <p>A cinematic collection of moments, experiments, and creative sparks.</p>
+    </section>
+
+    <section class="videos-main">
+      <div class="videos-grid" id="videosGrid">
+
+        <!-- ⭐ REEL CARD 1 -->
+        <div class="reel-card" data-reel-id="reel-001">
+          <div class="reel-visual">
+            <img class="reel-still" alt="Gel Print Experiment">
+            <video class="reel-motion"></video>
+            <div class="reel-shimmer"></div>
+          </div>
+          <div class="reel-meta">
+            <h3>Gel Print Experiment</h3>
+          </div>
+        </div>
+
+        <!-- ⭐ REEL CARD 2 -->
+        <div class="reel-card" data-reel-id="reel-002">
+          <div class="reel-visual">
+            <img class="reel-still" alt="Drawing a Swan">
+            <video class="reel-motion"></video>
+            <div class="reel-shimmer"></div>
+          </div>
+          <div class="reel-meta">
+            <h3>Drawing a Swan</h3>
+          </div>
+        </div>
+
+        <!-- ⭐ REEL CARD 3 -->
+        <div class="reel-card" data-reel-id="reel-003">
+          <div class="reel-visual">
+            <img class="reel-still" alt="Studio Test Reel">
+            <video class="reel-motion"></video>
+            <div class="reel-shimmer"></div>
+          </div>
+          <div class="reel-meta">
+            <h3>Studio Test Reel</h3>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="cc-footer">
+
+    <div class="footer-icons">
+      <a href="https://www.facebook.com/people/Crown-Creatives/61556386467490/" target="_blank">
+        <img src="/assets/icons/facebook-magic.svg" class="footer-icon">
+      </a>
+
+      <a href="https://www.instagram.com/crown_creatives_uk/" target="_blank">
+        <img src="/assets/icons/instagram-magic.svg" class="footer-icon">
+      </a>
+
+      <a href="mailto:crowncreatives@outlook.com">
+        <img src="/assets/icons/email-magic.svg" class="footer-icon">
+      </a>
+
+      <a href="https://copilot.microsoft.com" target="_blank">
+        <img src="/assets/icons/copilot-magic.svg" class="footer-icon">
+      </a>
+    </div>
+
+    <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+      <img src="/assets/icons/up-arrow-magic.svg" class="footer-icon">
+    </button>
+
+    <div class="footer-text">© Crown Creatives</div>
+
+  </footer>
+
+</body>
+</html>
