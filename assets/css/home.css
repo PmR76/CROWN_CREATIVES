@@ -1,36 +1,34 @@
 /* ============================================================
    CROWN CREATIVES — HOMEPAGE CINEMATIC ENVIRONMENT
-   home.css (Structure + Visual Layers Only)
-   Animations moved to cinematic.css
-============================================================ */
+   Final Production home.css (Gradients + Mist + Nebula)
+   ============================================================ */
 
 
 /* ------------------------------------------------------------
-   1. DAY + NIGHT BACKGROUND GRADIENTS
+   1. DAY + NIGHT BACKGROUND GRADIENTS (NO IMAGES)
 ------------------------------------------------------------ */
 
 .day-background,
 .night-background {
   position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  transform: scale(1.2);
-  transform-origin: center;
+  top: 0;
+  left: 0;
+  width: 140vw;
+  height: 140vh;
+  z-index: -999;
   pointer-events: none;
   opacity: 0;
-  z-index: -999;
-  transition: opacity 6s ease;
+  transition: opacity 8s ease;
 }
 
 .day-background {
   background: linear-gradient(
     180deg,
-    rgba(255,120,40,1),
-    rgba(255,90,30,1) 22%,
-    rgba(255,60,50,1) 45%,
-    rgba(220,40,120,1) 70%,
-    rgba(160,30,180,1) 100%
+    rgba(200,60,40,0.55) 0%,
+    rgba(220,50,100,0.50) 22%,
+    rgba(200,30,140,0.45) 45%,
+    rgba(150,20,170,0.42) 70%,
+    rgba(90,10,150,0.40) 100%
   );
   opacity: 1;
 }
@@ -38,65 +36,114 @@
 .night-background {
   background: radial-gradient(
     circle at 50% 20%,
-    rgba(200,80,255,1),
-    rgba(140,40,220,1) 25%,
-    rgba(80,0,160,1) 50%,
-    rgba(30,0,80,1) 75%,
-    rgba(5,0,25,1) 100%
+    rgba(200,80,255,0.60) 0%,
+    rgba(140,40,220,0.55) 18%,
+    rgba(80,0,160,0.55) 40%,
+    rgba(30,0,80,0.85) 70%,
+    rgba(5,0,25,0.97) 100%
   );
+}
+
+body.dark-mode .day-background { opacity: 0; }
+body.dark-mode .night-background { opacity: 1; }
+
+
+/* ------------------------------------------------------------
+   2. DAY MIST — SOFT FLOATING HAZE
+------------------------------------------------------------ */
+
+.day-clouds {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 160vw;
+  height: 160vh;
+  pointer-events: none;
+  z-index: -998;
+  opacity: 0.35;
+  background:
+    radial-gradient(circle at 20% 40%, rgba(255,255,255,0.25) 0%, transparent 60%),
+    radial-gradient(circle at 60% 30%, rgba(255,255,255,0.20) 0%, transparent 65%),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.15) 0%, transparent 70%);
+  filter: blur(25px);
+  animation: cloudDrift 60s linear infinite;
+}
+
+@keyframes cloudDrift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-40%); }
+}
+
+body.dark-mode .day-clouds {
+  opacity: 0;
+  transition: opacity 4s ease;
 }
 
 
 /* ------------------------------------------------------------
-   2. NIGHT NEBULA
+   3. NIGHT NEBULA — COSMIC PURPLE GLOW
 ------------------------------------------------------------ */
 
 .night-nebula {
   position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  transform: scale(1.6);
-  transform-origin: center;
+  top: 0;
+  left: 0;
+  width: 160vw;
+  height: 160vh;
   pointer-events: none;
-  opacity: 0;
   z-index: -998;
+  opacity: 0;
   background:
-    radial-gradient(circle at 30% 40%, rgba(120,80,255,0.25), transparent 60%),
-    radial-gradient(circle at 70% 60%, rgba(60,120,255,0.20), transparent 65%),
-    radial-gradient(circle at 50% 80%, rgba(180,60,255,0.15), transparent 70%);
+    radial-gradient(circle at 30% 40%, rgba(120,80,255,0.25) 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(60,120,255,0.20) 0%, transparent 65%),
+    radial-gradient(circle at 50% 80%, rgba(180,60,255,0.15) 0%, transparent 70%);
   filter: blur(40px);
+  animation: nebulaShift 80s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaShift {
+  0%   { opacity: 0.15; transform: scale(1); }
+  50%  { opacity: 0.28; transform: scale(1.05); }
+  100% { opacity: 0.18; transform: scale(1.02); }
+}
+
+body.dark-mode .night-nebula {
+  opacity: 1;
+  transition: opacity 4s ease;
 }
 
 
 /* ------------------------------------------------------------
-   3. HERO CROWN SYSTEM (Raised)
+   4. HERO CROWN — 420PX DESKTOP, LOCKED CENTRE
 ------------------------------------------------------------ */
 
 .hero-section {
   position: relative;
-  padding-top: 40px;
+  padding: 80px 0 40px;
   text-align: center;
-  overflow-x: hidden;
   z-index: 3;
 }
 
-.hero-crown-wrapper,
-.hero-crown {
-  width: 504px;
-  height: 504px;
+.hero-crown-wrapper {
+  position: relative;
+  width: 420px;
+  height: 420px;
   margin: 0 auto;
+  z-index: 5;
 }
 
 .hero-crown {
   position: absolute;
+  top: 0;
   left: 50%;
-  top: -40px; /* raised */
   transform: translateX(-50%);
+  width: 420px;
+  height: 420px;
   object-fit: contain;
   opacity: 0;
-  filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
   transition: opacity 8s ease, filter 8s ease;
+  filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
+  animation: crownShimmer 6s ease-in-out infinite;
 }
 
 .crown-day { opacity: 1; }
@@ -105,61 +152,41 @@
 body.dark-mode .crown-day { opacity: 0; }
 body.dark-mode .crown-night { opacity: 1; }
 
+@keyframes crownShimmer {
+  0%   { filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)); }
+  50%  { filter: drop-shadow(0 0 35px rgba(255,255,255,1)); }
+  100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)); }
+}
+
+
+/* Responsive crown scaling */
 @media (max-width: 900px) {
   .hero-crown-wrapper,
-  .hero-crown { width: 320px; height: 320px; top: -20px; }
+  .hero-crown {
+    width: 320px;
+    height: 320px;
+  }
 }
 
 @media (max-width: 600px) {
   .hero-crown-wrapper,
-  .hero-crown { width: 260px; height: 260px; top: -10px; }
+  .hero-crown {
+    width: 260px;
+    height: 260px;
+  }
 }
 
 @media (max-width: 400px) {
   .hero-crown-wrapper,
-  .hero-crown { width: 200px; height: 200px; top: 0; }
+  .hero-crown {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 
 /* ------------------------------------------------------------
-   4. EVOLVED LAYOUT CONTAINER SYSTEM
------------------------------------------------------------- */
-
-.hero-section,
-.hero,
-.hero-wrapper,
-.hero-flex,
-.gallery,
-.gallery-wrapper,
-.gallery-lane,
-.gallery-lane-inner {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  overflow-x: hidden;
-  position: relative;
-}
-
-.hero-section,
-.hero,
-.hero-wrapper {
-  height: auto !important;
-  min-height: auto !important;
-  overflow: hidden;
-}
-
-.gallery,
-.gallery-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-
-/* ------------------------------------------------------------
-   5. HERO GALLERY LANES (Raised + Overflow‑Safe)
+   5. HERO GALLERY — NARROW ELEGANT LANES (25%)
 ------------------------------------------------------------ */
 
 .hero-flex {
@@ -167,22 +194,18 @@ body.dark-mode .crown-night { opacity: 1; }
   justify-content: center;
   align-items: center;
   gap: 40px;
-  margin-top: -40px; /* raised */
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
+  margin-top: 40px;
   z-index: 4;
 }
 
 .gallery-lane {
-  width: 21%;       /* overflow-safe */
-  max-width: 21%;
-  height: 240px;
+  position: relative;
+  width: 25%;
+  height: 260px;
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.3);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  position: relative;
 }
 
 .gallery-lane-inner {
@@ -195,6 +218,7 @@ body.dark-mode .crown-night { opacity: 1; }
   inset: 0;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 2s ease;
 }
@@ -204,109 +228,371 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 @media (max-width: 900px) {
-  .hero-flex { flex-direction: column; gap: 20px; margin-top: 0; }
-  .gallery-lane { width: 80%; max-width: 80%; }
+  .hero-flex {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .gallery-lane {
+    width: 80%;
+  }
 }
 
 
 /* ------------------------------------------------------------
-   6. TAGLINE CARDS (Restored — No Duplicates)
+   6. TAGLINE CARDS — FROSTED GLASS
 ------------------------------------------------------------ */
 
 .tagline-cards {
+  margin: 60px auto 40px;
+  max-width: 1100px;
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin: 40px auto 20px;
-  max-width: 1000px;
-  padding: 0 20px;
+  gap: 30px;
+  flex-wrap: wrap;
+  z-index: 3;
+  position: relative;
 }
 
-.tagline-card {
-  flex: 1;
-  padding: 24px;
+.tag-card {
+  width: 260px;
+  padding: 20px;
   border-radius: 16px;
   backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.tag-card h3 {
+  margin-bottom: 8px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 24px;
+}
+
+.tag-card p {
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+
+/* ------------------------------------------------------------
+   7. FOOTER — TRANSPARENT + MAGICAL GLOW ICONS
+------------------------------------------------------------ */
+
+.cc-footer {
+  background: transparent !important;
+  border-top: none !important;
+  padding: 20px 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 3;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+.footer-icon {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
+}
+
+.footer-text {
+  color: #ffffff;
+  font-size: 14.3px;
+  text-shadow: 0 0 6px rgba(0,0,0,0.7);
+}
+
+
+/* ------------------------------------------------------------
+   8. BACK TO TOP BUTTON
+------------------------------------------------------------ */
+
+.back-to-top {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.back-to-top img {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
+}
+
+
+/* ------------------------------------------------------------
+   9. HEADER CROWN SHIMMER
+------------------------------------------------------------ */
+
+.shimmer-crown {
+  filter: drop-shadow(0 0 18px rgba(255,255,255,0.9));
+  animation: headerCrownShimmer 6s ease-in-out infinite;
+}
+
+@keyframes headerCrownShimmer {
+  0%   { filter: drop-shadow(0 0 12px rgba(255,255,255,0.7)); }
+  50%  { filter: drop-shadow(0 0 26px rgba(255,255,255,1)); }
+  100% { filter: drop-shadow(0 0 12px rgba(255,255,255,0.7)); }
+}
+
+
+/* ------------------------------------------------------------
+   10. CONTACT CROWN
+------------------------------------------------------------ */
+
+.contact-crown-wrapper {
+  text-align: center;
+  margin: 40px auto 20px;
+}
+
+.contact-crown {
+  width: 500px;
+  max-width: 80%;
+  height: auto;
+  filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
+}
+
+
+/* ------------------------------------------------------------
+   11. VIDEO EMBED (YOUTUBE / VIMEO)
+------------------------------------------------------------ */
+
+.video-embed {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 18px;
+  border-radius: 18px;
   background: rgba(255,255,255,0.12);
   border: 1px solid rgba(255,255,255,0.25);
-  color: white;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 30px rgba(255,255,255,0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.video-embed:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 40px rgba(255,255,255,0.45);
+}
+
+.video-embed iframe {
+  width: 100%;
+  height: 420px;
+  border-radius: 12px;
+  border: none;
 }
 
 
 /* ------------------------------------------------------------
-   7. PAGE TRANSITIONS + CRT OVERLAY
+   12. INSPIRATIONAL TICKER
 ------------------------------------------------------------ */
 
-.page-fade {
-  opacity: 0;
-  transform: scale(1.02);
-  filter: blur(6px);
-  transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
+.ticker-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 40px 0;
+  padding: 12px 0;
 }
 
-.page-fade.loaded {
-  opacity: 1;
-  transform: scale(1);
-  filter: blur(0);
-}
-
-.page-sweep {
-  position: fixed;
-  inset: 0;
+.ticker-fade-left,
+.ticker-fade-right {
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 3;
   pointer-events: none;
+}
+
+.ticker-fade-left {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
+}
+
+.ticker-fade-right {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,0.8), transparent);
+}
+
+.ticker {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 4rem;
+  animation: tickerScroll 40s linear infinite;
+  padding-left: 100%;
+}
+
+.ticker-track span {
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255,255,255,0.6);
+  opacity: 0.95;
+}
+
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+
+/* ------------------------------------------------------------
+   13. MAGICAL REELS STRIP (FINAL VERSION)
+------------------------------------------------------------ */
+
+.reels-magic-wrapper {
+  position: relative;
+  margin: 60px auto;
+  padding: 20px 0 40px;
+  overflow: hidden;
+}
+
+/* Floating crown */
+.reels-crown {
+  text-align: center;
+  margin-bottom: -20px;
+  position: relative;
+  z-index: 5;
+}
+
+.reels-crown-img {
+  width: 120px;
+  animation: floatCrown 6s ease-in-out infinite;
+}
+
+@keyframes floatCrown {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+/* Horizontal strip */
+.reels-strip {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  padding: 20px 10px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.reels-strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* Magical reel card */
+.reel-card {
+  min-width: 320px;
+  max-width: 320px;
+  height: 560px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 35px rgba(255,255,255,0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.reel-card:hover {
+  transform: scale(1.05) translateY(-6px);
+  box-shadow: 0 0 50px rgba(255,255,255,0.55);
+}
+
+/* Animated border */
+.reel-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
   background: linear-gradient(
     120deg,
-    transparent 0%,
-    rgba(255,255,255,0.10) 50%,
-    transparent 100%
+    rgba(255,200,0,0.9),
+    rgba(255,100,200,0.9),
+    rgba(120,80,255,0.9),
+    rgba(255,200,0,0.9)
   );
-  transform: translateX(-200%);
-  z-index: 20;
-}
-
-.crt-overlay {
+  background-size: 300% 300%;
+  animation: magicBorder 8s ease infinite;
+  z-index: 1;
   pointer-events: none;
-  position: fixed;
+}
+
+@keyframes magicBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Reel iframe */
+.reel-card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Floating sparkles */
+.reels-sparkles {
+  pointer-events: none;
+  position: absolute;
   inset: 0;
-  z-index: 5;
-  opacity: 0.06;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(255,255,255,0.03) 0px,
-      rgba(255,255,255,0.03) 1px,
-      transparent 2px,
-      transparent 4px
-    );
-  mix-blend-mode: overlay;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+  background-size: 6px 6px;
+  opacity: 0.25;
+  animation: sparkleDrift 12s linear infinite;
+}
+
+@keyframes sparkleDrift {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-40px) translateY(-20px); }
+  100% { transform: translateX(0) translateY(0); }
 }
 
 
 /* ------------------------------------------------------------
-   8. DEBUG MODE
+   14. MAGICAL VIDEO CAROUSEL
 ------------------------------------------------------------ */
 
-body.debug .day-background,
-body.debug .night-background,
-body.debug .day-clouds,
-body.debug .night-nebula,
-body.debug .magic-particles,
-body.debug .crt-overlay,
-body.debug .page-sweep {
-  display: none !important;
+.video-carousel {
+  overflow-x: auto;
+  padding: 20px 0;
+  margin: 40px 0;
+  scrollbar-width: none;
 }
 
-
-/* ------------------------------------------------------------
-   9. SECTION HEIGHT FIX (Footer White Block Fix)
------------------------------------------------------------- */
-
-section,
-.section,
-.content-section {
-  min-height: auto !important;
-  height: auto !important;
+.video-carousel::-webkit-scrollbar {
+  display: none;
 }
+
+.carousel-track {
+  display: flex;
+  gap: 28px;
+  padding: 10px;
+}
+
+.carousel-card {
+  min-width: 480px;
+  height: 300px;
+  border-radius: 18px;
