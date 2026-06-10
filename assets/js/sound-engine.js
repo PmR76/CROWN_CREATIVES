@@ -51,9 +51,11 @@ const SoundEngine = {
 fadeIn() {
     this.audio.volume = 0;
     this.audio.muted = true;
+
     this.audio.play().then(() => {
         this.audio.muted = false;
         let vol = 0;
+
         const fade = setInterval(() => {
             if (vol < 0.5) {
                 vol += 0.02;
@@ -62,6 +64,8 @@ fadeIn() {
                 clearInterval(fade);
             }
         }, 120);
+    }).catch(err => {
+        console.warn("Autoplay blocked until user interacts.");
     });
 },
 
