@@ -1,71 +1,47 @@
 /* ============================================================
-   CROWN CREATIVES — HOMEPAGE CINEMATIC ENVIRONMENT
-   Final Production home.css (Structure Only)
-   ============================================================ */
-
+   HOME PAGE — CROWN CREATIVES
+   Corrected + Stabilised + Cinematic
+============================================================ */
 
 /* ------------------------------------------------------------
-   1. DAY + NIGHT BACKGROUND GRADIENT CONTAINERS
+   1. GLOBAL HERO BACKGROUND LAYERS
 ------------------------------------------------------------ */
 
 .day-background,
 .night-background {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 140vw;
-  height: 140vh;
-  z-index: -999;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 8s ease;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+  transition: opacity 1.5s ease;
 }
 
-.day-background {
-  background: linear-gradient(
-    180deg,
-    rgba(200,60,40,0.55) 0%,
-    rgba(220,50,100,0.50) 22%,
-    rgba(200,30,140,0.45) 45%,
-    rgba(150,20,170,0.42) 70%,
-    rgba(90,10,150,0.40) 100%
-  );
-  opacity: 1;
-}
-
-.night-background {
-  background: radial-gradient(
-    circle at 50% 20%,
-    rgba(200,80,255,0.60) 0%,
-    rgba(140,40,220,0.55) 18%,
-    rgba(80,0,160,0.55) 40%,
-    rgba(30,0,80,0.85) 70%,
-    rgba(5,0,25,0.97) 100%
-  );
-}
+.day-background { opacity: 1; }
+.night-background { opacity: 0; }
 
 body.dark-mode .day-background { opacity: 0; }
 body.dark-mode .night-background { opacity: 1; }
 
-
-/* ------------------------------------------------------------
-   2. DAY CLOUDS + NIGHT NEBULA CONTAINERS
------------------------------------------------------------- */
-
+/* Clouds / Nebula */
 .day-clouds,
 .night-nebula {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 160vw;
-  height: 160vh;
-  pointer-events: none;
-  z-index: -998;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.6;
+  z-index: 2;
+  transition: opacity 1.5s ease;
 }
 
+body.dark-mode .day-clouds { opacity: 0; }
+body.dark-mode .night-nebula { opacity: 0.6; }
 
 /* ------------------------------------------------------------
-   3. HERO CROWN — 20% LARGER + MOVED DOWN 10MM
+   2. HERO SECTION WRAPPER
 ------------------------------------------------------------ */
 
 .hero-section {
@@ -76,20 +52,24 @@ body.dark-mode .night-background { opacity: 1; }
   z-index: 3;
 }
 
+/* ------------------------------------------------------------
+   3. HERO CROWN — 20% LARGER + MOVED DOWN 10MM
+------------------------------------------------------------ */
+
 .hero-crown-wrapper {
   position: absolute;
-  top: calc(50% + 38px); /* moved DOWN by 10mm */
+  top: calc(50% + 38px);
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 504px;   /* 20% larger */
-  height: 504px;  /* 20% larger */
+  width: 504px;
+  height: 504px;
   margin: 0;
   z-index: 5;
 }
 
 .hero-crown {
   position: absolute;
-  top: calc(50% + 38px); /* moved DOWN by 10mm */
+  top: calc(50% + 38px);
   left: 50%;
   width: 504px;
   height: 504px;
@@ -105,7 +85,6 @@ body.dark-mode .night-background { opacity: 1; }
 
 body.dark-mode .crown-day { opacity: 0; }
 body.dark-mode .crown-night { opacity: 1; }
-
 
 /* Responsive crown scaling */
 @media (max-width: 900px) {
@@ -132,36 +111,43 @@ body.dark-mode .crown-night { opacity: 1; }
   }
 }
 
-
 /* ------------------------------------------------------------
-   4. HERO GALLERY — UNCHANGED
+   4. HERO GALLERY — STABLE, RESPONSIVE, CINEMATIC
 ------------------------------------------------------------ */
 
 .hero-flex {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
-  margin-top: -57px; /* unchanged */
+  gap: clamp(40px, 6vw, 120px); /* crown buffer */
+  margin-top: -57px; /* your original offset */
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
   z-index: 4;
 }
 
+/* Left + Right Lanes */
 .gallery-lane {
-  position: relative;
-  width: 21%;
-  max-width: 21%;
+  flex: 0 1 clamp(180px, 22vw, 320px);
   height: 260px;
   border-radius: 16px;
   overflow: hidden;
   background-color: rgba(0,0,0,0.3);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  position: relative;
 }
 
+/* Inner container for crossfade layers */
 .gallery-lane-inner {
-  position: absolute;
-  inset: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
+/* Cinematic fade engine (unchanged) */
 .gallery-image {
   position: absolute;
   inset: 0;
@@ -176,7 +162,8 @@ body.dark-mode .crown-night { opacity: 1; }
   opacity: 1;
 }
 
-@media (max-width: 900px) {
+/* Mobile layout */
+@media (max-width: 768px) {
   .hero-flex {
     flex-direction: column;
     gap: 20px;
@@ -184,205 +171,16 @@ body.dark-mode .crown-night { opacity: 1; }
   }
 
   .gallery-lane {
-    width: 80%;
-    max-width: 80%;
+    width: 90vw;
+    height: 200px;
   }
 }
 
-
 /* ------------------------------------------------------------
-   5. TAGLINE CARDS — MOVED UP BY 10MM (38px)
------------------------------------------------------------- */
-
-.tagline-cards {
-  margin: calc(60px - 38px) auto 40px; /* moved UP by 10mm */
-  max-width: 1100px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  z-index: 3;
-  position: relative;
-}
-
-.tagline-card {
-  width: 260px;
-  padding: 20px;
-  border-radius: 16px;
-  backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
-  color: white;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(255,255,255,0.2);
-}
-
-.tagline-card h3 {
-  margin-bottom: 8px;
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 24px;
-}
-
-.tagline-card p {
-  font-size: 17px;
-  line-height: 1.5;
-}
-
-
-/* ------------------------------------------------------------
-   6. FOOTER — TRANSPARENT + MAGICAL GLOW ICONS
+   5. FOOTER SPACING (HOME PAGE ONLY)
 ------------------------------------------------------------ */
 
 .cc-footer {
-  background: transparent !important;
-  border-top: none !important;
-  padding: 20px 0 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  position: relative;
-  z-index: 3;
-}
-
-.footer-icons {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-}
-
-.footer-icon {
-  width: 48px;
-  height: 48px;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
-}
-
-.footer-text {
-  color: #ffffff;
-  font-size: 14.3px;
-  text-shadow: 0 0 6px rgba(0,0,0,0.7);
-}
-
-
-/* ------------------------------------------------------------
-   7. BACK TO TOP BUTTON
------------------------------------------------------------- */
-
-.back-to-top {
-  position: absolute;
-  right: 40px;
-  bottom: 40px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.back-to-top img {
-  width: 48px;
-  height: 48px;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
-}
-
-
-/* ------------------------------------------------------------
-   8. CONTACT CROWN
------------------------------------------------------------- */
-
-.contact-crown-wrapper {
-  text-align: center;
-  margin: 40px auto 20px;
-}
-
-.contact-crown {
-  width: 500px;
-  max-width: 80%;
-  height: auto;
-  filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
-}
-
-
-/* ------------------------------------------------------------
-   9. VIDEO EMBED
------------------------------------------------------------- */
-
-.video-embed {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 18px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 0 30px rgba(255,255,255,0.25);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.video-embed:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 40px rgba(255,255,255,0.45);
-}
-
-.video-embed iframe {
-  width: 100%;
-  height: 420px;
-  border-radius: 12px;
-  border: none;
-}
-
-
-/* ------------------------------------------------------------
-   10. INSPIRATIONAL TICKER
------------------------------------------------------------- */
-
-.ticker-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  margin: 40px 0;
-  padding: 12px 0;
-}
-
-.ticker-fade-left,
-.ticker-fade-right {
-  position: absolute;
-  top: 0;
-  width: 120px;
-  height: 100%;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.ticker-fade-left {
-  left: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
-}
-
-.ticker-fade-right {
-  right: 0;
-  background: linear-gradient(to left, rgba(0,0,0,0.8), transparent);
-}
-
-.ticker {
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.ticker-track {
-  display: inline-flex;
-  gap: 4rem;
-  animation: tickerScroll 40s linear infinite;
-  padding-left: 100%;
-}
-
-.ticker-track span {
-  font-size: 1.3rem;
-  color: #fff;
-  letter-spacing: 1px;
-  text-shadow: 0 0 8px rgba(255,255,255,0.6);
-  opacity: 0.95;
-}
-
-@keyframes tickerScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  margin-top: 80px;
+  z-index: 10;
 }
