@@ -1,9 +1,20 @@
 {
-  "timestamp": "2026-06-10T00:16:48.723Z",
-  "filesScanned": 8,
-  "htmlFilesScanned": 1,
-  "jsFilesScanned": 3,
+  "timestamp": "2026-06-10T19:25:33.502Z",
+  "filesScanned": 9,
+  "htmlFilesScanned": 8,
+  "jsFilesScanned": 5,
   "duplicates": [
+    {
+      "selector": ".videos-hero",
+      "defs": [
+        {
+          "file": "assets\\css\\videos.css"
+        },
+        {
+          "file": "assets\\css\\global.css"
+        }
+      ]
+    },
     {
       "selector": "0%",
       "defs": [
@@ -12,6 +23,9 @@
         },
         {
           "file": "assets\\css\\ticker.css"
+        },
+        {
+          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\global.css"
@@ -61,6 +75,9 @@
           "file": "assets\\css\\ticker.css"
         },
         {
+          "file": "assets\\css\\home.css"
+        },
+        {
           "file": "assets\\css\\global.css"
         },
         {
@@ -108,6 +125,9 @@
           "file": "assets\\css\\ticker.css"
         },
         {
+          "file": "assets\\css\\home.css"
+        },
+        {
           "file": "assets\\css\\footer.css"
         }
       ]
@@ -117,6 +137,9 @@
       "defs": [
         {
           "file": "assets\\css\\ticker.css"
+        },
+        {
+          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -130,6 +153,9 @@
           "file": "assets\\css\\ticker.css"
         },
         {
+          "file": "assets\\css\\home.css"
+        },
+        {
           "file": "assets\\css\\footer.css"
         }
       ]
@@ -139,6 +165,9 @@
       "defs": [
         {
           "file": "assets\\css\\ticker.css"
+        },
+        {
+          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -152,6 +181,9 @@
           "file": "assets\\css\\ticker.css"
         },
         {
+          "file": "assets\\css\\home.css"
+        },
+        {
           "file": "assets\\css\\footer.css"
         }
       ]
@@ -161,6 +193,9 @@
       "defs": [
         {
           "file": "assets\\css\\ticker.css"
+        },
+        {
+          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -175,6 +210,9 @@
         },
         {
           "file": "assets\\css\\ticker.css"
+        },
+        {
+          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -196,6 +234,79 @@
       ]
     },
     {
+      "selector": ".sound-toggle",
+      "defs": [
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        }
+      ]
+    },
+    {
+      "selector": ".sound-toggle img",
+      "defs": [
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        }
+      ]
+    },
+    {
+      "selector": ".sound-toggle:hover img",
+      "defs": [
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        }
+      ]
+    },
+    {
+      "selector": ".sound-on img",
+      "defs": [
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        }
+      ]
+    },
+    {
+      "selector": ".sound-off img",
+      "defs": [
+        {
+          "file": "assets\\css\\sound-engine.css"
+        },
+        {
+          "file": "assets\\css\\sound-engine.css"
+        }
+      ]
+    },
+    {
       "selector": ".hero-crown-wrapper,\r\n  .hero-crown",
       "defs": [
         {
@@ -210,24 +321,18 @@
       ]
     },
     {
-      "selector": ".gallery-lane",
+      "selector": ".hero-flex",
       "defs": [
         {
           "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
         }
       ]
     },
     {
-      "selector": ".hero-flex",
+      "selector": ".gallery-lane",
       "defs": [
         {
           "file": "assets\\css\\home.css"
@@ -260,13 +365,69 @@
       ]
     },
     {
-      "selector": ".theme-toggle",
+      "selector": ".cc-footer",
       "defs": [
         {
           "file": "assets\\css\\home.css"
         },
         {
-          "file": "assets\\css\\header.css"
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
+    },
+    {
+      "selector": ".footer-icons",
+      "defs": [
+        {
+          "file": "assets\\css\\home.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
+    },
+    {
+      "selector": ".footer-icon",
+      "defs": [
+        {
+          "file": "assets\\css\\home.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
+    },
+    {
+      "selector": ".footer-text",
+      "defs": [
+        {
+          "file": "assets\\css\\home.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
+    },
+    {
+      "selector": ".back-to-top",
+      "defs": [
+        {
+          "file": "assets\\css\\home.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
         }
       ]
     },
@@ -314,6 +475,28 @@
       ]
     },
     {
+      "selector": "#evolve-panel,\r\n#evolve-orb",
+      "defs": [
+        {
+          "file": "assets\\css\\global.css"
+        },
+        {
+          "file": "assets\\css\\global.css"
+        }
+      ]
+    },
+    {
+      "selector": ".videos-hero,\r\n.videos-hero *",
+      "defs": [
+        {
+          "file": "assets\\css\\global.css"
+        },
+        {
+          "file": "assets\\css\\global.css"
+        }
+      ]
+    },
+    {
       "selector": "to",
       "defs": [
         {
@@ -323,75 +506,52 @@
           "file": "assets\\css\\cinematic.css"
         }
       ]
-    },
-    {
-      "selector": ".cc-footer",
-      "defs": [
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".footer-icons",
-      "defs": [
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".back-to-top",
-      "defs": [
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".footer-text",
-      "defs": [
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
     }
   ],
   "issues": [
     {
-      "type": "overflow-risk",
-      "selector": ".day-background,\r\n.night-background",
-      "file": "assets\\css\\home.css",
-      "widthVW": "100vw",
-      "heightVH": "100vh",
-      "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
-    },
-    {
-      "type": "overflow-risk",
-      "selector": ".night-nebula",
-      "file": "assets\\css\\home.css",
-      "widthVW": "100vw",
-      "heightVH": "100vh",
-      "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
+      "type": "z-index-high",
+      "selector": ".sound-toggle",
+      "file": "assets\\css\\sound-engine.css",
+      "zIndex": 9999,
+      "message": "High z-index may cause layering conflicts with hero/footer."
     },
     {
       "type": "z-index-high",
-      "selector": ".theme-toggle",
-      "file": "assets\\css\\home.css",
-      "zIndex": 999,
+      "selector": ".sound-toggle",
+      "file": "assets\\css\\sound-engine.css",
+      "zIndex": 9999,
       "message": "High z-index may cause layering conflicts with hero/footer."
+    },
+    {
+      "type": "z-index-high",
+      "selector": ".sound-toggle",
+      "file": "assets\\css\\sound-engine.css",
+      "zIndex": 9999,
+      "message": "High z-index may cause layering conflicts with hero/footer."
+    },
+    {
+      "type": "z-index-high",
+      "selector": ".sound-toggle",
+      "file": "assets\\css\\sound-engine.css",
+      "zIndex": 9999,
+      "message": "High z-index may cause layering conflicts with hero/footer."
+    },
+    {
+      "type": "overflow-risk",
+      "selector": ".day-background,\r\n.night-background",
+      "file": "assets\\css\\home.css",
+      "widthVW": "140vw",
+      "heightVH": "140vh",
+      "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
+    },
+    {
+      "type": "overflow-risk",
+      "selector": ".day-clouds,\r\n.night-nebula",
+      "file": "assets\\css\\home.css",
+      "widthVW": "160vw",
+      "heightVH": "160vh",
+      "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
     },
     {
       "type": "z-index-high",
@@ -416,10 +576,215 @@
     },
     {
       "type": "z-index-high",
+      "selector": "#evolve-panel,\r\n#evolve-orb",
+      "file": "assets\\css\\global.css",
+      "zIndex": 999999,
+      "message": "High z-index may cause layering conflicts with hero/footer."
+    },
+    {
+      "type": "z-index-high",
       "selector": ".lightbox",
       "file": "assets\\css\\gallery.css",
       "zIndex": 9999,
       "message": "High z-index may cause layering conflicts with hero/footer."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "snippet": "<img src=\"/assets/icons/head-crown.svg\" class=\"cc-logo shimmer-crown\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "snippet": "<img src=\"/assets/icons/sun-moon-magic.svg\" class=\"cc-theme-icon shimmer-crown\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "snippet": "<img src=\"/assets/icons/facebook-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "snippet": "<img src=\"/assets/icons/instagram-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "snippet": "<img src=\"/assets/icons/email-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "snippet": "<img src=\"/assets/icons/copilot-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "snippet": "<img src=\"/assets/icons/up-arrow-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "snippet": "<img src=\"/assets/icons/head-crown.svg\" class=\"cc-logo shimmer-crown\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "snippet": "<img src=\"/assets/icons/sun-moon-magic.svg\" class=\"cc-theme-icon shimmer-crown\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "snippet": "<img src=\"/assets/icons/facebook-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "snippet": "<img src=\"/assets/icons/instagram-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "snippet": "<img src=\"/assets/icons/email-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "snippet": "<img src=\"/assets/icons/copilot-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "snippet": "<img src=\"/assets/icons/head-crown.svg\" class=\"cc-logo shimmer-crown\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "snippet": "<img src=\"/assets/icons/sun-moon-magic.svg\" class=\"cc-theme-icon shimmer-crown\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "snippet": "<img src=\"/assets/icons/facebook-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "snippet": "<img src=\"/assets/icons/instagram-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "snippet": "<img src=\"/assets/icons/email-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "snippet": "<img src=\"/assets/icons/copilot-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "gallery.html",
+      "snippet": "<img id=\"lightbox-img\" class=\"lightbox-img\" src=\"\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "snippet": "<img src=\"/assets/icons/head-crown.svg\" class=\"cc-logo shimmer-crown\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "snippet": "<img src=\"/assets/icons/sun-moon-magic.svg\" class=\"cc-theme-icon shimmer-crown\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "snippet": "<img src=\"/assets/icons/facebook-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "snippet": "<img src=\"/assets/icons/instagram-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "snippet": "<img src=\"/assets/icons/email-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "snippet": "<img src=\"/assets/icons/copilot-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "snippet": "<img src=\"/assets/icons/up-arrow-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "snippet": "<img src=\"/assets/icons/head-crown.svg\" class=\"cc-logo shimmer-crown\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "snippet": "<img src=\"/assets/icons/sun-moon-magic.svg\" class=\"cc-theme-icon shimmer-crown\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "snippet": "<img src=\"/assets/icons/facebook-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "snippet": "<img src=\"/assets/icons/instagram-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "snippet": "<img src=\"/assets/icons/email-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "snippet": "<img src=\"/assets/icons/copilot-magic.svg\" class=\"footer-icon\">",
+      "message": "Image tag missing alt attribute."
     },
     {
       "type": "js-selector-usage",
@@ -484,19 +849,34 @@
   },
   "fixSuggestions": [
     {
+      "selector": ".sound-toggle",
+      "file": "assets\\css\\sound-engine.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
+      "selector": ".sound-toggle",
+      "file": "assets\\css\\sound-engine.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
+      "selector": ".sound-toggle",
+      "file": "assets\\css\\sound-engine.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
+      "selector": ".sound-toggle",
+      "file": "assets\\css\\sound-engine.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
       "selector": ".day-background,\r\n.night-background",
       "file": "assets\\css\\home.css",
       "suggestion": "Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize."
     },
     {
-      "selector": ".night-nebula",
+      "selector": ".day-clouds,\r\n.night-nebula",
       "file": "assets\\css\\home.css",
       "suggestion": "Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize."
-    },
-    {
-      "selector": ".theme-toggle",
-      "file": "assets\\css\\home.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
     },
     {
       "selector": ".cc-header",
@@ -506,6 +886,11 @@
     {
       "selector": ".theme-toggle",
       "file": "assets\\css\\header.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
+      "selector": "#evolve-panel,\r\n#evolve-orb",
+      "file": "assets\\css\\global.css",
       "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
     },
     {
