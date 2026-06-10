@@ -1,17 +1,25 @@
+/* ============================================================
+   FULL GALLERY — MANIFEST-DRIVEN
+   Path: /assets/images/gallery/gallery-manifest.json
+============================================================ */
+
 const galleryPath = "/assets/images/gallery/";
-const manifestURL = galleryPath + "manifest.json";
+const manifestURL = galleryPath + "gallery-manifest.json";
 
 let galleryImages = [];
 let currentIndex = 0;
 
-/* --- LOAD MANIFEST --- */
+/* --- LOAD MANIFEST (correct format) --- */
 async function loadManifest() {
   try {
-    const res = await fetch(manifestURL + "?v=" + Date.now());
+    const res = await fetch(manifestURL + "?v=" + Date.now(), { cache: "no-store" });
     if (!res.ok) throw new Error("Manifest not found");
 
-    const list = await res.json();
-    return list.filter(name => name.match(/\.(jpg|jpeg|png|webp)$/i));
+    const data = await res.json();
+
+    // Manifest format:
+    // { "images": ["file1.jpg", "file2.webp", ...] }
+    return data.images || [];
   } catch (err) {
     console.error("Error loading manifest:", err);
     return [];
@@ -80,8 +88,8 @@ document.getElementById("lightbox").addEventListener("touchend", (e) => {
   const diff = endX - startX;
 
   if (Math.abs(diff) > 50) {
-    if (diff < 0) showNextImage();   // swipe left → next
-    if (diff > 0) showPrevImage();   // swipe right → previous
+    if (diff < 0) showNextImage();
+    if (diff > 0) showPrevImage();
   }
 });
 
