@@ -23,7 +23,6 @@
   transition: opacity 6s ease;
 }
 
-/* DAY MODE — BURNT SUNRISE */
 .day-background {
   background: linear-gradient(
     180deg,
@@ -36,7 +35,6 @@
   opacity: 1;
 }
 
-/* NIGHT MODE — COSMIC PURPLE */
 .night-background {
   background: radial-gradient(
     circle at 50% 20%,
@@ -107,7 +105,6 @@
 body.dark-mode .crown-day { opacity: 0; }
 body.dark-mode .crown-night { opacity: 1; }
 
-/* Responsive scaling */
 @media (max-width: 900px) {
   .hero-crown-wrapper,
   .hero-crown { width: 320px; height: 320px; }
@@ -125,8 +122,7 @@ body.dark-mode .crown-night { opacity: 1; }
 
 
 /* ------------------------------------------------------------
-   4. EVOLVED LAYOUT CONTAINER SYSTEM (v5‑Optimised)
-   Homepage‑specific containers only
+   4. EVOLVED LAYOUT CONTAINER SYSTEM (Homepage only)
 ------------------------------------------------------------ */
 
 .hero-section,
@@ -137,39 +133,37 @@ body.dark-mode .crown-night { opacity: 1; }
 .gallery-wrapper,
 .gallery-lane,
 .gallery-lane-inner {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    overflow-x: hidden;
-    position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* Remove forced heights */
 .hero-section,
 .hero,
 .hero-wrapper {
-    height: auto !important;
-    min-height: auto !important;
-    overflow: hidden;
+  height: auto !important;
+  min-height: auto !important;
+  overflow: hidden;
 }
 
-/* Gallery structure */
 .gallery,
 .gallery-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .gallery-lane {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 
 /* ------------------------------------------------------------
-   5. HERO GALLERY LANES
+   5. HERO GALLERY LANES (Raised + Width‑Safe)
 ------------------------------------------------------------ */
 
 .hero-flex {
@@ -177,22 +171,23 @@ body.dark-mode .crown-night { opacity: 1; }
   justify-content: center;
   align-items: center;
   gap: 40px;
-  margin-top: 10px; /* raised by 30mm */
+  margin-top: 10px; /* raised ~30mm */
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  z-index: 4;
 }
 
 .gallery-lane {
-  width: 22%; /* reduced from 25% */
+  width: 22%;
   max-width: 22%;
   height: 240px;
-  overflow: hidden;
   border-radius: 16px;
+  overflow: hidden;
   background: rgba(0,0,0,0.3);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  position: relative;
 }
-
 
 .gallery-lane-inner {
   position: absolute;
@@ -214,12 +209,39 @@ body.dark-mode .crown-night { opacity: 1; }
 
 @media (max-width: 900px) {
   .hero-flex { flex-direction: column; gap: 20px; }
-  .gallery-lane { width: 80%; }
+  .gallery-lane { width: 80%; max-width: 80%; }
 }
 
 
 /* ------------------------------------------------------------
-   6. PAGE TRANSITIONS + CRT OVERLAY + THEME TOGGLE
+   6. TAGLINE CARDS (Transparent three cards — restored)
+------------------------------------------------------------ */
+
+.tagline-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 60px auto 40px;
+  max-width: 1000px;
+  padding: 0 20px;
+}
+
+.tagline-card {
+  flex: 1;
+  padding: 24px;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+
+/* ------------------------------------------------------------
+   7. PAGE TRANSITIONS + CRT OVERLAY + THEME TOGGLE
 ------------------------------------------------------------ */
 
 .page-fade {
@@ -266,34 +288,9 @@ body.dark-mode .crown-night { opacity: 1; }
   mix-blend-mode: overlay;
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 18px;
-  right: 24px;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff 0%, #ccc 40%, #888 100%);
-  box-shadow:
-    0 0 12px rgba(255,255,255,0.9),
-    0 0 22px rgba(255,255,255,0.6),
-    inset 0 0 12px rgba(255,255,255,0.8);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.4s ease;
-  z-index: 999;
-}
-
-body.dark-mode .theme-toggle {
-  background: radial-gradient(circle, #6a00ff 0%, #3a0099 60%, #120033 100%);
-  box-shadow:
-    0 0 18px rgba(150,80,255,1),
-    0 0 30px rgba(120,40,255,0.9),
-    inset 0 0 18px rgba(180,120,255,1);
-}
-
 
 /* ------------------------------------------------------------
-   7. DEBUG MODE — Toggle cinematic layers on/off
+   8. DEBUG MODE — Toggle cinematic layers on/off
 ------------------------------------------------------------ */
 
 body.debug .day-background,
@@ -304,29 +301,4 @@ body.debug .magic-particles,
 body.debug .crt-overlay,
 body.debug .page-sweep {
   display: none !important;
-}
-/* ============================================================
-   TAGLINE CARDS (Restored)
-============================================================ */
-
-.tagline-cards {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 60px auto 40px;
-  max-width: 1000px;
-  padding: 0 20px;
-}
-
-.tagline-card {
-  flex: 1;
-  padding: 24px;
-  border-radius: 16px;
-  backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  color: white;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }

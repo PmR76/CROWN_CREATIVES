@@ -183,3 +183,11 @@ body {
   height: 100vh;
   overflow-y: hidden;
 }
+/* Exempt footer/back-to-top icons from max-width */
+footer img,
+footer svg,
+footer i,
+.back-to-top img,
+.back-to-top svg {
+  max-width: none !important;
+}
