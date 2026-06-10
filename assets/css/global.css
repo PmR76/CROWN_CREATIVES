@@ -171,3 +171,15 @@ footer {
 footer * {
   max-width: 100%;
 }
+/* Exempt icons from global max-width rule */
+footer img,
+footer svg,
+footer i,
+.back-to-top img,
+.back-to-top svg {
+  max-width: none !important;
+}
+body {
+  height: 100vh;
+  overflow-y: hidden;
+}
