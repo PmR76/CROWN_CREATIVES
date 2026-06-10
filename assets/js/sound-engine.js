@@ -1,5 +1,5 @@
 /* ============================================================
-   SOUND ENGINE v3 — Reactive Mode + Auto-Scanner
+   SOUND ENGINE v3.5 — Reactive + Manifest Mode
    Crown Creatives
 ============================================================ */
 
@@ -7,19 +7,21 @@ const SoundEngine = {
     audio: null,
     enabled: false,
     sounds: [],
-    scanPath: "/assets/sounds/",
+    manifestPath: "/assets/sounds/sound-manifest.json",
     reactiveInterval: null,
 
     async init() {
         this.enabled = localStorage.getItem("soundEnabled") === "true";
 
-        await this.scanSounds();
+        await this.loadManifest();
 
         this.audio = new Audio();
         this.audio.loop = true;
         this.audio.volume = 0;
 
         const toggle = document.getElementById("soundToggle");
+        if (!toggle) return;
+
         toggle.addEventListener("click", () => this.toggle());
 
         this.updateIcon();
@@ -31,13 +33,14 @@ const SoundEngine = {
         }
     },
 
-    async scanSounds() {
+    async loadManifest() {
         try {
-            const response = await fetch(this.scanPath);
-            const text = await response.text();
-            const matches = [...text.matchAll(/href="([^"]+\.mp3)"/g)];
-            this.sounds = matches.map(m => this.scanPath + m[1]);
-        } catch {
+            const res = await fetch(this.manifestPath, { cache: "no-store" });
+            if (!res.ok) throw new Error("Manifest not found");
+            const data = await res.json();
+            this.sounds = (data.sounds || []).map(name => `/assets/sounds/${name}`);
+        } catch (e) {
+            console.warn("Sound manifest load failed, using fallback.", e);
             this.sounds = [
                 "/assets/sounds/forest.mp3",
                 "/assets/sounds/soft-wind.mp3",
@@ -71,6 +74,7 @@ const SoundEngine = {
 
     updateIcon() {
         const toggle = document.getElementById("soundToggle");
+        if (!toggle) return;
 
         toggle.classList.remove("sound-on", "sound-off", "sound-reactive");
 
@@ -97,6 +101,8 @@ const SoundEngine = {
                     clearInterval(fade);
                 }
             }, 120);
+        }).catch(err => {
+            console.warn("Autoplay blocked until user interacts.", err);
         });
     },
 
@@ -116,20 +122,27 @@ const SoundEngine = {
 
     startReactiveMode() {
         const toggle = document.getElementById("soundToggle");
+        if (!toggle) return;
+
         toggle.classList.add("sound-reactive");
 
         this.reactiveInterval = setInterval(() => {
-            const level = this.audio.volume;
+            const level = this.audio.volume || 0;
             toggle.style.transform = `scale(${1 + level * 0.1})`;
         }, 120);
     },
 
     stopReactiveMode() {
         const toggle = document.getElementById("soundToggle");
+        if (!toggle) return;
+
         toggle.classList.remove("sound-reactive");
         toggle.style.transform = "scale(1)";
 
-        clearInterval(this.reactiveInterval);
+        if (this.reactiveInterval) {
+            clearInterval(this.reactiveInterval);
+            this.reactiveInterval = null;
+        }
     }
 };
 
