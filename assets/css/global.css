@@ -30,6 +30,17 @@ body * {
   overflow-x: hidden;
 }
 
+/* Exempt footer/back-to-top icons from global max-width */
+footer img,
+footer svg,
+footer i,
+.back-to-top img,
+.back-to-top svg {
+  max-width: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+
 
 /* ============================================================
    UNIVERSAL CROWN MAGIC SYSTEM
@@ -151,20 +162,6 @@ body.fade-header main {
 
 
 /* ============================================================
-   GALLERY LANE (SAFE WIDTH)
-============================================================ */
-.gallery-lane {
-    width: 22%;
-    max-width: 22%;
-    height: 240px;
-    border-radius: 16px;
-    overflow: hidden;
-    background: rgba(0,0,0,0.3);
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    position: relative;
-}
-
-/* ============================================================
    FOOTER PROTECTION
 ============================================================ */
 footer {
@@ -175,34 +172,4 @@ footer {
 
 footer * {
   max-width: 100%;
-}
-/* Exempt icons from global max-width rule */
-footer img,
-footer svg,
-footer i,
-.back-to-top img,
-.back-to-top svg {
-  max-width: none !important;
-}
-body {
-  height: 100vh;
-  overflow-y: hidden;
-}
-/* Exempt footer/back-to-top icons from max-width */
-footer img,
-footer svg,
-footer i,
-.back-to-top img,
-.back-to-top svg {
-  max-width: none !important;
-}
-/* Prevent icons from shrinking */
-footer img,
-footer svg,
-footer i,
-.back-to-top img,
-.back-to-top svg {
-    max-width: none !important;
-    width: auto !important;
-    height: auto !important;
 }
