@@ -14,12 +14,13 @@
   z-index: 1000;
 }
 
+/* The header container now stacks vertically */
 .cc-header-inner {
   display: flex;
-  flex-direction: column; /* stack crown + title + tagline + nav */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative; /* required for absolute icons */
+  position: relative; /* REQUIRED for icon positioning */
 }
 
 /* ============================================================
