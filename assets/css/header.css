@@ -67,6 +67,7 @@
 
 /* ============================================================
    ANIMATED THEME TOGGLE — SUN/MOON
+   (Legacy toggle — kept for compatibility)
    ============================================================ */
 
 .theme-toggle {
@@ -130,4 +131,38 @@ body.dark-mode .cc-theme-icon {
 body.dark-mode .cc-nav a {
   color: #fff;
   text-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+
+/* ============================================================
+   NEW HEADER ICON SYSTEM — LEFT MUSIC + RIGHT THEME
+   ============================================================ */
+
+#cc-header-left,
+#cc-header-right {
+  position: absolute;
+  top: 18px;
+  z-index: 999;
+}
+
+#cc-header-left {
+  left: 25px;
+}
+
+#cc-header-right {
+  right: 25px;
+}
+
+/* ICON STYLE */
+.cc-header-icon {
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.85));
+}
+
+/* HOVER BOUNCE */
+.cc-header-icon:hover {
+  transform: scale(1.25) translateY(-4px);
+  filter: drop-shadow(0 0 14px rgba(255,255,255,1));
 }
