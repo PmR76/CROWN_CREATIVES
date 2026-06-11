@@ -16,6 +16,7 @@
   object-fit: cover;
   z-index: 1;
   transition: opacity 1.5s ease;
+  overflow: hidden; /* Prevent scrollbars */
 }
 
 .day-background { opacity: 1; }
@@ -35,6 +36,7 @@ body.dark-mode .night-background { opacity: 1; }
   opacity: 0.6;
   z-index: 2;
   transition: opacity 1.5s ease;
+  overflow: hidden; /* Prevent scrollbars */
 }
 
 body.dark-mode .day-clouds { opacity: 0; }
@@ -65,6 +67,7 @@ body.dark-mode .night-nebula { opacity: 0.6; }
   height: 504px;
   margin: 0;
   z-index: 5;
+  pointer-events: none; /* Prevent blocking header icons */
 }
 
 .hero-crown {
@@ -78,6 +81,7 @@ body.dark-mode .night-nebula { opacity: 0.6; }
   opacity: 0;
   transition: opacity 8s ease, filter 8s ease;
   filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
+  pointer-events: none; /* Prevent blocking header icons */
 }
 
 .crown-day { opacity: 1; }
@@ -119,8 +123,8 @@ body.dark-mode .crown-night { opacity: 1; }
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(40px, 6vw, 120px); /* crown buffer */
-  margin-top: -57px; /* your original offset */
+  gap: clamp(40px, 6vw, 120px);
+  margin-top: -57px;
   width: 100%;
   max-width: 1600px;
   margin-left: auto;
@@ -129,7 +133,6 @@ body.dark-mode .crown-night { opacity: 1; }
   z-index: 4;
 }
 
-/* Left + Right Lanes */
 .gallery-lane {
   flex: 0 1 clamp(180px, 22vw, 320px);
   height: 260px;
@@ -140,14 +143,12 @@ body.dark-mode .crown-night { opacity: 1; }
   position: relative;
 }
 
-/* Inner container for crossfade layers */
 .gallery-lane-inner {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-/* Cinematic fade engine (unchanged) */
 .gallery-image {
   position: absolute;
   inset: 0;
@@ -162,7 +163,6 @@ body.dark-mode .crown-night { opacity: 1; }
   opacity: 1;
 }
 
-/* Mobile layout */
 @media (max-width: 768px) {
   .hero-flex {
     flex-direction: column;

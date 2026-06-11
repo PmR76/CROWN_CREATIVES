@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-06-10T19:25:33.502Z",
+  "timestamp": "2026-06-11T21:28:51.439Z",
   "filesScanned": 9,
   "htmlFilesScanned": 8,
-  "jsFilesScanned": 5,
+  "jsFilesScanned": 6,
   "duplicates": [
     {
       "selector": ".videos-hero",
@@ -23,9 +23,6 @@
         },
         {
           "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\global.css"
@@ -75,9 +72,6 @@
           "file": "assets\\css\\ticker.css"
         },
         {
-          "file": "assets\\css\\home.css"
-        },
-        {
           "file": "assets\\css\\global.css"
         },
         {
@@ -125,9 +119,6 @@
           "file": "assets\\css\\ticker.css"
         },
         {
-          "file": "assets\\css\\home.css"
-        },
-        {
           "file": "assets\\css\\footer.css"
         }
       ]
@@ -137,9 +128,6 @@
       "defs": [
         {
           "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -153,9 +141,6 @@
           "file": "assets\\css\\ticker.css"
         },
         {
-          "file": "assets\\css\\home.css"
-        },
-        {
           "file": "assets\\css\\footer.css"
         }
       ]
@@ -165,9 +150,6 @@
       "defs": [
         {
           "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -181,9 +163,6 @@
           "file": "assets\\css\\ticker.css"
         },
         {
-          "file": "assets\\css\\home.css"
-        },
-        {
           "file": "assets\\css\\footer.css"
         }
       ]
@@ -193,9 +172,6 @@
       "defs": [
         {
           "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -210,9 +186,6 @@
         },
         {
           "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
         },
         {
           "file": "assets\\css\\footer.css"
@@ -379,55 +352,13 @@
       ]
     },
     {
-      "selector": ".footer-icons",
+      "selector": "#cc-header-left",
       "defs": [
         {
-          "file": "assets\\css\\home.css"
+          "file": "assets\\css\\header.css"
         },
         {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".footer-icon",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".footer-text",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".back-to-top",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
+          "file": "assets\\css\\header.css"
         }
       ]
     },
@@ -506,6 +437,39 @@
           "file": "assets\\css\\cinematic.css"
         }
       ]
+    },
+    {
+      "selector": ".footer-icons",
+      "defs": [
+        {
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
+    },
+    {
+      "selector": ".back-to-top",
+      "defs": [
+        {
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
+    },
+    {
+      "selector": ".footer-text",
+      "defs": [
+        {
+          "file": "assets\\css\\footer.css"
+        },
+        {
+          "file": "assets\\css\\footer.css"
+        }
+      ]
     }
   ],
   "issues": [
@@ -541,16 +505,16 @@
       "type": "overflow-risk",
       "selector": ".day-background,\r\n.night-background",
       "file": "assets\\css\\home.css",
-      "widthVW": "140vw",
-      "heightVH": "140vh",
+      "widthVW": "100vw",
+      "heightVH": "100vh",
       "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
     },
     {
       "type": "overflow-risk",
       "selector": ".day-clouds,\r\n.night-nebula",
       "file": "assets\\css\\home.css",
-      "widthVW": "160vw",
-      "heightVH": "160vh",
+      "widthVW": "100vw",
+      "heightVH": "100vh",
       "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
     },
     {
@@ -565,6 +529,20 @@
       "selector": ".theme-toggle",
       "file": "assets\\css\\header.css",
       "zIndex": 2000,
+      "message": "High z-index may cause layering conflicts with hero/footer."
+    },
+    {
+      "type": "z-index-high",
+      "selector": "#cc-header-left,\r\n#cc-header-right",
+      "file": "assets\\css\\header.css",
+      "zIndex": 999,
+      "message": "High z-index may cause layering conflicts with hero/footer."
+    },
+    {
+      "type": "z-index-high",
+      "selector": "#cc-header-left",
+      "file": "assets\\css\\header.css",
+      "zIndex": 999,
       "message": "High z-index may cause layering conflicts with hero/footer."
     },
     {
@@ -787,46 +765,11 @@
       "message": "Image tag missing alt attribute."
     },
     {
-      "type": "js-selector-usage",
-      "file": "assets\\js\\theme.js",
-      "selector": ".animated-toggle-icon",
-      "message": "JS uses this selector; ensure it exists in HTML."
-    },
-    {
-      "type": "js-selector-usage",
-      "file": "assets\\js\\theme.js",
-      "selector": ".day-background",
-      "message": "JS uses this selector; ensure it exists in HTML."
-    },
-    {
-      "type": "js-selector-usage",
-      "file": "assets\\js\\theme.js",
-      "selector": ".night-background",
-      "message": "JS uses this selector; ensure it exists in HTML."
-    },
-    {
-      "type": "js-selector-usage",
-      "file": "assets\\js\\theme.js",
-      "selector": ".day-clouds",
-      "message": "JS uses this selector; ensure it exists in HTML."
-    },
-    {
-      "type": "js-selector-usage",
-      "file": "assets\\js\\theme.js",
-      "selector": ".night-nebula",
-      "message": "JS uses this selector; ensure it exists in HTML."
-    },
-    {
-      "type": "js-selector-usage",
-      "file": "assets\\js\\theme.js",
-      "selector": ".crown-day",
-      "message": "JS uses this selector; ensure it exists in HTML."
-    },
-    {
-      "type": "js-selector-usage",
-      "file": "assets\\js\\theme.js",
-      "selector": ".crown-night",
-      "message": "JS uses this selector; ensure it exists in HTML."
+      "type": "html-duplicate-id",
+      "file": "about.html",
+      "id": "themeToggle",
+      "count": 2,
+      "message": "Duplicate id in HTML can cause JS/anchor conflicts."
     },
     {
       "type": "js-selector-usage",
@@ -885,6 +828,16 @@
     },
     {
       "selector": ".theme-toggle",
+      "file": "assets\\css\\header.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
+      "selector": "#cc-header-left,\r\n#cc-header-right",
+      "file": "assets\\css\\header.css",
+      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
+    },
+    {
+      "selector": "#cc-header-left",
       "file": "assets\\css\\header.css",
       "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
     },
