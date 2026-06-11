@@ -66,44 +66,6 @@
 }
 
 /* ============================================================
-   ANIMATED THEME TOGGLE — SUN/MOON
-   (Legacy toggle — kept for compatibility)
-   ============================================================ */
-
-.theme-toggle {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 2000;
-}
-
-.cc-theme-icon {
-  width: 64px;
-  height: 64px;
-  transition: transform 0.35s ease, filter 0.6s ease, opacity 0.6s ease;
-  filter: drop-shadow(0 0 14px rgba(255,255,255,0.85));
-}
-
-/* Hover pulse */
-.theme-toggle:hover .cc-theme-icon {
-  transform: scale(1.12);
-  filter: drop-shadow(0 0 22px rgba(255,255,255,1));
-}
-
-/* Night mode glow */
-body.dark-mode .cc-theme-icon {
-  filter: drop-shadow(0 0 22px rgba(180,120,255,1));
-}
-
-/* ============================================================
    NAVIGATION — CENTRED + GLOWING
    ============================================================ */
 
@@ -165,10 +127,4 @@ body.dark-mode .cc-nav a {
 .cc-header-icon:hover {
   transform: scale(1.25) translateY(-4px);
   filter: drop-shadow(0 0 14px rgba(255,255,255,1));
-}
-#cc-header-left {
-  position: absolute;
-  top: 18px;
-  left: 25px;
-  z-index: 999;
 }
