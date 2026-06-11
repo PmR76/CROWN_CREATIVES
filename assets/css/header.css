@@ -1,6 +1,6 @@
 /* ============================================================
    HEADER — MAJESTIC CENTRED BRAND BLOCK (TRANSPARENT VERSION)
-   ============================================================ */
+============================================================ */
 
 .cc-header {
   width: 100%;
@@ -16,16 +16,15 @@
 
 .cc-header-inner {
   display: flex;
+  flex-direction: column; /* stack crown + title + tagline + nav */
   justify-content: center;
   align-items: center;
-  position: relative;
-  padding: 0 40px;
-  background: transparent !important;
+  position: relative; /* required for absolute icons */
 }
 
 /* ============================================================
-   HEADER TEXT — VIBRANT + GLOWING FOR MAGICAL BACKGROUNDS
-   ============================================================ */
+   HEADER TEXT — VIBRANT + GLOWING
+============================================================ */
 
 .cc-header *,
 .cc-nav a {
@@ -36,7 +35,7 @@
 
 /* ============================================================
    BRAND BLOCK — CENTRED CROWN + TITLE + TAGLINE
-   ============================================================ */
+============================================================ */
 
 .cc-title-block {
   text-align: center;
@@ -67,26 +66,19 @@
 
 /* ============================================================
    NAVIGATION — CENTRED + GLOWING
-   ============================================================ */
+============================================================ */
 
 .cc-nav {
+  margin-top: 12px; /* spacing under tagline */
   background: transparent !important;
   border-bottom: none !important;
-}
-
-.cc-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  padding: 15px 0;
-  list-style: none;
-  margin: 0;
 }
 
 .cc-nav a {
   font-family: 'Cinzel Decorative', serif;
   text-decoration: none;
   font-size: 17px;
+  margin: 0 14px; /* spacing between links */
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
@@ -97,7 +89,7 @@ body.dark-mode .cc-nav a {
 
 /* ============================================================
    NEW HEADER ICON SYSTEM — LEFT MUSIC + RIGHT THEME
-   ============================================================ */
+============================================================ */
 
 #cc-header-left,
 #cc-header-right {
