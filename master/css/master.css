@@ -258,3 +258,109 @@ body.dark-mode .night-nebula { opacity: 0.5; }
     padding: 20px;
   }
 }
+/* ============================================================
+   HEADER — TRANSPARENT + GLOWING (LEGACY STYLE TRANSPOSED)
+   ============================================================ */
+
+/* Transparent header */
+#cc-header {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Inner layout (centred brand block) */
+.cc-header-inner {
+  justify-content: center;
+  background: transparent !important;
+}
+
+/* Glowing white text for magical backgrounds */
+#cc-header *,
+.cc-nav a {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255,255,255,0.9);
+  font-weight: 600;
+  font-family: 'Cinzel Decorative', serif;
+}
+
+/* Navigation links */
+.cc-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.cc-nav a {
+  text-decoration: none;
+  font-size: 17px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+body.dark-mode .cc-nav a {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+
+/* ============================================================
+   THEME TOGGLE — SUN/MOON (UPDATED FOR NEW STRUCTURE)
+   ============================================================ */
+
+.cc-toggles {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.theme-toggle {
+  width: 64px;
+  height: 64px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cc-theme-icon {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.35s ease, filter 0.6s ease, opacity 0.6s ease;
+  filter: drop-shadow(0 0 14px rgba(255,255,255,0.85));
+}
+
+/* Hover pulse */
+.theme-toggle:hover .cc-theme-icon {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 22px rgba(255,255,255,1));
+}
+
+/* Night mode glow */
+body.dark-mode .cc-theme-icon {
+  filter: drop-shadow(0 0 22px rgba(180,120,255,1));
+}
+/* ============================================================
+   HEADER ICONS — TRANSPARENT + GLOW
+   ============================================================ */
+
+.cc-header-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background: transparent !important;
+  border: none !important;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.85));
+  transition: transform 0.3s ease, filter 0.4s ease;
+}
+
+.cc-header-icon:hover {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 18px rgba(255,255,255,1));
+}
+
+/* Night mode glow */
+body.dark-mode .cc-header-icon {
+  filter: drop-shadow(0 0 18px rgba(180,120,255,1));
+}
