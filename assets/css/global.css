@@ -1,11 +1,11 @@
 /* ============================================================
    GLOBAL FONT — CINZEL DECORATIVE
-   ============================================================ */
+============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
 
 /* ============================================================
    GLOBAL RESET + TYPOGRAPHY
-   ============================================================ */
+============================================================ */
 html, body {
   font-family: 'Cinzel Decorative', serif;
   margin: 0;
@@ -19,29 +19,29 @@ html, body {
 }
 
 /* ============================================================
-   UNIVERSAL CROWN MAGIC SYSTEM (ADVANCED)
+   UNIVERSAL CROWN MAGIC SYSTEM (SAFE VERSION)
    Applies to ANY image whose filename contains "crown"
-   ============================================================ */
+   EXCEPT header icons
+============================================================ */
 
-img[src*="crown"],
-svg[src*="crown"] {
+img[src*="crown"]:not(.cc-header-icon),
+svg[src*="crown"]:not(.cc-header-icon) {
   position: relative;
   filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
   animation: crownShimmer 6s ease-in-out infinite;
   transition: filter 2s ease, transform 2s ease;
-  z-index: 5;
 }
 
 /* Stronger glow in night mode */
-body.dark-mode img[src*="crown"],
-body.dark-mode svg[src*="crown"] {
+body.dark-mode img[src*="crown"]:not(.cc-header-icon),
+body.dark-mode svg[src*="crown"]:not(.cc-header-icon) {
   filter: drop-shadow(0 0 22px rgba(255,255,255,1));
   transform: scale(1.04);
 }
 
 /* ============================================================
    SHIMMER PULSE
-   ============================================================ */
+============================================================ */
 
 @keyframes crownShimmer {
   0%   { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
@@ -51,10 +51,10 @@ body.dark-mode svg[src*="crown"] {
 
 /* ============================================================
    LIGHT SWEEP (MAGICAL BEAM)
-   ============================================================ */
+============================================================ */
 
-img[src*="crown"]::after,
-svg[src*="crown"]::after {
+img[src*="crown"]:not(.cc-header-icon)::after,
+svg[src*="crown"]:not(.cc-header-icon)::after {
   content: "";
   position: absolute;
   top: 0;
@@ -82,10 +82,10 @@ svg[src*="crown"]::after {
 
 /* ============================================================
    SPARKLE TWINKLE
-   ============================================================ */
+============================================================ */
 
-img[src*="crown"]::before,
-svg[src*="crown"]::before {
+img[src*="crown"]:not(.cc-header-icon)::before,
+svg[src*="crown"]:not(.cc-header-icon)::before {
   content: "";
   position: absolute;
   top: -10%;
@@ -113,45 +113,32 @@ svg[src*="crown"]::before {
 }
 
 /* ============================================================
-   GLOBAL SOFT FADE INTO HEADER (TOGGLED BY BODY CLASS)
-   ============================================================ */
+   GLOBAL SOFT FADE INTO HEADER
+============================================================ */
 
 main {
   position: relative;
   z-index: 2;
 }
 
-/* Only fade when body has .fade-header */
 body.fade-header main {
-  mask-image: linear-gradient(
-    to top,
-    rgba(0,0,0,1) 78%,
-    rgba(0,0,0,0) 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to top,
-    rgba(0,0,0,1) 78%,
-    rgba(0,0,0,0) 100%
-  );
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
 }
+
+/* ============================================================
+   EVOLVE PANEL — HIGH PRIORITY UI
+============================================================ */
+
 #evolve-panel,
 #evolve-orb {
   z-index: 999999 !important;
   pointer-events: auto !important;
 }
 
-.videos-hero {
-  pointer-events: none !important;
-}
-.videos-hero,
-.videos-hero * {
-  pointer-events: none !important;
-}
-#evolve-panel,
-#evolve-orb {
-  z-index: 999999 !important;
-  pointer-events: auto !important;
-}
+/* ============================================================
+   VIDEO HERO — DISABLE INTERACTION
+============================================================ */
 
 .videos-hero,
 .videos-hero * {
