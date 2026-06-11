@@ -7,7 +7,7 @@ echo.
 
 cd /d "%~dp0"
 
-start "" http://localhost:8080
+start "" http://localhost:8080/index.html
 
 npx http-server . -p 8080
 
