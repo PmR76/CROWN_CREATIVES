@@ -16,10 +16,16 @@
   <!-- MASTER SYSTEM ROOT -->
   <div id="master-container" data-page="home"></div>
 
-  <!-- MASTER JS -->
+  <!-- MASTER JS (loads wrapper, header, footer, ticker, background) -->
   <script src="/master/js/master.js"></script>
 
-  <!-- PAGE ENGINE -->
+  <!-- GLOBAL SOUND ENGINE (must load AFTER master.js) -->
+  <script src="/assets/js/sound-engine.js"></script>
+
+  <!-- GLOBAL THEME ENGINE (must load AFTER master.js) -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- PAGE ENGINE (home page logic) -->
   <script src="/assets/js/home.js"></script>
 
 </body>
