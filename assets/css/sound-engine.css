@@ -1,103 +1,82 @@
-.sound-toggle {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 9999;
+/* ============================================================
+   CROWN CREATIVES — SOUND ENGINE v3.5
+   Cleaned, corrected, and safe for header icon system
+============================================================ */
+
+/* ------------------------------------------------------------
+   1. GLOBAL AUDIO ENGINE STATE
+------------------------------------------------------------ */
+
+body.sound-on #soundToggle {
+  filter: drop-shadow(0 0 14px rgba(0,255,120,1));
+  transform: scale(1.15);
 }
 
+body.sound-off #soundToggle {
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+  opacity: 0.75;
+}
+
+/* ------------------------------------------------------------
+   2. REACTIVE AUDIO VISUALISER (ICON PULSE)
+------------------------------------------------------------ */
+
+#soundToggle.reactive {
+  animation: soundReactivePulse 1.2s ease-in-out infinite;
+}
+
+@keyframes soundReactivePulse {
+  0%   { transform: scale(1) rotate(0deg); }
+  50%  { transform: scale(1.18) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ------------------------------------------------------------
+   3. DISABLED LEGACY BUTTON SYSTEM (DO NOT USE)
+   These rules are intentionally neutralised to prevent
+   interference with the new header icon system.
+------------------------------------------------------------ */
+
+.sound-toggle,
 .sound-toggle img {
-  width: 32px;
-  height: 32px;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.8));
-  transition: opacity 0.3s ease;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  z-index: -1 !important;
 }
 
-.sound-toggle:hover img {
-  opacity: 0.7;
-}
-.sound-toggle {
-  position: absolute;
-  left: 20px;
-  top: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 9999;
+/* ------------------------------------------------------------
+   4. AUDIO FADE-IN / FADE-OUT CLASSES
+------------------------------------------------------------ */
+
+.audio-fade-in {
+  animation: audioFadeIn 1.5s ease forwards;
 }
 
-.sound-toggle img {
-  width: 34px;
-  height: 34px;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.9));
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.audio-fade-out {
+  animation: audioFadeOut 1.5s ease forwards;
 }
 
-.sound-toggle:hover img {
-  opacity: 0.7;
-  transform: scale(1.05);
-}
-.sound-toggle {
-  position: absolute;
-  left: 20px;
-  top: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 9999;
+@keyframes audioFadeIn {
+  from { volume: 0; }
+  to   { volume: 1; }
 }
 
-.sound-toggle img {
-  width: 36px;
-  height: 36px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+@keyframes audioFadeOut {
+  from { volume: 1; }
+  to   { volume: 0; }
 }
 
-.sound-toggle:hover img {
-  transform: scale(1.08);
-  opacity: 0.8;
-}
+/* ------------------------------------------------------------
+   5. SAFETY — PREVENT ANY OVERLAYS ON HEADER ICONS
+------------------------------------------------------------ */
 
-.sound-on img {
-  filter: drop-shadow(0 0 12px rgba(255,255,255,1));
-}
-
-.sound-off img {
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
-  opacity: 0.6;
-}
-.sound-toggle {
-  position: absolute;
-  left: 20px;
-  top: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 9999;
-}
-
-.sound-toggle img {
-  width: 36px;
-  height: 36px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.sound-toggle:hover img {
-  transform: scale(1.08);
-  opacity: 0.8;
-}
-
-.sound-on img {
-  filter: drop-shadow(0 0 12px rgba(255,255,255,1));
-}
-
-.sound-off img {
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
-  opacity: 0.6;
-}
-
-.sound-reactive img {
-  filter: drop-shadow(0 0 18px rgba(255,255,255,1));
+#soundToggle,
+#soundToggle * {
+  pointer-events: auto !important;
+  z-index: 999 !important;
 }
