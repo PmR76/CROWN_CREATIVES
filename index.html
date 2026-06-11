@@ -2,177 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crown Creatives</title>
+  <title>Crown Creatives — Imagination Becomes Reality</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+  <!-- GLOBAL MASTER CSS -->
+  <link rel="stylesheet" href="/master/css/master.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/css/header.css">
-  <link rel="stylesheet" href="/assets/css/footer.css">
+  <!-- PAGE-SPECIFIC CSS -->
   <link rel="stylesheet" href="/assets/css/home.css">
-  <link rel="stylesheet" href="/assets/css/cinematic.css">
-  <link rel="stylesheet" href="/assets/css/sound-engine.css">
-
 </head>
 
-<body class="page-fade">
+<body>
 
-  <!-- CRT OVERLAY -->
-  <div class="crt-overlay"></div>
+  <!-- MASTER SYSTEM ROOT -->
+  <div id="master-container" data-page="home"></div>
 
-  <!-- BACKGROUNDS -->
-  <div class="day-background"></div>
-  <div class="night-background"></div>
-  <div class="day-clouds"></div>
-  <div class="night-nebula"></div>
+  <!-- MASTER JS -->
+  <script src="/master/js/master.js"></script>
 
-  <!-- HEADER -->
-  <header class="cc-header">
-    <div class="cc-header-inner">
-
-      <!-- SOUND TOGGLE (far-left) -->
-      <button id="soundToggle" class="sound-toggle sound-off">
-        <img id="soundIcon" src="/assets/icons/sound-reactive.svg" alt="Sound Toggle">
-      </button>
-
-      <div class="cc-title-block">
-        <img src="/assets/icons/head-crown.svg" alt="Crown Creatives Logo" class="cc-logo shimmer-crown">
-        <h1 class="cc-site-title">CROWN CREATIVES</h1>
-        <p class="cc-tagline">ARTISTRY · RESILIENCE · IMAGINATION</p>
-      </div>
-
-      <button class="theme-toggle" id="themeToggle">
-        <img src="/assets/icons/sun-moon-animated.svg" 
-             alt="Toggle Theme" 
-             class="cc-theme-icon animated-toggle-icon">
-      </button>
-
-    </div>
-
-    <nav class="cc-nav">
-      <ul>
-        <li><a href="/">HOME</a></li>
-        <li><a href="/about.html">ABOUT</a></li>
-        <li><a href="/gallery.html">GALLERY</a></li>
-        <li><a href="/projects.html">PROJECTS</a></li>
-        <li><a href="/videos.html">VIDEOS</a></li>
-        <li><a href="/podcasts.html">PODCASTS</a></li>
-        <li><a href="/blog.html">BLOG</a></li>
-        <li><a href="/contact.html">CONTACT</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- MAIN CONTENT -->
-  <main>
-
-    <section class="hero-section">
-
-      <div class="hero-flex">
-
-        <div class="gallery-lane gallery-left">
-          <div class="gallery-lane-inner"></div>
-        </div>
-
-        <div class="hero-crown-wrapper">
-          <img src="/assets/icons/day-crown.svg" alt="Day Crown" class="hero-crown crown-day">
-          <img src="/assets/icons/night-crown.svg" alt="Night Crown" class="hero-crown crown-night">
-        </div>
-
-        <div class="gallery-lane gallery-right">
-          <div class="gallery-lane-inner"></div>
-        </div>
-
-      </div>
-
-      <!-- TAGLINE CARDS -->
-      <div class="tagline-cards">
-
-        <div class="tagline-card">
-          <h3>Artistry</h3>
-          <p>Creativity expressed through craft, vision, and imagination.</p>
-        </div>
-
-        <div class="tagline-card">
-          <h3>Resilience</h3>
-          <p>Strength to rise, rebuild, and transform challenges into growth.</p>
-        </div>
-
-        <div class="tagline-card">
-          <h3>Imagination</h3>
-          <p>The spark that turns ideas into reality and stories into worlds.</p>
-        </div>
-
-      </div>
-
-      <!-- TICKER -->
-      <div class="ticker-wrapper scroll-drift">
-        <div class="ticker-fade-left"></div>
-        <div class="ticker-fade-right"></div>
-
-        <div class="ticker">
-          <div class="ticker-track">
-            <span>✨ Imagination becomes reality ✨</span>
-            <span>✨ Artistry • Resilience • Imagination ✨</span>
-            <span>✨ Stories that rise from the ashes ✨</span>
-            <span>✨ Creativity is a form of courage ✨</span>
-            <span>✨ You are capable of magic ✨</span>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="cc-footer">
-
-    <div class="footer-icons">
-
-      <a href="https://www.facebook.com/people/Crown-Creatives/61556386467490/" target="_blank">
-        <img src="/assets/icons/facebook-magic.svg" alt="Facebook" class="footer-icon">
-      </a>
-
-      <a href="https://www.instagram.com/crown_creatives_uk/" target="_blank">
-        <img src="/assets/icons/instagram-magic.svg" alt="Instagram" class="footer-icon">
-      </a>
-
-      <a href="mailto:crowncreatives@outlook.com">
-        <img src="/assets/icons/email-magic.svg" alt="Email" class="footer-icon">
-      </a>
-
-      <a href="https://copilot.microsoft.com" target="_blank">
-        <img src="/assets/icons/copilot-magic.svg" alt="Copilot" class="footer-icon">
-      </a>
-
-    </div>
-
-    <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
-      <img src="/assets/icons/up-arrow-magic.svg" alt="Back to top" class="footer-icon">
-    </button>
-
-    <div class="footer-text">
-      © Crown Creatives - loyalty free music courtesy of https://pixabay.com/ 
-    </div>
-
-  </footer>
-
-  <!-- SCRIPTS -->
-  <script src="/assets/js/theme.js"></script>
-  <script src="/assets/js/hero-gallery.js"></script>
-  <script src="/assets/js/sound-engine.js"></script>
-
-  <script>
-    window.addEventListener("load", () => {
-      const track = document.querySelector(".ticker-track");
-      if (!track) return;
-      const clone = track.cloneNode(true);
-      track.parentElement.appendChild(clone);
-    });
-  </script>
+  <!-- PAGE ENGINE -->
+  <script src="/assets/js/home.js"></script>
 
 </body>
 </html>
