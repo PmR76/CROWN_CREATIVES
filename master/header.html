@@ -1,9 +1,43 @@
 <!-- ============================================================
-     CROWN CREATIVES — GLOBAL HEADER (DISABLED)
-     This file is intentionally empty because the new header
-     is now hard-coded directly into each page.
-     Keeping this file prevents 404 errors in master.js.
+     CROWN CREATIVES — GLOBAL HEADER (ACTIVE)
+     Injected into #cc-header by master.js
 ============================================================ -->
 
-<!-- Header injection disabled — using new global header -->
-<div class="cc-header-placeholder"></div>
+<header class="cc-header">
+  <div class="cc-header-inner">
+
+    <!-- LEFT: MUSIC TOGGLE -->
+    <button id="soundToggle" class="cc-header-icon-btn" aria-label="Toggle sound">
+      <img src="/assets/icons/music.png" class="cc-header-icon" alt="Sound Toggle">
+    </button>
+
+    <!-- CENTER: LOGO + TITLE + TAGLINE -->
+    <div class="cc-title-block">
+      <img src="/assets/icons/head-crown.svg"
+           alt="Crown Creatives Logo"
+           class="cc-logo shimmer-crown">
+
+      <h1 class="cc-site-title">CROWN CREATIVES</h1>
+
+      <p class="cc-tagline">ARTISTRY · RESILIENCE · IMAGINATION</p>
+    </div>
+
+    <!-- RIGHT: THEME TOGGLE -->
+    <button id="themeToggle" class="cc-header-icon-btn" aria-label="Toggle theme">
+      <img src="/assets/icons/sun-moon.png" class="cc-header-icon" alt="Theme Toggle">
+    </button>
+
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="cc-nav">
+    <a href="/index.html">Home</a>
+    <a href="/gallery.html">Gallery</a>
+    <a href="/videos.html">Videos</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/podcasts.html">Podcasts</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
