@@ -78,3 +78,45 @@ body.sound-off #soundToggle {
   pointer-events: auto !important;
   z-index: 999 !important;
 }
+.cc-toggle {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.cc-toggle img {
+  width: 28px;
+  height: 28px;
+}
+
+/* Idle soft glow */
+.cc-toggle.cc-theme-toggle img {
+  filter: drop-shadow(0 0 4px rgba(180, 220, 255, 0.6));
+}
+
+.cc-toggle.cc-sound-toggle img {
+  filter: drop-shadow(0 0 4px rgba(255, 215, 120, 0.6));
+}
+
+/* Active state (hybrid cinematic pulse) */
+.cc-toggle-active {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 215, 120, 0.7);
+}
+
+/* Click pulse */
+.cc-toggle-pulse {
+  animation: cc-toggle-pulse-keyframes 0.25s ease-out;
+}
+
+@keyframes cc-toggle-pulse-keyframes {
+  0%   { transform: scale(1.0); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1.0); }
+}

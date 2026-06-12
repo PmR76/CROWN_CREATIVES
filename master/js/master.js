@@ -34,10 +34,10 @@ async function initMaster() {
 
   const page = container.dataset.page || "home";
 
-  /* Load master wrapper */
+  // 3.1 Load master wrapper
   container.innerHTML = await loadPartial("/master/page-wrapper.html");
 
-  /* Inject global components */
+  // 3.2 Inject global components (DOM must exist before engines)
   document.getElementById("cc-background").innerHTML =
     await loadPartial("/master/background.html");
 
@@ -50,15 +50,16 @@ async function initMaster() {
   document.getElementById("cc-footer").innerHTML =
     await loadPartial("/master/footer.html");
 
-  /* ------------------------------------------------------------
-     4. LOAD GLOBAL JS ENGINES
-  ------------------------------------------------------------ */
+  // 3.3 Load global JS engines AFTER header exists
   await loadScript("/assets/js/theme.js");
   await loadScript("/assets/js/sound-engine.js");
 
-  /* ------------------------------------------------------------
-     5. LOAD PAGE-SPECIFIC ENGINE
-  ------------------------------------------------------------ */
+  // If sound engine exposes init, call it now (header is ready)
+  if (typeof window.initSoundEngine === "function") {
+    window.initSoundEngine();
+  }
+
+  // 3.4 Load page-specific engine (optional)
   const enginePath = `/assets/js/${page}.js`;
 
   fetch(enginePath)
@@ -70,6 +71,6 @@ async function initMaster() {
 }
 
 /* ------------------------------------------------------------
-   6. START MASTER SYSTEM
+   4. START MASTER SYSTEM
 ------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", initMaster);

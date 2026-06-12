@@ -1,185 +1,129 @@
 /* ============================================================
-   SOUND ENGINE v3.6 — Reactive + Manifest Mode
-   Crown Creatives — Corrected + Updated
+   CROWN CREATIVES — SOUND ENGINE
+   Global music playlist: random order, no repeats until all
+   tracks played, with hybrid cinematic pulse on toggle.
 ============================================================ */
 
-const SoundEngine = {
-    audio: null,
-    enabled: false,
-    sounds: [],
-    manifestPath: "/assets/sounds/sound-manifest.json",
-    reactiveInterval: null,
-    firstInteractionUnlocked: false,
+(function () {
+  const TRACKS = [
+    "/assets/sounds/alec_koff-carnaval-484622.mp3",
+    "/assets/sounds/energysound-powerful-percussion-513717.mp3",
+    "/assets/sounds/finley-chill-sunset-chill-nature-529994.mp3",
+    "/assets/sounds/ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3",
+    "/assets/sounds/kontraa-water-afro-pop-music-445661.mp3"
+  ];
 
-    async init() {
-        // Restore saved state
-        this.enabled = localStorage.getItem("soundEnabled") === "true";
+  let audio = null;
+  let order = [];
+  let orderIndex = -1;
+  let isPlaying = false;
+  let lastTrack = null;
 
-        // Load sound list
-        await this.loadManifest();
-
-        // Prepare audio element
-        this.audio = new Audio();
-        this.audio.loop = true;
-        this.audio.volume = 0;
-
-        const toggle = document.getElementById("soundToggle");
-        if (!toggle) return;
-
-        // Unlock audio on first click (mobile + browser autoplay rules)
-        document.body.addEventListener("click", () => {
-            if (!this.firstInteractionUnlocked) {
-                this.firstInteractionUnlocked = true;
-                this.audio.play().catch(() => {});
-            }
-        }, { once: true });
-
-        // Toggle button
-        toggle.addEventListener("click", () => this.toggle());
-
-        // Update icon state
-        this.updateIcon();
-
-        // Auto‑start if previously enabled
-        if (this.enabled && this.sounds.length > 0) {
-            this.playRandom();
-            this.fadeIn();
-            this.startReactiveMode();
-        }
-    },
-
-    /* ------------------------------------------------------------
-       Load manifest or fallback
-    ------------------------------------------------------------ */
-    async loadManifest() {
-        try {
-            const res = await fetch(this.manifestPath, { cache: "no-store" });
-            if (!res.ok) throw new Error("Manifest not found");
-            const data = await res.json();
-            this.sounds = (data.sounds || []).map(name => `/assets/sounds/${name}`);
-        } catch (e) {
-            console.warn("Sound manifest load failed, using fallback.", e);
-            this.sounds = [
-                "/assets/sounds/forest.mp3",
-                "/assets/sounds/soft-wind.mp3",
-                "/assets/sounds/stream.mp3",
-                "/assets/sounds/soft-rain.mp3"
-            ];
-        }
-    },
-
-    /* ------------------------------------------------------------
-       Pick a random track
-    ------------------------------------------------------------ */
-    playRandom() {
-        if (this.sounds.length === 0) return;
-        const pick = this.sounds[Math.floor(Math.random() * this.sounds.length)];
-        this.audio.src = pick;
-    },
-
-    /* ------------------------------------------------------------
-       Toggle sound on/off
-    ------------------------------------------------------------ */
-    toggle() {
-        this.enabled = !this.enabled;
-        localStorage.setItem("soundEnabled", this.enabled);
-
-        this.updateIcon();
-
-        if (this.enabled) {
-            this.playRandom();
-            this.fadeIn();
-            this.startReactiveMode();
-        } else {
-            this.fadeOut();
-            this.stopReactiveMode();
-        }
-    },
-
-    /* ------------------------------------------------------------
-       Update icon state
-    ------------------------------------------------------------ */
-    updateIcon() {
-        const toggle = document.getElementById("soundToggle");
-        if (!toggle) return;
-
-        toggle.classList.remove("sound-on", "sound-off", "sound-reactive");
-
-        if (this.enabled) {
-            toggle.classList.add("sound-on");
-        } else {
-            toggle.classList.add("sound-off");
-        }
-    },
-
-    /* ------------------------------------------------------------
-       Fade in audio
-    ------------------------------------------------------------ */
-    fadeIn() {
-        this.audio.volume = 0;
-        this.audio.muted = true;
-
-        this.audio.play().then(() => {
-            this.audio.muted = false;
-            let vol = 0;
-
-            const fade = setInterval(() => {
-                if (vol < 0.5) {
-                    vol += 0.02;
-                    this.audio.volume = vol;
-                } else {
-                    clearInterval(fade);
-                }
-            }, 120);
-        }).catch(err => {
-            console.warn("Autoplay blocked until user interacts.", err);
-        });
-    },
-
-    /* ------------------------------------------------------------
-       Fade out audio
-    ------------------------------------------------------------ */
-    fadeOut() {
-        let vol = this.audio.volume;
-
-        const fade = setInterval(() => {
-            if (vol > 0) {
-                vol -= 0.02;
-                this.audio.volume = vol;
-            } else {
-                clearInterval(fade);
-                this.audio.pause();
-            }
-        }, 120);
-    },
-
-    /* ------------------------------------------------------------
-       Reactive pulsing animation
-    ------------------------------------------------------------ */
-    startReactiveMode() {
-        const toggle = document.getElementById("soundToggle");
-        if (!toggle) return;
-
-        toggle.classList.add("sound-reactive");
-
-        this.reactiveInterval = setInterval(() => {
-            const level = this.audio.volume || 0;
-            toggle.style.transform = `scale(${1 + level * 0.1})`;
-        }, 120);
-    },
-
-    stopReactiveMode() {
-        const toggle = document.getElementById("soundToggle");
-        if (!toggle) return;
-
-        toggle.classList.remove("sound-reactive");
-        toggle.style.transform = "scale(1)";
-
-        if (this.reactiveInterval) {
-            clearInterval(this.reactiveInterval);
-            this.reactiveInterval = null;
-        }
+  function shuffle(array) {
+    const a = array.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
     }
-};
+    return a;
+  }
 
-window.addEventListener("DOMContentLoaded", () => SoundEngine.init());
+  function buildOrder() {
+    const indices = TRACKS.map((_, i) => i);
+    order = shuffle(indices);
+
+    // Avoid immediate repeat of lastTrack when rebuilding
+    if (lastTrack !== null && order.length > 1 && order[0] === lastTrack) {
+      [order[0], order[1]] = [order[1], order[0]];
+    }
+
+    orderIndex = 0;
+  }
+
+  function getNextTrackIndex() {
+    if (!order || order.length === 0 || orderIndex < 0 || orderIndex >= order.length) {
+      buildOrder();
+    }
+    const idx = order[orderIndex];
+    orderIndex++;
+    if (orderIndex >= order.length) {
+      // All tracks played once — rebuild for next cycle
+      lastTrack = idx;
+      buildOrder();
+    } else {
+      lastTrack = idx;
+    }
+    return idx;
+  }
+
+  function playNext() {
+    const idx = getNextTrackIndex();
+    const src = TRACKS[idx];
+
+    if (!audio) {
+      audio = new Audio(src);
+      audio.addEventListener("ended", playNext);
+    } else {
+      audio.src = src;
+    }
+
+    audio.volume = 0.9;
+    audio.play().then(() => {
+      isPlaying = true;
+      updateToggleVisual(true);
+    }).catch(err => {
+      console.error("Sound engine play error:", err);
+      isPlaying = false;
+      updateToggleVisual(false);
+    });
+  }
+
+  function stopPlayback() {
+    if (audio) {
+      audio.pause();
+    }
+    isPlaying = false;
+    updateToggleVisual(false);
+  }
+
+  function togglePlayback() {
+    // Click pulse
+    const toggle = document.getElementById("soundToggle");
+    if (toggle) {
+      toggle.classList.add("cc-toggle-pulse");
+      setTimeout(() => toggle.classList.remove("cc-toggle-pulse"), 250);
+    }
+
+    if (!isPlaying) {
+      playNext();
+    } else {
+      stopPlayback();
+    }
+  }
+
+  function updateToggleVisual(active) {
+    const toggle = document.getElementById("soundToggle");
+    if (!toggle) return;
+
+    if (active) {
+      toggle.classList.add("cc-toggle-active");
+    } else {
+      toggle.classList.remove("cc-toggle-active");
+    }
+  }
+
+  function bindToggle() {
+    const toggle = document.getElementById("soundToggle");
+    if (!toggle) {
+      console.warn("Sound toggle not found in header.");
+      return;
+    }
+
+    toggle.addEventListener("click", togglePlayback);
+  }
+
+  // Expose init for master.js
+  window.initSoundEngine = function () {
+    bindToggle();
+  };
+})();
