@@ -1,47 +1,71 @@
 /* ============================================================
-   CROWN CREATIVES — PROJECT REEL ENGINE v1.0
-   Self‑scanning embed system for YouTube, Instagram, TikTok.
-   Add a <div class="project-reel" data-reel-url="..."> and it works.
+   CROWN CREATIVES — PROJECT ENGINE v2.1 (Unified Build)
+   Auto-play, tap-to-play, play button overlay, auto-thumbnails,
+   provider-specific embeds, GitHub autoscan, zero config.
 ============================================================ */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const reels = document.querySelectorAll(".project-reel[data-reel-url]");
+document.addEventListener("DOMContentLoaded", async () => {
 
-  reels.forEach(reel => {
-    const url = reel.getAttribute("data-reel-url");
-    if (!url) return;
+  /* ------------------------------------------------------------
+     1. CONFIG — simplified into one object
+  ------------------------------------------------------------ */
+  const CFG = {
+    autoPlayHover: true,
+    tapToPlayMobile: true,
+    showPlayButton: true,
+    autoThumbnail: true,
+    githubAutoScan: true,
+    projectsFolder: "/assets/projects/"
+  };
 
-    const provider = detectProvider(url);
-    const embedSrc = buildEmbedURL(url, provider);
+  /* ------------------------------------------------------------
+     2. COLLECT PROJECTS (HTML + GitHub autoscan)
+  ------------------------------------------------------------ */
+  let lanes = [...document.querySelectorAll(".project-lane[data-project]")];
 
-    // If provider unsupported, skip
-    if (!embedSrc) return;
+  if (CFG.githubAutoScan) {
+    const auto = await autoScanGitHub(CFG.projectsFolder);
+    lanes = [...lanes, ...auto];
+  }
 
-    // Create iframe (hidden until activated)
-    const iframe = document.createElement("iframe");
-    iframe.src = embedSrc;
-    iframe.loading = "lazy";
-    iframe.allow =
-      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-    iframe.allowFullscreen = true;
-    iframe.style.position = "absolute";
-    iframe.style.inset = "0";
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.border = "none";
-    iframe.style.opacity = "0";
-    iframe.style.transition = "opacity 0.4s ease";
-
-    // On click → replace motion preview with iframe
-    reel.addEventListener("click", () => {
-      activateEmbed(reel, iframe);
-    });
-  });
+  /* ------------------------------------------------------------
+     3. INITIALISE ALL LANES
+  ------------------------------------------------------------ */
+  lanes.forEach(lane => initLane(lane, CFG));
 });
 
-/* ------------------------------------------------------------
-   Detect provider from URL
------------------------------------------------------------- */
+/* ============================================================
+   INITIALISE A SINGLE PROJECT LANE
+============================================================ */
+function initLane(lane, CFG) {
+  const reel = lane.querySelector(".project-reel");
+  const url = reel?.dataset?.reelUrl;
+  if (!url) return;
+
+  const provider = detectProvider(url);
+  const embedSrc = buildEmbedURL(url, provider);
+
+  // Auto-thumbnail
+  if (CFG.autoThumbnail) autoThumbnail(reel, provider, url);
+
+  // Play button overlay
+  if (CFG.showPlayButton) addPlayButton(reel);
+
+  // Desktop hover auto-play
+  if (CFG.autoPlayHover && !isMobile()) {
+    reel.addEventListener("mouseenter", () => activateEmbed(reel, embedSrc));
+    reel.addEventListener("mouseleave", () => deactivateEmbed(reel));
+  }
+
+  // Mobile tap-to-play
+  if (CFG.tapToPlayMobile && isMobile()) {
+    reel.addEventListener("click", () => activateEmbed(reel, embedSrc));
+  }
+}
+
+/* ============================================================
+   PROVIDER DETECTION
+============================================================ */
 function detectProvider(url) {
   if (url.includes("youtube.com") || url.includes("youtu.be")) return "youtube";
   if (url.includes("instagram.com")) return "instagram";
@@ -49,53 +73,144 @@ function detectProvider(url) {
   return null;
 }
 
-/* ------------------------------------------------------------
-   Build embed URL for each provider
------------------------------------------------------------- */
+/* ============================================================
+   EMBED URL BUILDER
+============================================================ */
 function buildEmbedURL(url, provider) {
   switch (provider) {
     case "youtube": {
-      const idMatch = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/);
-      if (!idMatch) return null;
-      return `https://www.youtube.com/embed/${idMatch[1]}?rel=0&mute=1&controls=1`;
+      const id = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/)?.[1];
+      return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${id}`;
     }
-
     case "instagram":
-      // Instagram requires their embed script, but iframe still works
       return `${url}embed/`;
-
     case "tiktok":
-      // TikTok embed URL
       return `https://www.tiktok.com/embed/${extractTikTokID(url)}`;
-
     default:
       return null;
   }
 }
 
-/* Extract TikTok video ID */
 function extractTikTokID(url) {
-  const match = url.match(/video\/(\d+)/);
-  return match ? match[1] : "";
+  return url.match(/video\/(\d+)/)?.[1] || "";
 }
 
-/* ------------------------------------------------------------
-   Activate embed on click
------------------------------------------------------------- */
-function activateEmbed(reel, iframe) {
-  // Remove motion preview
-  const motion = reel.querySelector(".project-reel-motion");
-  if (motion) motion.remove();
-
-  // Remove still image
+/* ============================================================
+   AUTO-THUMBNAIL GENERATION
+============================================================ */
+function autoThumbnail(reel, provider, url) {
   const still = reel.querySelector(".project-reel-still");
-  if (still) still.remove();
 
-  // Add iframe if not already added
-  if (!reel.contains(iframe)) {
-    reel.appendChild(iframe);
-    requestAnimationFrame(() => {
-      iframe.style.opacity = "1";
-    });
+  if (provider === "youtube") {
+    const id = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/)?.[1];
+    still.src = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
   }
+
+  if (provider === "instagram" || provider === "tiktok") {
+    still.style.background = "rgba(255,255,255,0.1)";
+  }
+}
+
+/* ============================================================
+   PLAY BUTTON OVERLAY
+============================================================ */
+function addPlayButton(reel) {
+  const btn = document.createElement("div");
+  btn.className = "project-play-button";
+  btn.innerHTML = "▶";
+  reel.appendChild(btn);
+}
+
+/* ============================================================
+   EMBED ACTIVATION / DEACTIVATION
+============================================================ */
+function activateEmbed(reel, embedSrc) {
+  if (reel.dataset.active === "1") return;
+
+  reel.dataset.active = "1";
+
+  reel.querySelector(".project-reel-still")?.remove();
+  reel.querySelector(".project-reel-motion")?.remove();
+
+  const iframe = document.createElement("iframe");
+  iframe.src = embedSrc;
+  iframe.allow =
+    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  iframe.allowFullscreen = true;
+  iframe.style.position = "absolute";
+  iframe.style.inset = "0";
+  iframe.style.width = "100%";
+  iframe.style.height = "100%";
+  iframe.style.border = "none";
+  iframe.style.opacity = "0";
+  iframe.style.transition = "opacity 0.4s ease";
+
+  reel.appendChild(iframe);
+  requestAnimationFrame(() => (iframe.style.opacity = "1"));
+}
+
+function deactivateEmbed(reel) {
+  if (isMobile()) return;
+  reel.dataset.active = "0";
+  reel.querySelector("iframe")?.remove();
+}
+
+/* ============================================================
+   GITHUB AUTOSCAN (magic.js style)
+============================================================ */
+async function autoScanGitHub(folder) {
+  try {
+    const res = await fetch(folder);
+    const html = await res.text();
+
+    const matches = [...html.matchAll(/href="([^"]+\/)"/g)];
+    const dirs = matches.map(m => m[1]).filter(f => f !== "../");
+
+    const lanes = [];
+
+    for (const dir of dirs) {
+      try {
+        const config = await fetch(folder + dir + "config.json").then(r => r.json());
+        lanes.push(buildAutoLane(config, folder + dir));
+      } catch {}
+    }
+
+    return lanes;
+  } catch {
+    return [];
+  }
+}
+
+function buildAutoLane(config, base) {
+  const lane = document.createElement("section");
+  lane.className = "project-lane";
+  lane.dataset.project = "";
+
+  lane.innerHTML = `
+    <div class="project-reel" data-reel-url="${config.reel}">
+      <img class="project-reel-still" src="${base + config.still}">
+      <video class="project-reel-motion" muted loop playsinline>
+        <source src="${base + config.motion}" type="video/mp4">
+      </video>
+      <div class="project-reel-shimmer"></div>
+    </div>
+
+    <div class="project-info">
+      <h2 class="project-title">${config.title}</h2>
+      <p class="project-desc">${config.description}</p>
+      <div class="project-tags">
+        ${config.tags.map(t => `<span class="project-tag">${t}</span>`).join("")}
+      </div>
+    </div>
+  `;
+
+  document.querySelector(".projects-wrapper").appendChild(lane);
+  return lane;
+}
+
+/* ============================================================
+   MOBILE DETECTION
+============================================================ */
+function isMobile() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 }

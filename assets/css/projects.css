@@ -1,8 +1,8 @@
 @import url("core-shared.css");
 
 /* ============================================================
-   CROWN CREATIVES — CINEMATIC PROJECT LANES
-   Horizontal lanes, alternating sides, hover-motion reels
+   CROWN CREATIVES — PROJECT ENGINE v2.1 (CSS)
+   Cinematic lanes, hover/tap play, shimmer, play button overlay
 ============================================================ */
 
 /* ------------------------------------------------------------
@@ -21,7 +21,7 @@
 }
 
 /* ------------------------------------------------------------
-   2. PROJECT LANE — BASE STRUCTURE
+   2. PROJECT LANE — HORIZONTAL CINEMATIC LAYOUT
 ------------------------------------------------------------ */
 
 .project-lane {
@@ -31,13 +31,12 @@
   position: relative;
 }
 
-/* Alternate layout every other lane */
 .project-lane:nth-child(even) {
   flex-direction: row-reverse;
 }
 
 /* ------------------------------------------------------------
-   3. REEL CONTAINER — CINEMATIC MOTION PREVIEW
+   3. REEL CONTAINER — STATIC + MOTION + EMBED
 ------------------------------------------------------------ */
 
 .project-reel {
@@ -56,7 +55,7 @@
   transform: translateY(-6px) scale(1.02);
 }
 
-/* Static image */
+/* Static preview */
 .project-reel-still {
   position: absolute;
   inset: 0;
@@ -79,7 +78,7 @@
   pointer-events: none;
 }
 
-/* Hover behaviour */
+/* Hover fade */
 .project-reel:hover .project-reel-still {
   opacity: 0;
 }
@@ -98,7 +97,7 @@
 }
 
 /* ------------------------------------------------------------
-   5. SHIMMER SWEEP (OPTIONAL)
+   5. SHIMMER SWEEP
 ------------------------------------------------------------ */
 
 .project-reel-shimmer {
@@ -127,7 +126,59 @@
 }
 
 /* ------------------------------------------------------------
-   6. PROJECT TEXT BLOCK
+   6. PLAY BUTTON OVERLAY
+------------------------------------------------------------ */
+
+.project-play-button {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 0 20px rgba(255,255,255,1);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-reel:hover .project-play-button {
+  opacity: 1;
+}
+
+/* Mobile: always show play button */
+@media (max-width: 768px) {
+  .project-play-button {
+    opacity: 1;
+    font-size: 48px;
+  }
+}
+
+/* ------------------------------------------------------------
+   7. LOADING STATE (provider-specific)
+------------------------------------------------------------ */
+
+.project-reel.loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.15) 0%,
+    rgba(255,255,255,0) 70%
+  );
+  animation: reelLoading 1.4s infinite ease-in-out;
+}
+
+@keyframes reelLoading {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.2; }
+}
+
+/* ------------------------------------------------------------
+   8. PROJECT TEXT BLOCK
 ------------------------------------------------------------ */
 
 .project-info {
@@ -165,7 +216,7 @@
 }
 
 /* ------------------------------------------------------------
-   7. RESPONSIVE BEHAVIOUR
+   9. RESPONSIVE BEHAVIOUR
 ------------------------------------------------------------ */
 
 @media (max-width: 900px) {
