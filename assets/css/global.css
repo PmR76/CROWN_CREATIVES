@@ -15,8 +15,8 @@
    BUT EXCLUDES HEADER ICONS
 ============================================================ */
 
-img[src*="crown"]:not(.cc-header-icon),
-svg[src*="crown"]:not(.cc-header-icon) {
+img[src*="crown"]:not(.cc-head-crown-icon),
+svg[src*="crown"]:not(.cc-head-crown-icon) {
   position: relative;
   filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
   animation: crownShimmer 6s ease-in-out infinite;
@@ -25,8 +25,8 @@ svg[src*="crown"]:not(.cc-header-icon) {
 }
 
 /* Stronger glow in night mode */
-body.dark-mode img[src*="crown"]:not(.cc-header-icon),
-body.dark-mode svg[src*="crown"]:not(.cc-header-icon) {
+body.dark-mode img[src*="crown"]:not(.cc-head-crown-icon),
+body.dark-mode svg[src*="crown"]:not(.cc-head-crown-icon) {
   filter: drop-shadow(0 0 22px rgba(255,255,255,1));
   transform: scale(1.04);
 }
@@ -45,8 +45,8 @@ body.dark-mode svg[src*="crown"]:not(.cc-header-icon) {
    LIGHT SWEEP (MAGICAL BEAM)
 ============================================================ */
 
-img[src*="crown"]:not(.cc-header-icon)::after,
-svg[src*="crown"]:not(.cc-header-icon)::after {
+img[src*="crown"]:not(.cc-head-crown-icon)::after,
+svg[src*="crown"]:not(.cc-head-crown-icon)::after {
   content: "";
   position: absolute;
   top: 0;
@@ -76,8 +76,8 @@ svg[src*="crown"]:not(.cc-header-icon)::after {
    SPARKLE TWINKLE
 ============================================================ */
 
-img[src*="crown"]:not(.cc-header-icon)::before,
-svg[src*="crown"]:not(.cc-header-icon)::before {
+img[src*="crown"]:not(.cc-head-crown-icon)::before,
+svg[src*="crown"]:not(.cc-head-crown-icon)::before {
   content: "";
   position: absolute;
   top: -10%;
