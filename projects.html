@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<header class="cc-header">
-  <div class="cc-header-inner">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crown Creatives — Projects</title>
 
-    <!-- Logo -->
-    <a href="/index.html" class="cc-logo-link">
-      <img src="/assets/icons/head-crown.svg" class="cc-logo shimmer-crown" alt="Crown Creatives Logo">
-    </a>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/header.css">
+  <link rel="stylesheet" href="/assets/css/projects.css">
+  <link rel="stylesheet" href="/assets/css/footer.css">
+</head>
 
-    <!-- Navigation -->
+<body>
+
+  <!-- BACKGROUND LAYERS -->
+  <div class="magic-fade-overlay"></div>
+  <div class="day-background"></div>
+  <div class="night-background"></div>
+  <div class="day-clouds"></div>
+  <div class="night-nebula"></div>
+
+  <!-- GLOBAL HEADER -->
+  <header class="cc-header">
+    <div class="cc-header-inner">
+
+      <!-- LEFT ICON -->
+      <div id="cc-header-left">
+        <img id="soundToggle" class="cc-header-icon" src="/assets/icons/sound-magic.svg" alt="Sound Toggle">
+      </div>
+
+      <!-- TITLE BLOCK -->
+      <div class="cc-title-block">
+        <img src="/assets/icons/head-crown.svg" class="cc-logo shimmer-crown" alt="Crown Creatives Logo">
+        <h1 class="cc-site-title">CROWN CREATIVES</h1>
+        <p class="cc-tagline">ARTISTRY · RESILIENCE · IMAGINATION</p>
+      </div>
+
+      <!-- RIGHT ICON -->
+      <div id="cc-header-right">
+        <img id="themeToggle" class="cc-header-icon" src="/assets/icons/sun-moon-magic.svg" alt="Theme Toggle">
+      </div>
+
+    </div>
+
+    <!-- NAVIGATION -->
     <nav class="cc-nav">
       <a href="/index.html">Home</a>
       <a href="/gallery.html">Gallery</a>
@@ -17,98 +53,93 @@
       <a href="/blog.html">Blog</a>
       <a href="/about.html">About</a>
       <a href="/contact.html">Contact</a>
-    </nav>
-
-    <!-- Toggles -->
-    <div class="cc-toggles">
-
-      <!-- Theme Toggle -->
-      <button class="theme-toggle" aria-label="Toggle theme">
-        <img src="/assets/icons/sun-moon-magic.svg" class="cc-theme-icon shimmer-crown" alt="Theme Toggle">
-      </button>
-
-      <!-- Sound Toggle -->
-      <button class="sound-toggle sound-off" aria-label="Toggle sound">
-        <img src="/assets/icons/sound-magic.svg" class="sound-icon" alt="Sound Toggle">
-      </button>
-
-    </div>
-
-  </div>
-</header>
-
-<body>
-  <div class="magic-fade-overlay"></div>
-
-  <div class="day-background"></div>
-  <div class="night-background"></div>
-  <div class="day-clouds"></div>
-  <div class="night-nebula"></div>
-
-  <header class="cc-header">
-    <div class="cc-header-inner">
-      <div class="cc-title-block">
-        <img src="/assets/icons/head-crown.svg" class="cc-logo shimmer-crown">
-        <h1 class="cc-site-title">CROWN CREATIVES</h1>
-        <p class="cc-tagline">ARTISTRY · RESILIENCE · IMAGINATION</p>
-      </div>
-
-      <button class="cc-theme-toggle" id="themeToggle">
-        <img src="/assets/icons/sun-moon-magic.svg" class="cc-theme-icon shimmer-crown">
-      </button>
-    </div>
-
-    <nav class="cc-nav">
-      <ul>
-        <li><a href="/">HOME</a></li>
-        <li><a href="/about.html">ABOUT</a></li>
-        <li><a href="/gallery.html">GALLERY</a></li>
-        <li><a href="/projects.html" class="active">PROJECTS</a></li>
-        <li><a href="/videos.html">VIDEOS</a></li>
-        <li><a href="/podcasts.html">PODCASTS</a></li>
-        <li><a href="/blog.html">BLOG</a></li>
-        <li><a href="/contact.html">CONTACT</a></li>
-      </ul>
+      <a href="/projects.html" class="active">Projects</a>
     </nav>
   </header>
 
-  <main>
-    <section class="page-wrapper">
-      <h1 class="page-title">Creative Projects</h1>
+  <!-- MAIN CONTENT -->
+  <main class="projects-wrapper">
 
-      <p class="page-text">
-        A growing collection of artistic experiments, digital creations, and world‑building concepts.
-      </p>
+    <!-- PROJECT 1 -->
+    <section class="project-lane" data-project>
+      <div class="project-reel" data-reel-url="https://www.youtube.com/watch?v=XXXXXXXX">
 
-      <ul class="project-list">
-        <li>✨ Digital Art Series — “Fragments of Light”</li>
-        <li>✨ 3D Model Collection — “Artifacts of the Realm”</li>
-        <li>✨ World‑Building Project — “The Crowned Lands”</li>
-        <li>✨ Character Concepts — “Guardians of the Ember Gate”</li>
-        <li>✨ Visual Storytelling — “Rise of the Phoenix Crown”</li>
-      </ul>
+        <img class="project-reel-still"
+             src="/assets/images/projects/project1-still.jpg"
+             alt="Project 1 still">
+
+        <video class="project-reel-motion" muted loop playsinline>
+          <source src="/assets/videos/projects/project1-motion.mp4" type="video/mp4">
+        </video>
+
+        <div class="project-reel-shimmer"></div>
+      </div>
+
+      <div class="project-info">
+        <h2 class="project-title">Project One — Neon Corridor</h2>
+        <p class="project-desc">
+          Cinematic reel exploring light, depth, and motion in a stylised sci‑fi corridor.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Cinematic</span>
+          <span class="project-tag">Reel</span>
+          <span class="project-tag">Sci‑Fi</span>
+        </div>
+      </div>
     </section>
+
+    <!-- PROJECT 2 -->
+    <section class="project-lane" data-project>
+      <div class="project-reel" data-reel-url="https://www.instagram.com/reel/XXXXXXXX">
+
+        <img class="project-reel-still"
+             src="/assets/images/projects/project2-still.jpg"
+             alt="Project 2 still">
+
+        <video class="project-reel-motion" muted loop playsinline>
+          <source src="/assets/videos/projects/project2-motion.mp4" type="video/mp4">
+        </video>
+
+        <div class="project-reel-shimmer"></div>
+      </div>
+
+      <div class="project-info">
+        <h2 class="project-title">Project Two — Crown in Motion</h2>
+        <p class="project-desc">
+          A focused reel on the Crown Creatives identity in motion, glow, and atmosphere.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Brand</span>
+          <span class="project-tag">Motion</span>
+        </div>
+      </div>
+    </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer class="cc-footer">
     <div class="footer-icons">
       <a href="https://www.facebook.com/people/Crown-Creatives/61556386467490/" target="_blank">
-        <img src="/assets/icons/facebook-magic.svg" class="footer-icon">
+        <img src="/assets/icons/facebook-magic.svg" class="footer-icon" alt="Facebook">
       </a>
       <a href="https://www.instagram.com/crown_creatives_uk/" target="_blank">
-        <img src="/assets/icons/instagram-magic.svg" class="footer-icon">
+        <img src="/assets/icons/instagram-magic.svg" class="footer-icon" alt="Instagram">
       </a>
       <a href="mailto:crowncreatives@outlook.com">
-        <img src="/assets/icons/email-magic.svg" class="footer-icon">
+        <img src="/assets/icons/email-magic.svg" class="footer-icon" alt="Email">
       </a>
       <a href="https://copilot.microsoft.com" target="_blank">
-        <img src="/assets/icons/copilot-magic.svg" class="footer-icon">
+        <img src="/assets/icons/copilot-magic.svg" class="footer-icon" alt="Copilot">
       </a>
     </div>
 
     <div class="footer-text">© Crown Creatives</div>
   </footer>
 
+  <!-- JS -->
   <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/projects.js"></script>
+
 </body>
 </html>

@@ -3,6 +3,8 @@
    Corrected + Stabilised + Cinematic
 ============================================================ */
 
+@import url("core-shared.css");
+
 /* ------------------------------------------------------------
    1. GLOBAL HERO BACKGROUND LAYERS
 ------------------------------------------------------------ */
@@ -184,6 +186,7 @@ body.dark-mode .crown-night { opacity: 1; }
   margin-top: 80px;
   z-index: 10;
 }
+
 /* ------------------------------------------------------------
    MOTHER v5 — HERO INTEGRITY MARKERS (non-empty, non-visual)
 ------------------------------------------------------------ */

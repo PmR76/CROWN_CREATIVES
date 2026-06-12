@@ -1,3 +1,5 @@
+@import url("core-shared.css");
+
 /* --- GALLERY PAGE WRAPPER --- */
 .gallery-page-wrapper {
   max-width: 1300px;
@@ -102,6 +104,7 @@
   cursor: pointer;
   text-shadow: 0 0 12px rgba(255,255,255,0.9);
 }
+
 .gallery-image {
   position: absolute;
   top: 0;

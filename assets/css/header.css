@@ -2,6 +2,12 @@
    HEADER — MAJESTIC CENTRED BRAND BLOCK (TRANSPARENT VERSION)
 ============================================================ */
 
+@import url("core-shared.css");
+
+/* ------------------------------------------------------------
+   1. HEADER WRAPPER
+------------------------------------------------------------ */
+
 .cc-header {
   width: 100%;
   padding: 20px 0 10px;
@@ -14,18 +20,14 @@
   z-index: 1000;
 }
 
-/* The header container now stacks vertically */
+/* The header container stacks vertically (layout only) */
 .cc-header-inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative; /* REQUIRED for icon positioning */
 }
 
-/* ============================================================
-   HEADER TEXT — VIBRANT + GLOWING
-============================================================ */
+/* ------------------------------------------------------------
+   2. HEADER TEXT — VIBRANT + GLOWING
+------------------------------------------------------------ */
 
 .cc-header *,
 .cc-nav a {
@@ -34,20 +36,13 @@
   font-weight: 600;
 }
 
-/* ============================================================
-   BRAND BLOCK — CENTRED CROWN + TITLE + TAGLINE
-============================================================ */
+/* ------------------------------------------------------------
+   3. BRAND BLOCK — CENTRED CROWN + TITLE + TAGLINE
+------------------------------------------------------------ */
 
 .cc-title-block {
   text-align: center;
   margin: 0 auto;
-}
-
-.cc-logo {
-  width: 90px;
-  height: auto;
-  display: block;
-  margin: 0 auto 5px;
 }
 
 .cc-site-title {
@@ -65,63 +60,17 @@
   text-shadow: 0 0 6px rgba(255,255,255,0.8);
 }
 
-/* ============================================================
-   NAVIGATION — CENTRED + GLOWING
-============================================================ */
+/* ------------------------------------------------------------
+   4. NAVIGATION — SPACING ONLY (STYLE IN SHARED)
+------------------------------------------------------------ */
 
 .cc-nav {
   margin-top: 12px; /* spacing under tagline */
-  background: transparent !important;
-  border-bottom: none !important;
 }
 
-.cc-nav a {
-  font-family: 'Cinzel Decorative', serif;
-  text-decoration: none;
-  font-size: 17px;
-  margin: 0 14px; /* spacing between links */
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-body.dark-mode .cc-nav a {
-  color: #fff;
-  text-shadow: 0 0 8px rgba(255,255,255,0.8);
-}
-
-/* ============================================================
-   NEW HEADER ICON SYSTEM — LEFT MUSIC + RIGHT THEME
-============================================================ */
-
-#cc-header-left,
-#cc-header-right {
-  position: absolute;
-  top: 18px;
-  z-index: 999;
-}
-
-#cc-header-left {
-  left: 25px;
-}
-
-#cc-header-right {
-  right: 25px;
-}
-
-/* ICON STYLE */
-.cc-header-icon {
-  width: 64px;
-  height: 64px;
-  cursor: pointer;
-  transition: transform 0.25s ease, filter 0.25s ease;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.85));
-}
-
-/* HOVER BOUNCE */
-.cc-header-icon:hover {
-  transform: scale(1.25) translateY(-4px);
-  filter: drop-shadow(0 0 14px rgba(255,255,255,1));
-}
-
+/* ------------------------------------------------------------
+   5. HEADER ICON SYSTEM — LEFT MUSIC + RIGHT THEME
+------------------------------------------------------------ */
 
 #cc-header-left,
 #cc-header-right {
