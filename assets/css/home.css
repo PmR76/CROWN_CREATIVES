@@ -184,3 +184,11 @@ body.dark-mode .crown-night { opacity: 1; }
   margin-top: 80px;
   z-index: 10;
 }
+/* ------------------------------------------------------------
+   MOTHER v5 — HERO INTEGRITY MARKERS (non-empty, non-visual)
+------------------------------------------------------------ */
+
+.hero-section { --mother: 1; }
+.hero-flex { --mother: 1; }
+.hero-crown { --mother: 1; }
+.gallery-lane { --mother: 1; }
