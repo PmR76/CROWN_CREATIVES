@@ -1,43 +1,32 @@
 <!-- ============================================================
-     CROWN CREATIVES — GLOBAL HEADER (ACTIVE)
-     Injected into #cc-header by master.js
+     CROWN CREATIVES — GLOBAL HEADER
 ============================================================ -->
-
 <header class="cc-header">
-  <div class="cc-header-inner">
-
-    <!-- LEFT: MUSIC TOGGLE -->
-    <button id="soundToggle" class="cc-header-icon-btn" aria-label="Toggle sound">
-      <img src="/assets/icons/music.png" class="cc-header-icon" alt="Sound Toggle">
-    </button>
-
-    <!-- CENTER: LOGO + TITLE + TAGLINE -->
-    <div class="cc-title-block">
-      <img src="/assets/icons/head-crown.svg"
-           alt="Crown Creatives Logo"
-           class="cc-logo shimmer-crown">
-
-      <h1 class="cc-site-title">CROWN CREATIVES</h1>
-
-      <p class="cc-tagline">ARTISTRY · RESILIENCE · IMAGINATION</p>
+  <div class="cc-header-left">
+    <div class="cc-logo">
+      <img src="/assets/icons/neon-crown.svg" alt="Crown Creatives">
+      <span>Crown Creatives</span>
     </div>
-
-    <!-- RIGHT: THEME TOGGLE -->
-    <button id="themeToggle" class="cc-header-icon-btn" aria-label="Toggle theme">
-      <img src="/assets/icons/sun-moon.png" class="cc-header-icon" alt="Theme Toggle">
-    </button>
-
   </div>
 
-  <!-- NAVIGATION -->
-  <nav class="cc-nav">
+  <nav class="cc-header-nav">
     <a href="/index.html">Home</a>
-    <a href="/gallery.html">Gallery</a>
-    <a href="/videos.html">Videos</a>
-    <a href="/projects.html">Projects</a>
-    <a href="/podcasts.html">Podcasts</a>
-    <a href="/blog.html">Blog</a>
     <a href="/about.html">About</a>
+    <a href="/gallery.html">Gallery</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/blog.html">Blog</a>
     <a href="/contact.html">Contact</a>
   </nav>
+
+  <div class="cc-header-right">
+    <!-- Theme toggle -->
+    <button id="themeToggle" class="cc-toggle cc-theme-toggle" aria-label="Toggle theme">
+      <img src="/assets/icons/sun-moon-magic.svg" alt="Theme">
+    </button>
+
+    <!-- Sound toggle -->
+    <button id="soundToggle" class="cc-toggle cc-sound-toggle" aria-label="Toggle sound">
+      <img src="/assets/icons/music2.png" alt="Sound">
+    </button>
+  </div>
 </header>
