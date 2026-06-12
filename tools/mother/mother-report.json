@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-12T09:11:18.615Z",
+  "timestamp": "2026-06-12T13:56:09.881Z",
   "htmlFilesScanned": 9,
   "cssFilesScanned": 4,
   "jsFilesScanned": 4,
@@ -26,9 +26,11 @@
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": "html, body",
+      "selector": ".cc-header-inner",
       "files": [
-        "assets\\css\\global.css",
+        "assets\\css\\header.css",
+        "master\\css\\master.css",
+        "master\\css\\master.css",
         "master\\css\\master.css"
       ],
       "message": "Duplicate CSS selector defined in multiple files."
@@ -36,8 +38,40 @@
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": ".cc-header-inner",
+      "selector": ".cc-logo",
       "files": [
+        "assets\\css\\header.css",
+        "assets\\css\\header.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-site-title",
+      "files": [
+        "assets\\css\\header.css",
+        "assets\\css\\header.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-tagline",
+      "files": [
+        "assets\\css\\header.css",
+        "assets\\css\\header.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-nav",
+      "files": [
+        "assets\\css\\header.css",
         "assets\\css\\header.css",
         "master\\css\\master.css",
         "master\\css\\master.css",
@@ -61,7 +95,7 @@
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": ".cc-logo",
+      "selector": ".cc-nav a:hover",
       "files": [
         "assets\\css\\header.css",
         "master\\css\\master.css"
@@ -71,29 +105,17 @@
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": ".cc-nav",
+      "selector": "#soundToggle",
       "files": [
         "assets\\css\\header.css",
-        "master\\css\\master.css",
-        "master\\css\\master.css",
-        "master\\css\\master.css"
+        "assets\\css\\header.css"
       ],
       "message": "Duplicate CSS selector defined in multiple files."
     },
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": "body.dark-mode .cc-nav a",
-      "files": [
-        "assets\\css\\header.css",
-        "master\\css\\master.css"
-      ],
-      "message": "Duplicate CSS selector defined in multiple files."
-    },
-    {
-      "level": "MEDIUM",
-      "type": "css-duplicate-selector",
-      "selector": "#cc-header-right",
+      "selector": "#themeToggle",
       "files": [
         "assets\\css\\header.css",
         "assets\\css\\header.css"
@@ -106,15 +128,6 @@
       "selector": ".cc-header-icon",
       "files": [
         "assets\\css\\header.css",
-        "master\\css\\master.css"
-      ],
-      "message": "Duplicate CSS selector defined in multiple files."
-    },
-    {
-      "level": "MEDIUM",
-      "type": "css-duplicate-selector",
-      "selector": ".cc-header-icon:hover",
-      "files": [
         "assets\\css\\header.css",
         "master\\css\\master.css"
       ],
@@ -215,42 +228,6 @@
     {
       "level": "LOW",
       "type": "html-img-no-alt",
-      "file": "projects.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
       "file": "videos.html",
       "message": "Image tag missing alt attribute."
     },
@@ -367,6 +344,13 @@
       "type": "html-img-no-alt",
       "file": "blog.html",
       "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "INFO",
+      "type": "js-selector-usage",
+      "file": "assets\\js\\theme.js",
+      "selector": "img",
+      "message": "JS uses this selector; ensure it exists in HTML/CSS."
     }
   ],
   "fixes": []
