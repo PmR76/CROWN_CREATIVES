@@ -1,6 +1,6 @@
 /* ============================================================
-   SOUND ENGINE v3.5 — Reactive + Manifest Mode
-   Crown Creatives
+   SOUND ENGINE v3.6 — Reactive + Manifest Mode
+   Crown Creatives — Corrected + Updated
 ============================================================ */
 
 const SoundEngine = {
@@ -9,12 +9,16 @@ const SoundEngine = {
     sounds: [],
     manifestPath: "/assets/sounds/sound-manifest.json",
     reactiveInterval: null,
+    firstInteractionUnlocked: false,
 
     async init() {
+        // Restore saved state
         this.enabled = localStorage.getItem("soundEnabled") === "true";
 
+        // Load sound list
         await this.loadManifest();
 
+        // Prepare audio element
         this.audio = new Audio();
         this.audio.loop = true;
         this.audio.volume = 0;
@@ -22,10 +26,21 @@ const SoundEngine = {
         const toggle = document.getElementById("soundToggle");
         if (!toggle) return;
 
+        // Unlock audio on first click (mobile + browser autoplay rules)
+        document.body.addEventListener("click", () => {
+            if (!this.firstInteractionUnlocked) {
+                this.firstInteractionUnlocked = true;
+                this.audio.play().catch(() => {});
+            }
+        }, { once: true });
+
+        // Toggle button
         toggle.addEventListener("click", () => this.toggle());
 
+        // Update icon state
         this.updateIcon();
 
+        // Auto‑start if previously enabled
         if (this.enabled && this.sounds.length > 0) {
             this.playRandom();
             this.fadeIn();
@@ -33,6 +48,9 @@ const SoundEngine = {
         }
     },
 
+    /* ------------------------------------------------------------
+       Load manifest or fallback
+    ------------------------------------------------------------ */
     async loadManifest() {
         try {
             const res = await fetch(this.manifestPath, { cache: "no-store" });
@@ -50,12 +68,18 @@ const SoundEngine = {
         }
     },
 
+    /* ------------------------------------------------------------
+       Pick a random track
+    ------------------------------------------------------------ */
     playRandom() {
         if (this.sounds.length === 0) return;
         const pick = this.sounds[Math.floor(Math.random() * this.sounds.length)];
         this.audio.src = pick;
     },
 
+    /* ------------------------------------------------------------
+       Toggle sound on/off
+    ------------------------------------------------------------ */
     toggle() {
         this.enabled = !this.enabled;
         localStorage.setItem("soundEnabled", this.enabled);
@@ -72,6 +96,9 @@ const SoundEngine = {
         }
     },
 
+    /* ------------------------------------------------------------
+       Update icon state
+    ------------------------------------------------------------ */
     updateIcon() {
         const toggle = document.getElementById("soundToggle");
         if (!toggle) return;
@@ -85,6 +112,9 @@ const SoundEngine = {
         }
     },
 
+    /* ------------------------------------------------------------
+       Fade in audio
+    ------------------------------------------------------------ */
     fadeIn() {
         this.audio.volume = 0;
         this.audio.muted = true;
@@ -106,6 +136,9 @@ const SoundEngine = {
         });
     },
 
+    /* ------------------------------------------------------------
+       Fade out audio
+    ------------------------------------------------------------ */
     fadeOut() {
         let vol = this.audio.volume;
 
@@ -120,6 +153,9 @@ const SoundEngine = {
         }, 120);
     },
 
+    /* ------------------------------------------------------------
+       Reactive pulsing animation
+    ------------------------------------------------------------ */
     startReactiveMode() {
         const toggle = document.getElementById("soundToggle");
         if (!toggle) return;
