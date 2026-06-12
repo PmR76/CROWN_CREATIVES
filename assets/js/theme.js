@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // You can swap icons here if you want:
     // icon.src = mode === "dark"
-    //   ? "/assets/icons/sun.png"
-    //   : "/assets/icons/moon.png";
+    //   ? "/assets/icons/sun-moon.png"
+    
 
     // For now, keep your single sun-moon icon
   }
