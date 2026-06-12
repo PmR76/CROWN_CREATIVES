@@ -2,21 +2,12 @@
    GLOBAL FONT — CINZEL DECORATIVE
 ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url("core-shared.css");
 
 /* ============================================================
    GLOBAL RESET + TYPOGRAPHY
+   (html, body moved to core-shared.css)
 ============================================================ */
-html, body {
-  font-family: 'Cinzel Decorative', serif;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
-  overflow-x: hidden;
-  letter-spacing: 0.4px;
-  text-align: center;
-  transition: background 1s ease, color 1s ease;
-}
 
 /* ============================================================
    UNIVERSAL CROWN MAGIC SYSTEM (ADVANCED)
@@ -135,7 +126,9 @@ body.fade-header main {
   );
 }
 
-/* EVOLVE ORB + PANEL ALWAYS CLICKABLE ABOVE EVERYTHING */
+/* ============================================================
+   EVOLVE ORB + PANEL ALWAYS CLICKABLE ABOVE EVERYTHING
+============================================================ */
 
 #evolve-panel,
 #evolve-orb {
@@ -143,7 +136,9 @@ body.fade-header main {
   pointer-events: auto !important;
 }
 
-/* VIDEO HERO NON-INTERACTIVE OVERLAY */
+/* ============================================================
+   VIDEO HERO NON-INTERACTIVE OVERLAY
+============================================================ */
 
 .videos-hero,
 .videos-hero * {
