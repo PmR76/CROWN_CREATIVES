@@ -32,9 +32,7 @@ body.sound-off #soundToggle {
 }
 
 /* ------------------------------------------------------------
-   3. DISABLED LEGACY BUTTON SYSTEM (DO NOT USE)
-   These rules are intentionally neutralised to prevent
-   interference with the new header icon system.
+   3. DISABLED LEGACY BUTTON SYSTEM
 ------------------------------------------------------------ */
 
 .sound-toggle,
@@ -62,13 +60,13 @@ body.sound-off #soundToggle {
 }
 
 @keyframes audioFadeIn {
-  from { volume: 0; }
-  to   { volume: 1; }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes audioFadeOut {
-  from { volume: 1; }
-  to   { volume: 0; }
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
 /* ------------------------------------------------------------

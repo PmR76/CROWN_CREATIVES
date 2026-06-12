@@ -19,9 +19,9 @@ html, body {
 }
 
 /* ============================================================
-   UNIVERSAL CROWN MAGIC SYSTEM (SAFE VERSION)
+   UNIVERSAL CROWN MAGIC SYSTEM (ADVANCED)
    Applies to ANY image whose filename contains "crown"
-   EXCEPT header icons
+   BUT EXCLUDES HEADER ICONS
 ============================================================ */
 
 img[src*="crown"]:not(.cc-header-icon),
@@ -30,6 +30,7 @@ svg[src*="crown"]:not(.cc-header-icon) {
   filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
   animation: crownShimmer 6s ease-in-out infinite;
   transition: filter 2s ease, transform 2s ease;
+  z-index: 5;
 }
 
 /* Stronger glow in night mode */
@@ -113,7 +114,7 @@ svg[src*="crown"]:not(.cc-header-icon)::before {
 }
 
 /* ============================================================
-   GLOBAL SOFT FADE INTO HEADER
+   GLOBAL SOFT FADE INTO HEADER (TOGGLED BY BODY CLASS)
 ============================================================ */
 
 main {
@@ -122,13 +123,19 @@ main {
 }
 
 body.fade-header main {
-  mask-image: linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(
+    to top,
+    rgba(0,0,0,1) 78%,
+    rgba(0,0,0,0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgba(0,0,0,1) 78%,
+    rgba(0,0,0,0) 100%
+  );
 }
 
-/* ============================================================
-   EVOLVE PANEL — HIGH PRIORITY UI
-============================================================ */
+/* EVOLVE ORB + PANEL ALWAYS CLICKABLE ABOVE EVERYTHING */
 
 #evolve-panel,
 #evolve-orb {
@@ -136,9 +143,7 @@ body.fade-header main {
   pointer-events: auto !important;
 }
 
-/* ============================================================
-   VIDEO HERO — DISABLE INTERACTION
-============================================================ */
+/* VIDEO HERO NON-INTERACTIVE OVERLAY */
 
 .videos-hero,
 .videos-hero * {
