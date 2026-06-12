@@ -1,33 +1,42 @@
 {
-  "cssGlobs": [
-    "assets/css/**/*.css"
-  ],
-
-  "htmlGlobs": [
-    "*.html"
-  ],
-
-  "jsGlobs": [
-    "assets/js/**/*.js"
-  ],
-
-  "overflowMaxVW": 100,
-  "overflowMaxVH": 100,
-
-  "zIndexWarnThreshold": 500,
-
-  "mobileBreakpoint": 900,
-
-  "heroSelectors": [
-    ".hero-section",
-    ".hero-flex",
-    ".hero-crown",
-    ".hero-crown-wrapper",
-    ".gallery-lane",
-    ".day-background",
-    ".night-background",
-    ".day-clouds",
-    ".night-nebula",
-    ".magic-particles"
-  ]
+  "projectRoot": ".",
+  "html": {
+    "paths": [
+      "index.html",
+      "about.html",
+      "gallery.html",
+      "projects.html",
+      "videos.html",
+      "podcasts.html",
+      "blog.html",
+      "contact.html",
+      "master/header.html"
+    ]
+  },
+  "css": {
+    "paths": [
+      "assets/css/global.css",
+      "assets/css/header.css",
+      "assets/css/sound-engine.css",
+      "master/css/master.css"
+    ]
+  },
+  "js": {
+    "paths": [
+      "master/js/master.js",
+      "assets/js/theme.js",
+      "assets/js/sound-engine.js",
+      "assets/js/home.js"
+    ]
+  },
+  "rules": {
+    "checkHeaderIcons": true,
+    "checkShimmerConflicts": true,
+    "checkDuplicateSelectors": true,
+    "checkMissingIds": true,
+    "checkScriptOrder": true
+  },
+  "report": {
+    "path": "tools/mother/mother-report.md"
+  }
 }
