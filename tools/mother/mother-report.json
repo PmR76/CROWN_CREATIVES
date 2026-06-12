@@ -1,860 +1,373 @@
 {
-  "timestamp": "2026-06-11T21:28:51.439Z",
-  "filesScanned": 9,
-  "htmlFilesScanned": 8,
-  "jsFilesScanned": 6,
-  "duplicates": [
-    {
-      "selector": ".videos-hero",
-      "defs": [
-        {
-          "file": "assets\\css\\videos.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
-        }
-      ]
-    },
-    {
-      "selector": "0%",
-      "defs": [
-        {
-          "file": "assets\\css\\videos.css"
-        },
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        }
-      ]
-    },
-    {
-      "selector": "100%",
-      "defs": [
-        {
-          "file": "assets\\css\\videos.css"
-        },
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        }
-      ]
-    },
-    {
-      "selector": ".ticker-wrapper",
-      "defs": [
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".ticker-fade-left,\r\n.ticker-fade-right",
-      "defs": [
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".ticker-fade-left",
-      "defs": [
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".ticker-fade-right",
-      "defs": [
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".ticker",
-      "defs": [
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".ticker-track",
-      "defs": [
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".ticker-track span",
-      "defs": [
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".ticker-fade-left,\r\n  .ticker-fade-right",
-      "defs": [
-        {
-          "file": "assets\\css\\ticker.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".sound-toggle",
-      "defs": [
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        }
-      ]
-    },
-    {
-      "selector": ".sound-toggle img",
-      "defs": [
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        }
-      ]
-    },
-    {
-      "selector": ".sound-toggle:hover img",
-      "defs": [
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        }
-      ]
-    },
-    {
-      "selector": ".sound-on img",
-      "defs": [
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        }
-      ]
-    },
-    {
-      "selector": ".sound-off img",
-      "defs": [
-        {
-          "file": "assets\\css\\sound-engine.css"
-        },
-        {
-          "file": "assets\\css\\sound-engine.css"
-        }
-      ]
-    },
-    {
-      "selector": ".hero-crown-wrapper,\r\n  .hero-crown",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        }
-      ]
-    },
-    {
-      "selector": ".hero-flex",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        }
-      ]
-    },
-    {
-      "selector": ".gallery-lane",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\home.css"
-        }
-      ]
-    },
-    {
-      "selector": ".gallery-image",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\gallery.css"
-        }
-      ]
-    },
-    {
-      "selector": ".gallery-image.active",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\gallery.css"
-        }
-      ]
-    },
-    {
-      "selector": ".cc-footer",
-      "defs": [
-        {
-          "file": "assets\\css\\home.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": "#cc-header-left",
-      "defs": [
-        {
-          "file": "assets\\css\\header.css"
-        },
-        {
-          "file": "assets\\css\\header.css"
-        }
-      ]
-    },
-    {
-      "selector": "50%",
-      "defs": [
-        {
-          "file": "assets\\css\\global.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        }
-      ]
-    },
-    {
-      "selector": "70%",
-      "defs": [
-        {
-          "file": "assets\\css\\global.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
-        }
-      ]
-    },
-    {
-      "selector": "#evolve-panel,\r\n#evolve-orb",
-      "defs": [
-        {
-          "file": "assets\\css\\global.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
-        }
-      ]
-    },
-    {
-      "selector": ".videos-hero,\r\n.videos-hero *",
-      "defs": [
-        {
-          "file": "assets\\css\\global.css"
-        },
-        {
-          "file": "assets\\css\\global.css"
-        }
-      ]
-    },
-    {
-      "selector": "to",
-      "defs": [
-        {
-          "file": "assets\\css\\gallery.css"
-        },
-        {
-          "file": "assets\\css\\cinematic.css"
-        }
-      ]
-    },
-    {
-      "selector": ".footer-icons",
-      "defs": [
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".back-to-top",
-      "defs": [
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    },
-    {
-      "selector": ".footer-text",
-      "defs": [
-        {
-          "file": "assets\\css\\footer.css"
-        },
-        {
-          "file": "assets\\css\\footer.css"
-        }
-      ]
-    }
-  ],
+  "timestamp": "2026-06-12T09:11:18.615Z",
+  "htmlFilesScanned": 9,
+  "cssFilesScanned": 4,
+  "jsFilesScanned": 4,
+  "heroStatus": {
+    "hasHeroSection": false,
+    "hasHeroFlex": false,
+    "hasHeroCrown": false,
+    "hasGalleryLane": false
+  },
   "issues": [
     {
-      "type": "z-index-high",
-      "selector": ".sound-toggle",
-      "file": "assets\\css\\sound-engine.css",
-      "zIndex": 9999,
-      "message": "High z-index may cause layering conflicts with hero/footer."
+      "level": "HIGH",
+      "type": "hero-incomplete",
+      "file": "assets/css/* / layout",
+      "message": "Hero stack incomplete. Check .hero-section, .hero-flex, .hero-crown, .gallery-lane."
     },
     {
-      "type": "z-index-high",
-      "selector": ".sound-toggle",
-      "file": "assets\\css\\sound-engine.css",
-      "zIndex": 9999,
-      "message": "High z-index may cause layering conflicts with hero/footer."
-    },
-    {
-      "type": "z-index-high",
-      "selector": ".sound-toggle",
-      "file": "assets\\css\\sound-engine.css",
-      "zIndex": 9999,
-      "message": "High z-index may cause layering conflicts with hero/footer."
-    },
-    {
-      "type": "z-index-high",
-      "selector": ".sound-toggle",
-      "file": "assets\\css\\sound-engine.css",
-      "zIndex": 9999,
-      "message": "High z-index may cause layering conflicts with hero/footer."
-    },
-    {
-      "type": "overflow-risk",
-      "selector": ".day-background,\r\n.night-background",
-      "file": "assets\\css\\home.css",
-      "widthVW": "100vw",
-      "heightVH": "100vh",
-      "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
-    },
-    {
-      "type": "overflow-risk",
-      "selector": ".day-clouds,\r\n.night-nebula",
-      "file": "assets\\css\\home.css",
-      "widthVW": "100vw",
-      "heightVH": "100vh",
-      "message": "Fixed element with viewport-relative size may cause horizontal/vertical scroll."
-    },
-    {
-      "type": "z-index-high",
-      "selector": ".cc-header",
-      "file": "assets\\css\\header.css",
-      "zIndex": 1000,
-      "message": "High z-index may cause layering conflicts with hero/footer."
-    },
-    {
-      "type": "z-index-high",
-      "selector": ".theme-toggle",
-      "file": "assets\\css\\header.css",
-      "zIndex": 2000,
-      "message": "High z-index may cause layering conflicts with hero/footer."
-    },
-    {
-      "type": "z-index-high",
-      "selector": "#cc-header-left,\r\n#cc-header-right",
-      "file": "assets\\css\\header.css",
-      "zIndex": 999,
-      "message": "High z-index may cause layering conflicts with hero/footer."
-    },
-    {
-      "type": "z-index-high",
-      "selector": "#cc-header-left",
-      "file": "assets\\css\\header.css",
-      "zIndex": 999,
-      "message": "High z-index may cause layering conflicts with hero/footer."
-    },
-    {
-      "type": "z-index-high",
-      "selector": "#evolve-panel,\r\n#evolve-orb",
-      "file": "assets\\css\\global.css",
-      "zIndex": 999999,
-      "message": "High z-index may cause layering conflicts with hero/footer."
-    },
-    {
-      "type": "z-index-high",
-      "selector": "#evolve-panel,\r\n#evolve-orb",
-      "file": "assets\\css\\global.css",
-      "zIndex": 999999,
-      "message": "High z-index may cause layering conflicts with hero/footer."
-    },
-    {
-      "type": "z-index-high",
-      "selector": ".lightbox",
-      "file": "assets\\css\\gallery.css",
-      "zIndex": 9999,
-      "message": "High z-index may cause layering conflicts with hero/footer."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "videos.html",
-      "snippet": "<img src=\"/assets/icons/head-crown.svg\" class=\"cc-logo shimmer-crown\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "videos.html",
-      "snippet": "<img src=\"/assets/icons/sun-moon-magic.svg\" class=\"cc-theme-icon shimmer-crown\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "videos.html",
-      "snippet": "<img src=\"/assets/icons/facebook-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "videos.html",
-      "snippet": "<img src=\"/assets/icons/instagram-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "videos.html",
-      "snippet": "<img src=\"/assets/icons/email-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "videos.html",
-      "snippet": "<img src=\"/assets/icons/copilot-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "videos.html",
-      "snippet": "<img src=\"/assets/icons/up-arrow-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "snippet": "<img src=\"/assets/icons/head-crown.svg\" class=\"cc-logo shimmer-crown\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "snippet": "<img src=\"/assets/icons/sun-moon-magic.svg\" class=\"cc-theme-icon shimmer-crown\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "snippet": "<img src=\"/assets/icons/facebook-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "snippet": "<img src=\"/assets/icons/instagram-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "snippet": "<img src=\"/assets/icons/email-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "projects.html",
-      "snippet": "<img src=\"/assets/icons/copilot-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "snippet": "<img src=\"/assets/icons/head-crown.svg\" class=\"cc-logo shimmer-crown\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "snippet": "<img src=\"/assets/icons/sun-moon-magic.svg\" class=\"cc-theme-icon shimmer-crown\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "snippet": "<img src=\"/assets/icons/facebook-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "snippet": "<img src=\"/assets/icons/instagram-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "snippet": "<img src=\"/assets/icons/email-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "snippet": "<img src=\"/assets/icons/copilot-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "gallery.html",
-      "snippet": "<img id=\"lightbox-img\" class=\"lightbox-img\" src=\"\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "blog.html",
-      "snippet": "<img src=\"/assets/icons/head-crown.svg\" class=\"cc-logo shimmer-crown\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "blog.html",
-      "snippet": "<img src=\"/assets/icons/sun-moon-magic.svg\" class=\"cc-theme-icon shimmer-crown\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "blog.html",
-      "snippet": "<img src=\"/assets/icons/facebook-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "blog.html",
-      "snippet": "<img src=\"/assets/icons/instagram-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "blog.html",
-      "snippet": "<img src=\"/assets/icons/email-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "blog.html",
-      "snippet": "<img src=\"/assets/icons/copilot-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "blog.html",
-      "snippet": "<img src=\"/assets/icons/up-arrow-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "about.html",
-      "snippet": "<img src=\"/assets/icons/head-crown.svg\" class=\"cc-logo shimmer-crown\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "about.html",
-      "snippet": "<img src=\"/assets/icons/sun-moon-magic.svg\" class=\"cc-theme-icon shimmer-crown\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "about.html",
-      "snippet": "<img src=\"/assets/icons/facebook-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "about.html",
-      "snippet": "<img src=\"/assets/icons/instagram-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "about.html",
-      "snippet": "<img src=\"/assets/icons/email-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "type": "html-img-no-alt",
-      "file": "about.html",
-      "snippet": "<img src=\"/assets/icons/copilot-magic.svg\" class=\"footer-icon\">",
-      "message": "Image tag missing alt attribute."
-    },
-    {
+      "level": "HIGH",
       "type": "html-duplicate-id",
       "file": "about.html",
       "id": "themeToggle",
-      "count": 2,
-      "message": "Duplicate id in HTML can cause JS/anchor conflicts."
+      "message": "Duplicate id \"themeToggle\" (2 occurrences)."
     },
     {
-      "type": "js-selector-usage",
-      "file": "assets\\js\\hero-gallery.js",
-      "selector": ".gallery-left .gallery-lane-inner",
-      "message": "JS uses this selector; ensure it exists in HTML."
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": "html, body",
+      "files": [
+        "assets\\css\\global.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
     },
     {
-      "type": "js-selector-usage",
-      "file": "assets\\js\\hero-gallery.js",
-      "selector": ".gallery-right .gallery-lane-inner",
-      "message": "JS uses this selector; ensure it exists in HTML."
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-header-inner",
+      "files": [
+        "assets\\css\\header.css",
+        "master\\css\\master.css",
+        "master\\css\\master.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-nav a",
+      "files": [
+        "assets\\css\\header.css",
+        "assets\\css\\header.css",
+        "master\\css\\master.css",
+        "master\\css\\master.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-logo",
+      "files": [
+        "assets\\css\\header.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-nav",
+      "files": [
+        "assets\\css\\header.css",
+        "master\\css\\master.css",
+        "master\\css\\master.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": "body.dark-mode .cc-nav a",
+      "files": [
+        "assets\\css\\header.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": "#cc-header-right",
+      "files": [
+        "assets\\css\\header.css",
+        "assets\\css\\header.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-header-icon",
+      "files": [
+        "assets\\css\\header.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-header-icon:hover",
+      "files": [
+        "assets\\css\\header.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".sound-toggle img",
+      "files": [
+        "assets\\css\\sound-engine.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".night-nebula",
+      "files": [
+        "master\\css\\master.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": "#cc-header",
+      "files": [
+        "master\\css\\master.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-toggles",
+      "files": [
+        "master\\css\\master.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": "#cc-page-content",
+      "files": [
+        "master\\css\\master.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "about.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "gallery.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "projects.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "videos.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "podcasts.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "message": "Image tag missing alt attribute."
+    },
+    {
+      "level": "LOW",
+      "type": "html-img-no-alt",
+      "file": "blog.html",
+      "message": "Image tag missing alt attribute."
     }
   ],
-  "heroStatus": {
-    "hasHeroSection": true,
-    "hasHeroFlex": true,
-    "hasHeroCrown": true,
-    "hasGalleryLane": true
-  },
-  "fixSuggestions": [
-    {
-      "selector": ".sound-toggle",
-      "file": "assets\\css\\sound-engine.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    },
-    {
-      "selector": ".sound-toggle",
-      "file": "assets\\css\\sound-engine.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    },
-    {
-      "selector": ".sound-toggle",
-      "file": "assets\\css\\sound-engine.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    },
-    {
-      "selector": ".sound-toggle",
-      "file": "assets\\css\\sound-engine.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    },
-    {
-      "selector": ".day-background,\r\n.night-background",
-      "file": "assets\\css\\home.css",
-      "suggestion": "Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize."
-    },
-    {
-      "selector": ".day-clouds,\r\n.night-nebula",
-      "file": "assets\\css\\home.css",
-      "suggestion": "Reduce width/height to 100vw/100vh and use transform: scale(...) for cinematic oversize."
-    },
-    {
-      "selector": ".cc-header",
-      "file": "assets\\css\\header.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    },
-    {
-      "selector": ".theme-toggle",
-      "file": "assets\\css\\header.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    },
-    {
-      "selector": "#cc-header-left,\r\n#cc-header-right",
-      "file": "assets\\css\\header.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    },
-    {
-      "selector": "#cc-header-left",
-      "file": "assets\\css\\header.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    },
-    {
-      "selector": "#evolve-panel,\r\n#evolve-orb",
-      "file": "assets\\css\\global.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    },
-    {
-      "selector": "#evolve-panel,\r\n#evolve-orb",
-      "file": "assets\\css\\global.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    },
-    {
-      "selector": ".lightbox",
-      "file": "assets\\css\\gallery.css",
-      "suggestion": "Consider reducing z-index below 500 or documenting intentional overlay."
-    }
-  ]
+  "fixes": []
 }
