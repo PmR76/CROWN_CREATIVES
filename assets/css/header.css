@@ -86,3 +86,28 @@
 #cc-header-right {
   right: 25px;
 }
+.cc-header-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.cc-header-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+}
+
+#soundToggle {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+#themeToggle {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
