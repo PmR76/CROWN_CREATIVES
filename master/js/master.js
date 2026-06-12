@@ -37,12 +37,13 @@ async function initMaster() {
   /* Load master wrapper */
   container.innerHTML = await loadPartial("/master/page-wrapper.html");
 
-  /* Inject global components */
+  /* Inject global components (NO HEADER — removed duplicate) */
   document.getElementById("cc-background").innerHTML =
     await loadPartial("/master/background.html");
 
-  document.getElementById("cc-header").innerHTML =
-    await loadPartial("/master/header.html");
+  // ❌ REMOVED — this caused the double header
+  // document.getElementById("cc-header").innerHTML =
+  //   await loadPartial("/master/header.html");
 
   document.getElementById("cc-ticker").innerHTML =
     await loadPartial("/master/ticker.html");
