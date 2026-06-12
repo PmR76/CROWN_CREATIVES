@@ -1,0 +1,8 @@
+{
+  "title": "Project Title Here",
+  "description": "A short cinematic description of the project, reel, or creative concept.",
+  "reel": "https://www.youtube.com/watch?v=XXXXXXXX",
+  "still": "still.jpg",
+  "motion": "motion.mp4",
+  "tags": ["Tag1", "Tag2", "Tag3"]
+}
