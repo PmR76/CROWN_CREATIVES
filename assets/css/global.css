@@ -1,52 +1,59 @@
 /* ============================================================
-   GLOBAL FONT — CINZEL DECORATIVE
-============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
-@import url("core-shared.css");
-
-/* ============================================================
-   GLOBAL RESET + TYPOGRAPHY
-   (html, body moved to core-shared.css)
+   CROWN CREATIVES — CINEMATIC GLOBAL CORE v2.0
+   Modular • Stable • Editable • Non‑intrusive
 ============================================================ */
 
-/* ============================================================
-   UNIVERSAL CROWN MAGIC SYSTEM (ADVANCED)
-   Applies to ANY image whose filename contains "crown"
-   BUT EXCLUDES HEADER ICONS
-============================================================ */
+/* ------------------------------------------------------------
+   1. GLOBAL RESET + TYPOGRAPHY + BASELINE
+------------------------------------------------------------ */
 
-img[src*="crown"]:not(.cc-head-crown-icon),
-svg[src*="crown"]:not(.cc-head-crown-icon) {
-  position: relative;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
-  animation: crownShimmer 6s ease-in-out infinite;
-  transition: filter 2s ease, transform 2s ease;
-  z-index: 5;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: 'Cinzel Decorative', serif;
+  letter-spacing: 0.4px;
+  text-align: center;
+  transition: background 1s ease, color 1s ease;
 }
 
-/* Stronger glow in night mode */
-body.dark-mode img[src*="crown"]:not(.cc-head-crown-icon),
-body.dark-mode svg[src*="crown"]:not(.cc-head-crown-icon) {
+/* ------------------------------------------------------------
+   2. UNIVERSAL CROWN MAGIC SYSTEM (MODULAR)
+   Applies to ANY image containing "crown"
+------------------------------------------------------------ */
+
+img[src*="crown"],
+svg[src*="crown"] {
+  position: relative;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
+  animation: globalCrownShimmer 6s ease-in-out infinite;
+  transition: filter 2s ease, transform 2s ease;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Night mode glow boost */
+body.dark-mode img[src*="crown"],
+body.dark-mode svg[src*="crown"] {
   filter: drop-shadow(0 0 22px rgba(255,255,255,1));
   transform: scale(1.04);
 }
 
-/* ============================================================
-   SHIMMER PULSE
-============================================================ */
-
-@keyframes crownShimmer {
+/* Global shimmer pulse */
+@keyframes globalCrownShimmer {
   0%   { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
   50%  { filter: drop-shadow(0 0 18px rgba(255,255,255,0.9)); }
   100% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
 }
 
-/* ============================================================
-   LIGHT SWEEP (MAGICAL BEAM)
-============================================================ */
+/* ------------------------------------------------------------
+   3. LIGHT SWEEP (MAGICAL BEAM)
+------------------------------------------------------------ */
 
-img[src*="crown"]:not(.cc-head-crown-icon)::after,
-svg[src*="crown"]:not(.cc-head-crown-icon)::after {
+img[src*="crown"]::after,
+svg[src*="crown"]::after {
   content: "";
   position: absolute;
   top: 0;
@@ -60,11 +67,11 @@ svg[src*="crown"]:not(.cc-head-crown-icon)::after {
     rgba(255,255,255,0) 100%
   );
   transform: skewX(-20deg);
-  animation: crownSweep 8s ease-in-out infinite;
+  animation: globalCrownSweep 8s ease-in-out infinite;
   pointer-events: none;
 }
 
-@keyframes crownSweep {
+@keyframes globalCrownSweep {
   0%   { left: -150%; opacity: 0; }
   40%  { left: -150%; opacity: 0; }
   55%  { left: 150%; opacity: 0.8; }
@@ -72,12 +79,12 @@ svg[src*="crown"]:not(.cc-head-crown-icon)::after {
   100% { left: -150%; opacity: 0; }
 }
 
-/* ============================================================
-   SPARKLE TWINKLE
-============================================================ */
+/* ------------------------------------------------------------
+   4. SPARKLE TWINKLE (SUBTLE)
+------------------------------------------------------------ */
 
-img[src*="crown"]:not(.cc-head-crown-icon)::before,
-svg[src*="crown"]:not(.cc-head-crown-icon)::before {
+img[src*="crown"]::before,
+svg[src*="crown"]::before {
   content: "";
   position: absolute;
   top: -10%;
@@ -90,11 +97,11 @@ svg[src*="crown"]:not(.cc-head-crown-icon)::before {
     radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 60%) 50% 80% / 5px 5px;
   background-repeat: no-repeat;
   opacity: 0;
-  animation: sparkleTwinkle 10s ease-in-out infinite;
+  animation: globalSparkleTwinkle 10s ease-in-out infinite;
   pointer-events: none;
 }
 
-@keyframes sparkleTwinkle {
+@keyframes globalSparkleTwinkle {
   0%, 20%   { opacity: 0; transform: scale(1); }
   25%       { opacity: 0.6; transform: scale(1.05); }
   30%       { opacity: 0; transform: scale(1); }
@@ -104,9 +111,9 @@ svg[src*="crown"]:not(.cc-head-crown-icon)::before {
   100%      { opacity: 0; }
 }
 
-/* ============================================================
-   GLOBAL SOFT FADE INTO HEADER (TOGGLED BY BODY CLASS)
-============================================================ */
+/* ------------------------------------------------------------
+   5. GLOBAL HEADER FADE (OPTIONAL)
+------------------------------------------------------------ */
 
 main {
   position: relative;
@@ -114,31 +121,19 @@ main {
 }
 
 body.fade-header main {
-  mask-image: linear-gradient(
-    to top,
-    rgba(0,0,0,1) 78%,
-    rgba(0,0,0,0) 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to top,
-    rgba(0,0,0,1) 78%,
-    rgba(0,0,0,0) 100%
-  );
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
 }
 
-/* ============================================================
-   EVOLVE ORB + PANEL ALWAYS CLICKABLE ABOVE EVERYTHING
-============================================================ */
+/* ------------------------------------------------------------
+   6. SAFETY OVERRIDES (Evolve Panel)
+------------------------------------------------------------ */
 
 #evolve-panel,
 #evolve-orb {
   z-index: 999999 !important;
   pointer-events: auto !important;
 }
-
-/* ============================================================
-   VIDEO HERO NON-INTERACTIVE OVERLAY
-============================================================ */
 
 .videos-hero,
 .videos-hero * {
