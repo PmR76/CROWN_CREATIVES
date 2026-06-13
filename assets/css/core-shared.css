@@ -1,6 +1,6 @@
 /* ============================================================
    CORE SHARED SELECTORS — CROWN CREATIVES
-   Consolidated from header.css, global.css, home.css
+   Stable • Modular • Conflict-Free
 ============================================================ */
 
 /* Base document */
@@ -59,16 +59,20 @@ body.dark-mode .cc-nav a {
   top: 18px;
   right: 25px;
   z-index: 999;
+  pointer-events: auto;
 }
 
 /* Page content wrapper */
 #cc-page-content {
   position: relative;
   z-index: 5;
+  overflow: visible; /* Prevent clipping of hero crown + galleries */
 }
 
-/* Night nebula (shared) */
+/* REMOVE THIS — handled in home.css */
+/*
 .night-nebula {
   opacity: 0.6;
   transition: opacity 1.5s ease;
 }
+*/
