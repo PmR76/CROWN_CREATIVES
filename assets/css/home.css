@@ -215,3 +215,9 @@ body.dark-mode .crown-night { opacity: 1; }
 .hero-crown { --mother: 1; }
 .gallery-lane { --mother: 1; }
 .tagline-cards { --mother: 1; }
+
+#cc-master,
+#master-container {
+  overflow: visible !important;
+  height: auto !important;
+}
