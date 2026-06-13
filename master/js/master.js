@@ -51,8 +51,10 @@ async function initMaster() {
     await loadPartial("/master/footer.html");
 
   // 3.3 Load global JS engines AFTER header exists
-  await loadScript("/assets/js/theme.js");
-  await loadScript("/assets/js/sound-engine.js");
+await loadScript("/assets/js/theme.js");
+await loadScript("/assets/js/sound-engine.js");
+await loadScript("/assets/js/backtotop.js");
+
 
   // 3.3a Initialise THEME ENGINE (header now exists)
   if (typeof window.initThemeEngine === "function") {
