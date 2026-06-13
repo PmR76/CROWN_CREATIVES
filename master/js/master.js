@@ -54,7 +54,12 @@ async function initMaster() {
   await loadScript("/assets/js/theme.js");
   await loadScript("/assets/js/sound-engine.js");
 
-  // If sound engine exposes init, call it now (header is ready)
+  // 3.3a Initialise THEME ENGINE (header now exists)
+  if (typeof window.initThemeEngine === "function") {
+    window.initThemeEngine();
+  }
+
+  // 3.3b Initialise SOUND ENGINE (header now exists)
   if (typeof window.initSoundEngine === "function") {
     window.initSoundEngine();
   }
