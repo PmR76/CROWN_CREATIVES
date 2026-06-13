@@ -1,5 +1,5 @@
 /* ============================================================
-   CROWN CREATIVES — GLOBAL THEME ENGINE v5.0
+   CROWN CREATIVES — GLOBAL THEME ENGINE v5.1
    Day/Night mode, icon animation, persistence, safe loading
 ============================================================ */
 
@@ -75,15 +75,13 @@ window.initThemeEngine = function () {
   }
 
   /* ------------------------------------------------------------
-     5. UPDATE ICON (optional future expansion)
+     5. UPDATE ICON
   ------------------------------------------------------------ */
   function updateThemeIcon(mode) {
     const icon = themeToggle.querySelector("img");
     if (!icon) return;
 
-    icon.src = mode === "dark"
-      ? "/assets/icons/sun-moon.png"
-      : "/assets/icons/sun-moon.png"; // same icon, but you can swap if you want
+    icon.src = "/assets/icons/sun-moon.png"; // same icon for now
   }
 
   /* ------------------------------------------------------------
@@ -97,4 +95,4 @@ window.initThemeEngine = function () {
     }, 700);
   }
 
-};
+}; // END OF THEME ENGINE
