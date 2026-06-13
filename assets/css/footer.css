@@ -114,3 +114,11 @@
   position: relative;
   z-index: 9999 !important;
 }
+.cc-footer-top {
+  position: relative;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+}
+.cc-footer-top img {
+  pointer-events: none;
+}
