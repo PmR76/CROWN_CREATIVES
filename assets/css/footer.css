@@ -1,24 +1,31 @@
 @import url("core-shared.css");
 
 /* ============================================================
-   FOOTER — LAYOUT
+   FOOTER — 3‑COLUMN CINEMATIC LAYOUT
 ============================================================ */
 
 .cc-footer {
-  position: relative;
+  width: 100%;
   padding: 20px 24px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 14px;
+  position: relative;
   z-index: 10;
 }
 
-/* ============================================================
-   FOOTER ICONS — 50% LARGER + GLOW
-============================================================ */
+/* LEFT — COPYRIGHT */
+.cc-footer-left {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 15px;
+  color: #fff;
+  opacity: 0.85;
+  line-height: 1.4;
+  text-shadow: 0 0 6px rgba(255,255,255,0.6);
+  text-align: left;
+}
 
+/* CENTER — SOCIAL ICONS */
 .cc-footer-icons {
   display: flex;
   justify-content: center;
@@ -38,16 +45,40 @@
   filter: drop-shadow(0 0 14px rgba(255,255,255,1));
 }
 
-/* ============================================================
-   COPYRIGHT — CINEMATIC & ELEGANT
-============================================================ */
+/* RIGHT — BACK TO TOP */
+.cc-footer-top {
+  justify-self: end;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
 
-.cc-footer-copy {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 15px;
-  color: #fff;
-  opacity: 0.85;
-  text-align: center;
-  line-height: 1.5;
-  text-shadow: 0 0 6px rgba(255,255,255,0.6);
+.cc-footer-top img {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.7));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.cc-footer-top:hover img {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 14px rgba(255,255,255,1));
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .cc-footer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .cc-footer-left {
+    text-align: center;
+  }
+
+  .cc-footer-top {
+    justify-self: center;
+  }
 }
