@@ -20,7 +20,9 @@
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   position: relative;
-  z-index: 10;
+
+  /* Ensure footer sits above backgrounds */
+  z-index: 9999 !important;
 
   /* Cinematic glow */
   box-shadow: 0 0 22px rgba(255,255,255,0.15);
@@ -76,6 +78,11 @@
   border: none !important;
   padding: 0 !important;
   cursor: pointer !important;
+
+  /* Ensure button is clickable above all layers */
+  position: relative;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
 }
 
 .cc-footer-top img {
@@ -84,6 +91,9 @@
   background: transparent !important;
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.7)) !important;
   transition: transform 0.25s ease, filter 0.25s ease !important;
+
+  /* Prevent icon from blocking click */
+  pointer-events: none;
 }
 
 .cc-footer-top:hover img {
@@ -109,16 +119,4 @@
   .cc-footer-top {
     justify-self: center !important;
   }
-}
-.cc-footer {
-  position: relative;
-  z-index: 9999 !important;
-}
-.cc-footer-top {
-  position: relative;
-  z-index: 99999 !important;
-  pointer-events: auto !important;
-}
-.cc-footer-top img {
-  pointer-events: none;
 }
