@@ -110,3 +110,7 @@
     justify-self: center !important;
   }
 }
+.cc-footer {
+  position: relative;
+  z-index: 9999 !important;
+}
