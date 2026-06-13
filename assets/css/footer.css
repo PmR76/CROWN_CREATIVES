@@ -144,3 +144,28 @@
   font-size: 0.9rem;
   opacity: 0.85;
 }
+/* ============================================================
+   FOOTER ICONS — 50% LARGER + GLOW
+============================================================ */
+
+.cc-footer-icons img {
+  width: 48px;   /* previously ~32px */
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.7));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.cc-footer-icons img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 14px rgba(255,255,255,1));
+}
+.cc-footer-copy {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 15px;
+  color: #fff;
+  opacity: 0.85;
+  text-align: center;
+  margin-top: 12px;
+  text-shadow: 0 0 6px rgba(255,255,255,0.6);
+}
