@@ -9,7 +9,8 @@ window.initBackToTop = function () {
     btn.parentNode.replaceChild(clone, btn);
 
     clone.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    document.scrollingElement.scrollTo({ top: 0, behavior: "smooth" });
+
     });
   });
 };
