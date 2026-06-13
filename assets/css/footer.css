@@ -1,155 +1,32 @@
 @import url("core-shared.css");
 
 /* ============================================================
-   CROWN CREATIVES — FINAL TICKER SYSTEM (PRODUCTION READY)
-   Transparent, non-wrapping, infinite scroll, fully isolated
-============================================================ */
-
-/* ------------------------------------------------------------
-   1. TICKER WRAPPER — TRANSPARENT + STABLE HEIGHT
------------------------------------------------------------- */
-
-.ticker-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  height: 42px;
-  margin: 40px auto 20px;
-  z-index: 5;
-  background: transparent;
-  pointer-events: none;
-}
-
-/* ------------------------------------------------------------
-   2. FADE MASKS — CINEMATIC EDGES
------------------------------------------------------------- */
-
-.ticker-fade-left,
-.ticker-fade-right {
-  position: absolute;
-  top: 0;
-  width: 80px;
-  height: 100%;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.ticker-fade-left {
-  left: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.9), transparent);
-}
-
-.ticker-fade-right {
-  right: 0;
-  background: linear-gradient(to left, rgba(0,0,0,0.9), transparent);
-}
-
-/* ------------------------------------------------------------
-   3. TICKER TRACK — THE MOVING STRIP
------------------------------------------------------------- */
-
-.ticker {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.ticker-track {
-  display: inline-flex;
-  flex-shrink: 0;
-  white-space: nowrap;
-  gap: 80px;
-  width: max-content;
-  animation: ticker-scroll 25s linear infinite;
-}
-
-/* ------------------------------------------------------------
-   4. TICKER TEXT — MAGICAL GLOW
------------------------------------------------------------- */
-
-.ticker-track span {
-  font-size: 1.15rem;
-  color: #ffffff;
-  opacity: 0.95;
-  text-shadow: 0 0 10px rgba(255,255,255,0.7);
-  letter-spacing: 1px;
-  font-family: 'Cinzel Decorative', serif;
-  pointer-events: none;
-}
-
-/* ------------------------------------------------------------
-   5. KEYFRAMES — SMOOTH INFINITE MOTION
------------------------------------------------------------- */
-
-@keyframes ticker-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ------------------------------------------------------------
-   6. MOBILE RESPONSIVENESS
------------------------------------------------------------- */
-
-@media (max-width: 768px) {
-  .ticker-track span {
-    font-size: 0.95rem;
-  }
-
-  .ticker-fade-left,
-  .ticker-fade-right {
-    width: 50px;
-  }
-}
-
-/* ============================================================
-   FOOTER — CONSOLIDATED + CLEANED
+   FOOTER — LAYOUT
 ============================================================ */
 
 .cc-footer {
   position: relative;
-  padding: 16px 24px;
+  padding: 20px 24px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 14px;
   z-index: 10;
 }
 
-.footer-icons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.footer-icon {
-  display: block;
-  width: 24px;
-  height: 24px;
-  background: none;
-}
-
-.back-to-top {
-  position: absolute;
-  right: 24px;
-  top: 16px;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.footer-text {
-  font-size: 0.9rem;
-  opacity: 0.85;
-}
 /* ============================================================
    FOOTER ICONS — 50% LARGER + GLOW
 ============================================================ */
 
+.cc-footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
 .cc-footer-icons img {
-  width: 48px;   /* previously ~32px */
+  width: 48px;
   height: 48px;
   object-fit: contain;
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.7));
@@ -160,12 +37,17 @@
   transform: scale(1.2);
   filter: drop-shadow(0 0 14px rgba(255,255,255,1));
 }
+
+/* ============================================================
+   COPYRIGHT — CINEMATIC & ELEGANT
+============================================================ */
+
 .cc-footer-copy {
   font-family: 'Cinzel Decorative', serif;
   font-size: 15px;
   color: #fff;
   opacity: 0.85;
   text-align: center;
-  margin-top: 12px;
+  line-height: 1.5;
   text-shadow: 0 0 6px rgba(255,255,255,0.6);
 }
