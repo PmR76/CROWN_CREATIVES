@@ -1,6 +1,6 @@
 /* ============================================================
-   CROWN CREATIVES — GLOBAL HEADER v4.0
-   Perfect centering, perfect spacing, perfect mobile layout
+   CROWN CREATIVES — GLOBAL HEADER v5.0
+   Matches NEW header.html structure exactly
 ============================================================ */
 
 @import url("core-shared.css");
@@ -11,71 +11,49 @@
 
 .cc-header {
   width: 100%;
-  padding: 20px 0 10px;
+  padding: 14px 0;
   background: transparent;
   position: sticky;
   top: 0;
   z-index: 1000;
-  backdrop-filter: none;
-  border-bottom: none;
-  box-shadow: none;
-}
-
-/* Inner container holds:
-   - left icon
-   - centered logo block
-   - right icon
-*/
-.cc-header-inner {
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* ------------------------------------------------------------
-   2. BRAND BLOCK — CENTERED CROWN + TITLE + TAGLINE
+   2. LEFT — LOGO BLOCK
 ------------------------------------------------------------ */
 
-.cc-logo-link {
-  display: inline-block;
+.cc-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 20px;
 }
 
-.cc-logo {
-  width: 80px;
+.cc-header-left .cc-logo img {
+  width: 42px;
   height: auto;
-  display: block;
-  margin: 0 auto 6px;
 }
 
-.cc-site-title {
+.cc-header-left .cc-logo span {
   font-family: 'Cinzel Decorative', serif;
-  font-size: 34px;
-  margin: 0;
-  letter-spacing: 2px;
-  text-shadow: 0 0 8px rgba(255,255,255,0.9);
-}
-
-.cc-tagline {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 15px;
-  opacity: 0.95;
-  margin-top: 4px;
+  font-size: 22px;
+  color: #fff;
   text-shadow: 0 0 6px rgba(255,255,255,0.8);
 }
 
 /* ------------------------------------------------------------
-   3. NAVIGATION
+   3. CENTER — NAVIGATION
 ------------------------------------------------------------ */
 
-.cc-nav {
-  margin-top: 14px;
+.cc-header-nav {
   display: flex;
-  justify-content: center;
-  gap: 28px;
+  gap: 26px;
 }
 
-.cc-nav a {
+.cc-header-nav a {
   font-family: 'Cinzel Decorative', serif;
   text-decoration: none;
   font-size: 17px;
@@ -84,128 +62,86 @@
   transition: opacity 0.3s ease;
 }
 
-.cc-nav a:hover {
+.cc-header-nav a:hover {
   opacity: 0.7;
 }
 
-.cc-nav a.active {
-  opacity: 1;
-  text-shadow: 0 0 12px rgba(255,255,255,1);
-}
-
 /* ------------------------------------------------------------
-   4. HEADER ICONS — MUSIC (LEFT) + THEME (RIGHT)
+   4. RIGHT — TOGGLES
 ------------------------------------------------------------ */
 
-.cc-header-icon-btn {
+.cc-header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-right: 20px;
+}
+
+.cc-toggle {
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  position: absolute;
-  top: 18px;
-  z-index: 999;
 }
 
-#soundToggle {
-  left: 25px;
-}
-
-#themeToggle {
-  right: 25px;
-}
-
-.cc-header-icon {
-  width: 34px;
-  height: 34px;
+.cc-toggle img {
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.cc-header-icon-btn:hover .cc-header-icon {
+.cc-toggle:hover img {
   transform: scale(1.15);
   filter: drop-shadow(0 0 10px rgba(255,255,255,1));
 }
 
-/* ------------------------------------------------------------
-   5. SOUND ENGINE STATES
------------------------------------------------------------- */
-
-.sound-on .cc-header-icon {
+/* Active sound state */
+.cc-toggle-active img {
   filter: drop-shadow(0 0 12px rgba(0,255,180,1));
 }
 
-.sound-off .cc-header-icon {
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
-}
-
-.sound-reactive .cc-header-icon {
-  transition: transform 0.1s ease;
+/* Click pulse */
+.cc-toggle-pulse img {
+  transform: scale(1.25);
 }
 
 /* ------------------------------------------------------------
-   6. MOBILE LAYOUT
+   5. MOBILE LAYOUT
 ------------------------------------------------------------ */
 
 @media (max-width: 768px) {
 
-  .cc-logo {
-    width: 64px;
+  .cc-header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
   }
 
-  .cc-site-title {
-    font-size: 26px;
+  .cc-header-left {
+    padding-left: 0;
   }
 
-  .cc-tagline {
-    font-size: 13px;
+  .cc-header-right {
+    padding-right: 0;
   }
 
-  #soundToggle {
-    left: 12px;
-    top: 14px;
-  }
-
-  #themeToggle {
-    right: 12px;
-    top: 14px;
-  }
-
-  .cc-header-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-  .cc-nav {
+  .cc-header-nav {
     flex-wrap: wrap;
-    gap: 18px;
-    margin-top: 10px;
+    gap: 16px;
   }
 
-  .cc-nav a {
-    font-size: 15px;
+  .cc-toggle img {
+    width: 26px;
+    height: 26px;
   }
-}
 
+  .cc-header-left .cc-logo img {
+    width: 36px;
+  }
 
-.cc-title-block {
-  text-align: center;
-  margin: 0 auto;
-}
-
-
-#cc-header-left,
-#cc-header-right {
-  position: absolute;
-  top: 18px;
-  z-index: 999;
-}
-
-#cc-header-left {
-  left: 25px;
-}
-
-#cc-header-right {
-  right: 25px;
+  .cc-header-left .cc-logo span {
+    font-size: 18px;
+  }
 }
