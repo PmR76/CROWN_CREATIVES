@@ -77,18 +77,14 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ------------------------------------------------------------
      5. UPDATE ICON (optional future expansion)
   ------------------------------------------------------------ */
-  function updateThemeIcon(mode) {
-    const icon = themeToggle.querySelector("img");
-    if (!icon) return;
+function updateThemeIcon(mode) {
+  const icon = themeToggle.querySelector("img");
+  if (!icon) return;
 
-    // You can swap icons here if you want:
-    // icon.src = mode === "dark"
-    //   ? "/assets/icons/sun-moon.png"
-    
-
-    // For now, keep your single sun-moon icon
-  }
-
+  icon.src = mode === "dark"
+    ? "/assets/icons/sun-moon.png"
+    : "/assets/icons/sun-moon.png"; // same icon, but you can swap if you want
+}
   /* ------------------------------------------------------------
      6. SMOOTH TRANSITION
   ------------------------------------------------------------ */
