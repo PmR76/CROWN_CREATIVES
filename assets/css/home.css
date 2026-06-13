@@ -1,5 +1,5 @@
 /* ============================================================
-   HOME PAGE — CROWN CREATIVES - 13/06/2026 - 21:20
+   HOME PAGE — CROWN CREATIVES - 13/06/2026 - 22:47
    Unified • Stabilised • Cinematic • Modular
 ============================================================ */
 
@@ -62,6 +62,19 @@ body.dark-mode .night-background { opacity: 1; }
   transition: opacity 1.5s ease;
 }
 
+/* Cinematic motion hooks */
+.day-clouds {
+  animation: cloudDrift 60s linear infinite;
+  transform: scale(1.6);
+  transform-origin: center;
+}
+
+.night-nebula {
+  animation: nebulaShift 18s ease-in-out infinite;
+  transform: scale(1.6);
+  transform-origin: center;
+}
+
 body.dark-mode .day-clouds { opacity: 0; }
 body.dark-mode .night-nebula { opacity: 0.6; }
 
@@ -71,7 +84,7 @@ body.dark-mode .night-nebula { opacity: 0.6; }
 
 .hero-section {
   position: relative;
-  padding-top: 180px; /* space for crown */
+  padding-top: 80px;  /* reduced to re-centre crown */
   padding-bottom: 80px;
   text-align: center;
   z-index: 3;
@@ -85,7 +98,7 @@ body.dark-mode .night-nebula { opacity: 0.6; }
   position: relative;
   width: 420px;
   height: 420px;
-  margin: 0 auto 40px auto;
+  margin: 40px auto 40px auto; /* added top margin for visual centering */
   display: flex;
   justify-content: center;
   align-items: center;
