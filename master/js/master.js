@@ -45,6 +45,9 @@ async function initMaster() {
   document.getElementById("cc-header").innerHTML =
     await loadPartial("/master/header.html");
 
+  document.getElementById("cc-page-content").innerHTML =
+  await loadPartial(`/pages/${page}.html`);
+
   document.getElementById("cc-ticker").innerHTML =
     await loadPartial("/master/ticker.html");
 
