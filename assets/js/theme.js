@@ -1,9 +1,9 @@
 /* ============================================================
-   CROWN CREATIVES — GLOBAL THEME ENGINE v4.0
+   CROWN CREATIVES — GLOBAL THEME ENGINE v5.0
    Day/Night mode, icon animation, persistence, safe loading
 ============================================================ */
 
-document.addEventListener("DOMContentLoaded", () => {
+window.initThemeEngine = function () {
 
   const body = document.body;
   const themeToggle = document.getElementById("themeToggle");
@@ -77,14 +77,15 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ------------------------------------------------------------
      5. UPDATE ICON (optional future expansion)
   ------------------------------------------------------------ */
-function updateThemeIcon(mode) {
-  const icon = themeToggle.querySelector("img");
-  if (!icon) return;
+  function updateThemeIcon(mode) {
+    const icon = themeToggle.querySelector("img");
+    if (!icon) return;
 
-  icon.src = mode === "dark"
-    ? "/assets/icons/sun-moon.png"
-    : "/assets/icons/sun-moon.png"; // same icon, but you can swap if you want
-}
+    icon.src = mode === "dark"
+      ? "/assets/icons/sun-moon.png"
+      : "/assets/icons/sun-moon.png"; // same icon, but you can swap if you want
+  }
+
   /* ------------------------------------------------------------
      6. SMOOTH TRANSITION
   ------------------------------------------------------------ */
@@ -96,4 +97,4 @@ function updateThemeIcon(mode) {
     }, 700);
   }
 
-});
+};
