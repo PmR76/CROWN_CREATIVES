@@ -4,11 +4,11 @@ window.initBackToTop = function () {
     const btn = document.getElementById("backToTop");
     if (!btn) return;
 
-    // Remove any previous listeners (prevents duplicates)
-    btn.replaceWith(btn.cloneNode(true));
-    const newBtn = document.getElementById("backToTop");
+    // Remove any previous listeners
+    const clone = btn.cloneNode(true);
+    btn.parentNode.replaceChild(clone, btn);
 
-    newBtn.addEventListener("click", () => {
+    clone.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   });
