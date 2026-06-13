@@ -1,18 +1,30 @@
 @import url("core-shared.css");
 
 /* ============================================================
-   FOOTER — 3‑COLUMN CINEMATIC LAYOUT
+   FOOTER — FROSTED GLASS CINEMATIC PANEL
 ============================================================ */
 
 .cc-footer {
   width: 100%;
-  padding: 20px 24px;
-  margin-top: 80px; /* moved from home.css */
+  padding: 22px 28px;
+  margin-top: 80px;
+
+  /* Frosted glass effect */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border-radius: 22px;
+
+  /* Layout */
   display: grid !important;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   position: relative;
   z-index: 10;
+
+  /* Cinematic glow */
+  box-shadow: 0 0 22px rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.18);
 }
 
 /* ============================================================
