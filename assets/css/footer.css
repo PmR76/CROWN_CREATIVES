@@ -24,17 +24,17 @@
   text-shadow: 0 0 6px rgba(255,255,255,0.6);
   text-align: left;
 }
-
-/* CENTER — SOCIAL ICONS */
+/* SOCIAL ICONS — 10% smaller + glow */
 .cc-footer-icons {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 18px;
 }
 
 .cc-footer-icons img {
-  width: 48px;
-  height: 48px;
+  width: 43px;
+  height: 43px;
   object-fit: contain;
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.7));
   transition: transform 0.25s ease, filter 0.25s ease;
@@ -45,18 +45,18 @@
   filter: drop-shadow(0 0 14px rgba(255,255,255,1));
 }
 
-/* RIGHT — BACK TO TOP */
+/* BACK TO TOP — right aligned + transparent */
 .cc-footer-top {
   justify-self: end;
-  background: none;
+  background: transparent !important;
   border: none;
   padding: 0;
   cursor: pointer;
 }
 
 .cc-footer-top img {
-  width: 48px;
-  height: 48px;
+  width: 43px;
+  height: 43px;
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.7));
   transition: transform 0.25s ease, filter 0.25s ease;
 }
