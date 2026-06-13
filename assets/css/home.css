@@ -1,55 +1,84 @@
 /* ============================================================
-   HOME PAGE — CROWN CREATIVES
+   HOME PAGE — CROWN CREATIVES - 13/06/2026 - 21:20
    Unified • Stabilised • Cinematic • Modular
 ============================================================ */
 
 @import url("core-shared.css");
 
 /* ============================================================
-   1. GLOBAL BACKGROUND LAYERS (fixed, non-interactive)
+   1. GLOBAL BACKGROUND LAYERS — CINEMATIC GRADIENTS RESTORED
 ============================================================ */
 
-.day-background,
-.night-background,
-.day-clouds,
-.night-nebula {
+#cc-background {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  z-index: -10;
+  pointer-events: none;
   overflow: hidden;
-  pointer-events: none !important;
-  transition: opacity 1.5s ease;
-  z-index: -10; /* Always behind UI */
 }
 
-/* Day/Night visibility */
-.day-background { opacity: 1; }
-.night-background { opacity: 0; }
-.day-clouds { opacity: 0.6; }
-.night-nebula { opacity: 0; }
+/* Day gradient */
+.day-background {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    #ffb199 0%,
+    #ff8c6b 25%,
+    #ff5f7e 50%,
+    #ff7bbf 75%,
+    #ffd1ff 100%
+  );
+  opacity: 1;
+  transition: opacity 1.5s ease;
+}
+
+/* Night gradient */
+.night-background {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    #0a0f2c 0%,
+    #1a1447 25%,
+    #2b1a63 50%,
+    #3d1f7f 75%,
+    #4f2a99 100%
+  );
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
 
 body.dark-mode .day-background { opacity: 0; }
 body.dark-mode .night-background { opacity: 1; }
+
+/* Clouds / Nebula overlays */
+.day-clouds,
+.night-nebula {
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 1.5s ease;
+}
+
 body.dark-mode .day-clouds { opacity: 0; }
 body.dark-mode .night-nebula { opacity: 0.6; }
 
 /* ============================================================
-   2. HERO SECTION WRAPPER
+   2. HERO SECTION — CLEAN, CENTERED, NO SHIFT
 ============================================================ */
 
 .hero-section {
   position: relative;
-  padding-top: 120px;   /* space for crown */
-  padding-bottom: 80px; /* space above tagline cards */
+  padding-top: 180px; /* space for crown */
+  padding-bottom: 80px;
   text-align: center;
   z-index: 3;
 }
 
 /* ============================================================
-   3. HERO CROWN — FIXED CENTERED LAYERED SYSTEM
-   (NO layout shift, NO drift, NO footer gap)
+   3. HERO CROWN — SINGLE, STABLE, CENTERED SYSTEM
 ============================================================ */
 
 .hero-crown-wrapper {
@@ -60,59 +89,41 @@ body.dark-mode .night-nebula { opacity: 0.6; }
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Prevent SVG overflow */
+  overflow: visible;
   z-index: 5;
   pointer-events: none;
 }
 
 .hero-crown {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 420px;
-  height: 420px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   opacity: 0;
   transition: opacity 1.2s ease-in-out, filter 1.2s ease-in-out;
   filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
-  pointer-events: none;
 }
 
-/* Day crown visible by default */
 .crown-day { opacity: 1; }
 .crown-night { opacity: 0; }
 
-/* Theme toggle */
 body.dark-mode .crown-day { opacity: 0; }
 body.dark-mode .crown-night { opacity: 1; }
 
-/* Responsive crown scaling */
+/* Responsive scaling */
 @media (max-width: 900px) {
-  .hero-crown-wrapper,
-  .hero-crown {
-    width: 320px;
-    height: 320px;
-  }
+  .hero-crown-wrapper { width: 320px; height: 320px; }
 }
-
 @media (max-width: 600px) {
-  .hero-crown-wrapper,
-  .hero-crown {
-    width: 260px;
-    height: 260px;
-  }
+  .hero-crown-wrapper { width: 260px; height: 260px; }
 }
-
 @media (max-width: 400px) {
-  .hero-crown-wrapper,
-  .hero-crown {
-    width: 220px;
-    height: 220px;
-  }
+  .hero-crown-wrapper { width: 220px; height: 220px; }
 }
 
 /* ============================================================
-   4. HERO GALLERY — STABLE, RESPONSIVE, CINEMATIC
+   4. HERO GALLERY — STABLE, RESPONSIVE
 ============================================================ */
 
 .hero-flex {
@@ -123,7 +134,6 @@ body.dark-mode .crown-night { opacity: 1; }
   width: 100%;
   max-width: 1600px;
   margin: 0 auto 40px auto;
-  position: relative;
   z-index: 4;
 }
 
@@ -148,22 +158,17 @@ body.dark-mode .crown-night { opacity: 1; }
   inset: 0;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 2s ease;
 }
 
-.gallery-image.active {
-  opacity: 1;
-}
+.gallery-image.active { opacity: 1; }
 
-/* Mobile stacking */
 @media (max-width: 768px) {
   .hero-flex {
     flex-direction: column;
     gap: 20px;
   }
-
   .gallery-lane {
     width: 90vw;
     height: 200px;
@@ -171,7 +176,7 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 /* ============================================================
-   5. TAGLINE CARDS — CINEMATIC TRIO
+   5. TAGLINE CARDS — CINEMATIC
 ============================================================ */
 
 .tagline-cards {
@@ -186,7 +191,6 @@ body.dark-mode .crown-night { opacity: 1; }
 .tag-card {
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
   padding: 24px 32px;
   border-radius: 18px;
   width: clamp(240px, 28vw, 340px);
@@ -203,7 +207,7 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 /* ============================================================
-   6. MOTHER v5 — HERO INTEGRITY MARKERS
+   6. MOTHER v5 — INTEGRITY MARKERS
 ============================================================ */
 
 .hero-section { --mother: 1; }
