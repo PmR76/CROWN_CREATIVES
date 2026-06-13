@@ -1,5 +1,5 @@
 /* ============================================================
-   CROWN CREATIVES — CONTINUAL TICKER v7.0
+   CROWN CREATIVES — CONTINUAL TICKER v7.1
    Clean, infinite, Cinzel Decorative, production‑ready
 ============================================================ */
 
@@ -14,6 +14,9 @@
   text-shadow: 0 0 6px rgba(255,255,255,0.8);
   position: relative;
   pointer-events: none;
+
+  /* ⭐ NEW — positions ticker directly above frosted footer */
+  margin-bottom: 40px; /* adjust to taste (30–60px works well) */
 }
 
 .cc-ticker-track {
@@ -32,5 +35,8 @@
   .cc-ticker {
     font-size: 15px;
     padding: 10px 0;
+
+    /* Mobile spacing tweak */
+    margin-bottom: 30px;
   }
 }
