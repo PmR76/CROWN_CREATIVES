@@ -1,56 +1,91 @@
 /* ============================================================
-   CROWN CREATIVES — GLOBAL HEADER v5.0
-   Matches NEW header.html structure exactly
+   CROWN CREATIVES — HEADER v6.1
+   Center crown, corner toggles, nav below
 ============================================================ */
-
-@import url("core-shared.css");
-
-/* ------------------------------------------------------------
-   1. HEADER WRAPPER
------------------------------------------------------------- */
 
 .cc-header {
   width: 100%;
-  padding: 14px 0;
-  background: transparent;
-  position: sticky;
-  top: 0;
+  padding: 20px 0 10px;
+  position: relative;
   z-index: 1000;
+  background: transparent;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
 /* ------------------------------------------------------------
-   2. LEFT — LOGO BLOCK
+   CORNER TOGGLES
 ------------------------------------------------------------ */
 
-.cc-header-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-left: 20px;
+.cc-header-left,
+.cc-header-right {
+  position: absolute;
+  top: 20px;
 }
 
-.cc-header-left .cc-logo img {
-  width: 42px;
+.cc-header-left { left: 20px; }
+.cc-header-right { right: 20px; }
+
+.cc-toggle img {
+  width: 48px;   /* 100% larger */
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.cc-toggle:hover img {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 10px rgba(255,255,255,1));
+}
+
+/* Active sound state */
+.cc-toggle-active img {
+  filter: drop-shadow(0 0 12px rgba(0,255,180,1));
+}
+
+/* ------------------------------------------------------------
+   CENTER BLOCK — CROWN + TITLE + TAGLINE
+------------------------------------------------------------ */
+
+.cc-header-center {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.cc-header-crown {
+  width: 90px;
   height: auto;
+  margin-bottom: 6px;
 }
 
-.cc-header-left .cc-logo span {
+.cc-header-title {
   font-family: 'Cinzel Decorative', serif;
-  font-size: 22px;
+  font-size: 34px;
   color: #fff;
+  margin: 0;
+  text-shadow: 0 0 8px rgba(255,255,255,0.9);
+}
+
+.cc-header-tagline {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 15px;
+  color: #fff;
+  opacity: 0.9;
+  margin-top: 4px;
+  margin-bottom: 12px;
   text-shadow: 0 0 6px rgba(255,255,255,0.8);
 }
 
 /* ------------------------------------------------------------
-   3. CENTER — NAVIGATION
+   NAVIGATION
 ------------------------------------------------------------ */
 
 .cc-header-nav {
   display: flex;
-  gap: 26px;
+  gap: 28px;
+  justify-content: center;
 }
 
 .cc-header-nav a {
@@ -67,81 +102,33 @@
 }
 
 /* ------------------------------------------------------------
-   4. RIGHT — TOGGLES
------------------------------------------------------------- */
-
-.cc-header-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding-right: 20px;
-}
-
-.cc-toggle {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.cc-toggle img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.cc-toggle:hover img {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 10px rgba(255,255,255,1));
-}
-
-/* Active sound state */
-.cc-toggle-active img {
-  filter: drop-shadow(0 0 12px rgba(0,255,180,1));
-}
-
-/* Click pulse */
-.cc-toggle-pulse img {
-  transform: scale(1.25);
-}
-
-/* ------------------------------------------------------------
-   5. MOBILE LAYOUT
+   MOBILE
 ------------------------------------------------------------ */
 
 @media (max-width: 768px) {
 
-  .cc-header {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 0;
+  .cc-toggle img {
+    width: 40px;
+    height: 40px;
   }
 
-  .cc-header-left {
-    padding-left: 0;
+  .cc-header-left { left: 12px; }
+  .cc-header-right { right: 12px; }
+
+  .cc-header-crown {
+    width: 70px;
   }
 
-  .cc-header-right {
-    padding-right: 0;
+  .cc-header-title {
+    font-size: 26px;
+  }
+
+  .cc-header-tagline {
+    font-size: 13px;
   }
 
   .cc-header-nav {
     flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .cc-toggle img {
-    width: 26px;
-    height: 26px;
-  }
-
-  .cc-header-left .cc-logo img {
-    width: 36px;
-  }
-
-  .cc-header-left .cc-logo span {
-    font-size: 18px;
+    gap: 18px;
   }
 }
