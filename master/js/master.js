@@ -71,7 +71,7 @@ setTimeout(() => {
   if (typeof window.initBackToTop === "function") {
     window.initBackToTop();
   }
-}, 50);
+}, 150);
 
   // 3.4 Load page-specific engine (optional)
   const enginePath = `/assets/js/${page}.js`;
