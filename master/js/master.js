@@ -49,7 +49,7 @@ async function initMaster() {
     await loadPartial("/master/ticker.html");
 
   document.getElementById("cc-footer-wrapper").innerHTML =
-  await loadPartial("/master/footer.html");
+    await loadPartial("/master/footer.html");
 
   // 3.3 Load global JS engines AFTER header/footer exist
   await loadScript("/assets/js/theme.js");
