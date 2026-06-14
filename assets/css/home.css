@@ -1,12 +1,12 @@
 /* ============================================================
-   HOME PAGE — CROWN CREATIVES - 13/06/2026 - 22:47
+   HOME PAGE — CROWN CREATIVES
    Unified • Stabilised • Cinematic • Modular
 ============================================================ */
 
 @import url("cinematic.css");
 
 /* ============================================================
-   GLOBAL BACKGROUND — CINEMATIC DAY→NIGHT GRADIENT
+   1. GLOBAL BACKGROUND — CINEMATIC DAY→NIGHT GRADIENT
 ============================================================ */
 
 #cc-background {
@@ -19,7 +19,7 @@
   overflow: hidden;
 }
 
-/* Day + night gradients (fixed, oversized for bleed) */
+/* Day + night gradients */
 .day-background,
 .night-background {
   position: fixed;
@@ -59,30 +59,8 @@
 body.dark-mode .day-background { opacity: 0; }
 body.dark-mode .night-background { opacity: 1; }
 
-/* Day mist + night nebula overlays */
-
-.day-clouds {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 160vw;
-  height: 160vh;
-  pointer-events: none;
-  z-index: -998;
-  opacity: 0.35;
-  background:
-    radial-gradient(circle at 20% 40%, rgba(255,255,255,0.25) 0%, transparent 60%),
-    radial-gradient(circle at 60% 30%, rgba(255,255,255,0.20) 0%, transparent 65%),
-    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.15) 0%, transparent 70%);
-  filter: blur(25px);
-  animation: cloudDrift 60s linear infinite;
-}
-
-body.dark-mode .day-clouds {
-  opacity: 0;
-  transition: opacity 4s ease;
-}
-
+/* Mist + nebula */
+.day-clouds,
 .night-nebula {
   position: fixed;
   top: 0;
@@ -91,22 +69,25 @@ body.dark-mode .day-clouds {
   height: 160vh;
   pointer-events: none;
   z-index: -998;
+  opacity: 0.35;
+  filter: blur(25px);
+}
+
+.day-clouds {
+  animation: cloudDrift 60s linear infinite;
+}
+
+.night-nebula {
   opacity: 0;
-  background:
-    radial-gradient(circle at 30% 40%, rgba(120,80,255,0.25) 0%, transparent 60%),
-    radial-gradient(circle at 70% 60%, rgba(60,120,255,0.20) 0%, transparent 65%),
-    radial-gradient(circle at 50% 80%, rgba(180,60,255,0.15) 0%, transparent 70%);
   filter: blur(40px);
   animation: nebulaShift 80s ease-in-out infinite alternate;
 }
 
-body.dark-mode .night-nebula {
-  opacity: 1;
-  transition: opacity 4s ease;
-}
+body.dark-mode .day-clouds { opacity: 0; }
+body.dark-mode .night-nebula { opacity: 1; }
 
 /* ============================================================
-   2. HERO SECTION — CLEAN, CENTERED, NO SHIFT
+   2. HERO SECTION
 ============================================================ */
 
 .hero-section {
@@ -117,7 +98,7 @@ body.dark-mode .night-nebula {
 }
 
 /* ============================================================
-   HERO CROWN — STABLE CENTERED SYSTEM
+   3. HERO CROWN — 8s Cinematic Fade
 ============================================================ */
 
 .hero-crown-wrapper {
@@ -139,7 +120,7 @@ body.dark-mode .night-nebula {
   height: 420px;
   object-fit: contain;
   opacity: 0;
-  transition: opacity 8s ease, filter 8s ease;
+  transition: opacity 8s ease-in-out, filter 8s ease-in-out;
   filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
   animation: crownShimmer 6s ease-in-out infinite;
 }
@@ -150,7 +131,7 @@ body.dark-mode .night-nebula {
 body.dark-mode .crown-day { opacity: 0; }
 body.dark-mode .crown-night { opacity: 1; }
 
-/* Responsive scaling */
+/* Responsive */
 @media (max-width: 900px) {
   .hero-crown-wrapper,
   .hero-crown {
@@ -176,7 +157,7 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 /* ============================================================
-   4. HERO GALLERY — STABLE, RESPONSIVE
+   4. HERO GALLERY
 ============================================================ */
 
 .hero-flex {
@@ -229,7 +210,7 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 /* ============================================================
-   5. TAGLINE CARDS — CINEMATIC
+   5. TAGLINE CARDS
 ============================================================ */
 
 .tagline-cards {
