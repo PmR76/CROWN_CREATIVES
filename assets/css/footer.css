@@ -121,12 +121,12 @@
   }
 }
 /* ============================================
-   TICKER — MOVE ABOVE FOOTER BY 40mm
+   TICKER — MOVE ABOVE FOOTER BY 60mm
    ============================================ */
 
 .cc-ticker {
     position: relative;
-    transform: translateY(-40mm); /* lifts ticker upward */
+    transform: translateY(-60mm); /* lifts ticker upward */
     z-index: 9998; /* stays just under footer */
 }
 
