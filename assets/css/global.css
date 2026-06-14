@@ -130,3 +130,65 @@ body.fade-header main {
 .videos-hero * {
   pointer-events: none !important;
 }
+/* HERO GALLERY CONTAINER */
+.hero-gallery {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 1600px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 1; /* Behind crown */
+}
+
+/* GALLERY LANES */
+.gallery-lane {
+    width: 180px;
+    height: 420px;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to bottom, transparent, white 20%, white 80%, transparent);
+}
+
+/* LEFT + RIGHT POSITIONING */
+.lane-left {
+    margin-right: 80px; /* distance from crown */
+}
+
+.lane-right {
+    margin-left: 80px; /* distance from crown */
+}
+
+/* IMAGES INSIDE LANES */
+.gallery-lane img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    animation: galleryScroll 18s linear infinite;
+    opacity: 0.85;
+    border-radius: 6px;
+}
+
+/* SCROLL ANIMATION */
+@keyframes galleryScroll {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-120%); }
+}
+
+/* RESPONSIVE TUNING */
+@media (max-width: 1200px) {
+    .gallery-lane {
+        width: 140px;
+        height: 360px;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-gallery {
+        display: none; /* hide on mobile for clarity */
+    }
+}

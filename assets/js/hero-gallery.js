@@ -135,3 +135,43 @@ window.addEventListener("load", async () => {
   setInterval(() => cinematicCrossfade(leftA, leftB, leftState, images), 9000);
   setInterval(() => cinematicCrossfade(rightA, rightB, rightState, images), 9000);
 });
+async function initHeroGallery() {
+    const manifestUrl = "/assets/images/gallery/manifest.json";
+
+    const lanes = {
+        left: document.querySelector(".lane-left"),
+        right: document.querySelector(".lane-right")
+    };
+
+    if (!lanes.left || !lanes.right) return;
+
+    try {
+        const response = await fetch(manifestUrl);
+        const images = await response.json();
+
+        // Split images for left/right lanes
+        const half = Math.ceil(images.length / 2);
+        const leftImages = images.slice(0, half);
+        const rightImages = images.slice(half);
+
+        // Inject images
+        leftImages.forEach((src, i) => {
+            const img = document.createElement("img");
+            img.src = `/assets/images/gallery/${src}`;
+            img.style.animationDelay = `${i * 3}s`;
+            lanes.left.appendChild(img);
+        });
+
+        rightImages.forEach((src, i) => {
+            const img = document.createElement("img");
+            img.src = `/assets/images/gallery/${src}`;
+            img.style.animationDelay = `${i * 3}s`;
+            lanes.right.appendChild(img);
+        });
+
+    } catch (err) {
+        console.error("Gallery failed:", err);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", initHeroGallery);
