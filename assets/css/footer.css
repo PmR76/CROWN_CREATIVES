@@ -120,3 +120,17 @@
     justify-self: center !important;
   }
 }
+/* ============================================
+   FOOTER + TICKER POSITION TUNING (UP 40mm)
+   ============================================ */
+
+/* Move the entire footer upward */
+footer {
+    margin-top: -40mm;
+}
+
+/* Move the ticker upward by the same amount */
+#inspirational-ticker,
+.ticker-wrapper {
+    margin-top: -40mm;
+}
