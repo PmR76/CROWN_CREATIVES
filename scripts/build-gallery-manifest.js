@@ -1,26 +1,29 @@
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 
-// Fix __dirname for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Repo root (GitHub Actions checks out here)
+const rootDir = process.cwd();
 
 // Path to gallery folder
-const galleryDir = path.join(__dirname, "..", "assets", "images", "gallery");
+const galleryDir = path.join(rootDir, "assets", "images", "gallery");
 
 // Path to manifest file
 const manifestPath = path.join(galleryDir, "manifest.json");
 
 // Allowed image extensions
-const allowedExtensions = [".jpg", ".jpeg", ".png", ".webp", ".JPG"];
+const allowedExtensions = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".PNG"];
+
+// Ensure gallery directory exists
+function ensureGalleryDir() {
+  if (!fs.existsSync(galleryDir)) {
+    console.log("Gallery directory not found, creating:", galleryDir);
+    fs.mkdirSync(galleryDir, { recursive: true });
+  }
+}
 
 // Read directory and filter images
 function getImages() {
-  if (!fs.existsSync(galleryDir)) {
-    console.error("Gallery directory not found:", galleryDir);
-    return [];
-  }
+  ensureGalleryDir();
 
   const files = fs.readdirSync(galleryDir);
 
