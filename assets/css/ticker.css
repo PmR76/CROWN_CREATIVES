@@ -40,3 +40,12 @@
     margin-bottom: 30px;
   }
 }
+/* ============================================
+   TICKER POSITION TUNING (UP 40mm)
+   ============================================ */
+
+/* Move ticker upward so it sits directly above the footer */
+#inspirational-ticker,
+.ticker-wrapper {
+    margin-bottom: 40mm; /* lifts ticker upward */
+}
