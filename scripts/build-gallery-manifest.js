@@ -6,7 +6,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const galleryDir = path.join(__dirname, "..", "assets", "images", "gallery");
+const galleryDir = path.join(process.cwd(), "assets", "images", "gallery");
 const manifestPath = path.join(galleryDir, "manifest.json");
 
 function isImage(file) {
