@@ -192,3 +192,7 @@ body.dark-mode .night-nebula { opacity: 1; }
   overflow: visible !important;
   height: auto !important;
 }
+.hero-section {
+  position: relative;
+  z-index: 10;
+}

@@ -69,3 +69,10 @@
   left: 50% !important;
   transform: translateX(-50%) !important;
 }
+.hero-crown-wrapper {
+  z-index: 20 !important;
+}
+
+.hero-crown {
+  z-index: 21 !important;
+}
