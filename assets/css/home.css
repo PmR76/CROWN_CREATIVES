@@ -1,12 +1,11 @@
 /* ============================================================
-   HOME PAGE — CROWN CREATIVES
-   Unified • Stabilised • Cinematic • Modular
+   HOME PAGE — CLEANED (NO HERO CROWN LOGIC)
 ============================================================ */
 
 @import url("cinematic.css");
 
 /* ============================================================
-   1. GLOBAL BACKGROUND — CINEMATIC DAY→NIGHT GRADIENT
+   1. CINEMATIC BACKGROUND
 ============================================================ */
 
 #cc-background {
@@ -19,7 +18,6 @@
   overflow: hidden;
 }
 
-/* Day + night gradients */
 .day-background,
 .night-background {
   position: fixed;
@@ -59,7 +57,6 @@
 body.dark-mode .day-background { opacity: 0; }
 body.dark-mode .night-background { opacity: 1; }
 
-/* Mist + nebula */
 .day-clouds,
 .night-nebula {
   position: fixed;
@@ -98,66 +95,7 @@ body.dark-mode .night-nebula { opacity: 1; }
 }
 
 /* ============================================================
-   3. HERO CROWN — 8s Cinematic Fade
-============================================================ */
-
-.hero-crown-wrapper {
-  position: relative;
-  width: 420px;
-  height: 420px;
-  margin: 0 auto;
-  z-index: 5;
-  overflow: visible;
-  pointer-events: none;
-}
-
-.hero-crown {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 420px;
-  height: 420px;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 8s ease-in-out, filter 8s ease-in-out;
-  filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
-  animation: crownShimmer 6s ease-in-out infinite;
-}
-
-.crown-day { opacity: 1; }
-.crown-night { opacity: 0; }
-
-body.dark-mode .crown-day { opacity: 0; }
-body.dark-mode .crown-night { opacity: 1; }
-
-/* Responsive */
-@media (max-width: 900px) {
-  .hero-crown-wrapper,
-  .hero-crown {
-    width: 320px;
-    height: 320px;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-crown-wrapper,
-  .hero-crown {
-    width: 260px;
-    height: 260px;
-  }
-}
-
-@media (max-width: 400px) {
-  .hero-crown-wrapper,
-  .hero-crown {
-    width: 200px;
-    height: 200px;
-  }
-}
-
-/* ============================================================
-   4. HERO GALLERY
+   3. HERO GALLERY
 ============================================================ */
 
 .hero-flex {
@@ -210,7 +148,7 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 /* ============================================================
-   5. TAGLINE CARDS
+   4. TAGLINE CARDS
 ============================================================ */
 
 .tagline-cards {
@@ -241,12 +179,11 @@ body.dark-mode .crown-night { opacity: 1; }
 }
 
 /* ============================================================
-   6. MOTHER v5 — INTEGRITY MARKERS
+   5. MOTHER v5 — INTEGRITY MARKERS
 ============================================================ */
 
 .hero-section { --mother: 1; }
 .hero-flex { --mother: 1; }
-.hero-crown { --mother: 1; }
 .gallery-lane { --mother: 1; }
 .tagline-cards { --mother: 1; }
 

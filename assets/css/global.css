@@ -1,6 +1,6 @@
 /* ============================================================
-   CROWN CREATIVES — CINEMATIC GLOBAL CORE v2.0
-   Modular • Stable • Editable • Non‑intrusive
+   CROWN CREATIVES — CINEMATIC GLOBAL CORE v2.1 (CLEANED)
+   Modular • Stable • No Hero Crown Logic
 ============================================================ */
 
 /* ------------------------------------------------------------
@@ -25,11 +25,12 @@ html, body {
 }
 
 /* ------------------------------------------------------------
-   2. UNIVERSAL CROWN MAGIC SYSTEM (MODULAR)
+   2. GLOBAL SHIMMER / SWEEP / SPARKLE
+   (NO LONGER APPLIES TO HERO CROWNS)
 ------------------------------------------------------------ */
 
-img[src*="crown"],
-svg[src*="crown"] {
+img:not(.hero-crown)[src*="crown"],
+svg:not(.hero-crown)[src*="crown"] {
   position: relative;
   filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
   animation: globalCrownShimmer 6s ease-in-out infinite;
@@ -38,24 +39,15 @@ svg[src*="crown"] {
   pointer-events: none;
 }
 
-body.dark-mode img[src*="crown"],
-body.dark-mode svg[src*="crown"] {
-  filter: drop-shadow(0 0 22px rgba(255,255,255,1));
-  transform: scale(1.04);
-}
-
 @keyframes globalCrownShimmer {
   0%   { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
   50%  { filter: drop-shadow(0 0 18px rgba(255,255,255,0.9)); }
   100% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
 }
 
-/* ------------------------------------------------------------
-   3. LIGHT SWEEP (MAGICAL BEAM)
------------------------------------------------------------- */
-
-img[src*="crown"]::after,
-svg[src*="crown"]::after {
+/* Sweep */
+img:not(.hero-crown)[src*="crown"]::after,
+svg:not(.hero-crown)[src*="crown"]::after {
   content: "";
   position: absolute;
   top: 0;
@@ -81,12 +73,9 @@ svg[src*="crown"]::after {
   100% { left: -150%; opacity: 0; }
 }
 
-/* ------------------------------------------------------------
-   4. SPARKLE TWINKLE
------------------------------------------------------------- */
-
-img[src*="crown"]::before,
-svg[src*="crown"]::before {
+/* Sparkle */
+img:not(.hero-crown)[src*="crown"]::before,
+svg:not(.hero-crown)[src*="crown"]::before {
   content: "";
   position: absolute;
   top: -10%;
@@ -114,7 +103,7 @@ svg[src*="crown"]::before {
 }
 
 /* ------------------------------------------------------------
-   5. GLOBAL HEADER FADE
+   3. GLOBAL HEADER FADE
 ------------------------------------------------------------ */
 
 main {
@@ -128,7 +117,7 @@ body.fade-header main {
 }
 
 /* ------------------------------------------------------------
-   6. SAFETY OVERRIDES
+   4. SAFETY OVERRIDES
 ------------------------------------------------------------ */
 
 #evolve-panel,
