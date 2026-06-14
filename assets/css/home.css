@@ -214,3 +214,27 @@ body.dark-mode .night-nebula { opacity: 1; }
 .gallery-lane {
     transform: translateY(-15mm); /* subtle upward correction */
 }
+/* ============================================================
+   HERO SECTION — NARROW + MOVE LANES INWARD SAFELY
+   ============================================================ */
+
+/* Narrow the entire hero content area */
+.hero-flex {
+    max-width: 1200px;   /* was effectively full width */
+    margin: 0 auto;      /* center it perfectly */
+}
+
+/* Pull gallery lanes inward without touching the crown */
+.gallery-left {
+    margin-right: 25mm;  /* inward shift */
+}
+
+.gallery-right {
+    margin-left: 25mm;   /* inward shift */
+}
+
+/* Ensure crown remains dominant and untouched */
+.hero-crown-wrapper {
+    z-index: 50;         /* stays above gallery lanes */
+    position: relative;
+}
