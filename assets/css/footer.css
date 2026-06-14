@@ -135,11 +135,12 @@ footer {
     margin-top: -40mm;
 }
 /* ============================================
-   TICKER POSITION TUNING (UP 40mm)
+   TICKER POSITION TUNING (UP 40mm — SAFE)
    ============================================ */
 
-/* Move ticker upward so it sits directly above the footer */
 #inspirational-ticker,
 .ticker-wrapper {
-    margin-bottom: 40mm; /* lifts ticker upward */
+    position: relative;
+    transform: translateY(-40mm); /* moves ticker up visually */
+    z-index: 10;
 }
