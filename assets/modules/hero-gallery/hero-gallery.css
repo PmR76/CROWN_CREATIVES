@@ -60,3 +60,14 @@
     height: 200px;
   }
 }
+/* ============================================
+   HERO GALLERY — SHIFT LANES 10mm INWARD
+   ============================================ */
+
+.gallery-left {
+    margin-right: 10mm; /* move lane 10mm closer to crown */
+}
+
+.gallery-right {
+    margin-left: 10mm; /* move lane 10mm closer to crown */
+}
