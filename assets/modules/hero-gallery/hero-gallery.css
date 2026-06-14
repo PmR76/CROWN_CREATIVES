@@ -1,29 +1,27 @@
 /* ============================================================
-   HERO GALLERY MODULE — CINEMATIC LANES
-   Modular • Independent • Mobile‑Aware
+   HERO GALLERY MODULE — CINEMATIC LANES (UPDATED)
 ============================================================ */
 
-/* 20mm inward shift = approx 75px on desktop */
 .hero-flex {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(20px, 4vw, 75px);
+  gap: clamp(20px, 3vw, 60px); /* tightened */
   width: 100%;
   max-width: 1600px;
   margin: 0 auto 40px auto;
   z-index: 4;
 }
 
-/* Gallery lanes */
 .gallery-lane {
-  flex: 0 1 clamp(180px, 20vw, 300px);
+  flex: 0 1 clamp(180px, 20vw, 260px); /* tightened */
   height: 260px;
   border-radius: 16px;
   overflow: hidden;
   background-color: rgba(0,0,0,0.3);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   position: relative;
+  z-index: 10; /* crown-safe */
 }
 
 .gallery-lane-inner {
@@ -32,7 +30,6 @@
   position: relative;
 }
 
-/* Images fade in/out */
 .gallery-image {
   position: absolute;
   inset: 0;
@@ -56,7 +53,6 @@
     gap: 20px;
   }
 
-  /* Hide right lane on mobile */
   .gallery-right {
     display: none;
   }
@@ -65,7 +61,4 @@
     width: 90vw;
     height: 200px;
   }
-}
-.gallery-lane {
-  z-index: 5 !important;
 }
