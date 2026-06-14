@@ -61,13 +61,13 @@
   }
 }
 /* ============================================
-   HERO GALLERY — SHIFT LANES 10mm INWARD
+   HERO GALLERY — SHIFT LANES 20mm INWARD
    ============================================ */
 
 .gallery-left {
-    margin-right: 10mm; /* move lane 10mm closer to crown */
+    margin-right: 30mm; /* move left lane toward midline */
 }
 
 .gallery-right {
-    margin-left: 10mm; /* move lane 10mm closer to crown */
+    margin-left: 30mm; /* move right lane toward midline */
 }
