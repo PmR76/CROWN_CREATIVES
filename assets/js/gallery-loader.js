@@ -1,17 +1,17 @@
 /* ============================================================
-   GALLERY LOADER v2.0 — FINAL
-   - Loads: /assets/images/gallery/gallery-manifest.json
+   GALLERY LOADER v3.0 — FINAL
+   - Supports manifest format: ["file1.jpg", "file2.png", ...]
    - Hero Gallery: shuffled
-   - Full Gallery: date-ordered (by filename)
+   - Full Gallery: sorted newest → oldest (by filename)
    - Also exposes: video + podcast manifest loaders
 ============================================================ */
 
 const GalleryLoader = {
-  manifestPath: "/assets/images/gallery/gallery-manifest.json",
+  manifestPath: "/assets/images/gallery/manifest.json",
   cache: null,
 
   /* ------------------------------------------------------------
-     Load gallery manifest (shared by hero + full gallery)
+     Load gallery manifest (supports array format)
   ------------------------------------------------------------ */
   async loadManifest() {
     if (this.cache) return this.cache;
@@ -22,9 +22,16 @@ const GalleryLoader = {
 
       const data = await res.json();
 
-      // Expected format:
-      // { "images": ["file1.jpg", "file2.webp", ...] }
-      const images = (data.images || []).map(name => ({
+      // Accepts either:
+      // ["file1.jpg", "file2.png"]
+      // OR { images: ["file1.jpg", "file2.png"] }
+      const list = Array.isArray(data)
+        ? data
+        : Array.isArray(data.images)
+        ? data.images
+        : [];
+
+      const images = list.map(name => ({
         name,
         url: `/assets/images/gallery/${name}`
       }));
@@ -44,7 +51,6 @@ const GalleryLoader = {
   async getHeroImages(limit = null) {
     const images = await this.loadManifest();
     const shuffled = this.shuffle([...images]);
-
     return limit ? shuffled.slice(0, limit) : shuffled;
   },
 
