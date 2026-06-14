@@ -136,10 +136,21 @@
     z-index: 9999;
 }
 /* ============================================
-   BRING TICKER TO FRONT
+   FORCE TICKER TO FRONT + VISIBLE
    ============================================ */
 
 .cc-ticker {
-    position: relative;
-    z-index: 10000 !important; /* higher than footer */
+    position: relative !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    z-index: 999999 !important; /* above everything */
+    transform: none !important; /* reset any previous transforms */
+}
+
+/* Prevent parent containers from hiding it */
+.cc-ticker * {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
