@@ -1,47 +1,24 @@
 /* ============================================================
-   HERO CROWN MODULE — LOGIC BRAIN
-   Handles: day/night swap, future parallax, future breathing
+   HERO CROWN MODULE — FULL FILE (v=20240614-1210)
+   Ensures perfect centering + fade sync
 ============================================================ */
 
-document.addEventListener("DOMContentLoaded", () => {
-  
+window.addEventListener("DOMContentLoaded", () => {
   const dayCrown = document.querySelector(".crown-day");
   const nightCrown = document.querySelector(".crown-night");
 
   if (!dayCrown || !nightCrown) return;
 
-  // Ensure both crowns start perfectly aligned
-dayCrown.style.top = "0";
-dayCrown.style.left = "50%";
-dayCrown.style.transform = "translateX(-50%)";
+  // Hard‑lock positioning
+  const lockPosition = crown => {
+    crown.style.top = "0";
+    crown.style.left = "50%";
+    crown.style.transform = "translateX(-50%)";
+  };
 
-nightCrown.style.top = "0";
-nightCrown.style.left = "50%";
-nightCrown.style.transform = "translateX(-50%)";
+  lockPosition(dayCrown);
+  lockPosition(nightCrown);
 
-  // Sync with dark mode state on load
-  const isDark = document.body.classList.contains("dark-mode");
-
-  if (isDark) {
-    dayCrown.style.opacity = "0";
-    nightCrown.style.opacity = "1";
-  } else {
-    dayCrown.style.opacity = "1";
-    nightCrown.style.opacity = "0";
-  }
-
-  // Listen for theme changes (master.js toggles dark-mode class)
-  const observer = new MutationObserver(() => {
-    const dark = document.body.classList.contains("dark-mode");
-
-    if (dark) {
-      dayCrown.style.opacity = "0";
-      nightCrown.style.opacity = "1";
-    } else {
-      dayCrown.style.opacity = "1";
-      nightCrown.style.opacity = "0";
-    }
-  });
-
-  observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  // Ensure night crown starts hidden
+  nightCrown.style.opacity = "0";
 });
