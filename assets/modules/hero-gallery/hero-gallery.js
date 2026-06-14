@@ -1,6 +1,7 @@
 /* ============================================================
-   HERO GALLERY — MANIFEST-POWERED (CLOUDFLARE SAFE, UPDATED)
-   ============================================================ */
+   HERO GALLERY — MANIFEST-POWERED (v=20240614-1210)
+   Cloudflare‑Safe • Fade‑Hold‑Fade • Mobile‑Aware
+============================================================ */
 
 const galleryPath = "/assets/images/gallery/";
 const manifestURL = galleryPath + "manifest.json";
@@ -45,7 +46,6 @@ window.addEventListener("load", async () => {
   const leftLane = document.querySelector(".gallery-left .gallery-lane-inner");
   const rightLane = document.querySelector(".gallery-right .gallery-lane-inner");
 
-  // Mobile mode: only left lane
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   if (!leftLane) return;
@@ -66,13 +66,11 @@ window.addEventListener("load", async () => {
     return [a, b];
   }
 
-  // LEFT LANE
   const [leftA, leftB] = createLayers(leftLane);
   const leftState = { current: null, toggle: true };
   crossfade(leftA, leftB, leftState, images);
-  setInterval(() => crossfade(leftA, leftB, leftState, images), 10000); // 8s hold + 2s fade
+  setInterval(() => crossfade(leftA, leftB, leftState, images), 10000);
 
-  // RIGHT LANE (desktop only)
   if (!isMobile && rightLane) {
     const [rightA, rightB] = createLayers(rightLane);
     const rightState = { current: null, toggle: true };

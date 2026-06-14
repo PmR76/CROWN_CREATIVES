@@ -1,12 +1,13 @@
 /* ============================================================
-   HERO GALLERY MODULE — CINEMATIC LANES (UPDATED)
+   HERO GALLERY MODULE — FULL FILE (v=20240614-1210)
+   Cloudflare‑Safe • Mobile‑Aware • Crown‑Safe
 ============================================================ */
 
 .hero-flex {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(20px, 3vw, 60px); /* tightened */
+  gap: clamp(20px, 3vw, 60px);
   width: 100%;
   max-width: 1600px;
   margin: 0 auto 40px auto;
@@ -14,14 +15,14 @@
 }
 
 .gallery-lane {
-  flex: 0 1 clamp(180px, 20vw, 260px); /* tightened */
+  flex: 0 1 clamp(180px, 20vw, 260px);
   height: 260px;
   border-radius: 16px;
   overflow: hidden;
   background-color: rgba(0,0,0,0.3);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   position: relative;
-  z-index: 10; /* crown-safe */
+  z-index: 10 !important;
 }
 
 .gallery-lane-inner {
@@ -43,10 +44,7 @@
   opacity: 1;
 }
 
-/* ============================================================
-   MOBILE MODE — ONE LANE ONLY
-============================================================ */
-
+/* MOBILE MODE — ONE LANE ONLY */
 @media (max-width: 768px) {
   .hero-flex {
     flex-direction: column;
