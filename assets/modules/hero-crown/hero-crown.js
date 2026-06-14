@@ -11,8 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!dayCrown || !nightCrown) return;
 
   // Ensure both crowns start perfectly aligned
-  dayCrown.style.transform = "translateX(-50%)";
-  nightCrown.style.transform = "translateX(-50%)";
+dayCrown.style.top = "0";
+dayCrown.style.left = "50%";
+dayCrown.style.transform = "translateX(-50%)";
+
+nightCrown.style.top = "0";
+nightCrown.style.left = "50%";
+nightCrown.style.transform = "translateX(-50%)";
 
   // Sync with dark mode state on load
   const isDark = document.body.classList.contains("dark-mode");

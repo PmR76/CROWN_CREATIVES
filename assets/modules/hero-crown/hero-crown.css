@@ -81,3 +81,9 @@ body.dark-mode .crown-night { opacity: 1; }
   50%  { filter: drop-shadow(0 0 35px rgba(255,255,255,1)); }
   100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)); }
 }
+/* Force night crown to match day crown position */
+.crown-night {
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
