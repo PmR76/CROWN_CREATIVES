@@ -135,3 +135,11 @@
     position: relative;
     z-index: 9999;
 }
+/* ============================================
+   BRING TICKER TO FRONT
+   ============================================ */
+
+.cc-ticker {
+    position: relative;
+    z-index: 10000 !important; /* higher than footer */
+}
