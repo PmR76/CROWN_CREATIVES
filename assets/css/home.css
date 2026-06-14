@@ -196,3 +196,21 @@ body.dark-mode .night-nebula { opacity: 1; }
   position: relative;
   z-index: 10;
 }
+/* ============================================
+   HERO SECTION SPACING TUNING (30mm upward)
+   ============================================ */
+
+/* Move hero crown + gallery up by 30mm */
+.hero-section .hero-flex {
+    margin-top: -30mm; /* pulls crown + gallery upward */
+}
+
+/* Pull tagline cards upward to follow the hero */
+.tagline-cards {
+    margin-top: -20mm; /* reduces gap without touching ticker/footer */
+}
+
+/* Ensure gallery stays aligned behind crown after shift */
+.gallery-lane {
+    transform: translateY(-15mm); /* subtle upward correction */
+}
