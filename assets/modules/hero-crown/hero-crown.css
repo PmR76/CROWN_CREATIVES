@@ -2,12 +2,11 @@
    HERO CROWN MODULE — CINEMATIC DAY/NIGHT SYSTEM
    Modular • Isolated • No Global Interference
 ============================================================ */
-
 /* Wrapper */
 .hero-crown-wrapper {
   position: relative;
-  width: 420px;
-  height: 420px;
+  width: 462px;
+  height: 462px;
   margin: 0 auto;
   z-index: 5;
   overflow: visible;
@@ -20,56 +19,39 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%) !important;
-  width: 420px;
-  height: 420px;
+  width: 462px;
+  height: 462px;
   object-fit: contain;
 
   opacity: 0;
   transition: opacity 8s ease-in-out, filter 8s ease-in-out;
 
-  /* Local shimmer — avoids global transforms */
   filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
   animation: crownShimmer 6s ease-in-out infinite;
-}
-
-/* Day crown visible by default */
-.crown-day { opacity: 1; }
-
-/* Night crown hidden by default */
-.crown-night { opacity: 0; }
-
-/* Dark mode swap */
-body.dark-mode .crown-day { opacity: 0; }
-body.dark-mode .crown-night { opacity: 1; }
-
-/* Disable global shimmer transforms */
-.hero-crown::before,
-.hero-crown::after {
-  transform: none !important;
 }
 
 /* Responsive scaling */
 @media (max-width: 900px) {
   .hero-crown-wrapper,
   .hero-crown {
-    width: 320px;
-    height: 320px;
+    width: 352px;
+    height: 352px;
   }
 }
 
 @media (max-width: 600px) {
   .hero-crown-wrapper,
   .hero-crown {
-    width: 260px;
-    height: 260px;
+    width: 286px;
+    height: 286px;
   }
 }
 
 @media (max-width: 400px) {
   .hero-crown-wrapper,
   .hero-crown {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
   }
 }
 
