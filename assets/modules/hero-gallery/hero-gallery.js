@@ -1,14 +1,14 @@
 /* ============================================================
-   HERO GALLERY — MANIFEST-POWERED (v=20240614-1210)
+   HERO GALLERY — MANIFEST-POWERED (v=20240614-1215)
    Cloudflare‑Safe • Fade‑Hold‑Fade • Mobile‑Aware
 ============================================================ */
 
 const galleryPath = "/assets/images/gallery/";
-const manifestURL = galleryPath + "manifest.json";
+const manifestURL = galleryPath + "manifest.json?v=" + Date.now();
 
 async function loadManifest() {
   try {
-    const res = await fetch(manifestURL + "?v=" + Date.now());
+    const res = await fetch(manifestURL);
     if (!res.ok) throw new Error("Manifest not found");
     const list = await res.json();
     return list.filter(name =>
