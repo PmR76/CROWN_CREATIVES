@@ -71,3 +71,29 @@
 .gallery-right {
     margin-left: 30mm; /* move right lane toward midline */
 }
+/* ============================================================
+   FORCE HERO GALLERY TO BE VISIBLE + ON TOP
+   ============================================================ */
+
+.hero-gallery,
+.gallery-lane,
+.gallery-lane-inner,
+.gallery-lane img {
+    position: relative !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    z-index: 999999 !important; /* above backgrounds, above crown */
+    transform: none !important; /* reset any accidental offsets */
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* Prevent parent containers from clipping the gallery */
+.hero-section,
+.hero-flex {
+    overflow: visible !important;
+    z-index: 999998 !important;
+}
