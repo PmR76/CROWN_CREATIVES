@@ -1,51 +1,82 @@
 /* ============================================================
-   HERO GALLERY MODULE — LOGIC ENGINE
-   Auto‑scan • Fade • Hold • Fade • Loop
-============================================================ */
+   HERO GALLERY — MANIFEST-POWERED (CLOUDFLARE SAFE, UPDATED)
+   ============================================================ */
 
-document.addEventListener("DOMContentLoaded", () => {
+const galleryPath = "/assets/images/gallery/";
+const manifestURL = galleryPath + "manifest.json";
 
-  const GALLERY_PATH = "/assets/images/gallery/";
-  const DISPLAY_TIME = 8000; // 8 seconds
-  const lanes = document.querySelectorAll(".gallery-lane-inner");
+async function loadManifest() {
+  try {
+    const res = await fetch(manifestURL + "?v=" + Date.now());
+    if (!res.ok) throw new Error("Manifest not found");
+    const list = await res.json();
+    return list.filter(name =>
+      name.match(/\.(jpg|jpeg|png|webp)$/i)
+    );
+  } catch (err) {
+    console.error("Failed to load manifest:", err);
+    return [];
+  }
+}
 
-  // Fetch all images in the gallery folder
-  fetch(GALLERY_PATH)
-    .then(res => res.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, "text/html");
+function pickRandom(exclude, list) {
+  if (list.length === 1) return list[0];
+  let img = exclude;
+  while (img === exclude) {
+    img = list[Math.floor(Math.random() * list.length)];
+  }
+  return img;
+}
 
-      // Extract file names
-      const files = [...doc.querySelectorAll("a")]
-        .map(a => a.getAttribute("href"))
-        .filter(name => /\.(jpg|jpeg|png|webp|gif)$/i.test(name));
+function crossfade(layerA, layerB, state, list) {
+  const next = pickRandom(state.current, list);
+  const incoming = state.toggle ? layerA : layerB;
+  const outgoing = state.toggle ? layerB : layerA;
 
-      if (files.length === 0) return;
+  incoming.style.backgroundImage = `url('${galleryPath}${next}')`;
+  incoming.classList.add("active");
+  outgoing.classList.remove("active");
 
-      // Create independent loops for each lane
-      lanes.forEach((lane, index) => {
-        let current = 0;
+  state.current = next;
+  state.toggle = !state.toggle;
+}
 
-        // Create image elements
-        const images = files.map(file => {
-          const div = document.createElement("div");
-          div.className = "gallery-image";
-          div.style.backgroundImage = `url(${GALLERY_PATH}${file})`;
-          lane.appendChild(div);
-          return div;
-        });
+window.addEventListener("load", async () => {
+  const leftLane = document.querySelector(".gallery-left .gallery-lane-inner");
+  const rightLane = document.querySelector(".gallery-right .gallery-lane-inner");
 
-        // Start rotation
-        const cycle = () => {
-          images.forEach(img => img.classList.remove("active"));
-          images[current].classList.add("active");
+  // Mobile mode: only left lane
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-          current = (current + 1) % images.length;
-        };
+  if (!leftLane) return;
 
-        cycle(); // show first image immediately
-        setInterval(cycle, DISPLAY_TIME + 2000); // 8s hold + 2s fade
-      });
-    });
+  const images = await loadManifest();
+  if (!images.length) {
+    console.warn("No images found in manifest.");
+    return;
+  }
+
+  function createLayers(container) {
+    const a = document.createElement("div");
+    const b = document.createElement("div");
+    a.className = "gallery-image active";
+    b.className = "gallery-image";
+    container.appendChild(a);
+    container.appendChild(b);
+    return [a, b];
+  }
+
+  // LEFT LANE
+  const [leftA, leftB] = createLayers(leftLane);
+  const leftState = { current: null, toggle: true };
+  crossfade(leftA, leftB, leftState, images);
+  setInterval(() => crossfade(leftA, leftB, leftState, images), 10000); // 8s hold + 2s fade
+
+  // RIGHT LANE (desktop only)
+  if (!isMobile && rightLane) {
+    const [rightA, rightB] = createLayers(rightLane);
+    const rightState = { current: null, toggle: true };
+    crossfade(rightA, rightB, rightState, images);
+    setInterval(() => crossfade(rightA, rightB, rightState, images), 10000);
+  }
 });
