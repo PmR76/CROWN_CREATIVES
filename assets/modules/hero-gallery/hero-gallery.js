@@ -78,3 +78,4 @@ window.addEventListener("load", async () => {
     setInterval(() => crossfade(rightA, rightB, rightState, images), 10000);
   }
 });
+ 
