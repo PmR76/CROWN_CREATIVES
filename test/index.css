@@ -168,3 +168,43 @@ body {
     align-items: center;
   }
 }
+/* ============================================================
+   TOGGLE ORBS (Theme + Sound)
+============================================================ */
+
+.toggle-orb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  z-index: 9999;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.toggle-orb img {
+  width: 26px;
+  height: 26px;
+  opacity: 0.9;
+}
+
+.toggle-orb:hover {
+  transform: scale(1.15);
+}
+
+/* POSITIONING */
+#theme-toggle {
+  top: 20px;
+  right: 20px;
+}
+
+#sound-toggle {
+  top: 20px;
+  left: 20px;
+}

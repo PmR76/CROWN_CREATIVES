@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Crown Creatives — Test Environment</title>
 
-  <!-- ONLY the modular test CSS -->
-  <link rel="stylesheet" href="index-test.css">
+  <!-- Test CSS + global + theme -->
+  <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="../assets/css/global.css">
   <link rel="stylesheet" href="../assets/css/theme.css">
 
@@ -14,7 +14,7 @@
 
 <body id="cc-test">
 
-  <!-- BACKGROUND (same as main site) -->
+  <!-- BACKGROUND -->
   <div id="cc-background">
     <div class="day-background"></div>
     <div class="night-background"></div>
@@ -22,7 +22,7 @@
     <div class="night-nebula"></div>
   </div>
 
-  <!-- HEADER (injected from /test/header.html) -->
+  <!-- HEADER (injected) -->
   <div id="cc-header"></div>
 
   <!-- HERO SECTION -->
@@ -34,7 +34,7 @@
       <img id="hero-crown-night" src="../assets/icons/night-crown.svg">
     </div>
 
-    <!-- HERO GALLERY WINDOW -->
+    <!-- HERO GALLERY -->
     <div id="hero-gallery">
       <div class="gallery-left">
         <div class="gallery-lane-inner"></div>
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <!-- HERO TAGLINE -->
+    <!-- TAGLINE -->
     <h1 class="hero-tagline">IMAGINATION BECOMES REALITY</h1>
 
   </section>
@@ -70,24 +70,26 @@
 
   </section>
 
-  <!-- FOOTER (injected from /test/footer.html) -->
+  <!-- FOOTER (injected) -->
   <div id="cc-footer"></div>
 
-  <!-- ENGINES (use production engines for now) -->
+  <!-- MODULES (plug‑and‑play) -->
+  <script src="hero-gallery/hero-gallery.js"></script>
+  <script src="sound/sound.js"></script>
+
+  <!-- ENGINES (production engines) -->
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/sound-engine.js"></script>
   <script src="../assets/js/hero-gallery.js"></script>
 
   <!-- HEADER + FOOTER INJECTION -->
   <script>
-    // Inject header
     fetch("header.html")
-      .then(res => res.text())
+      .then(r => r.text())
       .then(html => document.getElementById("cc-header").innerHTML = html);
 
-    // Inject footer
     fetch("footer.html")
-      .then(res => res.text())
+      .then(r => r.text())
       .then(html => document.getElementById("cc-footer").innerHTML = html);
   </script>
 
