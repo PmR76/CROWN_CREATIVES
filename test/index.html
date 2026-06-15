@@ -94,12 +94,12 @@
 
   <!-- HEADER + FOOTER INJECTION -->
   <script>
-    // Inject header
+    /* Inject HEADER from: /test/header/header.html */
     fetch("header/header.html")
       .then(r => r.text())
       .then(html => document.getElementById("cc-header").innerHTML = html);
 
-    // Inject footer
+    /* Inject FOOTER from: /test/footer/footer.html */
     fetch("footer/footer.html")
       .then(r => r.text())
       .then(html => document.getElementById("cc-footer").innerHTML = html);
