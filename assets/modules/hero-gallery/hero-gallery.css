@@ -61,18 +61,12 @@
   }
 }
 
-/* ============================================
-   HERO GALLERY — SHIFT LANES 30mm INWARD
-   ============================================ */
-
-.gallery-left {
-    margin-right: 30mm; /* move left lane toward midline */
+/* Ensure lanes never collapse */
+.gallery-lane {
+  min-width: 180px; /* adjust if needed */
 }
 
-.gallery-right {
-    margin-left: 30mm; /* move right lane toward midline */
-}
-/* Bring gallery lanes inward by 30mm (~113px) */
+/* Bring lanes inward by 30mm (~113px) */
 .gallery-left {
   margin-right: 113px;
 }
