@@ -1,0 +1,18 @@
+#cc-ticker {
+  width: 100%;
+  overflow: hidden;
+  margin: 40px 0 20px 0;
+}
+
+.ticker-track {
+  white-space: nowrap;
+  animation: tickerMove 18s linear infinite;
+  font-size: 1.2rem;
+  opacity: 0.85;
+  letter-spacing: 1px;
+}
+
+@keyframes tickerMove {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(-100%); }
+}
