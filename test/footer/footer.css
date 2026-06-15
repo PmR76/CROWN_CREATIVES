@@ -70,3 +70,46 @@
     gap: 20px;
   }
 }
+.cc-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.cc-footer-glass {
+  width: 90%;
+  max-width: 1200px;
+  padding: 20px 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cc-footer-icons {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 15px;
+}
+
+.cc-footer-icon img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.cc-footer-icon img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+.cc-footer-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-align: center;
+}
