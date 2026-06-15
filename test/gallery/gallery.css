@@ -1,0 +1,30 @@
+/* ============================================================
+   HERO GALLERY MODULE — Crown Creatives
+============================================================ */
+
+#hero-gallery {
+  width: 100%;
+  max-width: 1100px;
+  height: 420px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.gallery-left,
+.gallery-right {
+  width: 48%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-lane-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
