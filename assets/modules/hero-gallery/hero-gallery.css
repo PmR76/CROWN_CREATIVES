@@ -4,7 +4,7 @@
 ============================================================ */
 
 /* ------------------------------------------------------------
-   0. HERO FLEX FIX — REQUIRED FOR GALLERY VISIBILITY
+   0. HERO FLEX — FINAL FIX
 ------------------------------------------------------------ */
 
 .hero-flex {
@@ -12,11 +12,22 @@
   justify-content: center;
   align-items: center;
 
-  /* Prevent collapse by forcing space between lanes + crown */
-  gap: 260px;
+  /* HARD GAP — forces physical space for lanes */
+  gap: 320px;
 
-  /* Prevent flexbox from squeezing lanes to zero */
+  /* Prevent flexbox from collapsing lanes */
   flex-wrap: nowrap;
+
+  /* Prevent children from stealing each other's space */
+  flex-shrink: 0;
+}
+
+/* Crown must NOT grow or shrink */
+.hero-crown-wrapper {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ------------------------------------------------------------
@@ -28,15 +39,18 @@
   height: 420px;
   overflow: hidden;
 
-  /* HARD WIDTH — prevents collapse */
-  flex: 0 0 320px;
-  width: 320px;
-  min-width: 320px;
-  max-width: 320px;
+  /* ABSOLUTE WIDTH — cannot collapse */
+  flex: 0 0 340px;
+  width: 340px;
+  min-width: 340px;
+  max-width: 340px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* Prevent any shrink */
+  flex-shrink: 0;
 }
 
 /* Inner container that holds the fading images */
@@ -77,37 +91,48 @@
    4. RESPONSIVE BEHAVIOUR
 ------------------------------------------------------------ */
 
-@media (max-width: 1400px) {
+@media (max-width: 1500px) {
+  .hero-flex { gap: 260px; }
+}
+
+@media (max-width: 1300px) {
   .hero-flex { gap: 220px; }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
   .hero-flex { gap: 180px; }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   .hero-flex { gap: 120px; }
-}
-
-@media (max-width: 800px) {
-  .hero-flex { gap: 60px; }
 
   .gallery-lane {
-    flex: 0 0 220px;
-    width: 220px;
-    min-width: 220px;
-    max-width: 220px;
+    flex: 0 0 260px;
+    width: 260px;
+    min-width: 260px;
+    max-width: 260px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+  .hero-flex { gap: 60px; }
+
+  .gallery-lane {
+    flex: 0 0 200px;
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 550px) {
   .hero-flex { gap: 30px; }
 
   .gallery-lane {
     height: 300px;
-    flex: 0 0 160px;
-    width: 160px;
-    min-width: 160px;
-    max-width: 160px;
+    flex: 0 0 150px;
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
   }
 }
