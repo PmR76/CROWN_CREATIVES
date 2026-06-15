@@ -1,0 +1,34 @@
+/* ============================================================
+   FOOTER MODULE — Crown Creatives
+============================================================ */
+
+.cc-footer {
+  margin-top: 80px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.cc-footer-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  margin-bottom: 25px;
+}
+
+.cc-footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.cc-footer-icon img {
+  width: 28px;
+  height: 28px;
+  opacity: 0.85;
+}
+
+.cc-footer-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

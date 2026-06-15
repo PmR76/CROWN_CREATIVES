@@ -1,0 +1,49 @@
+/* ============================================================
+   HEADER MODULE — Crown Creatives
+   Styles only the header subsystem
+============================================================ */
+
+.cc-header {
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cc-header-left,
+.cc-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.cc-header-center {
+  text-align: center;
+}
+
+.cc-header-crown {
+  width: 70px;
+  height: auto;
+}
+
+.cc-header-title {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.cc-header-tagline {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.cc-header-nav {
+  margin-top: 12px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.cc-header-nav a {
+  text-decoration: none;
+  color: var(--cc-text-primary);
+}
