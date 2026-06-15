@@ -91,3 +91,8 @@ setTimeout(() => {
    4. START MASTER SYSTEM
 ------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", initMaster);
+window.addEventListener("DOMContentLoaded", () => {
+    if (window.initHeroGallery) {
+        window.initHeroGallery();
+    }
+});
