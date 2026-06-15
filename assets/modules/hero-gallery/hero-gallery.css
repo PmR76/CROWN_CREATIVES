@@ -4,6 +4,22 @@
 ============================================================ */
 
 /* ------------------------------------------------------------
+   0. HERO FLEX FIX — REQUIRED FOR GALLERY VISIBILITY
+------------------------------------------------------------ */
+
+.hero-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* THE FIX — forces space for lanes */
+  gap: 200px;
+
+  /* prevents flexbox from collapsing lanes */
+  flex-wrap: nowrap;
+}
+
+/* ------------------------------------------------------------
    1. GALLERY LANE BASE
 ------------------------------------------------------------ */
 
@@ -13,7 +29,7 @@
   overflow: hidden;
 
   /* Prevent collapse in flex layout */
-  flex: 0 0 300px;   /* <— THIS is the real fix */
+  flex: 0 0 300px;
   width: 300px;
   min-width: 300px;
   max-width: 300px;
@@ -55,11 +71,11 @@
 ------------------------------------------------------------ */
 
 .gallery-left {
-  margin-right: 200px;
+  margin-right: 0;
 }
 
 .gallery-right {
-  margin-left: 200px;
+  margin-left: 0;
 }
 
 /* ------------------------------------------------------------
@@ -67,24 +83,21 @@
 ------------------------------------------------------------ */
 
 @media (max-width: 1400px) {
-  .gallery-left { margin-right: 160px; }
-  .gallery-right { margin-left: 160px; }
+  .hero-flex { gap: 160px; }
 }
 
 @media (max-width: 1200px) {
-  .gallery-left { margin-right: 120px; }
-  .gallery-right { margin-left: 120px; }
+  .hero-flex { gap: 120px; }
 }
 
 @media (max-width: 1000px) {
-  .gallery-left { margin-right: 80px; }
-  .gallery-right { margin-left: 80px; }
+  .hero-flex { gap: 80px; }
 }
 
 @media (max-width: 800px) {
-  .gallery-left,
-  .gallery-right {
-    margin: 0;
+  .hero-flex { gap: 40px; }
+
+  .gallery-lane {
     flex: 0 0 200px;
     width: 200px;
     min-width: 200px;
@@ -93,6 +106,8 @@
 }
 
 @media (max-width: 600px) {
+  .hero-flex { gap: 20px; }
+
   .gallery-lane {
     height: 300px;
     flex: 0 0 150px;
