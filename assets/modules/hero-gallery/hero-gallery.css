@@ -1,76 +1,90 @@
 /* ============================================================
-   HERO GALLERY MODULE — FULL FILE (v=20240614-1215)
-   Cloudflare‑Safe • Mobile‑Aware • Crown‑Safe
+   HERO GALLERY — CROWN CREATIVES
+   Cinematic left/right image lanes with crossfade engine
 ============================================================ */
 
-.hero-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: clamp(20px, 3vw, 60px);
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto 40px auto;
-  z-index: 4;
-}
+/* ------------------------------------------------------------
+   1. GALLERY LANE BASE
+------------------------------------------------------------ */
 
 .gallery-lane {
-  flex: 0 1 clamp(180px, 20vw, 260px);
-  height: 260px;
-  border-radius: 16px;
-  overflow: hidden;
-  background-color: rgba(0,0,0,0.3);
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
   position: relative;
-  z-index: 10;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Prevent collapse when shifting inward */
+  min-width: 180px;
 }
 
+/* Inner container that holds the fading images */
 .gallery-lane-inner {
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
 }
 
-.gallery-image {
+/* ------------------------------------------------------------
+   2. IMAGE STYLING
+------------------------------------------------------------ */
+
+.gallery-lane img {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   opacity: 0;
-  transition: opacity 2s ease-in-out;
+  transition: opacity 1.4s ease-in-out;
+  filter: brightness(0.92) contrast(1.08) saturate(1.12);
 }
 
-.gallery-image.active {
+/* Active image (JS toggles this) */
+.gallery-lane img.active {
   opacity: 1;
 }
 
-/* MOBILE MODE — ONE LANE ONLY */
-@media (max-width: 768px) {
-  .hero-flex {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .gallery-right {
-    display: none;
-  }
-
-  .gallery-lane {
-    width: 90vw;
-    height: 200px;
-  }
-}
-
-/* Ensure lanes never collapse */
-.gallery-lane {
-  min-width: 180px; /* adjust if needed */
-}
+/* ------------------------------------------------------------
+   3. LEFT / RIGHT LANE POSITIONING
+------------------------------------------------------------ */
 
 /* Bring lanes inward by 30mm (~113px) */
 .gallery-left {
-  margin-right: 113px;
+  transform: translateX(113px);
 }
 
 .gallery-right {
-  margin-left: 113px;
+  transform: translateX(-113px);
+}
+
+/* ------------------------------------------------------------
+   4. RESPONSIVE BEHAVIOUR
+------------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+  .gallery-left {
+    transform: translateX(60px);
+  }
+
+  .gallery-right {
+    transform: translateX(-60px);
+  }
+}
+
+@media (max-width: 800px) {
+  .gallery-left,
+  .gallery-right {
+    transform: translateX(0);
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-lane {
+    height: 300px;
+    min-width: 120px;
+  }
 }
