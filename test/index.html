@@ -123,6 +123,14 @@
       .then(r => r.text())
       .then(html => {
         document.getElementById("cc-ticker").innerHTML = html;
+
+        // Load ticker JS dynamically
+        const script = document.createElement("script");
+        script.src = "ticker/ticker.js";
+        script.onload = () => {
+          if (window.initEvolveTicker) window.initEvolveTicker();
+        };
+        document.body.appendChild(script);
       });
 
     /* Inject THEME PANEL */
