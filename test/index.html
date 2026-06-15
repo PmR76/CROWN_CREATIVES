@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="gallery/gallery.css">
   <link rel="stylesheet" href="sound/sound.css">
 
+  <!-- TICKER CSS -->
+  <link rel="stylesheet" href="ticker/ticker.css">
+
   <!-- THEME PANEL CSS -->
   <link rel="stylesheet" href="theme-panel/theme-panel.css">
 
@@ -89,6 +92,9 @@
 
   </section>
 
+  <!-- TICKER (injected) -->
+  <div id="cc-ticker"></div>
+
   <!-- FOOTER (injected) -->
   <div id="cc-footer"></div>
 
@@ -100,7 +106,7 @@
   <!-- THEME ENGINE (TEST VERSION) -->
   <script src="theme/theme.js"></script>
 
-  <!-- HEADER + FOOTER + THEME PANEL INJECTION -->
+  <!-- HEADER + FOOTER + THEME PANEL + TICKER INJECTION -->
   <script>
     /* Inject HEADER */
     fetch("header/header.html")
@@ -111,6 +117,13 @@
     fetch("footer/footer.html")
       .then(r => r.text())
       .then(html => document.getElementById("cc-footer").innerHTML = html);
+
+    /* Inject TICKER */
+    fetch("ticker/ticker.html")
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById("cc-ticker").innerHTML = html;
+      });
 
     /* Inject THEME PANEL */
     fetch("theme-panel/theme-panel.html")
