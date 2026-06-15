@@ -61,16 +61,16 @@
 }
 
 /* ------------------------------------------------------------
-   4. RESPONSIVE BEHAVIOUR
+   4. RESPONSIVE BEHAVIOUR — widened for stability
 ------------------------------------------------------------ */
 
 @media (max-width: 1100px) {
   .gallery-left {
-    transform: translateX(60px);
+    transform: translateX(80px);
   }
 
   .gallery-right {
-    transform: translateX(-60px);
+    transform: translateX(-80px);
   }
 }
 
@@ -78,13 +78,13 @@
   .gallery-left,
   .gallery-right {
     transform: translateX(0);
-    min-width: 140px;
+    min-width: 160px;
   }
 }
 
 @media (max-width: 600px) {
   .gallery-lane {
     height: 300px;
-    min-width: 120px;
+    min-width: 140px;
   }
 }
