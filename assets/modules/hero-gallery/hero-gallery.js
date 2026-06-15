@@ -1,6 +1,6 @@
 /* ============================================================
-   HERO GALLERY — MANIFEST-POWERED (v=20240614-1215)
-   Cloudflare‑Safe • Fade‑Hold‑Fade • Mobile‑Aware
+   HERO GALLERY - MANIFEST-POWERED (v=20240614-1215)
+   Cloudflare-Safe - Fade-Hold-Fade - Mobile-Aware
 ============================================================ */
 
 const galleryPath = "/assets/images/gallery/";
