@@ -41,8 +41,8 @@
 
   <!-- THEME PANEL CONTAINER -->
   <div id="themePanelContainer">
-  <div id="themePanel"></div>
-</div>
+    <div id="themePanel"></div>
+  </div>
 
   <!-- HERO SECTION -->
   <section id="hero">
@@ -117,6 +117,9 @@
       .then(r => r.text())
       .then(html => {
         document.getElementById("themePanel").innerHTML = html;
+
+        // ⭐ INIT THE PANEL AFTER HTML EXISTS
+        if (window.initThemePanel) window.initThemePanel();
       });
   </script>
 
@@ -132,7 +135,6 @@
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       if (window.initThemeEngine) window.initThemeEngine();
-      if (window.initThemePanel) window.initThemePanel();
       if (window.initSoundEngine) window.initSoundEngine();
       if (window.initHeroGallery) window.initHeroGallery();
     });
