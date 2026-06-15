@@ -17,13 +17,17 @@
   /* ------------------------------------------------------------
      Load manifest or fallback
   ------------------------------------------------------------ */
- async function loadTracks() {
+async function loadTracks() {
   try {
     const res = await fetch(manifestPath);
     if (!res.ok) throw new Error("Manifest missing");
 
     const data = await res.json();
-    TRACKS = (data.sounds || []).map(name => `/assets/sounds/${name}`);
+
+    // FIX: support array OR object format
+    TRACKS = Array.isArray(data)
+      ? data.map(name => `/assets/sounds/${name}`)
+      : (data.sounds || []).map(name => `/assets/sounds/${name}`);
 
     if (TRACKS.length === 0) throw new Error("Empty manifest");
   } catch (e) {
