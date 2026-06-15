@@ -17,26 +17,26 @@
   /* ------------------------------------------------------------
      Load manifest or fallback
   ------------------------------------------------------------ */
-  async function loadTracks() {
-    try {
-      const res = await fetch(manifestPath + "?v=" + Date.now());
-      if (!res.ok) throw new Error("Manifest missing");
+ async function loadTracks() {
+  try {
+    const res = await fetch(manifestPath);
+    if (!res.ok) throw new Error("Manifest missing");
 
-      const data = await res.json();
-      TRACKS = (data.sounds || []).map(name => `/assets/sounds/${name}`);
+    const data = await res.json();
+    TRACKS = (data.sounds || []).map(name => `/assets/sounds/${name}`);
 
-      if (TRACKS.length === 0) throw new Error("Empty manifest");
-    } catch (e) {
-      console.warn("Using fallback track list.", e);
-      TRACKS = [
-        "/assets/sounds/alec_koff-carnaval-484622.mp3",
-        "/assets/sounds/energysound-powerful-percussion-513717.mp3",
-        "/assets/sounds/finley-chill-sunset-chill-nature-529994.mp3",
-        "/assets/sounds/ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3",
-        "/assets/sounds/kontraa-water-afro-pop-music-445661.mp3"
-      ];
-    }
+    if (TRACKS.length === 0) throw new Error("Empty manifest");
+  } catch (e) {
+    console.warn("Using fallback track list.", e);
+    TRACKS = [
+      "/assets/sounds/alec_koff-carnaval-484622.mp3",
+      "/assets/sounds/energysound-powerful-percussion-513717.mp3",
+      "/assets/sounds/finley-chill-sunset-chill-nature-529994.mp3",
+      "/assets/sounds/ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3",
+      "/assets/sounds/kontraa-water-afro-pop-music-445661.mp3"
+    ];
   }
+}
 
   /* ------------------------------------------------------------
      Shuffle + playlist logic (Option A)
