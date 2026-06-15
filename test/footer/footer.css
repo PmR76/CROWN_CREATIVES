@@ -1,24 +1,43 @@
 /* ============================================================
    FOOTER MODULE — Crown Creatives
+   Cinematic glow line, icons, modular, self-contained
 ============================================================ */
 
-.cc-footer {
-  margin-top: 80px;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.cc-footer-line {
+/* ------------------------------
+   FOOTER WRAPPER
+------------------------------ */
+#cc-footer {
   width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  margin-bottom: 25px;
+  padding: 40px 20px;
+  margin-top: 80px;
+  text-align: center;
+  position: relative;
+  z-index: 500;
 }
 
+/* ------------------------------
+   GLOW LINE (Cinematic)
+------------------------------ */
+.cc-footer-glow {
+  width: 100%;
+  height: 2px;
+  margin-bottom: 25px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  opacity: 0.7;
+}
+
+/* ------------------------------
+   ICON ROW
+------------------------------ */
 .cc-footer-icons {
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 28px;
   margin-bottom: 20px;
 }
 
@@ -26,9 +45,28 @@
   width: 28px;
   height: 28px;
   opacity: 0.85;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
+.cc-footer-icon img:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* ------------------------------
+   FOOTER TEXT
+------------------------------ */
 .cc-footer-text {
   font-size: 0.9rem;
   opacity: 0.8;
+  letter-spacing: 0.5px;
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 900px) {
+  .cc-footer-icons {
+    gap: 20px;
+  }
 }
