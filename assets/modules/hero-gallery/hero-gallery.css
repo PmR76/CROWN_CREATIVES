@@ -1,5 +1,5 @@
 /* ============================================================
-   HERO GALLERY — RESTORED WORKING VERSION
+   HERO GALLERY — WORKING BASELINE VERSION
 ============================================================ */
 
 .gallery-lane {
@@ -8,7 +8,7 @@
   height: 420px;
   overflow: hidden;
 
-  /* The fix that worked earlier */
+  /* The ONLY fix that worked earlier */
   min-width: 180px;
 }
 
@@ -31,3 +31,6 @@
 .gallery-lane img.active {
   opacity: 1;
 }
+.hero-flex { outline: 3px solid cyan; }
+.gallery-lane { outline: 3px solid lime; }
+.hero-crown-wrapper { outline: 3px solid red; }
