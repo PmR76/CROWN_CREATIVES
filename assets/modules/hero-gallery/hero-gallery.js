@@ -1,60 +1,11 @@
-/* ============================================================
-   HERO GALLERY - MANIFEST-POWERED (v=20240614-1215)
-   Cloudflare-Safe - Fade-Hold-Fade - Mobile-Aware
-============================================================ */
-
-const galleryPath = "/assets/images/gallery/";
-const manifestURL = galleryPath + "manifest.json?v=" + Date.now();
-
-async function loadManifest() {
-  try {
-    const res = await fetch(manifestURL);
-    if (!res.ok) throw new Error("Manifest not found");
-    const list = await res.json();
-    return list.filter(name =>
-      name.match(/\.(jpg|jpeg|png|webp)$/i)
-    );
-  } catch (err) {
-    console.error("Failed to load manifest:", err);
-    return [];
-  }
-}
-
-function pickRandom(exclude, list) {
-  if (list.length === 1) return list[0];
-  let img = exclude;
-  while (img === exclude) {
-    img = list[Math.floor(Math.random() * list.length)];
-  }
-  return img;
-}
-
-function crossfade(layerA, layerB, state, list) {
-  const next = pickRandom(state.current, list);
-  const incoming = state.toggle ? layerA : layerB;
-  const outgoing = state.toggle ? layerB : layerA;
-
-  incoming.style.backgroundImage = `url('${galleryPath}${next}')`;
-  incoming.classList.add("active");
-  outgoing.classList.remove("active");
-
-  state.current = next;
-  state.toggle = !state.toggle;
-}
-
-window.addEventListener("load", async () => {
+setTimeout(async () => {
   const leftLane = document.querySelector(".gallery-left .gallery-lane-inner");
   const rightLane = document.querySelector(".gallery-right .gallery-lane-inner");
-
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   if (!leftLane) return;
 
   const images = await loadManifest();
-  if (!images.length) {
-    console.warn("No images found in manifest.");
-    return;
-  }
+  if (!images.length) return;
 
   function createLayers(container) {
     const a = document.createElement("div");
@@ -71,11 +22,12 @@ window.addEventListener("load", async () => {
   crossfade(leftA, leftB, leftState, images);
   setInterval(() => crossfade(leftA, leftB, leftState, images), 10000);
 
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
   if (!isMobile && rightLane) {
     const [rightA, rightB] = createLayers(rightLane);
     const rightState = { current: null, toggle: true };
     crossfade(rightA, rightB, rightState, images);
     setInterval(() => crossfade(rightA, rightB, rightState, images), 10000);
   }
-});
- 
+}, 50);
