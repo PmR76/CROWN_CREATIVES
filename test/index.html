@@ -1,27 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CC Test Environment</title>
-  <style>
-    body { font-family: Arial; padding: 20px; }
-    img { width: 200px; margin: 10px; border-radius: 6px; }
-    .track { margin: 5px 0; }
-  </style>
+  <title>Crown Creatives — Test Environment</title>
+
+  <!-- ONLY the new modular CSS -->
+  <link rel="stylesheet" href="/assets/css/home-test.css">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
 
-  <h1>Test Environment</h1>
+<body id="cc-test">
 
-  <h2>Gallery Test</h2>
-  <div id="gallery"></div>
+  <!-- BACKGROUND (copied directly from your real site) -->
+  <div id="cc-background">
+    <div class="day-background"></div>
+    <div class="night-background"></div>
+    <div class="day-clouds"></div>
+    <div class="night-nebula"></div>
+  </div>
 
-  <h2>Sound Test</h2>
-  <button id="play">Play Next</button>
-  <div id="tracks"></div>
+  <!-- HEADER (copied from your real header.html) -->
+  <header id="cc-header">
+    <!-- paste your header.html content here -->
+  </header>
 
-  <script src="test-gallery.js"></script>
-  <script src="test-sound.js"></script>
+  <!-- HERO SECTION -->
+  <section id="hero">
+
+    <!-- HERO CROWN -->
+    <div id="hero-crown-wrapper">
+      <img id="hero-crown-day" src="/assets/icons/day-crown.svg">
+      <img id="hero-crown-night" src="/assets/icons/night-crown.svg">
+    </div>
+
+    <!-- HERO GALLERY WINDOW -->
+    <div id="hero-gallery">
+      <div class="gallery-left">
+        <div class="gallery-lane-inner"></div>
+      </div>
+
+      <div class="gallery-right">
+        <div class="gallery-lane-inner"></div>
+      </div>
+    </div>
+
+    <!-- HERO TAGLINE -->
+    <h1 class="hero-tagline">IMAGINATION BECOMES REALITY</h1>
+
+  </section>
+
+  <!-- CORE VALUES -->
+  <section id="core-values">
+
+    <div class="value-card">
+      <h3>Artistry</h3>
+      <p>Creativity expressed through craft, vision, and imagination.</p>
+    </div>
+
+    <div class="value-card">
+      <h3>Resilience</h3>
+      <p>Strength to rise, rebuild, and transform challenges into growth.</p>
+    </div>
+
+    <div class="value-card">
+      <h3>Imagination</h3>
+      <p>The spark that turns ideas into reality and stories into worlds.</p>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="cc-footer-wrapper">
+    <!-- paste your footer.html content here -->
+  </footer>
+
+  <!-- ENGINES -->
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/sound-engine.js"></script>
+  <script src="/assets/js/hero-gallery.js"></script>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      if (window.initThemeEngine) window.initThemeEngine();
+      if (window.initSoundEngine) window.initSoundEngine();
+      if (window.initHeroGallery) window.initHeroGallery();
+    });
+  </script>
 
 </body>
 </html>
