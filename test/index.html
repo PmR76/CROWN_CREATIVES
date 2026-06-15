@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <title>Crown Creatives — Test Environment</title>
 
-  <!-- ONLY the new modular CSS -->
-  <link rel="stylesheet" href="/assets/css/home-test.css">
-  <link rel="stylesheet" href="/assets/css/global.css">
-  <link rel="stylesheet" href="/assets/css/theme.css">
+  <!-- ONLY the modular test CSS -->
+  <link rel="stylesheet" href="index-test.css">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/theme.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body id="cc-test">
 
-  <!-- BACKGROUND (copied directly from your real site) -->
+  <!-- BACKGROUND (same as main site) -->
   <div id="cc-background">
     <div class="day-background"></div>
     <div class="night-background"></div>
@@ -22,18 +22,16 @@
     <div class="night-nebula"></div>
   </div>
 
-  <!-- HEADER (copied from your real header.html) -->
-  <header id="cc-header">
-    <!-- paste your header.html content here -->
-  </header>
+  <!-- HEADER (injected from /test/header.html) -->
+  <div id="cc-header"></div>
 
   <!-- HERO SECTION -->
   <section id="hero">
 
     <!-- HERO CROWN -->
     <div id="hero-crown-wrapper">
-      <img id="hero-crown-day" src="/assets/icons/day-crown.svg">
-      <img id="hero-crown-night" src="/assets/icons/night-crown.svg">
+      <img id="hero-crown-day" src="../assets/icons/day-crown.svg">
+      <img id="hero-crown-night" src="../assets/icons/night-crown.svg">
     </div>
 
     <!-- HERO GALLERY WINDOW -->
@@ -72,16 +70,28 @@
 
   </section>
 
-  <!-- FOOTER -->
-  <footer id="cc-footer-wrapper">
-    <!-- paste your footer.html content here -->
-  </footer>
+  <!-- FOOTER (injected from /test/footer.html) -->
+  <div id="cc-footer"></div>
 
-  <!-- ENGINES -->
-  <script src="/assets/js/theme.js"></script>
-  <script src="/assets/js/sound-engine.js"></script>
-  <script src="/assets/js/hero-gallery.js"></script>
+  <!-- ENGINES (use production engines for now) -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/sound-engine.js"></script>
+  <script src="../assets/js/hero-gallery.js"></script>
 
+  <!-- HEADER + FOOTER INJECTION -->
+  <script>
+    // Inject header
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("cc-header").innerHTML = html);
+
+    // Inject footer
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("cc-footer").innerHTML = html);
+  </script>
+
+  <!-- ENGINE INITIALISATION -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       if (window.initThemeEngine) window.initThemeEngine();
