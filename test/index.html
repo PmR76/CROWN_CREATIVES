@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crown Creatives — Test Environment</title>
+
+  <!-- GLOBAL TEST LAYOUT -->
+  <link rel="stylesheet" href="index.css">
+
+  <!-- MODULE CSS (plug‑and‑play) -->
+  <link rel="stylesheet" href="header/header.css">
+  <link rel="stylesheet" href="footer/footer.css">
+  <link rel="stylesheet" href="hero/hero.css">
+  <link rel="stylesheet" href="gallery/gallery.css">
+  <link rel="stylesheet" href="sound/sound.css">
+
+  <!-- THEME PANEL CSS -->
+  <link rel="stylesheet" href="theme-panel/theme-panel.css">
+
+  <!-- GLOBAL THEME + VARIABLES -->
+  <link rel="stylesheet" href="../assets/css/global.css">
+
+  <!-- TEST THEME (REPLACES MAIN THEME) -->
+  <link rel="stylesheet" href="theme/theme.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body id="cc-test">
+
+  <!-- BACKGROUND -->
+  <div id="cc-background">
+    <div class="day-background"></div>
+    <div class="night-background"></div>
+    <div class="day-clouds"></div>
+    <div class="night-nebula"></div>
+  </div>
+
+  <!-- HEADER (injected) -->
+  <div id="cc-header"></div>
+
+  <!-- THEME PANEL CONTAINER -->
+  <div id="themePanelContainer">
+    <div id="themePanel"></div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="hero">
+
+    <!-- HERO CROWN -->
+    <div id="hero-crown-wrapper">
+      <img id="hero-crown-day" src="../assets/icons/day-crown.svg" alt="Day Crown">
+      <img id="hero-crown-night" src="../assets/icons/night-crown.svg" alt="Night Crown">
+    </div>
+
+    <!-- HERO GALLERY -->
+    <div id="hero-gallery">
+      <div class="gallery-left">
+        <div class="gallery-lane-inner"></div>
+      </div>
+
+      <div class="gallery-right">
+        <div class="gallery-lane-inner"></div>
+      </div>
+    </div>
+
+    <!-- TAGLINE -->
+    <h1 class="hero-tagline">IMAGINATION BECOMES REALITY</h1>
+
+  </section>
+
+  <!-- CORE VALUES -->
+  <section id="core-values">
+
+    <div class="value-card">
+      <h3>Artistry</h3>
+      <p>Creativity expressed through craft, vision, and imagination.</p>
+    </div>
+
+    <div class="value-card">
+      <h3>Resilience</h3>
+      <p>Strength to rise, rebuild, and transform challenges into growth.</p>
+    </div>
+
+    <div class="value-card">
+      <h3>Imagination</h3>
+      <p>The spark that turns ideas into reality and stories into worlds.</p>
+    </div>
+
+  </section>
+
+  <!-- FOOTER (injected) -->
+  <div id="cc-footer"></div>
+
+  <!-- MODULE JS (plug‑and‑play) -->
+  <script src="gallery/gallery.js"></script>
+  <script src="sound/sound.js"></script>
+  <script src="hero/hero.js"></script>
+
+  <!-- THEME ENGINE (TEST VERSION) -->
+  <script src="theme/theme.js"></script>
+
+  <!-- HEADER + FOOTER + THEME PANEL INJECTION -->
+  <script>
+    /* Inject HEADER */
+    fetch("header/header.html")
+      .then(r => r.text())
+      .then(html => document.getElementById("cc-header").innerHTML = html);
+
+    /* Inject FOOTER */
+    fetch("footer/footer.html")
+      .then(r => r.text())
+      .then(html => document.getElementById("cc-footer").innerHTML = html);
+
+    /* Inject THEME PANEL */
+    fetch("theme-panel/theme-panel.html")
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById("themePanel").innerHTML = html;
+
+        // ⭐ INIT THE PANEL AFTER HTML EXISTS
+        if (window.initThemePanel) window.initThemePanel();
+      });
+  </script>
+
+  <!-- THEME PANEL JS (must load AFTER injection) -->
+  <script src="theme-panel/theme-panel.js"></script>
+
+  <!-- ENGINES (production engines) -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/sound-engine.js"></script>
+  <script src="../assets/js/hero-gallery.js"></script>
+
+  <!-- ENGINE INITIALISATION -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      if (window.initThemeEngine) window.initThemeEngine();
+      if (window.initSoundEngine) window.initSoundEngine();
+      if (window.initHeroGallery) window.initHeroGallery();
+    });
+  </script>
+
+</body>
+</html>

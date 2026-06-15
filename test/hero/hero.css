@@ -1,0 +1,133 @@
+/* ============================================================
+   HERO MODULE — Crown Creatives
+   Cinematic, modular, self-contained
+============================================================ */
+
+/* ------------------------------
+   HERO SECTION WRAPPER
+------------------------------ */
+#hero {
+  position: relative;
+  width: 100%;
+  padding-top: 140px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ------------------------------
+   HERO CROWN (DAY/NIGHT)
+------------------------------ */
+#hero-crown-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin-bottom: 20px;
+}
+
+#hero-crown-wrapper img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Day crown visible by default */
+#hero-crown-day {
+  opacity: 1;
+}
+
+/* Night crown hidden by default */
+#hero-crown-night {
+  opacity: 0;
+}
+
+/* Theme switching */
+[data-theme="dark"] #hero-crown-day {
+  opacity: 0;
+}
+
+[data-theme="dark"] #hero-crown-night {
+  opacity: 1;
+}
+
+/* ------------------------------
+   HERO TAGLINE
+------------------------------ */
+.hero-tagline {
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  color: var(--cc-text-primary);
+  text-shadow: 0 0 12px rgba(255,255,255,0.3);
+}
+
+/* ------------------------------
+   HERO GALLERY WINDOW
+------------------------------ */
+#hero-gallery {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 420px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+/* Lanes */
+.gallery-left,
+.gallery-right {
+  width: 48%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-lane-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 1s linear;
+}
+
+/* Images */
+.gallery-lane-inner img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  opacity: 0.25;
+  transition: opacity 0.6s ease;
+}
+
+/* Active image highlight */
+.gallery-lane-inner img.active {
+  opacity: 1;
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 900px) {
+  #hero-gallery {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+  }
+
+  .gallery-left,
+  .gallery-right {
+    width: 100%;
+    height: 300px;
+  }
+}

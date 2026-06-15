@@ -1,0 +1,52 @@
+/* ============================================================
+   CROWN CREATIVES — TEST ENVIRONMENT (GLOBAL LAYOUT ONLY)
+   Clean, modular, cinematic
+   All module-specific CSS lives in module folders.
+============================================================ */
+
+/* ------------------------------
+   GLOBAL SPACING + RESET
+------------------------------ */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Cinzel', serif;
+  background: var(--cc-background);
+  color: var(--cc-text-primary);
+}
+
+/* ------------------------------
+   BACKGROUND WRAPPER
+------------------------------ */
+#cc-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* ------------------------------
+   TEST ENVIRONMENT WRAPPER
+------------------------------ */
+#cc-test {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ------------------------------
+   GLOBAL UTILITY CLASSES
+------------------------------ */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
