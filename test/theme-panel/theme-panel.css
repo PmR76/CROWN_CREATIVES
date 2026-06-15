@@ -1,0 +1,76 @@
+/* ============================================================
+   THEME CONTROL PANEL — Crown Creatives
+   OS-style floating settings window
+============================================================ */
+
+.theme-panel {
+  position: fixed;
+  top: 120px;
+  right: 40px;
+  width: 260px;
+  background: rgba(20,20,30,0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  box-shadow: 0 0 22px rgba(0,0,0,0.4);
+  z-index: 99999;
+  display: none;
+}
+
+.theme-panel-header {
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  cursor: move;
+}
+
+.theme-panel-header span {
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.theme-panel-header button {
+  background: none;
+  border: none;
+  color: var(--cc-text-primary);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.theme-panel-body {
+  padding: 16px;
+}
+
+.theme-options button {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: var(--cc-text-primary);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.theme-options button:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.admin-tools button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: var(--cc-text-primary);
+  cursor: pointer;
+}
+
+.admin-tools button:hover {
+  background: rgba(255,255,255,0.12);
+}
