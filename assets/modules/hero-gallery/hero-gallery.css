@@ -11,14 +11,16 @@
   position: relative;
   height: 420px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  /* HARD WIDTH — prevents collapse */
+  /* Prevent collapse in flex layout */
+  flex: 0 0 300px;   /* <— THIS is the real fix */
   width: 300px;
   min-width: 300px;
   max-width: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Inner container that holds the fading images */
@@ -52,53 +54,38 @@
    3. LEFT / RIGHT LANE POSITIONING
 ------------------------------------------------------------ */
 
-/* PUSH LANES FURTHER OUTWARD FROM THE CROWN */
 .gallery-left {
-  margin-right: 200px;   /* increased spacing */
+  margin-right: 200px;
 }
 
 .gallery-right {
-  margin-left: 200px;    /* increased spacing */
+  margin-left: 200px;
 }
 
 /* ------------------------------------------------------------
-   4. RESPONSIVE BEHAVIOUR — widened for stability
+   4. RESPONSIVE BEHAVIOUR
 ------------------------------------------------------------ */
 
 @media (max-width: 1400px) {
-  .gallery-left {
-    margin-right: 160px;
-  }
-
-  .gallery-right {
-    margin-left: 160px;
-  }
+  .gallery-left { margin-right: 160px; }
+  .gallery-right { margin-left: 160px; }
 }
 
 @media (max-width: 1200px) {
-  .gallery-left {
-    margin-right: 120px;
-  }
-
-  .gallery-right {
-    margin-left: 120px;
-  }
+  .gallery-left { margin-right: 120px; }
+  .gallery-right { margin-left: 120px; }
 }
 
 @media (max-width: 1000px) {
-  .gallery-left {
-    margin-right: 80px;
-  }
-
-  .gallery-right {
-    margin-left: 80px;
-  }
+  .gallery-left { margin-right: 80px; }
+  .gallery-right { margin-left: 80px; }
 }
 
 @media (max-width: 800px) {
   .gallery-left,
   .gallery-right {
     margin: 0;
+    flex: 0 0 200px;
     width: 200px;
     min-width: 200px;
     max-width: 200px;
@@ -108,6 +95,7 @@
 @media (max-width: 600px) {
   .gallery-lane {
     height: 300px;
+    flex: 0 0 150px;
     width: 150px;
     min-width: 150px;
     max-width: 150px;
