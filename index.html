@@ -4,19 +4,81 @@
   <meta charset="UTF-8">
   <title>Crown Creatives — Imagination Becomes Reality</title>
 
-  <link rel="stylesheet" href="/master/css/master.css">
-  <link rel="stylesheet" href="/assets/css/global.css">
-  <link rel="stylesheet" href="/assets/css/header.css">
-  <link rel="stylesheet" href="/assets/css/home.css">
-  <link rel="stylesheet" href="/assets/css/footer.css">
+  <!-- CORE STYLES -->
+  <link rel="stylesheet" href="/master/css/master.css?v=20240614-1233">
+  <link rel="stylesheet" href="/assets/css/global.css?v=20240614-1233">
+  <link rel="stylesheet" href="/assets/css/header.css?v=20240614-1233">
+  <link rel="stylesheet" href="/assets/css/home.css?v=20240614-1233">
+  <link rel="stylesheet" href="/assets/css/footer.css?v=20240614-1233">
 
+  <!-- HERO CROWN MODULE -->
+  <link rel="stylesheet" href="/assets/modules/hero-crown/hero-crown.css?v=20240614-1233">
+
+  <!-- HERO GALLERY MODULE -->
+  <link rel="stylesheet" href="/assets/modules/hero-gallery/hero-gallery.css?v=20240614-1233">
 </head>
 
 <body>
 
-  <div id="master-container" data-page="home"></div>
+<!-- CINEMATIC BACKGROUND -->
+<div id="cc-background">
+  <div class="day-background"></div>
+  <div class="night-background"></div>
+  <div class="day-clouds"></div>
+  <div class="night-nebula"></div>
+</div>
 
-  <script src="/master/js/master.js"></script>
+<!-- HERO SECTION -->
+<section class="hero-section">
+
+  <div class="hero-flex">
+
+    <!-- LEFT GALLERY (CINEMATIC LANE) -->
+    <div class="gallery-lane gallery-left">
+      <div class="gallery-lane-inner"></div>
+    </div>
+
+    <!-- HERO CROWN -->
+    <div class="hero-crown-wrapper">
+      <img src="/assets/icons/day-crown.svg?v=20240614-1233" alt="Day Crown" class="hero-crown crown-day">
+      <img src="/assets/icons/night-crown.svg?v=20240614-1233" alt="Night Crown" class="hero-crown crown-night">
+    </div>
+
+    <!-- RIGHT GALLERY (CINEMATIC LANE) -->
+    <div class="gallery-lane gallery-right">
+      <div class="gallery-lane-inner"></div>
+    </div>
+
+  </div>
+
+  <!-- TAGLINE CARDS -->
+  <section class="tagline-cards">
+    <div class="tag-card">
+      <h3>Artistry</h3>
+      <p>Creativity expressed through craft, vision, and imagination.</p>
+    </div>
+
+    <div class="tag-card">
+      <h3>Resilience</h3>
+      <p>Strength to rise, rebuild, and transform challenges into growth.</p>
+    </div>
+
+    <div class="tag-card">
+      <h3>Imagination</h3>
+      <p>The spark that turns ideas into reality and stories into worlds.</p>
+    </div>
+  </section>
+
+</section>
+
+<!-- CORE JS -->
+<script src="/master/js/master.js?v=20240614-1233"></script>
+
+<!-- HERO CROWN MODULE JS -->
+<script src="/assets/modules/hero-crown/hero-crown.js?v=20240614-1233" defer></script>
+
+<!-- HERO GALLERY MODULE JS -->
+<script src="/assets/modules/hero-gallery/hero-gallery.js?v=20240614-1233" defer></script>
 
 </body>
 </html>
