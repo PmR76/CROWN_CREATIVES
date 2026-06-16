@@ -17,8 +17,23 @@ jobs:
       - name: Generate gallery-manifest.json
         run: |
           cd assets/images/gallery
+
+          # Create JSON array start
           echo "[" > gallery-manifest.json
-          ls -1 *.jpg *.jpeg *.png *.webp *.gif 2>/dev/null | sed 's/^/  "/; s/$/"/' | paste -sd "," - >> gallery-manifest.json
+
+          # Find all valid image extensions (case-insensitive)
+          find . -maxdepth 1 -type f \( \
+            -iname "*.jpg" -o \
+            -iname "*.jpeg" -o \
+            -iname "*.png" -o \
+            -iname "*.webp" -o \
+            -iname "*.gif" \
+          \) \
+          | sed 's|^\./||' \
+          | sed 's/^/  "/; s/$/"/' \
+          | paste -sd "," - >> gallery-manifest.json
+
+          # Close JSON array
           echo "]" >> gallery-manifest.json
 
       - name: Commit manifest
