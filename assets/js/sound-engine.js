@@ -167,10 +167,12 @@ async function loadTracks() {
   /* ------------------------------------------------------------
      INIT — called by master.js AFTER header loads
   ------------------------------------------------------------ */
-  window.initSoundEngine = async function () {
-    await loadTracks();   // ← CRITICAL: load autoscan list first
-    bindToggle();         // ← Now bind toggle
-  };
+window.initSoundEngine = async function () {
+  await loadTracks();
+  bindToggle();
+  initSoundToggleDrag();   // ← ADD THIS
+};
+
 /* ---------------------------------------------
    6. DRAGGABLE SOUND TOGGLE (SHIFT + S)
    --------------------------------------------- */
