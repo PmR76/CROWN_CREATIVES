@@ -20,8 +20,7 @@
   let startTop = 0;
 
   function getPageKey() {
-    const body = document.body;
-    return body.getAttribute("data-page") || "home";
+    return document.body.getAttribute("data-page") || "home";
   }
 
   function applyBackground(themeId) {

@@ -81,3 +81,7 @@
 #theme-panel.theme-panel-dragging {
   cursor: move;
 }
+#themeToggle.theme-toggle-admin {
+  outline: 2px dashed rgba(255, 255, 255, 0.5);
+  cursor: grab;
+}

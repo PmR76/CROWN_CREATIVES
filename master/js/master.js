@@ -38,7 +38,7 @@ async function initMaster() {
   // 3.1 Load master wrapper
   container.innerHTML = await loadPartial("/master/page-wrapper.html");
 
-  // 3.2 Inject global components (DOM must exist before engines)
+  // 3.2 Inject global components
   document.getElementById("cc-background").innerHTML =
     await loadPartial("/master/background.html");
 
@@ -46,7 +46,7 @@ async function initMaster() {
     await loadPartial("/master/header.html");
 
   document.getElementById("cc-page-content").innerHTML =
-  await loadPartial(`/pages/${page}.html`);
+    await loadPartial(`/pages/${page}.html`);
 
   document.getElementById("cc-ticker").innerHTML =
     await loadPartial("/master/ticker.html");
@@ -70,11 +70,16 @@ async function initMaster() {
   }
 
   // 3.3c Initialise BACK TO TOP ENGINE
-setTimeout(() => {
-  if (typeof window.initBackToTop === "function") {
-    window.initBackToTop();
-  }
-}, 150);
+  setTimeout(() => {
+    if (typeof window.initBackToTop === "function") {
+      window.initBackToTop();
+    }
+  }, 150);
+
+  // 3.3d Initialise MODULES (after global engines)
+  if (window.initHeroCrown) window.initHeroCrown();
+  if (window.initThemePanel) window.initThemePanel();
+  if (window.initThemeToggleDrag) window.initThemeToggleDrag();
 
   // 3.4 Load page-specific engine (optional)
   const enginePath = `/assets/js/${page}.js`;
@@ -85,14 +90,14 @@ setTimeout(() => {
       console.warn(`No page engine found for: ${page}`);
     })
     .catch(() => console.warn(`Engine load failed for: ${page}`));
+
+  // 3.5 Initialise HERO GALLERY (after page content)
+  if (window.initHeroGallery) {
+    window.initHeroGallery();
+  }
 }
 
 /* ------------------------------------------------------------
    4. START MASTER SYSTEM
 ------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", initMaster);
-window.addEventListener("DOMContentLoaded", () => {
-    if (window.initHeroGallery) {
-        window.initHeroGallery();
-    }
-});
