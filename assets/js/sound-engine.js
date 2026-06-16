@@ -141,15 +141,29 @@ async function loadTracks() {
     }
   }
 
-  function bindToggle() {
+ function bindToggle() {
+  let attempts = 0;
+
+  const tryBind = () => {
     const toggle = document.getElementById("soundToggle");
-    if (!toggle) {
-      console.warn("Sound toggle not found in header.");
+
+    if (toggle) {
+      toggle.addEventListener("click", togglePlayback);
+      console.log("Sound toggle bound successfully.");
       return;
     }
 
-    toggle.addEventListener("click", togglePlayback);
-  }
+    attempts++;
+    if (attempts < 50) {
+      setTimeout(tryBind, 100);
+    } else {
+      console.warn("Sound toggle not found after waiting.");
+    }
+  };
+
+  tryBind();
+}
+
 
   /* ------------------------------------------------------------
      INIT — called by master.js AFTER header loads
