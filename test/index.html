@@ -20,6 +20,9 @@
   <!-- CARDS CSS -->
   <link rel="stylesheet" href="cards/cards.css">
 
+  <!-- HERO WINDOW CSS -->
+  <link rel="stylesheet" href="hero-window/hero-window.css">
+
   <!-- THEME PANEL CSS -->
   <link rel="stylesheet" href="theme-panel/theme-panel.css">
 
@@ -59,7 +62,7 @@
       <img id="hero-crown-night" src="../assets/icons/night-crown.svg" alt="Night Crown">
     </div>
 
-    <!-- HERO GALLERY -->
+    <!-- OLD HERO GALLERY (still present but not used by new window) -->
     <div id="hero-gallery">
       <div class="gallery-left">
         <div class="gallery-lane-inner"></div>
@@ -89,7 +92,7 @@
   <!-- THEME ENGINE (TEST VERSION) -->
   <script src="theme/theme.js"></script>
 
-  <!-- HEADER + FOOTER + THEME PANEL + TICKER + CARDS INJECTION -->
+  <!-- UNIFIED MODULE INJECTION BLOCK -->
   <script>
     /* Inject HEADER */
     fetch("header/header.html")
@@ -107,7 +110,6 @@
       .then(html => {
         document.getElementById("cc-ticker").innerHTML = html;
 
-        // Load ticker JS dynamically
         const script = document.createElement("script");
         script.src = "ticker/ticker.js";
         script.onload = () => {
@@ -132,13 +134,28 @@
         document.body.appendChild(script);
       });
 
+    /* Inject HERO WINDOW */
+    fetch("hero-window/hero-window.html")
+      .then(r => r.text())
+      .then(html => {
+        document
+          .getElementById("hero")
+          .insertAdjacentHTML("beforeend", html);
+
+        const script = document.createElement("script");
+        script.src = "hero-window/hero-window.js";
+        script.onload = () => {
+          if (window.initHeroWindow) window.initHeroWindow();
+        };
+        document.body.appendChild(script);
+      });
+
     /* Inject THEME PANEL */
     fetch("theme-panel/theme-panel.html")
       .then(r => r.text())
       .then(html => {
         document.getElementById("themePanel").innerHTML = html;
 
-        // ⭐ INIT THE PANEL AFTER HTML EXISTS
         if (window.initThemePanel) window.initThemePanel();
       });
   </script>
