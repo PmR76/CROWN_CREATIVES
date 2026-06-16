@@ -1,86 +1,177 @@
 /* ============================================================
-   THEME CONTROL PANEL — JS Controller
-   - Opens/closes panel
-   - Switches themes
-   - Admin reset tools
-   - Draggable panel
+   THEME PANEL MODULE (BACKGROUND ONLY)
+   - Admin-only panel
+   - SHIFT + P to toggle
+   - Draggable
+   - Page-specific background themes
 ============================================================ */
 
-window.initThemePanel = function () {
+(function () {
+  const THEMES_URL = "/assets/backgrounds/themes.json";
+  const STORAGE_KEY = "pageBackgroundTheme";
+  const PANEL_POS_KEY = "themePanelPos";
 
-  const panel = document.getElementById("themePanel");
-  const closeBtn = document.getElementById("themePanelClose");
-  const themeButtons = document.querySelectorAll(".theme-options button");
+  let panel = null;
+  let bgData = null;
+  let dragging = false;
+  let startX = 0;
+  let startY = 0;
+  let startLeft = 0;
+  let startTop = 0;
 
-  const isAdmin = true; // later: tie to login
+  function getPageKey() {
+    const body = document.body;
+    return body.getAttribute("data-page") || "home";
+  }
 
-  /* ------------------------------
-     1. Open panel (admin only)
-  ------------------------------ */
-  if (isAdmin) {
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "T") {
-        panel.style.display = "block";
+  function applyBackground(themeId) {
+    if (!bgData) return;
+    const pageKey = getPageKey();
+    const theme = bgData[pageKey] || bgData["home"];
+    if (!theme) return;
+
+    const gradient = theme.gradient;
+    document.documentElement.style.setProperty("--cc-page-background", gradient);
+    document.body.style.backgroundImage = gradient;
+
+    localStorage.setItem(STORAGE_KEY + ":" + pageKey, themeId || theme.id || pageKey);
+  }
+
+  async function loadThemes() {
+    try {
+      const res = await fetch(THEMES_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Theme JSON missing");
+      bgData = await res.json();
+    } catch (e) {
+      console.warn("Theme panel: failed to load themes.json", e);
+      bgData = null;
+    }
+  }
+
+  function createPanel() {
+    if (panel) return panel;
+
+    panel = document.createElement("div");
+    panel.id = "theme-panel";
+
+    panel.innerHTML = `
+      <div id="theme-panel-header">
+        <div id="theme-panel-title">Background Theme</div>
+        <div id="theme-panel-close">✕</div>
+      </div>
+      <div class="theme-panel-section-label">Page Presets</div>
+      <div id="theme-panel-background-list"></div>
+    `;
+
+    document.body.appendChild(panel);
+    return panel;
+  }
+
+  function populatePanel() {
+    if (!panel || !bgData) return;
+
+    const list = panel.querySelector("#theme-panel-background-list");
+    list.innerHTML = "";
+
+    const pageKey = getPageKey();
+    const theme = bgData[pageKey] || bgData["home"];
+    if (!theme) return;
+
+    const option = document.createElement("div");
+    option.className = "theme-panel-bg-option active";
+    option.dataset.themeId = theme.id || pageKey;
+    option.innerHTML = `<span>${theme.label || ("Theme: " + pageKey)}</span>`;
+
+    option.addEventListener("click", () => {
+      applyBackground(option.dataset.themeId);
+    });
+
+    list.appendChild(option);
+  }
+
+  function loadPanelPosition() {
+    const raw = localStorage.getItem(PANEL_POS_KEY);
+    if (!raw) return;
+    try {
+      const pos = JSON.parse(raw);
+      if (typeof pos.x === "number" && typeof pos.y === "number") {
+        panel.style.left = pos.x + "px";
+        panel.style.top = pos.y + "px";
       }
+    } catch (e) {
+      console.warn("Theme panel pos parse error:", e);
+    }
+  }
+
+  function savePanelPosition() {
+    const rect = panel.getBoundingClientRect();
+    const pos = {
+      x: rect.left + window.scrollX,
+      y: rect.top + window.scrollY
+    };
+    localStorage.setItem(PANEL_POS_KEY, JSON.stringify(pos));
+  }
+
+  function initDrag() {
+    const header = panel.querySelector("#theme-panel-header");
+    if (!header) return;
+
+    header.addEventListener("mousedown", e => {
+      dragging = true;
+      panel.classList.add("theme-panel-dragging");
+
+      const rect = panel.getBoundingClientRect();
+      startX = e.clientX;
+      startY = e.clientY;
+      startLeft = rect.left + window.scrollX;
+      startTop = rect.top + window.scrollY;
+
+      e.preventDefault();
+    });
+
+    window.addEventListener("mousemove", e => {
+      if (!dragging) return;
+
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+
+      panel.style.left = startLeft + dx + "px";
+      panel.style.top = startTop + dy + "px";
+    });
+
+    window.addEventListener("mouseup", () => {
+      if (!dragging) return;
+      dragging = false;
+      panel.classList.remove("theme-panel-dragging");
+      savePanelPosition();
     });
   }
 
-  /* ------------------------------
-     2. Close panel
-  ------------------------------ */
-  closeBtn.addEventListener("click", () => {
-    panel.style.display = "none";
-  });
-
-  /* ------------------------------
-     3. Theme switching
-  ------------------------------ */
-  themeButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const theme = btn.dataset.theme;
-      document.body.setAttribute("data-theme", theme);
-      localStorage.setItem("cc-theme", theme);
-
-      if (window.updateCrown) window.updateCrown(theme);
-      if (window.updateBackground) window.updateBackground(theme);
+  function initToggle() {
+    // SHIFT + P to toggle panel
+    window.addEventListener("keydown", e => {
+      if (e.key === "P" && e.shiftKey) {
+        if (!panel) return;
+        panel.classList.toggle("theme-panel-visible");
+      }
     });
-  });
 
-  /* ------------------------------
-     4. Admin reset tools
-  ------------------------------ */
-  document.getElementById("resetTogglePos").addEventListener("click", () => {
-    localStorage.removeItem("cc-theme-toggle-pos");
-    location.reload();
-  });
+    const closeBtn = panel.querySelector("#theme-panel-close");
+    closeBtn.addEventListener("click", () => {
+      panel.classList.remove("theme-panel-visible");
+    });
+  }
 
-  document.getElementById("resetToggleSize").addEventListener("click", () => {
-    localStorage.removeItem("cc-theme-toggle-size");
-    location.reload();
-  });
+  async function initThemePanel() {
+    createPanel();
+    loadPanelPosition();
+    await loadThemes();
+    populatePanel();
+    applyBackground(); // initial
+    initDrag();
+    initToggle();
+  }
 
-  /* ------------------------------
-     5. Draggable panel
-  ------------------------------ */
-  let dragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  const header = document.querySelector(".theme-panel-header");
-
-  header.addEventListener("mousedown", (e) => {
-    dragging = true;
-    offsetX = e.clientX - panel.offsetLeft;
-    offsetY = e.clientY - panel.offsetTop;
-  });
-
-  document.addEventListener("mousemove", (e) => {
-    if (!dragging) return;
-    panel.style.left = `${e.clientX - offsetX}px`;
-    panel.style.top = `${e.clientY - offsetY}px`;
-  });
-
-  document.addEventListener("mouseup", () => {
-    dragging = false;
-  });
-};
+  // Expose for master.js
+  window.initThemePanel = initThemePanel;
+})();
