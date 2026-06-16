@@ -174,56 +174,73 @@ async function loadTracks() {
 /* ---------------------------------------------
    6. DRAGGABLE SOUND TOGGLE (SHIFT + S)
    --------------------------------------------- */
-let soundAdmin = false;
-let soundDragging = false;
-let sx = 0;
-let sy = 0;
+function initSoundToggleDrag() {
+  let attempts = 0;
 
-window.addEventListener("keydown", e => {
-  if (e.key === "S" && e.shiftKey) {
-    soundAdmin = !soundAdmin;
-    soundToggle.classList.toggle("sound-draggable", soundAdmin);
-  }
-});
+  const waitForToggle = () => {
+    const soundToggle = document.getElementById("soundToggle");
+    if (!soundToggle) {
+      attempts++;
+      if (attempts < 50) setTimeout(waitForToggle, 100);
+      return;
+    }
 
-soundToggle.addEventListener("mousedown", e => {
-  if (!soundAdmin) return;
+    // Now safe to use soundToggle
+    let soundAdmin = false;
+    let soundDragging = false;
+    let sx = 0;
+    let sy = 0;
 
-  soundDragging = true;
-  soundToggle.classList.add("sound-dragging");
+    // Restore saved position
+    const savedSoundPos = localStorage.getItem("soundTogglePos");
+    if (savedSoundPos) {
+      const pos = JSON.parse(savedSoundPos);
+      soundToggle.style.left = pos.x + "px";
+      soundToggle.style.top = pos.y + "px";
+      soundToggle.style.position = "absolute";
+    }
 
-  sx = e.clientX - soundToggle.offsetLeft;
-  sy = e.clientY - soundToggle.offsetTop;
-});
+    // Enable drag mode
+    window.addEventListener("keydown", e => {
+      if (e.key === "S" && e.shiftKey) {
+        soundAdmin = !soundAdmin;
+        soundToggle.classList.toggle("sound-draggable", soundAdmin);
+      }
+    });
 
-window.addEventListener("mousemove", e => {
-  if (!soundDragging) return;
+    // Start drag
+    soundToggle.addEventListener("mousedown", e => {
+      if (!soundAdmin) return;
 
-  soundToggle.style.left = (e.clientX - sx) + "px";
-  soundToggle.style.top = (e.clientY - sy) + "px";
-  soundToggle.style.position = "absolute";
-});
+      soundDragging = true;
+      soundToggle.classList.add("sound-dragging");
 
-window.addEventListener("mouseup", () => {
-  if (!soundDragging) return;
+      sx = e.clientX - soundToggle.offsetLeft;
+      sy = e.clientY - soundToggle.offsetTop;
+    });
 
-  soundDragging = false;
-  soundToggle.classList.remove("sound-dragging");
+    // Move
+    window.addEventListener("mousemove", e => {
+      if (!soundDragging) return;
 
-  localStorage.setItem("soundTogglePos", JSON.stringify({
-    x: soundToggle.offsetLeft,
-    y: soundToggle.offsetTop
-  }));
-});
+      soundToggle.style.left = (e.clientX - sx) + "px";
+      soundToggle.style.top = (e.clientY - sy) + "px";
+      soundToggle.style.position = "absolute";
+    });
 
-/* Restore saved position */
-const savedSoundPos = localStorage.getItem("soundTogglePos");
-if (savedSoundPos) {
-  const pos = JSON.parse(savedSoundPos);
-  soundToggle.style.left = pos.x + "px";
-  soundToggle.style.top = pos.y + "px";
-  soundToggle.style.position = "absolute";
-}
+    // Stop drag + save
+    window.addEventListener("mouseup", () => {
+      if (!soundDragging) return;
 
-})();
- 
+      soundDragging = false;
+      soundToggle.classList.remove("sound-dragging");
+
+      localStorage.setItem("soundTogglePos", JSON.stringify({
+        x: soundToggle.offsetLeft,
+        y: soundToggle.offsetTop
+      }));
+    });
+  };
+
+  waitForToggle();
+}})();
