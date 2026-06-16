@@ -2,12 +2,9 @@ name: Build Gallery Manifest
 
 on:
   push:
-    branches:
-      - main
-      - master
-
-permissions:
-  contents: write
+    paths:
+      - "assets/images/gallery/**"
+      - ".github/workflows/build-gallery-manifest.yml"
 
 jobs:
   build-manifest:
@@ -15,23 +12,23 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build gallery manifest
-        run: node scripts/build-gallery-manifest.js
+      - name: Generate gallery-manifest.json
+        run: |
+          cd assets/images/gallery
+          echo "[" > gallery-manifest.json
+          ls -1 *.jpg *.jpeg *.png *.webp *.gif 2>/dev/null | sed 's/^/  "/; s/$/"/' | paste -sd "," - >> gallery-manifest.json
+          echo "]" >> gallery-manifest.json
 
       - name: Commit manifest
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add assets/images/gallery/manifest.json
-          git commit -m "Auto-update gallery manifest" || echo "No changes"
-          git push
+          git config --global user.name "Crown Creatives AutoBot"
+          git config --global user.email "actions@github.com"
+          git add assets/images/gallery/gallery-manifest.json
+          git commit -m "Auto-update gallery manifest" || echo "No changes to commit"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
