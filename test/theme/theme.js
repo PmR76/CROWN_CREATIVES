@@ -1,13 +1,13 @@
 /* ============================================================
    CROWN CREATIVES — THEME ENGINE (GR1 MODULAR VERSION)
-   Supports:
-   - Light / Dark
-   - Neon / Sunset (experimental)
-   - Unlimited future palettes
-   - Crown sync
-   - Background sync
-   - Admin-only drag + resize
+   Global responsibilities:
+   - Light / Dark / Neon / Sunset switching
+   - Theme toggle behaviour
+   - Draggable theme toggle (SHIFT + T)
    - LocalStorage persistence
+   NOTE:
+   Crown switching is now handled by hero-crown module.
+   Background switching is now handled by theme-panel module.
 ============================================================ */
 
 window.initThemeEngine = function () {
@@ -24,12 +24,7 @@ window.initThemeEngine = function () {
   /* ------------------------------
      2. Theme list (expand anytime)
   ------------------------------ */
-  const themes = [
-    "light",
-    "dark",
-    "neon",
-    "sunset"
-  ];
+  const themes = ["light", "dark", "neon", "sunset"];
 
   /* ------------------------------
      3. Load saved theme
@@ -47,125 +42,123 @@ window.initThemeEngine = function () {
     document.body.setAttribute("data-theme", next);
     localStorage.setItem("cc-theme", next);
 
-    updateCrown(next);
-    updateBackground(next);
+    // Notify modules (hero-crown, hero-window, etc.)
+    window.dispatchEvent(new CustomEvent("cc-theme-changed", { detail: next }));
   }
 
   toggle.addEventListener("click", switchTheme);
 
-  /* ------------------------------
-     5. Crown Sync
-  ------------------------------ */
-  const crownDay = document.getElementById("hero-crown-day");
-  const crownNight = document.getElementById("hero-crown-night");
+  /* ============================================================
+     5. DRAGGABLE THEME TOGGLE (SHIFT + T)
+     Clean GR1 version — replaces old admin drag logic
+  ============================================================= */
 
-  function updateCrown(theme) {
-    if (!crownDay || !crownNight) return;
+  const POS_KEY = "cc-theme-toggle-pos";
+  const SIZE_KEY = "cc-theme-toggle-size";
 
-    if (theme === "light") {
-      crownDay.style.opacity = 1;
-      crownNight.style.opacity = 0;
-    } else {
-      crownDay.style.opacity = 0;
-      crownNight.style.opacity = 1;
-    }
-  }
-
-  updateCrown(savedTheme);
+  let adminMode = false;
+  let dragging = false;
+  let startX = 0;
+  let startY = 0;
+  let startLeft = 0;
+  let startTop = 0;
 
   /* ------------------------------
-     6. Background Sync
-     (Optional — works with your test backgrounds)
+     Restore saved position
   ------------------------------ */
-  function updateBackground(theme) {
-    const dayBg = document.querySelector(".day-background");
-    const nightBg = document.querySelector(".night-background");
-
-    if (!dayBg || !nightBg) return;
-
-    if (theme === "light") {
-      dayBg.style.opacity = 1;
-      nightBg.style.opacity = 0;
-    } else {
-      dayBg.style.opacity = 0;
-      nightBg.style.opacity = 1;
-    }
-  }
-
-  updateBackground(savedTheme);
-
-  /* ------------------------------
-     7. ADMIN MODE (drag + resize)
-     Only active for you
-  ------------------------------ */
-  const isAdmin = true; // later: tie to login
-
-  if (isAdmin) {
-    let dragging = false;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    // DRAG START
-    toggle.addEventListener("mousedown", (e) => {
-      dragging = true;
-      offsetX = e.clientX - toggle.offsetLeft;
-      offsetY = e.clientY - toggle.offsetTop;
-      toggle.style.transition = "none";
-    });
-
-    // DRAG MOVE
-    document.addEventListener("mousemove", (e) => {
-      if (!dragging) return;
-      toggle.style.position = "fixed";
-      toggle.style.left = `${e.clientX - offsetX}px`;
-      toggle.style.top = `${e.clientY - offsetY}px`;
-    });
-
-    // DRAG END
-    document.addEventListener("mouseup", () => {
-      if (dragging) {
-        dragging = false;
-        toggle.style.transition = "";
-        localStorage.setItem(
-          "cc-theme-toggle-pos",
-          JSON.stringify({
-            left: toggle.style.left,
-            top: toggle.style.top
-          })
-        );
-      }
-    });
-
-    // RESTORE POSITION
-    const savedPos = localStorage.getItem("cc-theme-toggle-pos");
-    if (savedPos) {
+  const savedPos = localStorage.getItem(POS_KEY);
+  if (savedPos) {
+    try {
       const pos = JSON.parse(savedPos);
       toggle.style.position = "fixed";
-      toggle.style.left = pos.left;
-      toggle.style.top = pos.top;
-    }
-
-    /* ------------------------------
-       8. ADMIN RESIZE (scroll wheel)
-    ------------------------------ */
-    toggle.addEventListener("wheel", (e) => {
-      e.preventDefault();
-
-      let size = parseInt(toggle.style.width || 38);
-      size += e.deltaY < 0 ? 2 : -2;
-      size = Math.max(24, Math.min(80, size));
-
-      toggle.style.width = `${size}px`;
-      toggle.style.height = `${size}px`;
-
-      localStorage.setItem("cc-theme-toggle-size", size);
-    });
-
-    // RESTORE SIZE
-    const savedSize = localStorage.getItem("cc-theme-toggle-size");
-    if (savedSize) {
-      toggle.style.width = `${savedSize}px`;
-      toggle.style.height = `${savedSize}px`;
+      toggle.style.left = pos.x + "px";
+      toggle.style.top = pos.y + "px";
+    } catch (e) {
+      console.warn("Theme toggle pos parse error:", e);
     }
   }
+
+  /* ------------------------------
+     Restore saved size
+  ------------------------------ */
+  const savedSize = localStorage.getItem(SIZE_KEY);
+  if (savedSize) {
+    toggle.style.width = savedSize + "px";
+    toggle.style.height = savedSize + "px";
+  }
+
+  /* ------------------------------
+     SHIFT + T → Admin mode toggle
+  ------------------------------ */
+  window.addEventListener("keydown", e => {
+    if (e.key === "T" && e.shiftKey) {
+      adminMode = !adminMode;
+      toggle.classList.toggle("theme-toggle-admin", adminMode);
+    }
+  });
+
+  /* ------------------------------
+     Drag start
+  ------------------------------ */
+  toggle.addEventListener("mousedown", e => {
+    if (!adminMode) return;
+
+    dragging = true;
+
+    const rect = toggle.getBoundingClientRect();
+    startX = e.clientX;
+    startY = e.clientY;
+    startLeft = rect.left;
+    startTop = rect.top;
+
+    toggle.style.position = "fixed";
+    toggle.style.transition = "none";
+
+    e.preventDefault();
+  });
+
+  /* ------------------------------
+     Drag move
+  ------------------------------ */
+  window.addEventListener("mousemove", e => {
+    if (!dragging) return;
+
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    toggle.style.left = startLeft + dx + "px";
+    toggle.style.top = startTop + dy + "px";
+  });
+
+  /* ------------------------------
+     Drag end
+  ------------------------------ */
+  window.addEventListener("mouseup", () => {
+    if (!dragging) return;
+
+    dragging = false;
+    toggle.style.transition = "";
+
+    const rect = toggle.getBoundingClientRect();
+    const pos = { x: rect.left, y: rect.top };
+    localStorage.setItem(POS_KEY, JSON.stringify(pos));
+  });
+
+  /* ------------------------------
+     Resize with scroll wheel
+  ------------------------------ */
+  toggle.addEventListener("wheel", e => {
+    if (!adminMode) return;
+
+    e.preventDefault();
+
+    let size = parseInt(toggle.style.width || 38);
+    size += e.deltaY < 0 ? 2 : -2;
+    size = Math.max(24, Math.min(80, size));
+
+    toggle.style.width = size + "px";
+    toggle.style.height = size + "px";
+
+    localStorage.setItem(SIZE_KEY, size);
+  });
 };

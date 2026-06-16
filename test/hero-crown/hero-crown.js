@@ -1,16 +1,21 @@
 /* ============================================================
-   HERO CROWN MODULE
-   - Day/Night switching
+   HERO CROWN MODULE (GR1 VERSION)
+   - Day/Night switching (listens to theme engine)
    - Admin-only drag (SHIFT + C)
    - Admin-only resize (drag handle)
    - Position + size persistence
+   - Safe, modular, isolated
 ============================================================ */
 
 (function () {
+
   const DAY_SRC = "/assets/icons/crown-day.png";
   const NIGHT_SRC = "/assets/icons/crown-night.png";
   const STORAGE_KEY = "heroCrownState";
 
+  /* ------------------------------------------------------------
+     1. Create the crown wrapper + images
+  ------------------------------------------------------------ */
   function createHeroCrown() {
     if (document.getElementById("hero-crown-wrapper")) return;
 
@@ -20,12 +25,10 @@
     const dayImg = document.createElement("img");
     dayImg.id = "hero-crown-day";
     dayImg.src = DAY_SRC;
-    dayImg.alt = "Crown (Day)";
 
     const nightImg = document.createElement("img");
     nightImg.id = "hero-crown-night";
     nightImg.src = NIGHT_SRC;
-    nightImg.alt = "Crown (Night)";
 
     const handle = document.createElement("div");
     handle.className = "hero-crown-resize-handle";
@@ -34,47 +37,63 @@
     wrapper.appendChild(nightImg);
     wrapper.appendChild(handle);
 
-    const hero = document.getElementById("hero") || document.body;
-    hero.appendChild(wrapper);
+    const hero = document.getElementById("hero");
+    if (!hero) {
+      console.warn("Hero section missing — crown not attached.");
+      return null;
+    }
 
+    hero.appendChild(wrapper);
     return wrapper;
   }
 
+  /* ------------------------------------------------------------
+     2. Load saved position + size
+  ------------------------------------------------------------ */
   function loadState(wrapper) {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return;
 
     try {
       const state = JSON.parse(raw);
+
       if (typeof state.x === "number" && typeof state.y === "number") {
         wrapper.style.left = state.x + "px";
         wrapper.style.top = state.y + "px";
         wrapper.style.transform = "translateX(0)";
       }
+
       if (typeof state.size === "number") {
         wrapper.style.width = state.size + "px";
         wrapper.style.height = state.size + "px";
       }
+
     } catch (e) {
       console.warn("Hero crown state parse error:", e);
     }
   }
 
+  /* ------------------------------------------------------------
+     3. Save position + size
+  ------------------------------------------------------------ */
   function saveState(wrapper) {
     const rect = wrapper.getBoundingClientRect();
-    const size = rect.width;
     const state = {
       x: rect.left + window.scrollX,
       y: rect.top + window.scrollY,
-      size
+      size: rect.width
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }
 
+  /* ------------------------------------------------------------
+     4. Drag + Resize (SHIFT + C)
+  ------------------------------------------------------------ */
   function initDragAndResize(wrapper) {
     let adminMode = false;
     let dragging = false;
     let resizing = false;
+
     let startX = 0;
     let startY = 0;
     let startLeft = 0;
@@ -83,7 +102,7 @@
 
     const handle = wrapper.querySelector(".hero-crown-resize-handle");
 
-    // Toggle admin mode: SHIFT + C
+    // Toggle admin mode
     window.addEventListener("keydown", e => {
       if (e.key === "C" && e.shiftKey) {
         adminMode = !adminMode;
@@ -94,7 +113,7 @@
     // Drag start
     wrapper.addEventListener("mousedown", e => {
       if (!adminMode) return;
-      if (e.target === handle) return; // resize handled separately
+      if (e.target === handle) return;
 
       dragging = true;
       wrapper.classList.remove("hero-crown-resizing");
@@ -125,7 +144,7 @@
       e.preventDefault();
     });
 
-    // Move / resize
+    // Move / Resize
     window.addEventListener("mousemove", e => {
       if (!dragging && !resizing) return;
 
@@ -133,11 +152,8 @@
         const dx = e.clientX - startX;
         const dy = e.clientY - startY;
 
-        const newLeft = startLeft + dx;
-        const newTop = startTop + dy;
-
-        wrapper.style.left = newLeft + "px";
-        wrapper.style.top = newTop + "px";
+        wrapper.style.left = startLeft + dx + "px";
+        wrapper.style.top = startTop + dy + "px";
       }
 
       if (resizing) {
@@ -162,13 +178,45 @@
     });
   }
 
+  /* ------------------------------------------------------------
+     5. Theme Sync (listens to theme engine)
+  ------------------------------------------------------------ */
+  function initThemeSync(wrapper) {
+    const dayImg = wrapper.querySelector("#hero-crown-day");
+    const nightImg = wrapper.querySelector("#hero-crown-night");
+
+    function applyTheme(theme) {
+      if (theme === "light") {
+        dayImg.style.opacity = 1;
+        nightImg.style.opacity = 0;
+      } else {
+        dayImg.style.opacity = 0;
+        nightImg.style.opacity = 1;
+      }
+    }
+
+    // Initial sync
+    const current = document.body.getAttribute("data-theme") || "dark";
+    applyTheme(current);
+
+    // Listen for theme changes
+    window.addEventListener("cc-theme-changed", e => {
+      applyTheme(e.detail);
+    });
+  }
+
+  /* ------------------------------------------------------------
+     6. Initialise module
+  ------------------------------------------------------------ */
   function initHeroCrown() {
     const wrapper = createHeroCrown();
     if (!wrapper) return;
+
     loadState(wrapper);
     initDragAndResize(wrapper);
+    initThemeSync(wrapper);
   }
 
-  // Expose for master.js
   window.initHeroCrown = initHeroCrown;
+
 })();
