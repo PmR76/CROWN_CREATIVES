@@ -1,5 +1,5 @@
 /* ============================================================
-   CROWN CREATIVES — MASTER JS (GR1 VERSION)
+   CROWN CREATIVES — MASTER JS (GR1 VERSION, HARDENED)
    Loads the master template, injects global components,
    wires theme + sound + back-to-top engines,
    and loads page-specific engines.
@@ -10,6 +10,10 @@
 ------------------------------------------------------------ */
 async function loadPartial(path) {
   const res = await fetch(path + "?v=" + Date.now());
+  if (!res.ok) {
+    console.warn("Partial not found:", path);
+    return "";
+  }
   return await res.text();
 }
 
@@ -20,8 +24,11 @@ function loadScript(path) {
   return new Promise((resolve, reject) => {
     const s = document.createElement("script");
     s.src = path + "?v=" + Date.now();
-    s.onload = resolve;
-    s.onerror = reject;
+    s.onload = () => resolve();
+    s.onerror = () => {
+      console.warn("Script load failed:", path);
+      reject();
+    };
     document.body.appendChild(s);
   });
 }
@@ -31,7 +38,12 @@ function loadScript(path) {
 ------------------------------------------------------------ */
 async function initMaster() {
   const container = document.getElementById("master-container");
-  if (!container) return console.error("Master container missing.");
+
+  // If there is no master container, do nothing (safe for /test/)
+  if (!container) {
+    console.info("Master container missing — master.js idle on this page.");
+    return;
+  }
 
   const page = container.dataset.page || "home";
 
@@ -43,27 +55,38 @@ async function initMaster() {
   /* ------------------------------
      3.2 Inject global components
   ------------------------------ */
-  document.getElementById("cc-background").innerHTML =
-    await loadPartial("/master/background.html");
+  const bgEl = document.getElementById("cc-background");
+  const headerEl = document.getElementById("cc-header");
+  const contentEl = document.getElementById("cc-page-content");
+  const tickerEl = document.getElementById("cc-ticker");
+  const footerWrapEl = document.getElementById("cc-footer-wrapper");
 
-  document.getElementById("cc-header").innerHTML =
-    await loadPartial("/master/header.html");
+  if (bgEl) {
+    bgEl.innerHTML = await loadPartial("/master/background.html");
+  }
 
-  document.getElementById("cc-page-content").innerHTML =
-    await loadPartial(`/pages/${page}.html`);
+  if (headerEl) {
+    headerEl.innerHTML = await loadPartial("/master/header.html");
+  }
 
-  document.getElementById("cc-ticker").innerHTML =
-    await loadPartial("/master/ticker.html");
+  if (contentEl) {
+    contentEl.innerHTML = await loadPartial(`/pages/${page}.html`);
+  }
 
-  document.getElementById("cc-footer-wrapper").innerHTML =
-    await loadPartial("/master/footer.html");
+  if (tickerEl) {
+    tickerEl.innerHTML = await loadPartial("/master/ticker.html");
+  }
+
+  if (footerWrapEl) {
+    footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
+  }
 
   /* ------------------------------
      3.3 Load global JS engines
   ------------------------------ */
-  await loadScript("/assets/js/theme.js");
-  await loadScript("/assets/js/sound-engine.js");
-  await loadScript("/assets/js/backtotop.js");
+  await loadScript("/assets/js/theme.js").catch(() => {});
+  await loadScript("/assets/js/sound-engine.js").catch(() => {});
+  await loadScript("/assets/js/backtotop.js").catch(() => {});
 
   /* ------------------------------
      3.3a Initialise THEME ENGINE
@@ -71,11 +94,9 @@ async function initMaster() {
   ------------------------------ */
   function waitForToggleAndInitTheme() {
     const toggle = document.getElementById("themeToggle");
-    if (toggle) {
-      if (typeof window.initThemeEngine === "function") {
-        window.initThemeEngine();
-      }
-    } else {
+    if (toggle && typeof window.initThemeEngine === "function") {
+      window.initThemeEngine();
+    } else if (!toggle) {
       requestAnimationFrame(waitForToggleAndInitTheme);
     }
   }
@@ -100,8 +121,12 @@ async function initMaster() {
   /* ------------------------------
      3.3d Initialise MODULES
   ------------------------------ */
-  if (window.initHeroCrown) window.initHeroCrown();
-  if (window.initThemePanel) window.initThemePanel();
+  if (typeof window.initHeroCrown === "function") {
+    window.initHeroCrown();
+  }
+  if (typeof window.initThemePanel === "function") {
+    window.initThemePanel();
+  }
 
   /* ------------------------------
      3.4 Load page-specific engine
@@ -110,7 +135,9 @@ async function initMaster() {
 
   fetch(enginePath)
     .then(res => {
-      if (res.ok) return loadScript(enginePath);
+      if (res.ok) {
+        return loadScript(enginePath);
+      }
       console.warn(`No page engine found for: ${page}`);
     })
     .then(() => {
@@ -118,7 +145,7 @@ async function initMaster() {
          3.5 Initialise HERO GALLERY
          (after page engine)
       ------------------------------ */
-      if (window.initHeroGallery) {
+      if (typeof window.initHeroGallery === "function") {
         window.initHeroGallery();
       }
     })
