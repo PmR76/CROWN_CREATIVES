@@ -52,6 +52,7 @@
 
     panel = document.createElement("div");
     panel.id = "theme-panel";
+    panel.classList.add("cc-theme-panel");
 
     panel.innerHTML = `
       <div id="theme-panel-header">
