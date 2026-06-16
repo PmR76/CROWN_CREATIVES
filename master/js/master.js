@@ -1,5 +1,5 @@
 /* ============================================================
-   CROWN CREATIVES — MASTER JS
+   CROWN CREATIVES — MASTER JS (GR1 VERSION)
    Loads the master template, injects global components,
    wires theme + sound + back-to-top engines,
    and loads page-specific engines.
@@ -35,10 +35,14 @@ async function initMaster() {
 
   const page = container.dataset.page || "home";
 
-  // 3.1 Load master wrapper
+  /* ------------------------------
+     3.1 Load master wrapper
+  ------------------------------ */
   container.innerHTML = await loadPartial("/master/page-wrapper.html");
 
-  // 3.2 Inject global components
+  /* ------------------------------
+     3.2 Inject global components
+  ------------------------------ */
   document.getElementById("cc-background").innerHTML =
     await loadPartial("/master/background.html");
 
@@ -54,34 +58,45 @@ async function initMaster() {
   document.getElementById("cc-footer-wrapper").innerHTML =
     await loadPartial("/master/footer.html");
 
-  // 3.3 Load global JS engines AFTER header/footer exist
+  /* ------------------------------
+     3.3 Load global JS engines
+  ------------------------------ */
   await loadScript("/assets/js/theme.js");
   await loadScript("/assets/js/sound-engine.js");
   await loadScript("/assets/js/backtotop.js");
 
-  // 3.3a Initialise THEME ENGINE
+  /* ------------------------------
+     3.3a Initialise THEME ENGINE
+  ------------------------------ */
   if (typeof window.initThemeEngine === "function") {
     window.initThemeEngine();
   }
 
-  // 3.3b Initialise SOUND ENGINE
+  /* ------------------------------
+     3.3b Initialise SOUND ENGINE
+  ------------------------------ */
   if (typeof window.initSoundEngine === "function") {
     window.initSoundEngine();
   }
 
-  // 3.3c Initialise BACK TO TOP ENGINE
+  /* ------------------------------
+     3.3c Initialise BACK TO TOP ENGINE
+  ------------------------------ */
   setTimeout(() => {
     if (typeof window.initBackToTop === "function") {
       window.initBackToTop();
     }
   }, 150);
 
-  // 3.3d Initialise MODULES (after global engines)
+  /* ------------------------------
+     3.3d Initialise MODULES
+  ------------------------------ */
   if (window.initHeroCrown) window.initHeroCrown();
   if (window.initThemePanel) window.initThemePanel();
-  if (window.initThemeToggleDrag) window.initThemeToggleDrag();
 
-  // 3.4 Load page-specific engine (optional)
+  /* ------------------------------
+     3.4 Load page-specific engine
+  ------------------------------ */
   const enginePath = `/assets/js/${page}.js`;
 
   fetch(enginePath)
@@ -89,12 +104,13 @@ async function initMaster() {
       if (res.ok) return loadScript(enginePath);
       console.warn(`No page engine found for: ${page}`);
     })
+    .then(() => {
+      // 3.5 Initialise HERO GALLERY (after page engine)
+      if (window.initHeroGallery) {
+        window.initHeroGallery();
+      }
+    })
     .catch(() => console.warn(`Engine load failed for: ${page}`));
-
-  // 3.5 Initialise HERO GALLERY (after page content)
-  if (window.initHeroGallery) {
-    window.initHeroGallery();
-  }
 }
 
 /* ------------------------------------------------------------
