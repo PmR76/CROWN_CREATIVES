@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="header/header.css">
   <link rel="stylesheet" href="footer/footer.css">
   <link rel="stylesheet" href="hero/hero.css">
-  <link rel="stylesheet" href="gallery/gallery.css">
   <link rel="stylesheet" href="sound/sound.css">
 
   <!-- TICKER CSS -->
@@ -62,6 +61,8 @@
       <img id="hero-crown-night" src="../assets/icons/night-crown.svg" alt="Night Crown">
     </div>
 
+    <!-- NEW HERO WINDOW WILL BE INJECTED HERE -->
+
   </section>
 
   <!-- CORE VALUES (cards will be injected after this) -->
@@ -74,7 +75,6 @@
   <div id="cc-footer"></div>
 
   <!-- MODULE JS (plug‑and‑play) -->
-  <script src="gallery/gallery.js"></script>
   <script src="sound/sound.js"></script>
   <script src="hero/hero.js"></script>
 
@@ -123,22 +123,21 @@
         document.body.appendChild(script);
       });
 
-/* Inject HERO WINDOW */
-fetch("hero-window/hero-window.html")
-  .then(r => r.text())
-  .then(html => {
-    document
-      .getElementById("hero")
-      .insertAdjacentHTML("beforeend", html);
+    /* Inject HERO WINDOW */
+    fetch("hero-window/hero-window.html")
+      .then(r => r.text())
+      .then(html => {
+        document
+          .getElementById("hero")
+          .insertAdjacentHTML("beforeend", html);
 
-    const script = document.createElement("script");
-    script.src = "hero-window/hero-window.js";
-    script.onload = () => {
-      if (window.initHeroWindow) window.initHeroWindow();
-    };
-    document.body.appendChild(script);
-  });
-
+        const script = document.createElement("script");
+        script.src = "hero-window/hero-window.js";
+        script.onload = () => {
+          if (window.initHeroWindow) window.initHeroWindow();
+        };
+        document.body.appendChild(script);
+      });
 
     /* Inject THEME PANEL */
     fetch("theme-panel/theme-panel.html")
@@ -156,14 +155,12 @@ fetch("hero-window/hero-window.html")
   <!-- ENGINES (production engines) -->
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/sound-engine.js"></script>
-  
 
   <!-- ENGINE INITIALISATION -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       if (window.initThemeEngine) window.initThemeEngine();
       if (window.initSoundEngine) window.initSoundEngine();
-      if (window.initHeroGallery) window.initHeroGallery();
     });
   </script>
 
