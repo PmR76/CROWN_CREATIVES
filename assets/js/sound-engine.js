@@ -171,6 +171,59 @@ async function loadTracks() {
     await loadTracks();   // ← CRITICAL: load autoscan list first
     bindToggle();         // ← Now bind toggle
   };
+/* ---------------------------------------------
+   6. DRAGGABLE SOUND TOGGLE (SHIFT + S)
+   --------------------------------------------- */
+let soundAdmin = false;
+let soundDragging = false;
+let sx = 0;
+let sy = 0;
+
+window.addEventListener("keydown", e => {
+  if (e.key === "S" && e.shiftKey) {
+    soundAdmin = !soundAdmin;
+    soundToggle.classList.toggle("sound-draggable", soundAdmin);
+  }
+});
+
+soundToggle.addEventListener("mousedown", e => {
+  if (!soundAdmin) return;
+
+  soundDragging = true;
+  soundToggle.classList.add("sound-dragging");
+
+  sx = e.clientX - soundToggle.offsetLeft;
+  sy = e.clientY - soundToggle.offsetTop;
+});
+
+window.addEventListener("mousemove", e => {
+  if (!soundDragging) return;
+
+  soundToggle.style.left = (e.clientX - sx) + "px";
+  soundToggle.style.top = (e.clientY - sy) + "px";
+  soundToggle.style.position = "absolute";
+});
+
+window.addEventListener("mouseup", () => {
+  if (!soundDragging) return;
+
+  soundDragging = false;
+  soundToggle.classList.remove("sound-dragging");
+
+  localStorage.setItem("soundTogglePos", JSON.stringify({
+    x: soundToggle.offsetLeft,
+    y: soundToggle.offsetTop
+  }));
+});
+
+/* Restore saved position */
+const savedSoundPos = localStorage.getItem("soundTogglePos");
+if (savedSoundPos) {
+  const pos = JSON.parse(savedSoundPos);
+  soundToggle.style.left = pos.x + "px";
+  soundToggle.style.top = pos.y + "px";
+  soundToggle.style.position = "absolute";
+}
 
 })();
  
