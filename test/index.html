@@ -7,29 +7,29 @@
   <!-- GLOBAL TEST LAYOUT -->
   <link rel="stylesheet" href="index.css">
 
-  <!-- MODULE CSS (plug‑and‑play) -->
+  <!-- MODULE CSS -->
   <link rel="stylesheet" href="header/header.css">
   <link rel="stylesheet" href="footer/footer.css">
   <link rel="stylesheet" href="hero/hero.css">
   <link rel="stylesheet" href="sound/sound.css">
-
-  <!-- TICKER CSS -->
   <link rel="stylesheet" href="ticker/ticker.css">
-
-  <!-- CARDS CSS -->
   <link rel="stylesheet" href="cards/cards.css">
-
-  <!-- HERO WINDOW CSS -->
   <link rel="stylesheet" href="hero-window/hero-window.css">
 
-  <!-- THEME PANEL CSS -->
-  <link rel="stylesheet" href="theme-panel/theme-panel.css">
+  <!-- REMOVE OLD THEME PANEL CSS -->
+  <!-- <link rel="stylesheet" href="theme-panel/theme-panel.css"> -->
 
   <!-- GLOBAL THEME + VARIABLES -->
   <link rel="stylesheet" href="../assets/css/global.css">
 
-  <!-- TEST THEME (REPLACES MAIN THEME) -->
+  <!-- TEST THEME -->
   <link rel="stylesheet" href="theme/theme.css">
+
+  <!-- NEW MODULE THEME PANEL CSS -->
+  <link rel="stylesheet" href="/modules/theme-panel/theme-panel.css">
+
+  <!-- NEW MODULE HERO CROWN CSS -->
+  <link rel="stylesheet" href="/modules/hero-crown/hero-crown.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -47,122 +47,33 @@
   <!-- HEADER (injected) -->
   <div id="cc-header"></div>
 
-  <!-- THEME PANEL CONTAINER -->
-  <div id="themePanelContainer">
-    <div id="themePanel"></div>
-  </div>
-
   <!-- HERO SECTION -->
-  <section id="hero">
+  <section id="hero"></section>
 
-    <!-- HERO CROWN -->
-    <div id="hero-crown-wrapper">
-      <img id="hero-crown-day" src="../assets/icons/day-crown.svg" alt="Day Crown">
-      <img id="hero-crown-night" src="../assets/icons/night-crown.svg" alt="Night Crown">
-    </div>
-
-    <!-- NEW HERO WINDOW WILL BE INJECTED HERE -->
-
-  </section>
-
-  <!-- CORE VALUES (cards will be injected after this) -->
+  <!-- CORE VALUES -->
   <section id="core-values"></section>
 
-  <!-- TICKER (injected) -->
+  <!-- TICKER -->
   <div id="cc-ticker"></div>
 
-  <!-- FOOTER (injected) -->
+  <!-- FOOTER -->
   <div id="cc-footer"></div>
 
-  <!-- MODULE JS (plug‑and‑play) -->
-  <script src="sound/sound.js"></script>
-  <script src="hero/hero.js"></script>
+  <!-- REMOVE ALL OLD MODULE JS -->
+  <!-- REMOVE old theme-panel injection -->
+  <!-- REMOVE old hero crown HTML -->
+  <!-- REMOVE old theme engine -->
 
-  <!-- THEME ENGINE (TEST VERSION) -->
-  <script src="theme/theme.js"></script>
+  <!-- NEW MODULE JS -->
+  <script src="/modules/hero-crown/hero-crown.js"></script>
+  <script src="/modules/theme-panel/theme-panel.js"></script>
 
-  <!-- UNIFIED MODULE INJECTION BLOCK -->
-  <script>
-    /* Inject HEADER */
-    fetch("header/header.html")
-      .then(r => r.text())
-      .then(html => document.getElementById("cc-header").innerHTML = html);
-
-    /* Inject FOOTER */
-    fetch("footer/footer.html")
-      .then(r => r.text())
-      .then(html => document.getElementById("cc-footer").innerHTML = html);
-
-    /* Inject TICKER */
-    fetch("ticker/ticker.html")
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById("cc-ticker").innerHTML = html;
-
-        const script = document.createElement("script");
-        script.src = "ticker/ticker.js";
-        script.onload = () => {
-          if (window.initEvolveTicker) window.initEvolveTicker();
-        };
-        document.body.appendChild(script);
-      });
-
-    /* Inject MAGIC CARDS */
-    fetch("cards/cards.html")
-      .then(r => r.text())
-      .then(html => {
-        document
-          .getElementById("core-values")
-          .insertAdjacentHTML("afterend", html);
-
-        const script = document.createElement("script");
-        script.src = "cards/cards.js";
-        script.onload = () => {
-          if (window.initMagicCards) window.initMagicCards();
-        };
-        document.body.appendChild(script);
-      });
-
-    /* Inject HERO WINDOW */
-    fetch("hero-window/hero-window.html")
-      .then(r => r.text())
-      .then(html => {
-        document
-          .getElementById("hero")
-          .insertAdjacentHTML("beforeend", html);
-
-        const script = document.createElement("script");
-        script.src = "hero-window/hero-window.js";
-        script.onload = () => {
-          if (window.initHeroWindow) window.initHeroWindow();
-        };
-        document.body.appendChild(script);
-      });
-
-    /* Inject THEME PANEL */
-    fetch("theme-panel/theme-panel.html")
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById("themePanel").innerHTML = html;
-
-        if (window.initThemePanel) window.initThemePanel();
-      });
-  </script>
-
-  <!-- THEME PANEL JS (must load AFTER injection) -->
-  <script src="theme-panel/theme-panel.js"></script>
-
-  <!-- ENGINES (production engines) -->
+  <!-- GLOBAL ENGINES -->
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/sound-engine.js"></script>
 
-  <!-- ENGINE INITIALISATION -->
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      if (window.initThemeEngine) window.initThemeEngine();
-      if (window.initSoundEngine) window.initSoundEngine();
-    });
-  </script>
+  <!-- MASTER LOADER -->
+  <script src="../assets/js/master.js"></script>
 
 </body>
 </html>
