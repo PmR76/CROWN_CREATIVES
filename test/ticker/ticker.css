@@ -52,3 +52,29 @@
   0%   { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
+/* ============================================================
+   MOBILE CLARITY MODE — TICKER
+   ============================================================ */
+@media (max-width: 768px) {
+
+  .evolve-ticker {
+    height: 48px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.35); /* darker for contrast */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .evolve-ticker-track {
+    font-size: 1.25rem;        /* bigger text */
+    opacity: 1;                /* full visibility */
+    text-shadow: none;         /* remove glow for clarity */
+    color: #fff;               /* pure white text */
+    animation-duration: 22s;   /* slightly slower */
+  }
+
+  .magic-shimmer,
+  .evolve-ticker-track::before {
+    opacity: 0.12;             /* reduce shimmer intensity */
+  }
+}
