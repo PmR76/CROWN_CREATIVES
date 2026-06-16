@@ -134,21 +134,22 @@
         document.body.appendChild(script);
       });
 
-    /* Inject HERO WINDOW */
-    fetch("hero-window/hero-window.html")
-      .then(r => r.text())
-      .then(html => {
-        document
-          .getElementById("hero")
-          .insertAdjacentHTML("beforeend", html);
+/* Inject HERO WINDOW */
+fetch("hero-window/hero-window.html")
+  .then(r => r.text())
+  .then(html => {
+    document
+      .getElementById("hero")
+      .insertAdjacentHTML("beforeend", html);
 
-        const script = document.createElement("script");
-        script.src = "hero-window/hero-window.js";
-        script.onload = () => {
-          if (window.initHeroWindow) window.initHeroWindow();
-        };
-        document.body.appendChild(script);
-      });
+    const script = document.createElement("script");
+    script.src = "hero-window/hero-window.js";
+    script.onload = () => {
+      if (window.initHeroWindow) window.initHeroWindow();
+    };
+    document.body.appendChild(script);
+  });
+
 
     /* Inject THEME PANEL */
     fetch("theme-panel/theme-panel.html")
@@ -166,7 +167,7 @@
   <!-- ENGINES (production engines) -->
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/sound-engine.js"></script>
-  <script src="../assets/js/hero-gallery.js"></script>
+  
 
   <!-- ENGINE INITIALISATION -->
   <script>
