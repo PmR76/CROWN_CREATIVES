@@ -1,4 +1,7 @@
-/* THEME PANEL MODULE (BACKGROUND ONLY) */
+/* ============================================================
+   THEME PANEL MODULE — GR1 VERSION
+   Background-only control panel
+============================================================ */
 
 #theme-panel {
   position: fixed;
@@ -14,12 +17,14 @@
   font-size: 0.9rem;
   z-index: 200;
   display: none;
+  transition: left 0.15s ease, top 0.15s ease;
 }
 
 #theme-panel.theme-panel-visible {
   display: block;
 }
 
+/* Header */
 #theme-panel-header {
   display: flex;
   justify-content: space-between;
@@ -44,6 +49,7 @@
   opacity: 1;
 }
 
+/* Section label */
 .theme-panel-section-label {
   margin-top: 10px;
   margin-bottom: 6px;
@@ -53,6 +59,7 @@
   opacity: 0.7;
 }
 
+/* Background list */
 #theme-panel-background-list {
   display: flex;
   flex-direction: column;
@@ -77,11 +84,8 @@
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Drag state */
+/* Dragging state */
 #theme-panel.theme-panel-dragging {
   cursor: move;
-}
-#themeToggle.theme-toggle-admin {
-  outline: 2px dashed rgba(255, 255, 255, 0.5);
-  cursor: grab;
+  pointer-events: none; /* prevents accidental clicks while dragging */
 }
