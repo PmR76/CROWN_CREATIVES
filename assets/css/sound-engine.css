@@ -120,3 +120,12 @@ body.sound-off #soundToggle {
   50%  { transform: scale(1.12); }
   100% { transform: scale(1.0); }
 }
+#soundToggle.sound-draggable {
+  outline: 2px dashed #8f5cff;
+  cursor: grab;
+  z-index: 99999;
+}
+
+#soundToggle.sound-dragging {
+  cursor: grabbing;
+}
