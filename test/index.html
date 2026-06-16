@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Crown Creatives</title>
+  <title>Crown Creatives — Test Environment</title>
 
-  <!-- GLOBAL LAYOUT -->
+  <!-- GLOBAL TEST LAYOUT -->
   <link rel="stylesheet" href="index.css">
 
-  <!-- MODULE CSS (LOCAL ONLY) -->
+  <!-- MODULE CSS (LOCAL TO TEST) -->
   <link rel="stylesheet" href="header/header.css">
   <link rel="stylesheet" href="footer/footer.css">
   <link rel="stylesheet" href="hero/hero.css">
@@ -16,20 +16,20 @@
   <link rel="stylesheet" href="cards/cards.css">
   <link rel="stylesheet" href="hero-window/hero-window.css">
 
-  <!-- GLOBAL THEME + VARIABLES -->
-  <link rel="stylesheet" href="assets/css/global.css">
+  <!-- GLOBAL THEME + VARIABLES (ROOT ASSETS) -->
+  <link rel="stylesheet" href="/assets/css/global.css">
 
-  <!-- THEME (LOCAL) -->
+  <!-- TEST THEME (LOCAL) -->
   <link rel="stylesheet" href="theme/theme.css">
 
-  <!-- THEME PANEL + HERO CROWN (LOCAL) -->
+  <!-- THEME PANEL + HERO CROWN (LOCAL TO TEST) -->
   <link rel="stylesheet" href="theme-panel/theme-panel.css">
   <link rel="stylesheet" href="hero-crown/hero-crown.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body id="cc-root">
+<body id="cc-test">
 
   <!-- BACKGROUND -->
   <div id="cc-background">
@@ -58,12 +58,10 @@
   <script src="hero-crown/hero-crown.js"></script>
   <script src="theme-panel/theme-panel.js"></script>
 
-  <!-- GLOBAL ENGINES -->
-  <script src="assets/js/theme.js"></script>
-  <script src="assets/js/sound-engine.js"></script>
-
-  <!-- MASTER LOADER -->
-  <script src="assets/js/master.js"></script>
+  <!-- GLOBAL ENGINES (ROOT ASSETS) -->
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/sound-engine.js"></script>
+  <script src="/assets/js/master.js"></script>
 
 </body>
 </html>
