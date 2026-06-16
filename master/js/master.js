@@ -67,10 +67,19 @@ async function initMaster() {
 
   /* ------------------------------
      3.3a Initialise THEME ENGINE
+     (Wait until toggle exists)
   ------------------------------ */
-  if (typeof window.initThemeEngine === "function") {
-    window.initThemeEngine();
+  function waitForToggleAndInitTheme() {
+    const toggle = document.getElementById("themeToggle");
+    if (toggle) {
+      if (typeof window.initThemeEngine === "function") {
+        window.initThemeEngine();
+      }
+    } else {
+      requestAnimationFrame(waitForToggleAndInitTheme);
+    }
   }
+  waitForToggleAndInitTheme();
 
   /* ------------------------------
      3.3b Initialise SOUND ENGINE
@@ -105,7 +114,10 @@ async function initMaster() {
       console.warn(`No page engine found for: ${page}`);
     })
     .then(() => {
-      // 3.5 Initialise HERO GALLERY (after page engine)
+      /* ------------------------------
+         3.5 Initialise HERO GALLERY
+         (after page engine)
+      ------------------------------ */
       if (window.initHeroGallery) {
         window.initHeroGallery();
       }
