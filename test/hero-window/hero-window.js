@@ -1,5 +1,6 @@
 /* ============================================================
-   CROWN CREATIVES — HERO WINDOW ENGINE v1.0
+   CROWN CREATIVES — HERO WINDOW ENGINE v3.0
+   Manifest + Validation + Fallback
    ============================================================ */
 
 window.initHeroWindow = () => {
@@ -8,43 +9,86 @@ window.initHeroWindow = () => {
 
   if (!win || !img) return;
 
+  const FALLBACK = "../assets/images/fallback.jpg"; 
+  // Add a fallback image to your assets folder
+
   /* ---------------------------------------------
-     1. AUTO-SCAN GALLERY FOLDER
+     1. LOAD + VALIDATE MANIFEST
      --------------------------------------------- */
-  fetch("../assets/images/gallery/")
-    .then(r => r.text())
-    .then(text => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(text, "text/html");
+  fetch("../assets/images/gallery/gallery-manifest.json")
+    .then(r => {
+      if (!r.ok) {
+        console.warn("Manifest missing or unreadable. Using fallback.");
+        startFallback();
+        return null;
+      }
+      return r.json();
+    })
+    .then(files => {
+      if (!files) return;
 
-      const files = [...doc.querySelectorAll("a")]
-        .map(a => a.getAttribute("href"))
-        .filter(h => h.match(/\.(jpg|jpeg|png|webp|gif)$/i))
-        .map(h => "../assets/images/gallery/" + h);
+      // Validate manifest entries
+      const valid = files.filter(f =>
+        typeof f === "string" &&
+        f.match(/\.(jpg|jpeg|png|webp|gif)$/i)
+      );
 
-      if (!files.length) return;
+      if (!valid.length) {
+        console.warn("Manifest contains no valid images. Using fallback.");
+        startFallback();
+        return;
+      }
 
-      let index = 0;
-
-      const cycle = () => {
-        img.style.opacity = 0;
-
-        setTimeout(() => {
-          img.src = files[index];
-          img.onload = () => {
-            img.style.opacity = 1;
-          };
-
-          index = (index + 1) % files.length;
-        }, 1500);
-      };
-
-      cycle();
-      setInterval(cycle, 8000 + 1500 + 1500);
+      const paths = valid.map(f => "../assets/images/gallery/" + f);
+      startCycle(paths);
+    })
+    .catch(err => {
+      console.error("Manifest load error:", err);
+      startFallback();
     });
 
   /* ---------------------------------------------
-     2. RESTORE SAVED POSITION
+     2. IMAGE CYCLE (fade in/out)
+     --------------------------------------------- */
+  function startCycle(paths) {
+    let index = 0;
+
+    const cycle = () => {
+      img.style.opacity = 0;
+
+      setTimeout(() => {
+        const src = paths[index];
+
+        img.onerror = () => {
+          console.warn("Image failed:", src, "→ using fallback");
+          img.src = FALLBACK;
+          img.style.opacity = 1;
+        };
+
+        img.onload = () => {
+          img.style.opacity = 1;
+        };
+
+        img.src = src;
+
+        index = (index + 1) % paths.length;
+      }, 1500);
+    };
+
+    cycle();
+    setInterval(cycle, 8000 + 1500 + 1500);
+  }
+
+  /* ---------------------------------------------
+     3. FALLBACK MODE
+     --------------------------------------------- */
+  function startFallback() {
+    img.src = FALLBACK;
+    img.style.opacity = 1;
+  }
+
+  /* ---------------------------------------------
+     4. RESTORE SAVED POSITION
      --------------------------------------------- */
   const saved = localStorage.getItem("heroWindowPos");
   if (saved) {
@@ -55,7 +99,7 @@ window.initHeroWindow = () => {
   }
 
   /* ---------------------------------------------
-     3. ADMIN DRAG MODE (toggle with SHIFT + H)
+     5. ADMIN DRAG MODE (SHIFT + H)
      --------------------------------------------- */
   let adminMode = false;
   let dragging = false;
