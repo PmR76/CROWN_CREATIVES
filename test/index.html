@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Crown Creatives — Test Environment</title>
+  <title>Crown Creatives</title>
 
-  <!-- GLOBAL TEST LAYOUT -->
+  <!-- GLOBAL LAYOUT -->
   <link rel="stylesheet" href="index.css">
 
-  <!-- MODULE CSS -->
+  <!-- MODULE CSS (LOCAL ONLY) -->
   <link rel="stylesheet" href="header/header.css">
   <link rel="stylesheet" href="footer/footer.css">
   <link rel="stylesheet" href="hero/hero.css">
@@ -17,19 +17,19 @@
   <link rel="stylesheet" href="hero-window/hero-window.css">
 
   <!-- GLOBAL THEME + VARIABLES -->
-  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/global.css">
 
-  <!-- TEST THEME -->
+  <!-- THEME (LOCAL) -->
   <link rel="stylesheet" href="theme/theme.css">
 
-  <!-- NEW MODULE CSS (CORRECT PATHS) -->
-  <link rel="stylesheet" href="../assets/modules/theme-panel/theme-panel.css">
-  <link rel="stylesheet" href="../assets/modules/hero-crown/hero-crown.css">
+  <!-- THEME PANEL + HERO CROWN (LOCAL) -->
+  <link rel="stylesheet" href="theme-panel/theme-panel.css">
+  <link rel="stylesheet" href="hero-crown/hero-crown.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body id="cc-test">
+<body id="cc-root">
 
   <!-- BACKGROUND -->
   <div id="cc-background">
@@ -54,16 +54,16 @@
   <!-- FOOTER -->
   <div id="cc-footer"></div>
 
-  <!-- NEW MODULE JS (CORRECT PATHS) -->
-  <script src="../assets/modules/hero-crown/hero-crown.js"></script>
-  <script src="../assets/modules/theme-panel/theme-panel.js"></script>
+  <!-- LOCAL MODULE JS -->
+  <script src="hero-crown/hero-crown.js"></script>
+  <script src="theme-panel/theme-panel.js"></script>
 
   <!-- GLOBAL ENGINES -->
-  <script src="../assets/js/theme.js"></script>
-  <script src="../assets/js/sound-engine.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/sound-engine.js"></script>
 
   <!-- MASTER LOADER -->
-  <script src="../assets/js/master.js"></script>
+  <script src="assets/js/master.js"></script>
 
 </body>
 </html>
