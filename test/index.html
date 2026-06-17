@@ -10,7 +10,10 @@
   <!-- MODULE CSS (LOCAL TO TEST) -->
   <link rel="stylesheet" href="header/header.css">
   <link rel="stylesheet" href="footer/footer.css">
-  <link rel="stylesheet" href="hero/hero.css">
+
+  <!-- REMOVED: hero/hero.css (redundant + deleted) -->
+  <!-- <link rel="stylesheet" href="hero/hero.css"> -->
+
   <link rel="stylesheet" href="sound/sound.css">
   <link rel="stylesheet" href="ticker/ticker.css">
   <link rel="stylesheet" href="cards/cards.css">
@@ -62,34 +65,33 @@
   <script src="/assets/js/theme.js"></script>
   <script src="/assets/js/sound-engine.js"></script>
   <script src="/assets/js/master.js"></script>
-<script>
-(function removeForeignOverlays() {
-    const overlays = [...document.querySelectorAll('*')].filter(el => {
-        const style = window.getComputedStyle(el);
 
-        // Detect full-screen overlays
-        const isFullScreen =
-            style.position === 'fixed' &&
-            style.top === '0px' &&
-            style.left === '0px' &&
-            style.width === '100%' &&
-            style.height === '100%';
+  <!-- OVERLAY KILLER -->
+  <script>
+  (function removeForeignOverlays() {
+      const overlays = [...document.querySelectorAll('*')].filter(el => {
+          const style = window.getComputedStyle(el);
 
-        // Ignore your own elements
-        const isYours = el.id?.startsWith('cc-') || el.closest('#cc-test');
+          const isFullScreen =
+              style.position === 'fixed' &&
+              style.top === '0px' &&
+              style.left === '0px' &&
+              style.width === '100%' &&
+              style.height === '100%';
 
-        return isFullScreen && !isYours;
-    });
+          const isYours = el.id?.startsWith('cc-') || el.closest('#cc-test');
 
-    overlays.forEach(el => {
-        console.warn('Removing foreign overlay:', el);
-        el.remove();
-    });
+          return isFullScreen && !isYours;
+      });
 
-    // Keep watching in case something re-injects
-    setTimeout(removeForeignOverlays, 500);
-})();
-</script>
+      overlays.forEach(el => {
+          console.warn('Removing foreign overlay:', el);
+          el.remove();
+      });
+
+      setTimeout(removeForeignOverlays, 500);
+  })();
+  </script>
 
 </body>
 </html>
