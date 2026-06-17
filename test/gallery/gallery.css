@@ -1,0 +1,94 @@
+/* ============================================================
+   GALLERY MODULE — Crown Creatives
+   Cinematic lanes, modular, self-contained
+============================================================ */
+
+/* ------------------------------
+   GALLERY WINDOW
+------------------------------ */
+#hero-gallery {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 420px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none; /* prevents accidental interaction */
+}
+
+/* ------------------------------
+   GALLERY LANES (Left + Right)
+------------------------------ */
+.gallery-left,
+.gallery-right {
+  width: 48%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Inner lane container (scrolling column) */
+.gallery-lane-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 1s linear;
+}
+
+/* ------------------------------
+   GALLERY IMAGES
+------------------------------ */
+.gallery-lane-inner img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  opacity: 0.25;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+}
+
+/* Active image highlight */
+.gallery-lane-inner img.active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+/* ------------------------------
+   CINEMATIC DEPTH EFFECTS
+------------------------------ */
+.gallery-left img:nth-child(odd),
+.gallery-right img:nth-child(even) {
+  transform: translateX(-4px);
+}
+
+.gallery-left img:nth-child(even),
+.gallery-right img:nth-child(odd) {
+  transform: translateX(4px);
+}
+
+/* Active images override drift */
+.gallery-lane-inner img.active {
+  transform: translateX(0) scale(1.02);
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 900px) {
+  #hero-gallery {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+  }
+
+  .gallery-left,
+  .gallery-right {
+    width: 100%;
+    height: 300px;
+  }
+}
