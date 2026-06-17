@@ -7,7 +7,27 @@
 /* ------------------------------
    GLOBAL SPACING + RESET
 ------------------------------ */
-body {/* REMOVED full-screen fixed block by scanner */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Cinzel', serif;
+  background: var(--cc-background);
+  color: var(--cc-text-primary);
+}
+
+/* ------------------------------
+   BACKGROUND WRAPPER
+------------------------------ */
+#cc-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
 
 /* ------------------------------
    TEST ENVIRONMENT WRAPPER

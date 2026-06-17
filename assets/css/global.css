@@ -1,5 +1,5 @@
 /* ============================================================
-   CROWN CREATIVES — CINEMATIC GLOBAL CORE v2.1 (CLEANED)
+   CROWN CREATIVES — CINEMATIC GLOBAL CORE v2.1 (GR1 CLEAN)
    Modular • Stable • No Hero Crown Logic
 ============================================================ */
 
@@ -9,9 +9,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
 
 /* ------------------------------------------------------------
-   1. GLOBAL RESET + TYPOGRAPHY + BASELINE
+   1. GLOBAL RESET + TYPOGRAPHY
 ------------------------------------------------------------ */
-
 html, body {
   margin: 0;
   padding: 0;
@@ -25,10 +24,8 @@ html, body {
 }
 
 /* ------------------------------------------------------------
-   2. GLOBAL SHIMMER / SWEEP / SPARKLE
-   (NO LONGER APPLIES TO HERO CROWNS)
+   2. GLOBAL CROWN EFFECTS (non-hero crowns only)
 ------------------------------------------------------------ */
-
 img:not(.hero-crown)[src*="crown"],
 svg:not(.hero-crown)[src*="crown"] {
   position: relative;
@@ -105,7 +102,6 @@ svg:not(.hero-crown)[src*="crown"]::before {
 /* ------------------------------------------------------------
    3. GLOBAL HEADER FADE
 ------------------------------------------------------------ */
-
 main {
   position: relative;
   z-index: 2;
@@ -119,7 +115,6 @@ body.fade-header main {
 /* ------------------------------------------------------------
    4. SAFETY OVERRIDES
 ------------------------------------------------------------ */
-
 #evolve-panel,
 #evolve-orb {
   z-index: 999999 !important;
@@ -130,65 +125,58 @@ body.fade-header main {
 .videos-hero * {
   pointer-events: none !important;
 }
-/* HERO GALLERY CONTAINER */
+
+/* ------------------------------------------------------------
+   5. HERO GALLERY (legacy lane system)
+------------------------------------------------------------ */
 .hero-gallery {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    max-width: 1600px;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: space-between;
-    pointer-events: none;
-    z-index: 1; /* Behind crown */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 1600px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* GALLERY LANES */
 .gallery-lane {
-    width: 180px;
-    height: 420px;
-    overflow: hidden;
-    position: relative;
-    mask-image: linear-gradient(to bottom, transparent, white 20%, white 80%, transparent);
+  width: 180px;
+  height: 420px;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to bottom, transparent, white 20%, white 80%, transparent);
 }
 
-/* LEFT + RIGHT POSITIONING */
-.lane-left {
-    margin-right: 80px; /* distance from crown */
-}
+.lane-left { margin-right: 80px; }
+.lane-right { margin-left: 80px; }
 
-.lane-right {
-    margin-left: 80px; /* distance from crown */
-}
-
-/* IMAGES INSIDE LANES */
 .gallery-lane img {
-    width: 100%;
-    height: auto;
-    display: block;
-    position: absolute;
-    animation: galleryScroll 18s linear infinite;
-    opacity: 0.85;
-    border-radius: 6px;
+  width: 100%;
+  height: auto;
+  display: block;
+  position: absolute;
+  animation: galleryScroll 18s linear infinite;
+  opacity: 0.85;
+  border-radius: 6px;
 }
 
-/* SCROLL ANIMATION */
 @keyframes galleryScroll {
-    0% { transform: translateY(100%); }
-    100% { transform: translateY(-120%); }
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-120%); }
 }
 
-/* RESPONSIVE TUNING */
 @media (max-width: 1200px) {
-    .gallery-lane {
-        width: 140px;
-        height: 360px;
-    }
+  .gallery-lane {
+    width: 140px;
+    height: 360px;
+  }
 }
 
 @media (max-width: 900px) {
-    .hero-gallery {
-        display: none; /* hide on mobile for clarity */
-    }
+  .hero-gallery {
+    display: none;
+  }
 }
