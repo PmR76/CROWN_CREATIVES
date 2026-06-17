@@ -62,6 +62,34 @@
   <script src="/assets/js/theme.js"></script>
   <script src="/assets/js/sound-engine.js"></script>
   <script src="/assets/js/master.js"></script>
+<script>
+(function removeForeignOverlays() {
+    const overlays = [...document.querySelectorAll('*')].filter(el => {
+        const style = window.getComputedStyle(el);
+
+        // Detect full-screen overlays
+        const isFullScreen =
+            style.position === 'fixed' &&
+            style.top === '0px' &&
+            style.left === '0px' &&
+            style.width === '100%' &&
+            style.height === '100%';
+
+        // Ignore your own elements
+        const isYours = el.id?.startsWith('cc-') || el.closest('#cc-test');
+
+        return isFullScreen && !isYours;
+    });
+
+    overlays.forEach(el => {
+        console.warn('Removing foreign overlay:', el);
+        el.remove();
+    });
+
+    // Keep watching in case something re-injects
+    setTimeout(removeForeignOverlays, 500);
+})();
+</script>
 
 </body>
 </html>
