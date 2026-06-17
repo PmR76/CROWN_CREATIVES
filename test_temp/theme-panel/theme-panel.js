@@ -1,12 +1,10 @@
 /* ============================================================
-   THEME PANEL MODULE (BACKGROUND ONLY)
-   - Admin-only panel
-   - SHIFT + P to toggle
-   - Draggable
-   - Page-specific background themes
+   CROWN CREATIVES — THEME PANEL (GR1 CLEAN)
+   Admin-only • SHIFT+P • Draggable • Page-specific backgrounds
 ============================================================ */
 
 (function () {
+
   const THEMES_URL = "/assets/backgrounds/themes.json";
   const STORAGE_KEY = "pageBackgroundTheme";
   const PANEL_POS_KEY = "themePanelPos";
@@ -14,10 +12,14 @@
   let panel = null;
   let bgData = null;
   let dragging = false;
-  let startX = 0;
-  let startY = 0;
-  let startLeft = 0;
-  let startTop = 0;
+  let startX = 0, startY = 0;
+  let startLeft = 0, startTop = 0;
+
+  /* ------------------------------------------------------------
+     Prevent double-init
+  ------------------------------------------------------------ */
+  if (window.__themePanelLoaded) return;
+  window.__themePanelLoaded = true;
 
   function getPageKey() {
     return document.body.getAttribute("data-page") || "home";
@@ -25,11 +27,13 @@
 
   function applyBackground(themeId) {
     if (!bgData) return;
+
     const pageKey = getPageKey();
     const theme = bgData[pageKey] || bgData["home"];
     if (!theme) return;
 
     const gradient = theme.gradient;
+
     document.documentElement.style.setProperty("--cc-page-background", gradient);
     document.body.style.backgroundImage = gradient;
 
@@ -38,7 +42,7 @@
 
   async function loadThemes() {
     try {
-      const res = await fetch(THEMES_URL, { cache: "no-store" });
+      const res = await fetch(THEMES_URL + "?v=" + Date.now(), { cache: "no-store" });
       if (!res.ok) throw new Error("Theme JSON missing");
       bgData = await res.json();
     } catch (e) {
@@ -64,6 +68,10 @@
     `;
 
     document.body.appendChild(panel);
+
+    // Fade-in animation
+    requestAnimationFrame(() => panel.classList.add("theme-panel-ready"));
+
     return panel;
   }
 
@@ -92,6 +100,7 @@
   function loadPanelPosition() {
     const raw = localStorage.getItem(PANEL_POS_KEY);
     if (!raw) return;
+
     try {
       const pos = JSON.parse(raw);
       if (typeof pos.x === "number" && typeof pos.y === "number") {
@@ -148,7 +157,6 @@
   }
 
   function initToggle() {
-    // SHIFT + P to toggle panel
     window.addEventListener("keydown", e => {
       if (e.key === "P" && e.shiftKey) {
         if (!panel) return;
@@ -157,9 +165,11 @@
     });
 
     const closeBtn = panel.querySelector("#theme-panel-close");
-    closeBtn.addEventListener("click", () => {
-      panel.classList.remove("theme-panel-visible");
-    });
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        panel.classList.remove("theme-panel-visible");
+      });
+    }
   }
 
   async function initThemePanel() {
@@ -167,11 +177,11 @@
     loadPanelPosition();
     await loadThemes();
     populatePanel();
-    applyBackground(); // initial
+    applyBackground();
     initDrag();
     initToggle();
   }
 
-  // Expose for master.js
   window.initThemePanel = initThemePanel;
+
 })();

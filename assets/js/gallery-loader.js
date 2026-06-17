@@ -1,131 +1,47 @@
 /* ============================================================
-   GALLERY LOADER v3.0 — FINAL
-   - Supports manifest format: ["file1.jpg", "file2.png", ...]
+   CROWN CREATIVES — GALLERY LOADER v3.1 (GR1 CLEAN)
+   - Supports manifest formats:
+       ["file1.jpg", "file2.png"]
+       { images: ["file1.jpg", "file2.png"] }
    - Hero Gallery: shuffled
-   - Full Gallery: sorted newest → oldest (by filename)
-   - Also exposes: video + podcast manifest loaders
+   - Full Gallery: sorted newest → oldest (YYYY-MM-DD-...)
+   - Also loads: video + podcast manifests
 ============================================================ */
 
 const GalleryLoader = {
   manifestPath: "/assets/images/gallery/manifest.json",
   cache: null,
+  loading: false,
 
   /* ------------------------------------------------------------
-     Load gallery manifest (supports array format)
+     1. LOAD MANIFEST (cache‑busted, Cloudflare‑safe)
   ------------------------------------------------------------ */
   async loadManifest() {
+    // Prevent double-loading
     if (this.cache) return this.cache;
+    if (this.loading) {
+      // Wait for the first load to finish
+      return new Promise(resolve => {
+        const wait = setInterval(() => {
+          if (this.cache !== null) {
+            clearInterval(wait);
+            resolve(this.cache);
+          }
+        }, 50);
+      });
+    }
+
+    this.loading = true;
 
     try {
-      const res = await fetch(this.manifestPath, { cache: "no-store" });
+      const res = await fetch(this.manifestPath + "?v=" + Date.now(), {
+        cache: "no-store"
+      });
+
       if (!res.ok) throw new Error("Manifest not found");
 
       const data = await res.json();
 
-      // Accepts either:
+      // Accepts:
       // ["file1.jpg", "file2.png"]
       // OR { images: ["file1.jpg", "file2.png"] }
-      const list = Array.isArray(data)
-        ? data
-        : Array.isArray(data.images)
-        ? data.images
-        : [];
-
-      const images = list.map(name => ({
-        name,
-        url: `/assets/images/gallery/${name}`
-      }));
-
-      this.cache = images;
-      return images;
-    } catch (err) {
-      console.warn("Gallery manifest load failed:", err);
-      this.cache = [];
-      return [];
-    }
-  },
-
-  /* ------------------------------------------------------------
-     HERO GALLERY — shuffled list
-  ------------------------------------------------------------ */
-  async getHeroImages(limit = null) {
-    const images = await this.loadManifest();
-    const shuffled = this.shuffle([...images]);
-    return limit ? shuffled.slice(0, limit) : shuffled;
-  },
-
-  /* ------------------------------------------------------------
-     FULL GALLERY — sorted newest → oldest
-     (Assumes filenames begin with YYYY-MM-DD-...)
-  ------------------------------------------------------------ */
-  async getFullGalleryImages() {
-    const images = await this.loadManifest();
-
-    return [...images].sort((a, b) => {
-      if (a.name < b.name) return 1;
-      if (a.name > b.name) return -1;
-      return 0;
-    });
-  },
-
-  /* ------------------------------------------------------------
-     Utility — Fisher-Yates shuffle
-  ------------------------------------------------------------ */
-  shuffle(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-  }
-};
-
-/* ============================================================
-   VIDEO MANIFEST LOADER
-   Path: /assets/videos/video-manifest.json
-============================================================ */
-
-async function loadVideoManifest() {
-  try {
-    const res = await fetch("/assets/videos/video-manifest.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("Video manifest missing");
-
-    const data = await res.json();
-    return data.videos || [];
-  } catch (err) {
-    console.warn("Video manifest load failed:", err);
-    return [];
-  }
-}
-
-/* ============================================================
-   PODCAST MANIFEST LOADER
-   Path: /assets/podcasts/podcast-manifest.json
-============================================================ */
-
-async function loadPodcastManifest() {
-  try {
-    const res = await fetch("/assets/podcasts/podcast-manifest.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("Podcast manifest missing");
-
-    const data = await res.json();
-    return data.podcasts || [];
-  } catch (err) {
-    console.warn("Podcast manifest load failed:", err);
-    return [];
-  }
-}
-
-/* ============================================================
-   OPTIONAL HOOKS (for debugging)
-============================================================ */
-
-async function initHeroGalleryFromManifest() {
-  const images = await GalleryLoader.getHeroImages();
-  console.log("Hero images (shuffled):", images);
-}
-
-async function initFullGalleryFromManifest() {
-  const images = await GalleryLoader.getFullGalleryImages();
-  console.log("Full gallery images (sorted):", images);
-}

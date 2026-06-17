@@ -8,50 +8,43 @@
   const manifestURL = "/assets/images/gallery/manifest.json";
   let IMAGES = [];
   let leftLane, rightLane;
+  let rotationStarted = false;
 
-  /* ------------------------------------------------------------
-     Load manifest (simple + proven)
-  ------------------------------------------------------------ */
   async function loadManifest() {
     const res = await fetch(manifestURL);
     if (!res.ok) throw new Error("Gallery manifest missing");
-    return await res.json(); // plain array of filenames
+    return await res.json();
   }
 
-  /* ------------------------------------------------------------
-     Build gallery lanes
-  ------------------------------------------------------------ */
   function buildLanes(images) {
     leftLane = document.querySelector(".gallery-left .gallery-lane-inner");
     rightLane = document.querySelector(".gallery-right .gallery-lane-inner");
 
     if (!leftLane || !rightLane) {
       console.error("Hero gallery containers missing.");
-      return;
+      return false;
     }
 
-    // Clear lanes
     leftLane.innerHTML = "";
     rightLane.innerHTML = "";
 
-    // Fill lanes
     images.forEach((name, i) => {
       const img = document.createElement("img");
       img.src = `/assets/images/gallery/${name}`;
       img.loading = "lazy";
+      img.className = "gallery-image";
 
-      if (i % 2 === 0) {
-        leftLane.appendChild(img);
-      } else {
-        rightLane.appendChild(img);
-      }
+      if (i % 2 === 0) leftLane.appendChild(img);
+      else rightLane.appendChild(img);
     });
+
+    return true;
   }
 
-  /* ------------------------------------------------------------
-     Simple rotation (fade + swap)
-  ------------------------------------------------------------ */
   function startRotation() {
+    if (rotationStarted) return;
+    rotationStarted = true;
+
     const allLeft = leftLane.querySelectorAll("img");
     const allRight = rightLane.querySelectorAll("img");
 
@@ -68,13 +61,16 @@
     }, 3000);
   }
 
-  /* ------------------------------------------------------------
-     INIT — safe, stable, DOM-ready
-  ------------------------------------------------------------ */
   window.initHeroGallery = async function () {
     try {
       IMAGES = await loadManifest();
-      buildLanes(IMAGES);
+      if (!IMAGES.length) {
+        console.warn("Hero gallery: no images found.");
+        return;
+      }
+
+      if (!buildLanes(IMAGES)) return;
+
       startRotation();
       console.log("Hero gallery initialised.");
     } catch (e) {

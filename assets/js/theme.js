@@ -1,5 +1,5 @@
 /* ============================================================
-   CROWN CREATIVES — GLOBAL THEME ENGINE v5.1
+   CROWN CREATIVES — GLOBAL THEME ENGINE v5.2 (GR1 CLEAN)
    Day/Night mode, icon animation, persistence, safe loading
 ============================================================ */
 
@@ -23,14 +23,19 @@ window.initThemeEngine = function () {
   } else if (saved === "dark") {
     applyDarkMode(false);
   } else {
-    // Default = dark mode
-    applyDarkMode(false);
+    applyDarkMode(false); // default
   }
 
   /* ------------------------------------------------------------
      2. CLICK HANDLER
   ------------------------------------------------------------ */
   themeToggle.addEventListener("click", () => {
+
+    // Prevent spam-clicking
+    if (themeToggle.classList.contains("busy")) return;
+    themeToggle.classList.add("busy");
+    setTimeout(() => themeToggle.classList.remove("busy"), 300);
+
     const isDark = body.classList.contains("dark-mode");
 
     if (isDark) {
@@ -51,12 +56,8 @@ window.initThemeEngine = function () {
   ------------------------------------------------------------ */
   function applyLightMode(animate = true) {
     body.classList.remove("dark-mode");
-    body.classList.add("light-mode");
-
     localStorage.setItem("cc-theme", "light");
-
     updateThemeIcon("light");
-
     if (animate) smoothThemeTransition();
   }
 
@@ -64,13 +65,9 @@ window.initThemeEngine = function () {
      4. APPLY DARK MODE
   ------------------------------------------------------------ */
   function applyDarkMode(animate = true) {
-    body.classList.remove("light-mode");
     body.classList.add("dark-mode");
-
     localStorage.setItem("cc-theme", "dark");
-
     updateThemeIcon("dark");
-
     if (animate) smoothThemeTransition();
   }
 
@@ -80,8 +77,7 @@ window.initThemeEngine = function () {
   function updateThemeIcon(mode) {
     const icon = themeToggle.querySelector("img");
     if (!icon) return;
-
-    icon.src = "/assets/icons/sun-moon.png"; // same icon for now
+    icon.src = "/assets/icons/sun-moon.png";
   }
 
   /* ------------------------------------------------------------
@@ -89,10 +85,9 @@ window.initThemeEngine = function () {
   ------------------------------------------------------------ */
   function smoothThemeTransition() {
     body.style.transition = "background 0.6s ease, color 0.6s ease, filter 0.6s ease";
-
     setTimeout(() => {
       body.style.transition = "";
     }, 700);
   }
 
-}; // END OF THEME ENGINE
+}; // END THEME ENGINE
