@@ -1,4 +1,12 @@
-// ADMIN MODE TOGGLE
+/* ============================================================
+   CROWN CREATIVES — FOOTER ENGINE (GR1)
+   Draggable icons, draggable panel, admin mode toggle,
+   back-to-top engine, persistent positions.
+============================================================ */
+
+/* ------------------------------------------------------------
+   1. ADMIN MODE TOGGLE (Shift + A)
+------------------------------------------------------------ */
 let adminMode = false;
 
 document.addEventListener("keydown", e => {
@@ -8,7 +16,9 @@ document.addEventListener("keydown", e => {
   }
 });
 
-// DRAGGABLE ICONS
+/* ------------------------------------------------------------
+   2. DRAGGABLE ICONS
+------------------------------------------------------------ */
 const icons = document.querySelectorAll(".footer-icon");
 
 icons.forEach(icon => {
@@ -55,7 +65,45 @@ icons.forEach(icon => {
   });
 });
 
-// BACK TO TOP
-document.getElementById("back-to-top").onclick = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+/* ------------------------------------------------------------
+   3. DRAGGABLE FOOTER PANEL (optional)
+------------------------------------------------------------ */
+const footerGlass = document.querySelector(".footer-glass");
+
+if (footerGlass) {
+  let offsetX = 0;
+  let offsetY = 0;
+
+  footerGlass.addEventListener("mousedown", e => {
+    if (!adminMode) return;
+
+    footerGlass.style.position = "absolute";
+
+    offsetX = e.clientX - footerGlass.offsetLeft;
+    offsetY = e.clientY - footerGlass.offsetTop;
+
+    function move(e) {
+      footerGlass.style.left = e.clientX - offsetX + "px";
+      footerGlass.style.top = e.clientY - offsetY + "px";
+    }
+
+    function stop() {
+      document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseup", stop);
+    }
+
+    document.addEventListener("mousemove", move);
+    document.addEventListener("mouseup", stop);
+  });
+}
+
+/* ------------------------------------------------------------
+   4. BACK TO TOP BUTTON
+------------------------------------------------------------ */
+const backToTop = document.getElementById("back-to-top");
+
+if (backToTop) {
+  backToTop.onclick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+}
