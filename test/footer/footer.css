@@ -1,109 +1,53 @@
 /* ============================================================
-   FOOTER MODULE — Crown Creatives (GR1)
-   Frosted glass panel, draggable icons (admin mode),
-   cinematic glow, modular and self-contained.
+   CROWN CREATIVES — FOOTER (GR1)
+   Frosted glass panel, draggable (admin mode),
+   cinematic glow, premium typography.
 ============================================================ */
-.cc-footer {
-  width: 100%;
-  padding: 20px 0;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  z-index: 10;
-}
-
-.footer-glass {
-  width: 90%;
-  max-width: 1400px;
-  padding: 20px;
-  border-radius: 20px;
-  backdrop-filter: blur(14px) saturate(160%);
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  box-shadow: 0 0 20px rgba(255,255,255,0.2);
-  position: relative;
-}
-
-.footer-icons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  position: relative;
-}
-
-.footer-icon {
-  width: 42px;
-  height: 42px;
-  cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.7));
-}
-
-.footer-icon:hover {
-  transform: scale(1.15);
-}
-
-.admin-mode .footer-icon {
-  outline: 2px dashed rgba(255,255,255,0.6);
-  cursor: grab;
-}
-
-.back-to-top {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
-  backdrop-filter: blur(10px);
-  padding: 10px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 20px;
-  color: white;
-  transition: 0.3s ease;
-}
-
-.back-to-top:hover {
-  background: rgba(255,255,255,0.25);
-  transform: scale(1.1);
-}
-
-.footer-copy {
-  margin-top: 20px;
-  font-size: 14px;
-  opacity: 0.8;
-  color: white;
-  text-align: center;
-}
 
 /* ------------------------------
    FOOTER WRAPPER
 ------------------------------ */
 #cc-footer {
   width: 100%;
-  padding: 20px 0;
+  padding: 40px 0;
   display: flex;
   justify-content: center;
   position: relative;
-  z-index: 10;
+  z-index: 20;
 }
 
 /* ------------------------------
    FROSTED GLASS PANEL
 ------------------------------ */
 .footer-glass {
-  width: 90%;
+  width: 92%;
   max-width: 1400px;
-  padding: 20px;
-  border-radius: 20px;
-  backdrop-filter: blur(14px) saturate(160%);
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  padding: 28px 32px;
+  border-radius: 26px;
+
+  /* TRUE frosted glass */
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+
+  /* Cinematic glow */
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow:
+    0 0 25px rgba(255,255,255,0.18),
+    0 0 60px rgba(0,0,0,0.35);
+
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /* Admin mode: draggable */
+  transition: outline 0.25s ease;
+}
+
+.admin-mode .footer-glass {
+  outline: 2px dashed rgba(255,255,255,0.6);
+  cursor: grab;
 }
 
 /* ------------------------------
@@ -111,29 +55,32 @@
 ------------------------------ */
 .footer-icons {
   display: flex;
-  gap: 20px;
+  gap: 28px;
   justify-content: center;
+  margin-bottom: 22px;
   position: relative;
 }
 
 .footer-icon {
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
   cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.7));
+
+  /* Glow */
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.9));
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .footer-icon:hover {
-  transform: scale(1.15);
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 16px rgba(255,255,255,1));
 }
 
-/* ------------------------------
-   ADMIN MODE (Shift + A)
------------------------------- */
+/* Admin mode: draggable icons */
 .admin-mode .footer-icon {
   outline: 2px dashed rgba(255,255,255,0.6);
   cursor: grab;
+  border-radius: 10px;
 }
 
 /* ------------------------------
@@ -141,31 +88,45 @@
 ------------------------------ */
 .back-to-top {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
-  backdrop-filter: blur(10px);
-  padding: 10px 14px;
-  border-radius: 10px;
+  right: 24px;
+  bottom: 24px;
+
+  /* Remove white square */
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
+
+  padding: 12px 16px;
+  border-radius: 14px;
   cursor: pointer;
-  font-size: 20px;
+
+  font-size: 22px;
   color: white;
-  transition: 0.3s ease;
+
+  /* Glow */
+  box-shadow: 0 0 12px rgba(255,255,255,0.6);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .back-to-top:hover {
-  background: rgba(255,255,255,0.25);
-  transform: scale(1.1);
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(255,255,255,1);
 }
 
 /* ------------------------------
    COPYRIGHT TEXT
 ------------------------------ */
 .footer-copy {
-  margin-top: 20px;
-  font-size: 14px;
-  opacity: 0.8;
-  color: white;
+  margin-top: 26px;
+  font-size: 15px;
+  letter-spacing: 0.6px;
+
+  /* Premium look */
+  font-family: 'Cinzel Decorative', serif;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 0 8px rgba(255,255,255,0.45);
+
   text-align: center;
+  line-height: 1.5;
 }
