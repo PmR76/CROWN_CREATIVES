@@ -1,13 +1,10 @@
 /* ============================================================
    CROWN CREATIVES — FOOTER (GR1)
-   Frosted glass panel, draggable (admin mode),
-   cinematic glow, premium typography.
+   Frosted glass, draggable (admin mode), cinematic glow.
 ============================================================ */
 
-/* ------------------------------
-   FOOTER WRAPPER
------------------------------- */
-#cc-footer {
+/* FOOTER WRAPPER */
+.cc-footer {
   width: 100%;
   padding: 40px 0;
   display: flex;
@@ -16,43 +13,36 @@
   z-index: 20;
 }
 
-/* ------------------------------
-   FROSTED GLASS PANEL
------------------------------- */
+/* FROSTED GLASS PANEL */
 .footer-glass {
   width: 92%;
   max-width: 1400px;
   padding: 28px 32px;
   border-radius: 26px;
 
-  /* TRUE frosted glass */
   background: rgba(255, 255, 255, 0.10);
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
 
-  /* Cinematic glow */
   border: 1px solid rgba(255,255,255,0.22);
   box-shadow:
     0 0 25px rgba(255,255,255,0.18),
     0 0 60px rgba(0,0,0,0.35);
 
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  /* Admin mode: draggable */
   transition: outline 0.25s ease;
 }
 
+/* ADMIN MODE — DRAGGABLE FOOTER */
 .admin-mode .footer-glass {
   outline: 2px dashed rgba(255,255,255,0.6);
   cursor: grab;
 }
 
-/* ------------------------------
-   ICON ROW
------------------------------- */
+/* ICON ROW */
 .footer-icons {
   display: flex;
   gap: 28px;
@@ -61,12 +51,12 @@
   position: relative;
 }
 
+/* ICONS */
 .footer-icon {
   width: 46px;
   height: 46px;
   cursor: pointer;
 
-  /* Glow */
   filter: drop-shadow(0 0 10px rgba(255,255,255,0.9));
   transition: transform 0.25s ease, filter 0.25s ease;
 }
@@ -76,22 +66,19 @@
   filter: drop-shadow(0 0 16px rgba(255,255,255,1));
 }
 
-/* Admin mode: draggable icons */
+/* ADMIN MODE — DRAGGABLE ICONS */
 .admin-mode .footer-icon {
   outline: 2px dashed rgba(255,255,255,0.6);
   cursor: grab;
   border-radius: 10px;
 }
 
-/* ------------------------------
-   BACK TO TOP BUTTON
------------------------------- */
+/* BACK TO TOP BUTTON */
 .back-to-top {
   position: absolute;
   right: 24px;
   bottom: 24px;
 
-  /* Remove white square */
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.25);
@@ -103,7 +90,6 @@
   font-size: 22px;
   color: white;
 
-  /* Glow */
   box-shadow: 0 0 12px rgba(255,255,255,0.6);
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -114,15 +100,12 @@
   box-shadow: 0 0 20px rgba(255,255,255,1);
 }
 
-/* ------------------------------
-   COPYRIGHT TEXT
------------------------------- */
+/* COPYRIGHT */
 .footer-copy {
   margin-top: 26px;
   font-size: 15px;
   letter-spacing: 0.6px;
 
-  /* Premium look */
   font-family: 'Cinzel Decorative', serif;
   color: rgba(255,255,255,0.92);
   text-shadow: 0 0 8px rgba(255,255,255,0.45);
