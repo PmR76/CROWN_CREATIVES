@@ -52,34 +52,35 @@ async function initMaster() {
   ------------------------------ */
   container.innerHTML = await loadPartial("/master/page-wrapper.html");
 
-  /* ------------------------------
-     3.2 Inject global components
-  ------------------------------ */
-  const bgEl = document.getElementById("cc-background");
-  const headerEl = document.getElementById("cc-header");
-  const contentEl = document.getElementById("cc-page-content");
-  const tickerEl = document.getElementById("cc-ticker");
-  const footerWrapEl = document.getElementById("cc-footer-wrapper");
+/* ------------------------------
+   3.2 Inject global components
+------------------------------ */
+const bgEl = document.getElementById("cc-background");
+const headerEl = document.getElementById("cc-header");
+const contentEl = document.getElementById("cc-page-content");
+const tickerEl = document.getElementById("cc-ticker");
+const footerWrapEl = document.getElementById("cc-footer-wrapper");
 
-  if (bgEl) {
-    bgEl.innerHTML = await loadPartial("/master/background.html");
-  }
+if (bgEl) {
+  bgEl.innerHTML = await loadPartial("/master/background.html");
+}
 
-  if (headerEl) {
-    headerEl.innerHTML = await loadPartial("/master/header.html");
-  }
+if (headerEl) {
+  headerEl.innerHTML = await loadPartial("/master/header.html");
+}
 
-  if (contentEl) {
-    contentEl.innerHTML = await loadPartial(`/pages/${page}.html`);
-  }
+if (contentEl) {
+  contentEl.innerHTML = await loadPartial(`/pages/${page}.html`);
+}
 
-  if (tickerEl) {
-    tickerEl.innerHTML = await loadPartial("/master/ticker.html");
-  }
+if (tickerEl) {
+  tickerEl.innerHTML = await loadPartial("/master/ticker.html");
+}
 
-  if (footerWrapEl) {
-    footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
-  }
+// DISABLED FOR TEST ENVIRONMENT — manual GR1 footer in page
+// if (footerWrapEl) {
+//   footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
+// }
 
   /* ------------------------------
      3.3 Load global JS engines
