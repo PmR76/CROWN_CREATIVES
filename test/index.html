@@ -10,10 +10,6 @@
   <!-- MODULE CSS (LOCAL TO TEST) -->
   <link rel="stylesheet" href="header/header.css">
   <link rel="stylesheet" href="footer/footer.css">
-
-  <!-- REMOVED: hero/hero.css (redundant + deleted) -->
-  <!-- <link rel="stylesheet" href="hero/hero.css"> -->
-
   <link rel="stylesheet" href="sound/sound.css">
   <link rel="stylesheet" href="ticker/ticker.css">
   <link rel="stylesheet" href="cards/cards.css">
@@ -34,18 +30,10 @@
 
 <body id="cc-test">
 
-  <!-- BACKGROUND -->
-  <div id="cc-background">
-    <div class="day-background"></div>
-    <div class="night-background"></div>
-    <div class="day-clouds"></div>
-    <div class="night-nebula"></div>
-  </div>
-
-  <!-- HEADER (injected) -->
+  <!-- HEADER (injected by master.js) -->
   <div id="cc-header"></div>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION (injected by master.js) -->
   <section id="hero"></section>
 
   <!-- CORE VALUES -->
@@ -65,33 +53,6 @@
   <script src="/assets/js/theme.js"></script>
   <script src="/assets/js/sound-engine.js"></script>
   <script src="/assets/js/master.js"></script>
-
-  <!-- OVERLAY KILLER -->
-  <script>
-  (function removeForeignOverlays() {
-      const overlays = [...document.querySelectorAll('*')].filter(el => {
-          const style = window.getComputedStyle(el);
-
-          const isFullScreen =
-              style.position === 'fixed' &&
-              style.top === '0px' &&
-              style.left === '0px' &&
-              style.width === '100%' &&
-              style.height === '100%';
-
-          const isYours = el.id?.startsWith('cc-') || el.closest('#cc-test');
-
-          return isFullScreen && !isYours;
-      });
-
-      overlays.forEach(el => {
-          console.warn('Removing foreign overlay:', el);
-          el.remove();
-      });
-
-      setTimeout(removeForeignOverlays, 500);
-  })();
-  </script>
 
 </body>
 </html>
