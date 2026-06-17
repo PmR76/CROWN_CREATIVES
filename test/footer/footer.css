@@ -3,6 +3,78 @@
    Frosted glass panel, draggable icons (admin mode),
    cinematic glow, modular and self-contained.
 ============================================================ */
+.cc-footer {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-glass {
+  width: 90%;
+  max-width: 1400px;
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(14px) saturate(160%);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  position: relative;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  position: relative;
+}
+
+.footer-icon {
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.7));
+}
+
+.footer-icon:hover {
+  transform: scale(1.15);
+}
+
+.admin-mode .footer-icon {
+  outline: 2px dashed rgba(255,255,255,0.6);
+  cursor: grab;
+}
+
+.back-to-top {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.back-to-top:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.1);
+}
+
+.footer-copy {
+  margin-top: 20px;
+  font-size: 14px;
+  opacity: 0.8;
+  color: white;
+  text-align: center;
+}
 
 /* ------------------------------
    FOOTER WRAPPER
