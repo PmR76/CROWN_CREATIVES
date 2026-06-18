@@ -1,5 +1,5 @@
 {
-  "scanPaths": [
+  "paths": [
     "./"
   ],
   "include": [
@@ -14,5 +14,5 @@
     "scanner-v3/reports/**",
     "**/*.gr3.bak"
   ],
-  "reportOutput": "./tools/scanner-v3/reports"
+  "reportOutput": "tools/scanner-v3/reports"
 }
