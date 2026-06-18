@@ -1,23 +1,7 @@
 Write-Host "=== CROWN_CREATIVES OS VALIDATION ===" -ForegroundColor Cyan
 
 # 1. Locate project root (CROWN_CREATIVES)
-$possibleRoots = @(
-    "C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES",
-    (Resolve-Path ".").Path
-)
-
-$projectRoot = $null
-foreach ($root in $possibleRoots) {
-    if (Test-Path $root -PathType Container) {
-        $projectRoot = $root
-        break
-    }
-}
-
-if (-not $projectRoot) {
-    Write-Host "✘ Project root not found" -ForegroundColor Red
-    exit 1
-}
+$projectRoot = Resolve-Path "."
 
 Write-Host "`nProject Root:" $projectRoot -ForegroundColor Green
 
@@ -46,9 +30,12 @@ if ($gr3ToolsExists) {
     Write-Host "✘ Tools GR3 file missing" -ForegroundColor Yellow
 }
 
-# 4. If root GR3 exists, ensure tools GR3 matches it
-if ($gr3RootExists) {
-    Write-Host "`n--- Ensuring tools GR3 matches root GR3 ---"
+# 4. Ensure tools GR3 matches root GR3
+Write-Host "`n--- Ensuring tools GR3 matches root GR3 ---"
+
+if (-not $gr3RootExists) {
+    Write-Host "✘ Cannot sync — root GR3 missing" -ForegroundColor Red
+} else {
 
     if (-not $gr3ToolsExists) {
         Write-Host "Tools GR3 missing, creating from root..." -ForegroundColor Yellow
@@ -88,9 +75,6 @@ if (Test-Path $reportsPath -PathType Container) {
 
 # 6. Run GR3 from tools (same as dashboard server)
 Write-Host "`n--- Running GR3 (tools version) ---"
-$gr3Cmd = "node `"$gr3ToolsPath`""
-Write-Host "Command: $gr3Cmd" -ForegroundColor Cyan
-
 try {
     & node $gr3ToolsPath
 } catch {
