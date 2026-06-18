@@ -6,24 +6,24 @@ import path from "path";
    GR4 CLEANUP ENGINE
    - Deletes old scan reports
    - Deletes old .gr3.bak backups
-   - Keeps recent files based on config
 ============================================================ */
 
-// Resolve reports directory relative to THIS file
-const REPORTS_DIR = path.join(
+// PROJECT ROOT
+const PROJECT_ROOT = path.resolve(
   path.dirname(new URL(import.meta.url).pathname),
-  "../scanner-v3/reports"
+  "../../"
 );
 
-// Optional keep-config file
+// Reports directory in project root
+const REPORTS_DIR = path.join(PROJECT_ROOT, "reports");
+
+// Optional keep-config
 const KEEP_CONFIG = path.join(
   path.dirname(new URL(import.meta.url).pathname),
   "backup-keep.json"
 );
 
-/* ------------------------------------------------------------
-   Load keep-config (optional)
------------------------------------------------------------- */
+/* ---- Load keep-config ---- */
 function loadKeepConfig() {
   if (!fs.existsSync(KEEP_CONFIG)) return { keep: [] };
   try {
@@ -33,9 +33,7 @@ function loadKeepConfig() {
   }
 }
 
-/* ------------------------------------------------------------
-   Cleanup: delete old scan reports
------------------------------------------------------------- */
+/* ---- Cleanup old reports ---- */
 function cleanupOldReports() {
   if (!fs.existsSync(REPORTS_DIR)) {
     return { removed: 0, kept: 0, reason: "reports directory missing" };
@@ -63,11 +61,8 @@ function cleanupOldReports() {
   return { removed, kept: 3 };
 }
 
-/* ------------------------------------------------------------
-   Cleanup: delete .gr3.bak backups
------------------------------------------------------------- */
+/* ---- Cleanup .gr3.bak backups ---- */
 function cleanupBackups() {
-  const projectRoot = path.resolve(".");
   const keepConfig = loadKeepConfig();
   const backups = [];
 
@@ -84,13 +79,13 @@ function cleanupBackups() {
     }
   }
 
-  walk(projectRoot);
+  walk(PROJECT_ROOT);
 
   let removed = 0;
   let kept = 0;
 
   for (const bak of backups) {
-    const rel = bak.replace(projectRoot, "").replace(/\\/g, "/");
+    const rel = bak.replace(PROJECT_ROOT, "").replace(/\\/g, "/");
 
     if (keepConfig.keep.includes(rel)) {
       kept++;
@@ -106,9 +101,7 @@ function cleanupBackups() {
   return { removed, kept };
 }
 
-/* ------------------------------------------------------------
-   Main cleanup runner
------------------------------------------------------------- */
+/* ---- Main cleanup runner ---- */
 function runCleanup() {
   const reportCleanup = cleanupOldReports();
   const backupCleanup = cleanupBackups();
@@ -120,9 +113,7 @@ function runCleanup() {
   };
 }
 
-/* ------------------------------------------------------------
-   Stub for dashboard API compatibility
------------------------------------------------------------- */
+/* ---- Stub for dashboard API ---- */
 function cleanupReports() {
   return {
     status: "noop",
@@ -130,15 +121,11 @@ function cleanupReports() {
   };
 }
 
-/* ------------------------------------------------------------
-   CLI entrypoint
------------------------------------------------------------- */
+/* ---- CLI entrypoint ---- */
 if (import.meta.url.endsWith("/gr4-cleanup.mjs")) {
   const result = runCleanup();
   console.log("GR4 Cleanup Complete:", result);
 }
 
-/* ------------------------------------------------------------
-   Exports
------------------------------------------------------------- */
+/* ---- Exports ---- */
 export { runCleanup, cleanupReports };
