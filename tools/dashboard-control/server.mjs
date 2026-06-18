@@ -94,6 +94,16 @@ function sendError(res, status, message) {
 ------------------------------------------------------------ */
 
 const server = http.createServer(async (req, res) => {
+    // --- CORS FIX ---
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    res.writeHead(200);
+    return res.end();
+  }
+
   const parsed = url.parse(req.url, true);
   const { pathname, query } = parsed;
 
