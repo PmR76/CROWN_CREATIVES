@@ -1,0 +1,7 @@
+{
+  "projectRoot": "C:/Users/royal/OneDrive/Dremel_Print/01_Website/CROWN_CREATIVES",
+  "scan": {
+    "include": ["test", "assets", "pages", "scripts", "master"],
+    "migrate": ["test"]
+  }
+}
