@@ -1,0 +1,87 @@
+/* ============================================================
+   GR1 AUTO-MIGRATED MODULE
+   Source: ../../test/ticker/ticker.css
+   Type: legacy
+   Date: 2026-06-18T09:13:05.910Z
+============================================================ */
+
+/* ============================================================
+   EVOLVE OS — MAGICAL TICKER v3.1
+   Dual-track infinite scroll + drag support
+   ============================================================ */
+
+.evolve-ticker {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1400px;
+  height: 42px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  overflow: hidden;
+  z-index: 500; /* GR1 normalised */;
+
+  display: flex;
+  align-items: center;
+
+  cursor: grab;
+  user-select: none;
+}
+
+.evolve-ticker.is-dragging {
+  cursor: grabbing;
+}
+
+.evolve-ticker-track {
+  position: absolute;
+  white-space: nowrap;
+  display: inline-flex;
+  gap: 60px;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  color: var(--accent-glow, #fff);
+  text-shadow: 0 0 8px var(--accent-glow, #fff);
+  animation: evolveTickerScroll 18s linear infinite;
+}
+
+.track-b {
+  left: 100%;
+}
+
+@keyframes evolveTickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+/* ============================================================
+   MOBILE CLARITY MODE — TICKER
+   ============================================================ */
+@media (max-width: 768px) {
+
+  .evolve-ticker {
+    height: 48px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.35); /* darker for contrast */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .evolve-ticker-track {
+    font-size: 1.25rem;        /* bigger text */
+    opacity: 1;                /* full visibility */
+    text-shadow: none;         /* remove glow for clarity */
+    color: #fff;               /* pure white text */
+    animation-duration: 22s;   /* slightly slower */
+  }
+
+  .magic-shimmer,
+  .evolve-ticker-track::before {
+    opacity: 0.12;             /* reduce shimmer intensity */
+  }
+}

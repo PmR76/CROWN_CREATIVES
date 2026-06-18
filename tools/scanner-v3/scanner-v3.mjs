@@ -315,8 +315,8 @@ function buildReport(scanResults) {
 function writeReports(report) {
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
 
-  const jsonPath = `tools/scanner-v3/reports/scan-${timestamp}.json`;
-  const txtPath = `tools/scanner-v3/reports/scan-${timestamp}.txt`;
+  const jsonPath = `./reports/scan-${timestamp}.json`;
+  const txtPath = `./reports/scan-${timestamp}.txt`;
 
   fs.writeFileSync(jsonPath, JSON.stringify(report, null, 2));
 
