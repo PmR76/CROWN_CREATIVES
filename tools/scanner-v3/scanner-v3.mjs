@@ -49,20 +49,39 @@ const CONFIG = JSON.parse(
   fs.readFileSync("./config.json", "utf8")
 );
 
+// Optional: extra ignore dirs from config
+const CONFIG_IGNORE_DIRS = Array.isArray(CONFIG.ignoreDirs)
+  ? CONFIG.ignoreDirs
+  : [];
+
 /* ------------------------------------------------------------
-   2. UTILITY — WALK DIRECTORY (ignore .git / .github)
+   2. UTILITY — WALK DIRECTORY
 ------------------------------------------------------------ */
+const DEFAULT_IGNORE_DIRS = [
+  ".git",
+  "node_modules",
+  "reports",
+  ".vscode",
+];
+
+function shouldIgnoreDir(fullPath) {
+  const base = path.basename(fullPath);
+  if (DEFAULT_IGNORE_DIRS.includes(base)) return true;
+  if (CONFIG_IGNORE_DIRS.includes(base)) return true;
+  return false;
+}
+
 function walk(dir, fileList = []) {
   const files = fs.readdirSync(dir);
 
   files.forEach(file => {
-    // Ignore Git-related directories
-    if (file === ".git" || file === ".github") return;
-
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
 
     if (stat.isDirectory()) {
+      if (shouldIgnoreDir(fullPath)) {
+        return; // skip ignored directories like .git, node_modules, reports
+      }
       walk(fullPath, fileList);
     } else {
       fileList.push(fullPath);
