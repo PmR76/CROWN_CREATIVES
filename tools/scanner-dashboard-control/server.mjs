@@ -4,11 +4,15 @@ import url from "url";
 import fs from "fs";
 import path from "path";
 import { runCleanup, cleanupReports } from "../gr4-cleanup/gr4-cleanup.mjs";
-import { runAutoFix } from "../gr3-auto-fix/gr3-auto-fix.mjs";
+import { runAutoFix, undoLastFix } from "../gr3-auto-fix/gr3-auto-fix.mjs";
 import { spawn } from "child_process";
 
 const PORT = 7777;
 const REPORTS_DIR = path.resolve("./reports");
+
+/* ------------------------------------------------------------
+   Helpers
+------------------------------------------------------------ */
 
 function getLatestReportPath() {
   if (!fs.existsSync(REPORTS_DIR)) throw new Error("reports directory not found");
@@ -48,7 +52,7 @@ function getStorageUsage() {
     for (const e of entries) {
       const full = path.join(dir, e.name);
       if (e.isDirectory()) {
-        if (e.name === ".git" || e.name === "node_modules" || e.name === "reports") continue;
+        if ([".git", "node_modules", "reports"].includes(e.name)) continue;
         walk(full);
       } else {
         if (full.endsWith(".bak") || full.endsWith(".gr3.bak")) {
@@ -64,6 +68,7 @@ function getStorageUsage() {
     backupsSize: Math.round(backupsSize / 1024),
   };
 }
+
 function runScanner() {
   return new Promise((resolve, reject) => {
     const proc = spawn("node", ["tools/scanner-v3/scanner-v3.mjs"], { shell: true });
@@ -75,9 +80,8 @@ function runScanner() {
 }
 
 function sendJSON(res, obj) {
-  const data = JSON.stringify(obj);
   res.writeHead(200, { "Content-Type": "application/json" });
-  res.end(data);
+  res.end(JSON.stringify(obj));
 }
 
 function sendError(res, status, message) {
@@ -85,21 +89,28 @@ function sendError(res, status, message) {
   res.end(JSON.stringify({ error: message }));
 }
 
+/* ------------------------------------------------------------
+   Server
+------------------------------------------------------------ */
+
 const server = http.createServer(async (req, res) => {
   const parsed = url.parse(req.url, true);
   const { pathname, query } = parsed;
 
   try {
+    /* ------------------ GET: latest report ------------------ */
     if (pathname === "/latest-report" && req.method === "GET") {
       const p = getLatestReportPath();
       const report = loadReport(p);
       return sendJSON(res, { file: path.basename(p), report });
     }
 
+    /* ------------------ GET: list reports ------------------- */
     if (pathname === "/reports" && req.method === "GET") {
       return sendJSON(res, { files: listReports() });
     }
 
+    /* ------------------ GET: specific report ---------------- */
     if (pathname === "/report" && req.method === "GET") {
       const file = query.file;
       if (!file) return sendError(res, 400, "file required");
@@ -109,16 +120,51 @@ const server = http.createServer(async (req, res) => {
       return sendJSON(res, { file, report });
     }
 
+    /* ------------------ POST: run scanner ------------------- */
     if (pathname === "/run-scan" && req.method === "POST") {
       await runScanner();
       return sendJSON(res, { message: "Scan complete" });
     }
 
+    /* ------------------ POST: run auto-fix (GR3.5) ---------- */
     if (pathname === "/run-auto-fix" && req.method === "POST") {
-      const summary = await runAutoFix();
-      return sendJSON(res, { summary: `fixed ${summary.fixedCount}, skipped ${summary.skipped}` });
+      let body = "";
+      req.on("data", chunk => (body += chunk));
+      req.on("end", async () => {
+        let opts = {};
+        if (body) {
+          try { opts = JSON.parse(body); } catch {}
+        }
+        const summary = await runAutoFix(opts);
+        return sendJSON(res, { summary });
+      });
+      return;
     }
 
+    /* ------------------ POST: dry-run auto-fix -------------- */
+    if (pathname === "/run-auto-fix-dry" && req.method === "POST") {
+      const summary = await runAutoFix({ dryRun: true, mode: "safe" });
+      return sendJSON(res, { summary });
+    }
+
+    /* ------------------ POST: undo last fix ----------------- */
+    if (pathname === "/undo-last-fix" && req.method === "POST") {
+      const result = undoLastFix();
+      return sendJSON(res, { result });
+    }
+
+    /* ------------------ GET: fix history -------------------- */
+    if (pathname === "/fix-history" && req.method === "GET") {
+      const logDir = path.resolve("./tools/gr3-auto-fix/logs");
+      if (!fs.existsSync(logDir)) return sendJSON(res, { files: [] });
+      const files = fs.readdirSync(logDir)
+        .filter(f => f.endsWith(".json"))
+        .sort()
+        .reverse();
+      return sendJSON(res, { files });
+    }
+
+    /* ------------------ POST: cleanup (GR4) ----------------- */
     if (pathname === "/run-cleanup" && req.method === "POST") {
       const summary = await runCleanup();
       return sendJSON(res, {
@@ -128,21 +174,29 @@ const server = http.createServer(async (req, res) => {
       });
     }
 
+    /* ------------------ POST: cleanup reports only ---------- */
     if (pathname === "/cleanup-reports" && req.method === "POST") {
       const r = cleanupReports();
       return sendJSON(res, { reportsRemoved: r.removed, reportsKept: r.kept });
     }
 
+    /* ------------------ GET: storage usage ------------------ */
     if (pathname === "/storage-usage" && req.method === "GET") {
       return sendJSON(res, getStorageUsage());
     }
 
+    /* ------------------ 404 fallback ------------------------ */
     sendError(res, 404, "not found");
+
   } catch (err) {
     console.error(err);
     sendError(res, 500, err.message);
   }
 });
+
+/* ------------------------------------------------------------
+   Start server
+------------------------------------------------------------ */
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   server.listen(PORT, () => {

@@ -169,11 +169,15 @@
     <div class="sidebar">
       <h3>Controls</h3>
       <button class="button primary" onclick="runScan()">Run Scan (GR1/GR2)</button>
-      <button class="button primary" onclick="runAutoFix()">Run Auto‑Fix (GR3)</button>
+      <button class="button primary" onclick="runAutoFix()">Run Auto‑Fix (GR3 default)</button>
       <button class="button" onclick="runCleanup()">Cleanup 30‑day (GR4)</button>
       <button class="button" onclick="refreshLatest()">Reload Latest Report</button>
       <button class="button" onclick="loadReportList()">Refresh Report List</button>
       <button class="button danger" onclick="cleanupReports()">Delete Old Reports</button>
+      <button class="button" onclick="runAutoFixDry()">Run Auto‑Fix (Dry Run)</button>
+      <button class="button" onclick="runAutoFixSafe()">Run Auto‑Fix (Safe)</button>
+      <button class="button" onclick="runAutoFixAggressive()">Run Auto‑Fix (Aggressive)</button>
+      <button class="button" onclick="undoLastFix()">Undo Last Auto‑Fix</button>
 
       <h3>Filters</h3>
       <div class="filters">
@@ -218,7 +222,6 @@
     <span class="highlight" id="storageText">Storage: …</span>
   </div>
 </div>
-
 <script>
 const API_BASE = "http://localhost:7777";
 let currentReport = null;
@@ -260,7 +263,8 @@ async function loadLatestReport() {
 
 function renderReportMeta() {
   if (!currentReport) return;
-  document.getElementById("reportTitle").textContent = "Report — " + (currentReport.scannedAt || "");
+  document.getElementById("reportTitle").textContent =
+    "Report — " + (currentReport.scannedAt || "");
   document.getElementById("reportMeta").textContent =
     "Project: " + (currentReport.projectRoot || "") +
     " | Modules: " + (currentReport.modules?.length || 0);
@@ -278,6 +282,9 @@ function renderModules() {
     if (scopeFilter && m.scope !== scopeFilter) return;
     if (kindFilter && m.kind !== kindFilter) return;
 
+    const issues = Array.isArray(m.issues) ? m.issues : [];
+    const actions = Array.isArray(m.actions) ? m.actions : [];
+
     const div = document.createElement("div");
     div.className = "module" + (idx === selectedModuleIndex ? " selected" : "");
     div.onclick = () => { selectedModuleIndex = idx; renderModules(); renderModuleDetail(); };
@@ -286,8 +293,8 @@ function renderModules() {
       <h4>${m.rel}</h4>
       <span class="tag scope-${m.scope}">${m.scope}</span>
       <span class="tag kind-${m.kind}">${m.kind}</span>
-      <div class="issues"><strong>Issues:</strong> ${m.issues.join(", ") || "none"}</div>
-      <div class="actions"><strong>Actions:</strong> ${m.actions.join(", ") || "none"}</div>
+      <div class="issues"><strong>Issues:</strong> ${issues.length ? issues.join(", ") : "none"}</div>
+      <div class="actions"><strong>Actions:</strong> ${actions.length ? actions.join(", ") : "none"}</div>
     `;
     container.appendChild(div);
   });
@@ -302,13 +309,16 @@ function renderModuleDetail() {
     return;
   }
   const m = currentReport.modules[selectedModuleIndex];
+  const issues = Array.isArray(m.issues) ? m.issues : [];
+  const actions = Array.isArray(m.actions) ? m.actions : [];
+
   detail.innerHTML = `
     <div><strong>Path:</strong> ${m.path}</div>
     <div><strong>Rel:</strong> ${m.rel}</div>
     <div><strong>Scope:</strong> ${m.scope}</div>
     <div><strong>Kind:</strong> ${m.kind}</div>
-    <div><strong>Issues:</strong> ${m.issues.join(", ") || "none"}</div>
-    <div><strong>Actions:</strong> ${m.actions.join(", ") || "none"}</div>
+    <div><strong>Issues:</strong> ${issues.length ? issues.join(", ") : "none"}</div>
+    <div><strong>Actions:</strong> ${actions.length ? actions.join(", ") : "none"}</div>
   `;
 }
 
@@ -379,12 +389,18 @@ async function runScan() {
   }
 }
 
+/* Default GR3 button: safe mode, real run */
 async function runAutoFix() {
   try {
-    setHeaderStatus("Running auto‑fix…");
-    setStatus("GR3 auto‑fix running…");
-    const res = await fetchJSON(API_BASE + "/run-auto-fix", { method: "POST" });
-    setStatus("Auto‑fix complete: " + res.summary);
+    setHeaderStatus("Running auto‑fix (default safe)…");
+    const res = await fetch(API_BASE + "/run-auto-fix", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "safe", dryRun: false })
+    });
+    const data = await res.json();
+    const s = data.summary;
+    setStatus(`Auto‑fix (default safe): ${s.fixedCount} patched, ${s.skipped} skipped.`);
     await loadLatestReport();
   } catch (err) {
     setStatus("Auto‑fix failed: " + err.message);
@@ -430,6 +446,63 @@ async function updateStorage() {
       `Storage: reports ${res.reportsSize} KB, backups ${res.backupsSize} KB`;
   } catch {
     document.getElementById("storageText").textContent = "Storage: n/a";
+  }
+}
+
+/* ---- GR3.5 extras ---- */
+async function runAutoFixDry() {
+  try {
+    setHeaderStatus("Dry‑run auto‑fix…");
+    const res = await fetchJSON(API_BASE + "/run-auto-fix-dry", { method: "POST" });
+    const s = res.summary;
+    setStatus(`Dry‑run: ${s.fixedCount} files would be patched, ${s.skipped} skipped.`);
+  } catch (err) {
+    setStatus("Dry‑run failed: " + err.message);
+  }
+}
+
+async function runAutoFixSafe() {
+  try {
+    setHeaderStatus("Auto‑fix (safe)…");
+    const res = await fetch(API_BASE + "/run-auto-fix", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "safe", dryRun: false })
+    });
+    const data = await res.json();
+    const s = data.summary;
+    setStatus(`Safe fix: ${s.fixedCount} patched, ${s.skipped} skipped.`);
+    await loadLatestReport();
+  } catch (err) {
+    setStatus("Safe fix failed: " + err.message);
+  }
+}
+
+async function runAutoFixAggressive() {
+  try {
+    setHeaderStatus("Auto‑fix (aggressive)…");
+    const res = await fetch(API_BASE + "/run-auto-fix", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "aggressive", dryRun: false })
+    });
+    const data = await res.json();
+    const s = data.summary;
+    setStatus(`Aggressive fix: ${s.fixedCount} patched, ${s.skipped} skipped.`);
+    await loadLatestReport();
+  } catch (err) {
+    setStatus("Aggressive fix failed: " + err.message);
+  }
+}
+
+async function undoLastFix() {
+  try {
+    setHeaderStatus("Undoing last fix…");
+    const res = await fetchJSON(API_BASE + "/undo-last-fix", { method: "POST" });
+    setStatus(`Undo: restored ${res.result.restored}/${res.result.total} files.`);
+    await loadLatestReport();
+  } catch (err) {
+    setStatus("Undo failed: " + err.message);
   }
 }
 
