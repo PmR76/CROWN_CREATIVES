@@ -18,6 +18,15 @@ const PROJECT_ROOT = path.resolve(
 // Reports directory in project root
 const REPORTS_DIR = path.join(PROJECT_ROOT, "reports");
 
+// DEBUG: print what Node thinks the paths are
+console.log("DEBUG import.meta.url =", import.meta.url);
+console.log(
+  "DEBUG dirname(import.meta.url) =",
+  path.dirname(new URL(import.meta.url).pathname)
+);
+console.log("DEBUG PROJECT_ROOT =", PROJECT_ROOT);
+console.log("DEBUG REPORTS_DIR =", REPORTS_DIR);
+
 // Optional keep-config
 const KEEP_CONFIG = path.join(
   path.dirname(new URL(import.meta.url).pathname),
