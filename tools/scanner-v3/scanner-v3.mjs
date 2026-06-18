@@ -50,19 +50,19 @@ const CONFIG = JSON.parse(
 );
 
 /* ------------------------------------------------------------
-   2. UTILITY — WALK DIRECTORY (with ignore list)
+   2. UTILITY — WALK DIRECTORY (ignore .git / .github)
 ------------------------------------------------------------ */
-const IGNORE_DIRS = [".git"];
-
 function walk(dir, fileList = []) {
   const files = fs.readdirSync(dir);
 
   files.forEach(file => {
+    // Ignore Git-related directories
+    if (file === ".git" || file === ".github") return;
+
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
 
     if (stat.isDirectory()) {
-      if (IGNORE_DIRS.includes(file)) return;
       walk(fullPath, fileList);
     } else {
       fileList.push(fullPath);

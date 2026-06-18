@@ -1,0 +1,3042 @@
+[UNKNOWN/NEUTRAL] ../../.gitattributes
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.github/workflows/build-gallery-manifest.yml
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.github/workflows/gallery-manifest.yml
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.github/workflows/sound-manifest.yml
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.github/workflows/video-manifest.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.vscode/settings.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.vscode/tasks.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../about.html
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/backgrounds/themes.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/css/cinematic.css
+Issues: none
+Actions: none
+
+[ASSET/HYBRID] ../../assets/css/core-shared.css
+Issues: important-on-root
+Actions: none
+
+[ASSET/HYBRID] ../../assets/css/footer.css
+Issues: z-index-insane
+Actions: none
+
+[ASSET/LEGACY] ../../assets/css/gallery.css
+Issues: z-index-insane, full-screen-fixed-block
+Actions: none
+
+[ASSET/LEGACY] ../../assets/css/global.css
+Issues: z-index-insane, important-on-root
+Actions: none
+
+[ASSET/GR1] ../../assets/css/header.css
+Issues: z-index-insane
+Actions: none
+
+[ASSET/LEGACY] ../../assets/css/home.css
+Issues: full-screen-fixed-block, important-on-root
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/css/projects.css
+Issues: none
+Actions: none
+
+[ASSET/LEGACY] ../../assets/css/sound-engine.css
+Issues: z-index-insane, important-on-root
+Actions: none
+
+[ASSET/GR1] ../../assets/css/ticker.css
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/css/videos.css
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/cc-monogram2.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/day-crown - Copy (5).svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/day-crown-v2.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/day-crown.png.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/day-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/head-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Crown creatives day_night_day.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Crown creatives day_night_night.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Crown Creatives Header.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/day-crown-1400 - Copy.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/day-crown-1400.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/day-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_1400px/day-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_1400px/night-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-background.png.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown - Copy.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown-v3.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown-V4.txt
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown.zip
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown3.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown5.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown_V2.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/android-chrome-192x192.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/android-chrome-512x512.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/apple-touch-icon.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/favicon-16x16.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/favicon-32x32.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/favicon.ico
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/site.webmanifest
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1).zip
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/New logo web-2 (1).png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown - Copy.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown-v3.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown3.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown5.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown_V2.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/night-crown-1400.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/night-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/night-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/night-crownV6.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/copilot-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/day-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/email-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/evolve-logo.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/evolve4.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/facebook-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/favicon.ico
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/favicon.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/github-recovery-codes.txt
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/gold-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/head-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/illuminus-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/image1.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/M-FIX.ico
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/M-FIX.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/M-SCAN.ico
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/M-SCAN.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/sun-moon.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/Untitled - 27 May 2026 at 12.22.14-24.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/instagram-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/moon.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/mother.ico
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/mother.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/music.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/music3.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/neon-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/neon-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/BCO.8fcff3e2-96eb-4cce-aa6e-44c3fb14d6f3.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/BCO.a9212298-2fe6-4d3b-b329-ecdf9459b36b.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-cc-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-copilot-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-email- bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-facebook-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-instagram-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-moon-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-sun-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/cc-monogram.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/copilot-logo-500.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/copilot-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/email-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/evolve-logo.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/facebook-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/Inscape_Crown_Conversion_Optimal.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/instagram-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/moon.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/sun.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/up-arrow.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/up-arrow.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/night-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/copilot.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/email.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/facebook.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/instagram.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/moon.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/sun.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/reels/facebook.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/reels/instagram.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/reels/youtube.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sound-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sound-reactive.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sun-moon-animated.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sun-moon-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sun-moon.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sun-moon.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sun.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/Untitled - 27 May 2026 at 12.22.14-21 (1).png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/up-arrow-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/fallback.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/butterfly.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/butterfly2.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/crow.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/day-background.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/dice-tower.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/fallback.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/fly.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/framed-but.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/gallery-manifest.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/gold-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/House-V2.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/Jane_Austine.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/just-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/Mushroom.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/my-story-photoV3.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/neon-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/night-background.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/painting2.jpg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/sanding.jpg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/sculpture.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/skull.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/stars-darkness.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/sun-moon.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/tree.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/wave.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/white-butterfly.jpeg
+Issues: none
+Actions: none
+
+[ASSET/GR1] ../../assets/js/backtotop.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/js/gallery-loader.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/js/gallery.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/js/hero-gallery.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/js/home.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/js/projects.js
+Issues: none
+Actions: none
+
+[ASSET/GR1] ../../assets/js/sound-engine.js
+Issues: none
+Actions: none
+
+[ASSET/GR1] ../../assets/js/theme.js
+Issues: none
+Actions: none
+
+[ASSET/LEGACY] ../../assets/modules.disabled/hero-crown/hero-crown.css
+Issues: important-on-root
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/modules.disabled/hero-crown/hero-crown.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/modules.disabled/hero-gallery/hero-gallery.css
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/modules.disabled/hero-gallery/hero-gallery.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/projects.disabled/project-template/config.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/projects.disabled/project-template/read.md
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/projects.disabled/project1/config.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/projects.disabled/project2/config.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/alec_koff-carnaval-484622.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/bransboynd-retro-lounge-389644.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/denys_brodovskyi-sandbreaker-379630.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/energysound-powerful-percussion-513717.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/finley-chill-sunset-chill-nature-529994.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/kontraa-water-afro-pop-music-445661.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/loksii-no-copyright-music-211881.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/placidplace-relaxing-piano-with-soft-female-vocals-85658.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/ribhavagrawal-relaxing-music-with-nature-sounds-284494.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/rockot-experimental-cinematic-hip-hop-315904.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/sound-manifest.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/videos/evolve-glitch.mp4
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/videos/evolve-glitch_v2.mp4
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/videos/evolve-glitch_v3.mp4
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../blog.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../check_tree.py
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../CNAME
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../contact.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../favicon.ico
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../filetree.txt
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../gallery.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../index.html
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/background.html
+Issues: none
+Actions: none
+
+[MASTER/HYBRID] ../../master/css/master.css
+Issues: important-on-root
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/example.html
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/footer.html
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/header.html
+Issues: none
+Actions: none
+
+[MASTER/GR1] ../../master/js/master.js
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/page-wrapper.html
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/readme.md
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/start-master.cmd
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/ticker.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../MOTHER-FIX.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../MOTHER-SCAN.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../MOTHER.disabled
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../mother.yml
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/cssesc
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/cssesc.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/cssesc.ps1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/nanoid
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/nanoid.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/nanoid.ps1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.package-lock.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/bin/cssesc
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/cssesc.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/LICENSE-MIT.txt
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/man/cssesc.1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/glob.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/glob.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/glob.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/glob.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/has-magic.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/has-magic.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/has-magic.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/has-magic.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/ignore.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/ignore.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/ignore.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/ignore.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/pattern.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/pattern.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/pattern.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/pattern.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/processor.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/processor.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/processor.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/processor.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/walker.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/walker.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/walker.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/walker.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/glob.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/glob.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/glob.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/glob.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/has-magic.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/has-magic.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/has-magic.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/has-magic.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/ignore.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/ignore.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/ignore.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/ignore.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/pattern.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/pattern.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/pattern.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/pattern.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/processor.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/processor.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/processor.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/processor.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/walker.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/walker.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/walker.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/walker.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel-browser.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel-browser.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/diagnostics-channel-cjs.cjs.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/diagnostics-channel-cjs.d.cts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/diagnostics-channel-node.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/diagnostics-channel-node.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/diagnostics-channel-browser.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/diagnostics-channel-browser.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/diagnostics-channel-esm.d.mts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/diagnostics-channel-esm.mjs.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/diagnostics-channel-node.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/diagnostics-channel-node.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/assert-valid-pattern.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/assert-valid-pattern.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/assert-valid-pattern.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/assert-valid-pattern.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/ast.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/ast.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/ast.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/ast.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/brace-expressions.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/brace-expressions.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/brace-expressions.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/brace-expressions.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/escape.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/escape.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/escape.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/escape.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/unescape.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/unescape.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/unescape.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/unescape.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/assert-valid-pattern.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/assert-valid-pattern.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/assert-valid-pattern.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/assert-valid-pattern.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/ast.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/ast.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/ast.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/ast.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/brace-expressions.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/brace-expressions.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/brace-expressions.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/brace-expressions.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/escape.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/escape.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/escape.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/escape.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/unescape.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/unescape.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/unescape.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/unescape.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/.claude/settings.local.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.browser.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.browser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.native.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/bin/nanoid.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.browser.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.browser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.d.cts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/nanoid.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/non-secure/index.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/non-secure/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/non-secure/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/non-secure/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/url-alphabet/index.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/url-alphabet/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/url-alphabet/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/picocolors.browser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/picocolors.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/picocolors.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/types.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/at-rule.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/at-rule.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/comment.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/comment.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/container.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/container.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/css-syntax-error.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/css-syntax-error.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/declaration.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/declaration.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/document.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/document.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/fromJSON.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/fromJSON.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/input.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/input.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/lazy-result.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/lazy-result.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/list.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/list.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/map-generator.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/no-work-result.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/no-work-result.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/node.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/node.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/parse.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/parse.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/parser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/postcss.d.mts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/postcss.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/postcss.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/postcss.mjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/previous-map.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/previous-map.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/processor.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/processor.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/result.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/result.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/root.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/root.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/rule.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/rule.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/stringifier.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/stringifier.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/stringify.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/stringify.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/symbols.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/terminal-highlight.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/tokenize.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/warn-once.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/warning.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/warning.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/API.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/CHANGELOG.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/parser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/processor.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/attribute.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/className.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/combinator.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/comment.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/constructors.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/container.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/guards.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/id.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/namespace.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/nesting.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/node.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/pseudo.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/root.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/selector.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/string.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/tag.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/types.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/universal.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/sortAscending.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/tokenize.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/tokenTypes.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/ensureObject.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/getProp.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/maxNestingDepth.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/stripComments.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/unesc.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/LICENSE-MIT
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/postcss-selector-parser.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/array-set.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/base64-vlq.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/base64.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/binary-search.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/mapping-list.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/quick-sort.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-map-consumer.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-map-consumer.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-map-generator.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-map-generator.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-node.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-node.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/util.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/source-map.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/source-map.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/browser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/History.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/node.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../package-lock.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../package.json
+Issues: none
+Actions: none
+
+[PAGE/NEUTRAL] ../../pages/home.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../pages-build-deployment.yml
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../podcasts.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../projects.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../run_tree_check.bat
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../script.js
+Issues: none
+Actions: none
+
+[SCRIPT/NEUTRAL] ../../scripts/build-all-manifests.js
+Issues: none
+Actions: none
+
+[SCRIPT/NEUTRAL] ../../scripts/build-gallery-manifest.js
+Issues: none
+Actions: none
+
+[SCRIPT/NEUTRAL] ../../scripts/build-manifest.js
+Issues: none
+Actions: none
+
+[SCRIPT/NEUTRAL] ../../scripts/build-sound-manifest.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../sound-manifest.yml
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/........cards/cards.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..........cards\cards.css
+
+[TEST/LEGACY] ../../test/........index.css
+Issues: important-on-root
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..........index.css
+
+[TEST/LEGACY] ../../test/........theme-panel/theme-panel.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..........theme-panel\theme-panel.css
+
+[TEST/LEGACY] ../../test/......cards/cards.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\........cards\cards.css
+
+[TEST/NEUTRAL] ../../test/......cards/cards.css.bak
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/......index.css
+Issues: important-on-root
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\........index.css
+
+[TEST/NEUTRAL] ../../test/......index.css.bak
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/......theme-panel/theme-panel.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\........theme-panel\theme-panel.css
+
+[TEST/NEUTRAL] ../../test/......theme-panel/theme-panel.css.bak
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/....cards/cards.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\......cards\cards.css
+
+[TEST/NEUTRAL] ../../test/....cards/cards.css.bak
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/....index.css
+Issues: important-on-root
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\......index.css
+
+[TEST/NEUTRAL] ../../test/....index.css.bak
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/....theme-panel/theme-panel.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\......theme-panel\theme-panel.css
+
+[TEST/NEUTRAL] ../../test/....theme-panel/theme-panel.css.bak
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/..cards/cards.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\....cards\cards.css
+
+[TEST/NEUTRAL] ../../test/..cards/cards.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/..hero-window/hero-window.css
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/..index.css
+Issues: important-on-root
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\....index.css
+
+[TEST/NEUTRAL] ../../test/..index.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/..sound/sound.css
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/..theme-panel/theme-panel.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\....theme-panel\theme-panel.css
+
+[TEST/NEUTRAL] ../../test/..theme-panel/theme-panel.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/..ticker/ticker.css
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/cards/cards.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..cards\cards.css
+
+[TEST/NEUTRAL] ../../test/cards/cards.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/cards/cards.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/cards/cards.js
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/filetree.css
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/filetree.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/filetree.js
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/footer/footer.css
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/footer/footer.html
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/footer/footer.js
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/gallery/gallery.css
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/gallery/gallery.js
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/header/header.css
+Issues: z-index-insane
+Actions: none
+
+[TEST/NEUTRAL] ../../test/header/header.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/hero-crown/hero-crown.css
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/hero-crown/hero-crown.js
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/hero-window/hero-window.css
+Issues: z-index-insane
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..hero-window\hero-window.css
+
+[TEST/NEUTRAL] ../../test/hero-window/hero-window.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/hero-window/hero-window.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/hero-window/hero-window.js
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/index.css
+Issues: important-on-root
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..index.css
+
+[TEST/NEUTRAL] ../../test/index.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/index.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/alec_koff-carnaval-484622.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/bransboynd-retro-lounge-389644.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/denys_brodovskyi-sandbreaker-379630.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/energysound-powerful-percussion-513717.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/finley-chill-sunset-chill-nature-529994.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/kontraa-water-afro-pop-music-445661.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/rockot-experimental-cinematic-hip-hop-315904.mp3
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/sound/sound.css
+Issues: z-index-insane
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..sound\sound.css
+
+[TEST/NEUTRAL] ../../test/sound/sound.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/sound.js
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/theme/theme-admin.js
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/theme/theme.css
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/theme/theme.js
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/theme-panel/theme-panel.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..theme-panel\theme-panel.css
+
+[TEST/NEUTRAL] ../../test/theme-panel/theme-panel.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/theme-panel/theme-panel.html
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/theme-panel/theme-panel.js
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/ticker/ticker.css
+Issues: z-index-insane
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..ticker\ticker.css
+
+[TEST/NEUTRAL] ../../test/ticker/ticker.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/ticker/ticker.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/ticker/ticker.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/cc-scanner.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/config.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother-fix.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother-report.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother-report.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother-scan.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother-v5.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother.config.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/run-cc-scanner.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/run-cc-scanner.cmd - Shortcut.lnk
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/scanner-v3/config.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/scanner-v3/reports/scan-2026-06-18T09-19-58-290Z.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/scanner-v3/reports/scan-2026-06-18T09-19-58-290Z.txt
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/scanner-v3/reports/scan-2026-06-18T09-26-39-714Z.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/scanner-v3/reports/scan-2026-06-18T09-26-39-714Z.txt
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/scanner-v3/scanner-v3.mjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/scanner-v3/scanner‑v3.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../videos.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../_headers
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../_routes.json
+Issues: none
+Actions: none
+
+
+=== CREATIVE SUGGESTIONS ===
+
+[#CREATIVE] ../../assets/css/gallery.css
+Type: asset-advisory
+Suggestion: Legacy asset module detected; consider future GR1 upgrade when moving out of test sandbox.
+
+[#CREATIVE] ../../assets/css/global.css
+Type: asset-advisory
+Suggestion: Legacy asset module detected; consider future GR1 upgrade when moving out of test sandbox.
+
+[#CREATIVE] ../../assets/css/home.css
+Type: asset-advisory
+Suggestion: Legacy asset module detected; consider future GR1 upgrade when moving out of test sandbox.
+
+[#CREATIVE] ../../assets/css/sound-engine.css
+Type: asset-advisory
+Suggestion: Legacy asset module detected; consider future GR1 upgrade when moving out of test sandbox.
+
+[#CREATIVE] ../../assets/modules.disabled/hero-crown/hero-crown.css
+Type: asset-advisory
+Suggestion: Legacy asset module detected; consider future GR1 upgrade when moving out of test sandbox.
+
+[#CREATIVE] ../../test/........cards/cards.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/........index.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/........theme-panel/theme-panel.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/......cards/cards.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/......index.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/......theme-panel/theme-panel.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/....cards/cards.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/....index.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/....theme-panel/theme-panel.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/..cards/cards.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/..index.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/..theme-panel/theme-panel.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/cards/cards.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/footer/footer.css
+Type: ui-upgrade
+Suggestion: Footer module could use GR1 glow engine and theme variables.
+
+[#CREATIVE] ../../test/hero-window/hero-window.css
+Type: cinematic-upgrade
+Suggestion: Hero window could be converted to GR1 Hero Engine v2 with cinematic glow.
+
+[#CREATIVE] ../../test/hero-window/hero-window.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/index.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/sound/sound.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/theme-panel/theme-panel.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/ticker/ticker.css
+Type: motion-upgrade
+Suggestion: Ticker module could use smoother GR1 keyframe animations and OS-level timing.
+
+[#CREATIVE] ../../test/ticker/ticker.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
