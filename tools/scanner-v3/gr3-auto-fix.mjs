@@ -1,43 +1,63 @@
 #!/usr/bin/env node
-
-/* ============================================================
-   CROWN CREATIVES — GR3 AUTO-FIX ENGINE (Phase 5)
-   Consumes scanner JSON → applies patches in-place
-   Creates .bak backups before modifying files
-============================================================ */
-
 import fs from "fs";
 import path from "path";
 
-/* ------------------------------------------------------------
-   1. LOAD LATEST REPORT
------------------------------------------------------------- */
+const REPORTS_DIR = path.resolve("./reports");
+const KEEP_CONFIG = path.resolve("./backup-keep.json");
+const LOG_DIR = path.resolve("./tools/gr3-auto-fix/logs");
+const MANIFEST_PATH = path.resolve("./tools/gr3-auto-fix/last-run.json");
+
+if (!fs.existsSync(LOG_DIR)) fs.mkdirSync(LOG_DIR, { recursive: true });
+
 function getLatestReportPath() {
-  const reportsDir = "./reports";
-  if (!fs.existsSync(reportsDir)) {
-    throw new Error("reports directory not found");
-  }
-
-  const files = fs.readdirSync(reportsDir)
+  if (!fs.existsSync(REPORTS_DIR)) throw new Error("reports directory not found");
+  const files = fs.readdirSync(REPORTS_DIR)
     .filter(f => f.startsWith("scan-") && f.endsWith(".json"))
-    .sort(); // ISO timestamp in name → lexicographic sort works
-
-  if (files.length === 0) {
-    throw new Error("no scan-*.json reports found");
-  }
-
-  return path.join(reportsDir, files[files.length - 1]);
+    .sort();
+  if (!files.length) throw new Error("no scan-*.json reports found");
+  return path.join(REPORTS_DIR, files[files.length - 1]);
 }
 
 function loadReport(reportPath) {
-  const raw = fs.readFileSync(reportPath, "utf8");
-  return JSON.parse(raw);
+  return JSON.parse(fs.readFileSync(reportPath, "utf8"));
 }
 
-/* ------------------------------------------------------------
-   2. PATCH HELPERS (CSS / JS / HTML)
------------------------------------------------------------- */
-function patchCss(content, issues) {
+function loadKeepConfig() {
+  if (!fs.existsSync(KEEP_CONFIG)) return { keep: [] };
+  try {
+    return JSON.parse(fs.readFileSync(KEEP_CONFIG, "utf8"));
+  } catch {
+    return { keep: [] };
+  }
+}
+
+/* ---------- CLI options ---------- */
+
+function parseArgs(argv) {
+  const opts = {
+    dryRun: false,
+    mode: "safe", // safe | aggressive
+    onlyIssue: null,
+    onlyScope: null,
+    onlyKind: null,
+    onlyFile: null,
+  };
+
+  for (const arg of argv.slice(2)) {
+    if (arg === "--dry-run") opts.dryRun = true;
+    else if (arg.startsWith("--mode=")) opts.mode = arg.split("=")[1];
+    else if (arg.startsWith("--only-issue=")) opts.onlyIssue = arg.split("=")[1];
+    else if (arg.startsWith("--only-scope=")) opts.onlyScope = arg.split("=")[1];
+    else if (arg.startsWith("--only-kind=")) opts.onlyKind = arg.split("=")[1];
+    else if (arg.startsWith("--only-file=")) opts.onlyFile = arg.split("=")[1];
+  }
+
+  return opts;
+}
+
+/* ---------- Patch helpers ---------- */
+
+function patchCss(content, issues, mode) {
   let out = content;
 
   if (issues.includes("z-index-insane")) {
@@ -65,10 +85,15 @@ function patchCss(content, issues) {
     );
   }
 
+  // Example of "aggressive" extras
+  if (mode === "aggressive") {
+    out = out.replace(/z-index:\s*(\d{3,})/gi, "z-index: 400; /* GR3 aggressive normalised */");
+  }
+
   return out;
 }
 
-function patchJs(content, issues) {
+function patchJs(content, issues, mode) {
   let out = content;
 
   if (issues.includes("js-body-overflow-hidden")) {
@@ -93,21 +118,23 @@ function patchJs(content, issues) {
   }
 
   if (issues.includes("js-body-style-mutation")) {
-    // Soft-touch: comment direct body style mutations
     out = out.replace(
       /document\.querySelector\(['"]body['"]\)[\s\S]*?\.style\.[^=]+=/gi,
       match => `// GR3 review: body style mutation\n// ${match}`
     );
   }
 
+  if (mode === "aggressive") {
+    out = out.replace(/alert\(/g, "// GR3 aggressive: alert disabled\n// alert(");
+  }
+
   return out;
 }
 
-function patchHtml(content, issues) {
+function patchHtml(content, issues, mode) {
   let out = content;
 
   if (issues.includes("duplicate-cc-background")) {
-    // Leave a marker for manual review; auto-removal is risky
     out = out.replace(
       /id="cc-background"/g,
       'id="cc-background" data-gr3="duplicate-check"'
@@ -121,38 +148,67 @@ function patchHtml(content, issues) {
     );
   }
 
+  if (mode === "aggressive") {
+    out = out.replace(/<body([^>]*)onload=/gi, '<body$1 data-gr3-onload-removed=');
+  }
+
   return out;
 }
 
-/* ------------------------------------------------------------
-   3. APPLY PATCHES PER MODULE
------------------------------------------------------------- */
-function applyPatchesForModule(mod) {
+/* ---------- Patch application + preview ---------- */
+
+function shouldProcessModule(mod, opts) {
+  if (opts.onlyScope && mod.scope !== opts.onlyScope) return false;
+  if (opts.onlyKind && mod.kind !== opts.onlyKind) return false;
+  if (opts.onlyFile && mod.rel !== opts.onlyFile && mod.path !== opts.onlyFile) return false;
+  if (opts.onlyIssue && !(mod.issues || []).includes(opts.onlyIssue)) return false;
+  return true;
+}
+
+function applyPatchesForModule(mod, keepConfig, opts) {
   const filePath = mod.path;
   const issues = mod.issues || [];
-
   if (!issues.length) return null;
+  if (!fs.existsSync(filePath)) return null;
+  if (!shouldProcessModule(mod, opts)) return { skipped: true, reason: "filter", file: filePath };
 
-  if (!fs.existsSync(filePath)) {
-    console.warn("⚠️ File missing for module:", filePath);
-    return null;
+  const rel = mod.rel || filePath;
+  if (keepConfig.keep && keepConfig.keep.includes(rel) && opts.mode === "safe") {
+    return { file: filePath, skipped: true, reason: "keep-config" };
   }
 
   const original = fs.readFileSync(filePath, "utf8");
   let patched = original;
 
   if (filePath.endsWith(".css")) {
-    patched = patchCss(patched, issues);
+    patched = patchCss(patched, issues, opts.mode);
   } else if (filePath.endsWith(".js")) {
-    patched = patchJs(patched, issues);
+    patched = patchJs(patched, issues, opts.mode);
   } else if (filePath.endsWith(".html") || filePath.endsWith(".htm")) {
-    patched = patchHtml(patched, issues);
+    patched = patchHtml(patched, issues, opts.mode);
   } else {
-    return null;
+    return { file: filePath, skipped: true, reason: "unsupported" };
   }
 
   if (patched === original) {
-    return null;
+    return { file: filePath, skipped: true, reason: "no-change" };
+  }
+
+  // Patch preview (for dashboard use)
+  const preview = {
+    before: original,
+    after: patched,
+  };
+
+  if (opts.dryRun) {
+    return {
+      file: filePath,
+      issuesFixed: issues,
+      backup: null,
+      skipped: false,
+      dryRun: true,
+      preview,
+    };
   }
 
   const bakPath = filePath + ".gr3.bak";
@@ -166,39 +222,115 @@ function applyPatchesForModule(mod) {
     file: filePath,
     issuesFixed: issues,
     backup: bakPath,
+    skipped: false,
+    dryRun: false,
+    preview,
   };
 }
 
-/* ------------------------------------------------------------
-   4. MAIN GR3 AUTO-FIX PROCESS
------------------------------------------------------------- */
-async function runAutoFix() {
-  const reportPathArg = process.argv[2];
-  const reportPath = reportPathArg || getLatestReportPath();
+/* ---------- Undo last fix ---------- */
 
-  console.log("🛠 GR3 AUTO-FIX using report:", reportPath);
+function undoLastFix() {
+  if (!fs.existsSync(MANIFEST_PATH)) {
+    throw new Error("No last-run manifest found.");
+  }
+  const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8"));
+  const backups = manifest.backups || [];
+  let restored = 0;
 
-  const report = loadReport(reportPath);
-  const modules = report.modules || [];
-
-  const fixes = [];
-
-  for (const mod of modules) {
-    const result = applyPatchesForModule(mod);
-    if (result) {
-      fixes.push(result);
-      console.log("✔ Fixed:", result.file, "issues:", result.issuesFixed.join(", "));
-    }
+  for (const b of backups) {
+    if (!fs.existsSync(b.backup)) continue;
+    if (!fs.existsSync(b.target)) continue;
+    const original = fs.readFileSync(b.backup, "utf8");
+    fs.writeFileSync(b.target, original, "utf8");
+    restored++;
   }
 
-  if (!fixes.length) {
-    console.log("✅ No auto-fixable issues found.");
+  return { restored, total: backups.length };
+}
+
+/* ---------- Logging ---------- */
+
+function writeLog(summary) {
+  const ts = new Date().toISOString().replace(/[:.]/g, "-");
+  const logPath = path.join(LOG_DIR, `fix-${ts}.json`);
+  fs.writeFileSync(logPath, JSON.stringify(summary, null, 2), "utf8");
+  fs.writeFileSync(MANIFEST_PATH, JSON.stringify(summary, null, 2), "utf8");
+}
+
+/* ---------- Main ---------- */
+
+async function runAutoFix(options = null) {
+  const opts = options || parseArgs(process.argv);
+  const reportPath = getLatestReportPath();
+  const report = loadReport(reportPath);
+  const keepConfig = loadKeepConfig();
+
+  const modules = report.modules || [];
+  const fixes = [];
+  const backupsManifest = [];
+  let skipped = 0;
+
+  for (const mod of modules) {
+    const result = applyPatchesForModule(mod, keepConfig, opts);
+    if (!result) continue;
+    if (result.skipped) {
+      skipped++;
+      continue;
+    }
+    fixes.push(result);
+    if (!opts.dryRun && result.backup) {
+      backupsManifest.push({ backup: result.backup, target: result.file });
+    }
+    console.log(
+      (opts.dryRun ? "[DRY]" : "[FIX]"),
+      result.file,
+      "issues:",
+      (result.issuesFixed || []).join(", ")
+    );
+  }
+
+  const summary = {
+    timestamp: new Date().toISOString(),
+    mode: opts.mode,
+    dryRun: opts.dryRun,
+    onlyIssue: opts.onlyIssue,
+    onlyScope: opts.onlyScope,
+    onlyKind: opts.onlyKind,
+    onlyFile: opts.onlyFile,
+    fixedCount: fixes.length,
+    skipped,
+    backups: backupsManifest,
+  };
+
+  if (!opts.dryRun) {
+    writeLog(summary);
+  }
+
+  if (require.main === module) {
+    console.log(
+      `🎉 GR3.5 complete — ${fixes.length} files ${opts.dryRun ? "would be" : "were"} patched, ${skipped} skipped.`
+    );
   } else {
-    console.log(`🎉 GR3 complete — ${fixes.length} files patched.`);
+    return summary;
   }
 }
 
-/* ------------------------------------------------------------
-   5. START
------------------------------------------------------------- */
-runAutoFix();
+if (import.meta.url === `file://${process.argv[1]}`) {
+  if (process.argv.includes("--undo")) {
+    try {
+      const res = undoLastFix();
+      console.log(`Undo complete — restored ${res.restored}/${res.total} files.`);
+    } catch (err) {
+      console.error("Undo failed:", err.message);
+      process.exit(1);
+    }
+  } else {
+    runAutoFix().catch(err => {
+      console.error("GR3.5 auto-fix failed:", err);
+      process.exit(1);
+    });
+  }
+}
+
+export { runAutoFix, undoLastFix };

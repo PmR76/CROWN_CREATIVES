@@ -5,6 +5,7 @@ import fs from "fs";
 import path from "path";
 import { runCleanup, cleanupReports } from "../gr4-cleanup/gr4-cleanup.mjs";
 import { runAutoFix } from "../gr3-auto-fix/gr3-auto-fix.mjs";
+import { spawn } from "child_process";
 
 const PORT = 7777;
 const REPORTS_DIR = path.resolve("./reports");
@@ -63,10 +64,8 @@ function getStorageUsage() {
     backupsSize: Math.round(backupsSize / 1024),
   };
 }
-
 function runScanner() {
   return new Promise((resolve, reject) => {
-    const { spawn } = require("child_process");
     const proc = spawn("node", ["tools/scanner-v3/scanner-v3.mjs"], { shell: true });
     proc.on("exit", code => {
       if (code === 0) resolve();
