@@ -1,0 +1,161 @@
+#!/usr/bin/env node
+
+/* ============================================================
+   CROWN CREATIVES — SCANNER v3 (HYBRID EDITION)
+   Full-project scan → JSON report → TXT summary
+   Auto-migrate ONLY /test modules
+============================================================ */
+
+import fs from "fs";
+import path from "path";
+
+/* ------------------------------------------------------------
+   1. LOAD CONFIG
+------------------------------------------------------------ */
+const CONFIG = JSON.parse(
+  fs.readFileSync("./tools/scanner-v3/config.json", "utf8")
+);
+
+/* ------------------------------------------------------------
+   2. UTILITY — WALK DIRECTORY
+------------------------------------------------------------ */
+function walk(dir, fileList = []) {
+  const files = fs.readdirSync(dir);
+
+  files.forEach(file => {
+    const fullPath = path.join(dir, file);
+    const stat = fs.statSync(fullPath);
+
+    if (stat.isDirectory()) {
+      walk(fullPath, fileList);
+    } else {
+      fileList.push(fullPath);
+    }
+  });
+
+  return fileList;
+}
+
+/* ------------------------------------------------------------
+   3. CLASSIFY MODULE (placeholder logic)
+------------------------------------------------------------ */
+function classifyModule(filePath) {
+  if (filePath.includes("/test/")) return "test";
+  if (filePath.includes("/assets/")) return "asset";
+  if (filePath.includes("/master/")) return "master";
+  if (filePath.includes("/pages/")) return "page";
+  if (filePath.includes("/scripts/")) return "script";
+
+  return "unknown";
+}
+
+/* ------------------------------------------------------------
+   4. DETECT ISSUES (placeholder logic)
+------------------------------------------------------------ */
+function detectIssues(filePath, content) {
+  const issues = [];
+
+  if (/z-index:\s*9{3,6}/.test(content)) {
+    issues.push("z-index-high");
+  }
+
+  if (content.includes("<body") && filePath.endsWith(".js")) {
+    issues.push("dom-mutation-risk");
+  }
+
+  return issues;
+}
+
+/* ------------------------------------------------------------
+   5. AUTO-MIGRATE (ONLY /test)
+------------------------------------------------------------ */
+function migrateIfNeeded(filePath, content) {
+  if (!filePath.includes("/test/")) return null;
+
+  const relative = filePath.split("/test/")[1];
+  const target = path.join("test/migrated", relative);
+
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, content);
+
+  return target;
+}
+
+/* ------------------------------------------------------------
+   6. BUILD REPORT OBJECT
+------------------------------------------------------------ */
+function buildReport(scanResults) {
+  return {
+    projectRoot: CONFIG.projectRoot,
+    scannedAt: new Date().toISOString(),
+    modules: scanResults,
+    creative: [], // filled later by creative engine
+  };
+}
+
+/* ------------------------------------------------------------
+   7. WRITE JSON + TXT REPORTS
+------------------------------------------------------------ */
+function writeReports(report) {
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+
+  const jsonPath = `tools/scanner-v3/reports/scan-${timestamp}.json`;
+  const txtPath = `tools/scanner-v3/reports/scan-${timestamp}.txt`;
+
+  fs.writeFileSync(jsonPath, JSON.stringify(report, null, 2));
+
+  const txt = report.modules
+    .map(m => {
+      return `[${m.type.toUpperCase()}] ${m.path}
+Issues: ${m.issues.join(", ") || "none"}
+Actions: ${m.actions.join(", ") || "none"}
+`;
+    })
+    .join("\n");
+
+  fs.writeFileSync(txtPath, txt);
+
+  console.log("JSON report:", jsonPath);
+  console.log("TXT summary:", txtPath);
+}
+
+/* ------------------------------------------------------------
+   8. MAIN SCAN PROCESS
+------------------------------------------------------------ */
+async function runScanner() {
+  const root = process.argv[2] || CONFIG.projectRoot;
+
+  console.log("🔍 SCANNING:", root);
+
+  const allFiles = walk(root);
+  const results = [];
+
+  for (const file of allFiles) {
+    const content = fs.readFileSync(file, "utf8");
+    const type = classifyModule(file);
+    const issues = detectIssues(file, content);
+
+    const actions = [];
+
+    // Auto-migrate only /test
+    const migrated = migrateIfNeeded(file, content);
+    if (migrated) actions.push("migrated → " + migrated);
+
+    results.push({
+      path: file,
+      type,
+      issues,
+      actions,
+    });
+  }
+
+  const report = buildReport(results);
+  writeReports(report);
+
+  console.log("🎉 SCAN COMPLETE");
+}
+
+/* ------------------------------------------------------------
+   9. START
+------------------------------------------------------------ */
+runScanner();
