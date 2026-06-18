@@ -1,0 +1,3974 @@
+[UNKNOWN/NEUTRAL] ../../.git/COMMIT_EDITMSG
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/config
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/description
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/FETCH_HEAD
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/gk/config
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/HEAD
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/applypatch-msg.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/commit-msg.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/fsmonitor-watchman.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/post-checkout
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/post-commit
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/post-merge
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/post-update.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/pre-applypatch.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/pre-commit.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/pre-merge-commit.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/pre-push
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/pre-push.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/pre-rebase.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/pre-receive.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/prepare-commit-msg.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/push-to-checkout.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/sendemail-validate.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/hooks/update.sample
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/index
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/info/exclude
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/info/refs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/cache/locks/refs/heads/main/verifiable
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/03/ad/03ad6612bfd93fbee5cfffeb4fefefbeb56e8ce1da1b31f08d06cce2a8551aae
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/09/07/0907101b7f7293855d54d0f1660c86d1eb247919a240f665bc7b61e5518797ae
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/0a/50/0a5066405cb6794aefa6c995923f2dbed0ed55b76e31fcd88ddf9ac709a009d8
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/0c/0a/0c0a5e4891ffe9dd821fd2cb3c8e53c7f26ab743bed2700141ce63d686b9dc47
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/0e/15/0e15b285500012a5a0a650e6c96a8fa128ccb14ed1407de03dd92f8e27f60bbb
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/0f/0e/0f0ef0634c31024f9a96d3714e032d84d56bc7b4e465080e77c2136a98b38c8e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/10/a8/10a8589c9328a8f16af2b972db0231d362c1d7d53695c2e64c714917c2c11a28
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/14/fc/14fc3b08fcae0bb0da8669263dc99565e580701d20f559211eca1a1b49a3c528
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/1b/ff/1bff816862d30a7ef73a3ce61a02005b5f32ced83d3c9d4e86796fa3911e4dc6
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/20/25/2025756525286b15e0958538da49ae40fef583b0933cc8985120e97b9c363208
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/22/93/2293f1376da96c5bf2cf1b7733b6084ff2351bc7ea6e57ec277d87e27546fa15
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/28/0f/280f9338a5216260b78a8592276ea244e8eba7078cb8e6dece24a34c6ca4f676
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/28/f0/28f0c07a15f1de23a26df60c93504f887ee7fda8357d2d6d43b44b893a141cb1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/2b/da/2bda3d088a33f5cfbeaea2fbfc37f33aadc9bd935e5914da2e655e44ed728691
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/34/43/3443f08385524de7265b8620669d028be6c5836ad0343707c2bb9803dd53f6ed
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/35/a2/35a2cfd363552e28bc918e40b863bbefe6f0e9cd7d8a0314c92071dc1982dd6f
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/36/4c/364cd80d5ffa10f56375737cdfb723f137c06e0651d9d518a9fb28264e1dcea6
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/3b/1b/3b1b511477e46b5593e92c2d7879029436b13cf3ebbf40e1fefc13b6ac8a227b
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/3f/bc/3fbc30205cb8b7cd59187966bca3c6c218ce7bab511273e890bb55ffb1e7a3c0
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/45/22/4522ac38882d1cf4449740722b82deda399414177c6534de05de83a77b4cce25
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/48/8e/488e0bcc058613eb040d87878664c5961b512d1362d2d19ebc58c58d349eb249
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/4c/8c/4c8ce25b2c43f2331f08e91a3e444fa58c9d2d21c3de9ec6edb9a131912ed3c5
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/4d/a4/4da4a070396d8a8f665b726cad03dc5e55fec6c4fe03a2cd69c927283fe1f951
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/4d/e8/4de8e8c5eaf285b3162a624f2391cc1f65fed2a4b59abc344d77c4fea0f89419
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/4f/30/4f304334fddd184da7725efed511aaa603b31316378ee1f2c9f759530c761327
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/54/61/546181df963e0b070f582c068583e7ea69bc49796baa89e91efb9ddaaf75b830
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/55/17/55172f5aac8a8cd43c42afd9eba78ba092fb365b5c7ab7388259e448de442625
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/5c/69/5c692262793c0c3f0c21c13169984c0c031b6e58242bdf22fb43b761403b9b1b
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/5d/f3/5df330d86fc27753418320b687dc9422f91eb03c3154c5098c29a9c326d42f1c
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/5f/d7/5fd71c2a1ce70abcebbc7fa2a320986912b89b7b9208cb19ca361ce631cab36d
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/61/26/6126ec0941d915b8e9745aae89c0ce5f684c1a360c9de27a5f58d59ac47358e3
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/64/f3/64f31c5bb741438cd323de598b052ca04d2be313cbf9f4ca02bd5b55f9e697ae
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/6a/72/6a725d5ce10f91e7ce27a7a95d59a40cff4caf336a46640e4212cffd062fa843
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/6b/95/6b95c7f2b96611ff170354c47042e462455a603aeb52a360bfa385e0386e1679
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/75/7d/757d74f5d500dca9e54de9be0d8b5541f55a6b0412757eed5a93d2bc4552cc97
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/86/0b/860beb406661c544efcf16db0b9d6936dbfb398434450aa0ef63d6502e6b966a
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/89/25/8925ba8fa909792f6466a027b9397e021909678e81485a29b5191e239ab3615a
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/8e/60/8e601086ad4a263e1481d1e09a0ab0905cd93b0c8828fc7ec4eee0da862a665d
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/8f/13/8f136956e83fec11ebfa62c5f2d34ec748615e268955069eda4a5b527c9cdcb8
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/94/9a/949a115db11bb28ace92e4e2e8777f4cc51128a5f58d93e157760daa74b3e87c
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/94/c9/94c9a4738518637b6ae04a33f0696c835e806f62867e96eceddfaad32a356216
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/96/1d/961d0e617f4cde97a49b5617a9df22149ee1eac4db3bd40ceb30b9cb3948ab83
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/97/ba/97ba4ba049f0b9b9195f4518540f28dd787fc8e4bd55d0fb99cd766018ec532e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/9b/8d/9b8d7fba837713fc82cd1e96779f81d8431c3a6041902710bde3673812bdbb22
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/9c/5d/9c5da5301e51c0c990cf2d5c7abfea9b4a64e5acbee3541b590444c1900ae4ca
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/9c/a1/9ca1cfdb8d9ac413322315313c596239cf3c34a01dcfa583b50d3af568f6a978
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/a1/a4/a1a4a0cdcc84892a8b134e4a42bc52ab4f551621b5f5e5026432e9ce685c13a1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/a5/f7/a5f73a79e5c70c7da566767c46570ec4806922f494ee2d518a941b81469b7132
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/aa/dc/aadcb410d0fc6a5b3217effa83fbac070bd9c7e79ce19fca92188a21ee911d32
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/ac/77/ac778bcc6da85557497e83e231858c4d5b79fc0dab96b9a6db7ee28de18952c1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/ae/d9/aed998caf5eaaf3963a5dedd7f0cf5cd6df1468179d3370e8bb9f51fa09f77e4
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/af/c7/afc79537403d3ff2ede8c9421faaf9f625ad2cc3b089ee083ee9cda81b542606
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/b2/5b/b25b4b6bcdef196234450a6a64951bad59046586811106894156c91e674f80f0
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/b3/1a/b31a0ac2f453dc1d0ab07bdaf19fc9fab069444215dc5f7334bab0fb43422acd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/b8/ee/b8ee008f394409eeb4d2c3a669c72c75c347ef0cecfca6fae86735efb51f2487
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/b9/b0/b9b0e32cae9e278a3c9d2abcb20128ca4684ac1a42b12d4eec65cf4927f4863a
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/c5/47/c5475af4f3637dee03e5a34538b168f8fcb5196256572e51f9146793c6c15277
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/c7/e4/c7e477ef5c4a00ddb42e8e2b73d5b370cfb6acb6fd56d6085ac460c1b4a33d23
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/cb/50/cb50778e0676769d06af585e444040948946a61b70a5015ab66c0377384112b5
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/cc/ca/ccca4350821e7343e78132287310af8a35062281486486c3f4b899050f188c39
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/cf/80/cf80584e9caf6624adc203efc0364b0e676de9fb608f0bca6dc9dc467b950dda
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/d5/9d/d59ddbeef01c623bfe45d7403419758416b438ea9cd471e877b69b2cd31d4ee6
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/da/71/da7196a0a101daa9921bb109e8d5e48396643625b62cb58476d91de3da855f30
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/df/23/df235e2772fbc8a779ef528239fa6cdfe66ffa134b6c4dd44ee9dcf0be28c5c8
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/df/a9/dfa931cb3b023dc5f805ef414a9585a188154af857a383f33efdf62aadc5cee3
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/e1/21/e1213e45281e0e2fb9109d26fbed9c443224689c75794e43c21afefd182cb0f4
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/e4/7d/e47d7e49baf1d1ed1f7f3e58c3448a09b9c1194c12ac2b0e07ecad15da973a11
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/eb/e9/ebe998ea588e81b51fbbc500b769be7246e563e56cc0a0ea7a244a433cfaf9b9
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/ee/3f/ee3f98f8277dc78619e5218de97d52486cc15a65b6cab95d591df15be459e52e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/ef/2e/ef2e007622c8ec364d3e414f51050f2a52db9806704db23713d4db4ff703266e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/ef/54/ef5454cb90db9656611bcc6b1472290f4031e0fbe7d206135f93035aa350cfeb
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/f0/02/f0022248103aef7ce1f43b452d9973882091ee797477d306d0728d675a919305
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/f3/9d/f39ddc90f27edb0c6ec7ffa1a1253593a8ada7255b27ccd7795b7a73277a5895
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/f4/8e/f48e34a0bc662ba0fc359e70e68c6dfb55f2d44e49fc0e7765b1a424c356ed7c
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/f6/a5/f6a5c1f55247d77a058f2303a8980ddf8dcbc18ecf84f34937f390423aeeb422
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/lfs/objects/fc/40/fc40c882a66137cf4d84f6e2369b19beeb3c8ddb1c20b75336e502de5fed8f3f
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/logs/HEAD
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/logs/refs/heads/main
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/logs/refs/remotes/origin/HEAD
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/logs/refs/remotes/origin/main
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/01/b68dc39ff2b74e641af31efed2b6584f2c17d7
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/06/8c23f5aa7a183d312213ac8196bf1621bbc80e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/07/1fbc21da2b927aded34f99377c9e3793a148ba
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/07/32daa35ba7a14ceb3c9fbda85fbfedf48fe360
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/0c/a1c1a1583583b2259c3006f729c1241bbd0797
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/0e/625210454cb8d30e13d59497e386275d5eeeff
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/0f/4ab68590bbe5949a486c916d37218c148fe3e4
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/0f/ea571bc44b33b901ce5234e97e727f3f311e73
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/12/cb25b4dab017f1032bb7f00e6fcb99bc82ddf8
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/14/8ddebddcb5e2fa096d402df36b8e9660c77e1c
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/19/c2c6ffbc42fd65e233fef64c94f74ac0f4e057
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/1a/43836dacef40c07ee9c06f91e78a10f8a8812d
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/1a/76385c435e8036f4e2b69c1459f60733fba79f
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/1a/8c63a278d349209ca78c7094beb761480303dd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/22/44e00c9ce413c14c51f22f12a20dd432d43c1c
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/22/4bb822b524bce140c481e52ecac8413845e52f
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/22/74b61d5c4edc2c146da39a35b96c37c32d3960
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/25/b10da259882493eeaeed5a34d613f110f5020b
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/29/8170ac4729590c854d6b024bb4770d9330f226
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/29/f72f21e40d18351c6012d3f4ee0faed3a1f4df
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/2b/22f6174b5212c6efe1bd5d8e1b22ebd5526ed0
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/2b/93d9db1b988d4eda4ef2ac444498f3fa6ca942
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/2c/21985b45ac390236035891f7258592de14ada2
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/2d/04590ff65f092784fb0bf7cfd19f6e2714643b
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/2f/8d4db8d1fc6494151d79dc7cdbdd984f91978e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/30/8139a00e3a9795b913afda43e7b3450b08e570
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/30/a74a09c139a91fdf26d790d5d3b517177618b1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/31/58038cef538e697754cea1ba21e95e4b528090
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/31/8e1620763eff301b9b72c9cbf12b4167048a7e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/32/344c1aaff0d1e3cdcba0bd8f5592de9eed0e4f
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/33/db2a874d63012fa6218e4b697230467d9ca627
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/37/527d88be3f2c8716048ce896c8367438b490be
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/39/cd6e3740ecddd4625bef5227528792a4d985c7
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/3b/d846cbf8d320831dd2a7455a4b2dd6d3a3dce6
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/49/4f51afed37e8bac12e1c812ceb6b741cc9c603
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/4b/7448e700fd54b5c9f877dba9079a1ea4c432c3
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/4d/d108c05f431175a5948ba08bbbe05f9e293f15
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/4f/8f04cf6d68d58cbb07f30f8b67c530ba2a50be
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/51/1ca99e1b2f70df3701dde88027965f1da5a8c3
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/51/3e496aace64af596424dfe7851109d61725c0b
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/52/82bfee0dfec8c11b69684ed732358bc90a65ed
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/52/fe5aeb53dec484dd5abfb11df2d94eaa6e0daa
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/5a/d89f1983a14e2c5e4eb0e74789e325c34c6ce4
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/5d/4080e4677ef5ddd2bb8dbc072a612645f6f502
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/60/4f0743bfc23bd6e40d87d7fffbf287bf96936a
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/62/26230c1350343379c183cf1304d0b5d9ba7806
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/68/3b51e3977507397e7720625a4373cb100e7f61
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/6c/c66079a331edc355ae4c1a02f9c20af048b345
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/6e/494853e2829161342343e666cdafdea2bd5820
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/6f/9112873e14c2abafbcc50e0f2240787f95eb2f
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/71/cefc042433df8d073f9f738f00a595fee30913
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/72/21ecfca5ec1297316c6be21c0cf19abe2d4e72
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/72/f649e2b4d3e597d69c6abe84d7a988a3a4253d
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/74/90271188bb7ddd82d080a8d24754fb48407a79
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/76/ff04df0c1952d9e31e45f93379984444a68453
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/78/0ec0012f43291c1dbfeeed36f8eb81509347ee
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/79/86524ce7170bae191e8fa2e9463d9909f85d2c
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/7a/4b5782fbfa19c4d5fdbe9bd792dd13a50cf181
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/7b/904cdcb62adaf3a4eea18a771059ae7e6befe0
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/7c/874861c3aba023fbf9029052544f51460f3609
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/7d/2ed536c2d808fce016c40fcfe501b2e6684eea
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/7f/3bac9020e330db97f19af8605a9f911fb9977d
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/80/f75b33a6f32df12b99926a4a49e6644f74efd9
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/82/ec8f1827fd75656f442cd8872fbaff48f75aef
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/85/0f740ab0be0af10a5393129ae14453ba5484ef
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/89/0478b873310d114050233ee70238821ce35d09
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/89/4c832c3bec69e3a57ee56b6cdc655cf84d2894
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/89/d43537db1419a5396d6d6b2e2f97d9ab98ca34
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/8b/e00ff6cd4fb0386424f655ad8a06014b8bad99
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/8c/ab1b26921711d4c18ac24e81cbe9998c3afdee
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/8e/2c47e830ace1a7e35afce702fc96e687581b53
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/8f/b79a556000775e0ee96424a0dd0d24ccee9a2f
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/90/8fc7d6a7a8219f129e1524ebd0b8aed198ce2e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/92/39000cb5c822d577b84116c2c9f8c1a5997547
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/94/39a74652e9018b4a55bffe61ae21da8eff66fa
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/98/cfe4514ec7f54eaf28fc1338218f7e5f5f013d
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/99/ead0ec96b8a3ac0b584d2c5d7ce80b20845a90
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/9b/217528c6d48820a3d5898ba5cce8ad29e03c74
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/9b/60086198768d277a4237fb4b44458bda7a53c6
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/9b/6c6d0ab8fa02211dedbfc6a848149e92117177
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/9d/9405af6b0d780db0a1c728902be1842c4720ff
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/a0/78f612bf6c8897a643c992d0bfd24f26e65827
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/a2/70eebaa622d7f5c256536fa0d92b79379c2786
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/a6/8e86d8fea52b943ee36a05904be256e38413f6
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/a8/8e1d18e741cef847b3fda4fd65766e1921a67f
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/a9/fe562525b61d23ba4971c86771c027845638f1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/ad/0c1d8c516a8ae5e3ba5e47ee6252cddd8d7d56
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/ae/0053c4fc7d6d83abb062f89ec5ea0bc6cca9f8
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/b3/80fda9b26f8513ca3dd81402110994d4ab1594
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/b6/2c6a8b244f0873a0df7b7cd1f1bcd4191484bd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/ba/77cc64cc24b60e823bf4fa451a875c0b2e224a
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/ba/9f4e093db47018513c6c62feddf9d7b012e3ba
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/ba/f90293fd19c597634e5bd278eb649680831d24
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/bc/f7dae27428e1658291ca1493bfd54870832f86
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/c0/4e5ce5e292715bad22f169e198e13f1fbdc799
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/c1/b418219056e52f8bac01978d7aa63d00483ba9
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/c2/98254f9be14682c9a948e94c2e1df85360403b
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/c6/f556c5167a395cedc08f22350702e9af5a1f2f
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/c7/c61bd0e05f5c7865b7a98e9cda7b9278715269
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/ca/2cd73ece57871c70aeb75d0a826daa0d6a6550
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/cb/47fbd1f7211df3c5dde027755c663740789139
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/cd/0f44d152f2e6ce7f7fcc3689e5f37349da5e8d
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/cd/bee593fb897f3b3e2b0a4a7ac50bbd2c1036c2
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/ce/314d64dbce56fce7cebaf4075dad9906443857
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/ce/c3f5185dfc7a03085a7b9971df5e3923feea21
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/d2/82b320c1b670fd9540550b8718f7e469a3a542
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/d3/41aaf48ea4d5da6a98fbe423183b2b56325d6b
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/d4/e52a9e3565a5c5e08f5e035b28348299bed066
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/d6/7d2bd2ff6aaf2f2ab308dbcfd6dbedb925e2c2
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/d8/21c502039581d9295f61ed7cd0e4aadd8f50b0
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/d8/4286eab1ccd26b85ae9992cbec83ae000c0131
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/d9/205e941b5cf578c0d5cad27d2b65dbbcd85ef3
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/da/042ea867e3e0b1d1de5c80f4072e17f190f6d5
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/db/abba65d45e0a8580ca8ee812fe755c99eb574e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/e1/e30661cfeb9f9ff0b4e9714e21cdeeeccd3eb6
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/e2/47aaa0e6a4fced8353d124e72e7f45e3039149
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/e5/db006e8739a824c15ccf5f73a279c69492ba18
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/e6/faa2a663bea726b2bdff901ff5767235941abc
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/e8/d84596658d35ddb972f7fa07acf5d1a1cc5a78
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/eb/8240440d2fd95b1273eebaf3e25aaea04f545e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/eb/aa26e3e0a5cd4d4c89181ad32854f3b333edb3
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/ee/57e4a0744943bfae62af3d511805bcf8741d20
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/ef/527540406b431a5e19b0520e674927e2ff8465
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/f0/b859c3841356a478e695d228feaeaa92e0c313
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/f3/1736d8954f2703aa44e79463289ebeacb9074a
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/f5/ab45ee122abd40a8f3452994655e802c92aaa6
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/f9/88b145f33ea61dfed234a4011883e15c060e3e
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/fa/e0b9bedd1d12dbf9fcd386bba42328d8279c1d
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/info/commit-graphs/commit-graph-chain
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/info/commit-graphs/graph-2337f746dd1dacf77347e1891b233a11a8ed85bb.graph
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/info/commit-graphs/graph-f14aee3326f68a68ea9ee4beae10380421a38e6f.graph
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/info/packs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/multi-pack-index
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/pack-bfc1cc3a578e42c0abf52dfeebe60147fa4739a1.idx
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/pack-bfc1cc3a578e42c0abf52dfeebe60147fa4739a1.pack
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/pack-bfc1cc3a578e42c0abf52dfeebe60147fa4739a1.rev
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/pack-c9fcbb13ddf85b2e57d77d07a628bb678ec13562.idx
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/pack-c9fcbb13ddf85b2e57d77d07a628bb678ec13562.pack
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/pack-c9fcbb13ddf85b2e57d77d07a628bb678ec13562.rev
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/pack-fa648c4d22947d7b7c2c0a79416bf36b542805dd.idx
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/pack-fa648c4d22947d7b7c2c0a79416bf36b542805dd.mtimes
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/pack-fa648c4d22947d7b7c2c0a79416bf36b542805dd.pack
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/objects/pack/pack-fa648c4d22947d7b7c2c0a79416bf36b542805dd.rev
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/ORIG_HEAD
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/refs/heads/main
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/refs/remotes/origin/HEAD
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.git/refs/remotes/origin/main
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.gitattributes
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.github/workflows/build-gallery-manifest.yml
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.github/workflows/gallery-manifest.yml
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.github/workflows/sound-manifest.yml
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.github/workflows/video-manifest.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.vscode/settings.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../.vscode/tasks.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../about.html
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/backgrounds/themes.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/css/cinematic.css
+Issues: none
+Actions: none
+
+[ASSET/HYBRID] ../../assets/css/core-shared.css
+Issues: important-on-root
+Actions: none
+
+[ASSET/HYBRID] ../../assets/css/footer.css
+Issues: z-index-insane
+Actions: none
+
+[ASSET/LEGACY] ../../assets/css/gallery.css
+Issues: z-index-insane, full-screen-fixed-block
+Actions: none
+
+[ASSET/LEGACY] ../../assets/css/global.css
+Issues: z-index-insane, important-on-root
+Actions: none
+
+[ASSET/GR1] ../../assets/css/header.css
+Issues: z-index-insane
+Actions: none
+
+[ASSET/LEGACY] ../../assets/css/home.css
+Issues: full-screen-fixed-block, important-on-root
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/css/projects.css
+Issues: none
+Actions: none
+
+[ASSET/LEGACY] ../../assets/css/sound-engine.css
+Issues: z-index-insane, important-on-root
+Actions: none
+
+[ASSET/GR1] ../../assets/css/ticker.css
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/css/videos.css
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/cc-monogram2.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/day-crown - Copy (5).svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/day-crown-v2.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/day-crown.png.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/day-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/head-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Crown creatives day_night_day.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Crown creatives day_night_night.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Crown Creatives Header.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/day-crown-1400 - Copy.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/day-crown-1400.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/day-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_1400px/day-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_1400px/night-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-background.png.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown - Copy.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown-v3.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown-V4.txt
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown.zip
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown3.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown5.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/day-crown_V2.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/android-chrome-192x192.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/android-chrome-512x512.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/apple-touch-icon.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/favicon-16x16.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/favicon-32x32.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/favicon.ico
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1)/site.webmanifest
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/favicon_io (1).zip
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/New logo web-2 (1).png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown - Copy.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown-v3.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown3.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown5.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/Final_2000px/night-crown_V2.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/New_Look/night-crown-1400.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/night-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/night-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/CC_V2/night-crownV6.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/copilot-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/day-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/email-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/evolve-logo.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/evolve4.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/facebook-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/favicon.ico
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/favicon.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/github-recovery-codes.txt
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/gold-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/head-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/illuminus-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/image1.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/M-FIX.ico
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/M-FIX.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/M-SCAN.ico
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/M-SCAN.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/sun-moon.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/images/Untitled - 27 May 2026 at 12.22.14-24.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/instagram-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/moon.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/mother.ico
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/mother.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/music.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/music3.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/neon-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/neon-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/BCO.8fcff3e2-96eb-4cce-aa6e-44c3fb14d6f3.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/BCO.a9212298-2fe6-4d3b-b329-ecdf9459b36b.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-cc-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-copilot-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-email- bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-facebook-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-instagram-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-moon-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/icon-sun-bold-cyan.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/cc-monogram.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/copilot-logo-500.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/copilot-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/email-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/evolve-logo.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/facebook-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/Inscape_Crown_Conversion_Optimal.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/instagram-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/moon.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/sun.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/SVG/up-arrow.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/New_Icons_Neon/up-arrow.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/night-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/copilot.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/email.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/facebook.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/instagram.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/moon.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/png/sun.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/reels/facebook.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/reels/instagram.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/reels/youtube.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sound-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sound-reactive.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sun-moon-animated.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sun-moon-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sun-moon.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sun-moon.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/sun.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/Untitled - 27 May 2026 at 12.22.14-21 (1).png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/icons/up-arrow-magic.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/fallback.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/butterfly.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/butterfly2.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/crow.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/day-background.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/dice-tower.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/fallback.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/fly.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/framed-but.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/gallery-manifest.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/gold-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/House-V2.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/Jane_Austine.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/just-crown.svg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/Mushroom.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/my-story-photoV3.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/neon-crown.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/night-background.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/painting2.jpg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/sanding.jpg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/sculpture.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/skull.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/stars-darkness.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/sun-moon.png
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/tree.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/wave.jpeg
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/images/gallery/white-butterfly.jpeg
+Issues: none
+Actions: none
+
+[ASSET/GR1] ../../assets/js/backtotop.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/js/gallery-loader.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/js/gallery.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/js/hero-gallery.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/js/home.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/js/projects.js
+Issues: none
+Actions: none
+
+[ASSET/GR1] ../../assets/js/sound-engine.js
+Issues: none
+Actions: none
+
+[ASSET/GR1] ../../assets/js/theme.js
+Issues: none
+Actions: none
+
+[ASSET/LEGACY] ../../assets/modules.disabled/hero-crown/hero-crown.css
+Issues: important-on-root
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/modules.disabled/hero-crown/hero-crown.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/modules.disabled/hero-gallery/hero-gallery.css
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/modules.disabled/hero-gallery/hero-gallery.js
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/projects.disabled/project-template/config.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/projects.disabled/project-template/read.md
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/projects.disabled/project1/config.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/projects.disabled/project2/config.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/alec_koff-carnaval-484622.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/bransboynd-retro-lounge-389644.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/denys_brodovskyi-sandbreaker-379630.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/energysound-powerful-percussion-513717.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/finley-chill-sunset-chill-nature-529994.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/kontraa-water-afro-pop-music-445661.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/loksii-no-copyright-music-211881.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/placidplace-relaxing-piano-with-soft-female-vocals-85658.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/ribhavagrawal-relaxing-music-with-nature-sounds-284494.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/rockot-experimental-cinematic-hip-hop-315904.mp3
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/sounds/sound-manifest.json
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/videos/evolve-glitch.mp4
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/videos/evolve-glitch_v2.mp4
+Issues: none
+Actions: none
+
+[ASSET/NEUTRAL] ../../assets/videos/evolve-glitch_v3.mp4
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../blog.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../check_tree.py
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../CNAME
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../contact.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../favicon.ico
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../filetree.txt
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../gallery.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../index.html
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/background.html
+Issues: none
+Actions: none
+
+[MASTER/HYBRID] ../../master/css/master.css
+Issues: important-on-root
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/example.html
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/footer.html
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/header.html
+Issues: none
+Actions: none
+
+[MASTER/GR1] ../../master/js/master.js
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/page-wrapper.html
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/readme.md
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/start-master.cmd
+Issues: none
+Actions: none
+
+[MASTER/NEUTRAL] ../../master/ticker.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../MOTHER-FIX.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../MOTHER-SCAN.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../MOTHER.disabled
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../mother.yml
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/cssesc
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/cssesc.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/cssesc.ps1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/nanoid
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/nanoid.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.bin/nanoid.ps1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/.package-lock.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/balanced-match/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/brace-expansion/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/bin/cssesc
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/cssesc.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/LICENSE-MIT.txt
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/man/cssesc.1
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/cssesc/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/glob.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/glob.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/glob.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/glob.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/has-magic.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/has-magic.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/has-magic.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/has-magic.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/ignore.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/ignore.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/ignore.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/ignore.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/pattern.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/pattern.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/pattern.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/pattern.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/processor.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/processor.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/processor.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/processor.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/walker.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/walker.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/walker.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/commonjs/walker.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/glob.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/glob.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/glob.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/glob.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/has-magic.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/has-magic.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/has-magic.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/has-magic.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/ignore.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/ignore.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/ignore.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/ignore.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/pattern.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/pattern.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/pattern.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/pattern.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/processor.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/processor.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/processor.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/processor.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/walker.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/walker.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/walker.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/dist/esm/walker.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/glob/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel-browser.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel-browser.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/browser/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/diagnostics-channel-cjs.cjs.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/diagnostics-channel-cjs.d.cts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/diagnostics-channel-node.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/diagnostics-channel-node.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/node/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/commonjs/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/diagnostics-channel-browser.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/diagnostics-channel-browser.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/browser/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/diagnostics-channel-esm.d.mts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/diagnostics-channel-esm.mjs.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/diagnostics-channel-node.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/diagnostics-channel-node.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/diagnostics-channel.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/diagnostics-channel.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.min.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/index.min.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/node/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/perf.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/perf.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/perf.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/dist/esm/perf.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/lru-cache/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/assert-valid-pattern.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/assert-valid-pattern.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/assert-valid-pattern.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/assert-valid-pattern.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/ast.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/ast.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/ast.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/ast.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/brace-expressions.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/brace-expressions.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/brace-expressions.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/brace-expressions.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/escape.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/escape.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/escape.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/escape.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/unescape.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/unescape.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/unescape.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/commonjs/unescape.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/assert-valid-pattern.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/assert-valid-pattern.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/assert-valid-pattern.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/assert-valid-pattern.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/ast.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/ast.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/ast.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/ast.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/brace-expressions.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/brace-expressions.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/brace-expressions.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/brace-expressions.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/escape.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/escape.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/escape.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/escape.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/unescape.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/unescape.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/unescape.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/dist/esm/unescape.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minimatch/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/minipass/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/.claude/settings.local.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.browser.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.browser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/index.native.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/async/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/bin/nanoid.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.browser.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.browser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.d.cts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/nanoid.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/non-secure/index.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/non-secure/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/non-secure/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/non-secure/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/url-alphabet/index.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/url-alphabet/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/nanoid/url-alphabet/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/commonjs/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/commonjs/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/commonjs/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/commonjs/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/commonjs/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/esm/index.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/esm/index.d.ts.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/esm/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/esm/index.js.map
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/dist/esm/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/LICENSE.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/path-scurry/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/picocolors.browser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/picocolors.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/picocolors.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/picocolors/types.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/at-rule.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/at-rule.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/comment.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/comment.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/container.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/container.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/css-syntax-error.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/css-syntax-error.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/declaration.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/declaration.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/document.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/document.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/fromJSON.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/fromJSON.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/input.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/input.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/lazy-result.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/lazy-result.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/list.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/list.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/map-generator.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/no-work-result.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/no-work-result.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/node.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/node.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/parse.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/parse.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/parser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/postcss.d.mts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/postcss.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/postcss.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/postcss.mjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/previous-map.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/previous-map.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/processor.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/processor.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/result.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/result.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/root.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/root.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/rule.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/rule.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/stringifier.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/stringifier.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/stringify.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/stringify.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/symbols.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/terminal-highlight.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/tokenize.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/warn-once.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/warning.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/lib/warning.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/API.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/CHANGELOG.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/parser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/processor.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/attribute.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/className.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/combinator.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/comment.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/constructors.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/container.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/guards.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/id.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/namespace.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/nesting.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/node.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/pseudo.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/root.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/selector.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/string.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/tag.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/types.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/selectors/universal.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/sortAscending.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/tokenize.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/tokenTypes.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/ensureObject.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/getProp.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/index.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/maxNestingDepth.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/stripComments.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/dist/util/unesc.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/LICENSE-MIT
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/postcss-selector-parser.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/postcss-selector-parser/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/array-set.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/base64-vlq.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/base64.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/binary-search.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/mapping-list.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/quick-sort.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-map-consumer.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-map-consumer.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-map-generator.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-map-generator.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-node.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/source-node.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/lib/util.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/source-map.d.ts
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/source-map-js/source-map.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/browser.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/History.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/LICENSE
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/node.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/package.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../node_modules/util-deprecate/README.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../package-lock.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../package.json
+Issues: none
+Actions: none
+
+[PAGE/NEUTRAL] ../../pages/home.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../pages-build-deployment.yml
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../podcasts.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../projects.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../run_tree_check.bat
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../script.js
+Issues: none
+Actions: none
+
+[SCRIPT/NEUTRAL] ../../scripts/build-all-manifests.js
+Issues: none
+Actions: none
+
+[SCRIPT/NEUTRAL] ../../scripts/build-gallery-manifest.js
+Issues: none
+Actions: none
+
+[SCRIPT/NEUTRAL] ../../scripts/build-manifest.js
+Issues: none
+Actions: none
+
+[SCRIPT/NEUTRAL] ../../scripts/build-sound-manifest.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../sound-manifest.yml
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/....cards/cards.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\......cards\cards.css
+
+[TEST/LEGACY] ../../test/....index.css
+Issues: important-on-root
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\......index.css
+
+[TEST/LEGACY] ../../test/....theme-panel/theme-panel.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\......theme-panel\theme-panel.css
+
+[TEST/LEGACY] ../../test/..cards/cards.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\....cards\cards.css
+
+[TEST/NEUTRAL] ../../test/..cards/cards.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/..hero-window/hero-window.css
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/..index.css
+Issues: important-on-root
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\....index.css
+
+[TEST/NEUTRAL] ../../test/..index.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/..sound/sound.css
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/..theme-panel/theme-panel.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\....theme-panel\theme-panel.css
+
+[TEST/NEUTRAL] ../../test/..theme-panel/theme-panel.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/..ticker/ticker.css
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/cards/cards.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..cards\cards.css
+
+[TEST/NEUTRAL] ../../test/cards/cards.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/cards/cards.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/cards/cards.js
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/filetree.css
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/filetree.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/filetree.js
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/footer/footer.css
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/footer/footer.html
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/footer/footer.js
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/gallery/gallery.css
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/gallery/gallery.js
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/header/header.css
+Issues: z-index-insane
+Actions: none
+
+[TEST/NEUTRAL] ../../test/header/header.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/hero-crown/hero-crown.css
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/hero-crown/hero-crown.js
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/hero-window/hero-window.css
+Issues: z-index-insane
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..hero-window\hero-window.css
+
+[TEST/NEUTRAL] ../../test/hero-window/hero-window.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/hero-window/hero-window.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/hero-window/hero-window.js
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/index.css
+Issues: important-on-root
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..index.css
+
+[TEST/NEUTRAL] ../../test/index.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/index.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/alec_koff-carnaval-484622.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/bransboynd-retro-lounge-389644.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/denys_brodovskyi-sandbreaker-379630.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/energysound-powerful-percussion-513717.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/finley-chill-sunset-chill-nature-529994.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/kontraa-water-afro-pop-music-445661.mp3
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/rockot-experimental-cinematic-hip-hop-315904.mp3
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/sound/sound.css
+Issues: z-index-insane
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..sound\sound.css
+
+[TEST/NEUTRAL] ../../test/sound/sound.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/sound/sound.js
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/theme/theme-admin.js
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/theme/theme.css
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/theme/theme.js
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/theme-panel/theme-panel.css
+Issues: none
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..theme-panel\theme-panel.css
+
+[TEST/NEUTRAL] ../../test/theme-panel/theme-panel.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/theme-panel/theme-panel.html
+Issues: none
+Actions: none
+
+[TEST/GR1] ../../test/theme-panel/theme-panel.js
+Issues: none
+Actions: none
+
+[TEST/LEGACY] ../../test/ticker/ticker.css
+Issues: z-index-insane
+Actions: migrated → C:\Users\royal\OneDrive\Dremel_Print\01_Website\CROWN_CREATIVES\test\..ticker\ticker.css
+
+[TEST/NEUTRAL] ../../test/ticker/ticker.css.bak
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/ticker/ticker.html
+Issues: none
+Actions: none
+
+[TEST/NEUTRAL] ../../test/ticker/ticker.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/cc-scanner.cjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/config.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother-fix.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother-report.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother-report.md
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother-scan.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother-v5.js
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/mother/mother.config.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/run-cc-scanner.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/run-cc-scanner.cmd - Shortcut.lnk
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/scanner-v3/config.json
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/scanner-v3/scanner-v3.mjs
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../tools/scanner-v3/scanner‑v3.cmd
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../videos.html
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../_headers
+Issues: none
+Actions: none
+
+[UNKNOWN/NEUTRAL] ../../_routes.json
+Issues: none
+Actions: none
+
+
+=== CREATIVE SUGGESTIONS ===
+
+[#CREATIVE] ../../assets/css/gallery.css
+Type: asset-advisory
+Suggestion: Legacy asset module detected; consider future GR1 upgrade when moving out of test sandbox.
+
+[#CREATIVE] ../../assets/css/global.css
+Type: asset-advisory
+Suggestion: Legacy asset module detected; consider future GR1 upgrade when moving out of test sandbox.
+
+[#CREATIVE] ../../assets/css/home.css
+Type: asset-advisory
+Suggestion: Legacy asset module detected; consider future GR1 upgrade when moving out of test sandbox.
+
+[#CREATIVE] ../../assets/css/sound-engine.css
+Type: asset-advisory
+Suggestion: Legacy asset module detected; consider future GR1 upgrade when moving out of test sandbox.
+
+[#CREATIVE] ../../assets/modules.disabled/hero-crown/hero-crown.css
+Type: asset-advisory
+Suggestion: Legacy asset module detected; consider future GR1 upgrade when moving out of test sandbox.
+
+[#CREATIVE] ../../test/....cards/cards.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/....index.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/....theme-panel/theme-panel.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/..cards/cards.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/..index.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/..theme-panel/theme-panel.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/cards/cards.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/footer/footer.css
+Type: ui-upgrade
+Suggestion: Footer module could use GR1 glow engine and theme variables.
+
+[#CREATIVE] ../../test/hero-window/hero-window.css
+Type: cinematic-upgrade
+Suggestion: Hero window could be converted to GR1 Hero Engine v2 with cinematic glow.
+
+[#CREATIVE] ../../test/hero-window/hero-window.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/index.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/sound/sound.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/theme-panel/theme-panel.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
+
+[#CREATIVE] ../../test/ticker/ticker.css
+Type: motion-upgrade
+Suggestion: Ticker module could use smoother GR1 keyframe animations and OS-level timing.
+
+[#CREATIVE] ../../test/ticker/ticker.css
+Type: migration-followup
+Suggestion: Migrated test module could be manually reviewed for GR1 naming, selectors, and animations.
