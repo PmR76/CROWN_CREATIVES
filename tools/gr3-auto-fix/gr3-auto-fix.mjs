@@ -9,11 +9,14 @@ import path from "path";
    - Supports undoLastFix()
 ============================================================ */
 
-// Reports directory (relative to this file)
-const REPORTS_DIR = path.join(
+// PROJECT ROOT (CROWN_CREATIVES)
+const PROJECT_ROOT = path.resolve(
   path.dirname(new URL(import.meta.url).pathname),
-  "../scanner-v3/reports"
+  "../../"
 );
+
+// Reports directory in project root
+const REPORTS_DIR = path.join(PROJECT_ROOT, "reports");
 
 // Optional keep-config
 const KEEP_CONFIG = path.join(
@@ -132,22 +135,15 @@ function applyPatchesForModule(mod, keepConfig) {
   const original = fs.readFileSync(filePath, "utf8");
   let patched = original;
 
-  if (filePath.endsWith(".css")) {
-    patched = patchCss(patched, issues);
-  } else if (filePath.endsWith(".js")) {
-    patched = patchJs(patched, issues);
-  } else if (filePath.endsWith(".html") || filePath.endsWith(".htm")) {
-    patched = patchHtml(patched, issues);
-  } else {
-    return null;
-  }
+  if (filePath.endsWith(".css")) patched = patchCss(patched, issues);
+  else if (filePath.endsWith(".js")) patched = patchJs(patched, issues);
+  else if (filePath.endsWith(".html") || filePath.endsWith(".htm")) patched = patchHtml(patched, issues);
+  else return null;
 
   if (patched === original) return null;
 
   const bakPath = filePath + ".gr3.bak";
-  if (!fs.existsSync(bakPath)) {
-    fs.writeFileSync(bakPath, original, "utf8");
-  }
+  if (!fs.existsSync(bakPath)) fs.writeFileSync(bakPath, original, "utf8");
 
   fs.writeFileSync(filePath, patched, "utf8");
 
@@ -159,9 +155,8 @@ function applyPatchesForModule(mod, keepConfig) {
   };
 }
 
-/* ---- Undo last fix (restore all .gr3.bak) ---- */
+/* ---- Undo last fix ---- */
 function undoLastFix() {
-  const projectRoot = path.resolve(".");
   const backups = [];
 
   function walk(dir) {
@@ -169,7 +164,7 @@ function undoLastFix() {
     for (const e of entries) {
       const full = path.join(dir, e.name);
       if (e.isDirectory()) {
-        if (e.name === "node_modules" || e.name === ".git" || e.name === "reports") continue;
+        if (["node_modules", ".git", "reports"].includes(e.name)) continue;
         walk(full);
       } else if (e.isFile() && full.endsWith(".gr3.bak")) {
         backups.push(full);
@@ -177,12 +172,11 @@ function undoLastFix() {
     }
   }
 
-  walk(projectRoot);
+  walk(PROJECT_ROOT);
 
   let restored = 0;
   for (const bak of backups) {
     const target = bak.replace(/\.gr3\.bak$/, "");
-    if (!fs.existsSync(bak)) continue;
     const original = fs.readFileSync(bak, "utf8");
     fs.writeFileSync(target, original, "utf8");
     restored++;
@@ -213,12 +207,10 @@ async function runAutoFix(options = {}) {
     console.log("✔ Fixed:", result.file, "issues:", result.issuesFixed.join(", "));
   }
 
-  const summary = {
+  return {
     fixedCount: fixes.length,
     skipped,
   };
-
-  return summary;
 }
 
 /* ---- CLI entrypoint ---- */
