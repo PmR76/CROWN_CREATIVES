@@ -1,100 +1,42 @@
 #!/usr/bin/env node
 import http from "http";
-import url from "url";
 import fs from "fs";
 import path from "path";
-import { runCleanup, cleanupReports } from "../gr4-cleanup/gr4-cleanup.mjs";
+
+// Import GR3 + GR4 engines
 import { runAutoFix, undoLastFix } from "../gr3-auto-fix/gr3-auto-fix.mjs";
-import { spawn } from "child_process";
+import { runCleanup, cleanupReports } from "../gr4-cleanup/gr4-cleanup.mjs";
 
-const PORT = 7777;
-const REPORTS_DIR = path.resolve("../scanner-v3/reports");
+// Resolve reports directory relative to THIS file
+const REPORTS_DIR = path.join(
+  path.dirname(new URL(import.meta.url).pathname),
+  "../scanner-v3/reports"
+);
 
-/* ------------------------------------------------------------
-   Helpers
------------------------------------------------------------- */
+// Utility: get latest scan report
+function getLatestReport() {
+  if (!fs.existsSync(REPORTS_DIR)) {
+    throw new Error("Reports directory not found");
+  }
 
-function getLatestReportPath() {
-  if (!fs.existsSync(REPORTS_DIR)) throw new Error("reports directory not found");
   const files = fs.readdirSync(REPORTS_DIR)
     .filter(f => f.startsWith("scan-") && f.endsWith(".json"))
     .sort();
-  if (!files.length) throw new Error("no scan-*.json reports found");
-  return path.join(REPORTS_DIR, files[files.length - 1]);
-}
 
-function loadReport(reportPath) {
-  return JSON.parse(fs.readFileSync(reportPath, "utf8"));
-}
-
-function listReports() {
-  if (!fs.existsSync(REPORTS_DIR)) return [];
-  return fs.readdirSync(REPORTS_DIR)
-    .filter(f => f.startsWith("scan-") && f.endsWith(".json"))
-    .sort()
-    .reverse();
-}
-
-function getStorageUsage() {
-  let reportsSize = 0;
-  let backupsSize = 0;
-
-  if (fs.existsSync(REPORTS_DIR)) {
-    for (const f of fs.readdirSync(REPORTS_DIR)) {
-      const full = path.join(REPORTS_DIR, f);
-      const st = fs.statSync(full);
-      reportsSize += st.size;
-    }
+  if (!files.length) {
+    throw new Error("No scan reports found");
   }
 
-  function walk(dir) {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-    for (const e of entries) {
-      const full = path.join(dir, e.name);
-      if (e.isDirectory()) {
-        if ([".git", "node_modules", "reports"].includes(e.name)) continue;
-        walk(full);
-      } else {
-        if (full.endsWith(".bak") || full.endsWith(".gr3.bak")) {
-          backupsSize += fs.statSync(full).size;
-        }
-      }
-    }
-  }
-  walk(path.resolve("."));
+  const latest = files[files.length - 1];
+  const fullPath = path.join(REPORTS_DIR, latest);
 
-  return {
-    reportsSize: Math.round(reportsSize / 1024),
-    backupsSize: Math.round(backupsSize / 1024),
-  };
+  return JSON.parse(fs.readFileSync(fullPath, "utf8"));
 }
 
-function runScanner() {
-  return new Promise((resolve, reject) => {
-    const proc = spawn("node", ["tools/scanner-v3/scanner-v3.mjs"], { shell: true });
-    proc.on("exit", code => {
-      if (code === 0) resolve();
-      else reject(new Error("scanner exited with code " + code));
-    });
-  });
-}
-
-function sendJSON(res, obj) {
-  res.writeHead(200, { "Content-Type": "application/json" });
-  res.end(JSON.stringify(obj));
-}
-
-function sendError(res, status, message) {
-  res.writeHead(status, { "Content-Type": "application/json" });
-  res.end(JSON.stringify({ error: message }));
-}
-
-/* ------------------------------------------------------------
-   Server
------------------------------------------------------------- */
-
+// Create server
 const server = http.createServer(async (req, res) => {
-  // --- CORS FIX ---
+
+  // --- CORS HEADERS (must be first) ---
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -104,114 +46,57 @@ const server = http.createServer(async (req, res) => {
     return res.end();
   }
 
-  const parsed = url.parse(req.url, true);
-  const { pathname, query } = parsed;
-
+  // --- ROUTES ---
   try {
-    /* ------------------ GET: latest report ------------------ */
-    if (pathname === "/latest-report" && req.method === "GET") {
-      const p = getLatestReportPath();
-      const report = loadReport(p);
-      return sendJSON(res, { file: path.basename(p), report });
+
+    // GET /latest-report
+    if (req.url === "/latest-report" && req.method === "GET") {
+      const report = getLatestReport();
+      res.writeHead(200, { "Content-Type": "application/json" });
+      return res.end(JSON.stringify(report));
     }
 
-    /* ------------------ GET: list reports ------------------- */
-    if (pathname === "/reports" && req.method === "GET") {
-      return sendJSON(res, { files: listReports() });
+    // POST /auto-fix
+    if (req.url === "/auto-fix" && req.method === "POST") {
+      const summary = await runAutoFix();
+      res.writeHead(200, { "Content-Type": "application/json" });
+      return res.end(JSON.stringify(summary));
     }
 
-    /* ------------------ GET: specific report ---------------- */
-    if (pathname === "/report" && req.method === "GET") {
-      const file = query.file;
-      if (!file) return sendError(res, 400, "file required");
-      const p = path.join(REPORTS_DIR, file);
-      if (!fs.existsSync(p)) return sendError(res, 404, "not found");
-      const report = loadReport(p);
-      return sendJSON(res, { file, report });
-    }
-
-    /* ------------------ POST: run scanner ------------------- */
-    if (pathname === "/run-scan" && req.method === "POST") {
-      await runScanner();
-      return sendJSON(res, { message: "Scan complete" });
-    }
-
-    /* ------------------ POST: run auto-fix (GR3.5) ---------- */
-    if (pathname === "/run-auto-fix" && req.method === "POST") {
-      let body = "";
-      req.on("data", chunk => (body += chunk));
-      req.on("end", async () => {
-        let opts = {};
-        if (body) {
-          try { opts = JSON.parse(body); } catch {}
-        }
-        const summary = await runAutoFix(opts);
-        return sendJSON(res, { summary });
-      });
-      return;
-    }
-
-    /* ------------------ POST: dry-run auto-fix -------------- */
-    if (pathname === "/run-auto-fix-dry" && req.method === "POST") {
-      const summary = await runAutoFix({ dryRun: true, mode: "safe" });
-      return sendJSON(res, { summary });
-    }
-
-    /* ------------------ POST: undo last fix ----------------- */
-    if (pathname === "/undo-last-fix" && req.method === "POST") {
+    // POST /undo
+    if (req.url === "/undo" && req.method === "POST") {
       const result = undoLastFix();
-      return sendJSON(res, { result });
+      res.writeHead(200, { "Content-Type": "application/json" });
+      return res.end(JSON.stringify(result));
     }
 
-    /* ------------------ GET: fix history -------------------- */
-    if (pathname === "/fix-history" && req.method === "GET") {
-      const logDir = path.resolve("./tools/gr3-auto-fix/logs");
-      if (!fs.existsSync(logDir)) return sendJSON(res, { files: [] });
-      const files = fs.readdirSync(logDir)
-        .filter(f => f.endsWith(".json"))
-        .sort()
-        .reverse();
-      return sendJSON(res, { files });
+    // POST /cleanup
+    if (req.url === "/cleanup" && req.method === "POST") {
+      const result = runCleanup();
+      res.writeHead(200, { "Content-Type": "application/json" });
+      return res.end(JSON.stringify(result));
     }
 
-    /* ------------------ POST: cleanup (GR4) ----------------- */
-    if (pathname === "/run-cleanup" && req.method === "POST") {
-      const summary = await runCleanup();
-      return sendJSON(res, {
-        backupsRemoved: summary.backupsRemoved,
-        reportsRemoved: summary.reportsRemoved,
-        keptCount: summary.backupsKept + summary.reportsKept,
-      });
+    // POST /cleanup-reports (stub)
+    if (req.url === "/cleanup-reports" && req.method === "POST") {
+      const result = cleanupReports();
+      res.writeHead(200, { "Content-Type": "application/json" });
+      return res.end(JSON.stringify(result));
     }
 
-    /* ------------------ POST: cleanup reports only ---------- */
-    if (pathname === "/cleanup-reports" && req.method === "POST") {
-      const r = cleanupReports();
-      return sendJSON(res, { reportsRemoved: r.removed, reportsKept: r.kept });
-    }
-
-    /* ------------------ GET: storage usage ------------------ */
-    if (pathname === "/storage-usage" && req.method === "GET") {
-      return sendJSON(res, getStorageUsage());
-    }
-
-    /* ------------------ 404 fallback ------------------------ */
-    sendError(res, 404, "not found");
+    // Fallback
+    res.writeHead(404, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: "Not found" }));
 
   } catch (err) {
-    console.error(err);
-    sendError(res, 500, err.message);
+    console.error("Server error:", err);
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: err.message }));
   }
 });
 
-/* ------------------------------------------------------------
-   Start server
------------------------------------------------------------- */
-
-if (import.meta.url.endsWith("/server.mjs")) {
-  server.listen(PORT, () => {
-    console.log(`Dashboard control server running at http://localhost:${PORT}`);
-  });
-}
-
-export default server;
+// Start server
+const PORT = 7777;
+server.listen(PORT, () => {
+  console.log(`Dashboard Control Server running on port ${PORT}`);
+});
