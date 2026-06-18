@@ -10,6 +10,26 @@ import fs from "fs";
 import path from "path";
 
 /* ------------------------------------------------------------
+   1. LOAD CONFIG
+------------------------------------------------------------ */
+const CONFIG = JSON.parse(
+  fs.readFileSync(new URL("./config.json", import.meta.url), "utf8")
+);
+
+// Determine scan root safely
+const SCAN_ROOT =
+  (Array.isArray(CONFIG.paths) && CONFIG.paths[0]) ||
+  CONFIG.projectRoot ||
+  process.cwd();
+
+console.log("🔍 SCANNING:", SCAN_ROOT);
+
+// Optional: extra ignore dirs from config
+const CONFIG_IGNORE_DIRS = Array.isArray(CONFIG.ignoreDirs)
+  ? CONFIG.ignoreDirs
+  : [];
+
+/* ------------------------------------------------------------
    LEGACY PATTERN HELPERS
 ------------------------------------------------------------ */
 function looksLegacyCss(content) {
@@ -43,18 +63,6 @@ function looksGr1Js(content) {
 }
 
 /* ------------------------------------------------------------
-   1. LOAD CONFIG
------------------------------------------------------------- */
-const CONFIG = JSON.parse(
-  fs.readFileSync("./config.json", "utf8")
-);
-
-// Optional: extra ignore dirs from config
-const CONFIG_IGNORE_DIRS = Array.isArray(CONFIG.ignoreDirs)
-  ? CONFIG.ignoreDirs
-  : [];
-
-/* ------------------------------------------------------------
    2. UTILITY — WALK DIRECTORY
 ------------------------------------------------------------ */
 const DEFAULT_IGNORE_DIRS = [
@@ -74,25 +82,23 @@ function shouldIgnoreDir(fullPath) {
 function walk(dir, fileList = []) {
   const files = fs.readdirSync(dir);
 
-  files.forEach(file => {
+  for (const file of files) {
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
 
     if (stat.isDirectory()) {
-      if (shouldIgnoreDir(fullPath)) {
-        return; // skip ignored directories like .git, node_modules, reports
-      }
+      if (shouldIgnoreDir(fullPath)) continue;
       walk(fullPath, fileList);
     } else {
       fileList.push(fullPath);
     }
-  });
+  }
 
   return fileList;
 }
 
 /* ------------------------------------------------------------
-   3. CLASSIFY MODULE (enhanced)
+   3. CLASSIFY MODULE
 ------------------------------------------------------------ */
 function classifyModule(filePath, content) {
   const rel = filePath.replace(CONFIG.projectRoot, "").replace(/\\/g, "/");
@@ -128,7 +134,7 @@ function classifyModule(filePath, content) {
 }
 
 /* ------------------------------------------------------------
-   4. DETECT ISSUES (legacy-focused)
+   4. DETECT ISSUES
 ------------------------------------------------------------ */
 function detectIssues(filePath, content) {
   const issues = [];
@@ -189,71 +195,7 @@ function migrateIfNeeded(filePath, content, meta) {
 }
 
 /* ------------------------------------------------------------
-   5b. GR1 REWRITER ENGINE (Phase 2)
------------------------------------------------------------- */
-function rewriteToGR1(filePath, content, meta) {
-  if (meta.scope !== "test") return content;
-  if (meta.kind !== "legacy" && meta.kind !== "hybrid") return content;
-
-  let rewritten = content;
-
-  if (filePath.endsWith(".css")) {
-    rewritten = rewritten.replace(/z-index:\s*\d{4,}/gi, "z-index: 500; /* GR1 normalised */");
-
-    rewritten = rewritten.replace(
-      /([^{]+)\{[^}]*position:\s*fixed[^}]*top:\s*0[^}]*left:\s*0[^}]*width:\s*(100%|100vw)[^}]*height:\s*(100%|100vh)[^}]*\}/gi,
-      "/* GR1 removed full-screen fixed block */"
-    );
-
-    rewritten = rewritten.replace(
-      /(html|body)\s*\{[^}]*overflow:\s*hidden[^}]*\}/gi,
-      "/* GR1 removed overflow hidden on root */"
-    );
-
-    rewritten = rewritten.replace(
-      /(html|body)[^{]+\{[^}]*!important[^}]*\}/gi,
-      "/* GR1 removed !important on root */"
-    );
-
-    rewritten =
-`/* ============================================================
-   GR1 AUTO-MIGRATED MODULE
-   Source: ${meta.rel}
-   Type: ${meta.kind}
-   Date: ${new Date().toISOString()}
-============================================================ */\n\n` + rewritten;
-  }
-
-  if (filePath.endsWith(".js")) {
-    rewritten = rewritten.replace(
-      /document\.body\.style\.overflow\s*=\s*['"]hidden['"]/gi,
-      "// GR1 removed body overflow hidden"
-    );
-
-    rewritten = rewritten.replace(
-      /document\.documentElement\.style\.overflow\s*=\s*['"]hidden['"]/gi,
-      "// GR1 removed html overflow hidden"
-    );
-
-    rewritten = rewritten.replace(
-      /window\.onload\s*=\s*function\s*\([^)]*\)\s*\{[\s\S]*?\};?/gi,
-      "// GR1 removed legacy window.onload block"
-    );
-
-    rewritten =
-`/* ============================================================
-   GR1 AUTO-MIGRATED JS MODULE
-   Source: ${meta.rel}
-   Type: ${meta.kind}
-   Date: ${new Date().toISOString()}
-============================================================ */\n\n` + rewritten;
-  }
-
-  return rewritten;
-}
-
-/* ------------------------------------------------------------
-   6. CREATIVE MODE ENGINE (Phase 3)
+   6. CREATIVE MODE ENGINE
 ------------------------------------------------------------ */
 function generateCreativeSuggestions(scanResults) {
   const suggestions = [];
@@ -366,12 +308,10 @@ Actions: ${m.actions.join(", ") || "none"}
 }
 
 /* ------------------------------------------------------------
-   9. MAIN SCAN PROCESS (GR1-corrected)
+   9. MAIN SCAN PROCESS
 ------------------------------------------------------------ */
 async function runScanner() {
-  const root = process.argv[2] || CONFIG.projectRoot;
-
-  console.log("🔍 SCANNING:", root);
+  const root = SCAN_ROOT;
 
   const allFiles = walk(root);
   const results = [];
