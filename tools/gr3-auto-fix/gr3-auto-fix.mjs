@@ -5,7 +5,6 @@ import path from "path";
 const REPORTS_DIR = path.resolve("./reports");
 const KEEP_CONFIG = path.resolve("./backup-keep.json");
 
-/* ---- Report helpers ---- */
 function getLatestReportPath() {
   if (!fs.existsSync(REPORTS_DIR)) throw new Error("reports directory not found");
   const files = fs.readdirSync(REPORTS_DIR)
@@ -142,43 +141,8 @@ function applyPatchesForModule(mod, keepConfig) {
   };
 }
 
-/* ---------- Undo last fix (restore all .gr3.bak) ---------- */
-
-function undoLastFix() {
-  const projectRoot = path.resolve(".");
-  const backups = [];
-
-  function walk(dir) {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-    for (const e of entries) {
-      const full = path.join(dir, e.name);
-      if (e.isDirectory()) {
-        if (e.name === "node_modules" || e.name === ".git" || e.name === "reports") continue;
-        walk(full);
-      } else if (e.isFile() && full.endsWith(".gr3.bak")) {
-        backups.push(full);
-      }
-    }
-  }
-
-  walk(projectRoot);
-
-  let restored = 0;
-  for (const bak of backups) {
-    const target = bak.replace(/\.gr3\.bak$/, "");
-    if (!fs.existsSync(bak)) continue;
-    const original = fs.readFileSync(bak, "utf8");
-    fs.writeFileSync(target, original, "utf8");
-    restored++;
-  }
-
-  return { restored, total: backups.length };
-}
-
-/* ---------- Main auto-fix runner ---------- */
-
-async function runAutoFix(options = {}) {
-  const reportPathArg = options.reportPath || process.argv[2];
+async function runAutoFix() {
+  const reportPathArg = process.argv[2];
   const reportPath = reportPathArg || getLatestReportPath();
   const report = loadReport(reportPath);
   const keepConfig = loadKeepConfig();
@@ -203,15 +167,15 @@ async function runAutoFix(options = {}) {
     skipped,
   };
 
-  return summary;
+  if (require.main === module) {
+    console.log(`🎉 GR3 complete — ${fixes.length} files patched, ${skipped} skipped.`);
+  } else {
+    return summary;
+  }
 }
 
-/* ---------- CLI entrypoint ---------- */
-
 if (import.meta.url === `file://${process.argv[1]}`) {
-  runAutoFix().then(summary => {
-    console.log(`🎉 GR3 complete — ${summary.fixedCount} files patched, ${summary.skipped} skipped.`);
-  }).catch(err => {
+  runAutoFix().catch(err => {
     console.error("GR3 auto-fix failed:", err);
     process.exit(1);
   });

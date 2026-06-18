@@ -8,7 +8,7 @@ import { runAutoFix, undoLastFix } from "../gr3-auto-fix/gr3-auto-fix.mjs";
 import { spawn } from "child_process";
 
 const PORT = 7777;
-const REPORTS_DIR = path.resolve("./reports");
+const REPORTS_DIR = path.resolve("../scanner-v3/reports");
 
 /* ------------------------------------------------------------
    Helpers

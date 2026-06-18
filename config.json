@@ -1,0 +1,18 @@
+{
+  "scanPaths": [
+    "./"
+  ],
+  "include": [
+    "**/*.html",
+    "**/*.htm",
+    "**/*.css",
+    "**/*.js"
+  ],
+  "exclude": [
+    "node_modules/**",
+    "tools/**",
+    "scanner-v3/reports/**",
+    "**/*.gr3.bak"
+  ],
+  "reportOutput": "./tools/scanner-v3/reports"
+}
