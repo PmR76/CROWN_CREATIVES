@@ -2,24 +2,28 @@
 import fs from "fs";
 import path from "path";
 
-// Reports live in scanner-v3/reports relative to project root
-const REPORTS_DIR = path.resolve("../scanner-v3/reports");
-const KEEP_CONFIG = path.resolve("./backup-keep.json");
+/* ============================================================
+   GR4 CLEANUP ENGINE
+   - Deletes old scan reports
+   - Deletes old .gr3.bak backups
+   - Keeps recent files based on config
+============================================================ */
 
-/* ---- Report helpers ---- */
-function getLatestReportPath() {
-  if (!fs.existsSync(REPORTS_DIR)) throw new Error("reports directory not found");
-  const files = fs.readdirSync(REPORTS_DIR)
-    .filter(f => f.startsWith("scan-") && f.endsWith(".json"))
-    .sort();
-  if (!files.length) throw new Error("no scan-*.json reports found");
-  return path.join(REPORTS_DIR, files[files.length - 1]);
-}
+// Resolve reports directory relative to THIS file
+const REPORTS_DIR = path.join(
+  path.dirname(new URL(import.meta.url).pathname),
+  "../scanner-v3/reports"
+);
 
-function loadReport(reportPath) {
-  return JSON.parse(fs.readFileSync(reportPath, "utf8"));
-}
+// Optional keep-config file
+const KEEP_CONFIG = path.join(
+  path.dirname(new URL(import.meta.url).pathname),
+  "backup-keep.json"
+);
 
+/* ------------------------------------------------------------
+   Load keep-config (optional)
+------------------------------------------------------------ */
 function loadKeepConfig() {
   if (!fs.existsSync(KEEP_CONFIG)) return { keep: [] };
   try {
@@ -29,124 +33,42 @@ function loadKeepConfig() {
   }
 }
 
-/* ---- Patch helpers ---- */
-function patchCss(content, issues) {
-  let out = content;
-  if (issues.includes("z-index-insane")) {
-    out = out.replace(/z-index:\s*\d{4,}/gi, "z-index: 500; /* GR3 normalised */");
+/* ------------------------------------------------------------
+   Cleanup: delete old scan reports
+------------------------------------------------------------ */
+function cleanupOldReports() {
+  if (!fs.existsSync(REPORTS_DIR)) {
+    return { removed: 0, kept: 0, reason: "reports directory missing" };
   }
-  if (issues.includes("full-screen-fixed-block")) {
-    out = out.replace(
-      /([^{]+)\{[^}]*position:\s*fixed[^}]*top:\s*0[^}]*left:\s*0[^}]*width:\s*(100%|100vw)[^}]*height:\s*(100%|100vh)[^}]*\}/gi,
-      "/* GR3 removed full-screen fixed block */"
-    );
+
+  const files = fs.readdirSync(REPORTS_DIR)
+    .filter(f => f.startsWith("scan-") && f.endsWith(".json"))
+    .sort();
+
+  if (files.length <= 3) {
+    return { removed: 0, kept: files.length, reason: "not enough reports to clean" };
   }
-  if (issues.includes("overflow-hidden-html-body")) {
-    out = out.replace(
-      /(html|body)\s*\{[^}]*overflow:\s*hidden[^}]*\}/gi,
-      "/* GR3 removed overflow hidden on root */"
-    );
+
+  const toRemove = files.slice(0, -3);
+  let removed = 0;
+
+  for (const f of toRemove) {
+    const full = path.join(REPORTS_DIR, f);
+    if (fs.existsSync(full)) {
+      fs.unlinkSync(full);
+      removed++;
+    }
   }
-  if (issues.includes("important-on-root")) {
-    out = out.replace(
-      /(html|body)[^{]+\{[^}]*!important[^}]*\}/gi,
-      "/* GR3 removed !important on root */"
-    );
-  }
-  return out;
+
+  return { removed, kept: 3 };
 }
 
-function patchJs(content, issues) {
-  let out = content;
-  if (issues.includes("js-body-overflow-hidden")) {
-    out = out.replace(
-      /document\.body\.style\.overflow\s*=\s*['"]hidden['"]/gi,
-      "// GR3 removed body overflow hidden"
-    );
-  }
-  if (issues.includes("js-html-overflow-hidden")) {
-    out = out.replace(
-      /document\.documentElement\.style\.overflow\s*=\s*['"]hidden['"]/gi,
-      "// GR3 removed html overflow hidden"
-    );
-  }
-  if (issues.includes("legacy-window-onload")) {
-    out = out.replace(
-      /window\.onload\s*=\s*function\s*\([^)]*\)\s*\{[\s\S]*?\};?/gi,
-      "// GR3 removed legacy window.onload block"
-    );
-  }
-  if (issues.includes("js-body-style-mutation")) {
-    out = out.replace(
-      /document\.querySelector\(['"]body['"]\)[\s\S]*?\.style\.[^=]+=/gi,
-      match => `// GR3 review: body style mutation\n// ${match}`
-    );
-  }
-  return out;
-}
-
-function patchHtml(content, issues) {
-  let out = content;
-  if (issues.includes("duplicate-cc-background")) {
-    out = out.replace(
-      /id="cc-background"/g,
-      'id="cc-background" data-gr3="duplicate-check"'
-    );
-  }
-  if (issues.includes("html-full-screen-overlay")) {
-    out = out.replace(
-      /<div([^>]+)style=["'][^"']*(position:\s*fixed)[^"']*(top:\s*0)[^"']*(left:\s*0)[^"']*(width:\s*100%|100vw)[^"']*(height:\s*100%|100vh)[^"']*["'][^>]*>/gi,
-      '<!-- GR3 removed full-screen overlay div -->'
-    );
-  }
-  return out;
-}
-
-function applyPatchesForModule(mod, keepConfig) {
-  const filePath = mod.path;
-  const issues = mod.issues || [];
-  if (!issues.length) return null;
-  if (!fs.existsSync(filePath)) return null;
-
-  const rel = mod.rel || filePath;
-  if (keepConfig.keep && keepConfig.keep.includes(rel)) {
-    return { file: filePath, skipped: true, reason: "keep-config" };
-  }
-
-  const original = fs.readFileSync(filePath, "utf8");
-  let patched = original;
-
-  if (filePath.endsWith(".css")) {
-    patched = patchCss(patched, issues);
-  } else if (filePath.endsWith(".js")) {
-    patched = patchJs(patched, issues);
-  } else if (filePath.endsWith(".html") || filePath.endsWith(".htm")) {
-    patched = patchHtml(patched, issues);
-  } else {
-    return null;
-  }
-
-  if (patched === original) return null;
-
-  const bakPath = filePath + ".gr3.bak";
-  if (!fs.existsSync(bakPath)) {
-    fs.writeFileSync(bakPath, original, "utf8");
-  }
-
-  fs.writeFileSync(filePath, patched, "utf8");
-
-  return {
-    file: filePath,
-    issuesFixed: issues,
-    backup: bakPath,
-    skipped: false,
-  };
-}
-
-/* ---------- Undo last fix (restore all .gr3.bak) ---------- */
-
-function undoLastFix() {
+/* ------------------------------------------------------------
+   Cleanup: delete .gr3.bak backups
+------------------------------------------------------------ */
+function cleanupBackups() {
   const projectRoot = path.resolve(".");
+  const keepConfig = loadKeepConfig();
   const backups = [];
 
   function walk(dir) {
@@ -154,7 +76,7 @@ function undoLastFix() {
     for (const e of entries) {
       const full = path.join(dir, e.name);
       if (e.isDirectory()) {
-        if (e.name === "node_modules" || e.name === ".git" || e.name === "reports") continue;
+        if (["node_modules", ".git", "reports"].includes(e.name)) continue;
         walk(full);
       } else if (e.isFile() && full.endsWith(".gr3.bak")) {
         backups.push(full);
@@ -164,58 +86,59 @@ function undoLastFix() {
 
   walk(projectRoot);
 
-  let restored = 0;
+  let removed = 0;
+  let kept = 0;
+
   for (const bak of backups) {
-    const target = bak.replace(/\.gr3\.bak$/, "");
-    if (!fs.existsSync(bak)) continue;
-    const original = fs.readFileSync(bak, "utf8");
-    fs.writeFileSync(target, original, "utf8");
-    restored++;
-  }
+    const rel = bak.replace(projectRoot, "").replace(/\\/g, "/");
 
-  return { restored, total: backups.length };
-}
-
-/* ---------- Main auto-fix runner ---------- */
-
-async function runAutoFix(options = {}) {
-  const reportPathArg = options.reportPath || process.argv[2];
-  const reportPath = reportPathArg || getLatestReportPath();
-  const report = loadReport(reportPath);
-  const keepConfig = loadKeepConfig();
-
-  const modules = report.modules || [];
-  const fixes = [];
-  let skipped = 0;
-
-  for (const mod of modules) {
-    const result = applyPatchesForModule(mod, keepConfig);
-    if (!result) continue;
-    if (result.skipped) {
-      skipped++;
+    if (keepConfig.keep.includes(rel)) {
+      kept++;
       continue;
     }
-    fixes.push(result);
-    console.log("✔ Fixed:", result.file, "issues:", result.issuesFixed.join(", "));
+
+    if (fs.existsSync(bak)) {
+      fs.unlinkSync(bak);
+      removed++;
+    }
   }
 
-  const summary = {
-    fixedCount: fixes.length,
-    skipped,
+  return { removed, kept };
+}
+
+/* ------------------------------------------------------------
+   Main cleanup runner
+------------------------------------------------------------ */
+function runCleanup() {
+  const reportCleanup = cleanupOldReports();
+  const backupCleanup = cleanupBackups();
+
+  return {
+    reports: reportCleanup,
+    backups: backupCleanup,
+    status: "ok"
   };
-
-  return summary;
 }
 
-/* ---------- CLI entrypoint ---------- */
-
-if (import.meta.url.endsWith("/gr3-auto-fix.mjs")) {
-  runAutoFix().then(summary => {
-    console.log(`🎉 GR3 complete — ${summary.fixedCount} files patched, ${summary.skipped} skipped.`);
-  }).catch(err => {
-    console.error("GR3 auto-fix failed:", err);
-    process.exit(1);
-  });
+/* ------------------------------------------------------------
+   Stub for dashboard API compatibility
+------------------------------------------------------------ */
+function cleanupReports() {
+  return {
+    status: "noop",
+    message: "cleanupReports() not implemented yet"
+  };
 }
 
-export { runAutoFix, undoLastFix };
+/* ------------------------------------------------------------
+   CLI entrypoint
+------------------------------------------------------------ */
+if (import.meta.url.endsWith("/gr4-cleanup.mjs")) {
+  const result = runCleanup();
+  console.log("GR4 Cleanup Complete:", result);
+}
+
+/* ------------------------------------------------------------
+   Exports
+------------------------------------------------------------ */
+export { runCleanup, cleanupReports };
