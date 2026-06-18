@@ -7,11 +7,14 @@ import path from "path";
 import { runAutoFix, undoLastFix } from "../gr3-auto-fix/gr3-auto-fix.mjs";
 import { runCleanup, cleanupReports } from "../gr4-cleanup/gr4-cleanup.mjs";
 
-// Resolve reports directory relative to THIS file
-const REPORTS_DIR = path.join(
+// PROJECT ROOT
+const PROJECT_ROOT = path.resolve(
   path.dirname(new URL(import.meta.url).pathname),
-  "../scanner-v3/reports"
+  "../../"
 );
+
+// Reports directory in project root
+const REPORTS_DIR = path.join(PROJECT_ROOT, "reports");
 
 // Utility: get latest scan report
 function getLatestReport() {
@@ -36,7 +39,7 @@ function getLatestReport() {
 // Create server
 const server = http.createServer(async (req, res) => {
 
-  // --- CORS HEADERS (must be first) ---
+  // --- CORS HEADERS ---
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -46,7 +49,6 @@ const server = http.createServer(async (req, res) => {
     return res.end();
   }
 
-  // --- ROUTES ---
   try {
 
     // GET /latest-report
