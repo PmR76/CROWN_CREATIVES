@@ -10,6 +10,24 @@ import fs from "fs";
 import path from "path";
 
 /* ------------------------------------------------------------
+   IGNORE FILTER (GR2)
+------------------------------------------------------------ */
+function shouldIgnore(filePath) {
+  const lower = filePath.toLowerCase();
+
+  return (
+    lower.includes("/.git/") ||
+    lower.includes("\\.git\\") ||
+    lower.includes("/.github/") ||
+    lower.includes("\\.github\\") ||
+    lower.includes("/node_modules/") ||
+    lower.includes("\\node_modules\\") ||
+    lower.includes("/scanner-v3/") ||   // prevent recursion
+    lower.includes("\\scanner-v3\\")
+  );
+}
+
+/* ------------------------------------------------------------
    LEGACY PATTERN HELPERS
 ------------------------------------------------------------ */
 function looksLegacyCss(content) {
@@ -55,8 +73,11 @@ const CONFIG = JSON.parse(
 function walk(dir, fileList = []) {
   const files = fs.readdirSync(dir);
 
-  files.forEach(file => {
+  for (const file of files) {
     const fullPath = path.join(dir, file);
+
+    if (shouldIgnore(fullPath)) continue;
+
     const stat = fs.statSync(fullPath);
 
     if (stat.isDirectory()) {
@@ -64,7 +85,7 @@ function walk(dir, fileList = []) {
     } else {
       fileList.push(fullPath);
     }
-  });
+  }
 
   return fileList;
 }
