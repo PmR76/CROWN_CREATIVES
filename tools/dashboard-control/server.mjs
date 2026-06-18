@@ -198,7 +198,7 @@ const server = http.createServer(async (req, res) => {
    Start server
 ------------------------------------------------------------ */
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url.endsWith("/server.mjs")) {
   server.listen(PORT, () => {
     console.log(`Dashboard control server running at http://localhost:${PORT}`);
   });
