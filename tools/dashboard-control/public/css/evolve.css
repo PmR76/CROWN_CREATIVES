@@ -1,0 +1,34 @@
+/* EVOLVE OS — Core Glow Theme */
+
+:root {
+  --evolve-accent: #4bff9c;
+  --evolve-accent-soft: rgba(75, 255, 156, 0.18);
+  --evolve-accent-strong: rgba(75, 255, 156, 0.45);
+  --evolve-window-bg: rgba(10, 14, 22, 0.92);
+  --evolve-window-border: rgba(75, 255, 156, 0.25);
+  --evolve-text: #e8fdf0;
+  --evolve-text-soft: #9bbfa8;
+}
+
+/* Base window styling */
+.os-window {
+  background: var(--evolve-window-bg);
+  border: 1px solid var(--evolve-window-border);
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(75, 255, 156, 0.25);
+  transform: scale(0.96);
+  opacity: 0.85;
+  transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Activated window glow */
+.os-window-active {
+  transform: scale(1);
+  opacity: 1;
+  box-shadow: 0 0 28px rgba(75, 255, 156, 0.55);
+}
+
+/* Strong glow flash (used for hints, activation, etc.) */
+.card-glow-strong {
+  box-shadow: 0 0 26px rgba(75, 255, 156, 0.7) !important;
+}
