@@ -317,9 +317,3 @@ async function runScanner() {
 export async function runScan() {
   return await runScanner();
 }
-/* ------------------------------------------------------------
-   11. RUN DIRECTLY FROM CLI
------------------------------------------------------------- */
-if (import.meta.url === `file://${process.argv[1]}`) {
-  runScanner();
-}
