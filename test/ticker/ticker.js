@@ -1,8 +1,12 @@
-let adminMode = false;
 const ticker = document.getElementById("ticker-text");
 const container = document.getElementById("ticker-container");
 
-// Toggle admin mode with Shift + A
+let adminMode = false;
+let dragging = false;
+let offsetX = 0;
+let offsetY = 0;
+
+/* TOGGLE ADMIN MODE — SHIFT + A */
 document.addEventListener("keydown", (e) => {
   if (e.shiftKey && e.key.toLowerCase() === "a") {
     adminMode = !adminMode;
@@ -18,9 +22,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// Dragging
-let offsetX = 0, offsetY = 0, dragging = false;
-
+/* DRAGGING */
 container.addEventListener("mousedown", (e) => {
   if (!adminMode) return;
   dragging = true;
