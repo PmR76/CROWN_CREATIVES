@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CROWN OS — Scanner Dashboard</title>
+<style>
+  body {
+    margin: 0;
+    background: #050509;
+    font-family: Consolas, monospace;
+    color: #e0e0e0;
+  }
+  .panel {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 56px auto 26px;
+    background: radial-gradient(circle at top left, #101020, #050509);
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-bottom: 1px solid #333;
+    background: linear-gradient(90deg, #101020, #060612);
+    color: #00e0ff;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  .header span.small {
+    font-size: 11px;
+    color: #888;
+  }
+  .content {
+    display: grid;
+    grid-template-columns: 280px auto 320px;
+    height: 100%;
+  }
+  .sidebar, .main, .sidepanel {
+    border-right: 1px solid #222;
+    overflow-y: auto;
+  }
+  .sidepanel { border-right: none; border-left: 1px solid #222; }
+  .sidebar, .sidepanel {
+    background: rgba(10,10,18,0.96);
+    padding: 10px;
+  }
+  .main {
+    background: rgba(8,8,14,0.98);
+    padding: 14px;
+  }
+  h2, h3, h4 {
+    margin: 6px 0 8px;
+  }
+  h2 { color: #00e0ff; font-size: 18px; }
+  h3 { color: #ff00ff; font-size: 14px; }
+  h4 { color: #00e0ff; font-size: 13px; }
+  .report-meta {
+    font-size: 11px;
+    color: #aaa;
+    margin-bottom: 10px;
+  }
+  .module {
+    background: #14141c;
+    border: 1px solid #2a2a3a;
+    padding: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+  .module:hover {
+    border-color: #00e0ff;
+  }
+  .module.selected {
+    border-color: #ff00ff;
+    box-shadow: 0 0 8px rgba(255,0,255,0.4);
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 6px;
+    margin-right: 4px;
+    border-radius: 4px;
+    font-size: 10px;
+  }
+  .scope-test { background: #0044ff; }
+  .scope-asset { background: #008844; }
+  .scope-page { background: #884400; }
+  .scope-script { background: #6600aa; }
+  .scope-unknown { background: #444; }
+  .kind-legacy { background: #aa0000; }
+  .kind-hybrid { background: #cc6600; }
+  .kind-gr1 { background: #00ccff; }
+  .kind-neutral { background: #555; }
+  .issues { margin-top: 4px; color: #ff6666; font-size: 11px; }
+  .actions { margin-top: 2px; color: #66ff66; font-size: 11px; }
+  .filters label {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 4px;
+    color: #aaa;
+  }
+  .filters select {
+    width: 100%;
+    margin-bottom: 8px;
+    background: #111;
+    color: #eee;
+    border: 1px solid #333;
+    padding: 3px;
+    font-size: 11px;
+  }
+  .button {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px;
+    padding: 6px 8px;
+    font-size: 11px;
+    text-align: left;
+    background: #151525;
+    color: #eee;
+    border: 1px solid #333;
+    cursor: pointer;
+  }
+  .button:hover {
+    background: #1f1f35;
+    border-color: #00e0ff;
+  }
+  .button.danger {
+    border-color: #aa0000;
+    color: #ffaaaa;
+  }
+  .button.primary {
+    border-color: #00e0ff;
+    color: #aaf7ff;
+  }
+  .status-bar {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-top: 1px solid #222;
+    background: #050509;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+  }
+  .status-bar span.highlight {
+    color: #00e0ff;
+  }
+  .creative-item {
+    font-size: 11px;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed #333;
+  }
+  .detail-block {
+    font-size: 11px;
+    background: #101018;
+    border: 1px solid #2a2a3a;
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="panel">
+  <div class="header">
+    <div>CROWN OS — Scanner Dashboard <span class="small">GR1/GR2/GR3/GR4</span></div>
+    <div class="small" id="headerStatus">Idle</div>
+  </div>
+  <div class="content">
+    <div class="sidebar">
+      <h3>Controls</h3>
+      <button class="button primary" onclick="runScan()">Run Scan (GR1/GR2)</button>
+      <button class="button primary" onclick="runAutoFix()">Run Auto‑Fix (GR3 default)</button>
+      <button class="button" onclick="runCleanup()">Cleanup 30‑day (GR4)</button>
+      <button class="button" onclick="refreshLatest()">Reload Latest Report</button>
+      <button class="button" onclick="loadReportList()">Refresh Report List</button>
+      <button class="button danger" onclick="cleanupReports()">Delete Old Reports</button>
+      <button class="button" onclick="runAutoFixDry()">Run Auto‑Fix (Dry Run)</button>
+      <button class="button" onclick="runAutoFixSafe()">Run Auto‑Fix (Safe)</button>
+      <button class="button" onclick="runAutoFixAggressive()">Run Auto‑Fix (Aggressive)</button>
+      <button class="button" onclick="undoLastFix()">Undo Last Auto‑Fix</button>
+
+      <h3>Filters</h3>
+      <div class="filters">
+        <label>Scope</label>
+        <select id="filterScope" onchange="renderModules()">
+          <option value="">(all)</option>
+          <option value="test">test</option>
+          <option value="asset">asset</option>
+          <option value="page">page</option>
+          <option value="script">script</option>
+          <option value="unknown">unknown</option>
+        </select>
+        <label>Kind</label>
+        <select id="filterKind" onchange="renderModules()">
+          <option value="">(all)</option>
+          <option value="legacy">legacy</option>
+          <option value="hybrid">hybrid</option>
+          <option value="gr1">gr1</option>
+          <option value="neutral">neutral</option>
+        </select>
+      </div>
+
+      <h3>Reports</h3>
+      <div id="reportList" style="font-size:11px;"></div>
+    </div>
+
+    <div class="main">
+      <h2 id="reportTitle">Loading latest report…</h2>
+      <div class="report-meta" id="reportMeta"></div>
+      <div id="modulesContainer"></div>
+    </div>
+
+    <div class="sidepanel">
+      <h3>Module Detail</h3>
+      <div id="moduleDetail" class="detail-block">Select a module to see details.</div>
+      <h3>Creative Suggestions</h3>
+      <div id="creativeContainer"></div>
+    </div>
+  </div>
+  <div class="status-bar">
+    <span id="statusText">Ready.</span>
+    <span class="highlight" id="storageText">Storage: …</span>
+  </div>
+</div>
+<script>
+const API_BASE = "http://localhost:7777";
+let currentReport = null;
+let selectedModuleIndex = null;
+
+function setHeaderStatus(text) {
+  document.getElementById("headerStatus").textContent = text;
+}
+function setStatus(text) {
+  document.getElementById("statusText").textContent = text;
+}
+async function fetchJSON(url, options) {
+  const res = await fetch(url, options);
+  if (!res.ok) throw new Error(res.status + " " + res.statusText);
+  return res.json();
+}
+
+/* ---- Load latest report on startup ---- */
+async function loadLatestReport() {
+  try {
+    setHeaderStatus("Loading latest report…");
+    const data = await fetchJSON(API_BASE + "/latest-report");
+    currentReport = data.report;
+    selectedModuleIndex = null;
+    renderReportMeta();
+    renderModules();
+    renderCreative();
+    setHeaderStatus("Latest report loaded");
+    setStatus("Loaded " + (currentReport.modules?.length || 0) + " modules.");
+    updateStorage();
+    loadReportList();
+  } catch (err) {
+    setHeaderStatus("Error");
+    setStatus("Failed to load latest report: " + err.message);
+    document.getElementById("reportTitle").textContent = "No report available";
+    document.getElementById("reportMeta").textContent = "";
+  }
+}
+
+function renderReportMeta() {
+  if (!currentReport) return;
+  document.getElementById("reportTitle").textContent =
+    "Report — " + (currentReport.scannedAt || "");
+  document.getElementById("reportMeta").textContent =
+    "Project: " + (currentReport.projectRoot || "") +
+    " | Modules: " + (currentReport.modules?.length || 0);
+}
+
+function renderModules() {
+  const container = document.getElementById("modulesContainer");
+  container.innerHTML = "";
+  if (!currentReport || !currentReport.modules) return;
+
+  const scopeFilter = document.getElementById("filterScope").value;
+  const kindFilter = document.getElementById("filterKind").value;
+
+  currentReport.modules.forEach((m, idx) => {
+    if (scopeFilter && m.scope !== scopeFilter) return;
+    if (kindFilter && m.kind !== kindFilter) return;
+
+    const issues = Array.isArray(m.issues) ? m.issues : [];
+    const actions = Array.isArray(m.actions) ? m.actions : [];
+
+    const div = document.createElement("div");
+    div.className = "module" + (idx === selectedModuleIndex ? " selected" : "");
+    div.onclick = () => { selectedModuleIndex = idx; renderModules(); renderModuleDetail(); };
+
+    div.innerHTML = `
+      <h4>${m.rel}</h4>
+      <span class="tag scope-${m.scope}">${m.scope}</span>
+      <span class="tag kind-${m.kind}">${m.kind}</span>
+      <div class="issues"><strong>Issues:</strong> ${issues.length ? issues.join(", ") : "none"}</div>
+      <div class="actions"><strong>Actions:</strong> ${actions.length ? actions.join(", ") : "none"}</div>
+    `;
+    container.appendChild(div);
+  });
+
+  renderModuleDetail();
+}
+
+function renderModuleDetail() {
+  const detail = document.getElementById("moduleDetail");
+  if (!currentReport || !currentReport.modules || selectedModuleIndex == null) {
+    detail.textContent = "Select a module to see details.";
+    return;
+  }
+  const m = currentReport.modules[selectedModuleIndex];
+  const issues = Array.isArray(m.issues) ? m.issues : [];
+  const actions = Array.isArray(m.actions) ? m.actions : [];
+
+  detail.innerHTML = `
+    <div><strong>Path:</strong> ${m.path}</div>
+    <div><strong>Rel:</strong> ${m.rel}</div>
+    <div><strong>Scope:</strong> ${m.scope}</div>
+    <div><strong>Kind:</strong> ${m.kind}</div>
+    <div><strong>Issues:</strong> ${issues.length ? issues.join(", ") : "none"}</div>
+    <div><strong>Actions:</strong> ${actions.length ? actions.join(", ") : "none"}</div>
+  `;
+}
+
+function renderCreative() {
+  const container = document.getElementById("creativeContainer");
+  container.innerHTML = "";
+  if (!currentReport || !currentReport.creative || !currentReport.creative.length) {
+    container.textContent = "No creative suggestions in this report.";
+    return;
+  }
+  currentReport.creative.forEach(c => {
+    const div = document.createElement("div");
+    div.className = "creative-item";
+    div.innerHTML = `
+      <div><strong>${c.path}</strong></div>
+      <div><em>${c.type}</em></div>
+      <div>${c.message}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+/* ---- Report list ---- */
+async function loadReportList() {
+  try {
+    const data = await fetchJSON(API_BASE + "/reports");
+    const list = document.getElementById("reportList");
+    list.innerHTML = "";
+    data.files.forEach(f => {
+      const div = document.createElement("div");
+      div.textContent = f;
+      div.style.cursor = "pointer";
+      div.onclick = () => loadSpecificReport(f);
+      list.appendChild(div);
+    });
+  } catch (err) {
+    document.getElementById("reportList").textContent = "Failed to load report list.";
+  }
+}
+
+async function loadSpecificReport(filename) {
+  try {
+    setHeaderStatus("Loading " + filename + "…");
+    const data = await fetchJSON(API_BASE + "/report?file=" + encodeURIComponent(filename));
+    currentReport = data.report;
+    selectedModuleIndex = null;
+    renderReportMeta();
+    renderModules();
+    renderCreative();
+    setHeaderStatus("Report loaded");
+    setStatus("Loaded " + filename);
+  } catch (err) {
+    setStatus("Failed to load report: " + err.message);
+  }
+}
+
+/* ---- Controls ---- */
+async function runScan() {
+  try {
+    setHeaderStatus("Running scan…");
+    setStatus("Scanner v3 running…");
+    const res = await fetchJSON(API_BASE + "/run-scan", { method: "POST" });
+    setStatus("Scan complete: " + res.message);
+    await loadLatestReport();
+  } catch (err) {
+    setStatus("Scan failed: " + err.message);
+    setHeaderStatus("Error");
+  }
+}
+
+/* Default GR3 button: safe mode, real run */
+async function runAutoFix() {
+  try {
+    setHeaderStatus("Running auto‑fix (default safe)…");
+    const res = await fetch(API_BASE + "/run-auto-fix", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "safe", dryRun: false })
+    });
+    const data = await res.json();
+    const s = data.summary;
+    setStatus(`Auto‑fix (default safe): ${s.fixedCount} patched, ${s.skipped} skipped.`);
+    await loadLatestReport();
+  } catch (err) {
+    setStatus("Auto‑fix failed: " + err.message);
+    setHeaderStatus("Error");
+  }
+}
+
+async function runCleanup() {
+  try {
+    setHeaderStatus("Running cleanup…");
+    setStatus("GR4 cleanup running…");
+    const res = await fetchJSON(API_BASE + "/run-cleanup", { method: "POST" });
+    setStatus(`Cleanup: backups ${res.backupsRemoved}, reports ${res.reportsRemoved}, kept ${res.keptCount}`);
+    setHeaderStatus("Cleanup complete");
+    updateStorage();
+  } catch (err) {
+    setStatus("Cleanup failed: " + err.message);
+    setHeaderStatus("Error");
+  }
+}
+
+async function cleanupReports() {
+  try {
+    setHeaderStatus("Cleaning reports…");
+    const res = await fetchJSON(API_BASE + "/cleanup-reports", { method: "POST" });
+    setStatus(`Reports cleanup: removed ${res.reportsRemoved}`);
+    setHeaderStatus("Reports cleaned");
+    loadReportList();
+    updateStorage();
+  } catch (err) {
+    setStatus("Reports cleanup failed: " + err.message);
+  }
+}
+
+async function refreshLatest() {
+  await loadLatestReport();
+}
+
+async function updateStorage() {
+  try {
+    const res = await fetchJSON(API_BASE + "/storage-usage");
+    document.getElementById("storageText").textContent =
+      `Storage: reports ${res.reportsSize} KB, backups ${res.backupsSize} KB`;
+  } catch {
+    document.getElementById("storageText").textContent = "Storage: n/a";
+  }
+}
+
+/* ---- GR3.5 extras ---- */
+async function runAutoFixDry() {
+  try {
+    setHeaderStatus("Dry‑run auto‑fix…");
+    const res = await fetchJSON(API_BASE + "/run-auto-fix-dry", { method: "POST" });
+    const s = res.summary;
+    setStatus(`Dry‑run: ${s.fixedCount} files would be patched, ${s.skipped} skipped.`);
+  } catch (err) {
+    setStatus("Dry‑run failed: " + err.message);
+  }
+}
+
+async function runAutoFixSafe() {
+  try {
+    setHeaderStatus("Auto‑fix (safe)…");
+    const res = await fetch(API_BASE + "/run-auto-fix", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "safe", dryRun: false })
+    });
+    const data = await res.json();
+    const s = data.summary;
+    setStatus(`Safe fix: ${s.fixedCount} patched, ${s.skipped} skipped.`);
+    await loadLatestReport();
+  } catch (err) {
+    setStatus("Safe fix failed: " + err.message);
+  }
+}
+
+async function runAutoFixAggressive() {
+  try {
+    setHeaderStatus("Auto‑fix (aggressive)…");
+    const res = await fetch(API_BASE + "/run-auto-fix", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "aggressive", dryRun: false })
+    });
+    const data = await res.json();
+    const s = data.summary;
+    setStatus(`Aggressive fix: ${s.fixedCount} patched, ${s.skipped} skipped.`);
+    await loadLatestReport();
+  } catch (err) {
+    setStatus("Aggressive fix failed: " + err.message);
+  }
+}
+
+async function undoLastFix() {
+  try {
+    setHeaderStatus("Undoing last fix…");
+    const res = await fetchJSON(API_BASE + "/undo-last-fix", { method: "POST" });
+    setStatus(`Undo: restored ${res.result.restored}/${res.result.total} files.`);
+    await loadLatestReport();
+  } catch (err) {
+    setStatus("Undo failed: " + err.message);
+  }
+}
+
+window.addEventListener("load", () => {
+  loadLatestReport();
+});
+</script>
+</body>
+</html>
