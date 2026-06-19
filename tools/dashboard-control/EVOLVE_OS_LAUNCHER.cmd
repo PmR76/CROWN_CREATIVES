@@ -9,10 +9,9 @@ echo.
 echo Stopping any running Node servers...
 taskkill /IM node.exe /F >nul 2>&1
 
-echo.
 echo Starting Dashboard Control Server...
 cd tools\dashboard-control
-start "EVOLVE_SERVER" cmd /c "node server.mjs"
+start "" node server.mjs
 
 echo Waiting for server to start...
 timeout /t 2 >nul
@@ -22,5 +21,6 @@ start "" http://localhost:7777
 
 echo.
 echo EVOLVE OS is now running.
-echo You may close this window.
+echo Close this window if you like.
 echo.
+pause
