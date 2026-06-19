@@ -132,3 +132,21 @@ switch (cmd) {
     console.log("  node manager.mjs redundancy   → detect redundant folders");
     break;
 }
+function classifyFile(fullPath, relPath) {
+  const stats = fs.statSync(fullPath);
+
+  // RED — broken or unreadable
+  if (stats.size === 0) return "RED";
+  if (!fs.existsSync(fullPath)) return "RED";
+
+  // AMBER — suspicious or redundant
+  const redundantFolders = ["tools", "scanner-v3", "dashboard-control", "gr3-auto-fix", "gr4-cleanup", "mother"];
+  if (redundantFolders.some(f => relPath.startsWith(f))) return "AMBER";
+
+  const ext = path.extname(fullPath).toLowerCase();
+  const allowed = [".html", ".css", ".js", ".png", ".jpg", ".jpeg", ".svg", ".gif", ".webp"];
+  if (!allowed.includes(ext)) return "AMBER";
+
+  // GREEN — normal
+  return "GREEN";
+}
