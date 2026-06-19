@@ -22,7 +22,7 @@
   position: relative;
 
   /* Ensure footer sits above backgrounds */
-  z-index: 9999 !important;
+  z-index: 500; /* GR3 normalised */ !important;
 
   /* Cinematic glow */
   box-shadow: 0 0 22px rgba(255,255,255,0.15);
@@ -81,7 +81,7 @@
 
   /* Ensure button is clickable above all layers */
   position: relative;
-  z-index: 99999 !important;
+  z-index: 500; /* GR3 normalised */ !important;
   pointer-events: auto !important;
 }
 
@@ -127,13 +127,13 @@
 .cc-ticker {
     position: relative;
     transform: translateY(-45mm); /* lifts ticker upward */
-    z-index: 9998; /* stays just under footer */
+    z-index: 500; /* GR3 normalised */; /* stays just under footer */
 }
 
 /* Ensure footer stays in normal flow */
 .cc-footer {
     position: relative;
-    z-index: 9999;
+    z-index: 500; /* GR3 normalised */;
 }
 /* ============================================
    FORCE TICKER TO FRONT + VISIBLE
@@ -145,7 +145,7 @@
     opacity: 1 !important;
     visibility: visible !important;
 
-    z-index: 999999 !important; /* above everything */
+    z-index: 500; /* GR3 normalised */ !important; /* above everything */
     transform: none !important; /* reset any previous transforms */
 }
 

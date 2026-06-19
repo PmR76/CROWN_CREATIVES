@@ -23,7 +23,7 @@
   cursor: pointer;
   position: relative;
   transition: transform 0.25s ease, box-shadow 0.35s ease;
-  z-index: 9999;
+  z-index: 500; /* GR3 normalised */;
 }
 
 /* Icon inside the orb */

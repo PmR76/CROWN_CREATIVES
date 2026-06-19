@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  z-index: 1000;
+  z-index: 500; /* GR3 normalised */;
 }
 
 /* ------------------------------

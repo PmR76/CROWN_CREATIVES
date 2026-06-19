@@ -117,7 +117,7 @@ body.fade-header main {
 ------------------------------------------------------------ */
 #evolve-panel,
 #evolve-orb {
-  z-index: 999999 !important;
+  z-index: 500; /* GR3 normalised */ !important;
   pointer-events: auto !important;
 }
 

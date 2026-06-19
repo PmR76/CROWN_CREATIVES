@@ -7,7 +7,7 @@
   width: 100%;
   padding: 20px 0 10px;
   position: relative;
-  z-index: 1000;
+  z-index: 500; /* GR3 normalised */;
   background: transparent;
   display: flex;
   flex-direction: column;
