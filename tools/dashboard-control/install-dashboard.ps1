@@ -1,10 +1,5 @@
-# ============================================
-# DASHBOARD INSTALLER FOR CROWN_CREATIVES
-# Creates correct folder structure and copies UI files
-# ============================================
-
 Write-Host ""
-Write-Host "=== Installing Dashboard Structure ==="
+Write-Host "=== Installing Dashboard Structure (GR2 Mode) ==="
 Write-Host ""
 
 $root = "C:\DEV\CROWN_CREATIVES\tools"
@@ -18,7 +13,6 @@ $js = Join-Path $public "js"
 $modules = Join-Path $public "modules"
 $assets = Join-Path $public "assets"
 
-# Ensure directory exists
 function Ensure-Folder($path) {
     if (-not (Test-Path $path)) {
         New-Item -ItemType Directory -Path $path | Out-Null
@@ -28,7 +22,6 @@ function Ensure-Folder($path) {
     }
 }
 
-# Copy file safely
 function Safe-Copy($src, $dest) {
     if (Test-Path $src) {
         Copy-Item $src $dest -Force
@@ -57,5 +50,5 @@ Set-Content -Path (Join-Path $assets "placeholder.txt") -Value "assets go here"
 
 Write-Host ""
 Write-Host "🎉 Dashboard structure installed successfully!"
-Write-Host "➡ Now run:  node server.mjs"
+Write-Host "➡ Restart with:  node server.mjs"
 Write-Host ""
