@@ -11,9 +11,10 @@ import path from "path";
 
 // PROJECT ROOT (CROWN_CREATIVES)
 const PROJECT_ROOT = path.resolve(
-  path.dirname(new URL(import.meta.url).pathname),
+  path.dirname(new URL(import.meta.url).pathname).replace(/^\/+/, ""),
   "../../"
 );
+
 
 // Reports directory in project root
 const REPORTS_DIR = path.join(PROJECT_ROOT, "reports");
