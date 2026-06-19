@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>CROWN OS — Scanner Dashboard</title>
+
 <link rel="stylesheet" href="./css/evolve.css">
+
 <style>
   body {
     margin: 0;
@@ -159,6 +161,7 @@
     margin-bottom: 8px;
   }
 </style>
+
 <img src="./assets/icons/evolve-logo.png" class="evolve-logo">
 </head>
 <body>
@@ -224,6 +227,7 @@
     <span class="highlight" id="storageText">Storage: …</span>
   </div>
 </div>
+
 <script>
 const API_BASE = "http://localhost:7777";
 let currentReport = null;
@@ -511,8 +515,8 @@ async function undoLastFix() {
 window.addEventListener("load", () => {
   loadLatestReport();
 });
-
 </script>
+
 <script src="./js/doubletap.js"></script>
 <script src="./js/os-entry.js"></script>
 </body>
