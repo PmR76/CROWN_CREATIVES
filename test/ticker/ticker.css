@@ -1,80 +1,42 @@
-/* ============================================================
-   EVOLVE OS — MAGICAL TICKER v3.1
-   Dual-track infinite scroll + drag support
-   ============================================================ */
-
-.evolve-ticker {
-  position: fixed;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1400px;
-  height: 42px;
-
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(14px);
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-
+#ticker-container {
+  width: 100%;
   overflow: hidden;
-  z-index: 500; /* GR3 normalised */;
-
-  display: flex;
-  align-items: center;
-
-  cursor: grab;
-  user-select: none;
-}
-
-.evolve-ticker.is-dragging {
-  cursor: grabbing;
-}
-
-.evolve-ticker-track {
-  position: absolute;
   white-space: nowrap;
-  display: inline-flex;
-  gap: 60px;
+  position: fixed;
+  bottom: 60px; /* just above footer */
+  left: 0;
+  z-index: 9999;
+  pointer-events: none; /* disabled unless admin mode */
+}
+
+#ticker-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ticker-scroll 18s linear infinite;
   font-size: 1.1rem;
-  letter-spacing: 1px;
-  opacity: 0.9;
-  color: var(--accent-glow, #fff);
-  text-shadow: 0 0 8px var(--accent-glow, #fff);
-  animation: evolveTickerScroll 18s linear infinite;
+  color: var(--text-color);
+  text-shadow: 0 0 6px rgba(255,255,255,0.4);
+  transition: text-shadow 0.3s ease;
 }
 
-.track-b {
-  left: 100%;
+#ticker-text.glow {
+  text-shadow: 0 0 10px rgba(255,255,255,0.8),
+               0 0 20px rgba(255,255,255,0.6);
 }
 
-@keyframes evolveTickerScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }
-/* ============================================================
-   MOBILE CLARITY MODE — TICKER
-   ============================================================ */
-@media (max-width: 768px) {
 
-  .evolve-ticker {
-    height: 48px;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    background: rgba(0, 0, 0, 0.35); /* darker for contrast */
-    border: 1px solid rgba(255, 255, 255, 0.18);
-  }
+/* Admin mode */
+.admin-active #ticker-container {
+  pointer-events: auto;
+  cursor: grab;
+}
 
-  .evolve-ticker-track {
-    font-size: 1.25rem;        /* bigger text */
-    opacity: 1;                /* full visibility */
-    text-shadow: none;         /* remove glow for clarity */
-    color: #fff;               /* pure white text */
-    animation-duration: 22s;   /* slightly slower */
-  }
-
-  .magic-shimmer,
-  .evolve-ticker-track::before {
-    opacity: 0.12;             /* reduce shimmer intensity */
-  }
+.admin-active #ticker-text {
+  animation-play-state: paused;
+  border: 1px dashed rgba(255,255,255,0.4);
+  padding: 4px 8px;
 }

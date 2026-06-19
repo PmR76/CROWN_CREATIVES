@@ -1,0 +1,141 @@
+/* ============================================================
+   HEADER MODULE — Crown Creatives
+   Cinematic, modular, self-contained
+============================================================ */
+
+/* ------------------------------
+   HEADER WRAPPER
+------------------------------ */
+#cc-header {
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 500; /* GR3 normalised */;
+}
+
+/* ------------------------------
+   LEFT SECTION (Logo + Title)
+------------------------------ */
+.cc-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cc-header-crown {
+  width: 60px;
+  height: auto;
+}
+
+.cc-header-title-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.cc-header-title {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: var(--cc-text-primary);
+}
+
+.cc-header-tagline {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ------------------------------
+   NAVIGATION
+------------------------------ */
+.cc-header-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.cc-header-nav a {
+  text-decoration: none;
+  color: var(--cc-text-primary);
+  font-size: 1rem;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+}
+
+.cc-header-nav a:hover {
+  opacity: 1;
+}
+
+/* ------------------------------
+   RIGHT SECTION (Toggle Orbs)
+------------------------------ */
+.cc-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Positioning for theme + sound toggles */
+#themeToggle,
+#soundToggle {
+  position: relative;
+}
+
+/* ------------------------------
+   HEADER GLOW LINE (Cinematic)
+------------------------------ */
+.cc-header-glow {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  opacity: 0.7;
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 900px) {
+  #cc-header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .cc-header-nav {
+    gap: 18px;
+  }
+}
+/* THEME TOGGLE ORB (smaller, header version) */
+.theme-toggle-orb {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.theme-toggle-orb img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+}
+
+.theme-toggle-orb:hover {
+  transform: scale(1.12);
+}

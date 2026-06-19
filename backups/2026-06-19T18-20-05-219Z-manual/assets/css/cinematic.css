@@ -1,0 +1,82 @@
+/* ============================================================
+   CINEMATIC ENGINE — ANIMATIONS + MOTION SYSTEM
+   Extracted from home.css for modularity + clarity
+   ============================================================ */
+
+
+/* --- CLOUD DRIFT --- */
+@keyframes cloudDrift {
+  from { transform: translateX(0) scale(1.6); }
+  to   { transform: translateX(-40%) scale(1.6); }
+}
+
+
+/* --- NEBULA SHIFT --- */
+@keyframes nebulaShift {
+  0%   { opacity: 0.15; transform: scale(1.6); }
+  50%  { opacity: 0.28; transform: scale(1.68); }
+  100% { opacity: 0.18; transform: scale(1.62); }
+}
+
+
+/* --- CROWN SHIMMER --- */
+@keyframes crownShimmer {
+  0%   { filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)); }
+  50%  { filter: drop-shadow(0 0 35px rgba(255,255,255,1)); }
+  100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)); }
+}
+
+
+/* --- FLOATING CROWN (REELS) --- */
+@keyframes floatCrown {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+
+/* --- MAGIC BORDER (REELS) --- */
+@keyframes magicBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* --- SPARKLE DRIFT (REELS) --- */
+@keyframes sparkleDrift {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-40px,-20px); }
+  100% { transform: translate(0,0); }
+}
+
+
+/* --- CAROUSEL SPARKLE DRIFT --- */
+@keyframes carouselSparkleDrift {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-30px,-15px); }
+  100% { transform: translate(0,0); }
+}
+
+
+/* --- PARTICLE DRIFT --- */
+@keyframes particleDrift {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-60px,-30px); }
+  100% { transform: translate(0,0); }
+}
+
+
+/* --- PAGE SWEEP --- */
+@keyframes sweepMove {
+  0%   { transform: translateX(-200%); }
+  100% { transform: translateX(200%); }
+}
+
+
+/* --- MAGIC BUTTON --- */
+@keyframes magicButton {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

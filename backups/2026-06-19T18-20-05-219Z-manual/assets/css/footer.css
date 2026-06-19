@@ -1,0 +1,156 @@
+@import url("core-shared.css");
+
+/* ============================================================
+   FOOTER — FROSTED GLASS CINEMATIC PANEL
+============================================================ */
+
+.cc-footer {
+  width: 100%;
+  padding: 22px 28px;
+  margin-top: 10px;
+
+  /* Frosted glass effect */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border-radius: 22px;
+
+  /* Layout */
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  position: relative;
+
+  /* Ensure footer sits above backgrounds */
+  z-index: 500; /* GR3 normalised */ !important;
+
+  /* Cinematic glow */
+  box-shadow: 0 0 22px rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* ============================================================
+   LEFT — COPYRIGHT
+============================================================ */
+
+.cc-footer-left {
+  font-family: 'Cinzel Decorative', serif !important;
+  font-size: 15px !important;
+  color: #fff !important;
+  opacity: 0.85 !important;
+  line-height: 1.4 !important;
+  text-shadow: 0 0 6px rgba(255,255,255,0.6) !important;
+  text-align: left !important;
+}
+
+/* ============================================================
+   CENTER — SOCIAL ICONS (10% smaller + glow)
+============================================================ */
+
+.cc-footer-icons {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 18px !important;
+}
+
+.cc-footer-icons img {
+  width: 43px !important;
+  height: 43px !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.7)) !important;
+  transition: transform 0.25s ease, filter 0.25s ease !important;
+}
+
+.cc-footer-icons img:hover {
+  transform: scale(1.2) !important;
+  filter: drop-shadow(0 0 14px rgba(255,255,255,1)) !important;
+}
+
+/* ============================================================
+   RIGHT — BACK TO TOP (transparent + aligned right)
+============================================================ */
+
+.cc-footer-top {
+  justify-self: end !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+
+  /* Ensure button is clickable above all layers */
+  position: relative;
+  z-index: 500; /* GR3 normalised */ !important;
+  pointer-events: auto !important;
+}
+
+.cc-footer-top img {
+  width: 43px !important;
+  height: 43px !important;
+  background: transparent !important;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.7)) !important;
+  transition: transform 0.25s ease, filter 0.25s ease !important;
+
+  /* Prevent icon from blocking click */
+  pointer-events: none;
+}
+
+.cc-footer-top:hover img {
+  transform: scale(1.2) !important;
+  filter: drop-shadow(0 0 14px rgba(255,255,255,1)) !important;
+}
+
+/* ============================================================
+   MOBILE — STACKED LAYOUT
+============================================================ */
+
+@media (max-width: 768px) {
+  .cc-footer {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    text-align: center !important;
+  }
+
+  .cc-footer-left {
+    text-align: center !important;
+  }
+
+  .cc-footer-top {
+    justify-self: center !important;
+  }
+}
+/* ============================================
+   TICKER — MOVE ABOVE FOOTER BY 45mm
+   ============================================ */
+
+.cc-ticker {
+    position: relative;
+    transform: translateY(-45mm); /* lifts ticker upward */
+    z-index: 500; /* GR3 normalised */; /* stays just under footer */
+}
+
+/* Ensure footer stays in normal flow */
+.cc-footer {
+    position: relative;
+    z-index: 500; /* GR3 normalised */;
+}
+/* ============================================
+   FORCE TICKER TO FRONT + VISIBLE
+   ============================================ */
+
+.cc-ticker {
+    position: relative !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    z-index: 500; /* GR3 normalised */ !important; /* above everything */
+    transform: none !important; /* reset any previous transforms */
+}
+
+/* Prevent parent containers from hiding it */
+.cc-ticker * {
+    opacity: 1 !important;
+    visibility: visible !important;
+}

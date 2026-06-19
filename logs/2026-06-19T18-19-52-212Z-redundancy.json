@@ -1,0 +1,10 @@
+{
+  "redundant": [
+    ".git",
+    ".github",
+    ".vscode",
+    "node_modules",
+    "reports",
+    "tools"
+  ]
+}

@@ -1,0 +1,102 @@
+/* ============================================================
+   GR1 AUTO-MIGRATED MODULE
+   Source: ../../test/cards/cards.css
+   Type: legacy
+   Date: 2026-06-18T09:40:20.731Z
+============================================================ */
+
+/* ============================================================
+   CROWN CREATIVES — MAGICAL FROSTED GLASS CARDS v3.0
+   Draggable + Particle Shimmer
+   ============================================================ */
+
+.magic-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 0;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+/* CARD BASE */
+.magic-card {
+  width: 300px;
+  padding: 28px 32px;
+  border-radius: 22px;
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.08);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  text-align: center;
+
+  cursor: grab;
+  user-select: none;
+}
+
+.magic-card:active {
+  cursor: grabbing;
+}
+
+/* HOVER MAGIC */
+.magic-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    0 0 18px var(--accent-glow, #fff);
+}
+
+/* TITLES */
+.magic-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: var(--text-primary, #fff);
+  text-shadow: 0 0 8px var(--accent-glow, #fff);
+}
+
+/* BODY TEXT */
+.magic-card p {
+  font-size: 1rem;
+  opacity: 0.85;
+  line-height: 1.5;
+  color: var(--text-secondary, #eaeaea);
+}
+
+/* PARTICLE SHIMMER LAYER */
+.magic-card-shimmer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.magic-card-shimmer::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.25) 0%,
+    rgba(255,255,255,0) 60%
+  );
+  animation: shimmerMove 6s linear infinite;
+  opacity: 0.25;
+}
+
+@keyframes shimmerMove {
+  0%   { transform: translate(0,0) rotate(0deg); }
+  100% { transform: translate(50%,50%) rotate(360deg); }
+}

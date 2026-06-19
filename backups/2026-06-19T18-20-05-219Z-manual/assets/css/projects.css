@@ -1,0 +1,236 @@
+@import url("core-shared.css");
+
+/* ============================================================
+   CROWN CREATIVES — PROJECT ENGINE v2.1 (CSS)
+   Cinematic lanes, hover/tap play, shimmer, play button overlay
+============================================================ */
+
+/* ------------------------------------------------------------
+   1. PAGE WRAPPER
+------------------------------------------------------------ */
+
+.projects-wrapper {
+  max-width: 1400px;
+  margin: 120px auto 100px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  position: relative;
+  z-index: 3;
+}
+
+/* ------------------------------------------------------------
+   2. PROJECT LANE — HORIZONTAL CINEMATIC LAYOUT
+------------------------------------------------------------ */
+
+.project-lane {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+}
+
+.project-lane:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* ------------------------------------------------------------
+   3. REEL CONTAINER — STATIC + MOTION + EMBED
+------------------------------------------------------------ */
+
+.project-reel {
+  position: relative;
+  width: 48%;
+  height: 320px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease;
+}
+
+.project-reel:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Static preview */
+.project-reel-still {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Motion preview */
+.project-reel-motion {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Hover fade */
+.project-reel:hover .project-reel-still {
+  opacity: 0;
+}
+
+.project-reel:hover .project-reel-motion {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   4. PARALLAX DRIFT ON HOVER
+------------------------------------------------------------ */
+
+.project-reel:hover .project-reel-motion {
+  transform: scale(1.05);
+  transition: transform 1.2s ease;
+}
+
+/* ------------------------------------------------------------
+   5. SHIMMER SWEEP
+------------------------------------------------------------ */
+
+.project-reel-shimmer {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.25) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+.project-reel:hover .project-reel-shimmer {
+  animation: projectShimmer 1.2s ease forwards;
+}
+
+@keyframes projectShimmer {
+  0% { left: -120%; }
+  100% { left: 200%; }
+}
+
+/* ------------------------------------------------------------
+   6. PLAY BUTTON OVERLAY
+------------------------------------------------------------ */
+
+.project-play-button {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 0 20px rgba(255,255,255,1);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-reel:hover .project-play-button {
+  opacity: 1;
+}
+
+/* Mobile: always show play button */
+@media (max-width: 768px) {
+  .project-play-button {
+    opacity: 1;
+    font-size: 48px;
+  }
+}
+
+/* ------------------------------------------------------------
+   7. LOADING STATE (provider-specific)
+------------------------------------------------------------ */
+
+.project-reel.loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.15) 0%,
+    rgba(255,255,255,0) 70%
+  );
+  animation: reelLoading 1.4s infinite ease-in-out;
+}
+
+@keyframes reelLoading {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.2; }
+}
+
+/* ------------------------------------------------------------
+   8. PROJECT TEXT BLOCK
+------------------------------------------------------------ */
+
+.project-info {
+  width: 48%;
+  text-align: left;
+}
+
+.project-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 36px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 12px rgba(255,255,255,0.8);
+}
+
+.project-desc {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-tag {
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* ------------------------------------------------------------
+   9. RESPONSIVE BEHAVIOUR
+------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  .project-lane {
+    flex-direction: column !important;
+    gap: 40px;
+  }
+
+  .project-reel,
+  .project-info {
+    width: 100%;
+  }
+
+  .project-reel {
+    height: 240px;
+  }
+}

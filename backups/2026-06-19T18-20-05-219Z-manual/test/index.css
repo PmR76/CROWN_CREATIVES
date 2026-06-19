@@ -1,0 +1,82 @@
+/* ============================================================
+   CROWN CREATIVES — TEST ENVIRONMENT (GLOBAL LAYOUT ONLY)
+   Clean, modular, cinematic
+   All module-specific CSS lives in module folders.
+============================================================ */
+
+/* ------------------------------
+   GLOBAL SPACING + RESET
+------------------------------ */
+body {/* REMOVED full-screen fixed block by scanner */
+
+/* ------------------------------
+   TEST ENVIRONMENT WRAPPER
+------------------------------ */
+#cc-test {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ------------------------------
+   GLOBAL UTILITY CLASSES
+------------------------------ */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
+/* ============================================================
+   CROWN CREATIVES — MAGICAL FROSTED GLASS CARDS v2.0
+   ============================================================ */
+
+.magic-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 0;
+  flex-wrap: wrap;
+}
+
+.magic-card {
+  width: 300px;
+  padding: 28px 32px;
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.08);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  text-align: center;
+}
+
+.magic-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    0 0 18px var(--accent-glow, #fff);
+}
+
+.magic-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: var(--text-primary, #fff);
+  text-shadow: 0 0 8px var(--accent-glow, #fff);
+}
+
+.magic-card p {
+  font-size: 1rem;
+  opacity: 0.85;
+  line-height: 1.5;
+  color: var(--text-secondary, #eaeaea);
+}

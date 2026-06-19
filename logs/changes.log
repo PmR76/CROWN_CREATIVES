@@ -1,2 +1,5 @@
 {"at":"2026-06-19T17:34:57.469Z","type":"filetree","data":{"folders":["assets","master","pages","scripts","test"]}}
 {"at":"2026-06-19T17:54:18.795Z","type":"filetree","data":{"folders":["assets","master","pages","scripts","test"]}}
+{"at":"2026-06-19T18:19:52.210Z","type":"redundancy-check","data":{"redundant":[".git",".github",".vscode","node_modules","reports","tools"]}}
+{"at":"2026-06-19T18:20:05.769Z","type":"backup","data":{"label":"manual","backupRoot":"C:\\DEV\\CROWN_CREATIVES\\backups\\2026-06-19T18-20-05-219Z-manual"}}
+{"at":"2026-06-19T18:20:15.070Z","type":"sitemap","data":{"pages":["pages/home.html"],"scripts":["scripts/build-all-manifests.js","scripts/build-gallery-manifest.js","scripts/build-manifest.js","scripts/build-sound-manifest.js"],"assets":["assets/backgrounds","assets/config","assets/css","assets/icons","assets/images","assets/js","assets/modules.disabled","assets/podcasts","assets/projects.disabled","assets/sounds","assets/videos"]}}

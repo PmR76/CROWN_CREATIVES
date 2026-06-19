@@ -1,51 +1,41 @@
-/* ============================================================
-   EVOLVE OS — MAGICAL TICKER JS v3.1
-   Draggable + persistent position
-   ============================================================ */
+let adminMode = false;
+const ticker = document.getElementById("ticker-text");
+const container = document.getElementById("ticker-container");
 
-window.initEvolveTicker = () => {
-  const ticker = document.getElementById("evolveTicker");
-  if (!ticker) return;
+// Toggle admin mode with Shift + A
+document.addEventListener("keydown", (e) => {
+  if (e.shiftKey && e.key.toLowerCase() === "a") {
+    adminMode = !adminMode;
+    document.body.classList.toggle("admin-active", adminMode);
 
-  // Restore saved position
-  const savedX = localStorage.getItem("tickerX");
-  const savedY = localStorage.getItem("tickerY");
-  if (savedX && savedY) {
-    ticker.style.left = savedX + "px";
-    ticker.style.top = savedY + "px";
-    ticker.style.transform = "translate(0,0)";
-    ticker.style.position = "fixed";
+    if (adminMode) {
+      ticker.contentEditable = "true";
+      ticker.classList.add("glow");
+    } else {
+      ticker.contentEditable = "false";
+      ticker.classList.remove("glow");
+    }
   }
+});
 
-  let isDragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
+// Dragging
+let offsetX = 0, offsetY = 0, dragging = false;
 
-  ticker.addEventListener("mousedown", (e) => {
-    isDragging = true;
-    ticker.classList.add("is-dragging");
+container.addEventListener("mousedown", (e) => {
+  if (!adminMode) return;
+  dragging = true;
+  offsetX = e.clientX - container.offsetLeft;
+  offsetY = e.clientY - container.offsetTop;
+  container.style.cursor = "grabbing";
+});
 
-    offsetX = e.clientX - ticker.offsetLeft;
-    offsetY = e.clientY - ticker.offsetTop;
-  });
+document.addEventListener("mousemove", (e) => {
+  if (!dragging) return;
+  container.style.left = `${e.clientX - offsetX}px`;
+  container.style.top = `${e.clientY - offsetY}px`;
+});
 
-  window.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
-
-    ticker.style.left = (e.clientX - offsetX) + "px";
-    ticker.style.top = (e.clientY - offsetY) + "px";
-    ticker.style.transform = "translate(0,0)";
-    ticker.style.position = "fixed";
-  });
-
-  window.addEventListener("mouseup", () => {
-    if (!isDragging) return;
-
-    isDragging = false;
-    ticker.classList.remove("is-dragging");
-
-    // Save position
-    localStorage.setItem("tickerX", ticker.offsetLeft);
-    localStorage.setItem("tickerY", ticker.offsetTop);
-  });
-};
+document.addEventListener("mouseup", () => {
+  dragging = false;
+  container.style.cursor = "grab";
+});
