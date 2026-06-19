@@ -1,15 +1,21 @@
 {
-  "timestamp": "2026-06-12T13:56:09.881Z",
+  "timestamp": "2026-06-19T18:01:04.958Z",
   "htmlFilesScanned": 9,
   "cssFilesScanned": 4,
   "jsFilesScanned": 4,
   "heroStatus": {
     "hasHeroSection": false,
     "hasHeroFlex": false,
-    "hasHeroCrown": false,
-    "hasGalleryLane": false
+    "hasHeroCrown": true,
+    "hasGalleryLane": true
   },
   "issues": [
+    {
+      "level": "CRITICAL",
+      "type": "script-missing",
+      "file": "index.html",
+      "message": "Missing one or more core scripts (master.js, sound-engine.js, theme.js)."
+    },
     {
       "level": "HIGH",
       "type": "hero-incomplete",
@@ -26,11 +32,29 @@
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": ".cc-header-inner",
+      "selector": ".hero-gallery",
       "files": [
-        "assets\\css\\header.css",
-        "master\\css\\master.css",
-        "master\\css\\master.css",
+        "assets\\css\\global.css",
+        "assets\\css\\global.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".gallery-lane",
+      "files": [
+        "assets\\css\\global.css",
+        "assets\\css\\global.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": "@media (max-width: 900px)",
+      "files": [
+        "assets\\css\\global.css",
         "master\\css\\master.css"
       ],
       "message": "Duplicate CSS selector defined in multiple files."
@@ -38,18 +62,28 @@
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": ".cc-logo",
+      "selector": ".cc-toggle",
       "files": [
         "assets\\css\\header.css",
-        "assets\\css\\header.css",
-        "master\\css\\master.css"
+        "assets\\css\\sound-engine.css"
       ],
       "message": "Duplicate CSS selector defined in multiple files."
     },
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": ".cc-site-title",
+      "selector": ".cc-toggle img",
+      "files": [
+        "assets\\css\\header.css",
+        "assets\\css\\header.css",
+        "assets\\css\\sound-engine.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-header-crown",
       "files": [
         "assets\\css\\header.css",
         "assets\\css\\header.css"
@@ -59,7 +93,7 @@
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": ".cc-tagline",
+      "selector": ".cc-header-title",
       "files": [
         "assets\\css\\header.css",
         "assets\\css\\header.css"
@@ -69,43 +103,7 @@
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": ".cc-nav",
-      "files": [
-        "assets\\css\\header.css",
-        "assets\\css\\header.css",
-        "master\\css\\master.css",
-        "master\\css\\master.css",
-        "master\\css\\master.css"
-      ],
-      "message": "Duplicate CSS selector defined in multiple files."
-    },
-    {
-      "level": "MEDIUM",
-      "type": "css-duplicate-selector",
-      "selector": ".cc-nav a",
-      "files": [
-        "assets\\css\\header.css",
-        "assets\\css\\header.css",
-        "master\\css\\master.css",
-        "master\\css\\master.css",
-        "master\\css\\master.css"
-      ],
-      "message": "Duplicate CSS selector defined in multiple files."
-    },
-    {
-      "level": "MEDIUM",
-      "type": "css-duplicate-selector",
-      "selector": ".cc-nav a:hover",
-      "files": [
-        "assets\\css\\header.css",
-        "master\\css\\master.css"
-      ],
-      "message": "Duplicate CSS selector defined in multiple files."
-    },
-    {
-      "level": "MEDIUM",
-      "type": "css-duplicate-selector",
-      "selector": "#soundToggle",
+      "selector": ".cc-header-tagline",
       "files": [
         "assets\\css\\header.css",
         "assets\\css\\header.css"
@@ -115,21 +113,10 @@
     {
       "level": "MEDIUM",
       "type": "css-duplicate-selector",
-      "selector": "#themeToggle",
+      "selector": ".cc-header-nav",
       "files": [
         "assets\\css\\header.css",
         "assets\\css\\header.css"
-      ],
-      "message": "Duplicate CSS selector defined in multiple files."
-    },
-    {
-      "level": "MEDIUM",
-      "type": "css-duplicate-selector",
-      "selector": ".cc-header-icon",
-      "files": [
-        "assets\\css\\header.css",
-        "assets\\css\\header.css",
-        "master\\css\\master.css"
       ],
       "message": "Duplicate CSS selector defined in multiple files."
     },
@@ -149,6 +136,7 @@
       "selector": ".night-nebula",
       "files": [
         "master\\css\\master.css",
+        "master\\css\\master.css",
         "master\\css\\master.css"
       ],
       "message": "Duplicate CSS selector defined in multiple files."
@@ -158,6 +146,39 @@
       "type": "css-duplicate-selector",
       "selector": "#cc-header",
       "files": [
+        "master\\css\\master.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-header-inner",
+      "files": [
+        "master\\css\\master.css",
+        "master\\css\\master.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-nav",
+      "files": [
+        "master\\css\\master.css",
+        "master\\css\\master.css",
+        "master\\css\\master.css"
+      ],
+      "message": "Duplicate CSS selector defined in multiple files."
+    },
+    {
+      "level": "MEDIUM",
+      "type": "css-duplicate-selector",
+      "selector": ".cc-nav a",
+      "files": [
+        "master\\css\\master.css",
         "master\\css\\master.css",
         "master\\css\\master.css"
       ],
@@ -222,12 +243,6 @@
     {
       "level": "LOW",
       "type": "html-img-no-alt",
-      "file": "gallery.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
       "file": "videos.html",
       "message": "Image tag missing alt attribute."
     },
@@ -265,42 +280,6 @@
       "level": "LOW",
       "type": "html-img-no-alt",
       "file": "videos.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
-      "message": "Image tag missing alt attribute."
-    },
-    {
-      "level": "LOW",
-      "type": "html-img-no-alt",
-      "file": "podcasts.html",
       "message": "Image tag missing alt attribute."
     },
     {

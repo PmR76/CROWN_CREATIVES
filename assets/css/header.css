@@ -142,3 +142,25 @@
     gap: 18px;
   }
 }
+
+
+.cc-title-block {
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+#cc-header-left,
+#cc-header-right {
+  position: absolute;
+  top: 18px;
+  z-index: 999;
+}
+
+#cc-header-left {
+  left: 25px;
+}
+
+#cc-header-right {
+  right: 25px;
+}
