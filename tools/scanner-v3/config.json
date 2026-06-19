@@ -1,11 +1,6 @@
 {
-  "projectRoot": "C:/Users/royal/OneDrive/Dremel_Print/01_Website/CROWN_CREATIVES",
+  "projectRoot": "C:/DEV/CROWN_CREATIVES",
   "paths": [
-    "./"
-  ],
-  "ignoreDirs": [
-    "node_modules",
-    ".git",
-    "tools/scanner-v3/reports"
+    "C:/DEV/CROWN_CREATIVES"
   ]
 }
