@@ -8,7 +8,7 @@ const line1 = document.getElementById("ticker-text-1") || document.getElementByI
 const line2 = document.getElementById("ticker-text-2");
 
 /* STATE */
-let adminMode = false;
+let tickerAdmin = false;   // <— FIXED: unique admin flag
 let dragging = false;
 let offsetX = 0;
 let offsetY = 0;
@@ -30,10 +30,10 @@ if (savedTicker) {
    ================================ */
 document.addEventListener("keydown", (e) => {
   if (e.shiftKey && e.key.toLowerCase() === "a") {
-    adminMode = !adminMode;
-    document.body.classList.toggle("admin-active", adminMode);
+    tickerAdmin = !tickerAdmin;
+    document.body.classList.toggle("admin-active", tickerAdmin);
 
-    if (adminMode) {
+    if (tickerAdmin) {
       line1.contentEditable = "true";
       line1.classList.add("glow");
       if (line2) line2.classList.add("glow");
@@ -50,7 +50,7 @@ document.addEventListener("keydown", (e) => {
    SAVE TICKER TEXT — SHIFT + S
    ================================ */
 document.addEventListener("keydown", (e) => {
-  if (adminMode && e.shiftKey && e.key.toLowerCase() === "s") {
+  if (tickerAdmin && e.shiftKey && e.key.toLowerCase() === "s") {
     localStorage.setItem("cc-ticker-text", line1.innerText);
 
     line1.classList.add("glow");
@@ -68,7 +68,7 @@ document.addEventListener("keydown", (e) => {
    SYNC TEXT (FOR DUAL-LINE MODE)
    ================================ */
 document.addEventListener("input", () => {
-  if (adminMode && line2) {
+  if (tickerAdmin && line2) {
     line2.innerText = line1.innerText;
   }
 });
@@ -78,7 +78,7 @@ document.addEventListener("input", () => {
    DRAGGING (ADMIN MODE ONLY)
    ================================ */
 container.addEventListener("mousedown", (e) => {
-  if (!adminMode) return;
+  if (!tickerAdmin) return;
 
   dragging = true;
   offsetX = e.clientX - container.offsetLeft;
@@ -108,7 +108,7 @@ function updateSpeed() {
 }
 
 document.addEventListener("wheel", (e) => {
-  if (!adminMode) return;
+  if (!tickerAdmin) return;
 
   if (e.deltaY < 0) speed = Math.max(6, speed - 1);   // faster
   if (e.deltaY > 0) speed = Math.min(40, speed + 1);  // slower
