@@ -1,0 +1,1471 @@
+{
+  "assets": [
+    {
+      "type": "folder",
+      "name": "backgrounds"
+    },
+    {
+      "type": "folder",
+      "name": "config"
+    },
+    {
+      "type": "folder",
+      "name": "css"
+    },
+    {
+      "type": "folder",
+      "name": "icons"
+    },
+    {
+      "type": "folder",
+      "name": "images"
+    },
+    {
+      "type": "folder",
+      "name": "js"
+    },
+    {
+      "type": "folder",
+      "name": "modules.disabled"
+    },
+    {
+      "type": "folder",
+      "name": "podcasts"
+    },
+    {
+      "type": "folder",
+      "name": "projects.disabled"
+    },
+    {
+      "type": "folder",
+      "name": "sounds"
+    },
+    {
+      "type": "folder",
+      "name": "videos"
+    }
+  ],
+  "assets\\backgrounds": [
+    {
+      "type": "file",
+      "name": "themes.json",
+      "status": "AMBER"
+    }
+  ],
+  "assets\\config": [],
+  "assets\\css": [
+    {
+      "type": "file",
+      "name": "cinematic.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "core-shared.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "core-shared.css.gr3.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "footer.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "footer.css.gr3.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "gallery.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "gallery.css.gr3.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "global.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "global.css.gr3.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "header.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "header.css.gr3.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "home.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "projects.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sound-engine.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sound-engine.css.gr3.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "ticker.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "videos.css",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\icons": [
+    {
+      "type": "folder",
+      "name": "CC_V2"
+    },
+    {
+      "type": "file",
+      "name": "construct-neon.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "copilot-magic.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "devsuite-green.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "devsuite-neon.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "diagnostic-green.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "email-magic.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "evolve-blue.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "evolve-blue.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "evolve-glitch_v2.mp4",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "evolve-glitch_v3.mp4",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "evolve-glitch.mp4",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "evolve-green.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "evolve-logo.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "evolve-logo.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "evolve-neon.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "evolve-neon.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "evolve-neon.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "evolve4.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "facebook-magic.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "favicon.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "favicon.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "github-recovery-codes.txt",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "gold-crown.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "handshake-green.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "handshake-neon.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "head-crown.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "head-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "folder",
+      "name": "images"
+    },
+    {
+      "type": "file",
+      "name": "instagram-magic.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "med-neon.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "med-neon.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "med-neon2.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "mother.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "mother.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "music.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "music3.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "nav-green.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "neon-crown.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "neon-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "folder",
+      "name": "reels"
+    },
+    {
+      "type": "file",
+      "name": "sentenil-green.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sentinel-neon.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sound-magic.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sound-reactive.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sun-moon-animated.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sun-moon.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "tracecore.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "tracecore.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "tree-green.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "tree-green.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "Untitled - 27 May 2026 at 12.22.14-21 (1).png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "up-arrow-magic.svg",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\icons\\CC_V2": [
+    {
+      "type": "file",
+      "name": "day-crown - Copy (5).svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown-v2.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown.png.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "head-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "folder",
+      "name": "New_Look"
+    },
+    {
+      "type": "file",
+      "name": "night-crown.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-crownV6.svg",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\icons\\CC_V2\\New_Look": [
+    {
+      "type": "file",
+      "name": "Crown creatives day_night_day.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "Crown creatives day_night_night.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "Crown Creatives Header.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown-1400 - Copy.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown-1400.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "folder",
+      "name": "Final_1400px"
+    },
+    {
+      "type": "folder",
+      "name": "Final_2000px"
+    },
+    {
+      "type": "file",
+      "name": "night-crown-1400.png",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\icons\\CC_V2\\New_Look\\Final_1400px": [
+    {
+      "type": "file",
+      "name": "day-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-crown.svg",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\icons\\CC_V2\\New_Look\\Final_2000px": [
+    {
+      "type": "file",
+      "name": "day-background.png.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown - Copy.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown_V2.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown-v3.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown-V4.txt",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "day-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown.zip",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "day-crown3.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-crown5.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "folder",
+      "name": "favicon_io (1)"
+    },
+    {
+      "type": "file",
+      "name": "favicon_io (1).zip",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "New logo web-2 (1).png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-crown - Copy.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-crown_V2.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-crown-v3.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-crown3.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-crown5.svg",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\icons\\CC_V2\\New_Look\\Final_2000px\\favicon_io (1)": [
+    {
+      "type": "file",
+      "name": "android-chrome-192x192.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "android-chrome-512x512.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "apple-touch-icon.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "favicon-16x16.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "favicon-32x32.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "favicon.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "site.webmanifest",
+      "status": "AMBER"
+    }
+  ],
+  "assets\\icons\\images": [
+    {
+      "type": "file",
+      "name": "image1.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "M-FIX.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "M-FIX.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "M-SCAN.ico",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "M-SCAN.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sun-moon.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "Untitled - 27 May 2026 at 12.22.14-24.png",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\icons\\reels": [
+    {
+      "type": "file",
+      "name": "facebook.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "instagram.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "youtube.png",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\images": [
+    {
+      "type": "file",
+      "name": "fallback.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "folder",
+      "name": "gallery"
+    }
+  ],
+  "assets\\images\\gallery": [
+    {
+      "type": "file",
+      "name": "butterfly.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "butterfly2.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "crow.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "day-background.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "dice-tower.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "fallback.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "fly.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "framed-but.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "gallery-manifest.json",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "gold-crown.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "House-V2.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "Jane_Austine.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "just-crown.svg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "Mushroom.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "my-story-photoV3.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "neon-crown.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "night-background.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "painting2.jpg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sanding.jpg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sculpture.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "skull.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "stars-darkness.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sun-moon.png",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "tree.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "wave.jpeg",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "white-butterfly.jpeg",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\js": [
+    {
+      "type": "file",
+      "name": "backtotop.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "gallery-loader.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "gallery.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "hero-gallery.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "home.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "projects.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sound-engine.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "theme.js",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\modules.disabled": [
+    {
+      "type": "folder",
+      "name": "hero-crown"
+    },
+    {
+      "type": "folder",
+      "name": "hero-gallery"
+    }
+  ],
+  "assets\\modules.disabled\\hero-crown": [
+    {
+      "type": "file",
+      "name": "hero-crown.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "hero-crown.js",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\modules.disabled\\hero-gallery": [
+    {
+      "type": "file",
+      "name": "hero-gallery.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "hero-gallery.js",
+      "status": "GREEN"
+    }
+  ],
+  "assets\\podcasts": [],
+  "assets\\projects.disabled": [
+    {
+      "type": "folder",
+      "name": "project-template"
+    },
+    {
+      "type": "folder",
+      "name": "project1"
+    },
+    {
+      "type": "folder",
+      "name": "project2"
+    },
+    {
+      "type": "folder",
+      "name": "project3"
+    }
+  ],
+  "assets\\projects.disabled\\project-template": [
+    {
+      "type": "file",
+      "name": "config.json",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "read.md",
+      "status": "AMBER"
+    }
+  ],
+  "assets\\projects.disabled\\project1": [
+    {
+      "type": "file",
+      "name": "config.json",
+      "status": "AMBER"
+    }
+  ],
+  "assets\\projects.disabled\\project2": [
+    {
+      "type": "file",
+      "name": "config.json",
+      "status": "AMBER"
+    }
+  ],
+  "assets\\projects.disabled\\project3": [],
+  "assets\\sounds": [
+    {
+      "type": "file",
+      "name": "34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "alec_koff-carnaval-484622.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "bransboynd-retro-lounge-389644.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "denys_brodovskyi-sandbreaker-379630.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "energysound-powerful-percussion-513717.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "finley-chill-sunset-chill-nature-529994.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "kontraa-water-afro-pop-music-445661.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "loksii-no-copyright-music-211881.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "placidplace-relaxing-piano-with-soft-female-vocals-85658.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "ribhavagrawal-relaxing-music-with-nature-sounds-284494.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "rockot-experimental-cinematic-hip-hop-315904.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "sound-manifest.json",
+      "status": "AMBER"
+    }
+  ],
+  "assets\\videos": [
+    {
+      "type": "file",
+      "name": "evolve-glitch_v2.mp4",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "evolve-glitch_v3.mp4",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "evolve-glitch.mp4",
+      "status": "AMBER"
+    }
+  ],
+  "master": [
+    {
+      "type": "file",
+      "name": "background.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "folder",
+      "name": "css"
+    },
+    {
+      "type": "file",
+      "name": "example.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "footer.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "header.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "folder",
+      "name": "js"
+    },
+    {
+      "type": "file",
+      "name": "page-wrapper.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "readme.md",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "start-master.cmd",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "ticker.html",
+      "status": "GREEN"
+    }
+  ],
+  "master\\css": [
+    {
+      "type": "file",
+      "name": "master.css",
+      "status": "GREEN"
+    }
+  ],
+  "master\\js": [
+    {
+      "type": "file",
+      "name": "master.js",
+      "status": "GREEN"
+    }
+  ],
+  "pages": [
+    {
+      "type": "file",
+      "name": "home.html",
+      "status": "GREEN"
+    }
+  ],
+  "scripts": [
+    {
+      "type": "file",
+      "name": "build-all-manifests.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "build-gallery-manifest.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "build-manifest.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "build-sound-manifest.js",
+      "status": "GREEN"
+    }
+  ],
+  "test": [
+    {
+      "type": "folder",
+      "name": "cards"
+    },
+    {
+      "type": "file",
+      "name": "filetree.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "filetree.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "filetree.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "folder",
+      "name": "footer"
+    },
+    {
+      "type": "folder",
+      "name": "gallery"
+    },
+    {
+      "type": "folder",
+      "name": "header"
+    },
+    {
+      "type": "folder",
+      "name": "hero-crown"
+    },
+    {
+      "type": "folder",
+      "name": "hero-window"
+    },
+    {
+      "type": "file",
+      "name": "index.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "index.css.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "index.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "folder",
+      "name": "project"
+    },
+    {
+      "type": "folder",
+      "name": "read"
+    },
+    {
+      "type": "folder",
+      "name": "reel"
+    },
+    {
+      "type": "folder",
+      "name": "sound"
+    },
+    {
+      "type": "folder",
+      "name": "theme"
+    },
+    {
+      "type": "folder",
+      "name": "theme-panel"
+    },
+    {
+      "type": "folder",
+      "name": "ticker"
+    }
+  ],
+  "test\\cards": [
+    {
+      "type": "file",
+      "name": "cards.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "cards.css.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "cards.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "cards.js",
+      "status": "GREEN"
+    }
+  ],
+  "test\\footer": [
+    {
+      "type": "file",
+      "name": "footer.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "footer.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "footer.js",
+      "status": "GREEN"
+    }
+  ],
+  "test\\gallery": [
+    {
+      "type": "file",
+      "name": "gallery.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "gallery.js",
+      "status": "GREEN"
+    }
+  ],
+  "test\\header": [
+    {
+      "type": "file",
+      "name": "header.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "header.css.gr3.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "header.html",
+      "status": "GREEN"
+    }
+  ],
+  "test\\hero-crown": [
+    {
+      "type": "file",
+      "name": "hero-crown.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "hero-crown.js",
+      "status": "GREEN"
+    }
+  ],
+  "test\\hero-window": [
+    {
+      "type": "file",
+      "name": "hero-window.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "hero-window.css.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "hero-window.css.gr3.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "hero-window.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "hero-window.js",
+      "status": "GREEN"
+    }
+  ],
+  "test\\project": [],
+  "test\\read": [],
+  "test\\reel": [],
+  "test\\sound": [
+    {
+      "type": "file",
+      "name": "34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "alec_koff-carnaval-484622.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "bransboynd-retro-lounge-389644.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "denys_brodovskyi-sandbreaker-379630.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "energysound-powerful-percussion-513717.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "finley-chill-sunset-chill-nature-529994.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "kontraa-water-afro-pop-music-445661.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "rockot-experimental-cinematic-hip-hop-315904.mp3",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "sound.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "sound.css.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "sound.css.gr3.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "sound.js",
+      "status": "GREEN"
+    }
+  ],
+  "test\\theme": [
+    {
+      "type": "file",
+      "name": "theme-admin.js",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "theme.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "theme.js",
+      "status": "GREEN"
+    }
+  ],
+  "test\\theme-panel": [
+    {
+      "type": "file",
+      "name": "theme-panel.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "theme-panel.css.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "theme-panel.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "theme-panel.js",
+      "status": "GREEN"
+    }
+  ],
+  "test\\ticker": [
+    {
+      "type": "file",
+      "name": "ticker.css",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "ticker.css.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "ticker.css.gr3.bak",
+      "status": "AMBER"
+    },
+    {
+      "type": "file",
+      "name": "ticker.html",
+      "status": "GREEN"
+    },
+    {
+      "type": "file",
+      "name": "ticker.js",
+      "status": "GREEN"
+    }
+  ]
+}
