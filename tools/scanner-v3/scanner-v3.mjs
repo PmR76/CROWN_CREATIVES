@@ -346,4 +346,6 @@ async function runScanner() {
 /* ------------------------------------------------------------
    10. START
 ------------------------------------------------------------ */
-runScanner();
+export async function runScan() {
+  return await runScanner();
+}
