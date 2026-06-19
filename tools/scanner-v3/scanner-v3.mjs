@@ -33,13 +33,12 @@ const CONFIG_IGNORE_DIRS = Array.isArray(CONFIG.ignoreDirs)
   ? CONFIG.ignoreDirs
   : [];
 
-// Determine scan root safely
-const SCAN_ROOT =
-  (Array.isArray(CONFIG.paths) && CONFIG.paths[0]) ||
-  CONFIG.projectRoot ||
-  process.cwd();
+// Determine scan roots safely (MULTI-ROOT SUPPORT)
+const SCAN_ROOTS = Array.isArray(CONFIG.paths) && CONFIG.paths.length > 0
+  ? CONFIG.paths
+  : [CONFIG.projectRoot];
 
-console.log("🔍 SCANNING:", SCAN_ROOT);
+console.log("🔍 SCANNING:", SCAN_ROOTS.join(", "));
 
 /* ------------------------------------------------------------
    2. DIRECTORY WALKER (FINAL VERSION)
@@ -288,9 +287,13 @@ Actions: ${m.actions.join(", ") || "none"}
    9. MAIN SCAN PROCESS
 ------------------------------------------------------------ */
 async function runScanner() {
-  const root = SCAN_ROOT;
 
-  const allFiles = walk(root);
+  // ⭐ MULTI-ROOT SCAN ⭐
+  let allFiles = [];
+  for (const root of SCAN_ROOTS) {
+    allFiles = allFiles.concat(walk(root));
+  }
+
   const results = [];
 
   for (const file of allFiles) {
