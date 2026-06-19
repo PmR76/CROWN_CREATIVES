@@ -1,30 +1,85 @@
-const ticker = document.getElementById("ticker-text");
-const container = document.getElementById("ticker-container");
+/* ================================
+   TICKER MODULE — FINAL VERSION
+   ================================ */
 
+/* ELEMENTS */
+const container = document.getElementById("ticker-container");
+const line1 = document.getElementById("ticker-text-1") || document.getElementById("ticker-text");
+const line2 = document.getElementById("ticker-text-2");
+
+/* STATE */
 let adminMode = false;
 let dragging = false;
 let offsetX = 0;
 let offsetY = 0;
+let speed = 18; // default animation duration in seconds
 
-/* TOGGLE ADMIN MODE — SHIFT + A */
+
+/* ================================
+   LOAD SAVED TICKER TEXT
+   ================================ */
+const savedTicker = localStorage.getItem("cc-ticker-text");
+if (savedTicker) {
+  line1.innerText = savedTicker;
+  if (line2) line2.innerText = savedTicker;
+}
+
+
+/* ================================
+   ADMIN MODE TOGGLE — SHIFT + A
+   ================================ */
 document.addEventListener("keydown", (e) => {
   if (e.shiftKey && e.key.toLowerCase() === "a") {
     adminMode = !adminMode;
     document.body.classList.toggle("admin-active", adminMode);
 
     if (adminMode) {
-      ticker.contentEditable = "true";
-      ticker.classList.add("glow");
+      line1.contentEditable = "true";
+      line1.classList.add("glow");
+      if (line2) line2.classList.add("glow");
     } else {
-      ticker.contentEditable = "false";
-      ticker.classList.remove("glow");
+      line1.contentEditable = "false";
+      line1.classList.remove("glow");
+      if (line2) line2.classList.remove("glow");
     }
   }
 });
 
-/* DRAGGING */
+
+/* ================================
+   SAVE TICKER TEXT — SHIFT + S
+   ================================ */
+document.addEventListener("keydown", (e) => {
+  if (adminMode && e.shiftKey && e.key.toLowerCase() === "s") {
+    localStorage.setItem("cc-ticker-text", line1.innerText);
+
+    line1.classList.add("glow");
+    if (line2) line2.classList.add("glow");
+
+    setTimeout(() => {
+      line1.classList.remove("glow");
+      if (line2) line2.classList.remove("glow");
+    }, 600);
+  }
+});
+
+
+/* ================================
+   SYNC TEXT (FOR DUAL-LINE MODE)
+   ================================ */
+document.addEventListener("input", () => {
+  if (adminMode && line2) {
+    line2.innerText = line1.innerText;
+  }
+});
+
+
+/* ================================
+   DRAGGING (ADMIN MODE ONLY)
+   ================================ */
 container.addEventListener("mousedown", (e) => {
   if (!adminMode) return;
+
   dragging = true;
   offsetX = e.clientX - container.offsetLeft;
   offsetY = e.clientY - container.offsetTop;
@@ -33,6 +88,7 @@ container.addEventListener("mousedown", (e) => {
 
 document.addEventListener("mousemove", (e) => {
   if (!dragging) return;
+
   container.style.left = `${e.clientX - offsetX}px`;
   container.style.top = `${e.clientY - offsetY}px`;
 });
@@ -41,27 +97,16 @@ document.addEventListener("mouseup", () => {
   dragging = false;
   container.style.cursor = "grab";
 });
-/* LOAD SAVED TICKER TEXT */
-const savedTicker = localStorage.getItem("cc-ticker-text");
-if (savedTicker) {
-  ticker.innerText = savedTicker;
-}
 
-/* SAVE TICKER TEXT — SHIFT + S */
-document.addEventListener("keydown", (e) => {
-  if (adminMode && e.shiftKey && e.key.toLowerCase() === "s") {
-    localStorage.setItem("cc-ticker-text", ticker.innerText);
-    ticker.classList.add("glow");
-    setTimeout(() => ticker.classList.remove("glow"), 600);
-  }
-});
-let speed = 18; // default seconds for full scroll
 
+/* ================================
+   SPEED CONTROL — SHIFT + SCROLL
+   ================================ */
 function updateSpeed() {
-  ticker.style.animationDuration = `${speed}s`;
+  line1.style.animationDuration = `${speed}s`;
+  if (line2) line2.style.animationDuration = `${speed}s`;
 }
 
-/* SPEED CONTROL — SHIFT + SCROLL */
 document.addEventListener("wheel", (e) => {
   if (!adminMode) return;
 
