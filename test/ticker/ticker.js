@@ -55,3 +55,18 @@ document.addEventListener("keydown", (e) => {
     setTimeout(() => ticker.classList.remove("glow"), 600);
   }
 });
+let speed = 18; // default seconds for full scroll
+
+function updateSpeed() {
+  ticker.style.animationDuration = `${speed}s`;
+}
+
+/* SPEED CONTROL — SHIFT + SCROLL */
+document.addEventListener("wheel", (e) => {
+  if (!adminMode) return;
+
+  if (e.deltaY < 0) speed = Math.max(6, speed - 1);   // faster
+  if (e.deltaY > 0) speed = Math.min(40, speed + 1);  // slower
+
+  updateSpeed();
+});
