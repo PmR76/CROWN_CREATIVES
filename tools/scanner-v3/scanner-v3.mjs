@@ -152,22 +152,8 @@ function detectIssues(filePath, content) {
 /* ------------------------------------------------------------
    5. AUTO-MIGRATE ENGINE (GR1 — ONLY /test)
 ------------------------------------------------------------ */
-function migrateIfNeeded(filePath, content, meta) {
-  if (meta.scope !== "test") return null;
-  if (meta.kind !== "legacy" && meta.kind !== "hybrid") return null;
-
-  const relative = meta.rel.replace("/test/", "");
-  const target = path.join(CONFIG.projectRoot, "test/migrated", relative);
-
-  fs.mkdirSync(path.dirname(target), { recursive: true });
-
-  const bak = filePath + ".bak";
-  if (!fs.existsSync(bak)) fs.copyFileSync(filePath, bak);
-
-  const rewritten = rewriteToGR1(filePath, content, meta);
-  fs.writeFileSync(target, rewritten, "utf8");
-
-  return target;
+function migrateIfNeeded() {
+  return null;
 }
 
 /* ------------------------------------------------------------
