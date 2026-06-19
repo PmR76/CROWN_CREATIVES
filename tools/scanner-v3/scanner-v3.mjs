@@ -16,6 +16,22 @@ const CONFIG = JSON.parse(
   fs.readFileSync(new URL("./config.json", import.meta.url), "utf8")
 );
 
+// Directories we NEVER scan
+const IGNORE_DIRS = new Set([
+  "node_modules",
+  ".git",
+  ".github",
+  "scanner-v3",
+  "dashboard-control",
+  "backups",
+  "reports"
+]);
+
+// Optional ignore dirs from config.json
+const CONFIG_IGNORE_DIRS = Array.isArray(CONFIG.ignoreDirs)
+  ? CONFIG.ignoreDirs
+  : [];
+
 // Determine scan root safely
 const SCAN_ROOT =
   (Array.isArray(CONFIG.paths) && CONFIG.paths[0]) ||
@@ -24,73 +40,27 @@ const SCAN_ROOT =
 
 console.log("🔍 SCANNING:", SCAN_ROOT);
 
-// Optional: extra ignore dirs from config
-const CONFIG_IGNORE_DIRS = Array.isArray(CONFIG.ignoreDirs)
-  ? CONFIG.ignoreDirs
-  : [];
-
 /* ------------------------------------------------------------
-   LEGACY PATTERN HELPERS
+   2. DIRECTORY WALKER (FINAL VERSION)
 ------------------------------------------------------------ */
-function looksLegacyCss(content) {
-  if (/z-index:\s*9{3,6}/i.test(content)) return true;
-  if (/position:\s*fixed/i.test(content) && /top:\s*0/i.test(content) && /left:\s*0/i.test(content)) return true;
-  if (/overflow:\s*hidden/i.test(content) && /(html|body)/i.test(content)) return true;
-  if (/!important/.test(content) && /body|html/.test(content)) return true;
-  return false;
-}
-
-function looksGr1Css(content) {
-  if (/cc-footer|cc-header|cc-ticker|cc-hero/i.test(content)) return true;
-  if (/back-to-top/i.test(content)) return true;
-  if (/--cc-/i.test(content)) return true;
-  return false;
-}
-
-function looksLegacyJs(content) {
-  if (/document\.body\.style\.overflow\s*=\s*['"]hidden['"]/i.test(content)) return true;
-  if (/document\.documentElement\.style\.overflow\s*=\s*['"]hidden['"]/i.test(content)) return true;
-  if (/addEventListener\(['"]load['"],\s*function/i.test(content)) return true;
-  if (/window\.onload\s*=/i.test(content)) return true;
-  return false;
-}
-
-function looksGr1Js(content) {
-  if (/initThemeEngine|initSoundEngine|initBackToTop|initHeroCrown|initThemePanel/i.test(content)) return true;
-  if (/admin-mode/.test(content)) return true;
-  if (/localStorage\.setItem\("footer-pos-/i.test(content)) return true;
-  return false;
-}
-
-/* ------------------------------------------------------------
-   2. UTILITY — WALK DIRECTORY
------------------------------------------------------------- */
-const DEFAULT_IGNORE_DIRS = [
-  ".git",
-  "node_modules",
-  "reports",
-  ".vscode",
-];
-
 function shouldIgnoreDir(fullPath) {
   const base = path.basename(fullPath);
-  if (DEFAULT_IGNORE_DIRS.includes(base)) return true;
+  if (IGNORE_DIRS.has(base)) return true;
   if (CONFIG_IGNORE_DIRS.includes(base)) return true;
   return false;
 }
 
 function walk(dir, fileList = []) {
-  const files = fs.readdirSync(dir);
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
 
-  for (const file of files) {
-    const fullPath = path.join(dir, file);
-    const stat = fs.statSync(fullPath);
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
 
-    if (stat.isDirectory()) {
-      if (shouldIgnoreDir(fullPath)) continue;
-      walk(fullPath, fileList);
+    if (entry.isDirectory()) {
+      if (shouldIgnoreDir(full)) continue;
+      walk(full, fileList);
     } else {
-      fileList.push(fullPath);
+      fileList.push(full);
     }
   }
 
@@ -141,7 +111,8 @@ function detectIssues(filePath, content) {
 
   if (filePath.endsWith(".css")) {
     if (/z-index:\s*(\d{4,})/i.test(content)) issues.push("z-index-insane");
-    if (/(html|body)\s*\{[^}]*overflow:\s*hidden[^}]*\}/gi.test(content)) issues.push("overflow-hidden-html-body");
+    if (/(html|body)\s*\{[^}]*overflow:\s*hidden[^}]*\}/gi.test(content))
+      issues.push("overflow-hidden-html-body");
 
     if (/position:\s*fixed/i.test(content) &&
         /top:\s*0/i.test(content) &&
@@ -151,14 +122,19 @@ function detectIssues(filePath, content) {
       issues.push("full-screen-fixed-block");
     }
 
-    if (/!important/.test(content) && /(html|body)/i.test(content)) issues.push("important-on-root");
+    if (/!important/.test(content) && /(html|body)/i.test(content))
+      issues.push("important-on-root");
   }
 
   if (filePath.endsWith(".js")) {
-    if (/document\.body\.style\.overflow\s*=\s*['"]hidden['"]/i.test(content)) issues.push("js-body-overflow-hidden");
-    if (/document\.documentElement\.style\.overflow\s*=\s*['"]hidden['"]/i.test(content)) issues.push("js-html-overflow-hidden");
-    if (/querySelector\(['"]body['"]\)/i.test(content) && /\.style\./i.test(content)) issues.push("js-body-style-mutation");
-    if (/window\.onload\s*=/i.test(content)) issues.push("legacy-window-onload");
+    if (/document\.body\.style\.overflow\s*=\s*['"]hidden['"]/i.test(content))
+      issues.push("js-body-overflow-hidden");
+    if (/document\.documentElement\.style\.overflow\s*=\s*['"]hidden['"]/i.test(content))
+      issues.push("js-html-overflow-hidden");
+    if (/querySelector\(['"]body['"]\)/i.test(content) && /\.style\./i.test(content))
+      issues.push("js-body-style-mutation");
+    if (/window\.onload\s*=/i.test(content))
+      issues.push("legacy-window-onload");
   }
 
   if (filePath.endsWith(".html") || filePath.endsWith(".htm")) {
@@ -341,10 +317,12 @@ async function runScanner() {
   writeReports(report);
 
   console.log("🎉 SCAN COMPLETE");
+
+  return { message: "Scan complete", report };
 }
 
 /* ------------------------------------------------------------
-   10. START
+   10. EXPORT FOR SERVER
 ------------------------------------------------------------ */
 export async function runScan() {
   return await runScanner();
