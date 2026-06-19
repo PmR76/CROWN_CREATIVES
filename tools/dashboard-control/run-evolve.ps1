@@ -18,5 +18,5 @@ Start-Process "http://localhost:7777"
 
 Write-Host ""
 Write-Host "EVOLVE OS is online."
-Write-Host "Double‑tap anywhere to activate the OS window."
+Write-Host "Double-tap anywhere to activate the OS window."
 Write-Host ""
