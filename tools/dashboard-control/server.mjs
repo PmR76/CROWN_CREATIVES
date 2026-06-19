@@ -172,10 +172,20 @@ const server = http.createServer(async (req, res) => {
 
     // POST /run-scan
     if (pathname === "/run-scan" && req.method === "POST") {
-      const result = await runScan();
-      const message = result?.message || "Scan complete.";
-      res.writeHead(200, { "Content-Type": "application/json" });
-      return res.end(JSON.stringify({ message, result }));
+      try {
+        const result = await runScan();
+        const message = result?.message || "Scan complete.";
+        res.writeHead(200, { "Content-Type": "application/json" });
+        return res.end(JSON.stringify({ message, result }));
+      } catch (err) {
+        console.error("SCAN ERROR:", err);
+        res.writeHead(500, { "Content-Type": "application/json" });
+        return res.end(JSON.stringify({
+          error: true,
+          message: "Scanner crashed",
+          details: err.message
+        }));
+      }
     }
 
     // POST /run-auto-fix
