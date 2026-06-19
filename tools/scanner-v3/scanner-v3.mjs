@@ -24,7 +24,8 @@ const IGNORE_DIRS = new Set([
   "scanner-v3",
   "dashboard-control",
   "backups",
-  "reports"
+  "reports",
+  "tools"
 ]);
 
 // Optional ignore dirs from config.json
