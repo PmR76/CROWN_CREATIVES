@@ -1,7 +1,6 @@
 /* ============================================================
    CROWN CREATIVES — FOOTER ENGINE (GR1, UNIFIED ADMIN MODE)
-   Draggable icons, draggable panel, back-to-top engine,
-   persistent positions — all using CC.admin.active
+   Uses global CC.admin + CC.drag helpers
 ============================================================ */
 
 /* ------------------------------------------------------------
@@ -12,44 +11,9 @@ const icons = document.querySelectorAll(".footer-icon");
 icons.forEach(icon => {
   const id = icon.dataset.id;
 
-  // Restore saved position
-  const saved = localStorage.getItem("footer-pos-" + id);
-  if (saved) {
-    const pos = JSON.parse(saved);
-    icon.style.position = "absolute";
-    icon.style.left = pos.x + "px";
-    icon.style.top = pos.y + "px";
-  }
-
-  let offsetX = 0;
-  let offsetY = 0;
-
-  icon.addEventListener("mousedown", e => {
-    if (!CC.admin.active) return;
-
-    icon.style.position = "absolute";
-
-    offsetX = e.clientX - icon.offsetLeft;
-    offsetY = e.clientY - icon.offsetTop;
-
-    function move(e) {
-      icon.style.left = e.clientX - offsetX + "px";
-      icon.style.top = e.clientY - offsetY + "px";
-    }
-
-    function stop() {
-      document.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseup", stop);
-
-      // Save position
-      localStorage.setItem("footer-pos-" + id, JSON.stringify({
-        x: icon.offsetLeft,
-        y: icon.offsetTop
-      }));
-    }
-
-    document.addEventListener("mousemove", move);
-    document.addEventListener("mouseup", stop);
+  // Use global draggable helper with persistent storage
+  CC.drag.makeDraggable(icon, {
+    key: "footer-pos-" + id
   });
 });
 
@@ -60,29 +24,8 @@ icons.forEach(icon => {
 const footerGlass = document.querySelector(".footer-glass");
 
 if (footerGlass) {
-  let offsetX = 0;
-  let offsetY = 0;
-
-  footerGlass.addEventListener("mousedown", e => {
-    if (!CC.admin.active) return;
-
-    footerGlass.style.position = "absolute";
-
-    offsetX = e.clientX - footerGlass.offsetLeft;
-    offsetY = e.clientY - footerGlass.offsetTop;
-
-    function move(e) {
-      footerGlass.style.left = e.clientX - offsetX + "px";
-      footerGlass.style.top = e.clientY - offsetY + "px";
-    }
-
-    function stop() {
-      document.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseup", stop);
-    }
-
-    document.addEventListener("mousemove", move);
-    document.addEventListener("mouseup", stop);
+  CC.drag.makeDraggable(footerGlass, {
+    key: "footer-glass-pos"
   });
 }
 
