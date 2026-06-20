@@ -1,109 +1,56 @@
 /* ============================================================
-   CROWN CREATIVES — FOOTER ENGINE (GR1)
-   Draggable icons, draggable panel, admin mode toggle,
-   back-to-top engine, persistent positions.
+   CROWN CREATIVES — FOOTER ENGINE (Clean Build + Social Links)
+   - Back-to-top button
+   - Social icon click handlers
+   - No admin mode
+   - No dragging
+   - No CC.drag usage
 ============================================================ */
 
-/* ------------------------------------------------------------
-   1. ADMIN MODE TOGGLE (Shift + A)
------------------------------------------------------------- */
-let adminMode = false;
+(function () {
 
-document.addEventListener("keydown", e => {
-  if (e.key === "A" && e.shiftKey) {
-    adminMode = !adminMode;
-    document.body.classList.toggle("admin-mode", adminMode);
-  }
-});
-
-/* ------------------------------------------------------------
-   2. DRAGGABLE ICONS
------------------------------------------------------------- */
-const icons = document.querySelectorAll(".footer-icon");
-
-icons.forEach(icon => {
-  const id = icon.dataset.id;
-
-  // Restore saved position
-  const saved = localStorage.getItem("footer-pos-" + id);
-  if (saved) {
-    const pos = JSON.parse(saved);
-    icon.style.position = "absolute";
-    icon.style.left = pos.x + "px";
-    icon.style.top = pos.y + "px";
+  /* ------------------------------------------------------------
+     1. BACK TO TOP BUTTON
+  ------------------------------------------------------------ */
+  const backToTop = document.getElementById("back-to-top");
+  if (backToTop) {
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }
 
-  let offsetX = 0;
-  let offsetY = 0;
+  /* ------------------------------------------------------------
+     2. SOCIAL ICON CLICK HANDLERS
+  ------------------------------------------------------------ */
+  const icons = document.querySelectorAll(".footer-icon");
 
-  icon.addEventListener("mousedown", e => {
-    if (!adminMode) return;
+  icons.forEach(icon => {
+    const id = icon.dataset.id;
 
-    icon.style.position = "absolute";
+    icon.style.cursor = "pointer";
 
-    offsetX = e.clientX - icon.offsetLeft;
-    offsetY = e.clientY - icon.offsetTop;
+    icon.addEventListener("click", () => {
+      switch (id) {
+        case "facebook":
+          window.open("https://facebook.com/crowncreatives", "_blank");
+          break;
 
-    function move(e) {
-      icon.style.left = e.clientX - offsetX + "px";
-      icon.style.top = e.clientY - offsetY + "px";
-    }
+        case "instagram":
+          window.open("https://instagram.com/crowncreatives", "_blank");
+          break;
 
-    function stop() {
-      document.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseup", stop);
+        case "email":
+          window.location.href = "mailto:hello@crowncreatives.uk";
+          break;
 
-      // Save position
-      localStorage.setItem("footer-pos-" + id, JSON.stringify({
-        x: icon.offsetLeft,
-        y: icon.offsetTop
-      }));
-    }
+        case "copilot":
+          window.open("https://www.microsoft.com/en-us/microsoft-copilot", "_blank");
+          break;
 
-    document.addEventListener("mousemove", move);
-    document.addEventListener("mouseup", stop);
+        default:
+          console.log("Unknown icon:", id);
+      }
+    });
   });
-});
 
-/* ------------------------------------------------------------
-   3. DRAGGABLE FOOTER PANEL (optional)
------------------------------------------------------------- */
-const footerGlass = document.querySelector(".footer-glass");
-
-if (footerGlass) {
-  let offsetX = 0;
-  let offsetY = 0;
-
-  footerGlass.addEventListener("mousedown", e => {
-    if (!adminMode) return;
-
-    footerGlass.style.position = "absolute";
-
-    offsetX = e.clientX - footerGlass.offsetLeft;
-    offsetY = e.clientY - footerGlass.offsetTop;
-
-    function move(e) {
-      footerGlass.style.left = e.clientX - offsetX + "px";
-      footerGlass.style.top = e.clientY - offsetY + "px";
-    }
-
-    function stop() {
-      document.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseup", stop);
-    }
-
-    document.addEventListener("mousemove", move);
-    document.addEventListener("mouseup", stop);
-  });
-}
-
-/* ------------------------------------------------------------
-   4. BACK TO TOP BUTTON
------------------------------------------------------------- */
-const backToTop = document.getElementById("back-to-top");
-
-if (backToTop) {
-  backToTop.onclick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-}
+})();
