@@ -27,6 +27,11 @@
   <link rel="stylesheet" href="hero-crown/hero-crown.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CC GLOBAL NAMESPACE (must load BEFORE any module uses CC) -->
+  <script>
+    window.CC = window.CC || {};
+  </script>
 </head>
 
 <body id="cc-test">
@@ -75,7 +80,10 @@
 
   <!-- LOCAL MODULE JS -->
   <script src="admin/admin.js"></script>
-   <script src="hero-crown/hero-crown.js"></script>
+  <script src="admin/draggable.js"></script>
+  <script src="admin/editable.js"></script>
+
+  <script src="hero-crown/hero-crown.js"></script>
   <script src="theme-panel/theme-panel.js"></script>
   <script src="footer/footer.js"></script>
   <script src="ticker/ticker.js"></script>
