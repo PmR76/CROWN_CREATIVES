@@ -1,42 +1,57 @@
 /* ============================================================
-   CROWN CREATIVES — FOOTER ENGINE (GR1, UNIFIED ADMIN MODE)
-   Uses global CC.admin + CC.drag helpers
+   CROWN CREATIVES — FOOTER ENGINE (Unified Clean Build)
+   - Back-to-top button
+   - Social icon click handlers
+   - No admin mode
+   - No dragging
+   - No CC.drag usage
 ============================================================ */
 
-/* ------------------------------------------------------------
-   1. DRAGGABLE ICONS (ADMIN MODE ONLY)
------------------------------------------------------------- */
-const icons = document.querySelectorAll(".footer-icon");
+(function () {
 
-icons.forEach(icon => {
-  const id = icon.dataset.id;
+  /* ------------------------------------------------------------
+     1. BACK TO TOP BUTTON
+  ------------------------------------------------------------ */
+  const backToTop = document.getElementById("back-to-top");
 
-  // Use global draggable helper with persistent storage
-  CC.drag.makeDraggable(icon, {
-    key: "footer-pos-" + id
+  if (backToTop) {
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  /* ------------------------------------------------------------
+     2. SOCIAL ICON CLICK HANDLERS
+  ------------------------------------------------------------ */
+  const icons = document.querySelectorAll(".footer-icon");
+
+  icons.forEach(icon => {
+    const id = icon.dataset.id;
+    icon.style.cursor = "pointer";
+
+    icon.addEventListener("click", () => {
+      switch (id) {
+
+        case "facebook":
+          window.open("https://facebook.com/crowncreatives", "_blank");
+          break;
+
+        case "instagram":
+          window.open("https://instagram.com/crowncreatives", "_blank");
+          break;
+
+        case "email":
+          window.location.href = "mailto:hello@crowncreatives.uk";
+          break;
+
+        case "copilot":
+          window.open("https://www.microsoft.com/en-us/microsoft-copilot", "_blank");
+          break;
+
+        default:
+          console.log("Unknown footer icon:", id);
+      }
+    });
   });
-});
 
-
-/* ------------------------------------------------------------
-   2. DRAGGABLE FOOTER PANEL (ADMIN MODE ONLY)
------------------------------------------------------------- */
-const footerGlass = document.querySelector(".footer-glass");
-
-if (footerGlass) {
-  CC.drag.makeDraggable(footerGlass, {
-    key: "footer-glass-pos"
-  });
-}
-
-
-/* ------------------------------------------------------------
-   3. BACK TO TOP BUTTON
------------------------------------------------------------- */
-const backToTop = document.getElementById("back-to-top");
-
-if (backToTop) {
-  backToTop.onclick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-}
+})();
