@@ -55,3 +55,11 @@
   opacity: 0.8;
   animation-delay: -9s; /* half offset */
 }
+.admin-active .draggable {
+  cursor: grab;
+  outline: 1px dashed rgba(255,255,255,0.4);
+}
+
+.admin-active .editable {
+  border: 1px dashed rgba(255,255,255,0.4);
+}
