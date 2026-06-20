@@ -1,5 +1,5 @@
 /* ================================
-   TICKER MODULE — FINAL VERSION
+   TICKER MODULE — UNIFIED ADMIN VERSION
    ================================ */
 
 /* ELEMENTS */
@@ -8,7 +8,6 @@ const line1 = document.getElementById("ticker-text-1") || document.getElementByI
 const line2 = document.getElementById("ticker-text-2");
 
 /* STATE */
-let tickerAdmin = false;   // <— FIXED: unique admin flag
 let dragging = false;
 let offsetX = 0;
 let offsetY = 0;
@@ -26,31 +25,10 @@ if (savedTicker) {
 
 
 /* ================================
-   ADMIN MODE TOGGLE — SHIFT + A
-   ================================ */
-document.addEventListener("keydown", (e) => {
-  if (e.shiftKey && e.key.toLowerCase() === "a") {
-    tickerAdmin = !tickerAdmin;
-    document.body.classList.toggle("admin-active", tickerAdmin);
-
-    if (tickerAdmin) {
-      line1.contentEditable = "true";
-      line1.classList.add("glow");
-      if (line2) line2.classList.add("glow");
-    } else {
-      line1.contentEditable = "false";
-      line1.classList.remove("glow");
-      if (line2) line2.classList.remove("glow");
-    }
-  }
-});
-
-
-/* ================================
    SAVE TICKER TEXT — SHIFT + S
    ================================ */
 document.addEventListener("keydown", (e) => {
-  if (tickerAdmin && e.shiftKey && e.key.toLowerCase() === "s") {
+  if (CC.admin.active && e.shiftKey && e.key.toLowerCase() === "s") {
     localStorage.setItem("cc-ticker-text", line1.innerText);
 
     line1.classList.add("glow");
@@ -68,7 +46,7 @@ document.addEventListener("keydown", (e) => {
    SYNC TEXT (FOR DUAL-LINE MODE)
    ================================ */
 document.addEventListener("input", () => {
-  if (tickerAdmin && line2) {
+  if (CC.admin.active && line2) {
     line2.innerText = line1.innerText;
   }
 });
@@ -78,7 +56,7 @@ document.addEventListener("input", () => {
    DRAGGING (ADMIN MODE ONLY)
    ================================ */
 container.addEventListener("mousedown", (e) => {
-  if (!tickerAdmin) return;
+  if (!CC.admin.active) return;
 
   dragging = true;
   offsetX = e.clientX - container.offsetLeft;
@@ -108,7 +86,7 @@ function updateSpeed() {
 }
 
 document.addEventListener("wheel", (e) => {
-  if (!tickerAdmin) return;
+  if (!CC.admin.active) return;
 
   if (e.deltaY < 0) speed = Math.max(6, speed - 1);   // faster
   if (e.deltaY > 0) speed = Math.min(40, speed + 1);  // slower
