@@ -1,204 +1,137 @@
 /* ============================================================
-   CROWN CREATIVES — GLOBAL ADMIN SYSTEM (GR1)
-   Unified admin mode, admin panel, draggable + editable helpers,
-   footer wiring, ticker wiring, layout wiring.
+   CROWN CREATIVES — ADMIN MODE (Unified Build)
+   Simple object selection, dragging, deleting, and footer restore.
 ============================================================ */
 
-window.CC = window.CC || {};
+/* ------------------------------------------------------------
+   STATE
+------------------------------------------------------------ */
+let adminMode = false;
+let selectedEl = null;
+let dragOffsetX = 0;
+let dragOffsetY = 0;
 
 /* ------------------------------------------------------------
-   1. GLOBAL ADMIN STATE
+   ENABLE / DISABLE ADMIN MODE
 ------------------------------------------------------------ */
-CC.admin = {
-  active: false,
-  panel: null
-};
+export function enableAdminMode() {
+  adminMode = true;
+  document.body.classList.add("admin-mode");
+  console.log("ADMIN MODE ENABLED");
+}
+
+export function disableAdminMode() {
+  adminMode = false;
+  selectedEl = null;
+  document.body.classList.remove("admin-mode");
+  console.log("ADMIN MODE DISABLED");
+}
 
 /* ------------------------------------------------------------
-   2. SHIFT + A → TOGGLE ADMIN PANEL ONLY
+   SIMPLE OBJECT IDENTIFICATION
 ------------------------------------------------------------ */
-document.addEventListener("keydown", (e) => {
-  if (e.shiftKey && e.key.toLowerCase() === "a") {
-    CC.admin.active = !CC.admin.active;
-    document.body.classList.toggle("admin-active", CC.admin.active);
+document.addEventListener("click", (e) => {
+  if (!adminMode) return;
 
-    if (CC.admin.panel) {
-      CC.admin.panel.style.display = CC.admin.active ? "block" : "none";
-    }
+  const target = e.target;
+
+  // Only allow selecting draggable items
+  if (target.classList.contains("footer-icon")) {
+    selectedEl = target;
+    console.log("Selected:", selectedEl.dataset.id);
   }
+
+  // Prevent normal click behavior in admin mode
+  e.preventDefault();
 });
 
 /* ------------------------------------------------------------
-   3. CREATE ADMIN PANEL UI
+   SIMPLE DRAG SYSTEM
 ------------------------------------------------------------ */
-function createAdminPanel() {
-  const panel = document.createElement("div");
-  panel.id = "cc-admin-panel";
+document.addEventListener("mousedown", (e) => {
+  if (!adminMode || !selectedEl) return;
 
-  panel.innerHTML = `
-    <div class="cc-admin-header">Crown Admin</div>
+  dragOffsetX = e.clientX - selectedEl.offsetLeft;
+  dragOffsetY = e.clientY - selectedEl.offsetTop;
 
-    <div class="cc-admin-section">
-      <div class="cc-admin-title">Layout</div>
-      <button data-action="layout-add-page">Add Page</button>
-      <button data-action="layout-remove-page">Remove Page</button>
-    </div>
+  selectedEl.style.position = "absolute";
+  selectedEl.style.zIndex = "9999";
 
-    <div class="cc-admin-section">
-      <div class="cc-admin-title">Header</div>
-      <button data-action="header-add">Add Header</button>
-      <button data-action="header-remove">Remove Header</button>
-    </div>
+  document.addEventListener("mousemove", dragMove);
+  document.addEventListener("mouseup", dragStop);
+});
 
-    <div class="cc-admin-section">
-      <div class="cc-admin-title">Footer</div>
-      <button data-action="footer-resize">Resize Footer</button>
-      <button data-action="footer-icons-edit">Edit Icons</button>
-      <button data-action="footer-icons-add">Add Icon</button>
-      <button data-action="footer-icons-remove">Remove Icon</button>
-    </div>
+function dragMove(e) {
+  if (!selectedEl) return;
 
-    <div class="cc-admin-section">
-      <div class="cc-admin-title">Ticker</div>
-      <button data-action="ticker-edit">Edit Ticker</button>
-      <button data-action="ticker-speed">Adjust Speed</button>
+  selectedEl.style.left = `${e.clientX - dragOffsetX}px`;
+  selectedEl.style.top = `${e.clientY - dragOffsetY}px`;
+}
+
+function dragStop() {
+  document.removeEventListener("mousemove", dragMove);
+  document.removeEventListener("mouseup", dragStop);
+}
+
+/* ------------------------------------------------------------
+   SIMPLE DELETE SYSTEM
+------------------------------------------------------------ */
+export function deleteSelected() {
+  if (!adminMode || !selectedEl) return;
+
+  console.log("Deleted:", selectedEl.dataset.id);
+  selectedEl.remove();
+  selectedEl = null;
+}
+
+/* ------------------------------------------------------------
+   FOOTER RESTORE BUTTON
+------------------------------------------------------------ */
+export function restoreFooter() {
+  const footer = document.getElementById("cc-footer");
+  if (!footer) return;
+
+  footer.innerHTML = `
+    <div class="footer-glass">
+
+      <div class="footer-icons" id="footer-icons">
+        <img src="/assets/icons/facebook.svg" class="footer-icon" data-id="facebook">
+        <img src="/assets/icons/instagram.svg" class="footer-icon" data-id="instagram">
+        <img src="/assets/icons/email.svg" class="footer-icon" data-id="email">
+        <img src="/assets/icons/copilot.svg" class="footer-icon" data-id="copilot">
+      </div>
+
+      <button id="back-to-top" class="back-to-top">▲</button>
+
+      <div class="footer-copy">
+        © 2026 Crown Creatives — All Rights Reserved<br>
+        Royalty‑Free Music Provided by Pixabay
+      </div>
+
     </div>
   `;
 
-  document.body.appendChild(panel);
-  CC.admin.panel = panel;
-
-  /* ------------------------------------------------------------
-     4. PANEL BUTTON ACTIONS
-  ------------------------------------------------------------ */
-  panel.addEventListener("click", (e) => {
-    const action = e.target.dataset.action;
-    if (!action) return;
-
-    switch (action) {
-
-      /* ------------------------------
-         FOOTER ACTIONS
-      ------------------------------ */
-      case "footer-resize":
-        CC.footer.resize();
-        break;
-
-      case "footer-icons-edit":
-        CC.footer.toggleIconEdit();
-        break;
-
-      case "footer-icons-add":
-        CC.footer.addIcon();
-        break;
-
-      case "footer-icons-remove":
-        CC.footer.removeIcon();
-        break;
-
-      /* ------------------------------
-         TICKER ACTIONS
-      ------------------------------ */
-      case "ticker-edit":
-        document.body.classList.toggle("cc-ticker-edit");
-        break;
-
-      case "ticker-speed":
-        document.body.classList.toggle("cc-ticker-speed-mode");
-        break;
-
-      /* ------------------------------
-         LAYOUT + HEADER (placeholders)
-      ------------------------------ */
-      case "layout-add-page":
-      case "layout-remove-page":
-      case "header-add":
-      case "header-remove":
-        alert("This feature will be wired next.");
-        break;
-    }
-  });
+  console.log("Footer restored to default state");
 }
 
-document.addEventListener("DOMContentLoaded", createAdminPanel);
-
-
-/* ============================================================
-   5. GLOBAL DRAGGABLE HELPER
-============================================================ */
-CC.drag = {
-  makeDraggable(el, { key } = {}) {
-    let offsetX = 0;
-    let offsetY = 0;
-
-    el.addEventListener("mousedown", (e) => {
-      if (!CC.admin.active) return;
-
-      el.style.position = "absolute";
-      offsetX = e.clientX - el.offsetLeft;
-      offsetY = e.clientY - el.offsetTop;
-
-      function move(ev) {
-        el.style.left = `${ev.clientX - offsetX}px`;
-        el.style.top = `${ev.clientY - offsetY}px`;
-      }
-
-      function stop() {
-        document.removeEventListener("mousemove", move);
-        document.removeEventListener("mouseup", stop);
-
-        if (key) {
-          localStorage.setItem(key, JSON.stringify({
-            x: el.offsetLeft,
-            y: el.offsetTop
-          }));
-        }
-      }
-
-      document.addEventListener("mousemove", move);
-      document.addEventListener("mouseup", stop);
-    });
-
-    if (key) {
-      const saved = localStorage.getItem(key);
-      if (saved) {
-        const pos = JSON.parse(saved);
-        el.style.position = "absolute";
-        el.style.left = pos.x + "px";
-        el.style.top = pos.y + "px";
-      }
-    }
-  }
+/* ------------------------------------------------------------
+   CLEAN ADMIN PANEL (API)
+------------------------------------------------------------ */
+export const AdminAPI = {
+  enable: enableAdminMode,
+  disable: disableAdminMode,
+  delete: deleteSelected,
+  restoreFooter: restoreFooter,
 };
 
-
-/* ============================================================
-   6. GLOBAL EDITABLE HELPER
-============================================================ */
-CC.edit = {
-  makeEditable(el, { key } = {}) {
-    if (key) {
-      const saved = localStorage.getItem(key);
-      if (saved) el.innerText = saved;
-    }
-
-    document.addEventListener("click", (e) => {
-      if (!CC.admin.active) return;
-      if (!el.contains(e.target)) return;
-
-      el.contentEditable = "true";
-      el.classList.add("cc-editing");
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (!CC.admin.active) return;
-      if (e.key === "Enter" && e.ctrlKey) {
-        el.contentEditable = "false";
-        el.classList.remove("cc-editing");
-        if (key) {
-          localStorage.setItem(key, el.innerText);
-        }
-      }
+/* ------------------------------------------------------------
+   FOOTER WIRING
+------------------------------------------------------------ */
+document.addEventListener("DOMContentLoaded", () => {
+  const backToTop = document.getElementById("back-to-top");
+  if (backToTop) {
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
-};
+});
