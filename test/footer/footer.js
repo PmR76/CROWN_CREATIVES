@@ -1,23 +1,11 @@
 /* ============================================================
-   CROWN CREATIVES — FOOTER ENGINE (GR1)
-   Draggable icons, draggable panel, admin mode toggle,
-   back-to-top engine, persistent positions.
+   CROWN CREATIVES — FOOTER ENGINE (GR1, UNIFIED ADMIN MODE)
+   Draggable icons, draggable panel, back-to-top engine,
+   persistent positions — all using CC.admin.active
 ============================================================ */
 
 /* ------------------------------------------------------------
-   1. ADMIN MODE TOGGLE (Shift + A)
------------------------------------------------------------- */
-let adminMode = false;
-
-document.addEventListener("keydown", e => {
-  if (e.key === "A" && e.shiftKey) {
-    adminMode = !adminMode;
-    document.body.classList.toggle("admin-mode", adminMode);
-  }
-});
-
-/* ------------------------------------------------------------
-   2. DRAGGABLE ICONS
+   1. DRAGGABLE ICONS (ADMIN MODE ONLY)
 ------------------------------------------------------------ */
 const icons = document.querySelectorAll(".footer-icon");
 
@@ -37,7 +25,7 @@ icons.forEach(icon => {
   let offsetY = 0;
 
   icon.addEventListener("mousedown", e => {
-    if (!adminMode) return;
+    if (!CC.admin.active) return;
 
     icon.style.position = "absolute";
 
@@ -65,8 +53,9 @@ icons.forEach(icon => {
   });
 });
 
+
 /* ------------------------------------------------------------
-   3. DRAGGABLE FOOTER PANEL (optional)
+   2. DRAGGABLE FOOTER PANEL (ADMIN MODE ONLY)
 ------------------------------------------------------------ */
 const footerGlass = document.querySelector(".footer-glass");
 
@@ -75,7 +64,7 @@ if (footerGlass) {
   let offsetY = 0;
 
   footerGlass.addEventListener("mousedown", e => {
-    if (!adminMode) return;
+    if (!CC.admin.active) return;
 
     footerGlass.style.position = "absolute";
 
@@ -97,8 +86,9 @@ if (footerGlass) {
   });
 }
 
+
 /* ------------------------------------------------------------
-   4. BACK TO TOP BUTTON
+   3. BACK TO TOP BUTTON
 ------------------------------------------------------------ */
 const backToTop = document.getElementById("back-to-top");
 
