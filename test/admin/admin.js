@@ -1,86 +1,131 @@
-// admin/admin.js
+/* ============================================================
+   CROWN CREATIVES — GLOBAL ADMIN SYSTEM (GR1)
+   Unified admin mode, admin panel, draggable + editable helpers,
+   footer wiring, ticker wiring, layout wiring.
+============================================================ */
 
 window.CC = window.CC || {};
 
-// GLOBAL ADMIN STATE
+/* ------------------------------------------------------------
+   1. GLOBAL ADMIN STATE
+------------------------------------------------------------ */
 CC.admin = {
   active: false,
-  panel: null,
-  toggle() {
-    this.active = !this.active;
-    document.body.classList.toggle("admin-active", this.active);
-    if (this.panel) {
-      this.panel.style.display = this.active ? "block" : "none";
-    }
-  }
+  panel: null
 };
 
-// SHIFT + A → TOGGLE ADMIN
+/* ------------------------------------------------------------
+   2. SHIFT + A → TOGGLE ADMIN PANEL ONLY
+------------------------------------------------------------ */
 document.addEventListener("keydown", (e) => {
   if (e.shiftKey && e.key.toLowerCase() === "a") {
-    CC.admin.toggle();
+    CC.admin.active = !CC.admin.active;
+    document.body.classList.toggle("admin-active", CC.admin.active);
+
+    if (CC.admin.panel) {
+      CC.admin.panel.style.display = CC.admin.active ? "block" : "none";
+    }
   }
 });
 
-// CREATE ADMIN PANEL
+/* ------------------------------------------------------------
+   3. CREATE ADMIN PANEL UI
+------------------------------------------------------------ */
 function createAdminPanel() {
   const panel = document.createElement("div");
   panel.id = "cc-admin-panel";
+
   panel.innerHTML = `
     <div class="cc-admin-header">Crown Admin</div>
+
     <div class="cc-admin-section">
       <div class="cc-admin-title">Layout</div>
-      <button data-action="add-header">Add Header</button>
-      <button data-action="add-main">Add Main Page</button>
-      <button data-action="add-footer">Add Footer</button>
-      <button data-action="remove-footer">Remove Footer</button>
+      <button data-action="layout-add-page">Add Page</button>
+      <button data-action="layout-remove-page">Remove Page</button>
     </div>
+
+    <div class="cc-admin-section">
+      <div class="cc-admin-title">Header</div>
+      <button data-action="header-add">Add Header</button>
+      <button data-action="header-remove">Remove Header</button>
+    </div>
+
     <div class="cc-admin-section">
       <div class="cc-admin-title">Footer</div>
       <button data-action="footer-resize">Resize Footer</button>
       <button data-action="footer-icons-edit">Edit Icons</button>
-      <button data-action="footer-backtotop">Back to Top</button>
+      <button data-action="footer-icons-add">Add Icon</button>
+      <button data-action="footer-icons-remove">Remove Icon</button>
     </div>
+
     <div class="cc-admin-section">
       <div class="cc-admin-title">Ticker</div>
       <button data-action="ticker-edit">Edit Ticker</button>
       <button data-action="ticker-speed">Adjust Speed</button>
     </div>
   `;
+
   document.body.appendChild(panel);
   CC.admin.panel = panel;
 
+  /* ------------------------------------------------------------
+     4. PANEL BUTTON ACTIONS
+  ------------------------------------------------------------ */
   panel.addEventListener("click", (e) => {
     const action = e.target.dataset.action;
     if (!action) return;
 
     switch (action) {
-      case "add-footer":
-        // later: inject default footer if missing
-        break;
+
+      /* ------------------------------
+         FOOTER ACTIONS
+      ------------------------------ */
       case "footer-resize":
-        document.getElementById("cc-footer")?.classList.toggle("cc-footer-resize");
+        CC.footer.resize();
         break;
+
       case "footer-icons-edit":
-        document.body.classList.toggle("cc-footer-icons-edit");
+        CC.footer.toggleIconEdit();
         break;
-      case "footer-backtotop":
-        // could toggle visibility or style
+
+      case "footer-icons-add":
+        CC.footer.addIcon();
         break;
+
+      case "footer-icons-remove":
+        CC.footer.removeIcon();
+        break;
+
+      /* ------------------------------
+         TICKER ACTIONS
+      ------------------------------ */
       case "ticker-edit":
         document.body.classList.toggle("cc-ticker-edit");
         break;
+
       case "ticker-speed":
         document.body.classList.toggle("cc-ticker-speed-mode");
+        break;
+
+      /* ------------------------------
+         LAYOUT + HEADER (placeholders)
+      ------------------------------ */
+      case "layout-add-page":
+      case "layout-remove-page":
+      case "header-add":
+      case "header-remove":
+        alert("This feature will be wired next.");
         break;
     }
   });
 }
 
 document.addEventListener("DOMContentLoaded", createAdminPanel);
-// admin/draggable.js
 
-window.CC = window.CC || {};
+
+/* ============================================================
+   5. GLOBAL DRAGGABLE HELPER
+============================================================ */
 CC.drag = {
   makeDraggable(el, { key } = {}) {
     let offsetX = 0;
@@ -125,9 +170,11 @@ CC.drag = {
     }
   }
 };
-// admin/editable.js
 
-window.CC = window.CC || {};
+
+/* ============================================================
+   6. GLOBAL EDITABLE HELPER
+============================================================ */
 CC.edit = {
   makeEditable(el, { key } = {}) {
     if (key) {
