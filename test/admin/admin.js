@@ -135,3 +135,85 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+function injectAdminPanel() {
+  if (document.getElementById("admin-panel")) return;
+
+  const panel = document.createElement("div");
+  panel.id = "admin-panel";
+
+  panel.innerHTML = `
+    <button id="admin-save">💾 Save Layout</button>
+    <button id="admin-reset">♻️ Reset Layout</button>
+    <button id="admin-restore-footer">🛠 Restore Footer</button>
+    <button id="admin-exit">🚪 Exit Admin</button>
+  `;
+
+  document.body.appendChild(panel);
+
+  document.getElementById("admin-save").onclick = saveLayout;
+  document.getElementById("admin-reset").onclick = resetLayout;
+  document.getElementById("admin-restore-footer").onclick = restoreFooter;
+  document.getElementById("admin-exit").onclick = disableAdminMode;
+}
+function saveLayout() {
+  const icons = [...document.querySelectorAll(".footer-icon")];
+
+  const layout = icons.map(icon => ({
+    id: icon.dataset.id,
+    left: icon.style.left || null,
+    top: icon.style.top || null
+  }));
+
+  localStorage.setItem("cc-footer-layout", JSON.stringify(layout));
+  console.log("Layout saved:", layout);
+}
+function resetLayout() {
+  localStorage.removeItem("cc-footer-layout");
+  restoreFooter();
+  console.log("Layout reset to default");
+}
+function dragMove(e) {
+  if (!selectedEl) return;
+
+  const rawX = e.clientX - dragOffsetX;
+  const rawY = e.clientY - dragOffsetY;
+
+  const snap = 10; // grid size
+
+  const snappedX = Math.round(rawX / snap) * snap;
+  const snappedY = Math.round(rawY / snap) * snap;
+
+  selectedEl.style.left = `${snappedX}px`;
+  selectedEl.style.top = `${snappedY}px`;
+}
+document.addEventListener("click", (e) => {
+  if (!adminMode) return;  
+
+  const target = e.target;
+
+  // Only intercept clicks on draggable items
+  if (target.classList.contains("footer-icon")) {
+    selectedEl = target;
+    console.log("Selected:", selectedEl.dataset.id);
+    e.preventDefault();
+  }
+});
+function loadSavedLayout() {
+  const saved = localStorage.getItem("cc-footer-layout");
+  if (!saved) return;
+
+  const layout = JSON.parse(saved);
+
+  layout.forEach(item => {
+    const el = document.querySelector(`.footer-icon[data-id="${item.id}"]`);
+    if (!el) return;
+
+    if (item.left) el.style.left = item.left;
+    if (item.top) el.style.top = item.top;
+    el.style.position = "absolute";
+  });
+
+  console.log("Loaded saved layout");
+}
+
+document.addEventListener("DOMContentLoaded", loadSavedLayout);
