@@ -157,6 +157,8 @@ CC.drag = CC.drag || {
     copy.contentEditable = "true";
     copy.style.outline = "2px dashed #4af";
     copy.style.padding = "4px";
+    localStorage.setItem("cc-footer-copy", copy.innerHTML);
+
   }
 
   function disableFooterTextEdit() {
