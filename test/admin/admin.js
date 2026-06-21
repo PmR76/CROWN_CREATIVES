@@ -2,7 +2,7 @@
    CROWN CREATIVES — ADMIN MODE (Unified Build)
    One clean system:
    - Shift + A → toggle admin
-   - Admin panel
+   - Admin panel (Home + Modules)
    - Footer icon selection + drag (snap to grid)
    - Rotate, scale, snap to center
    - Save / load layout
@@ -105,121 +105,146 @@ CC.drag = CC.drag || {
   });
 
   /* ============================
-     ADMIN PANEL UI
+     ADMIN PANEL (NEW HOME + MODULE PANELS)
   ============================ */
-  function injectAdminPanel() {
-    if (document.getElementById("admin-panel")) return;
 
-    const panel = document.createElement("div");
-    panel.id = "admin-panel";
+  CC.admin.currentPanel = "home";
 
-    panel.innerHTML = `
-      <button id="admin-save">💾 Save Layout</button>
-      <button id="admin-reset">♻️ Reset Layout</button>
-      <button id="admin-snap-center">🎯 Snap Center</button>
-      <button id="admin-rotate-left">⟲ Rotate -15°</button>
-      <button id="admin-rotate-right">⟳ Rotate +15°</button>
-      <button id="admin-scale-up">➕ Scale Up</button>
-      <button id="admin-scale-down">➖ Scale Down</button>
-      <button id="admin-restore-footer">🛠 Restore Footer</button>
-      <button id="admin-exit">🚪 Exit Admin</button>
-    `;
+  function renderAdminPanel() {
+    const panel = CC.admin.panel;
+    if (!panel) return;
 
-    document.body.appendChild(panel);
+    switch (CC.admin.currentPanel) {
 
-    document.getElementById("admin-save").onclick = saveLayout;
-    document.getElementById("admin-reset").onclick = resetLayout;
-    document.getElementById("admin-snap-center").onclick = () => {
-      if (selectedEl) centerInFooter(selectedEl);
-    };
-    document.getElementById("admin-rotate-left").onclick = () => rotateSelected(-15);
-    document.getElementById("admin-rotate-right").onclick = () => rotateSelected(15);
-    document.getElementById("admin-scale-up").onclick = () => scaleSelected(0.1);
-    document.getElementById("admin-scale-down").onclick = () => scaleSelected(-0.1);
-    document.getElementById("admin-restore-footer").onclick = restoreFooter;
-    document.getElementById("admin-exit").onclick = disableAdminMode;
-  }
+      /* ============================
+         HOME PANEL
+      ============================ */
+      case "home":
+        panel.innerHTML = `
+          <div class="cc-admin-header">Crown Admin</div>
 
-  function removeAdminPanel() {
-    const panel = document.getElementById("admin-panel");
-    if (panel) panel.remove();
+          <div class="cc-admin-section">
+            <button data-panel="footer">Footer</button>
+            <button data-panel="ticker">Ticker</button>
+            <button data-panel="header">Header</button>
+            <button data-panel="main">Main Page</button>
+            <button data-panel="add-page">Add Page</button>
+          </div>
+
+          <div class="cc-admin-section">
+            <button data-action="exit-admin">Exit Admin</button>
+          </div>
+        `;
+        break;
+
+      /* ============================
+         FOOTER PANEL
+      ============================ */
+      case "footer":
+        panel.innerHTML = `
+          <div class="cc-admin-header">Footer Controls</div>
+
+          <div class="cc-admin-section">
+            <button data-action="footer-resize">Resize Footer</button>
+            <button data-action="footer-icons-edit">Edit Icons</button>
+            <button data-action="footer-icons-add">Add Icon</button>
+            <button data-action="footer-icons-remove">Remove Icon</button>
+            <button data-action="footer-restore">Restore Footer</button>
+          </div>
+
+          <div class="cc-admin-section">
+            <button data-panel="home">Back to Home</button>
+          </div>
+        `;
+        break;
+
+      /* ============================
+         TICKER PANEL
+      ============================ */
+      case "ticker":
+        panel.innerHTML = `
+          <div class="cc-admin-header">Ticker Controls</div>
+
+          <div class="cc-admin-section">
+            <button data-action="ticker-edit">Edit Ticker</button>
+            <button data-action="ticker-speed">Adjust Speed</button>
+            <button data-action="ticker-reset">Reset Ticker</button>
+          </div>
+
+          <div class="cc-admin-section">
+            <button data-panel="home">Back to Home</button>
+          </div>
+        `;
+        break;
+
+      default:
+        panel.innerHTML = `<div class="cc-admin-header">Unknown Panel</div>`;
+    }
   }
 
   /* ============================
-     DRAG HANDLES
-  ============================ */
-  function addDragHandles() {
-    const icons = document.querySelectorAll(".footer-icon");
-    icons.forEach(icon => {
-      if (icon.querySelector(".drag-handle")) return;
-      const handle = document.createElement("div");
-      handle.className = "drag-handle";
-      handle.dataset.handle = "true";
-      handle.style.position = "absolute";
-      handle.style.right = "-6px";
-      handle.style.bottom = "-6px";
-      handle.style.width = "12px";
-      handle.style.height = "12px";
-      handle.style.borderRadius = "50%";
-      handle.style.background = "rgba(255,255,255,0.9)";
-      handle.style.boxShadow = "0 0 6px rgba(0,0,0,0.6)";
-      handle.style.cursor = "grab";
-      handle.style.zIndex = "10000";
-      icon.style.position = icon.style.position || "relative";
-      icon.appendChild(handle);
-    });
-  }
-
-  function removeDragHandles() {
-    const handles = document.querySelectorAll(".drag-handle");
-    handles.forEach(h => h.remove());
-  }
-
-  /* ============================
-     SELECTION
+     PANEL CLICK HANDLER
   ============================ */
   document.addEventListener("click", (e) => {
     if (!adminMode) return;
 
-    const target = e.target;
+    const panel = CC.admin.panel;
+    if (!panel) return;
 
-    if (target.classList.contains("footer-icon") || target.dataset.handle === "true") {
-      const icon = target.classList.contains("footer-icon") ? target : target.closest(".footer-icon");
-      if (!icon) return;
-      selectedEl = icon;
-      console.log("Selected:", selectedEl.dataset.id);
-      e.preventDefault();
-      e.stopPropagation();
+    const panelTarget = e.target.dataset.panel;
+    const action = e.target.dataset.action;
+
+    /* Switch panels */
+    if (panelTarget) {
+      CC.admin.currentPanel = panelTarget;
+      renderAdminPanel();
+      return;
+    }
+
+    /* Handle actions */
+    switch (action) {
+      case "exit-admin":
+        CC.admin.disable();
+        break;
+
+      /* FOOTER ACTIONS */
+      case "footer-resize":
+        CC.footer.resize && CC.footer.resize();
+        break;
+
+      case "footer-icons-edit":
+        CC.footer.toggleIconEdit && CC.footer.toggleIconEdit();
+        break;
+
+      case "footer-icons-add":
+        CC.footer.addIcon && CC.footer.addIcon();
+        break;
+
+      case "footer-icons-remove":
+        CC.footer.removeIcon && CC.footer.removeIcon();
+        break;
+
+      case "footer-restore":
+        CC.admin.restoreFooter && CC.admin.restoreFooter();
+        break;
+
+      /* TICKER ACTIONS */
+      case "ticker-edit":
+        document.body.classList.toggle("cc-ticker-edit");
+        break;
+
+      case "ticker-speed":
+        document.body.classList.toggle("cc-ticker-speed-mode");
+        break;
+
+      case "ticker-reset":
+        CC.ticker && CC.ticker.reset && CC.ticker.reset();
+        break;
     }
   });
-
   /* ============================
      DRAGGING WITH GRID SNAP
   ============================ */
-  document.addEventListener("mousedown", (e) => {
-    if (!adminMode) return;
-
-    let target = e.target;
-    if (target.dataset.handle === "true") {
-      target = target.closest(".footer-icon");
-    }
-
-    if (!target || !target.classList.contains("footer-icon")) return;
-
-    selectedEl = target;
-    makeDraggablePositioned(selectedEl);
-
-    dragOffsetX = e.clientX - selectedEl.offsetLeft;
-    dragOffsetY = e.clientY - selectedEl.offsetTop;
-
-    selectedEl.style.zIndex = "9999";
-
-    document.addEventListener("mousemove", dragMove);
-    document.addEventListener("mouseup", dragStop);
-
-    e.preventDefault();
-  });
-
   function dragMove(e) {
     if (!selectedEl || !adminMode) return;
 
@@ -385,4 +410,5 @@ CC.drag = CC.drag || {
   CC.admin.saveLayout = saveLayout;
   CC.admin.resetLayout = resetLayout;
   CC.admin.restoreFooter = restoreFooter;
+
 })();
