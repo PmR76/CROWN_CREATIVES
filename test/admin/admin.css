@@ -116,3 +116,16 @@
 .footer-copy {
   transition: all 0.15s ease;
 }
+.ticker-editing {
+  outline: 2px dashed #4af;
+  outline-offset: 4px;
+}
+
+.ticker-speed-mode #ticker-text {
+  color: #4af !important;
+}
+/* Ticker glow when editable */
+.ticker-glow {
+  filter: drop-shadow(0 0 6px #4af) drop-shadow(0 0 12px #4af);
+  transition: filter 0.2s ease;
+}

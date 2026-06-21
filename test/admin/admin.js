@@ -29,6 +29,8 @@ CC.drag = CC.drag || {
   let selectedEl = null;
   let dragOffsetX = 0;
   let dragOffsetY = 0;
+  let textIsEditing = false;
+  let speedMode = false;
   const GRID_SIZE = 10;
 
   /* ============================
@@ -282,12 +284,25 @@ CC.drag = CC.drag || {
         break;
 
       case "ticker-edit":
-        document.body.classList.toggle("cc-ticker-edit");
-        break;
+  if (textIsEditing) {
+    CC.ticker.disableEdit();
+    textIsEditing = false;
+  } else {
+    CC.ticker.enableEdit();
+    textIsEditing = true;
+  }
+  break;
 
-      case "ticker-speed":
-        document.body.classList.toggle("cc-ticker-speed-mode");
-        break;
+    case "ticker-speed":
+  if (speedMode) {
+    CC.ticker.disableSpeedMode();
+    speedMode = false;
+  } else {
+    CC.ticker.enableSpeedMode();
+    speedMode = true;
+  }
+  break;
+
 
       case "ticker-reset":
         CC.ticker?.reset?.();
