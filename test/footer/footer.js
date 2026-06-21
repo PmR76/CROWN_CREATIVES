@@ -41,7 +41,7 @@
           break;
 
         case "email":
-          window.location.href = "mailto:hello@crowncreatives.uk";
+          window.location.href = "mailto:crowncreatives@outlook.com";
           break;
 
         case "copilot":
