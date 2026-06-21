@@ -73,17 +73,27 @@ async function initMaster() {
     contentEl.innerHTML = await loadPartial(`/pages/${page}.html`);
   }
 
-  // ------------------------------------------------------------
-  // TICKER INJECTION DISABLED FOR TEST ENVIRONMENT (GR1 OVERRIDE)
-  // ------------------------------------------------------------
-  // if (tickerEl) {
-  //   tickerEl.innerHTML = await loadPartial("/master/ticker.html");
-  // }
+  /* ------------------------------------------------------------
+     3.2a TICKER INJECTION — DISABLED IN /test/
+  ------------------------------------------------------------ */
+  if (!location.pathname.includes("/test/")) {
+    if (tickerEl) {
+      tickerEl.innerHTML = await loadPartial("/master/ticker.html");
+    }
+  } else {
+    console.info("Ticker injection skipped in /test/ environment.");
+  }
 
-  // DISABLED FOR TEST ENVIRONMENT — manual GR1 footer in page
-  // if (footerWrapEl) {
-  //   footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
-  // }
+  /* ------------------------------------------------------------
+     3.2b FOOTER INJECTION — DISABLED IN /test/
+  ------------------------------------------------------------ */
+  if (!location.pathname.includes("/test/")) {
+    if (footerWrapEl) {
+      footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
+    }
+  } else {
+    console.info("Footer injection skipped in /test/ environment.");
+  }
 
   /* ------------------------------
      3.3 Load global JS engines
@@ -94,7 +104,6 @@ async function initMaster() {
 
   /* ------------------------------
      3.3a Initialise THEME ENGINE
-     (Wait until toggle exists)
   ------------------------------ */
   function waitForToggleAndInitTheme() {
     const toggle = document.getElementById("themeToggle");
@@ -147,7 +156,6 @@ async function initMaster() {
     .then(() => {
       /* ------------------------------
          3.5 Initialise HERO GALLERY
-         (after page engine)
       ------------------------------ */
       if (typeof window.initHeroGallery === "function") {
         window.initHeroGallery();
