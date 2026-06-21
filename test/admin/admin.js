@@ -411,4 +411,4 @@ CC.drag = CC.drag || {
   CC.admin.resetLayout = resetLayout;
   CC.admin.restoreFooter = restoreFooter;
 
-})();
+})(); 
