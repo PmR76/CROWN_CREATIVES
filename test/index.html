@@ -31,6 +31,7 @@
   <!-- ⭐ CC GLOBAL NAMESPACE (must load BEFORE any module uses CC) -->
   <script>
     window.CC = window.CC || {};
+    CC.adminModules = CC.adminModules || {};
     CC.drag = CC.drag || {};
     CC.edit = CC.edit || {};
     CC.footer = CC.footer || {};
@@ -82,9 +83,14 @@
     </div>
   </footer>
 
-  <!-- LOCAL MODULE JS -->
-  <script src="admin/admin.js"></script>
+  <!-- ⭐ MODULAR ADMIN SYSTEM -->
+  <script src="admin/admin-core.js"></script>
+  <script src="admin/admin-footer.js"></script>
+  <script src="admin/admin-ticker.js"></script>
+  <script src="admin/admin-header.js"></script>
+  <script src="admin/admin-pages.js"></script>
 
+  <!-- LOCAL MODULE JS -->
   <script src="hero-crown/hero-crown.js"></script>
   <script src="theme-panel/theme-panel.js"></script>
   <script src="footer/footer.js"></script>
