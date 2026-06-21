@@ -33,11 +33,11 @@
       switch (id) {
 
         case "facebook":
-          window.open("https://facebook.com/crowncreatives", "_blank");
+          window.open("https://facebook.com/people/Crown-Creatives/61556386467490", "_blank");
           break;
 
         case "instagram":
-          window.open("https://instagram.com/crowncreatives", "_blank");
+          window.open("https://instagram.com/crown_creatives_uk", "_blank");
           break;
 
         case "email":
