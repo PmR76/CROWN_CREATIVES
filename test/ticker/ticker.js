@@ -1,95 +1,153 @@
-/* ================================
-   TICKER MODULE — UNIFIED ADMIN VERSION
-   ================================ */
+/* ============================================================
+   CROWN CREATIVES — TICKER ENGINE (Admin‑Ready Build)
+============================================================ */
 
-/* ELEMENTS */
-const container = document.getElementById("ticker-container");
-const line1 = document.getElementById("ticker-text-1") || document.getElementById("ticker-text");
-const line2 = document.getElementById("ticker-text-2");
+(function () {
 
-/* STATE */
-let dragging = false;
-let offsetX = 0;
-let offsetY = 0;
-let speed = 18; // default animation duration in seconds
+  const container = document.getElementById("ticker-container");
+  const text = document.getElementById("ticker-text");
 
+  let speed = parseInt(localStorage.getItem("cc-ticker-speed") || "18", 10);
 
-/* ================================
-   LOAD SAVED TICKER TEXT
-   ================================ */
-const savedTicker = localStorage.getItem("cc-ticker-text");
-if (savedTicker) {
-  line1.innerText = savedTicker;
-  if (line2) line2.innerText = savedTicker;
-}
-
-
-/* ================================
-   SAVE TICKER TEXT — SHIFT + S
-   ================================ */
-document.addEventListener("keydown", (e) => {
-  if (CC.admin.active && e.shiftKey && e.key.toLowerCase() === "s") {
-    localStorage.setItem("cc-ticker-text", line1.innerText);
-
-    line1.classList.add("glow");
-    if (line2) line2.classList.add("glow");
-
-    setTimeout(() => {
-      line1.classList.remove("glow");
-      if (line2) line2.classList.remove("glow");
-    }, 600);
+  /* ------------------------------------------------------------
+     APPLY SPEED
+  ------------------------------------------------------------ */
+  function applySpeed() {
+    text.style.animationDuration = `${speed}s`;
   }
-});
 
+  applySpeed();
 
-/* ================================
-   SYNC TEXT (FOR DUAL-LINE MODE)
-   ================================ */
-document.addEventListener("input", () => {
-  if (CC.admin.active && line2) {
-    line2.innerText = line1.innerText;
+  /* ------------------------------------------------------------
+     LOAD SAVED POSITION
+  ------------------------------------------------------------ */
+  function loadPosition() {
+    const saved = localStorage.getItem("cc-ticker-pos");
+    if (!saved) return;
+
+    const pos = JSON.parse(saved);
+    container.style.position = "absolute";
+    container.style.left = pos.left;
+    container.style.top = pos.top;
   }
-});
 
+  loadPosition();
 
-/* ================================
-   DRAGGING (ADMIN MODE ONLY)
-   ================================ */
-container.addEventListener("mousedown", (e) => {
-  if (!CC.admin.active) return;
+  /* ------------------------------------------------------------
+     SAVE POSITION
+  ------------------------------------------------------------ */
+  function savePosition() {
+    const pos = {
+      left: container.style.left,
+      top: container.style.top
+    };
+    localStorage.setItem("cc-ticker-pos", JSON.stringify(pos));
+  }
 
-  dragging = true;
-  offsetX = e.clientX - container.offsetLeft;
-  offsetY = e.clientY - container.offsetTop;
-  container.style.cursor = "grabbing";
-});
+  /* ------------------------------------------------------------
+     DRAGGING (ADMIN MODE ONLY)
+  ------------------------------------------------------------ */
+  let dragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
 
-document.addEventListener("mousemove", (e) => {
-  if (!dragging) return;
+  document.addEventListener("mousedown", (e) => {
+    if (!document.body.classList.contains("admin-mode")) return;
+    if (!container.contains(e.target)) return;
 
-  container.style.left = `${e.clientX - offsetX}px`;
-  container.style.top = `${e.clientY - offsetY}px`;
-});
+    dragging = true;
 
-document.addEventListener("mouseup", () => {
-  dragging = false;
-  container.style.cursor = "grab";
-});
+    const rect = container.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
 
+    container.style.position = "absolute";
+    container.style.zIndex = "9999";
 
-/* ================================
-   SPEED CONTROL — SHIFT + SCROLL
-   ================================ */
-function updateSpeed() {
-  line1.style.animationDuration = `${speed}s`;
-  if (line2) line2.style.animationDuration = `${speed}s`;
-}
+    e.preventDefault();
+  });
 
-document.addEventListener("wheel", (e) => {
-  if (!CC.admin.active) return;
+  document.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
 
-  if (e.deltaY < 0) speed = Math.max(6, speed - 1);   // faster
-  if (e.deltaY > 0) speed = Math.min(40, speed + 1);  // slower
+    const x = e.clientX - offsetX;
+    const y = e.clientY - offsetY;
 
-  updateSpeed();
-});
+    container.style.left = `${x}px`;
+    container.style.top = `${y}px`;
+  });
+
+  document.addEventListener("mouseup", () => {
+    if (!dragging) return;
+    dragging = false;
+    savePosition();
+  });
+
+  /* ------------------------------------------------------------
+     EDIT TICKER TEXT (ADMIN MODE)
+  ------------------------------------------------------------ */
+  function enableEdit() {
+    text.contentEditable = "true";
+    text.classList.add("ticker-editing");
+  }
+
+  function disableEdit() {
+    text.contentEditable = "false";
+    text.classList.remove("ticker-editing");
+    localStorage.setItem("cc-ticker-text", text.innerText);
+  }
+
+  /* Load saved text */
+  const savedText = localStorage.getItem("cc-ticker-text");
+  if (savedText) text.innerText = savedText;
+
+  /* ------------------------------------------------------------
+     SPEED CONTROL (ADMIN MODE)
+  ------------------------------------------------------------ */
+  function enableSpeedMode() {
+    document.body.classList.add("ticker-speed-mode");
+  }
+
+  function disableSpeedMode() {
+    document.body.classList.remove("ticker-speed-mode");
+  }
+
+  document.addEventListener("wheel", (e) => {
+    if (!document.body.classList.contains("ticker-speed-mode")) return;
+
+    if (e.deltaY < 0) speed = Math.max(6, speed - 1);
+    if (e.deltaY > 0) speed = Math.min(40, speed + 1);
+
+    localStorage.setItem("cc-ticker-speed", speed);
+    applySpeed();
+  });
+
+  /* ------------------------------------------------------------
+     RESET TICKER
+  ------------------------------------------------------------ */
+  function resetTicker() {
+    text.innerText = "Welcome to Crown Creatives — Creativity Without Limits.";
+    localStorage.removeItem("cc-ticker-text");
+
+    speed = 18;
+    localStorage.removeItem("cc-ticker-speed");
+    applySpeed();
+
+    container.style.left = "";
+    container.style.top = "";
+    localStorage.removeItem("cc-ticker-pos");
+  }
+
+  /* ------------------------------------------------------------
+     PUBLIC API (used by admin.js)
+  ------------------------------------------------------------ */
+  window.CC = window.CC || {};
+  CC.ticker = {
+    enableEdit,
+    disableEdit,
+    enableSpeedMode,
+    disableSpeedMode,
+    reset: resetTicker
+  };
+
+})();
