@@ -79,24 +79,42 @@ CC.drag = CC.drag || {
   /* ============================
      ADMIN MODE TOGGLE
   ============================ */
-  function enableAdminMode() {
-    if (adminMode) return;
-    adminMode = true;
-    document.body.classList.add("admin-mode");
-    injectAdminPanel();
-    addDragHandles();
-    console.log("ADMIN MODE ENABLED");
-  }
+function enableAdminMode() {
+  if (adminMode) return;
+  adminMode = true;
 
-  function disableAdminMode() {
-    if (!adminMode) return;
-    adminMode = false;
-    selectedEl = null;
-    document.body.classList.remove("admin-mode");
-    removeAdminPanel();
-    removeDragHandles();
-    console.log("ADMIN MODE DISABLED");
-  }
+  document.body.classList.add("admin-mode");
+
+  // Create panel container
+  const panel = document.createElement("div");
+  panel.id = "admin-panel";
+  document.body.appendChild(panel);
+
+  CC.admin.panel = panel;
+
+  // Render the HOME panel
+  renderAdminPanel();
+
+  addDragHandles();
+  console.log("ADMIN MODE ENABLED");
+}
+function disableAdminMode() {
+  if (!adminMode) return;
+  adminMode = false;
+
+  document.body.classList.remove("admin-mode");
+
+  // Remove panel container
+  const panel = document.getElementById("admin-panel");
+  if (panel) panel.remove();
+
+  CC.admin.panel = null;
+
+  removeDragHandles();
+  selectedEl = null;
+
+  console.log("ADMIN MODE DISABLED");
+}
 
   document.addEventListener("keydown", (e) => {
     if (e.shiftKey && e.key.toLowerCase() === "a") {
