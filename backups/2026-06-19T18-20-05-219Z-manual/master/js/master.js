@@ -37,9 +37,15 @@ function loadScript(path) {
    3. MASTER INITIALISATION
 ------------------------------------------------------------ */
 async function initMaster() {
+  // 🔒 Hard-disable master system on /test/ environment
+  if (location.pathname.includes("/test/")) {
+    console.info("master.js disabled on /test/ environment.");
+    return;
+  }
+
   const container = document.getElementById("master-container");
 
-  // If there is no master container, do nothing (safe for /test/)
+  // If there is no master container, do nothing
   if (!container) {
     console.info("Master container missing — master.js idle on this page.");
     return;
@@ -74,25 +80,17 @@ async function initMaster() {
   }
 
   /* ------------------------------------------------------------
-     3.2a TICKER INJECTION — DISABLED IN /test/
+     3.2a TICKER INJECTION
   ------------------------------------------------------------ */
-  if (!location.pathname.includes("/test/")) {
-    if (tickerEl) {
-      tickerEl.innerHTML = await loadPartial("/master/ticker.html");
-    }
-  } else {
-    console.info("Ticker injection skipped in /test/ environment.");
+  if (tickerEl) {
+    tickerEl.innerHTML = await loadPartial("/master/ticker.html");
   }
 
   /* ------------------------------------------------------------
-     3.2b FOOTER INJECTION — DISABLED IN /test/
+     3.2b FOOTER INJECTION
   ------------------------------------------------------------ */
-  if (!location.pathname.includes("/test/")) {
-    if (footerWrapEl) {
-      footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
-    }
-  } else {
-    console.info("Footer injection skipped in /test/ environment.");
+  if (footerWrapEl) {
+    footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
   }
 
   /* ------------------------------
