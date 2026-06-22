@@ -37,9 +37,15 @@ function loadScript(path) {
    3. MASTER INITIALISATION
 ------------------------------------------------------------ */
 async function initMaster() {
+  // 🔒 Hard-disable master system on /test/ environment
+  if (location.pathname.includes("/test/")) {
+    console.info("master.js disabled on /test/ environment.");
+    return;
+  }
+
   const container = document.getElementById("master-container");
 
-  // If there is no master container, do nothing (safe for /test/)
+  // If there is no master container, do nothing
   if (!container) {
     console.info("Master container missing — master.js idle on this page.");
     return;
@@ -52,35 +58,40 @@ async function initMaster() {
   ------------------------------ */
   container.innerHTML = await loadPartial("/master/page-wrapper.html");
 
-/* ------------------------------
-   3.2 Inject global components
------------------------------- */
-const bgEl = document.getElementById("cc-background");
-const headerEl = document.getElementById("cc-header");
-const contentEl = document.getElementById("cc-page-content");
-const tickerEl = document.getElementById("cc-ticker");
-const footerWrapEl = document.getElementById("cc-footer-wrapper");
+  /* ------------------------------
+     3.2 Inject global components
+  ------------------------------ */
+  const bgEl = document.getElementById("cc-background");
+  const headerEl = document.getElementById("cc-header");
+  const contentEl = document.getElementById("cc-page-content");
+  const tickerEl = document.getElementById("cc-ticker");
+  const footerWrapEl = document.getElementById("cc-footer-wrapper");
 
-if (bgEl) {
-  bgEl.innerHTML = await loadPartial("/master/background.html");
-}
+  if (bgEl) {
+    bgEl.innerHTML = await loadPartial("/master/background.html");
+  }
 
-if (headerEl) {
-  headerEl.innerHTML = await loadPartial("/master/header.html");
-}
+  if (headerEl) {
+    headerEl.innerHTML = await loadPartial("/master/header.html");
+  }
 
-if (contentEl) {
-  contentEl.innerHTML = await loadPartial(`/pages/${page}.html`);
-}
+  if (contentEl) {
+    contentEl.innerHTML = await loadPartial(`/pages/${page}.html`);
+  }
 
-if (tickerEl) {
-  tickerEl.innerHTML = await loadPartial("/master/ticker.html");
-}
+  /* ------------------------------------------------------------
+     3.2a TICKER INJECTION
+  ------------------------------------------------------------ */
+  if (tickerEl) {
+    tickerEl.innerHTML = await loadPartial("/master/ticker.html");
+  }
 
-// DISABLED FOR TEST ENVIRONMENT — manual GR1 footer in page
-// if (footerWrapEl) {
-//   footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
-// }
+  /* ------------------------------------------------------------
+     3.2b FOOTER INJECTION
+  ------------------------------------------------------------ */
+  if (footerWrapEl) {
+    footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
+  }
 
   /* ------------------------------
      3.3 Load global JS engines
@@ -91,7 +102,6 @@ if (tickerEl) {
 
   /* ------------------------------
      3.3a Initialise THEME ENGINE
-     (Wait until toggle exists)
   ------------------------------ */
   function waitForToggleAndInitTheme() {
     const toggle = document.getElementById("themeToggle");
@@ -144,7 +154,6 @@ if (tickerEl) {
     .then(() => {
       /* ------------------------------
          3.5 Initialise HERO GALLERY
-         (after page engine)
       ------------------------------ */
       if (typeof window.initHeroGallery === "function") {
         window.initHeroGallery();
