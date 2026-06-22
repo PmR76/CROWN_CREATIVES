@@ -1,45 +1,80 @@
+/* ============================================================
+   CROWN CREATIVES — TICKER (Corrected for Admin System)
+============================================================ */
+
+/* ---------------------------------------------
+   BASE TICKER CONTAINER
+--------------------------------------------- */
 #ticker-container {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  position: fixed;
-  bottom: 60px; /* just above footer */
+
+  /* IMPORTANT: allow admin to override this */
+  position: relative;
+
+  bottom: 60px;
   left: 0;
+
   z-index: 9999;
-  pointer-events: none; /* disabled unless admin mode */
+
+  /* BLOCKS EDITING + DRAGGING — removed */
+  /* pointer-events: none; */
 }
 
+/* ---------------------------------------------
+   BASE TICKER TEXT
+--------------------------------------------- */
 #ticker-text {
   display: inline-block;
   padding-left: 100%;
   animation: ticker-scroll 18s linear infinite;
+  animation-play-state: running;
+
   font-size: 1.1rem;
   color: var(--text-color);
   text-shadow: 0 0 6px rgba(255,255,255,0.4);
   transition: text-shadow 0.3s ease;
 }
 
-#ticker-text.glow {
+/* Glow when editing */
+.ticker-glow {
   text-shadow: 0 0 10px rgba(255,255,255,0.8),
                0 0 20px rgba(255,255,255,0.6);
 }
 
+/* ---------------------------------------------
+   KEYFRAMES
+--------------------------------------------- */
 @keyframes ticker-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-100%); }
 }
 
-/* Admin mode */
-.admin-active #ticker-container {
-  pointer-events: auto;
-  cursor: grab;
+/* ---------------------------------------------
+   ADMIN MODE OVERRIDES
+--------------------------------------------- */
+.admin-mode #ticker-container {
+  position: absolute !important;
+  pointer-events: auto !important;
+  cursor: grab !important;
+  z-index: 99999;
 }
 
-.admin-active #ticker-text {
-  animation-play-state: paused;
-  border: 1px dashed rgba(255,255,255,0.4);
-  padding: 4px 8px;
+.admin-mode #ticker-text {
+  pointer-events: auto !important;
+  user-select: text !important;
+  cursor: text !important;
 }
+
+/* Pause animation when editing */
+.admin-mode .ticker-glow {
+  animation-play-state: paused !important;
+}
+
+/* ---------------------------------------------
+   OPTIONAL SECOND LINE SUPPORT (kept intact)
+--------------------------------------------- */
 .ticker-line {
   display: inline-block;
   padding-left: 100%;
@@ -53,13 +88,5 @@
 #ticker-text-2 {
   margin-top: 6px;
   opacity: 0.8;
-  animation-delay: -9s; /* half offset */
-}
-.admin-active .draggable {
-  cursor: grab;
-  outline: 1px dashed rgba(255,255,255,0.4);
-}
-
-.admin-active .editable {
-  border: 1px dashed rgba(255,255,255,0.4);
+  animation-delay: -9s;
 }
