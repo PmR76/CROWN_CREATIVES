@@ -1,5 +1,5 @@
 /* ============================================================
-   CROWN CREATIVES — BACKGROUND THEME PANEL (MODULE VERSION)
+   CROWN CREATIVES — BACKGROUND THEME PANEL (V3 FINAL)
    SHIFT+T to open • X to close • Draggable • Day/Night modes
 ============================================================ */
 
@@ -17,19 +17,17 @@
   window.__themePanelLoaded = true;
 
   /* ------------------------------------------------------------
-     1. Load HTML from module folder
+     1. Create Panel
   ------------------------------------------------------------ */
-  async function loadPanelHTML() {
-    const res = await fetch("/test/theme-panel/theme-panel.html?v=" + Date.now());
-    const html = await res.text();
-
-    const wrapper = document.createElement("div");
-    wrapper.innerHTML = html.trim();
-
-    panel = wrapper.firstElementChild;
-    document.body.appendChild(panel);
+  function createPanel() {
+    panel = document.getElementById("theme-panel");
+    if (!panel) {
+      console.warn("Theme panel HTML missing.");
+      return false;
+    }
 
     requestAnimationFrame(() => panel.classList.add("theme-panel-ready"));
+    return true;
   }
 
   /* ------------------------------------------------------------
@@ -60,13 +58,18 @@
   ------------------------------------------------------------ */
   function initButtons() {
     const buttons = panel.querySelectorAll("[data-bg]");
+    if (!buttons || buttons.length === 0) {
+      console.warn("Theme panel: no background buttons found.");
+      return;
+    }
+
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
         applyBackground(btn.dataset.bg);
       });
     });
 
-    const resetBtn = panel.querySelector("#resetPanelPos");
+    const resetBtn = document.getElementById("resetPanelPos");
     if (resetBtn) {
       resetBtn.addEventListener("click", () => {
         panel.style.left = "120px";
@@ -81,6 +84,8 @@
   ------------------------------------------------------------ */
   function initDrag() {
     const header = panel.querySelector("#theme-panel-header");
+    if (!header) return;
+
     header.addEventListener("mousedown", e => {
       dragging = true;
       panel.classList.add("theme-panel-dragging");
@@ -126,9 +131,11 @@
     });
 
     const closeBtn = panel.querySelector("#theme-panel-close");
-    closeBtn.addEventListener("click", () => {
-      panel.classList.remove("theme-panel-visible");
-    });
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        panel.classList.remove("theme-panel-visible");
+      });
+    }
   }
 
   /* ------------------------------------------------------------
@@ -150,8 +157,9 @@
   /* ------------------------------------------------------------
      8. Initialise Panel
   ------------------------------------------------------------ */
-  async function initThemePanel() {
-    await loadPanelHTML();
+  function initThemePanel() {
+    if (!createPanel()) return;
+
     loadPanelPosition();
     loadSavedBackground();
     initButtons();
