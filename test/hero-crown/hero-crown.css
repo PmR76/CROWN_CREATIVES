@@ -1,11 +1,11 @@
 /* ============================================================
-   CROWN CREATIVES — HERO CROWN V3 (FINAL)
-   - Crown size doubled (480px)
+   CROWN CREATIVES — HERO CROWN V4 (FINAL CLEAN VERSION)
+   - 480px crown (100% increase)
    - Perfect fixed centering
-   - Page remains scrollable
    - 8s crossfade (CSS-driven)
    - Day → Night halo transition
    - Safe zones for hero gallery
+   - No duplicates, no overrides
 ============================================================ */
 
 
@@ -18,7 +18,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  pointer-events: none; /* ensures page scrolls normally */
+  pointer-events: none;
 }
 
 
@@ -27,7 +27,7 @@
 ------------------------------------------------------------ */
 .hero-crown {
   position: absolute;
-  width: 480px; /* 100% increase from 240px */
+  width: 480px;
   height: auto;
   opacity: 0;
   transition: opacity 8s ease-in-out;
@@ -82,7 +82,7 @@ body.dark-mode #hero-crown-container::before {
 
 
 /* ------------------------------------------------------------
-   4. SAFE ZONES FOR HERO GALLERY (adjusted for larger crown)
+   4. SAFE ZONES FOR HERO GALLERY
 ------------------------------------------------------------ */
 :root {
   --hero-crown-safe-top: 260px;
@@ -91,7 +91,6 @@ body.dark-mode #hero-crown-container::before {
   --hero-crown-safe-right: 260px;
 }
 
-/* TOP-LEFT lane */
 .hero-gallery-lane-left {
   position: fixed;
   top: var(--hero-crown-safe-top);
@@ -99,7 +98,6 @@ body.dark-mode #hero-crown-container::before {
   z-index: 2;
 }
 
-/* BOTTOM-RIGHT lane */
 .hero-gallery-lane-right {
   position: fixed;
   bottom: var(--hero-crown-safe-bottom);
@@ -114,28 +112,4 @@ body.dark-mode #hero-crown-container::before {
 .cc-header *::before,
 .cc-header *::after {
   content: none !important;
-}
-#hero-crown-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-  pointer-events: none;
-}
-
-.hero-crown {
-  position: absolute;
-  width: 480px;
-  height: auto;
-  opacity: 0;
-  transition: opacity 8s ease-in-out;
-}
-
-body:not(.dark-mode) #hero-crown-day {
-  opacity: 1;
-}
-
-body.dark-mode #hero-crown-night {
-  opacity: 1;
 }
