@@ -1,23 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Header Component Test</title>
+<header class="cc-header">
 
-  <!-- Isolated header CSS -->
-  <link rel="stylesheet" href="header.css">
+  <!-- LEFT: SOUND TOGGLE -->
+  <div class="header-left">
+    <img id="soundToggle"
+         class="header-toggle"
+         src="/assets/icons/music.png"
+         alt="Sound Toggle">
+  </div>
 
-  <!-- Optional: diagnostic overlay -->
-  <link rel="stylesheet" href="header.test.css">
-</head>
+  <!-- CENTER: CROWN + TITLE + TAGLINE + NAV -->
+  <div class="header-center">
 
-<body>
+    <div class="header-crown-wrapper">
+      <img src="/assets/icons/head-crown.svg"
+           class="header-crown"
+           alt="Crown">
+    </div>
 
-  <!-- Test root -->
-  <div id="header-test-root"></div>
+    <div class="header-title-block">
+      <h1 class="header-title">CROWN CREATIVES</h1>
+      <p class="header-tagline">ARTISTRY • RESILIENCE • IMAGINATION</p>
+    </div>
 
-  <!-- Component loader -->
-  <script src="header.test.js"></script>
+    <nav class="header-nav">
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/projects.html">Projects</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
 
-</body>
-</html>
+  </div>
+
+  <!-- RIGHT: THEME TOGGLE -->
+  <div class="header-right">
+    <img id="themeToggle"
+         class="header-toggle"
+         src="/assets/icons/sun-moon.png"
+         alt="Theme Toggle">
+  </div>
+
+</header>
