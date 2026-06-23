@@ -168,3 +168,12 @@ async function initMaster() {
    4. START MASTER SYSTEM
 ------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", initMaster);
+/* ------------------------------
+   Inject Theme Panel (TEST ONLY)
+------------------------------ */
+if (location.pathname.includes("/test/")) {
+  const panelWrap = document.createElement("div");
+  panelWrap.innerHTML = await loadPartial("/test/theme-panel/theme-panel.html");
+  document.body.appendChild(panelWrap);
+  await loadScript("/test/theme-panel/theme-panel.js");
+}
