@@ -117,3 +117,7 @@
   filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
   animation: crownShimmer 3s infinite linear;
 }
+/* Move crown + title + tagline + nav up by 20px */
+.header-center {
+  margin-top: -20px;
+}
