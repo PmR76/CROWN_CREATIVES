@@ -1,126 +1,85 @@
 /* ============================================================
-   CROWN CREATIVES — THEME PANEL (GR1 CLEAN)
-   Admin-only • SHIFT+P • Draggable • Page-specific backgrounds
+   CROWN CREATIVES — BACKGROUND THEME PANEL (V2 FINAL)
+   SHIFT+T to open • X to close • Draggable • Day/Night modes
 ============================================================ */
 
 (function () {
 
-  const THEMES_URL = "/assets/backgrounds/themes.json";
-  const STORAGE_KEY = "pageBackgroundTheme";
   const PANEL_POS_KEY = "themePanelPos";
+  const BG_KEY = "cc-background-mode";
 
   let panel = null;
-  let bgData = null;
   let dragging = false;
   let startX = 0, startY = 0;
   let startLeft = 0, startTop = 0;
 
-  /* ------------------------------------------------------------
-     Prevent double-init
-  ------------------------------------------------------------ */
   if (window.__themePanelLoaded) return;
   window.__themePanelLoaded = true;
 
-  function getPageKey() {
-    return document.body.getAttribute("data-page") || "home";
-  }
-
-  function applyBackground(themeId) {
-    if (!bgData) return;
-
-    const pageKey = getPageKey();
-    const theme = bgData[pageKey] || bgData["home"];
-    if (!theme) return;
-
-    const gradient = theme.gradient;
-
-    document.documentElement.style.setProperty("--cc-page-background", gradient);
-    document.body.style.backgroundImage = gradient;
-
-    localStorage.setItem(STORAGE_KEY + ":" + pageKey, themeId || theme.id || pageKey);
-  }
-
-  async function loadThemes() {
-    try {
-      const res = await fetch(THEMES_URL + "?v=" + Date.now(), { cache: "no-store" });
-      if (!res.ok) throw new Error("Theme JSON missing");
-      bgData = await res.json();
-    } catch (e) {
-      console.warn("Theme panel: failed to load themes.json", e);
-      bgData = null;
-    }
-  }
-
+  /* ------------------------------------------------------------
+     1. Create Panel
+  ------------------------------------------------------------ */
   function createPanel() {
     if (panel) return panel;
 
-    panel = document.createElement("div");
-    panel.id = "theme-panel";
-    panel.classList.add("cc-theme-panel");
+    panel = document.getElementById("theme-panel");
+    if (!panel) return;
 
-    panel.innerHTML = `
-      <div id="theme-panel-header">
-        <div id="theme-panel-title">Background Theme</div>
-        <div id="theme-panel-close">✕</div>
-      </div>
-      <div class="theme-panel-section-label">Page Presets</div>
-      <div id="theme-panel-background-list"></div>
-    `;
-
-    document.body.appendChild(panel);
-
-    // Fade-in animation
+    // Fade-in
     requestAnimationFrame(() => panel.classList.add("theme-panel-ready"));
 
     return panel;
   }
 
-  function populatePanel() {
-    if (!panel || !bgData) return;
+  /* ------------------------------------------------------------
+     2. Apply Background Mode
+  ------------------------------------------------------------ */
+  function applyBackground(mode) {
+    if (mode === "night") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
 
-    const list = panel.querySelector("#theme-panel-background-list");
-    list.innerHTML = "";
+    localStorage.setItem(BG_KEY, mode);
 
-    const pageKey = getPageKey();
-    const theme = bgData[pageKey] || bgData["home"];
-    if (!theme) return;
-
-    const option = document.createElement("div");
-    option.className = "theme-panel-bg-option active";
-    option.dataset.themeId = theme.id || pageKey;
-    option.innerHTML = `<span>${theme.label || ("Theme: " + pageKey)}</span>`;
-
-    option.addEventListener("click", () => {
-      applyBackground(option.dataset.themeId);
-    });
-
-    list.appendChild(option);
+    // Notify hero crown + background systems
+    document.dispatchEvent(new CustomEvent("theme-changed", { detail: mode }));
   }
 
-  function loadPanelPosition() {
-    const raw = localStorage.getItem(PANEL_POS_KEY);
-    if (!raw) return;
+  /* ------------------------------------------------------------
+     3. Load Saved Background Mode
+  ------------------------------------------------------------ */
+  function loadSavedBackground() {
+    const saved = localStorage.getItem(BG_KEY) || "day";
+    applyBackground(saved);
+  }
 
-    try {
-      const pos = JSON.parse(raw);
-      if (typeof pos.x === "number" && typeof pos.y === "number") {
-        panel.style.left = pos.x + "px";
-        panel.style.top = pos.y + "px";
-      }
-    } catch (e) {
-      console.warn("Theme panel pos parse error:", e);
+  /* ------------------------------------------------------------
+     4. Populate Buttons
+  ------------------------------------------------------------ */
+  function initButtons() {
+    const buttons = panel.querySelectorAll("[data-bg]");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const mode = btn.dataset.bg;
+        applyBackground(mode);
+      });
+    });
+
+    const resetBtn = document.getElementById("resetPanelPos");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        panel.style.left = "120px";
+        panel.style.top = "120px";
+        localStorage.removeItem(PANEL_POS_KEY);
+      });
     }
   }
 
-  function savePanelPosition() {
-    const rect = panel.getBoundingClientRect();
-    const pos = {
-      x: rect.left + window.scrollX,
-      y: rect.top + window.scrollY
-    };
-    localStorage.setItem(PANEL_POS_KEY, JSON.stringify(pos));
-  }
-
+  /* ------------------------------------------------------------
+     5. Dragging
+  ------------------------------------------------------------ */
   function initDrag() {
     const header = panel.querySelector("#theme-panel-header");
     if (!header) return;
@@ -132,8 +91,8 @@
       const rect = panel.getBoundingClientRect();
       startX = e.clientX;
       startY = e.clientY;
-      startLeft = rect.left + window.scrollX;
-      startTop = rect.top + window.scrollY;
+      startLeft = rect.left;
+      startTop = rect.top;
 
       e.preventDefault();
     });
@@ -152,14 +111,19 @@
       if (!dragging) return;
       dragging = false;
       panel.classList.remove("theme-panel-dragging");
-      savePanelPosition();
+
+      const rect = panel.getBoundingClientRect();
+      const pos = { x: rect.left, y: rect.top };
+      localStorage.setItem(PANEL_POS_KEY, JSON.stringify(pos));
     });
   }
 
+  /* ------------------------------------------------------------
+     6. Toggle Visibility (SHIFT + T)
+  ------------------------------------------------------------ */
   function initToggle() {
     window.addEventListener("keydown", e => {
-      if (e.key === "P" && e.shiftKey) {
-        if (!panel) return;
+      if (e.key === "T" && e.shiftKey) {
         panel.classList.toggle("theme-panel-visible");
       }
     });
@@ -172,12 +136,30 @@
     }
   }
 
-  async function initThemePanel() {
+  /* ------------------------------------------------------------
+     7. Load Saved Position
+  ------------------------------------------------------------ */
+  function loadPanelPosition() {
+    const raw = localStorage.getItem(PANEL_POS_KEY);
+    if (!raw) return;
+
+    try {
+      const pos = JSON.parse(raw);
+      panel.style.left = pos.x + "px";
+      panel.style.top = pos.y + "px";
+    } catch (e) {
+      console.warn("Theme panel pos parse error:", e);
+    }
+  }
+
+  /* ------------------------------------------------------------
+     8. Initialise Panel
+  ------------------------------------------------------------ */
+  function initThemePanel() {
     createPanel();
     loadPanelPosition();
-    await loadThemes();
-    populatePanel();
-    applyBackground();
+    loadSavedBackground();
+    initButtons();
     initDrag();
     initToggle();
   }
