@@ -1,5 +1,6 @@
 /* ============================================================
-   HEADER MODULE — Crown Creatives (Cinematic Centered Layout)
+   CROWN CREATIVES — CINEMATIC HEADER MODULE
+   Centered Crown • Gold Glow • Shimmer • Cinzel Decorative
 ============================================================ */
 
 /* ------------------------------------------------------------
@@ -16,10 +17,44 @@
   text-align: center;
   color: #f5f5f5;
   font-family: "Cinzel Decorative", serif;
+  position: relative;
 }
 
 /* ------------------------------------------------------------
-   CROWN — 50% smaller + glow + shimmer
+   LEFT / CENTER / RIGHT LAYOUT
+------------------------------------------------------------ */
+.header-left,
+.header-right {
+  position: absolute;
+  top: 20px;
+}
+
+.header-left {
+  left: 40px;
+}
+
+.header-right {
+  right: 40px;
+}
+
+/* ------------------------------------------------------------
+   TOGGLES (Sound + Theme)
+------------------------------------------------------------ */
+.header-toggle {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.header-toggle:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 10px rgba(255,215,0,0.9));
+}
+
+/* ------------------------------------------------------------
+   CROWN — 50% smaller + gold glow + shimmer
 ------------------------------------------------------------ */
 .header-crown-wrapper {
   display: flex;
@@ -53,6 +88,7 @@
   letter-spacing: 3px;
   margin: 0;
   color: #fafafa;
+  text-shadow: 0 0 6px rgba(255,215,0,0.4);
 }
 
 .header-tagline {
@@ -61,10 +97,11 @@
   margin: 5px 0 0 0;
   letter-spacing: 2px;
   color: #eaeaea;
+  text-shadow: 0 0 4px rgba(255,215,0,0.3);
 }
 
 /* ------------------------------------------------------------
-   NAVIGATION — horizontal + glow on hover
+   NAVIGATION — horizontal + gold glow on hover
 ------------------------------------------------------------ */
 .header-nav ul {
   list-style: none;
@@ -89,37 +126,10 @@
 }
 
 /* ------------------------------------------------------------
-   CONTROLS (theme + sound)
------------------------------------------------------------- */
-.header-controls {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.sound-toggle,
-.theme-toggle {
-  padding: 8px 16px;
-  border: 1px solid #ffffff;
-  background: transparent;
-  color: #ffffff;
-  cursor: pointer;
-  font-family: "Cinzel Decorative", serif;
-  transition: 0.25s ease;
-}
-
-.sound-toggle:hover,
-.theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
-}
-
-/* ------------------------------------------------------------
    RESPONSIVE
 ------------------------------------------------------------ */
 @media (max-width: 900px) {
-  .header-nav ul {
-    gap: 18px;
-  }
+  .header-left { left: 20px; }
+  .header-right { right: 20px; }
+  .header-nav ul { gap: 18px; }
 }
