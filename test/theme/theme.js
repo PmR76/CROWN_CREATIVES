@@ -1,13 +1,11 @@
 /* ============================================================
-   CROWN CREATIVES — THEME ENGINE (GR1 MODULAR VERSION)
+   CROWN CREATIVES — THEME ENGINE (GR1 MODULAR VERSION, V2)
    Global responsibilities:
    - Light / Dark / Neon / Sunset switching
    - Theme toggle behaviour
    - Draggable theme toggle (SHIFT + T)
    - LocalStorage persistence
-   NOTE:
-   Crown switching is now handled by hero-crown module.
-   Background switching is now handled by theme-panel module.
+   - Emits unified theme-change events for all modules
 ============================================================ */
 
 window.initThemeEngine = function () {
@@ -42,7 +40,17 @@ window.initThemeEngine = function () {
     document.body.setAttribute("data-theme", next);
     localStorage.setItem("cc-theme", next);
 
-    // Notify modules (hero-crown, hero-window, etc.)
+    /* ------------------------------------------------------------
+       Notify ALL modules of theme change
+       - Hero Crown V2 listens for "theme-changed"
+       - Legacy modules listen for "cc-theme-changed"
+       - Background + theme-panel also listen for both
+    ------------------------------------------------------------ */
+
+    // NEW unified event (Hero Crown V2)
+    document.dispatchEvent(new CustomEvent("theme-changed", { detail: next }));
+
+    // Legacy compatibility event
     window.dispatchEvent(new CustomEvent("cc-theme-changed", { detail: next }));
   }
 
