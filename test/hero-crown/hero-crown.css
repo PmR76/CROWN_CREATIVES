@@ -1,11 +1,11 @@
 /* ============================================================
-   CROWN CREATIVES — HERO CROWN V2 (FINAL)
-   - Fixed centered crown container
-   - 20% reduced crown size (240px)
+   CROWN CREATIVES — HERO CROWN V3 (FINAL)
+   - Crown size doubled (480px)
+   - Perfect fixed centering
+   - Page remains scrollable
    - 8s crossfade (CSS-driven)
    - Day → Night halo transition
    - Safe zones for hero gallery
-   - No shimmer leaks, no ghost images
 ============================================================ */
 
 
@@ -18,7 +18,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  pointer-events: none;
+  pointer-events: none; /* ensures page scrolls normally */
 }
 
 
@@ -27,13 +27,12 @@
 ------------------------------------------------------------ */
 .hero-crown {
   position: absolute;
-  width: 240px; /* 20% smaller than 300px */
+  width: 480px; /* 100% increase from 240px */
   height: auto;
   opacity: 0;
   transition: opacity 8s ease-in-out;
-  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
+  filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.7));
 }
-
 
 /* DAY MODE — Day crown visible */
 body:not(.dark-mode) #hero-crown-day {
@@ -43,7 +42,7 @@ body:not(.dark-mode) #hero-crown-day {
 /* NIGHT MODE — Night crown visible */
 body.dark-mode #hero-crown-night {
   opacity: 1;
-  filter: drop-shadow(0 0 18px rgba(180, 120, 255, 1));
+  filter: drop-shadow(0 0 28px rgba(180, 120, 255, 1));
 }
 
 
@@ -55,8 +54,8 @@ body.dark-mode #hero-crown-night {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 420px;   /* 240px crown + halo */
-  height: 420px;
+  width: 760px;   /* 480px crown + halo */
+  height: 760px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: radial-gradient(
@@ -65,7 +64,7 @@ body.dark-mode #hero-crown-night {
     rgba(255, 215, 0, 0.15) 40%,
     rgba(255, 215, 0, 0.0) 70%
   );
-  filter: blur(20px);
+  filter: blur(40px);
   z-index: -1;
   transition: opacity 8s ease-in-out, background 8s ease-in-out;
   opacity: 1;
@@ -83,13 +82,13 @@ body.dark-mode #hero-crown-container::before {
 
 
 /* ------------------------------------------------------------
-   4. SAFE ZONES FOR HERO GALLERY
+   4. SAFE ZONES FOR HERO GALLERY (adjusted for larger crown)
 ------------------------------------------------------------ */
 :root {
-  --hero-crown-safe-top: 180px;
-  --hero-crown-safe-bottom: 180px;
-  --hero-crown-safe-left: 180px;
-  --hero-crown-safe-right: 180px;
+  --hero-crown-safe-top: 260px;
+  --hero-crown-safe-bottom: 260px;
+  --hero-crown-safe-left: 260px;
+  --hero-crown-safe-right: 260px;
 }
 
 /* TOP-LEFT lane */
