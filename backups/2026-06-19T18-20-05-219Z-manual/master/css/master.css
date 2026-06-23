@@ -282,51 +282,6 @@ body.dark-mode .night-nebula {
     padding: 20px;
   }
 }
-
-/* ============================================================
-   HEADER — TRANSPARENT + GLOWING (LEGACY STYLE TRANSPOSED)
-============================================================ */
-
-/* Transparent header */
-#cc-header {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-}
-
-/* Inner layout (centred brand block) */
-.cc-header-inner {
-  justify-content: center;
-  background: transparent !important;
-}
-
-/* Glowing white text for magical backgrounds */
-#cc-header *,
-.cc-nav a {
-  color: #ffffff !important;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
-  font-weight: 600;
-  font-family: "Cinzel Decorative", serif;
-}
-
-/* Navigation links */
-.cc-nav {
-  display: flex;
-  gap: 28px;
-}
-
-.cc-nav a {
-  text-decoration: none;
-  font-size: 17px;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-body.dark-mode .cc-nav a {
-  color: #fff;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-}
-
 /* ============================================================
    THEME TOGGLE — SUN/MOON (UPDATED FOR NEW STRUCTURE)
 ============================================================ */
