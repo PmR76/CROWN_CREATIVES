@@ -81,3 +81,33 @@
 #hero-crown-wrapper.hero-crown-admin .hero-crown-resize-handle {
   opacity: 1;
 }
+/* HERO CROWN — FIXED CENTERED */
+#hero-crown-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Both crowns stacked */
+.hero-crown {
+  position: absolute;
+  width: 240px; /* 20% smaller than 300px */
+  height: auto;
+  opacity: 0;
+  transition: opacity 8s ease-in-out;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
+}
+
+/* DAY MODE */
+body:not(.dark-mode) #hero-crown-day {
+  opacity: 1;
+}
+
+/* NIGHT MODE */
+body.dark-mode #hero-crown-night {
+  opacity: 1;
+  filter: drop-shadow(0 0 18px rgba(180, 120, 255, 1));
+}
