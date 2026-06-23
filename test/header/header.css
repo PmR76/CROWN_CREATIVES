@@ -104,3 +104,16 @@
   .header-right { right: 20px; }
   .header-nav ul { gap: 18px; }
 }
+/* CROWN — 50% bigger + gold glow + shimmer */
+.header-crown-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.header-crown {
+  width: 60px; /* was 40px — now 50% bigger */
+  height: auto;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+  animation: crownShimmer 3s infinite linear;
+}
