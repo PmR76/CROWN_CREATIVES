@@ -112,7 +112,7 @@
 }
 
 .header-crown {
-  width: 60px; /* was 40px — now 50% bigger */
+  width: 100px; /* was 40px — now 50% bigger */
   height: auto;
   filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
   animation: crownShimmer 3s infinite linear;
