@@ -133,3 +133,18 @@
   .header-right { right: 20px; }
   .header-nav ul { gap: 18px; }
 }
+/* ------------------------------------------------------------
+   TOGGLES — Correct size + glow + cinematic hover
+------------------------------------------------------------ */
+.header-toggle {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.header-toggle:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 10px rgba(255,215,0,0.9));
+}

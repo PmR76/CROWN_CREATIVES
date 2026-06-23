@@ -40,3 +40,12 @@ function runHeaderDiagnostics() {
 
   console.table(results);
 }
+// Initialise theme + sound engines if available
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof window.initThemeEngine === "function") {
+    window.initThemeEngine();
+  }
+  if (typeof window.initSoundEngine === "function") {
+    window.initSoundEngine();
+  }
+});
