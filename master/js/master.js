@@ -37,15 +37,9 @@ function loadScript(path) {
    3. MASTER INITIALISATION
 ------------------------------------------------------------ */
 async function initMaster() {
-  // 🔒 Hard-disable master system on /test/ environment
-  if (location.pathname.includes("/test/")) {
-    console.info("master.js disabled on /test/ environment.");
-    return;
-  }
-
   const container = document.getElementById("master-container");
 
-  // If there is no master container, do nothing
+  // If there is no master container, do nothing (safe for pages without master)
   if (!container) {
     console.info("Master container missing — master.js idle on this page.");
     return;
@@ -61,10 +55,10 @@ async function initMaster() {
   /* ------------------------------
      3.2 Inject global components
   ------------------------------ */
-  const bgEl = document.getElementById("cc-background");
-  const headerEl = document.getElementById("cc-header");
-  const contentEl = document.getElementById("cc-page-content");
-  const tickerEl = document.getElementById("cc-ticker");
+  const bgEl        = document.getElementById("cc-background");
+  const headerEl    = document.getElementById("cc-header");
+  const contentEl   = document.getElementById("cc-page-content");
+  const tickerEl    = document.getElementById("cc-ticker");
   const footerWrapEl = document.getElementById("cc-footer-wrapper");
 
   if (bgEl) {
@@ -80,17 +74,25 @@ async function initMaster() {
   }
 
   /* ------------------------------------------------------------
-     3.2a TICKER INJECTION
+     3.2a TICKER INJECTION — DISABLED IN /test/
   ------------------------------------------------------------ */
-  if (tickerEl) {
-    tickerEl.innerHTML = await loadPartial("/master/ticker.html");
+  if (!location.pathname.includes("/test/")) {
+    if (tickerEl) {
+      tickerEl.innerHTML = await loadPartial("/master/ticker.html");
+    }
+  } else {
+    console.info("Ticker injection skipped in /test/ environment.");
   }
 
   /* ------------------------------------------------------------
-     3.2b FOOTER INJECTION
+     3.2b FOOTER INJECTION — DISABLED IN /test/
   ------------------------------------------------------------ */
-  if (footerWrapEl) {
-    footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
+  if (!location.pathname.includes("/test/")) {
+    if (footerWrapEl) {
+      footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
+    }
+  } else {
+    console.info("Footer injection skipped in /test/ environment.");
   }
 
   /* ------------------------------
