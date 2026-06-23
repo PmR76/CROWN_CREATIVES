@@ -1,5 +1,5 @@
 /* ============================================================
-   CROWN CREATIVES — BACKGROUND THEME PANEL (V2 FINAL)
+   CROWN CREATIVES — BACKGROUND THEME PANEL (MODULE VERSION)
    SHIFT+T to open • X to close • Draggable • Day/Night modes
 ============================================================ */
 
@@ -17,18 +17,19 @@
   window.__themePanelLoaded = true;
 
   /* ------------------------------------------------------------
-     1. Create Panel
+     1. Load HTML from module folder
   ------------------------------------------------------------ */
-  function createPanel() {
-    if (panel) return panel;
+  async function loadPanelHTML() {
+    const res = await fetch("/test/theme-panel/theme-panel.html?v=" + Date.now());
+    const html = await res.text();
 
-    panel = document.getElementById("theme-panel");
-    if (!panel) return;
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = html.trim();
 
-    // Fade-in
+    panel = wrapper.firstElementChild;
+    document.body.appendChild(panel);
+
     requestAnimationFrame(() => panel.classList.add("theme-panel-ready"));
-
-    return panel;
   }
 
   /* ------------------------------------------------------------
@@ -43,7 +44,6 @@
 
     localStorage.setItem(BG_KEY, mode);
 
-    // Notify hero crown + background systems
     document.dispatchEvent(new CustomEvent("theme-changed", { detail: mode }));
   }
 
@@ -56,18 +56,17 @@
   }
 
   /* ------------------------------------------------------------
-     4. Populate Buttons
+     4. Buttons
   ------------------------------------------------------------ */
   function initButtons() {
     const buttons = panel.querySelectorAll("[data-bg]");
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
-        const mode = btn.dataset.bg;
-        applyBackground(mode);
+        applyBackground(btn.dataset.bg);
       });
     });
 
-    const resetBtn = document.getElementById("resetPanelPos");
+    const resetBtn = panel.querySelector("#resetPanelPos");
     if (resetBtn) {
       resetBtn.addEventListener("click", () => {
         panel.style.left = "120px";
@@ -82,8 +81,6 @@
   ------------------------------------------------------------ */
   function initDrag() {
     const header = panel.querySelector("#theme-panel-header");
-    if (!header) return;
-
     header.addEventListener("mousedown", e => {
       dragging = true;
       panel.classList.add("theme-panel-dragging");
@@ -129,11 +126,9 @@
     });
 
     const closeBtn = panel.querySelector("#theme-panel-close");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        panel.classList.remove("theme-panel-visible");
-      });
-    }
+    closeBtn.addEventListener("click", () => {
+      panel.classList.remove("theme-panel-visible");
+    });
   }
 
   /* ------------------------------------------------------------
@@ -155,8 +150,8 @@
   /* ------------------------------------------------------------
      8. Initialise Panel
   ------------------------------------------------------------ */
-  function initThemePanel() {
-    createPanel();
+  async function initThemePanel() {
+    await loadPanelHTML();
     loadPanelPosition();
     loadSavedBackground();
     initButtons();
