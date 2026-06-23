@@ -39,7 +39,6 @@ function loadScript(path) {
 async function initMaster() {
   const container = document.getElementById("master-container");
 
-  // If there is no master container, do nothing (safe for pages without master)
   if (!container) {
     console.info("Master container missing — master.js idle on this page.");
     return;
@@ -61,36 +60,24 @@ async function initMaster() {
   const tickerEl    = document.getElementById("cc-ticker");
   const footerWrapEl = document.getElementById("cc-footer-wrapper");
 
-  if (bgEl) {
-    bgEl.innerHTML = await loadPartial("/master/background.html");
-  }
+  if (bgEl) bgEl.innerHTML = await loadPartial("/master/background.html");
+  if (headerEl) headerEl.innerHTML = await loadPartial("/master/header.html");
+  if (contentEl) contentEl.innerHTML = await loadPartial(`/pages/${page}.html`);
 
-  if (headerEl) {
-    headerEl.innerHTML = await loadPartial("/master/header.html");
-  }
-
-  if (contentEl) {
-    contentEl.innerHTML = await loadPartial(`/pages/${page}.html`);
-  }
-
-  /* ------------------------------------------------------------
-     3.2a TICKER INJECTION — DISABLED IN /test/
-  ------------------------------------------------------------ */
+  /* ------------------------------
+     3.2a TICKER (disabled in /test/)
+  ------------------------------ */
   if (!location.pathname.includes("/test/")) {
-    if (tickerEl) {
-      tickerEl.innerHTML = await loadPartial("/master/ticker.html");
-    }
+    if (tickerEl) tickerEl.innerHTML = await loadPartial("/master/ticker.html");
   } else {
     console.info("Ticker injection skipped in /test/ environment.");
   }
 
-  /* ------------------------------------------------------------
-     3.2b FOOTER INJECTION — DISABLED IN /test/
-  ------------------------------------------------------------ */
+  /* ------------------------------
+     3.2b FOOTER (disabled in /test/)
+  ------------------------------ */
   if (!location.pathname.includes("/test/")) {
-    if (footerWrapEl) {
-      footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
-    }
+    if (footerWrapEl) footerWrapEl.innerHTML = await loadPartial("/master/footer.html");
   } else {
     console.info("Footer injection skipped in /test/ environment.");
   }
@@ -109,7 +96,7 @@ async function initMaster() {
     const toggle = document.getElementById("themeToggle");
     if (toggle && typeof window.initThemeEngine === "function") {
       window.initThemeEngine();
-    } else if (!toggle) {
+    } else {
       requestAnimationFrame(waitForToggleAndInitTheme);
     }
   }
@@ -147,12 +134,8 @@ async function initMaster() {
   /* ------------------------------
      3.3d Initialise MODULES
   ------------------------------ */
-  if (typeof window.initHeroCrown === "function") {
-    window.initHeroCrown();
-  }
-  if (typeof window.initThemePanel === "function") {
-    window.initThemePanel();
-  }
+  if (typeof window.initHeroCrown === "function") window.initHeroCrown();
+  if (typeof window.initThemePanel === "function") window.initThemePanel();
 
   /* ------------------------------
      3.4 Load page-specific engine
@@ -160,16 +143,8 @@ async function initMaster() {
   const enginePath = `/assets/js/${page}.js`;
 
   fetch(enginePath)
-    .then(res => {
-      if (res.ok) {
-        return loadScript(enginePath);
-      }
-      console.warn(`No page engine found for: ${page}`);
-    })
+    .then(res => res.ok ? loadScript(enginePath) : console.warn(`No page engine found for: ${page}`))
     .then(() => {
-      /* ------------------------------
-         3.5 Initialise HERO GALLERY
-      ------------------------------ */
       if (typeof window.initHeroGallery === "function") {
         window.initHeroGallery();
       }

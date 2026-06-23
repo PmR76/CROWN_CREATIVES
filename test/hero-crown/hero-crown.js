@@ -64,3 +64,27 @@ window.initHeroCrown = function () {
 
   console.info("Hero Crown V2 initialised.");
 };
+window.initHeroCrown = function () {
+  const day = document.getElementById("hero-crown-day");
+  const night = document.getElementById("hero-crown-night");
+
+  if (!day || !night) {
+    console.warn("Hero Crown missing in DOM.");
+    return;
+  }
+
+  function apply(theme) {
+    if (theme === "dark") {
+      day.style.opacity = 0;
+      night.style.opacity = 1;
+    } else {
+      day.style.opacity = 1;
+      night.style.opacity = 0;
+    }
+  }
+
+  const initial = document.body.classList.contains("dark-mode") ? "dark" : "day";
+  apply(initial);
+
+  document.addEventListener("theme-changed", e => apply(e.detail));
+};
