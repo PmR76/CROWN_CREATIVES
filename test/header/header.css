@@ -1,16 +1,9 @@
 /* ============================================================
    CROWN CREATIVES — CINEMATIC HEADER MODULE
-   Centered Crown • Gold Glow • Shimmer • Cinzel Decorative
 ============================================================ */
 
-/* ------------------------------------------------------------
-   GLOBAL FONT
------------------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
 
-/* ------------------------------------------------------------
-   HEADER WRAPPER
------------------------------------------------------------- */
 .cc-header {
   width: 100%;
   padding: 40px 0;
@@ -20,26 +13,17 @@
   position: relative;
 }
 
-/* ------------------------------------------------------------
-   LEFT / CENTER / RIGHT LAYOUT
------------------------------------------------------------- */
+/* LEFT / RIGHT POSITIONING */
 .header-left,
 .header-right {
   position: absolute;
   top: 20px;
 }
 
-.header-left {
-  left: 40px;
-}
+.header-left { left: 40px; }
+.header-right { right: 40px; }
 
-.header-right {
-  right: 40px;
-}
-
-/* ------------------------------------------------------------
-   TOGGLES (Sound + Theme)
------------------------------------------------------------- */
+/* TOGGLES */
 .header-toggle {
   width: 32px;
   height: 32px;
@@ -53,18 +37,15 @@
   filter: drop-shadow(0 0 10px rgba(255,215,0,0.9));
 }
 
-/* ------------------------------------------------------------
-   CROWN — 50% smaller + gold glow + shimmer
------------------------------------------------------------- */
+/* CROWN */
 .header-crown-wrapper {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
-  position: relative;
 }
 
 .header-crown {
-  width: 40px; /* 50% smaller */
+  width: 40px;
   height: auto;
   filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
   animation: crownShimmer 3s infinite linear;
@@ -76,18 +57,13 @@
   100% { filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4)); }
 }
 
-/* ------------------------------------------------------------
-   TITLE + TAGLINE
------------------------------------------------------------- */
-.header-title-block {
-  margin-bottom: 20px;
-}
+/* TITLE + TAGLINE */
+.header-title-block { margin-bottom: 20px; }
 
 .header-title {
   font-size: 28px;
   letter-spacing: 3px;
   margin: 0;
-  color: #fafafa;
   text-shadow: 0 0 6px rgba(255,215,0,0.4);
 }
 
@@ -96,13 +72,10 @@
   opacity: 0.85;
   margin: 5px 0 0 0;
   letter-spacing: 2px;
-  color: #eaeaea;
   text-shadow: 0 0 4px rgba(255,215,0,0.3);
 }
 
-/* ------------------------------------------------------------
-   NAVIGATION — horizontal + gold glow on hover
------------------------------------------------------------- */
+/* NAVIGATION */
 .header-nav ul {
   list-style: none;
   padding: 0;
@@ -125,26 +98,9 @@
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.9);
 }
 
-/* ------------------------------------------------------------
-   RESPONSIVE
------------------------------------------------------------- */
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .header-left { left: 20px; }
   .header-right { right: 20px; }
   .header-nav ul { gap: 18px; }
-}
-/* ------------------------------------------------------------
-   TOGGLES — Correct size + glow + cinematic hover
------------------------------------------------------------- */
-.header-toggle {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
-  transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-.header-toggle:hover {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 10px rgba(255,215,0,0.9));
 }
