@@ -25,8 +25,8 @@
 
 /* TOGGLES */
 .header-toggle {
-  width: 32px;
-  height: 32px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
   transition: transform 0.25s ease, filter 0.25s ease;
@@ -45,7 +45,7 @@
 }
 
 .header-crown {
-  width: 80px;
+  width: 100px;
   height: auto;
   filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
   animation: crownShimmer 3s infinite linear;
