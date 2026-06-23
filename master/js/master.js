@@ -131,6 +131,19 @@ async function initMaster() {
     }
   }, 150);
 
+  /* ------------------------------------------------------------
+     Inject Theme Panel (TEST ONLY)
+     MUST happen BEFORE initThemePanel()
+  ------------------------------------------------------------ */
+  if (location.pathname.includes("/test/")) {
+    const panelHTML = await loadPartial("/test/theme-panel/theme-panel.html");
+    const panelWrap = document.createElement("div");
+    panelWrap.innerHTML = panelHTML;
+    document.body.appendChild(panelWrap);
+
+    await loadScript("/test/theme-panel/theme-panel.js");
+  }
+
   /* ------------------------------
      3.3d Initialise MODULES
   ------------------------------ */
@@ -168,12 +181,3 @@ async function initMaster() {
    4. START MASTER SYSTEM
 ------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", initMaster);
-/* ------------------------------
-   Inject Theme Panel (TEST ONLY)
------------------------------- */
-if (location.pathname.includes("/test/")) {
-  const panelWrap = document.createElement("div");
-  panelWrap.innerHTML = await loadPartial("/test/theme-panel/theme-panel.html");
-  document.body.appendChild(panelWrap);
-  await loadScript("/test/theme-panel/theme-panel.js");
-}
