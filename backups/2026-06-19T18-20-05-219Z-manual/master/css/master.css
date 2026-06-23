@@ -321,27 +321,3 @@ body.dark-mode .night-nebula {
 body.dark-mode .cc-theme-icon {
   filter: drop-shadow(0 0 22px rgba(180, 120, 255, 1));
 }
-
-/* ============================================================
-   HEADER ICONS — TRANSPARENT + GLOW
-============================================================ */
-
-.cc-header-icon {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  background: transparent !important;
-  border: none !important;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.85));
-  transition: transform 0.3s ease, filter 0.4s ease;
-}
-
-.cc-header-icon:hover {
-  transform: scale(1.12);
-  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 1));
-}
-
-/* Night mode glow */
-body.dark-mode .cc-header-icon {
-  filter: drop-shadow(0 0 18px rgba(180, 120, 255, 1));
-}
