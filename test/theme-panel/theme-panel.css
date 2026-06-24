@@ -138,24 +138,3 @@
   transition: none !important;
   cursor: grabbing !important;
 }
-/* TEST STATE */
-#theme-panel {
-  position: fixed;
-  top: 120px;
-  left: 120px;
-  width: 260px;
-  background: rgba(20, 20, 20, 0.85);
-  color: #fff;
-  border-radius: 10px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 999;
-}
-
-#theme-panel.theme-panel-visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
