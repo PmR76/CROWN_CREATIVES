@@ -58,7 +58,7 @@ body.dark-mode {
 }
 #hero-crown-container {
   position: fixed !important;
-  top: calc(50% + 40px) !important;   /* move crown down by exactly 40px */
+  top: calc(50% + 60px) !important;   /* move crown down by exactly 40px */
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   width: 480px !important;
