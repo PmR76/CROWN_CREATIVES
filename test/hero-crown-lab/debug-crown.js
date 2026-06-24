@@ -26,12 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const swatchesInside = panel ? panel.querySelectorAll(".theme-swatch").length : 0;
   console.log("Swatches inside panel:", swatchesInside);
 
-  // 6. Check click listeners
-  swatches.forEach((swatch, i) => {
-    const listeners = getEventListeners(swatch);
-    console.log(`Swatch ${i} listeners:`, listeners.click || []);
-  });
-
   // 7. Check active gradients
   console.log("Active day gradient:", getComputedStyle(document.documentElement).getPropertyValue("--active-day-gradient"));
   console.log("Active night gradient:", getComputedStyle(document.documentElement).getPropertyValue("--active-night-gradient"));
