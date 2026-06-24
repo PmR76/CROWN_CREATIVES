@@ -1,0 +1,27 @@
+/* ============================================================
+   GRADIENT ENGINE — MASTER DEFINITIONS
+============================================================ */
+
+:root {
+  /* DAY */
+  --grad-sunrise: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+  --grad-warm-daylight: linear-gradient(135deg, #ffe0b2, #ffd54f);
+  --grad-soft-sky: linear-gradient(135deg, #b3e5fc, #e1f5fe, #ffffff);
+  --grad-sunset-glow: linear-gradient(135deg, #ff9966, #ff5e62, #8e54e9);
+
+  /* NIGHT */
+  --grad-midnight-indigo: linear-gradient(135deg, #1a237e, #283593, #3949ab);
+  --grad-royal-night: linear-gradient(135deg, #4a148c, #12005e, #000000);
+  --grad-aurora: linear-gradient(135deg, #00c9ff, #92fe9d, #7f00ff);
+  --grad-deep-space: linear-gradient(135deg, #0f2027, #203a43, #000000);
+
+  /* SPECIAL */
+  --grad-neon: linear-gradient(135deg, #00f5ff, #ff00f7);
+  --grad-galaxy: linear-gradient(135deg, #654ea3, #eaafc8, #000428);
+  --grad-crown-gold: linear-gradient(135deg, #f6d365, #fda085, #fbc531);
+  --grad-royal-blue: linear-gradient(135deg, #00c6ff, #0072ff, #003b73);
+
+  /* ACTIVE DAY/NIGHT GRADIENTS (dynamic) */
+  --active-day-gradient: var(--grad-sunrise);
+  --active-night-gradient: var(--grad-midnight-indigo);
+}
