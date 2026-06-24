@@ -1,5 +1,5 @@
 /* ============================================================
-   CROWN CREATIVES — CINEMATIC GLOBAL CORE v2.1 (GR1 CLEAN)
+   CROWN CREATIVES — CINEMATIC GLOBAL CORE v2.2 (CLEAN)
    Modular • Stable • No Hero Crown Logic
 ============================================================ */
 
@@ -113,11 +113,11 @@ body.fade-header main {
 }
 
 /* ------------------------------------------------------------
-   4. SAFETY OVERRIDES
+   4. SAFETY OVERRIDES (FIXED)
 ------------------------------------------------------------ */
 #evolve-panel,
 #evolve-orb {
-  z-index: 500; /* GR3 normalised */ !important;
+  z-index: 500 !important; /* GR3 normalised */
   pointer-events: auto !important;
 }
 
@@ -128,6 +128,7 @@ body.fade-header main {
 
 /* ------------------------------------------------------------
    5. HERO GALLERY (legacy lane system)
+   — FIXED: removed transform that breaks fixed positioning
 ------------------------------------------------------------ */
 .hero-gallery {
   position: absolute;
@@ -135,7 +136,7 @@ body.fade-header main {
   left: 50%;
   width: 100%;
   max-width: 1600px;
-  transform: translate(-50%, -50%);
+  /* transform removed — this was breaking hero-crown */
   display: flex;
   justify-content: space-between;
   pointer-events: none;
