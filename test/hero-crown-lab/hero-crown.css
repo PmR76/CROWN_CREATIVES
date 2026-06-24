@@ -1,15 +1,8 @@
 /* ============================================================
    HERO CROWN LAB — CLEAN + SAFE VERSION
-   - Removes shimmer/sweep/sparkle
-   - Keeps fade + stacking + centering
-   - Does NOT break site layout
 ============================================================ */
 
-
-/* ------------------------------------------------------------
-   1. REMOVE GLOBAL CROWN EFFECTS (ONLY WHAT WE NEED)
------------------------------------------------------------- */
-
+/* Remove shimmer/sweep/sparkle */
 .hero-crown {
   filter: none !important;
 }
@@ -20,12 +13,11 @@
   animation: none !important;
 }
 
-
-/* ------------------------------------------------------------
-   2. HERO CROWN CONTAINER — FIXED CENTERED
------------------------------------------------------------- */
-
+/* FIX: Give container real size */
 #hero-crown-container {
+  width: 480px !important;
+  height: 480px !important;
+
   position: fixed !important;
   top: 50% !important;
   left: 50% !important;
@@ -34,11 +26,7 @@
   pointer-events: none !important;
 }
 
-
-/* ------------------------------------------------------------
-   3. CROWN IMAGES — STACKED + FADE
------------------------------------------------------------- */
-
+/* Crown images — stacked + fade */
 .hero-crown {
   position: absolute !important;
   width: 480px !important;
@@ -47,22 +35,17 @@
   transition: opacity 8s ease-in-out;
 }
 
-
-/* DAY MODE — Day crown visible */
+/* Day crown visible */
 body:not(.dark-mode) #hero-crown-day {
   opacity: 1;
 }
 
-/* NIGHT MODE — Night crown visible */
+/* Night crown visible */
 body.dark-mode #hero-crown-night {
   opacity: 1;
 }
 
-
-/* ------------------------------------------------------------
-   4. BACKGROUND TRANSITION (LAB ONLY)
------------------------------------------------------------- */
-
+/* Background transition */
 body {
   margin: 0;
   min-height: 100vh;
