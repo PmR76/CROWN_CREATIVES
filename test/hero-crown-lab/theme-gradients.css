@@ -25,3 +25,62 @@
   --active-day-gradient: var(--grad-sunrise);
   --active-night-gradient: var(--grad-midnight-indigo);
 }
+
+/* ============================================================
+   APPLY ACTIVE GRADIENTS
+============================================================ */
+
+body {
+  background: var(--active-day-gradient);
+  transition: background 8s ease-in-out;
+}
+
+body.dark-mode {
+  background: var(--active-night-gradient);
+}
+
+/* ============================================================
+   SWATCH VISUALS — 12 GRADIENTS
+============================================================ */
+
+/* DAY */
+.theme-swatch[data-key="sunrise"] {
+  background: var(--grad-sunrise);
+}
+.theme-swatch[data-key="warm-daylight"] {
+  background: var(--grad-warm-daylight);
+}
+.theme-swatch[data-key="soft-sky"] {
+  background: var(--grad-soft-sky);
+}
+.theme-swatch[data-key="sunset-glow"] {
+  background: var(--grad-sunset-glow);
+}
+
+/* NIGHT */
+.theme-swatch[data-key="midnight-indigo"] {
+  background: var(--grad-midnight-indigo);
+}
+.theme-swatch[data-key="royal-night"] {
+  background: var(--grad-royal-night);
+}
+.theme-swatch[data-key="aurora"] {
+  background: var(--grad-aurora);
+}
+.theme-swatch[data-key="deep-space"] {
+  background: var(--grad-deep-space);
+}
+
+/* SPECIAL */
+.theme-swatch[data-key="neon"] {
+  background: var(--grad-neon);
+}
+.theme-swatch[data-key="galaxy"] {
+  background: var(--grad-galaxy);
+}
+.theme-swatch[data-key="crown-gold"] {
+  background: var(--grad-crown-gold);
+}
+.theme-swatch[data-key="royal-blue"] {
+  background: var(--grad-royal-blue);
+}
