@@ -19,3 +19,18 @@
   pointer-events: auto;
   transform: translateY(0);
 }
+#theme-panel-header {
+  cursor: grab;
+}
+
+#theme-panel-header:active {
+  cursor: grabbing;
+}
+#theme-panel-close {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+#theme-panel-close:hover {
+  opacity: 0.6;
+}
