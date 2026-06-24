@@ -8,16 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isAdmin = false;
 
-  // Auto‑unlock if this laptop already authenticated
   if (localStorage.getItem("cc-admin") === "true") {
     isAdmin = true;
   }
 
-  // Timestamp for debugging
   const ts = document.getElementById("theme-panel-timestamp");
   if (ts) ts.textContent = "Loaded: " + new Date().toLocaleString();
 
-  // Ask for password on Shift+T
   window.addEventListener("keydown", e => {
     console.log("Key pressed:", e.key, "Shift:", e.shiftKey, "Admin:", isAdmin);
 
