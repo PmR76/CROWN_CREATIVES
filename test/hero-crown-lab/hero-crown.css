@@ -56,3 +56,13 @@ body {
 body.dark-mode {
   background: linear-gradient(135deg, #1b1b3a, #3a1b5a);
 }
+#hero-crown-container {
+  position: fixed !important;
+  top: calc(50% + 40px) !important;   /* move crown down by exactly 40px */
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 480px !important;
+  height: 480px !important;
+  z-index: 9999 !important;
+  pointer-events: none !important;
+}
