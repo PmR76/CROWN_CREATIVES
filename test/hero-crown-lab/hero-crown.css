@@ -1,18 +1,19 @@
 /* ============================================================
-   HERO CROWN LAB — FINAL CLEAN VERSION
-   - Fully isolated from global.css
-   - No duplicates
-   - No conflicting resets
-   - Guaranteed centering + fade
+   HERO CROWN LAB — PRECISION RESET VERSION
+   - Removes global.css interference
+   - Keeps fade + stacking + centering
 ============================================================ */
 
 
 /* ------------------------------------------------------------
-   1. NUCLEAR RESET — OVERRIDES GLOBAL.CSS COMPLETELY
+   1. PRECISION RESET (only removes harmful global rules)
 ------------------------------------------------------------ */
-#hero-crown-container,
-#hero-crown-container * {
-  all: unset !important;
+#hero-crown-container {
+  all: unset !important; /* remove global transforms, flex, margins */
+}
+
+#hero-crown-container img {
+  all: unset !important; /* remove global img shimmer, sweep, sparkle */
 }
 
 
@@ -24,7 +25,7 @@
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  z-index: 999999 !important;
+  z-index: 9999 !important;
   pointer-events: none !important;
 }
 
