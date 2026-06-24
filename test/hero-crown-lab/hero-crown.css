@@ -42,3 +42,21 @@ body {
 body.dark-mode {
   background: linear-gradient(135deg, #1b1b3a, #3a1b5a);
 }
+/* FORCE OVERRIDE — LAB ONLY */
+#hero-crown-container {
+  all: unset;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 9999 !important;
+  pointer-events: none !important;
+}
+
+.hero-crown {
+  position: absolute !important;
+  width: 480px !important;
+  height: auto !important;
+  opacity: 0 !important;
+  transition: opacity 8s ease-in-out !important;
+}
