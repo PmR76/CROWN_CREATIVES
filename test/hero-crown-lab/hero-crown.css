@@ -5,6 +5,19 @@
    - Does NOT break theme panel
 ============================================================ */
 
+/* HARD RESET FOR HOST-INJECTED LAYOUT WRAPPERS */
+html, body, body > div, body > section, body > main {
+  display: block !important;
+  position: static !important;
+  inset: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+}
 
 /* ------------------------------------------------------------
    1. REMOVE GLOBAL CROWN EFFECTS (ONLY WHAT WE NEED)
