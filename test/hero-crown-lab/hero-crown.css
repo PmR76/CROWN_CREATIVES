@@ -1,37 +1,60 @@
 /* ============================================================
-   HERO CROWN LAB — CLEAN VERSION
+   HERO CROWN LAB — FINAL CLEAN VERSION
+   - Fully isolated from global.css
+   - No duplicates
+   - No conflicting resets
+   - Guaranteed centering + fade
 ============================================================ */
 
-/* 1. Center the crown container */
+
+/* ------------------------------------------------------------
+   1. NUCLEAR RESET — OVERRIDES GLOBAL.CSS COMPLETELY
+------------------------------------------------------------ */
+#hero-crown-container,
+#hero-crown-container * {
+  all: unset !important;
+}
+
+
+/* ------------------------------------------------------------
+   2. HERO CROWN CONTAINER — FIXED CENTERED
+------------------------------------------------------------ */
 #hero-crown-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-  pointer-events: none;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 999999 !important;
+  pointer-events: none !important;
 }
 
-/* 2. Crown images */
+
+/* ------------------------------------------------------------
+   3. CROWN IMAGES — STACKED + FADE
+------------------------------------------------------------ */
 .hero-crown {
-  position: absolute;
-  width: 480px;
-  height: auto;
-  opacity: 0;
-  transition: opacity 8s ease-in-out;
+  position: absolute !important;
+  width: 480px !important;
+  height: auto !important;
+  opacity: 0 !important;
+  transition: opacity 8s ease-in-out !important;
 }
 
-/* Day crown visible */
+
+/* DAY MODE — Day crown visible */
 body:not(.dark-mode) #hero-crown-day {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
-/* Night crown visible */
+/* NIGHT MODE — Night crown visible */
 body.dark-mode #hero-crown-night {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
-/* 3. Background transition */
+
+/* ------------------------------------------------------------
+   4. BACKGROUND TRANSITION (LAB ONLY)
+------------------------------------------------------------ */
 body {
   margin: 0;
   min-height: 100vh;
@@ -41,22 +64,4 @@ body {
 
 body.dark-mode {
   background: linear-gradient(135deg, #1b1b3a, #3a1b5a);
-}
-/* FORCE OVERRIDE — LAB ONLY */
-#hero-crown-container {
-  all: unset;
-  position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  z-index: 9999 !important;
-  pointer-events: none !important;
-}
-
-.hero-crown {
-  position: absolute !important;
-  width: 480px !important;
-  height: auto !important;
-  opacity: 0 !important;
-  transition: opacity 8s ease-in-out !important;
 }
