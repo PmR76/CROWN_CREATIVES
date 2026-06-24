@@ -1,19 +1,24 @@
 /* ============================================================
-   HERO CROWN LAB — PRECISION RESET VERSION
-   - Removes global.css interference
+   HERO CROWN LAB — SURGICAL RESET VERSION
+   - Removes global crown shimmer/sweep/sparkle
    - Keeps fade + stacking + centering
+   - Does NOT break theme panel
 ============================================================ */
 
 
 /* ------------------------------------------------------------
-   1. PRECISION RESET (only removes harmful global rules)
+   1. REMOVE GLOBAL CROWN EFFECTS (ONLY WHAT WE NEED)
 ------------------------------------------------------------ */
-#hero-crown-container {
-  all: unset !important; /* remove global transforms, flex, margins */
+
+/* Remove shimmer/sweep/sparkle from hero crowns */
+.hero-crown {
+  filter: none !important;
 }
 
-#hero-crown-container img {
-  all: unset !important; /* remove global img shimmer, sweep, sparkle */
+.hero-crown::before,
+.hero-crown::after {
+  content: none !important;
+  animation: none !important;
 }
 
 
@@ -37,19 +42,19 @@
   position: absolute !important;
   width: 480px !important;
   height: auto !important;
-  opacity: 0 !important;
-  transition: opacity 8s ease-in-out !important;
+  opacity: 0;
+  transition: opacity 8s ease-in-out;
 }
 
 
 /* DAY MODE — Day crown visible */
 body:not(.dark-mode) #hero-crown-day {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 /* NIGHT MODE — Night crown visible */
 body.dark-mode #hero-crown-night {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 
