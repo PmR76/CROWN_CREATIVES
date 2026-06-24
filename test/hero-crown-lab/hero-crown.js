@@ -1,12 +1,6 @@
-/* TEST STATE */
 window.initHeroCrown = function () {
   const day = document.getElementById("hero-crown-day");
   const night = document.getElementById("hero-crown-night");
-
-  if (!day || !night) {
-    console.warn("Hero Crown: crowns not found in DOM.");
-    return;
-  }
 
   function apply(theme) {
     if (theme === "dark") {
@@ -21,11 +15,6 @@ window.initHeroCrown = function () {
   apply("day");
 
   document.addEventListener("theme-changed", e => apply(e.detail));
-
-  day.style.pointerEvents = "none";
-  night.style.pointerEvents = "none";
-
-  console.info("Hero Crown Lab initialised.");
 };
 
 document.addEventListener("DOMContentLoaded", window.initHeroCrown);

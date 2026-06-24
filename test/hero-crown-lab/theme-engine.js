@@ -1,4 +1,3 @@
-// Simple theme engine for the lab
 (function () {
   const toggle = document.getElementById("themeToggle");
 
@@ -12,7 +11,7 @@
     document.dispatchEvent(new CustomEvent("theme-changed", { detail: mode }));
   }
 
-  // initial
+  // Initial
   applyTheme("day");
 
   toggle.addEventListener("click", () => {
