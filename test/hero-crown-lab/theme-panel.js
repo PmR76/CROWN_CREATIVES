@@ -1,5 +1,5 @@
 /* ============================================================
-   ADMIN‑ONLY THEME PANEL (PASSWORD + REMEMBER DEVICE)
+   ADMIN‑ONLY ACCESS (PASSWORD + REMEMBER DEVICE)
 ============================================================ */
 
 let isAdmin = false;
@@ -13,7 +13,6 @@ if (localStorage.getItem("cc-admin") === "true") {
 window.addEventListener("keydown", e => {
   if (e.key === "T" && e.shiftKey) {
 
-    // If not admin yet → ask for password
     if (!isAdmin) {
       const pass = prompt("Enter admin password:");
       if (pass === "CROWN2026") {
@@ -25,7 +24,6 @@ window.addEventListener("keydown", e => {
       }
     }
 
-    // Toggle panel visibility
     document.getElementById("theme-panel")
       .classList.toggle("theme-panel-visible");
   }
@@ -55,7 +53,7 @@ window.addEventListener("keydown", e => {
     isDragging = true;
     offsetX = e.clientX - panel.offsetLeft;
     offsetY = e.clientY - panel.offsetTop;
-    panel.style.transition = "none";
+    panel.classList.add("theme-panel-dragging");
   });
 
   window.addEventListener("mousemove", e => {
@@ -67,7 +65,74 @@ window.addEventListener("keydown", e => {
 
   window.addEventListener("mouseup", () => {
     isDragging = false;
-    panel.style.transition = "";
+    panel.classList.remove("theme-panel-dragging");
+  });
+})();
+
+
+/* ============================================================
+   GRADIENT ENGINE — DAY + NIGHT SELECTORS
+============================================================ */
+
+(function () {
+
+  // Load saved gradients
+  let savedDay = localStorage.getItem("cc-day-gradient") || "sunrise";
+  let savedNight = localStorage.getItem("cc-night-gradient") || "midnight-indigo";
+
+  // Apply saved gradients to CSS variables
+  document.documentElement.style.setProperty(
+    "--active-day-gradient",
+    `var(--grad-${savedDay})`
+  );
+
+  document.documentElement.style.setProperty(
+    "--active-night-gradient",
+    `var(--grad-${savedNight})`
+  );
+
+  // Highlight selected swatches
+  function highlightSelected() {
+    document.querySelectorAll(".theme-swatch").forEach(s => {
+      s.classList.remove("selected");
+    });
+
+    document.querySelectorAll(`.theme-swatch[data-role="day"][data-key="${savedDay}"]`)
+      .forEach(s => s.classList.add("selected"));
+
+    document.querySelectorAll(`.theme-swatch[data-role="night"][data-key="${savedNight}"]`)
+      .forEach(s => s.classList.add("selected"));
+  }
+
+  highlightSelected();
+
+  // Handle swatch clicks
+  document.querySelectorAll(".theme-swatch").forEach(swatch => {
+    swatch.addEventListener("click", () => {
+
+      const role = swatch.dataset.role; // "day" or "night"
+      const key = swatch.dataset.key;   // gradient key
+
+      if (role === "day") {
+        savedDay = key;
+        localStorage.setItem("cc-day-gradient", key);
+        document.documentElement.style.setProperty(
+          "--active-day-gradient",
+          `var(--grad-${key})`
+        );
+      }
+
+      if (role === "night") {
+        savedNight = key;
+        localStorage.setItem("cc-night-gradient", key);
+        document.documentElement.style.setProperty(
+          "--active-night-gradient",
+          `var(--grad-${key})`
+        );
+      }
+
+      highlightSelected();
+    });
   });
 
 })();
