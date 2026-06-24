@@ -9,9 +9,18 @@ if (localStorage.getItem("cc-admin") === "true") {
   isAdmin = true;
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const ts = document.getElementById("theme-panel-timestamp");
+  if (ts) {
+    ts.textContent = "Loaded: " + new Date().toLocaleString();
+  }
+  console.log("Theme Panel JS Loaded:", new Date().toLocaleString());
+});
+
 // Ask for password on Shift+T
 window.addEventListener("keydown", e => {
   if (e.key === "T" && e.shiftKey) {
+    console.log("SHIFT+T pressed — admin:", isAdmin);
 
     if (!isAdmin) {
       const pass = prompt("Enter admin password:");
@@ -24,8 +33,10 @@ window.addEventListener("keydown", e => {
       }
     }
 
-    document.getElementById("theme-panel")
-      .classList.toggle("theme-panel-visible");
+    const panel = document.getElementById("theme-panel");
+    if (panel) {
+      panel.classList.toggle("theme-panel-visible");
+    }
   }
 });
 
@@ -38,6 +49,8 @@ window.addEventListener("keydown", e => {
   const panel = document.getElementById("theme-panel");
   const header = document.getElementById("theme-panel-header");
   const closeBtn = document.getElementById("theme-panel-close");
+
+  if (!panel || !header || !closeBtn) return;
 
   // Close button
   closeBtn.addEventListener("click", () => {
@@ -75,7 +88,6 @@ window.addEventListener("keydown", e => {
 ============================================================ */
 
 (function () {
-
   // Load saved gradients
   let savedDay = localStorage.getItem("cc-day-gradient") || "sunrise";
   let savedNight = localStorage.getItem("cc-night-gradient") || "midnight-indigo";
@@ -97,10 +109,12 @@ window.addEventListener("keydown", e => {
       s.classList.remove("selected");
     });
 
-    document.querySelectorAll(`.theme-swatch[data-role="day"][data-key="${savedDay}"]`)
+    document
+      .querySelectorAll(`.theme-swatch[data-role="day"][data-key="${savedDay}"]`)
       .forEach(s => s.classList.add("selected"));
 
-    document.querySelectorAll(`.theme-swatch[data-role="night"][data-key="${savedNight}"]`)
+    document
+      .querySelectorAll(`.theme-swatch[data-role="night"][data-key="${savedNight}"]`)
       .forEach(s => s.classList.add("selected"));
   }
 
@@ -109,7 +123,6 @@ window.addEventListener("keydown", e => {
   // Handle swatch clicks
   document.querySelectorAll(".theme-swatch").forEach(swatch => {
     swatch.addEventListener("click", () => {
-
       const role = swatch.dataset.role; // "day" or "night"
       const key = swatch.dataset.key;   // gradient key
 
@@ -134,5 +147,4 @@ window.addEventListener("keydown", e => {
       highlightSelected();
     });
   });
-
 })();
