@@ -138,3 +138,33 @@ body.dark-mode {
 .theme-swatch[data-key="royal-blue"] {
   background: var(--grad-royal-blue);
 }
+/* ============================================================
+   THEME-SPECIFIC GLOW COLORS
+============================================================ */
+
+:root {
+  --glow-sunrise: rgba(255, 180, 220, 0.9);
+  --glow-warm-daylight: rgba(255, 210, 120, 0.9);
+  --glow-soft-sky: rgba(150, 220, 255, 0.9);
+  --glow-sunset-glow: rgba(255, 120, 120, 0.9);
+
+  --glow-ocean-mist: rgba(180, 240, 240, 0.9);
+  --glow-royal-ember: rgba(255, 160, 80, 0.9);
+  --glow-solar-bloom: rgba(220, 160, 255, 0.9);
+  --glow-crown-platinum: rgba(255, 255, 255, 0.9);
+
+  --glow-midnight-indigo: rgba(120, 140, 255, 0.9);
+  --glow-royal-night: rgba(180, 80, 255, 0.9);
+  --glow-aurora: rgba(0, 255, 200, 0.9);
+  --glow-deep-space: rgba(80, 120, 160, 0.9);
+
+  --glow-deep-velvet: rgba(140, 80, 255, 0.9);
+  --glow-cosmic-royal: rgba(200, 0, 255, 0.9);
+  --glow-nebula-drift: rgba(120, 200, 180, 0.9);
+  --glow-crown-nocturne: rgba(120, 120, 255, 0.9);
+
+  --glow-neon: rgba(0, 255, 255, 1);
+  --glow-galaxy: rgba(200, 120, 255, 1);
+  --glow-crown-gold: rgba(255, 200, 80, 1);
+  --glow-royal-blue: rgba(0, 180, 255, 1);
+}

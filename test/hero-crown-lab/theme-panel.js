@@ -1,3 +1,7 @@
+/* ============================================================
+   THEME PANEL — FINAL CLEAN VERSION
+============================================================ */
+
 document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Theme Panel JS Loaded:", new Date().toLocaleString());
@@ -79,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ============================================================
-     GRADIENT ENGINE — DAY + NIGHT SELECTORS
+     GRADIENT ENGINE — LOAD SAVED DAY/NIGHT THEMES
   ============================================================ */
 
   let savedDay = localStorage.getItem("cc-day-gradient") || "sunrise";
@@ -94,6 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
     "--active-night-gradient",
     `var(--grad-${savedNight})`
   );
+
+  /* ============================================================
+     HIGHLIGHT CURRENTLY SELECTED SWATCHES
+  ============================================================ */
 
   function highlightSelected() {
     document.querySelectorAll(".theme-swatch").forEach(s => {
@@ -113,36 +121,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ============================================================
-     SWATCH CLICK HANDLERS (DELAYED)
+     SWATCH CLICK HANDLERS — CLEAN + CORRECT + GLOW ENABLED
   ============================================================ */
 
-  setTimeout(() => {
-    document.querySelectorAll(".theme-swatch").forEach(swatch => {
-      swatch.addEventListener("click", () => {
-        const role = swatch.dataset.role;
-        const key = swatch.dataset.key;
+  document.querySelectorAll(".theme-swatch").forEach(swatch => {
 
-        if (role === "day") {
-          savedDay = key;
-          localStorage.setItem("cc-day-gradient", key);
-          document.documentElement.style.setProperty(
-            "--active-day-gradient",
-            `var(--grad-${key})`
-          );
-        }
+    swatch.addEventListener("click", () => {
 
-        if (role === "night") {
-          savedNight = key;
-          localStorage.setItem("cc-night-gradient", key);
-          document.documentElement.style.setProperty(
-            "--active-night-gradient",
-            `var(--grad-${key})`
-          );
-        }
+      const role = swatch.dataset.role;
+      const key = swatch.dataset.key;
 
-        highlightSelected();
-      });
+      /* -----------------------------------------
+         THEME‑SPECIFIC GLOW COLOR
+      ----------------------------------------- */
+      document.documentElement.style.setProperty(
+        "--crown-glow-color",
+        `var(--glow-${key})`
+      );
+
+      /* -----------------------------------------
+         APPLY DAY THEME
+      ----------------------------------------- */
+      if (role === "day") {
+        savedDay = key;
+        localStorage.setItem("cc-day-gradient", key);
+
+        document.documentElement.style.setProperty(
+          "--active-day-gradient",
+          `var(--grad-${key})`
+        );
+      }
+
+      /* -----------------------------------------
+         APPLY NIGHT THEME
+      ----------------------------------------- */
+      if (role === "night") {
+        savedNight = key;
+        localStorage.setItem("cc-night-gradient", key);
+
+        document.documentElement.style.setProperty(
+          "--active-night-gradient",
+          `var(--grad-${key})`
+        );
+      }
+
+      highlightSelected();
     });
-  }, 50);
+  });
 
 });
