@@ -29,7 +29,7 @@
   z-index: 999;
 }
 
-/* Fade-in once injected */
+/* Fade-in once injected (optional, if you use it) */
 #theme-panel.theme-panel-ready {
   opacity: 1;
   transform: translateY(0);
