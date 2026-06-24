@@ -111,31 +111,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   highlightSelected();
 
-  document.querySelectorAll(".theme-swatch").forEach(swatch => {
-    swatch.addEventListener("click", () => {
-      const role = swatch.dataset.role;
-      const key = swatch.dataset.key;
 
-      if (role === "day") {
-        savedDay = key;
-        localStorage.setItem("cc-day-gradient", key);
-        document.documentElement.style.setProperty(
-          "--active-day-gradient",
-          `var(--grad-${key})`
-        );
-      }
+  /* ============================================================
+     SWATCH CLICK HANDLERS (DELAYED)
+  ============================================================ */
 
-      if (role === "night") {
-        savedNight = key;
-        localStorage.setItem("cc-night-gradient", key);
-        document.documentElement.style.setProperty(
-          "--active-night-gradient",
-          `var(--grad-${key})`
-        );
-      }
+  setTimeout(() => {
+    document.querySelectorAll(".theme-swatch").forEach(swatch => {
+      swatch.addEventListener("click", () => {
+        const role = swatch.dataset.role;
+        const key = swatch.dataset.key;
 
-      highlightSelected();
+        if (role === "day") {
+          savedDay = key;
+          localStorage.setItem("cc-day-gradient", key);
+          document.documentElement.style.setProperty(
+            "--active-day-gradient",
+            `var(--grad-${key})`
+          );
+        }
+
+        if (role === "night") {
+          savedNight = key;
+          localStorage.setItem("cc-night-gradient", key);
+          document.documentElement.style.setProperty(
+            "--active-night-gradient",
+            `var(--grad-${key})`
+          );
+        }
+
+        highlightSelected();
+      });
     });
-  });
+  }, 50);
 
 });
