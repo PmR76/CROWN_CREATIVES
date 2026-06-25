@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
      (Assumes images are in /assets/gallery/)
   ------------------------------------------------------------ */
 
-  const galleryPath = "/assets/gallery/";
+ const galleryPath = "/assets/images/gallery/";
 
   // List of supported image types
   const extensions = ["jpg", "jpeg", "png", "webp", "gif"];
