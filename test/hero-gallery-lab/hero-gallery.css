@@ -1,0 +1,40 @@
+/* ============================================================
+   HERO GALLERY — LAYOUT + AUTO-FIT + ANIMATION
+============================================================ */
+
+.hero-gallery-lane {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;               /* MAX WIDTH (your choice) */
+  height: 70vh;               /* Auto-fit portrait images */
+  max-height: 600px;          /* Prevents giant images */
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;                /* Behind crown, above background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-gallery-left {
+  left: 2vw;
+}
+
+.hero-gallery-right {
+  right: 2vw;
+}
+
+/* The image itself */
+.hero-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* MAGIC: portrait + landscape both fit */
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+}
+
+/* Fade states */
+.hero-gallery-img.visible {
+  opacity: 1;
+}
