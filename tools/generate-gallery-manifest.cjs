@@ -1,5 +1,5 @@
-// CROWN CREATIVES — Gallery Manifest Generator v1.0
-// Scans /assets/images/gallery and writes gallery-manifest.json
+// CROWN CREATIVES — Gallery Manifest Generator v2.0
+// Auto-scan + Auto-watch + Pretty JSON
 
 const fs = require("fs");
 const path = require("path");
@@ -14,22 +14,29 @@ function isImage(file) {
 }
 
 function generateManifest() {
-  console.log("Scanning gallery:", GALLERY_DIR);
-
-  if (!fs.existsSync(GALLERY_DIR)) {
-    console.error("Gallery folder does not exist:", GALLERY_DIR);
-    process.exit(1);
-  }
-
   const files = fs.readdirSync(GALLERY_DIR)
     .filter(isImage)
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
-  console.log("Found", files.length, "images.");
-
   fs.writeFileSync(MANIFEST_PATH, JSON.stringify(files, null, 2), "utf8");
 
-  console.log("Manifest written to:", MANIFEST_PATH);
+  console.log(`[Manifest Updated] ${files.length} images`);
 }
 
+function startWatcher() {
+  console.log("Watching gallery folder for changes…");
+
+  fs.watch(GALLERY_DIR, { recursive: false }, (event, filename) => {
+    if (!filename) return;
+    if (!isImage(filename)) return;
+
+    console.log(`[Change Detected] ${event}: ${filename}`);
+    generateManifest();
+  });
+}
+
+// Initial run
 generateManifest();
+
+// Watch mode
+startWatcher();
