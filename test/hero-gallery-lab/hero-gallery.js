@@ -1,11 +1,15 @@
 /* ============================================================
-   HERO GALLERY — MANIFEST + FADE ENGINE + ADMIN + EFFECTS
+   HERO GALLERY — DUAL-LANE + E-UPDATE
+   Manifest + Fade Engine + Admin Overlay + Auto-Refresh + Glow
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Hero Gallery JS Loaded:", new Date().toLocaleString());
 
+  /* ------------------------------------------------------------
+     ELEMENTS
+  ------------------------------------------------------------ */
   const leftImg = document.querySelector(".hero-gallery-left .hero-gallery-img");
   const rightImg = document.querySelector(".hero-gallery-right .hero-gallery-img");
 
@@ -13,6 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
     console.warn("Hero Gallery: Missing lane images.");
     return;
   }
+
+  const adminPanel = document.getElementById("gallery-admin");
+  const speedSlider = document.getElementById("gallery-speed");
+  const speedLabel = document.getElementById("gallery-speed-label");
+  const refreshBtn = document.getElementById("gallery-refresh");
+  const toastEl = document.getElementById("gallery-toast");
+  const toastText = document.getElementById("gallery-toast-text");
+  const closeAdminBtn = document.getElementById("gallery-admin-close");
 
   /* ------------------------------------------------------------
      CONFIG
@@ -28,46 +40,72 @@ document.addEventListener("DOMContentLoaded", () => {
   let timer = null;
   let isPaused = false;
   let shuffle = false;
+  let lastManifestHash = null;
+
+  const isLab = window.location.pathname.includes("hero-gallery-lab");
 
   /* ------------------------------------------------------------
-     LOAD MANIFEST
+     TOAST
   ------------------------------------------------------------ */
+  function showToast(msg) {
+    if (!toastEl || !toastText) return;
+    toastText.textContent = msg;
+    toastEl.classList.remove("gallery-toast-hidden");
 
-  function loadManifest() {
-    return fetch(MANIFEST_URL)
+    setTimeout(() => {
+      toastEl.classList.add("gallery-toast-hidden");
+    }, 2500);
+  }
+
+  /* ------------------------------------------------------------
+     MANIFEST LOADING + HASHING
+  ------------------------------------------------------------ */
+  function hashList(arr) {
+    return arr.join("|");
+  }
+
+  function loadManifest(showMessages = false) {
+    return fetch(MANIFEST_URL + "?t=" + Date.now())
       .then(r => {
-        if (!r.ok) {
-          console.warn("Gallery manifest missing or unreadable.");
-          return null;
-        }
+        if (!r.ok) throw new Error("Manifest fetch failed");
         return r.json();
       })
       .then(files => {
-        if (!files) return [];
-
         const valid = files.filter(f =>
           typeof f === "string" &&
           f.match(/\.(jpg|jpeg|png|webp|gif)$/i)
         );
 
-        return valid.map(f => BASE_PATH + f);
+        const fullPaths = valid.map(f => BASE_PATH + f);
+        const newHash = hashList(fullPaths);
+
+        if (newHash !== lastManifestHash) {
+          lastManifestHash = newHash;
+          images = fullPaths;
+          index = 0;
+          lane = "left";
+          cycle();
+          startLoop();
+          if (showMessages) showToast("Gallery updated.");
+        } else if (showMessages) {
+          showToast("No changes in manifest.");
+        }
       })
       .catch(err => {
-        console.error("Gallery manifest load error:", err);
-        return [];
+        console.error("Manifest load error:", err);
+        if (showMessages) showToast("Failed to refresh manifest.");
       });
   }
 
   /* ------------------------------------------------------------
      EFFECT HELPERS
   ------------------------------------------------------------ */
-
   function fadeIn(img, src) {
-    img.classList.remove("visible", "dof-strong");
+    img.classList.remove("visible");
 
     setTimeout(() => {
       img.onerror = () => {
-        console.warn("Gallery image failed:", src, "→ fallback");
+        console.warn("Image failed:", src, "→ fallback");
         img.src = FALLBACK;
         img.classList.add("visible");
       };
@@ -85,16 +123,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function nextIndex() {
-    if (shuffle) {
-      return Math.floor(Math.random() * images.length);
-    }
-    return (index + 1) % images.length;
+    return shuffle
+      ? Math.floor(Math.random() * images.length)
+      : (index + 1) % images.length;
   }
 
   /* ------------------------------------------------------------
      MAIN CYCLE
   ------------------------------------------------------------ */
-
   function cycle() {
     if (isPaused || images.length === 0) return;
 
@@ -119,41 +155,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ------------------------------------------------------------
-     ADMIN PANEL (LAB + HOMEPAGE)
+     ADMIN PANEL
   ------------------------------------------------------------ */
+  function initAdminPanel() {
+    if (!adminPanel) return;
 
-  function createAdminPanel() {
-    const panel = document.createElement("div");
-    panel.id = "gallery-admin";
-
-    panel.innerHTML = `
-      <span>Gallery:</span>
-      <button data-action="prev">Prev</button>
-      <button data-action="next">Next</button>
-      <button data-action="pause">Pause</button>
-      <button data-action="shuffle">Shuffle: Off</button>
-      <label>Speed
-        <input type="range" min="3000" max="15000" step="1000" value="${intervalMs}">
-      </label>
-    `;
-
-    document.body.appendChild(panel);
-
-    /* LAB MODE: always visible */
-    const isLab = window.location.pathname.includes("hero-gallery-lab");
-    if (!isLab) {
-      panel.classList.add("hidden");
+    // LAB MODE: always visible
+    if (isLab) {
+      adminPanel.classList.remove("gallery-admin-hidden");
     }
 
-    /* Shift + A toggle (homepage only) */
+    // Shift + A toggle (homepage only)
     window.addEventListener("keydown", e => {
-      if (e.key === "A" && e.shiftKey && !isLab) {
-        panel.classList.toggle("hidden");
+      if (e.shiftKey && e.key.toLowerCase() === "a" && !isLab) {
+        adminPanel.classList.toggle("gallery-admin-hidden");
       }
     });
 
-    /* Button actions */
-    panel.addEventListener("click", e => {
+    // Close button
+    if (closeAdminBtn) {
+      closeAdminBtn.addEventListener("click", () => {
+        adminPanel.classList.add("gallery-admin-hidden");
+      });
+    }
+
+    // Buttons
+    adminPanel.addEventListener("click", e => {
       const btn = e.target.closest("button");
       if (!btn) return;
 
@@ -164,10 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.textContent = isPaused ? "Resume" : "Pause";
       }
 
-      if (action === "next") {
-        cycle();
-      }
-
+      if (action === "next") cycle();
       if (action === "prev") {
         index = (index - 2 + images.length) % images.length;
         cycle();
@@ -179,48 +203,60 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    /* Speed control */
-    const range = panel.querySelector('input[type="range"]');
-    range.addEventListener("input", () => {
-      intervalMs = Number(range.value);
-      startLoop();
-    });
+    // Speed slider
+    if (speedSlider) {
+      speedSlider.addEventListener("input", () => {
+        intervalMs = Number(speedSlider.value);
+        speedLabel.textContent = (intervalMs / 1000) + "s";
+        startLoop();
+      });
+    }
+
+    // Manual refresh
+    if (refreshBtn) {
+      refreshBtn.addEventListener("click", () => {
+        loadManifest(true);
+      });
+    }
   }
 
   /* ------------------------------------------------------------
-     THEME-REACTIVE GLOW HOOK
+     AUTO-POLL MANIFEST (every 15s)
   ------------------------------------------------------------ */
+  function startAutoRefresh() {
+    setInterval(() => {
+      loadManifest(false);
+    }, 15000);
+  }
 
+  /* ------------------------------------------------------------
+     THEME GLOW
+  ------------------------------------------------------------ */
   document.addEventListener("theme-changed", e => {
     const theme = e.detail;
 
     if (theme === "dark") {
-      leftImg.style.filter = "drop-shadow(0 0 18px rgba(120,200,255,0.7)) blur(0.5px)";
-      rightImg.style.filter = "drop-shadow(0 0 18px rgba(120,200,255,0.7)) blur(0.5px)";
+      leftImg.style.filter = "drop-shadow(0 0 18px rgba(120,200,255,0.7))";
+      rightImg.style.filter = "drop-shadow(0 0 18px rgba(120,200,255,0.7))";
     } else {
-      leftImg.style.filter = "drop-shadow(0 0 16px rgba(255,210,150,0.7)) blur(0.5px)";
-      rightImg.style.filter = "drop-shadow(0 0 16px rgba(255,210,150,0.7)) blur(0.5px)";
+      leftImg.style.filter = "drop-shadow(0 0 16px rgba(255,210,150,0.7))";
+      rightImg.style.filter = "drop-shadow(0 0 16px rgba(255,210,150,0.7))";
     }
   });
 
   /* ------------------------------------------------------------
      INIT
   ------------------------------------------------------------ */
-
-  loadManifest().then(list => {
-    images = list;
-
+  loadManifest().then(() => {
     if (images.length === 0) {
-      console.warn("Hero Gallery: Manifest contains no valid images.");
+      console.warn("Hero Gallery: No valid images.");
       return;
     }
 
-    index = 0;
-    lane = "left";
-
-    createAdminPanel();
+    initAdminPanel();
     cycle();
     startLoop();
+    startAutoRefresh();
   });
 
 });
