@@ -1,24 +1,11 @@
 /* ============================================================
-   HERO GALLERY — AUTO-SCAN + FADE ENGINE
+   HERO GALLERY — AUTO-SCAN + EFFECTS + ADMIN
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ------------------------------------------------------------
-     RUN ONLY ON HOMEPAGE
-  ------------------------------------------------------------ */
-  if (!window.location.pathname.includes("hero-gallery-lab") &&
-      !window.location.pathname.endsWith("/") &&
-      !window.location.pathname.includes("index")) {
-    console.log("Hero Gallery: Not homepage, skipping.");
-    return;
-  }
-
   console.log("Hero Gallery JS Loaded:", new Date().toLocaleString());
 
-  /* ------------------------------------------------------------
-     GALLERY LANES
-  ------------------------------------------------------------ */
   const leftImg = document.querySelector(".hero-gallery-left .hero-gallery-img");
   const rightImg = document.querySelector(".hero-gallery-right .hero-gallery-img");
 
@@ -28,22 +15,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ------------------------------------------------------------
-     AUTO-SCAN IMAGE FOLDER
-     (Assumes images are in /assets/gallery/)
+     CONFIG
   ------------------------------------------------------------ */
-
- const galleryPath = "/assets/images/gallery/";
-
-  // List of supported image types
+  const galleryPath = "/assets/images/gallery/";
   const extensions = ["jpg", "jpeg", "png", "webp", "gif"];
 
-  // Build list of possible filenames (001.jpg → 200.jpg)
-  const possible = [];
-  for (let i = 1; i <= 200; i++) {
-    extensions.forEach(ext => possible.push(`${String(i).padStart(3, "0")}.${ext}`));
-  }
+  let images = [];
+  let index = 0;
+  let lane = "left";
+  let intervalMs = 6000;
+  let timer = null;
+  let isPaused = false;
+  let shuffle = false;
 
-  // Test which files exist
+  /* ------------------------------------------------------------
+     FILE DISCOVERY
+  ------------------------------------------------------------ */
+
   async function fileExists(url) {
     try {
       const res = await fetch(url, { method: "HEAD" });
@@ -54,6 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function loadImages() {
+    const possible = [];
+    for (let i = 1; i <= 200; i++) {
+      extensions.forEach(ext => possible.push(`${String(i).padStart(3, "0")}.${ext}`));
+    }
+
     const found = [];
     for (const file of possible) {
       const url = galleryPath + file;
@@ -65,11 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ------------------------------------------------------------
-     FADE ENGINE
+     EFFECT HELPERS
   ------------------------------------------------------------ */
 
   function fadeIn(img, src) {
-    img.classList.remove("visible");
+    img.classList.remove("visible", "dof-strong");
     setTimeout(() => {
       img.src = src;
       img.classList.add("visible");
@@ -80,41 +73,128 @@ document.addEventListener("DOMContentLoaded", () => {
     img.classList.remove("visible");
   }
 
+  function nextIndex() {
+    if (shuffle) {
+      return Math.floor(Math.random() * images.length);
+    }
+    return (index + 1) % images.length;
+  }
+
   /* ------------------------------------------------------------
-     MAIN LOOP — ALTERNATE LEFT → RIGHT
+     MAIN CYCLE
   ------------------------------------------------------------ */
 
-  loadImages().then(images => {
+  function cycle() {
+    if (isPaused || images.length === 0) return;
+
+    const imgSrc = images[index];
+
+    if (lane === "left") {
+      fadeOut(rightImg);
+      fadeIn(leftImg, imgSrc);
+      lane = "right";
+    } else {
+      fadeOut(leftImg);
+      fadeIn(rightImg, imgSrc);
+      lane = "left";
+    }
+
+    index = nextIndex();
+  }
+
+  function startLoop() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(cycle, intervalMs);
+  }
+
+  /* ------------------------------------------------------------
+     ADMIN PANEL (LAB)
+  ------------------------------------------------------------ */
+
+  function createAdminPanel() {
+    const panel = document.createElement("div");
+    panel.id = "gallery-admin";
+
+    panel.innerHTML = `
+      <span>Gallery:</span>
+      <button data-action="prev">Prev</button>
+      <button data-action="next">Next</button>
+      <button data-action="pause">Pause</button>
+      <button data-action="shuffle">Shuffle: Off</button>
+      <label>Speed
+        <input type="range" min="3000" max="15000" step="1000" value="${intervalMs}">
+      </label>
+    `;
+
+    document.body.appendChild(panel);
+
+    panel.addEventListener("click", e => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+
+      const action = btn.dataset.action;
+
+      if (action === "pause") {
+        isPaused = !isPaused;
+        btn.textContent = isPaused ? "Resume" : "Pause";
+      }
+
+      if (action === "next") {
+        cycle();
+      }
+
+      if (action === "prev") {
+        index = (index - 2 + images.length) % images.length; // step back one
+        cycle();
+      }
+
+      if (action === "shuffle") {
+        shuffle = !shuffle;
+        btn.textContent = `Shuffle: ${shuffle ? "On" : "Off"}`;
+      }
+    });
+
+    const range = panel.querySelector('input[type="range"]');
+    range.addEventListener("input", () => {
+      intervalMs = Number(range.value);
+      startLoop();
+    });
+  }
+
+  /* ------------------------------------------------------------
+     THEME-REACTIVE GLOW HOOK (OPTIONAL)
+     (If you want gallery images to glow with theme)
+  ------------------------------------------------------------ */
+
+  document.addEventListener("theme-changed", e => {
+    const theme = e.detail; // "day" or "dark"
+    if (theme === "dark") {
+      leftImg.style.filter = "drop-shadow(0 0 18px rgba(120,200,255,0.7)) blur(0.5px)";
+      rightImg.style.filter = "drop-shadow(0 0 18px rgba(120,200,255,0.7)) blur(0.5px)";
+    } else {
+      leftImg.style.filter = "drop-shadow(0 0 16px rgba(255,210,150,0.7)) blur(0.5px)";
+      rightImg.style.filter = "drop-shadow(0 0 16px rgba(255,210,150,0.7)) blur(0.5px)";
+    }
+  });
+
+  /* ------------------------------------------------------------
+     INIT
+  ------------------------------------------------------------ */
+
+  loadImages().then(found => {
+    images = found;
 
     if (images.length === 0) {
-      console.warn("Hero Gallery: No images found in /assets/gallery/");
+      console.warn("Hero Gallery: No images found in /assets/images/gallery/");
       return;
     }
 
-    let index = 0;
-    let lane = "left";
+    index = 0;
+    lane = "left";
 
-    function cycle() {
-      const imgSrc = images[index];
-
-      if (lane === "left") {
-        fadeOut(rightImg);
-        fadeIn(leftImg, imgSrc);
-        lane = "right";
-      } else {
-        fadeOut(leftImg);
-        fadeIn(rightImg, imgSrc);
-        lane = "left";
-      }
-
-      index = (index + 1) % images.length;
-    }
-
-    // Start immediately
+    createAdminPanel();
     cycle();
-
-    // Repeat every 6 seconds
-    setInterval(cycle, 6000);
+    startLoop();
   });
 
 });
