@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crown Gallery Lab</title>
+
+  <!-- HERO CROWN CSS -->
+  <link rel="stylesheet" href="../hero-crown-lab/hero-crown.css">
+
+  <!-- HERO GALLERY CSS (dual-lane + E-update) -->
+  <link rel="stylesheet" href="../hero-gallery-lab/hero-gallery.css">
+
+  <!-- LAB-SPECIFIC CSS -->
+  <link rel="stylesheet" href="crown-gallery-lab.css">
+</head>
+
+<body>
+
+<div id="lab-title">CROWN GALLERY LAB — 25/06/2026</div>
+
+<!-- LEFT LANE -->
+<div class="hero-gallery-lane hero-gallery-left">
+  <img class="hero-gallery-img" src="" alt="">
+</div>
+
+<!-- HERO CROWN (center) -->
+<div id="hero-crown-container">
+  <img id="hero-crown-day" class="hero-crown" src="../hero-crown-lab/hero-crown-day.png" alt="Day Crown">
+  <img id="hero-crown-night" class="hero-crown" src="../hero-crown-lab/hero-crown-night.png" alt="Night Crown">
+</div>
+
+<!-- RIGHT LANE -->
+<div class="hero-gallery-lane hero-gallery-right">
+  <img class="hero-gallery-img" src="" alt="">
+</div>
+
+<!-- GLOW OVERLAY -->
+<div class="hero-gallery-glow-overlay">
+  <div class="hero-gallery-glow-left"></div>
+  <div class="hero-gallery-glow-right"></div>
+</div>
+
+<!-- ADMIN OVERLAY (E-update) -->
+<div id="gallery-admin" class="gallery-admin gallery-admin-hidden">
+  <div class="gallery-admin-header">
+    <span>Hero Gallery Admin</span>
+    <button id="gallery-admin-close" type="button">×</button>
+  </div>
+
+  <div class="gallery-admin-body">
+    <div class="gallery-admin-row">
+      <button data-action="prev">Prev</button>
+      <button data-action="next">Next</button>
+      <button data-action="pause">Pause</button>
+      <button data-action="shuffle">Shuffle: Off</button>
+    </div>
+
+    <div class="gallery-admin-row">
+      <label for="gallery-speed">Speed</label>
+      <input id="gallery-speed" type="range" min="3000" max="15000" step="1000" value="6000">
+      <span id="gallery-speed-label">6s</span>
+    </div>
+
+    <div class="gallery-admin-row">
+      <button id="gallery-refresh" type="button">Refresh Manifest</button>
+    </div>
+
+    <div id="gallery-toast" class="gallery-toast gallery-toast-hidden">
+      <span id="gallery-toast-text"></span>
+    </div>
+  </div>
+</div>
+
+<!-- SIMPLE THEME TOGGLE FOR LAB -->
+<div id="lab-theme-toggle">
+  <button data-theme="day">Day Theme</button>
+  <button data-theme="dark">Night Theme</button>
+</div>
+
+<!-- SCRIPTS -->
+<script src="../hero-crown-lab/hero-crown.js"></script>
+<script src="../hero-gallery-lab/hero-gallery.js"></script>
+<script src="crown-gallery-lab.js"></script>
+
+</body>
+</html>

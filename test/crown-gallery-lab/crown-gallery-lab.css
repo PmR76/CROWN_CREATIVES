@@ -1,0 +1,44 @@
+/* ============================================================
+   CROWN GALLERY LAB — LAYOUT + LAB UI
+============================================================ */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #fff;
+}
+
+/* Lab title */
+#lab-title {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 18px;
+  opacity: 0.7;
+  z-index: 999;
+}
+
+/* Theme toggle buttons */
+#lab-theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  gap: 8px;
+}
+
+#lab-theme-toggle button {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#lab-theme-toggle button:hover {
+  background: rgba(40, 40, 60, 0.9);
+}
