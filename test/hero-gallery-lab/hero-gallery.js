@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ------------------------------------------------------------
-     ADMIN PANEL (LAB ONLY)
+     ADMIN PANEL (LAB + HOMEPAGE)
   ------------------------------------------------------------ */
 
   function createAdminPanel() {
@@ -139,6 +139,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.body.appendChild(panel);
 
+    /* LAB MODE: always visible */
+    const isLab = window.location.pathname.includes("hero-gallery-lab");
+    if (!isLab) {
+      panel.classList.add("hidden");
+    }
+
+    /* Shift + A toggle (homepage only) */
+    window.addEventListener("keydown", e => {
+      if (e.key === "A" && e.shiftKey && !isLab) {
+        panel.classList.toggle("hidden");
+      }
+    });
+
+    /* Button actions */
     panel.addEventListener("click", e => {
       const btn = e.target.closest("button");
       if (!btn) return;
@@ -165,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    /* Speed control */
     const range = panel.querySelector('input[type="range"]');
     range.addEventListener("input", () => {
       intervalMs = Number(range.value);

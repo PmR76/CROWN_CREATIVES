@@ -37,20 +37,20 @@
   filter: blur(0px);
 }
 
-/* Visible state + parallax drift + subtle DOF */
+/* Fade + parallax drift */
 .hero-gallery-img.visible {
   opacity: 1;
   transform: translateY(-10px) scale(1.02);
   filter: blur(0.5px);
 }
 
-/* Optional stronger DOF when wanted */
+/* Optional stronger DOF */
 .hero-gallery-img.dof-strong {
   filter: blur(2px);
 }
 
 /* ============================================================
-   ADMIN PANEL (LAB ONLY)
+   ADMIN PANEL (LAB + HOMEPAGE)
 ============================================================ */
 
 #gallery-admin {
@@ -67,6 +67,11 @@
   display: flex;
   gap: 8px;
   align-items: center;
+}
+
+/* Hidden on homepage until Shift+A */
+#gallery-admin.hidden {
+  display: none;
 }
 
 #gallery-admin button {
