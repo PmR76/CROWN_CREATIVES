@@ -17,11 +17,11 @@
 .header-left,
 .header-right {
   position: absolute;
-  top: 20px;
+  top: 10px;
 }
 
-.header-left { left: 40px; }
-.header-right { right: 40px; }
+.header-left { left: 60px; }
+.header-right { right: 60px; }
 
 /* TOGGLES */
 .header-toggle {
