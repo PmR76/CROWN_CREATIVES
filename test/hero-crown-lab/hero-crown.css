@@ -29,7 +29,7 @@ body.dark-mode {
 
 #hero-crown-container {
   position: absolute;
-  top: 120px;
+  top: 200px;
   left: 50%;
   transform: translateX(-50%);
   width: 460px;
