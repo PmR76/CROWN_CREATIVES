@@ -170,3 +170,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+/* ============================================================
+   DEBUG: VERIFY SWATCHES + CSS VARIABLES
+============================================================ */
+
+function verifySwatches() {
+  console.group("Theme Panel Verification");
+
+  document.querySelectorAll(".theme-swatch").forEach(swatch => {
+    const key = swatch.dataset.key;
+    const cssVar = `--grad-${key}`;
+    const value = getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim();
+    const bg = getComputedStyle(swatch).backgroundImage;
+
+    if (!value) {
+      console.warn(`❌ Missing CSS variable: ${cssVar}`);
+      swatch.style.outline = "3px solid red";
+    } else if (!bg || bg === "none") {
+      console.warn(`❌ Swatch has no background: ${key}`);
+      swatch.style.outline = "3px solid yellow";
+    } else {
+      console.log(`✔ ${key} OK`);
+    }
+  });
+
+  console.groupEnd();
+}
+
+window.verifySwatches = verifySwatches;
