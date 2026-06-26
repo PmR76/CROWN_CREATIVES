@@ -70,3 +70,16 @@
   position: relative;
   z-index: 1;
 }
+#theme-panel {
+  position: fixed;
+  z-index: 999;
+}
+
+#theme-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20,20,20,0.85);
+  border-radius: 10px;
+  z-index: 0;
+}
