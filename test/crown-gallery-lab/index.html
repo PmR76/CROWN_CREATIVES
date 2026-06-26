@@ -42,6 +42,16 @@
 
 <div id="lab-title">CROWN + GALLERY LAB — 26/06/2026</div>
 
+<!-- REQUIRED BY theme-engine.js -->
+<button id="themeToggle" style="
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  padding: 10px 20px;
+  font-size: 16px;
+">Toggle Theme</button>
+
 <!-- LEFT GALLERY LANE -->
 <div class="hero-gallery-lane hero-gallery-left">
   <img class="hero-gallery-img" src="" alt="">
@@ -53,7 +63,7 @@
   <img id="hero-crown-night" class="hero-crown" src="/assets/icons/night-crown.svg" alt="Night Crown">
 </div>
 
-<!-- THEME PANEL (FULL, UNCHANGED) -->
+<!-- THEME PANEL -->
 <div id="theme-panel" class="cc-theme-panel">
 
   <div id="theme-panel-header">
@@ -133,7 +143,7 @@
   </div>
 </div>
 
-<!-- JS MODULES -->
+<!-- JS MODULES (AFTER ALL HTML) -->
 <script src="../hero-crown-lab/theme-engine.js"></script>
 <script src="../hero-crown-lab/hero-crown.js"></script>
 <script src="../hero-crown-lab/theme-panel.js"></script>
