@@ -1,15 +1,9 @@
 /* ============================================================
    CROWN CREATIVES — THEME ENGINE (MODE + EVENTS ONLY)
-   - Day/Night switching
-   - theme-changed events for crown + gallery
-   - Leaves gradients + glow to theme-panel.js
 ============================================================ */
 
 (function () {
 
-  /* ------------------------------------------------------------
-     1. THEME TOGGLE BUTTON (DAY/NIGHT)
-  ------------------------------------------------------------ */
   const toggle = document.getElementById("themeToggle");
 
   function applyMode(mode) {
@@ -19,16 +13,15 @@
       document.body.classList.remove("dark-mode");
     }
 
-    // Notify crown + gallery
+    localStorage.setItem("cc-mode", mode);
+
     document.dispatchEvent(new CustomEvent("theme-changed", { detail: mode }));
   }
 
-  /* ------------------------------------------------------------
-     2. INITIALISE
-  ------------------------------------------------------------ */
   document.addEventListener("DOMContentLoaded", () => {
-    // Default to day
-    applyMode("day");
+
+    const savedMode = localStorage.getItem("cc-mode") || "day";
+    applyMode(savedMode);
 
     if (toggle) {
       toggle.addEventListener("click", () => {
