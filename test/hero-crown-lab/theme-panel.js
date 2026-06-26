@@ -196,3 +196,6 @@ window.verifySwatches = function () {
 
   console.groupEnd();
 };
+document.getElementById("verify-swatches-btn").addEventListener("click", () => {
+  verifySwatches();
+});
