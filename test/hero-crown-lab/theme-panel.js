@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
    DEBUG: VERIFY SWATCHES + CSS VARIABLES
 ============================================================ */
 
-function verifySwatches() {
+window.verifySwatches = function () {
   console.group("Theme Panel Verification");
 
   document.querySelectorAll(".theme-swatch").forEach(swatch => {
@@ -195,6 +195,4 @@ function verifySwatches() {
   });
 
   console.groupEnd();
-}
-
-window.verifySwatches = verifySwatches;
+};
