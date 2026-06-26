@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <title>Crown + Gallery Lab — Combined</title>
 
-  <!-- HERO CROWN CSS (unchanged module) -->
+  <!-- HERO CROWN CSS -->
   <link rel="stylesheet" href="../hero-crown-lab/hero-crown.css">
   <link rel="stylesheet" href="../hero-crown-lab/theme-gradients.css">
+  <link rel="stylesheet" href="../hero-crown-lab/theme-panel.css">
 
-  <!-- HERO GALLERY CSS (unchanged module) -->
+  <!-- HERO GALLERY CSS -->
   <link rel="stylesheet" href="../hero-gallery-lab/hero-gallery.css">
 
-  <!-- LAB-SPECIFIC STYLES -->
   <style>
     body {
       margin: 0;
@@ -35,29 +35,6 @@
       opacity: 0.7;
       z-index: 999;
     }
-
-    #lab-theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 999;
-      display: flex;
-      gap: 8px;
-    }
-
-    #lab-theme-toggle button {
-      background: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 4px;
-      padding: 4px 10px;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    #lab-theme-toggle button:hover {
-      background: rgba(40, 40, 60, 0.9);
-    }
   </style>
 </head>
 
@@ -65,21 +42,53 @@
 
 <div id="lab-title">CROWN + GALLERY LAB — 26/06/2026</div>
 
-<!-- LAB THEME TOGGLE -->
-<div id="lab-theme-toggle">
-  <button data-theme="day">Day Theme</button>
-  <button data-theme="dark">Night Theme</button>
-</div>
-
 <!-- LEFT GALLERY LANE -->
 <div class="hero-gallery-lane hero-gallery-left">
   <img class="hero-gallery-img" src="" alt="">
 </div>
 
-<!-- HERO CROWN (center, unchanged module) -->
+<!-- HERO CROWN -->
 <div id="hero-crown-container">
   <img id="hero-crown-day" class="hero-crown" src="/assets/icons/day-crown.svg" alt="Day Crown">
   <img id="hero-crown-night" class="hero-crown" src="/assets/icons/night-crown.svg" alt="Night Crown">
+</div>
+
+<!-- THEME PANEL (FULL, UNCHANGED) -->
+<div id="theme-panel" class="cc-theme-panel">
+
+  <div id="theme-panel-header">
+    <div id="theme-panel-title">Background Themes</div>
+    <div id="theme-panel-timestamp"></div>
+    <div id="theme-panel-close">✕</div>
+  </div>
+
+  <div class="theme-panel-body">
+
+    <div class="theme-panel-section-label">Day Themes</div>
+    <div class="theme-swatch-grid" id="day-swatch-grid">
+      <div class="theme-swatch" data-role="day" data-key="sunrise"></div>
+      <div class="theme-swatch" data-role="day" data-key="warm-daylight"></div>
+      <div class="theme-swatch" data-role="day" data-key="soft-sky"></div>
+      <div class="theme-swatch" data-role="day" data-key="sunset-glow"></div>
+      <div class="theme-swatch" data-role="day" data-key="neon"></div>
+      <div class="theme-swatch" data-role="day" data-key="galaxy"></div>
+      <div class="theme-swatch" data-role="day" data-key="crown-gold"></div>
+      <div class="theme-swatch" data-role="day" data-key="royal-blue"></div>
+    </div>
+
+    <div class="theme-panel-section-label">Night Themes</div>
+    <div class="theme-swatch-grid" id="night-swatch-grid">
+      <div class="theme-swatch" data-role="night" data-key="midnight-indigo"></div>
+      <div class="theme-swatch" data-role="night" data-key="royal-night"></div>
+      <div class="theme-swatch" data-role="night" data-key="aurora"></div>
+      <div class="theme-swatch" data-role="night" data-key="deep-space"></div>
+      <div class="theme-swatch" data-role="night" data-key="neon"></div>
+      <div class="theme-swatch" data-role="night" data-key="galaxy"></div>
+      <div class="theme-swatch" data-role="night" data-key="crown-gold"></div>
+      <div class="theme-swatch" data-role="night" data-key="royal-blue"></div>
+    </div>
+
+  </div>
 </div>
 
 <!-- RIGHT GALLERY LANE -->
@@ -87,13 +96,13 @@
   <img class="hero-gallery-img" src="" alt="">
 </div>
 
-<!-- GLOW OVERLAY (gallery module) -->
+<!-- GLOW OVERLAY -->
 <div class="hero-gallery-glow-overlay">
   <div class="hero-gallery-glow-left"></div>
   <div class="hero-gallery-glow-right"></div>
 </div>
 
-<!-- ADMIN OVERLAY (gallery module) -->
+<!-- ADMIN OVERLAY -->
 <div id="gallery-admin" class="gallery-admin gallery-admin-hidden">
   <div class="gallery-admin-header">
     <span>Hero Gallery Admin</span>
@@ -124,37 +133,12 @@
   </div>
 </div>
 
-<!-- JS MODULES (unchanged) -->
+<!-- JS MODULES -->
 <script src="../hero-crown-lab/theme-engine.js"></script>
 <script src="../hero-crown-lab/hero-crown.js"></script>
+<script src="../hero-crown-lab/theme-panel.js"></script>
 
 <script src="../hero-gallery-lab/hero-gallery.js"></script>
-
-<!-- LAB THEME BRIDGE -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll("#lab-theme-toggle button");
-
-  function applyTheme(theme) {
-    if (theme === "dark") {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
-
-    document.dispatchEvent(new CustomEvent("theme-changed", { detail: theme }));
-  }
-
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      applyTheme(btn.dataset.theme);
-    });
-  });
-
-  // Initial theme
-  applyTheme("day");
-});
-</script>
 
 </body>
 </html>
