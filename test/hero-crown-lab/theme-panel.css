@@ -87,3 +87,18 @@
    REMOVE BROKEN ::before BACKGROUND
 ------------------------------------------------------------ */
 /* (This was covering the swatches — removed completely) */
+.theme-panel-button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.theme-panel-button:hover {
+  background: rgba(255,255,255,0.2);
+}
