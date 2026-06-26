@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Crown + Gallery Lab — Combined</title>
+  <title>Crown + Gallery Lab — Expanded Engine</title>
 
   <!-- HERO CROWN CSS -->
   <link rel="stylesheet" href="../hero-crown-lab/hero-crown.css">
@@ -35,6 +35,15 @@
       opacity: 0.7;
       z-index: 999;
     }
+
+    #themeToggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
   </style>
 </head>
 
@@ -43,14 +52,7 @@
 <div id="lab-title">CROWN + GALLERY LAB — 26/06/2026</div>
 
 <!-- REQUIRED BY theme-engine.js -->
-<button id="themeToggle" style="
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 999;
-  padding: 10px 20px;
-  font-size: 16px;
-">Toggle Theme</button>
+<button id="themeToggle">Toggle Theme</button>
 
 <!-- LEFT GALLERY LANE -->
 <div class="hero-gallery-lane hero-gallery-left">
@@ -74,28 +76,92 @@
 
   <div class="theme-panel-body">
 
+    <!-- DAY THEMES -->
     <div class="theme-panel-section-label">Day Themes</div>
     <div class="theme-swatch-grid" id="day-swatch-grid">
+
+      <!-- ORIGINAL DAY -->
       <div class="theme-swatch" data-role="day" data-key="sunrise"></div>
       <div class="theme-swatch" data-role="day" data-key="warm-daylight"></div>
       <div class="theme-swatch" data-role="day" data-key="soft-sky"></div>
       <div class="theme-swatch" data-role="day" data-key="sunset-glow"></div>
+
+      <!-- NEW DAY (ORIGINAL) -->
+      <div class="theme-swatch" data-role="day" data-key="ocean-mist"></div>
+      <div class="theme-swatch" data-role="day" data-key="royal-ember"></div>
+      <div class="theme-swatch" data-role="day" data-key="solar-bloom"></div>
+      <div class="theme-swatch" data-role="day" data-key="crown-platinum"></div>
+
+      <!-- DAY EXPANSION -->
+      <div class="theme-swatch" data-role="day" data-key="sunrise-blush"></div>
+      <div class="theme-swatch" data-role="day" data-key="peach-horizon"></div>
+      <div class="theme-swatch" data-role="day" data-key="coral-bloom"></div>
+      <div class="theme-swatch" data-role="day" data-key="apricot-sky"></div>
+      <div class="theme-swatch" data-role="day" data-key="golden-hour"></div>
+      <div class="theme-swatch" data-role="day" data-key="sherbet-glow"></div>
+      <div class="theme-swatch" data-role="day" data-key="ember-mist"></div>
+      <div class="theme-swatch" data-role="day" data-key="radiant-dawn"></div>
+
+      <!-- SPECIALS AVAILABLE IN DAY -->
       <div class="theme-swatch" data-role="day" data-key="neon"></div>
       <div class="theme-swatch" data-role="day" data-key="galaxy"></div>
       <div class="theme-swatch" data-role="day" data-key="crown-gold"></div>
       <div class="theme-swatch" data-role="day" data-key="royal-blue"></div>
+
+      <!-- SPECIAL EXPANSION -->
+      <div class="theme-swatch" data-role="day" data-key="neon-magenta"></div>
+      <div class="theme-swatch" data-role="day" data-key="electric-crown"></div>
+      <div class="theme-swatch" data-role="day" data-key="royal-spectrum"></div>
+      <div class="theme-swatch" data-role="day" data-key="hypernova"></div>
+      <div class="theme-swatch" data-role="day" data-key="neon-ocean"></div>
+      <div class="theme-swatch" data-role="day" data-key="prism-burst"></div>
+      <div class="theme-swatch" data-role="day" data-key="crown-flare"></div>
+      <div class="theme-swatch" data-role="day" data-key="galaxy-rift"></div>
+
     </div>
 
+    <!-- NIGHT THEMES -->
     <div class="theme-panel-section-label">Night Themes</div>
     <div class="theme-swatch-grid" id="night-swatch-grid">
+
+      <!-- ORIGINAL NIGHT -->
       <div class="theme-swatch" data-role="night" data-key="midnight-indigo"></div>
       <div class="theme-swatch" data-role="night" data-key="royal-night"></div>
       <div class="theme-swatch" data-role="night" data-key="aurora"></div>
       <div class="theme-swatch" data-role="night" data-key="deep-space"></div>
+
+      <!-- NEW NIGHT (ORIGINAL) -->
+      <div class="theme-swatch" data-role="night" data-key="deep-velvet"></div>
+      <div class="theme-swatch" data-role="night" data-key="cosmic-royal"></div>
+      <div class="theme-swatch" data-role="night" data-key="nebula-drift"></div>
+      <div class="theme-swatch" data-role="night" data-key="crown-nocturne"></div>
+
+      <!-- NIGHT EXPANSION -->
+      <div class="theme-swatch" data-role="night" data-key="nebula-violet"></div>
+      <div class="theme-swatch" data-role="night" data-key="midnight-royal"></div>
+      <div class="theme-swatch" data-role="night" data-key="cosmic-indigo"></div>
+      <div class="theme-swatch" data-role="night" data-key="ultraviolet-drift"></div>
+      <div class="theme-swatch" data-role="night" data-key="deep-abyss"></div>
+      <div class="theme-swatch" data-role="night" data-key="lunar-ice"></div>
+      <div class="theme-swatch" data-role="night" data-key="starlight-veil"></div>
+      <div class="theme-swatch" data-role="night" data-key="aurora-veil"></div>
+
+      <!-- SPECIALS AVAILABLE IN NIGHT -->
       <div class="theme-swatch" data-role="night" data-key="neon"></div>
       <div class="theme-swatch" data-role="night" data-key="galaxy"></div>
       <div class="theme-swatch" data-role="night" data-key="crown-gold"></div>
       <div class="theme-swatch" data-role="night" data-key="royal-blue"></div>
+
+      <!-- SPECIAL EXPANSION -->
+      <div class="theme-swatch" data-role="night" data-key="neon-magenta"></div>
+      <div class="theme-swatch" data-role="night" data-key="electric-crown"></div>
+      <div class="theme-swatch" data-role="night" data-key="royal-spectrum"></div>
+      <div class="theme-swatch" data-role="night" data-key="hypernova"></div>
+      <div class="theme-swatch" data-role="night" data-key="neon-ocean"></div>
+      <div class="theme-swatch" data-role="night" data-key="prism-burst"></div>
+      <div class="theme-swatch" data-role="night" data-key="crown-flare"></div>
+      <div class="theme-swatch" data-role="night" data-key="galaxy-rift"></div>
+
     </div>
 
   </div>
@@ -143,7 +209,7 @@
   </div>
 </div>
 
-<!-- JS MODULES (AFTER ALL HTML) -->
+<!-- JS MODULES (ORDER MATTERS) -->
 <script src="../hero-crown-lab/theme-engine.js"></script>
 <script src="../hero-crown-lab/hero-crown.js"></script>
 <script src="../hero-crown-lab/theme-panel.js"></script>
