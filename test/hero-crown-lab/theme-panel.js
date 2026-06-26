@@ -10,11 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ADMIN‑ONLY ACCESS (PASSWORD + REMEMBER DEVICE)
   ============================================================ */
 
-  let isAdmin = false;
-
-  if (localStorage.getItem("cc-admin") === "true") {
-    isAdmin = true;
-  }
+  let isAdmin = localStorage.getItem("cc-admin") === "true";
 
   const ts = document.getElementById("theme-panel-timestamp");
   if (ts) ts.textContent = "Loaded: " + new Date().toLocaleString();
@@ -83,11 +79,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ============================================================
-     GRADIENT ENGINE — LOAD SAVED DAY/NIGHT THEMES
+     LOAD SAVED SETTINGS FIRST
   ============================================================ */
 
   let savedDay = localStorage.getItem("cc-day-gradient") || "sunrise";
   let savedNight = localStorage.getItem("cc-night-gradient") || "midnight-indigo";
+
+  const savedSettings = localStorage.getItem("cc-theme-settings");
+
+  if (savedSettings) {
+    const s = JSON.parse(savedSettings);
+
+    if (s.day) {
+      savedDay = s.day;
+      localStorage.setItem("cc-day-gradient", s.day);
+    }
+
+    if (s.night) {
+      savedNight = s.night;
+      localStorage.setItem("cc-night-gradient", s.night);
+    }
+
+    if (s.mode === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+
+    if (s.panelX && s.panelY) {
+      panel.style.left = s.panelX;
+      panel.style.top = s.panelY;
+    }
+
+    console.log("✔ Loaded saved theme settings");
+  }
+
+  /* ============================================================
+     APPLY ACTIVE GRADIENTS
+  ============================================================ */
 
   document.documentElement.style.setProperty(
     "--active-day-gradient",
@@ -98,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "--active-night-gradient",
     `var(--grad-${savedNight})`
   );
+
 
   /* ============================================================
      HIGHLIGHT CURRENTLY SELECTED SWATCHES
@@ -121,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ============================================================
-     SWATCH CLICK HANDLERS — CLEAN + CORRECT + GLOW ENABLED
+     SWATCH CLICK HANDLERS — CLEAN + GLOW ENABLED
   ============================================================ */
 
   document.querySelectorAll(".theme-swatch").forEach(swatch => {
@@ -131,17 +159,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const role = swatch.dataset.role;
       const key = swatch.dataset.key;
 
-      /* -----------------------------------------
-         THEME‑SPECIFIC GLOW COLOR
-      ----------------------------------------- */
+      /* GLOW COLOR */
       document.documentElement.style.setProperty(
         "--crown-glow-color",
         `var(--glow-${key})`
       );
 
-      /* -----------------------------------------
-         APPLY DAY THEME
-      ----------------------------------------- */
+      /* APPLY DAY THEME */
       if (role === "day") {
         savedDay = key;
         localStorage.setItem("cc-day-gradient", key);
@@ -152,9 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
 
-      /* -----------------------------------------
-         APPLY NIGHT THEME
-      ----------------------------------------- */
+      /* APPLY NIGHT THEME */
       if (role === "night") {
         savedNight = key;
         localStorage.setItem("cc-night-gradient", key);
@@ -169,7 +191,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-});
+
+  /* ============================================================
+     TOOL BUTTONS — VERIFY + SAVE
+  ============================================================ */
+
+  const verifyBtn = document.getElementById("verify-swatches-btn");
+  const saveBtn = document.getElementById("save-theme-settings-btn");
+
+  if (verifyBtn) {
+    verifyBtn.addEventListener("click", () => {
+      verifySwatches();
+    });
+  }
+
+  if (saveBtn) {
+    saveBtn.addEventListener("click", () => {
+      const settings = {
+        day: savedDay,
+        night: savedNight,
+        mode: localStorage.getItem("cc-mode"),
+        panelX: panel.style.left,
+        panelY: panel.style.top
+      };
+
+      localStorage.setItem("cc-theme-settings", JSON.stringify(settings));
+
+      console.log("✔ Theme settings saved:", settings);
+      alert("Theme settings saved");
+    });
+  }
+
+}); // END DOMContentLoaded
+
+
 /* ============================================================
    DEBUG: VERIFY SWATCHES + CSS VARIABLES
 ============================================================ */
@@ -191,11 +246,9 @@ window.verifySwatches = function () {
       swatch.style.outline = "3px solid yellow";
     } else {
       console.log(`✔ ${key} OK`);
+      swatch.style.outline = "none";
     }
   });
 
   console.groupEnd();
 };
-document.getElementById("verify-swatches-btn").addEventListener("click", () => {
-  verifySwatches();
-});
