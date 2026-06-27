@@ -64,3 +64,11 @@ document.querySelectorAll("#cards-admin button").forEach(btn => {
     }
   });
 });
+function updateLabTimestamp() {
+  const ts = new Date().toLocaleString();
+  const el = document.getElementById("cc-timestamp");
+  if (el) el.textContent = `Updated: ${ts}`;
+}
+
+document.addEventListener("DOMContentLoaded", updateLabTimestamp);
+window.addEventListener("load", updateLabTimestamp);
