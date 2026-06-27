@@ -192,3 +192,22 @@ body {
   color: #fff;
   cursor: pointer;
 }
+#cc-logo-v3 path {
+  transition: fill 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
+}
+
+#layer1 { opacity: 0.85; filter: brightness(1.2); }
+#layer2 { opacity: 0.95; filter: drop-shadow(0 0 6px #ef9425aa); }
+#layer3 { opacity: 0.9; }
+#layer4 { opacity: 0.85; }
+#layer5 { opacity: 0.95; filter: drop-shadow(0 0 12px #365072aa); }
+#layer6 { opacity: 1; filter: drop-shadow(0 0 18px #1d2d45aa); }
+
+body.theme-night #cc-logo-v3 path {
+  filter: hue-rotate(220deg) brightness(0.8);
+}
+
+body.theme-admin #layer2 {
+  fill: #ffcc33;
+  filter: drop-shadow(0 0 12px #ffcc33);
+}
