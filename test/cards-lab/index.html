@@ -3,212 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Crown Creatives — Cards Lab v4.0</title>
-
-  <style>
-    :root {
-      --card-border-size: 2px;
-      --card-radius: 22px;
-      --particle-color: rgba(255,255,255,0.35);
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background: var(--active-day-gradient, linear-gradient(135deg, #1e1e1e, #2a2a2a));
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow-x: hidden;
-    }
-
-    #lab-title {
-      margin-top: 40px;
-      font-size: 22px;
-      opacity: 0.7;
-      letter-spacing: 0.5px;
-    }
-
-    /* ============================================================
-       PARTICLE FIELD (BEHIND CARDS)
-    ============================================================ */
-    #particle-field {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .particle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: var(--particle-color);
-      border-radius: 50%;
-      opacity: 0.4;
-      animation: floatUp 12s linear infinite;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 0.4; }
-      100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
-    }
-
-    /* ============================================================
-       CARDS WRAPPER
-    ============================================================ */
-    .cards-wrapper {
-      width: 100%;
-      max-width: 1100px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-      padding: 60px 40px;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* ============================================================
-       FROSTED CARD + GRADIENT BORDER
-    ============================================================ */
-    .frost-card {
-      position: relative;
-      padding: 32px;
-      border-radius: var(--card-radius);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      background: rgba(255, 255, 255, 0.08);
-      overflow: hidden;
-      transform-style: preserve-3d;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    /* Animated gradient border */
-    .frost-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      padding: var(--card-border-size);
-      border-radius: inherit;
-      background: linear-gradient(
-        0deg,
-        var(--active-day-gradient, #fff),
-        var(--active-night-gradient, #fff)
-      );
-      -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      animation: borderSweep 6s linear infinite;
-    }
-
-    @keyframes borderSweep {
-      0% { background-position: 0% 100%; }
-      100% { background-position: 0% 0%; }
-    }
-
-    /* Hover lift */
-    .frost-card:hover {
-      transform: translateY(-8px) scale(1.02);
-    }
-
-    /* ============================================================
-       DUAL-LAYER ANIMATED CROWN ICON
-    ============================================================ */
-    .crown-icon {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 20px auto;
-      position: relative;
-    }
-
-    .crown-fill,
-    .crown-outline {
-      position: absolute;
-      inset: 0;
-      fill: none;
-      stroke-linejoin: round;
-    }
-
-    /* Inner fill */
-    .crown-fill {
-      stroke-width: 14px;
-      stroke: url(#crownGradient);
-      opacity: 0.9;
-      animation: crownSweep 6s linear infinite;
-    }
-
-    /* Outer outline */
-    .crown-outline {
-      stroke-width: 4px;
-      stroke: url(#crownGradient);
-      opacity: 1;
-      animation: crownSweep 6s linear infinite;
-      animation-delay: 0.8s;
-    }
-
-    @keyframes crownSweep {
-      0% { stroke-dashoffset: 140; }
-      100% { stroke-dashoffset: -140; }
-    }
-
-    /* ============================================================
-       CARD TEXT
-    ============================================================ */
-    .frost-card h2 {
-      margin: 0 0 12px 0;
-      font-size: 24px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-align: center;
-      text-shadow: 0 0 8px var(--crown-glow-color, rgba(255,255,255,0.3));
-    }
-
-    .frost-card p {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.55;
-      opacity: 0.85;
-      text-align: center;
-    }
-
-    .footer-spacer {
-      height: 120px;
-      width: 100%;
-    }
-
-    /* ============================================================
-       ADMIN PANEL
-    ============================================================ */
-    #cards-admin {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(0,0,0,0.6);
-      padding: 20px;
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
-      display: none;
-      z-index: 999;
-    }
-
-    #cards-admin button {
-      display: block;
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 6px;
-      color: #fff;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="cards.css">
 </head>
 
 <body>
@@ -228,20 +23,15 @@
 
   <div class="cards-wrapper">
 
-    <!-- CARD TEMPLATE -->
     <div class="frost-card">
       <div class="crown-icon">
-        <!-- Fill -->
         <svg class="crown-fill" viewBox="0 0 100 60">
           <path d="M10 50 L30 20 L50 45 L70 15 L90 50 Z" />
         </svg>
-
-        <!-- Outline -->
         <svg class="crown-outline" viewBox="0 0 100 60">
           <path d="M10 50 L30 20 L50 45 L70 15 L90 50 Z" />
         </svg>
       </div>
-
       <h2>Artistry</h2>
       <p>Creativity expressed through craft, vision, and imagination.</p>
     </div>
@@ -255,7 +45,6 @@
           <path d="M10 50 L30 20 L50 45 L70 15 L90 50 Z" />
         </svg>
       </div>
-
       <h2>Resilience</h2>
       <p>Strength to rise, rebuild, and transform challenges into growth.</p>
     </div>
@@ -269,7 +58,6 @@
           <path d="M10 50 L30 20 L50 45 L70 15 L90 50 Z" />
         </svg>
       </div>
-
       <h2>Imagination</h2>
       <p>The spark that turns ideas into reality and stories into worlds.</p>
     </div>
@@ -278,7 +66,6 @@
 
   <div class="footer-spacer"></div>
 
-  <!-- ADMIN PANEL -->
   <div id="cards-admin">
     <button data-toggle="particles">Toggle Particles</button>
     <button data-toggle="borders">Toggle Borders</button>
@@ -286,82 +73,6 @@
     <button data-toggle="tilt">Toggle 3D Tilt</button>
   </div>
 
-  <script>
-    /* ============================================================
-       PARTICLE FIELD GENERATION
-    ============================================================ */
-    const particleField = document.getElementById("particle-field");
-
-    function spawnParticle() {
-      const p = document.createElement("div");
-      p.className = "particle";
-      p.style.left = Math.random() * 100 + "vw";
-      p.style.bottom = "-20px";
-      p.style.animationDuration = 8 + Math.random() * 8 + "s";
-      particleField.appendChild(p);
-
-      setTimeout(() => p.remove(), 15000);
-    }
-
-    setInterval(spawnParticle, 400);
-
-    /* ============================================================
-       3D TILT
-    ============================================================ */
-    document.querySelectorAll(".frost-card").forEach(card => {
-      card.addEventListener("mousemove", e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-
-        card.style.transform =
-          `rotateX(${(-y / 20)}deg) rotateY(${(x / 20)}deg) scale(1.03)`;
-      });
-
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-      });
-    });
-
-    /* ============================================================
-       ADMIN PANEL TOGGLE (Shift+T)
-    ============================================================ */
-    let adminVisible = false;
-
-    window.addEventListener("keydown", e => {
-      if (e.key === "T" && e.shiftKey) {
-        adminVisible = !adminVisible;
-        document.getElementById("cards-admin").style.display =
-          adminVisible ? "block" : "none";
-      }
-    });
-
-    /* ============================================================
-       ADMIN PANEL BUTTONS
-    ============================================================ */
-    document.querySelectorAll("#cards-admin button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const type = btn.dataset.toggle;
-
-        if (type === "particles") {
-          particleField.style.display =
-            particleField.style.display === "none" ? "block" : "none";
-        }
-
-        if (type === "borders") {
-          document.body.classList.toggle("no-borders");
-        }
-
-        if (type === "crowns") {
-          document.body.classList.toggle("no-crown-anim");
-        }
-
-        if (type === "tilt") {
-          document.body.classList.toggle("no-tilt");
-        }
-      });
-    });
-  </script>
-
+  <script src="cards.js"></script>
 </body>
 </html>
