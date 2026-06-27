@@ -1,12 +1,19 @@
-/* PARTICLE FIELD GENERATION */
+/* ============================================================
+   PARTICLE FIELD GENERATION
+   ============================================================ */
+
 const particleField = document.getElementById("particle-field");
 
 function spawnParticle() {
+  if (document.body.classList.contains("no-particles")) return;
+
   const p = document.createElement("div");
   p.className = "particle";
+
   p.style.left = Math.random() * 100 + "vw";
   p.style.bottom = "-20px";
   p.style.animationDuration = 8 + Math.random() * 8 + "s";
+
   particleField.appendChild(p);
 
   setTimeout(() => p.remove(), 15000);
@@ -14,9 +21,15 @@ function spawnParticle() {
 
 setInterval(spawnParticle, 400);
 
-/* 3D TILT */
+
+/* ============================================================
+   3D TILT EFFECT
+   ============================================================ */
+
 document.querySelectorAll(".frost-card").forEach(card => {
   card.addEventListener("mousemove", e => {
+    if (document.body.classList.contains("no-tilt")) return;
+
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
@@ -30,40 +43,55 @@ document.querySelectorAll(".frost-card").forEach(card => {
   });
 });
 
-/* ADMIN PANEL TOGGLE (Shift+T) */
+
+/* ============================================================
+   ADMIN PANEL TOGGLE (Shift + T)
+   ============================================================ */
+
 let adminVisible = false;
 
 window.addEventListener("keydown", e => {
   if (e.key === "T" && e.shiftKey) {
     adminVisible = !adminVisible;
-    document.getElementById("cards-admin").style.display =
-      adminVisible ? "block" : "none";
+    const panel = document.getElementById("cards-admin");
+    if (panel) panel.style.display = adminVisible ? "block" : "none";
   }
 });
 
-/* ADMIN PANEL BUTTONS */
+
+/* ============================================================
+   ADMIN PANEL BUTTONS
+   ============================================================ */
+
 document.querySelectorAll("#cards-admin button").forEach(btn => {
   btn.addEventListener("click", () => {
     const type = btn.dataset.toggle;
 
-    if (type === "particles") {
-      particleField.style.display =
-        particleField.style.display === "none" ? "block" : "none";
-    }
+    switch (type) {
+      case "particles":
+        document.body.classList.toggle("no-particles");
+        break;
 
-    if (type === "borders") {
-      document.body.classList.toggle("no-borders");
-    }
+      case "borders":
+        document.body.classList.toggle("no-borders");
+        break;
 
-    if (type === "crowns") {
-      document.body.classList.toggle("no-crown-anim");
-    }
+      case "crowns":
+        document.body.classList.toggle("no-crown-anim");
+        break;
 
-    if (type === "tilt") {
-      document.body.classList.toggle("no-tilt");
+      case "tilt":
+        document.body.classList.toggle("no-tilt");
+        break;
     }
   });
 });
+
+
+/* ============================================================
+   LAB TIMESTAMP
+   ============================================================ */
+
 function updateLabTimestamp() {
   const ts = new Date().toLocaleString();
   const el = document.getElementById("cc-timestamp");
@@ -72,3 +100,20 @@ function updateLabTimestamp() {
 
 document.addEventListener("DOMContentLoaded", updateLabTimestamp);
 window.addEventListener("load", updateLabTimestamp);
+
+
+/* ============================================================
+   AURORA EFFECT FOR MULTI-LAYER CROWN SVG
+   ============================================================ */
+
+function applyAuroraEffect() {
+  const layers = [...document.querySelectorAll("#cc-logo-v3 path")];
+
+  if (!layers.length) return;
+
+  layers.forEach((layer, i) => {
+    layer.style.filter = `hue-rotate(${i * 20}deg) brightness(1.1)`;
+  });
+}
+
+document.addEventListener("DOMContentLoaded", applyAuroraEffect);
