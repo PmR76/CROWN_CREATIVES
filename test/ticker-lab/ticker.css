@@ -1,0 +1,92 @@
+/* ============================================================
+   CROWN CREATIVES — TICKER (Corrected for Admin System)
+============================================================ */
+
+/* ---------------------------------------------
+   BASE TICKER CONTAINER
+--------------------------------------------- */
+#ticker-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+
+  /* IMPORTANT: allow admin to override this */
+  position: relative;
+
+  bottom: 60px;
+  left: 0;
+
+  z-index: 9999;
+
+  /* BLOCKS EDITING + DRAGGING — removed */
+  /* pointer-events: none; */
+}
+
+/* ---------------------------------------------
+   BASE TICKER TEXT
+--------------------------------------------- */
+#ticker-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ticker-scroll 18s linear infinite;
+  animation-play-state: running;
+
+  font-size: 1.1rem;
+  color: var(--text-color);
+  text-shadow: 0 0 6px rgba(255,255,255,0.4);
+  transition: text-shadow 0.3s ease;
+}
+
+/* Glow when editing */
+.ticker-glow {
+  text-shadow: 0 0 10px rgba(255,255,255,0.8),
+               0 0 20px rgba(255,255,255,0.6);
+}
+
+/* ---------------------------------------------
+   KEYFRAMES
+--------------------------------------------- */
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+/* ---------------------------------------------
+   ADMIN MODE OVERRIDES
+--------------------------------------------- */
+.admin-mode #ticker-container {
+  position: absolute !important;
+  pointer-events: auto !important;
+  cursor: grab !important;
+  z-index: 99999;
+}
+
+.admin-mode #ticker-text {
+  pointer-events: auto !important;
+  user-select: text !important;
+  cursor: text !important;
+}
+
+/* Pause animation when editing */
+.admin-mode .ticker-glow {
+  animation-play-state: paused !important;
+}
+
+/* ---------------------------------------------
+   OPTIONAL SECOND LINE SUPPORT (kept intact)
+--------------------------------------------- */
+.ticker-line {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ticker-scroll var(--ticker-speed, 18s) linear infinite;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  text-shadow: 0 0 6px rgba(255,255,255,0.4);
+  transition: text-shadow 0.3s ease;
+}
+
+#ticker-text-2 {
+  margin-top: 6px;
+  opacity: 0.8;
+  animation-delay: -9s;
+}
