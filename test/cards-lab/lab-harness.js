@@ -160,3 +160,30 @@
   });
 
 })();
+function versionInfo() {
+  fetch(`./${LAB_ROOT}-version.json`)
+    .then(r => r.json())
+    .then(v => {
+      const box = document.createElement("div");
+      box.style.position = "fixed";
+      box.style.top = "10px";
+      box.style.left = "10px";
+      box.style.background = "rgba(0,0,0,0.7)";
+      box.style.color = "#e0f4ff";
+      box.style.padding = "6px 10px";
+      box.style.fontFamily = "monospace";
+      box.style.fontSize = "12px";
+      box.style.borderRadius = "6px";
+      box.style.zIndex = 9999;
+      box.textContent = `v${v.version} — ${v.updated}`;
+      document.body.appendChild(box);
+    })
+    .catch(() => {});
+}
+document.addEventListener("DOMContentLoaded", () => {
+  timestamp();
+  status();
+  errors();
+  healthBadge();
+  versionInfo();
+});
