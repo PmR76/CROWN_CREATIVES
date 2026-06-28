@@ -9,17 +9,8 @@
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-
-  /* IMPORTANT: allow admin to override this */
   position: relative;
-
-  bottom: 60px;
-  left: 0;
-
-  z-index: 9999;
-
-  /* BLOCKS EDITING + DRAGGING — removed */
-  /* pointer-events: none; */
+  /* pointer-events: none; */ /* intentionally removed */
 }
 
 /* ---------------------------------------------
