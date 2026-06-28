@@ -1,166 +1,188 @@
-// Crown Creatives Lab Harness
-// Reusable diagnostics + timestamp for any *-lab folder
+// Crown Creatives Lab Harness v2 (Strict Isolation)
+// Drop this file into every *-lab folder.
 
 (function () {
-  /* ========= CONFIG ========= */
-  const LAB_CONFIG = {
-    // Optional: override per lab via data attribute on <body data-lab-name="cards-lab">
-    fallbackLabName: window.location.pathname.split("/").filter(Boolean).slice(-2).join("/") || "unknown-lab",
-    timestampElementId: "cc-lab-timestamp",
-    statusPanelId: "cc-lab-status",
-    expectedCssSelectors: [
-      // Example: ensure main lab CSS is present
-      'link[href*="cards.css"]',
-      'link[href*="hero-crown.css"]'
-    ],
-    expectedJsSelectors: [
-      // Example: ensure main lab JS is present
-      'script[src*="cards.js"]',
-      'script[src*="debug-crown.js"]',
-      'script[src*="detect-external-css.js"]'
-    ]
-  };
 
-  /* ========= UTILITIES ========= */
+  /* ============================================================
+     LAB IDENTIFICATION
+     ============================================================ */
 
-  function getLabName() {
-    const body = document.body;
-    const attr = body && body.getAttribute("data-lab-name");
-    return attr || LAB_CONFIG.fallbackLabName;
-  }
+  const LAB_NAME = document.body.getAttribute("data-lab-name");
+  const LAB_ROOT = LAB_NAME.replace("-lab", "");
+  const INDEX_FILE = `./${LAB_ROOT}-index.html`;
 
-  function ensureStatusPanel() {
-    let panel = document.getElementById(LAB_CONFIG.statusPanelId);
-    if (!panel) {
-      panel = document.createElement("div");
-      panel.id = LAB_CONFIG.statusPanelId;
-      panel.style.position = "fixed";
-      panel.style.bottom = "10px";
-      panel.style.right = "10px";
-      panel.style.zIndex = "9999";
-      panel.style.background = "rgba(10, 20, 40, 0.9)";
-      panel.style.color = "#e0f4ff";
-      panel.style.fontFamily = "system-ui, -apple-system, BlinkMacSystemFont, sans-serif";
-      panel.style.fontSize = "12px";
-      panel.style.padding = "10px 12px";
-      panel.style.borderRadius = "8px";
-      panel.style.boxShadow = "0 8px 20px rgba(0,0,0,0.4)";
-      panel.style.maxWidth = "260px";
-      panel.style.pointerEvents = "none"; // read-only
-      document.body.appendChild(panel);
-    }
-    return panel;
-  }
+  const STATUS_ID = "cc-lab-status";
+  const TS_ID = "cc-lab-timestamp";
 
-  function ensureTimestampElement() {
-    let el = document.getElementById(LAB_CONFIG.timestampElementId);
+  /* ============================================================
+     PANEL CREATION
+     ============================================================ */
+
+  function ensurePanel(id, styles) {
+    let el = document.getElementById(id);
     if (!el) {
       el = document.createElement("div");
-      el.id = LAB_CONFIG.timestampElementId;
-      el.style.position = "fixed";
-      el.style.bottom = "10px";
-      el.style.left = "10px";
-      el.style.zIndex = "9999";
-      el.style.background = "rgba(0,0,0,0.7)";
-      el.style.color = "#b0ffb0";
-      el.style.fontFamily = "monospace";
-      el.style.fontSize = "11px";
-      el.style.padding = "6px 8px";
-      el.style.borderRadius = "6px";
-      el.style.boxShadow = "0 4px 12px rgba(0,0,0,0.5)";
+      el.id = id;
+      Object.assign(el.style, styles);
       document.body.appendChild(el);
     }
     return el;
   }
 
-  function updateTimestamp() {
-    const el = ensureTimestampElement();
-    const ts = new Date().toLocaleString();
-    el.textContent = `Lab refreshed: ${ts}`;
+  /* ============================================================
+     TIMESTAMP
+     ============================================================ */
+
+  function timestamp() {
+    const el = ensurePanel(TS_ID, {
+      position: "fixed",
+      bottom: "10px",
+      left: "10px",
+      background: "rgba(0,0,0,0.7)",
+      color: "#b0ffb0",
+      padding: "6px 8px",
+      fontFamily: "monospace",
+      fontSize: "11px",
+      borderRadius: "6px",
+      zIndex: 9999
+    });
+    el.textContent = `Refreshed: ${new Date().toLocaleString()}`;
   }
 
-  function checkResources() {
-    const cssLoaded = LAB_CONFIG.expectedCssSelectors.map(sel => ({
-      selector: sel,
-      found: !!document.querySelector(sel)
-    }));
+  /* ============================================================
+     STATUS PANEL
+     ============================================================ */
 
-    const jsLoaded = LAB_CONFIG.expectedJsSelectors.map(sel => ({
-      selector: sel,
-      found: !!document.querySelector(sel)
-    }));
+  function status() {
+    const panel = ensurePanel(STATUS_ID, {
+      position: "fixed",
+      bottom: "10px",
+      right: "10px",
+      background: "rgba(10,20,40,0.9)",
+      color: "#e0f4ff",
+      padding: "10px 12px",
+      fontFamily: "monospace",
+      fontSize: "12px",
+      borderRadius: "8px",
+      zIndex: 9999,
+      maxWidth: "260px",
+      whiteSpace: "pre-wrap"
+    });
 
-    return { cssLoaded, jsLoaded };
+    const css = [...document.querySelectorAll("link[rel='stylesheet']")]
+      .map(l => l.getAttribute("href"));
+
+    const js = [...document.querySelectorAll("script")]
+      .map(s => s.getAttribute("src"))
+      .filter(Boolean);
+
+    const contamination =
+      css.some(c => c.includes("global")) ||
+      js.some(j => j.includes("global")) ||
+      css.includes("index.html") ||
+      js.includes("index.html");
+
+    panel.textContent =
+      `Lab: ${LAB_NAME}\n\n` +
+      `Expected HTML: ${INDEX_FILE}\n\n` +
+      `CSS Loaded:\n${css.join("\n") || "None"}\n\n` +
+      `JS Loaded:\n${js.join("\n") || "None"}\n\n` +
+      `Isolation: ${contamination ? "⚠️ Contamination detected" : "✔ Clean"}`;
   }
 
-  function renderStatusPanel() {
-    const panel = ensureStatusPanel();
-    const labName = getLabName();
-    const { cssLoaded, jsLoaded } = checkResources();
+  /* ============================================================
+     HEALTH BADGE
+     ============================================================ */
 
-    const cssSummary = cssLoaded.map(c =>
-      `${c.found ? "✅" : "⚠️"} CSS: ${c.selector}`
-    ).join("\n");
+  function healthBadge() {
+    const badge = document.createElement("div");
+    badge.style.position = "fixed";
+    badge.style.top = "10px";
+    badge.style.right = "10px";
+    badge.style.padding = "6px 10px";
+    badge.style.fontFamily = "monospace";
+    badge.style.fontSize = "12px";
+    badge.style.borderRadius = "6px";
+    badge.style.zIndex = 9999;
 
-    const jsSummary = jsLoaded.map(j =>
-      `${j.found ? "✅" : "⚠️"} JS: ${j.selector}`
-    ).join("\n");
+    const contamination =
+      [...document.querySelectorAll("link[rel='stylesheet']")]
+        .some(c => c.href.includes("global")) ||
+      [...document.querySelectorAll("script")]
+        .some(s => s.src.includes("global"));
 
-    panel.textContent = ""; // reset
-    const pre = document.createElement("pre");
-    pre.style.margin = "0";
-    pre.style.whiteSpace = "pre-wrap";
+    if (contamination) {
+      badge.style.background = "#5a0000";
+      badge.style.color = "#ffb0b0";
+      badge.textContent = "LAB HEALTH: ⚠️ Contaminated";
+    } else {
+      badge.style.background = "#003b0a";
+      badge.style.color = "#b0ffb0";
+      badge.textContent = "LAB HEALTH: ✔ Clean";
+    }
 
-    pre.textContent =
-      `Crown Creatives Lab\n` +
-      `Lab: ${labName}\n\n` +
-      `HTML: ✅ DOM loaded\n\n` +
-      `CSS:\n${cssSummary || "– no CSS checks configured –"}\n\n` +
-      `JS:\n${jsSummary || "– no JS checks configured –"}\n`;
-
-    panel.appendChild(pre);
+    document.body.appendChild(badge);
   }
 
-  /* ========= ERROR TRACE ========= */
+  /* ============================================================
+     VERSION INFO
+     ============================================================ */
 
-  function attachErrorTracing() {
+  function versionInfo() {
+    fetch(`./${LAB_ROOT}-version.json`)
+      .then(r => r.json())
+      .then(v => {
+        const box = document.createElement("div");
+        box.style.position = "fixed";
+        box.style.top = "10px";
+        box.style.left = "10px";
+        box.style.background = "rgba(0,0,0,0.7)";
+        box.style.color = "#e0f4ff";
+        box.style.padding = "6px 10px";
+        box.style.fontFamily = "monospace";
+        box.style.fontSize = "12px";
+        box.style.borderRadius = "6px";
+        box.style.zIndex = 9999;
+        box.textContent = `v${v.version} — ${v.updated}`;
+        document.body.appendChild(box);
+      })
+      .catch(() => {});
+  }
+
+  /* ============================================================
+     ERROR TRACING
+     ============================================================ */
+
+  function errors() {
     window.addEventListener("error", evt => {
-      const panel = ensureStatusPanel();
-      const errBox = document.createElement("div");
-      errBox.style.marginTop = "8px";
-      errBox.style.paddingTop = "6px";
-      errBox.style.borderTop = "1px solid rgba(255,255,255,0.15)";
-      errBox.style.color = "#ffb0b0";
-      errBox.style.fontFamily = "monospace";
-      errBox.style.fontSize = "11px";
-      errBox.textContent =
-        `JS Error: ${evt.message} @ ${evt.filename}:${evt.lineno}`;
-      panel.appendChild(errBox);
+      const panel = document.getElementById(STATUS_ID);
+      const box = document.createElement("div");
+      box.style.color = "#ffb0b0";
+      box.style.marginTop = "8px";
+      box.textContent = `JS Error: ${evt.message}`;
+      panel.appendChild(box);
     });
 
     window.addEventListener("unhandledrejection", evt => {
-      const panel = ensureStatusPanel();
-      const errBox = document.createElement("div");
-      errBox.style.marginTop = "8px";
-      errBox.style.paddingTop = "6px";
-      errBox.style.borderTop = "1px solid rgba(255,255,255,0.15)";
-      errBox.style.color = "#ffdf9b";
-      errBox.style.fontFamily = "monospace";
-      errBox.style.fontSize = "11px";
-      errBox.textContent =
-        `Promise Rejection: ${evt.reason}`;
-      panel.appendChild(errBox);
+      const panel = document.getElementById(STATUS_ID);
+      const box = document.createElement("div");
+      box.style.color = "#ffdf9b";
+      box.style.marginTop = "8px";
+      box.textContent = `Promise Rejection: ${evt.reason}`;
+      panel.appendChild(box);
     });
   }
 
-  /* ========= BOOTSTRAP ========= */
+  /* ============================================================
+     BOOTSTRAP (RUN ONCE)
+     ============================================================ */
 
-  function initLabHarness() {
-    updateTimestamp();
-    renderStatusPanel();
-    attachErrorTracing();
-  }
+  document.addEventListener("DOMContentLoaded", () => {
+    timestamp();
+    status();
+    errors();
+    healthBadge();
+    versionInfo();
+  });
 
-  document.addEventListener("DOMContentLoaded", initLabHarness);
-  window.addEventListener("load", updateTimestamp); // refresh timestamp after full load
 })();
