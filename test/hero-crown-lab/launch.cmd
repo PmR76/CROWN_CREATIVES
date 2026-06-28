@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0"
-npx http-server -c-1 -p 5050 .
-start http://127.0.0.1:5050/<lab-hero-crown>-lab.html
+start "" npx http-server -c-1 -p 5053 .
+start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" http://127.0.0.1:5053/hero-crown-lab.html
