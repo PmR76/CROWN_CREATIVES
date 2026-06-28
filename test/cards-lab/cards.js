@@ -1,26 +1,26 @@
 /* ============================================================
    PARTICLE FIELD GENERATION
    ============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const particleField = document.getElementById("particle-field");
 
-const particleField = document.getElementById("particle-field");
+  function spawnParticle() {
+    if (document.body.classList.contains("no-particles")) return;
 
-function spawnParticle() {
-  if (document.body.classList.contains("no-particles")) return;
+    const p = document.createElement("div");
+    p.className = "particle";
 
-  const p = document.createElement("div");
-  p.className = "particle";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.bottom = "-20px";
+    p.style.animationDuration = 8 + Math.random() * 8 + "s";
 
-  p.style.left = Math.random() * 100 + "vw";
-  p.style.bottom = "-20px";
-  p.style.animationDuration = 8 + Math.random() * 8 + "s";
+    particleField.appendChild(p);
 
-  particleField.appendChild(p);
+    setTimeout(() => p.remove(), 15000);
+  }
 
-  setTimeout(() => p.remove(), 15000);
-}
-
-setInterval(spawnParticle, 400);
-
+  setInterval(spawnParticle, 400);
+});
 
 /* ============================================================
    3D TILT EFFECT
