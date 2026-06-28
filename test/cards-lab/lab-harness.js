@@ -91,6 +91,40 @@
   }
 
   /* ============================================================
+     HEALTH BADGE
+     ============================================================ */
+
+  function healthBadge() {
+    const badge = document.createElement("div");
+    badge.style.position = "fixed";
+    badge.style.top = "10px";
+    badge.style.right = "10px";
+    badge.style.padding = "6px 10px";
+    badge.style.fontFamily = "monospace";
+    badge.style.fontSize = "12px";
+    badge.style.borderRadius = "6px";
+    badge.style.zIndex = 9999;
+
+    const contamination =
+      [...document.querySelectorAll("link[rel='stylesheet']")]
+        .some(c => c.href.includes("global")) ||
+      [...document.querySelectorAll("script")]
+        .some(s => s.src.includes("global"));
+
+    if (contamination) {
+      badge.style.background = "#5a0000";
+      badge.style.color = "#ffb0b0";
+      badge.textContent = "LAB HEALTH: ⚠️ Contaminated";
+    } else {
+      badge.style.background = "#003b0a";
+      badge.style.color = "#b0ffb0";
+      badge.textContent = "LAB HEALTH: ✔ Clean";
+    }
+
+    document.body.appendChild(badge);
+  }
+
+  /* ============================================================
      ERROR TRACING
      ============================================================ */
 
@@ -115,42 +149,14 @@
   }
 
   /* ============================================================
-     BOOTSTRAP
+     BOOTSTRAP (RUN ONCE)
      ============================================================ */
 
   document.addEventListener("DOMContentLoaded", () => {
     timestamp();
     status();
     errors();
+    healthBadge();
   });
 
 })();
-function healthBadge() {
-  const badge = document.createElement("div");
-  badge.style.position = "fixed";
-  badge.style.top = "10px";
-  badge.style.right = "10px";
-  badge.style.padding = "6px 10px";
-  badge.style.fontFamily = "monospace";
-  badge.style.fontSize = "12px";
-  badge.style.borderRadius = "6px";
-  badge.style.zIndex = 9999;
-
-  const contamination =
-    [...document.querySelectorAll("link[rel='stylesheet']")]
-      .some(c => c.href.includes("global")) ||
-    [...document.querySelectorAll("script")]
-      .some(s => s.src.includes("global"));
-
-  if (contamination) {
-    badge.style.background = "#5a0000";
-    badge.style.color = "#ffb0b0";
-    badge.textContent = "LAB HEALTH: ⚠️ Contaminated";
-  } else {
-    badge.style.background = "#003b0a";
-    badge.style.color = "#b0ffb0";
-    badge.textContent = "LAB HEALTH: ✔ Clean";
-  }
-
-  document.body.appendChild(badge);
-}
