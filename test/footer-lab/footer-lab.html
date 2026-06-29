@@ -23,8 +23,8 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.6);
     }
 
-    /* LAB HARNESS PANEL — DRAGGABLE */
-    #cc-lab-panel {
+    /* DRAGGABLE HARNESS PANEL */
+    #cc-lab-readout {
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -41,27 +41,19 @@
       cursor: default;
     }
 
-    #cc-lab-panel-header {
+    #cc-lab-readout-header {
       font-weight: 600;
       margin-bottom: 8px;
       cursor: grab;
     }
 
-    #cc-lab-panel-header:active {
+    #cc-lab-readout-header:active {
       cursor: grabbing;
     }
   </style>
 </head>
 
 <body data-lab-name="footer-lab">
-
-  <!-- DRAGGABLE LAB PANEL -->
-  <div id="cc-lab-panel">
-    <div id="cc-lab-panel-header">LAB PANEL</div>
-    <div id="cc-lab-panel-body">
-      <!-- your existing lab info -->
-    </div>
-  </div>
 
   <!-- COMPONENT IFRAME -->
   <iframe src="./footer-index.html"></iframe>

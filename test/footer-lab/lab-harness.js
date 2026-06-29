@@ -1,4 +1,4 @@
-// Crown Creatives Lab Harness v2 (Strict Isolation)
+// Crown Creatives Lab Harness v2.1 (Strict Isolation + Draggable Panel)
 // Drop this file into every *-lab folder.
 
 (function () {
@@ -50,7 +50,7 @@
   }
 
   /* ============================================================
-     STATUS PANEL
+     STATUS PANEL (NOW DRAGGABLE)
      ============================================================ */
 
   function status() {
@@ -64,10 +64,22 @@
       fontFamily: "monospace",
       fontSize: "12px",
       borderRadius: "8px",
-      zIndex: 9999,
+      zIndex: 99999,
       maxWidth: "260px",
-      whiteSpace: "pre-wrap"
+      whiteSpace: "pre-wrap",
+      cursor: "default"
     });
+
+    // Add draggable header
+    const header = document.createElement("div");
+    header.id = "cc-lab-status-header";
+    header.textContent = "LAB PANEL";
+    header.style.fontWeight = "600";
+    header.style.marginBottom = "8px";
+    header.style.cursor = "grab";
+
+    // Insert header at top
+    panel.prepend(header);
 
     const css = [...document.querySelectorAll("link[rel='stylesheet']")]
       .map(l => l.getAttribute("href"));
@@ -82,12 +94,17 @@
       css.includes("index.html") ||
       js.includes("index.html");
 
-    panel.textContent =
+    const body = 
       `Lab: ${LAB_NAME}\n\n` +
       `Expected HTML: ${INDEX_FILE}\n\n` +
       `CSS Loaded:\n${css.join("\n") || "None"}\n\n` +
       `JS Loaded:\n${js.join("\n") || "None"}\n\n` +
       `Isolation: ${contamination ? "⚠️ Contamination detected" : "✔ Clean"}`;
+
+    // Add body content
+    const bodyDiv = document.createElement("div");
+    bodyDiv.textContent = body;
+    panel.appendChild(bodyDiv);
   }
 
   /* ============================================================
@@ -174,6 +191,70 @@
   }
 
   /* ============================================================
+     DRAGGABLE STATUS PANEL
+     ============================================================ */
+
+  function makeDraggable() {
+    const panel = document.getElementById(STATUS_ID);
+    const header = document.getElementById("cc-lab-status-header");
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    function loadPosition() {
+      const saved = localStorage.getItem("cc-lab-status-pos");
+      if (!saved) return;
+
+      const pos = JSON.parse(saved);
+      panel.style.left = pos.left;
+      panel.style.top = pos.top;
+      panel.style.bottom = "auto";
+      panel.style.right = "auto";
+    }
+
+    loadPosition();
+
+    function savePosition() {
+      const pos = {
+        left: panel.style.left,
+        top: panel.style.top
+      };
+      localStorage.setItem("cc-lab-status-pos", JSON.stringify(pos));
+    }
+
+    header.addEventListener("mousedown", (e) => {
+      dragging = true;
+
+      const rect = panel.getBoundingClientRect();
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+
+      panel.style.transition = "none";
+      e.preventDefault();
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!dragging) return;
+
+      const x = e.clientX - offsetX;
+      const y = e.clientY - offsetY;
+
+      panel.style.left = `${x}px`;
+      panel.style.top = `${y}px`;
+      panel.style.bottom = "auto";
+      panel.style.right = "auto";
+    });
+
+    window.addEventListener("mouseup", () => {
+      if (!dragging) return;
+      dragging = false;
+      panel.style.transition = "";
+      savePosition();
+    });
+  }
+
+  /* ============================================================
      BOOTSTRAP (RUN ONCE)
      ============================================================ */
 
@@ -183,86 +264,7 @@
     errors();
     healthBadge();
     versionInfo();
-  });
-
-})();
-(function () {
-
-  /* ============================================================
-     LAB HARNESS — DRAGGABLE PANEL
-  ============================================================ */
-
-  const panel = document.getElementById("cc-lab-panel");
-  const header = document.getElementById("cc-lab-panel-header");
-
-  let dragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  /* ------------------------------------------------------------
-     LOAD SAVED POSITION
-  ------------------------------------------------------------ */
-  function loadPosition() {
-    const saved = localStorage.getItem("cc-lab-panel-pos");
-    if (!saved) return;
-
-    const pos = JSON.parse(saved);
-    panel.style.left = pos.left;
-    panel.style.top = pos.top;
-    panel.style.bottom = "auto";
-    panel.style.right = "auto";
-  }
-
-  loadPosition();
-
-  /* ------------------------------------------------------------
-     SAVE POSITION
-  ------------------------------------------------------------ */
-  function savePosition() {
-    const pos = {
-      left: panel.style.left,
-      top: panel.style.top
-    };
-    localStorage.setItem("cc-lab-panel-pos", JSON.stringify(pos));
-  }
-
-  /* ------------------------------------------------------------
-     DRAG START
-  ------------------------------------------------------------ */
-  header.addEventListener("mousedown", (e) => {
-    dragging = true;
-
-    const rect = panel.getBoundingClientRect();
-    offsetX = e.clientX - rect.left;
-    offsetY = e.clientY - rect.top;
-
-    panel.style.transition = "none";
-    e.preventDefault();
-  });
-
-  /* ------------------------------------------------------------
-     DRAG MOVE
-  ------------------------------------------------------------ */
-  window.addEventListener("mousemove", (e) => {
-    if (!dragging) return;
-
-    const x = e.clientX - offsetX;
-    const y = e.clientY - offsetY;
-
-    panel.style.left = `${x}px`;
-    panel.style.top = `${y}px`;
-    panel.style.bottom = "auto";
-    panel.style.right = "auto";
-  });
-
-  /* ------------------------------------------------------------
-     DRAG END
-  ------------------------------------------------------------ */
-  window.addEventListener("mouseup", () => {
-    if (!dragging) return;
-    dragging = false;
-    panel.style.transition = "";
-    savePosition();
+    makeDraggable();
   });
 
 })();
