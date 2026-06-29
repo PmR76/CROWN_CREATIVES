@@ -1,10 +1,5 @@
-/* ============================================================
-   CROWN CREATIVES — CORE-LAB TICKER (Safe Build)
-   No admin engine, no null errors, no dependencies
-============================================================ */
-
+// ../ticker-lab/ticker.js
 document.addEventListener("DOMContentLoaded", () => {
-
   const track = document.querySelector(".ticker-track");
 
   if (!track) {
@@ -12,9 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Apply animation safely
   track.style.whiteSpace = "nowrap";
   track.style.display = "inline-block";
   track.style.animation = "ticker-scroll 18s linear infinite";
-
 });
