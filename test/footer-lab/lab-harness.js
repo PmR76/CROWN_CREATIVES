@@ -186,3 +186,83 @@
   });
 
 })();
+(function () {
+
+  /* ============================================================
+     LAB HARNESS — DRAGGABLE PANEL
+  ============================================================ */
+
+  const panel = document.getElementById("cc-lab-panel");
+  const header = document.getElementById("cc-lab-panel-header");
+
+  let dragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  /* ------------------------------------------------------------
+     LOAD SAVED POSITION
+  ------------------------------------------------------------ */
+  function loadPosition() {
+    const saved = localStorage.getItem("cc-lab-panel-pos");
+    if (!saved) return;
+
+    const pos = JSON.parse(saved);
+    panel.style.left = pos.left;
+    panel.style.top = pos.top;
+    panel.style.bottom = "auto";
+    panel.style.right = "auto";
+  }
+
+  loadPosition();
+
+  /* ------------------------------------------------------------
+     SAVE POSITION
+  ------------------------------------------------------------ */
+  function savePosition() {
+    const pos = {
+      left: panel.style.left,
+      top: panel.style.top
+    };
+    localStorage.setItem("cc-lab-panel-pos", JSON.stringify(pos));
+  }
+
+  /* ------------------------------------------------------------
+     DRAG START
+  ------------------------------------------------------------ */
+  header.addEventListener("mousedown", (e) => {
+    dragging = true;
+
+    const rect = panel.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+
+    panel.style.transition = "none";
+    e.preventDefault();
+  });
+
+  /* ------------------------------------------------------------
+     DRAG MOVE
+  ------------------------------------------------------------ */
+  window.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+
+    const x = e.clientX - offsetX;
+    const y = e.clientY - offsetY;
+
+    panel.style.left = `${x}px`;
+    panel.style.top = `${y}px`;
+    panel.style.bottom = "auto";
+    panel.style.right = "auto";
+  });
+
+  /* ------------------------------------------------------------
+     DRAG END
+  ------------------------------------------------------------ */
+  window.addEventListener("mouseup", () => {
+    if (!dragging) return;
+    dragging = false;
+    panel.style.transition = "";
+    savePosition();
+  });
+
+})();

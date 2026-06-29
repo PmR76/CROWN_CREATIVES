@@ -2,31 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-
-  <!-- REQUIRED: Lab identity -->
   <meta name="cc-lab" content="footer-lab">
+  <title>Crown Creatives – Footer Lab</title>
 
-  <title>Crown Creatives – footer Lab</title>
+  <!-- LAB-ONLY CSS -->
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
 
-  <!-- REQUIRED: Lab-only CSS -->
-  <link rel="stylesheet" href="./footer.css">
+    iframe {
+      width: 100%;
+      height: 1000px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    /* LAB HARNESS PANEL — DRAGGABLE */
+    #cc-lab-panel {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 260px;
+      background: rgba(10,10,20,0.92);
+      backdrop-filter: blur(14px);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: #fff;
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      z-index: 999999;
+      box-shadow: 0 0 26px rgba(0,0,0,0.6);
+      cursor: default;
+    }
+
+    #cc-lab-panel-header {
+      font-weight: 600;
+      margin-bottom: 8px;
+      cursor: grab;
+    }
+
+    #cc-lab-panel-header:active {
+      cursor: grabbing;
+    }
+  </style>
 </head>
 
 <body data-lab-name="footer-lab">
 
-  <!-- REQUIRED: iframe (must be inside <body>) -->
-<iframe src="./footer-index.html"
-        style="width:100%;height:400px;border:1px solid #444;border-radius:8px;">
-</iframe>
+  <!-- DRAGGABLE LAB PANEL -->
+  <div id="cc-lab-panel">
+    <div id="cc-lab-panel-header">LAB PANEL</div>
+    <div id="cc-lab-panel-body">
+      <!-- your existing lab info -->
+    </div>
+  </div>
 
+  <!-- COMPONENT IFRAME -->
+  <iframe src="./footer-index.html"></iframe>
 
-  <!-- OPTIONAL: Lab root for extra testing -->
-  <div id="lab-root"></div>
-
-  <!-- REQUIRED: Lab-only JS -->
-  <script src="./footer.js"></script>
-
-  <!-- REQUIRED: Lab harness -->
+  <!-- LAB HARNESS -->
   <script src="./lab-harness.js"></script>
 
 </body>
