@@ -14,9 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return; // stop here if core-lab ticker only
   }
 
-  // You can add basic animation logic here if needed.
-  // For now, core-lab ticker is static text.
-
   /* ------------------------------------------------------------
      ADMIN TICKER (ticker-lab only)
      Only runs if admin HTML exists
@@ -33,18 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let speed = parseInt(localStorage.getItem("cc-ticker-speed") || "18", 10);
 
-  /* ------------------------------------------------------------
-     APPLY SPEED
-  ------------------------------------------------------------ */
   function applySpeed() {
     text.style.animationDuration = `${speed}s`;
   }
 
   applySpeed();
 
-  /* ------------------------------------------------------------
-     LOAD SAVED POSITION
-  ------------------------------------------------------------ */
   function loadPosition() {
     const saved = localStorage.getItem("cc-ticker-pos");
     if (!saved) return;
@@ -57,9 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadPosition();
 
-  /* ------------------------------------------------------------
-     SAVE POSITION
-  ------------------------------------------------------------ */
   function savePosition() {
     const pos = {
       left: container.style.left,
@@ -68,9 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("cc-ticker-pos", JSON.stringify(pos));
   }
 
-  /* ------------------------------------------------------------
-     DRAGGING (ADMIN MODE ONLY)
-  ------------------------------------------------------------ */
   let dragging = false;
   let offsetX = 0;
   let offsetY = 0;
@@ -107,9 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
     savePosition();
   });
 
-  /* ------------------------------------------------------------
-     EDIT TICKER TEXT (ADMIN MODE)
-  ------------------------------------------------------------ */
   function enableEdit() {
     text.contentEditable = "true";
     text.classList.add("ticker-editing");
@@ -124,9 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedText = localStorage.getItem("cc-ticker-text");
   if (savedText) text.innerText = savedText;
 
-  /* ------------------------------------------------------------
-     SPEED CONTROL (ADMIN MODE)
-  ------------------------------------------------------------ */
   function enableSpeedMode() {
     document.body.classList.add("ticker-speed-mode");
   }
@@ -145,9 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
     applySpeed();
   });
 
-  /* ------------------------------------------------------------
-     RESET TICKER
-  ------------------------------------------------------------ */
   function resetTicker() {
     text.innerText = "Welcome to Crown Creatives — Creativity Without Limits.";
     localStorage.removeItem("cc-ticker-text");
@@ -161,9 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("cc-ticker-pos");
   }
 
-  /* ------------------------------------------------------------
-     PUBLIC API
-  ------------------------------------------------------------ */
   window.CC = window.CC || {};
   CC.ticker = {
     enableEdit,
