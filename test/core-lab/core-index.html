@@ -55,6 +55,41 @@
 
     </div>
   </footer>
+<script>
+(function() {
+  console.group("Ticker Integrity Check");
+
+  const track = document.querySelector(".ticker-track");
+  const container = document.getElementById("ticker-container");
+  const text = document.getElementById("ticker-text");
+
+  console.log("track (.ticker-track):", track);
+  console.log("container (#ticker-container):", container);
+  console.log("text (#ticker-text):", text);
+
+  const scripts = [...document.querySelectorAll("script")].map(s => s.src);
+  console.log("Loaded JS:", scripts);
+
+  const correctPath = "../ticker-lab/ticker.js";
+  const isCorrect = scripts.some(src => src.includes("ticker-lab/ticker.js"));
+
+  console.log("Correct ticker.js loaded:", isCorrect);
+
+  if (!isCorrect) {
+    console.warn("⚠ WRONG ticker.js is being loaded — admin engine will crash.");
+  }
+
+  if (!track) {
+    console.warn("⚠ .ticker-track missing — ticker cannot render.");
+  }
+
+  if (container || text) {
+    console.warn("⚠ Admin ticker HTML detected in core-lab — should NOT exist.");
+  }
+
+  console.groupEnd();
+})();
+</script>
 
   <!-- Injected ticker JS -->
   <script src="../ticker-lab/ticker.js"></script>
