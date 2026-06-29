@@ -1,21 +1,35 @@
 /* ============================================================
    CROWN CREATIVES — TICKER ENGINE (Admin‑Ready Build)
 ============================================================ */
+
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* ------------------------------------------------------------
+     BASIC TICKER (core-lab + public site)
+  ------------------------------------------------------------ */
 
   const track = document.querySelector(".ticker-track");
   if (!track) {
     console.warn("Ticker: .ticker-track not found");
-    return;
+    return; // stop here if core-lab ticker only
   }
 
-  // your existing ticker code here
-});
+  // You can add basic animation logic here if needed.
+  // For now, core-lab ticker is static text.
 
-(function () {
+  /* ------------------------------------------------------------
+     ADMIN TICKER (ticker-lab only)
+     Only runs if admin HTML exists
+  ------------------------------------------------------------ */
 
   const container = document.getElementById("ticker-container");
   const text = document.getElementById("ticker-text");
+
+  // If admin elements don't exist, skip admin engine entirely
+  if (!container || !text) {
+    console.warn("Ticker Admin Mode: admin elements not found — skipping admin engine.");
+    return;
+  }
 
   let speed = parseInt(localStorage.getItem("cc-ticker-speed") || "18", 10);
 
@@ -107,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("cc-ticker-text", text.innerText);
   }
 
-  /* Load saved text */
   const savedText = localStorage.getItem("cc-ticker-text");
   if (savedText) text.innerText = savedText;
 
@@ -149,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ------------------------------------------------------------
-     PUBLIC API (used by admin.js)
+     PUBLIC API
   ------------------------------------------------------------ */
   window.CC = window.CC || {};
   CC.ticker = {
@@ -160,4 +173,4 @@ document.addEventListener("DOMContentLoaded", () => {
     reset: resetTicker
   };
 
-})();
+});
