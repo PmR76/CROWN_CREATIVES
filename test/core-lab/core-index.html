@@ -55,6 +55,37 @@
 
     </div>
   </footer>
+  <script>
+(function () {
+  console.group("Core-Lab Ticker Diagnostics");
+
+  const track     = document.querySelector(".ticker-track");
+  const ccTicker  = document.getElementById("cc-ticker");
+
+  console.log("cc-ticker:", ccTicker);
+  console.log(".ticker-track:", track);
+
+  const scripts = [...document.querySelectorAll("script")].map(s => s.src);
+  const styles  = [...document.querySelectorAll("link[rel='stylesheet']")].map(l => l.href);
+
+  console.log("Loaded JS:", scripts);
+  console.log("Loaded CSS:", styles);
+
+  const tickerJsOk  = scripts.some(src => src.includes("ticker-lab/ticker.js"));
+  const tickerCssOk = styles.some(href => href.includes("ticker-lab/ticker.css"));
+
+  console.log("ticker.js loaded from ticker-lab:", tickerJsOk);
+  console.log("ticker.css loaded from ticker-lab:", tickerCssOk);
+
+  if (!ccTicker)  console.warn("⚠ #cc-ticker missing in DOM.");
+  if (!track)     console.warn("⚠ .ticker-track missing in DOM.");
+  if (!tickerJsOk) console.warn("⚠ ticker.js NOT loaded from ../ticker-lab/ticker.js.");
+  if (!tickerCssOk) console.warn("⚠ ticker.css NOT loaded from ../ticker-lab/ticker.css.");
+
+  console.groupEnd();
+})();
+</script>
+
 <script>
 (function() {
   console.group("Ticker Integrity Check");
