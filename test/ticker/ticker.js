@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".ticker-track");
   if (!track) {
     console.warn("Ticker: .ticker-track not found");
-    return; // stop here if core-lab ticker only
+    return; // core-lab only → stop here
   }
 
   /* ------------------------------------------------------------
@@ -31,14 +31,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let speed = parseInt(localStorage.getItem("cc-ticker-speed") || "18", 10);
 
   function applySpeed() {
-    text.style.animationDuration = `${speed}s`;
+    if (text) {
+      text.style.animationDuration = `${speed}s`;
+    }
   }
 
   applySpeed();
 
   function loadPosition() {
     const saved = localStorage.getItem("cc-ticker-pos");
-    if (!saved) return;
+    if (!container || !saved) return;
 
     const pos = JSON.parse(saved);
     container.style.position = "absolute";
@@ -49,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadPosition();
 
   function savePosition() {
+    if (!container) return;
     const pos = {
       left: container.style.left,
       top: container.style.top
