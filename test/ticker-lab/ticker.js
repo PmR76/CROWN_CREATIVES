@@ -1,17 +1,19 @@
 /* ============================================================
-   CROWN CREATIVES — TICKER ENGINE (Admin‑Ready Build)
+   CROWN CREATIVES — UNIFIED TICKER ENGINE
+   Works in ticker-lab, core-lab, and production
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ------------------------------------------------------------
-     BASIC TICKER (core-lab + public site)
+     BASIC TICKER (core-lab + production)
   ------------------------------------------------------------ */
 
   const track = document.querySelector(".ticker-track");
-  if (!track) {
-    console.warn("Ticker: .ticker-track not found");
-    return; // core-lab only → stop here
+
+  if (track) {
+    // Basic animation for core-lab
+    track.style.animation = "ticker-scroll 18s linear infinite";
   }
 
   /* ------------------------------------------------------------
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // If admin elements don't exist, skip admin engine entirely
   if (!container || !text) {
-    console.warn("Ticker Admin Mode: admin elements not found — skipping admin engine.");
+    console.info("Ticker Admin Mode: admin elements not found — skipping admin engine.");
     return;
   }
 
