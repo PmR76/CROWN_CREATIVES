@@ -1,6 +1,16 @@
 /* ============================================================
    CROWN CREATIVES — TICKER ENGINE (Admin‑Ready Build)
 ============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const track = document.querySelector(".ticker-track");
+  if (!track) {
+    console.warn("Ticker: .ticker-track not found");
+    return;
+  }
+
+  // your existing ticker code here
+});
 
 (function () {
 
