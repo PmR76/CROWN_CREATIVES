@@ -2,28 +2,45 @@
    CROWN CREATIVES — TICKER ENGINE (Admin‑Ready Build)
 ============================================================ */
 
-(function () {
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ------------------------------------------------------------
+     BASIC TICKER (core-lab + public site)
+  ------------------------------------------------------------ */
+
+  const track = document.querySelector(".ticker-track");
+  if (!track) {
+    console.warn("Ticker: .ticker-track not found");
+    return; // core-lab only → stop here
+  }
+
+  /* ------------------------------------------------------------
+     ADMIN TICKER (ticker-lab only)
+     Only runs if admin HTML exists
+  ------------------------------------------------------------ */
 
   const container = document.getElementById("ticker-container");
   const text = document.getElementById("ticker-text");
 
+  // If admin elements don't exist, skip admin engine entirely
+  if (!container || !text) {
+    console.warn("Ticker Admin Mode: admin elements not found — skipping admin engine.");
+    return;
+  }
+
   let speed = parseInt(localStorage.getItem("cc-ticker-speed") || "18", 10);
 
-  /* ------------------------------------------------------------
-     APPLY SPEED
-  ------------------------------------------------------------ */
   function applySpeed() {
-    text.style.animationDuration = `${speed}s`;
+    if (text) {
+      text.style.animationDuration = `${speed}s`;
+    }
   }
 
   applySpeed();
 
-  /* ------------------------------------------------------------
-     LOAD SAVED POSITION
-  ------------------------------------------------------------ */
   function loadPosition() {
     const saved = localStorage.getItem("cc-ticker-pos");
-    if (!saved) return;
+    if (!container || !saved) return;
 
     const pos = JSON.parse(saved);
     container.style.position = "absolute";
@@ -33,10 +50,8 @@
 
   loadPosition();
 
-  /* ------------------------------------------------------------
-     SAVE POSITION
-  ------------------------------------------------------------ */
   function savePosition() {
+    if (!container) return;
     const pos = {
       left: container.style.left,
       top: container.style.top
@@ -44,9 +59,6 @@
     localStorage.setItem("cc-ticker-pos", JSON.stringify(pos));
   }
 
-  /* ------------------------------------------------------------
-     DRAGGING (ADMIN MODE ONLY)
-  ------------------------------------------------------------ */
   let dragging = false;
   let offsetX = 0;
   let offsetY = 0;
@@ -83,9 +95,6 @@
     savePosition();
   });
 
-  /* ------------------------------------------------------------
-     EDIT TICKER TEXT (ADMIN MODE)
-  ------------------------------------------------------------ */
   function enableEdit() {
     text.contentEditable = "true";
     text.classList.add("ticker-editing");
@@ -97,13 +106,9 @@
     localStorage.setItem("cc-ticker-text", text.innerText);
   }
 
-  /* Load saved text */
   const savedText = localStorage.getItem("cc-ticker-text");
   if (savedText) text.innerText = savedText;
 
-  /* ------------------------------------------------------------
-     SPEED CONTROL (ADMIN MODE)
-  ------------------------------------------------------------ */
   function enableSpeedMode() {
     document.body.classList.add("ticker-speed-mode");
   }
@@ -122,9 +127,6 @@
     applySpeed();
   });
 
-  /* ------------------------------------------------------------
-     RESET TICKER
-  ------------------------------------------------------------ */
   function resetTicker() {
     text.innerText = "Welcome to Crown Creatives — Creativity Without Limits.";
     localStorage.removeItem("cc-ticker-text");
@@ -138,9 +140,6 @@
     localStorage.removeItem("cc-ticker-pos");
   }
 
-  /* ------------------------------------------------------------
-     PUBLIC API (used by admin.js)
-  ------------------------------------------------------------ */
   window.CC = window.CC || {};
   CC.ticker = {
     enableEdit,
@@ -150,4 +149,4 @@
     reset: resetTicker
   };
 
-})();
+});
