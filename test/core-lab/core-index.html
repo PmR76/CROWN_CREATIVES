@@ -4,35 +4,41 @@
   <meta charset="utf-8">
   <title>Crown Creatives – Core Preview</title>
 
-  <!-- Fonts (shared) -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Global/core CSS (optional) -->
+  <!-- Core CSS -->
   <link rel="stylesheet" href="./core.css">
 
-  <!-- Injected footer component CSS -->
-  <link rel="stylesheet" href="../footer-lab/footer.css">
+  <!-- Injected ticker CSS -->
+  <link rel="stylesheet" href="../ticker-lab/ticker.css">
 
-  <!-- Injected ticker CSS (later, when ready) -->
-  <!-- <link rel="stylesheet" href="../ticker-lab/ticker.css"> -->
+  <!-- Injected footer CSS -->
+  <link rel="stylesheet" href="../footer-lab/footer.css">
 </head>
 
 <body>
 
-  <!-- HEADER / HERO / MAIN (simplified scaffold) -->
+  <!-- HEADER / HERO / MAIN -->
   <header>
-    <!-- your real header / nav / logo -->
+    <!-- your real header -->
   </header>
 
   <main>
-    <!-- your hero, cards, content, etc. -->
     <section style="min-height: 800px; padding: 60px;">
       <h1>Crown Creatives – Core Preview</h1>
       <p>This is the integrated layout where header, content, ticker, and footer live together.</p>
     </section>
   </main>
 
-  <!-- INJECTED FOOTER COMPONENT (from footer-index.html) -->
+  <!-- ⭐ INJECTED TICKER (ABOVE FOOTER) ⭐ -->
+  <div id="cc-ticker" class="cc-ticker">
+    <div class="ticker-track">
+      <span>CREATIVITY • ARTISTRY • RESILIENCE • IMAGINATION •</span>
+    </div>
+  </div>
+
+  <!-- ⭐ INJECTED FOOTER ⭐ -->
   <footer id="cc-footer" class="cc-footer">
     <div class="footer-glass">
 
@@ -53,13 +59,13 @@
     </div>
   </footer>
 
-  <!-- (Later) Ticker injected just above footer -->
-  <!-- <div id="cc-ticker">...</div> -->
+  <!-- Injected ticker JS -->
+  <script src="../ticker-lab/ticker.js"></script>
 
-  <!-- Injected footer behaviour -->
+  <!-- Injected footer JS -->
   <script src="../footer-lab/footer.js"></script>
 
-  <!-- Core JS (optional) -->
+  <!-- Core JS -->
   <script src="./core.js"></script>
 
 </body>
