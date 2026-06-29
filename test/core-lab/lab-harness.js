@@ -172,6 +172,41 @@
       panel.appendChild(box);
     });
   }
+function makeDraggableStatusPanel() {
+  const panel = document.getElementById("cc-lab-status");
+  if (!panel) return;
+
+  const header = document.createElement("div");
+  header.textContent = "LAB PANEL";
+  header.style.cursor = "grab";
+  header.style.fontWeight = "600";
+  header.style.marginBottom = "8px";
+  panel.prepend(header);
+
+  let dragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  header.addEventListener("mousedown", (e) => {
+    dragging = true;
+    const rect = panel.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+    e.preventDefault();
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+    panel.style.left = `${e.clientX - offsetX}px`;
+    panel.style.top = `${e.clientY - offsetY}px`;
+    panel.style.right = "auto";
+    panel.style.bottom = "auto";
+  });
+
+  window.addEventListener("mouseup", () => {
+    dragging = false;
+  });
+}
 
   /* ============================================================
      BOOTSTRAP (RUN ONCE)
