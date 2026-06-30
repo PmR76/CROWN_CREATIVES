@@ -58,7 +58,7 @@
   </div>
 
   <!-- CORE INDEX -->
-  <iframe src="./core-index.html"></iframe>
+  <iframe id="coreFrame" src="./core-index.html"></iframe>
 
   <!-- LAB HARNESS -->
   <script src="./lab-harness.js"></script>
@@ -74,28 +74,58 @@
     const tickerEl = document.getElementById("lab-ticker");
     const footerEl = document.getElementById("lab-footer");
 
-    const iframe = document.querySelector("iframe");
+    const iframe = document.getElementById("coreFrame");
 
     iframe.addEventListener("load", () => {
       const doc = iframe.contentDocument;
 
-      /* HTML checks */
+      /* ------------------------------------------------------------
+         HTML checks
+      ------------------------------------------------------------ */
       const hasTickerHtml = !!doc.querySelector(".ticker-track");
       const hasFooterHtml = !!doc.getElementById("cc-footer");
 
-      /* CSS checks */
+      /* ------------------------------------------------------------
+         CSS checks
+      ------------------------------------------------------------ */
       const styles = [...doc.querySelectorAll("link[rel='stylesheet']")].map(l => l.href);
+
       const coreCssOk    = styles.some(href => href.includes("core.css"));
       const tickerCssOk  = styles.some(href => href.includes("ticker-lab/ticker.css"));
       const footerCssOk  = styles.some(href => href.includes("footer-lab/footer.css"));
 
-      /* JS checks */
+      /* ------------------------------------------------------------
+         JS checks
+      ------------------------------------------------------------ */
       const scripts = [...doc.querySelectorAll("script")].map(s => s.src);
+
       const coreJsOk     = scripts.some(src => src.includes("core.js"));
       const tickerJsOk   = scripts.some(src => src.includes("ticker-lab/ticker.js"));
       const footerJsOk   = scripts.some(src => src.includes("footer-lab/footer.js"));
 
-      /* Panel updates */
+      /* ------------------------------------------------------------
+         Visibility tests
+      ------------------------------------------------------------ */
+
+      // Ticker visibility test
+      let tickerVisible = false;
+      const tickerTrack = doc.querySelector(".ticker-track");
+      if (tickerTrack) {
+        const rect = tickerTrack.getBoundingClientRect();
+        tickerVisible = rect.height > 0 && rect.width > 0;
+      }
+
+      // Footer visibility test
+      let footerVisible = false;
+      const footer = doc.getElementById("cc-footer");
+      if (footer) {
+        const rect = footer.getBoundingClientRect();
+        footerVisible = rect.height > 0 && rect.width > 0;
+      }
+
+      /* ------------------------------------------------------------
+         Panel updates
+      ------------------------------------------------------------ */
       health.textContent = `LAB HEALTH: ${
         coreCssOk && coreJsOk ? "✓ Clean" : "⚠ Issues detected"
       }`;
@@ -106,9 +136,12 @@
 
       jsEl.textContent = `JS: core=${coreJsOk ? "✓" : "✗"}, ticker=${tickerJsOk ? "✓" : "✗"}, footer=${footerJsOk ? "✓" : "✗"}`;
 
-      tickerEl.textContent = `Ticker: HTML=${hasTickerHtml ? "✓" : "✗"}, CSS=${tickerCssOk ? "✓" : "✗"}, JS=${tickerJsOk ? "✓" : "✗"}`;
+      tickerEl.textContent =
+        `Ticker: HTML=${hasTickerHtml ? "✓" : "✗"}, CSS=${tickerCssOk ? "✓" : "✗"}, JS=${tickerJsOk ? "✓" : "✗"}, Visible=${tickerVisible ? "✓" : "✗"}`;
 
-      footerEl.textContent = `Footer: HTML=${hasFooterHtml ? "✓" : "✗"}, CSS=${footerCssOk ? "✓" : "✗"}, JS=${footerJsOk ? "✓" : "✗"}`;
+      footerEl.textContent =
+        `Footer: HTML=${hasFooterHtml ? "✓" : "✗"}, CSS=${footerCssOk ? "✓" : "✗"}, JS=${footerJsOk ? "✓" : "✗"}, Visible=${footerVisible ? "✓" : "✗"}`;
+
     });
   });
   </script>
