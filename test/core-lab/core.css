@@ -1,36 +1,7 @@
-#lab-panel {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 280px;
-  background: rgba(10,10,20,0.92);
-  backdrop-filter: blur(14px);
-  border-radius: 14px;
-  padding: 12px 14px;
-  color: #fff;
-  font-family: system-ui, sans-serif;
-  font-size: 13px;
-  z-index: 999999;
-  box-shadow: 0 0 26px rgba(0,0,0,0.6);
-  cursor: move;
-}
+/* ============================================================
+   CORE-LAB — BASE PAGE
+============================================================ */
 
-#lab-panel .lab-header {
-  font-weight: 600;
-  margin-bottom: 8px;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
-
-#lab-panel div {
-  margin-bottom: 6px;
-}
-
-.lab-meta {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255,255,255,0.15);
-}
 body {
   margin: 0;
   padding: 20px;
@@ -47,7 +18,11 @@ iframe {
   box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
 
-/* Lab Panel */
+
+/* ============================================================
+   LAB PANEL (DRAGGABLE)
+============================================================ */
+
 #lab-panel {
   position: fixed;
   bottom: 20px;
@@ -80,4 +55,45 @@ iframe {
   margin-top: 10px;
   padding-top: 8px;
   border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+
+/* ============================================================
+   ERROR PANEL
+============================================================ */
+
+.error-panel {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 300px;
+  max-height: 200px;
+  overflow-y: auto;
+  background: rgba(255,0,0,0.15);
+  border: 1px solid rgba(255,0,0,0.4);
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffdddd;
+  font-family: monospace;
+  font-size: 12px;
+  box-shadow: 0 0 12px rgba(255,0,0,0.4);
+}
+
+
+/* ============================================================
+   FPS PANEL (DRAGGABLE)
+============================================================ */
+
+.fps-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.65);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-family: monospace;
+  font-size: 14px;
+  color: #00ff9c;
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  cursor: move;
 }

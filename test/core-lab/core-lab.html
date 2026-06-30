@@ -29,13 +29,19 @@
     </div>
   </div>
 
+  <!-- ERROR PANEL -->
+  <div id="error-panel" class="error-panel"></div>
+
+  <!-- FPS METER -->
+  <div id="fps-panel" class="fps-panel">FPS: --</div>
+
   <!-- CORE INDEX -->
   <iframe id="coreFrame" src="./core-index.html"></iframe>
 
   <!-- LAB HARNESS -->
   <script src="./lab-harness.js"></script>
 
-  <!-- DRAGGABLE PANEL LOGIC -->
+  <!-- DRAGGABLE LAB PANEL -->
   <script>
   (function() {
     const panel = document.getElementById("lab-panel");
@@ -57,6 +63,67 @@
     });
 
     document.addEventListener("mouseup", () => dragging = false);
+  })();
+  </script>
+
+  <!-- DRAGGABLE FPS PANEL -->
+  <script>
+  (function() {
+    const fpsPanel = document.getElementById("fps-panel");
+    let dragging = false, offsetX = 0, offsetY = 0;
+
+    fpsPanel.addEventListener("mousedown", (e) => {
+      dragging = true;
+      const rect = fpsPanel.getBoundingClientRect();
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (!dragging) return;
+      fpsPanel.style.left = `${e.clientX - offsetX}px`;
+      fpsPanel.style.top = `${e.clientY - offsetY}px`;
+      fpsPanel.style.bottom = "auto";
+      fpsPanel.style.right = "auto";
+    });
+
+    document.addEventListener("mouseup", () => dragging = false);
+  })();
+  </script>
+
+  <!-- FPS METER LOGIC -->
+  <script>
+  (function() {
+    const fpsPanel = document.getElementById("fps-panel");
+    let lastFrame = performance.now();
+    let frames = 0;
+    let fps = 0;
+
+    function update() {
+      const now = performance.now();
+      frames++;
+
+      if (now - lastFrame >= 1000) {
+        fps = frames;
+        frames = 0;
+        lastFrame = now;
+
+        fpsPanel.textContent = `FPS: ${fps}`;
+
+        // Color coding
+        if (fps >= 55) {
+          fpsPanel.style.color = "#00ff9c";   // smooth
+        } else if (fps >= 30) {
+          fpsPanel.style.color = "#ffd000";   // acceptable
+        } else {
+          fpsPanel.style.color = "#ff4d4d";   // lagging
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    update();
   })();
   </script>
 
@@ -130,6 +197,25 @@
         `Footer: HTML=${hasFooterHtml ? "✓" : "✗"}, CSS=${footerCssOk ? "✓" : "✗"}, JS=${footerJsOk ? "✓" : "✗"}, Visible=${footerVisible ? "✓" : "✗"}`;
     });
   });
+  </script>
+
+  <!-- ERROR CATCHER -->
+  <script>
+  (function() {
+    const panel = document.getElementById("error-panel");
+
+    window.addEventListener("error", (e) => {
+      const msg = document.createElement("div");
+      msg.textContent = `[ERROR] ${e.message}`;
+      panel.appendChild(msg);
+    });
+
+    window.addEventListener("unhandledrejection", (e) => {
+      const msg = document.createElement("div");
+      msg.textContent = `[PROMISE] ${e.reason}`;
+      panel.appendChild(msg);
+    });
+  })();
   </script>
 
 </body>
