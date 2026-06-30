@@ -4,7 +4,8 @@
   --particle-color: rgba(255,255,255,0.35);
 }
 
-body {
+/* Standalone cards-lab page body (only if body has class="cards-lab") */
+body.cards-lab {
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -24,7 +25,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* PARTICLE FIELD */
+/* PARTICLE FIELD (optional, only used in cards-lab) */
 #particle-field {
   position: fixed;
   inset: 0;
@@ -48,8 +49,18 @@ body {
   100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
 }
 
-/* CARDS WRAPPER */
-.cards-wrapper {
+/* ============================================================
+   CARDS WRAPPER (EMBED-SAFE IN CORE)
+   Use: <div class="cc-cards"><div class="cards-wrapper">...</div></div>
+============================================================ */
+
+.cc-cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cc-cards .cards-wrapper {
   width: 100%;
   max-width: 1100px;
   display: grid;
@@ -61,8 +72,11 @@ body {
   z-index: 2;
 }
 
-/* FROSTED CARD + GRADIENT BORDER */
-.frost-card {
+/* ============================================================
+   FROSTED CARD + GRADIENT BORDER
+============================================================ */
+
+.cc-cards .frost-card {
   position: relative;
   padding: 32px;
   border-radius: var(--card-radius);
@@ -75,7 +89,7 @@ body {
 }
 
 /* Animated gradient border */
-.frost-card::before {
+.cc-cards .frost-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -103,64 +117,31 @@ body {
 }
 
 /* Hover lift */
-.frost-card:hover {
+.cc-cards .frost-card:hover {
   transform: translateY(-8px) scale(1.02);
 }
 
-/* DUAL-LAYER ANIMATED CROWN ICON */
-.crown-icon {
-  width: 70px;
-  height: 70px;
-  margin: 0 auto 20px auto;
-  position: relative;
-}
+/* ============================================================
+   CARD TEXT (Cinzel Decorative)
+============================================================ */
 
-.crown-fill,
-.crown-outline {
-  position: absolute;
-  inset: 0;
-  fill: none;
-  stroke-linejoin: round;
-}
-
-/* Inner fill */
-.crown-fill {
-  stroke-width: 14px;
-  stroke: url(#crownGradient);
-  opacity: 0.9;
-  animation: crownSweep 6s linear infinite;
-}
-
-/* Outer outline */
-.crown-outline {
-  stroke-width: 4px;
-  stroke: url(#crownGradient);
-  opacity: 1;
-  animation: crownSweep 6s linear infinite;
-  animation-delay: 0.8s;
-}
-
-@keyframes crownSweep {
-  0% { stroke-dashoffset: 140; }
-  100% { stroke-dashoffset: -140; }
-}
-
-/* CARD TEXT */
-.frost-card h2 {
+.cc-cards .frost-card h2 {
   margin: 0 0 12px 0;
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.5px;
   text-align: center;
+  font-family: 'Cinzel Decorative', serif;
   text-shadow: 0 0 8px var(--crown-glow-color, rgba(255,255,255,0.3));
 }
 
-.frost-card p {
+.cc-cards .frost-card p {
   margin: 0;
   font-size: 16px;
   line-height: 1.55;
   opacity: 0.85;
   text-align: center;
+  font-family: 'Cinzel Decorative', serif;
 }
 
 .footer-spacer {
@@ -168,7 +149,7 @@ body {
   width: 100%;
 }
 
-/* ADMIN PANEL */
+/* ADMIN PANEL (cards-lab only) */
 #cards-admin {
   position: fixed;
   bottom: 20px;
@@ -192,6 +173,8 @@ body {
   color: #fff;
   cursor: pointer;
 }
+
+/* LOGO TWEAKS (cards-lab only) */
 #cc-logo-v3 path {
   transition: fill 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
 }
