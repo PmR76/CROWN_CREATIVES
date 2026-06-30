@@ -30,18 +30,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (cssEl) {
-    cssEl.textContent = `CSS: core=${coreCssOk ? "✓" : "✗"}, ticker=${tickerCssOk ? "✓" : "✗"}, footer=${footerCssOk ? "✓" : "✗"}`;
+    cssEl.textContent =
+      `CSS: core=${coreCssOk ? "✓" : "✗"}, ticker=${tickerCssOk ? "✓" : "✗"}, footer=${footerCssOk ? "✓" : "✗"}`;
   }
 
   if (jsEl) {
-    jsEl.textContent = `JS: core=${coreJsOk ? "✓" : "✗"}, ticker=${tickerJsOk ? "✓" : "✗"}, footer=${footerJsOk ? "✓" : "✗"}`;
+    jsEl.textContent =
+      `JS: core=${coreJsOk ? "✓" : "✗"}, ticker=${tickerJsOk ? "✓" : "✗"}, footer=${footerJsOk ? "✓" : "✗"}`;
   }
 
   if (tickerEl) {
-    tickerEl.textContent = `Ticker: HTML=${hasTickerHtml ? "✓" : "✗"}, CSS=${tickerCssOk ? "✓" : "✗"}, JS=${tickerJsOk ? "✓" : "✗"}`;
+    tickerEl.textContent =
+      `Ticker: HTML=${hasTickerHtml ? "✓" : "✗"}, CSS=${tickerCssOk ? "✓" : "✗"}, JS=${tickerJsOk ? "✓" : "✗"}`;
   }
 
   if (footerEl) {
-    footerEl.textContent = `Footer: HTML=${hasFooterHtml ? "✓" : "✗"}, CSS=${footerCssOk ? "✓" : "✗"}, JS=${footerJsOk ? "✓" : "✗"}`;
+    footerEl.textContent =
+      `Footer: HTML=${hasFooterHtml ? "✓" : "✗"}, CSS=${footerCssOk ? "✓" : "✗"}, JS=${footerJsOk ? "✓" : "✗"}`;
   }
 });
