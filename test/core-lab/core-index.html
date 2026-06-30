@@ -10,6 +10,9 @@
   <!-- Core CSS -->
   <link rel="stylesheet" href="./core.css">
 
+  <!-- Injected cards CSS -->
+  <link rel="stylesheet" href="../cards-lab/cards.css">
+
   <!-- Injected ticker CSS -->
   <link rel="stylesheet" href="../ticker-lab/ticker.css">
 
@@ -24,17 +27,40 @@
   <main>
     <section style="min-height: 800px; padding: 60px;">
       <h1>Crown Creatives – Core Preview</h1>
-      <p>This is the integrated layout where header, content, ticker, and footer live together.</p>
+      <p>This is the integrated layout where header, content, cards, ticker, and footer live together.</p>
     </section>
   </main>
 
+  <!-- CARDS -->
+<div class="magic-cards">
+  
+  <div class="magic-card">
+    <div class="magic-card-shimmer"></div>
+    <h3>Artistry</h3>
+    <p>Creativity expressed through craft, vision, and imagination.</p>
+  </div>
+
+  <div class="magic-card">
+    <div class="magic-card-shimmer"></div>
+    <h3>Resilience</h3>
+    <p>Strength to rise, rebuild, and transform challenges into growth.</p>
+  </div>
+
+  <div class="magic-card">
+    <div class="magic-card-shimmer"></div>
+    <h3>Imagination</h3>
+    <p>The spark that turns ideas into reality and stories into worlds.</p>
+  </div>
+
+</div>
+
   <!-- TICKER -->
   <div id="cc-ticker" class="cc-ticker">
-  <div class="ticker-track">
-    <span>✦ CREATIVITY IS COURAGE ✦ IMAGINATION IS POWER ✦ ART IS FREEDOM ✦</span>
-    <span>✦ CREATIVITY IS COURAGE ✦ IMAGINATION IS POWER ✦ ART IS FREEDOM ✦</span>
+    <div class="ticker-track">
+      <span>✦ CREATIVITY IS COURAGE ✦ IMAGINATION IS POWER ✦ ART IS FREEDOM ✦</span>
+      <span>✦ CREATIVITY IS COURAGE ✦ IMAGINATION IS POWER ✦ ART IS FREEDOM ✦</span>
+    </div>
   </div>
-</div>
 
   <!-- FOOTER -->
   <footer id="cc-footer" class="cc-footer">
@@ -56,6 +82,9 @@
 
     </div>
   </footer>
+
+  <!-- CARDS JS -->
+  <script src="../cards-lab/cards.js"></script>
 
   <!-- TICKER JS -->
   <script src="../ticker-lab/ticker.js"></script>
@@ -89,26 +118,33 @@
     const coreCssOk    = styles.some(href => href.includes("core.css"));
     const tickerCssOk  = styles.some(href => href.includes("ticker-lab/ticker.css"));
     const footerCssOk  = styles.some(href => href.includes("footer-lab/footer.css"));
+    const cardsCssOk   = styles.some(href => href.includes("cards-lab/cards.css"));
 
     const coreJsOk     = scripts.some(src => src.includes("core.js"));
     const tickerJsOk   = scripts.some(src => src.includes("ticker-lab/ticker.js"));
     const footerJsOk   = scripts.some(src => src.includes("footer-lab/footer.js"));
+    const cardsJsOk    = scripts.some(src => src.includes("cards-lab/cards.js"));
 
     console.log("core.css:", coreCssOk);
     console.log("ticker.css:", tickerCssOk);
     console.log("footer.css:", footerCssOk);
+    console.log("cards.css:", cardsCssOk);
 
     console.log("core.js:", coreJsOk);
     console.log("ticker.js:", tickerJsOk);
     console.log("footer.js:", footerJsOk);
+    console.log("cards.js:", cardsJsOk);
 
     if (!track)     console.warn("⚠ .ticker-track missing — ticker cannot render.");
-    if (!tickerJsOk) console.warn("⚠ ticker.js NOT loaded from ../ticker-lab/ticker.js.");
-    if (!tickerCssOk) console.warn("⚠ ticker.css NOT loaded from ../ticker-lab/ticker.css.");
+    if (!tickerJsOk) console.warn("⚠ ticker.js NOT loaded.");
+    if (!tickerCssOk) console.warn("⚠ ticker.css NOT loaded.");
 
     if (!footer)     console.warn("⚠ Footer HTML missing.");
     if (!footerJsOk) console.warn("⚠ footer.js NOT loaded.");
     if (!footerCssOk) console.warn("⚠ footer.css NOT loaded.");
+
+    if (!cardsCssOk) console.warn("⚠ cards.css NOT loaded.");
+    if (!cardsJsOk)  console.warn("⚠ cards.js NOT loaded.");
 
     console.groupEnd();
   })();
