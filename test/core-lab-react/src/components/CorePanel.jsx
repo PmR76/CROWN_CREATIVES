@@ -24,6 +24,14 @@ export default function CorePanel() {
     });
   };
 
+  const previewSite = () => {
+    window.open("https://www.crowncreatives.uk", "_blank");
+  };
+
+  const launchDeploy = () => {
+    window.open("https://github.com/pmr76/crowncreatives/actions", "_blank");
+  };
+
   return (
     <div
       className="core-panel"
@@ -39,6 +47,14 @@ export default function CorePanel() {
       <p>Footer: ✓ Loaded</p>
       <p>FPS: 60</p>
       <p>Errors: 0</p>
+
+      <button className="core-btn" onClick={previewSite}>
+        Preview Live Site
+      </button>
+
+      <button className="core-btn" onClick={launchDeploy}>
+        Launch Deployment
+      </button>
     </div>
   );
 }
