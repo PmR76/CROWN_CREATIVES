@@ -1,21 +1,63 @@
-/* Footer styles */
-.footer-icon {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  margin: 0 8px;
-}
-
-.back-to-top {
-  cursor: pointer;
-  font-size: 24px;
-  background: transparent;
-  border: none;
-  color: white;
-  margin-top: 20px;
-}
-
+/* Frosted glass footer panel */
 .cc-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.footer-glass {
+  width: 95%;
   padding: 20px;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Social icons */
+.footer-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-icon {
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.9));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.footer-icon:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 14px rgba(255,255,255,1));
+}
+
+/* Back to top button — right side */
+.back-to-top {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  font-size: 22px;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.back-to-top:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 10px rgba(255,255,255,1));
+}
+
+/* Footer text */
+.footer-copy {
   text-align: center;
+  font-size: 14px;
+  color: white;
+  flex: 1;
 }
