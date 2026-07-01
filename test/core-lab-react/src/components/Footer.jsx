@@ -24,7 +24,7 @@ export default function Footer() {
     <footer id="cc-footer" className="cc-footer">
       <div className="footer-glass">
 
-        <div className="footer-icons" id="footer-icons">
+        <div className="footer-icons">
           <img
             src="/assets/icons/facebook.svg"
             className="footer-icon"
