@@ -1,0 +1,21 @@
+/* Footer styles */
+.footer-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  margin: 0 8px;
+}
+
+.back-to-top {
+  cursor: pointer;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  color: white;
+  margin-top: 20px;
+}
+
+.cc-footer {
+  padding: 20px;
+  text-align: center;
+}
