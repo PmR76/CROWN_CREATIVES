@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./corepanel.css";
+import "../styles/corepanel.css";
 
 export default function CorePanel() {
   const [pos, setPos] = useState({ x: 20, y: 20 });
