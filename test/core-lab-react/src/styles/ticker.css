@@ -49,3 +49,18 @@
     0 0 22px rgba(0,150,255,0.6),
     0 0 38px rgba(0,150,255,0.5);
 }
+.ticker {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: inline-flex;
+  animation: tickerMove 18s linear infinite;
+}
+
+@keyframes tickerMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
