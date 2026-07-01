@@ -3,10 +3,11 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-server: {
-  port: 49152,
-  strictPort: true,
-  host: true
-}
-
+  server: {
+    port: 49152,
+    strictPort: true,
+    host: true,
+    open: true   // ← THIS auto-opens your browser
+  }
 });
+
