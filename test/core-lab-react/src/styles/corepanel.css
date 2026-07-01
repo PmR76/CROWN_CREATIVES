@@ -13,3 +13,20 @@
 .core-panel:active {
   cursor: grabbing;
 }
+.core-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.core-btn:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.05);
+}
