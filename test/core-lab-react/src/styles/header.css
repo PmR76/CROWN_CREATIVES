@@ -2,50 +2,58 @@
 
 .cc-header {
   width: 95%;
-  margin: 20px auto 0 auto; /* centers header like footer */
+  margin: 20px auto 0 auto;
   padding: 20px;
-  background: rgba(255,255,255,0.10); /* frosted glass */
+  background: rgba(255,255,255,0.10);
   backdrop-filter: blur(18px) saturate(180%);
-  border-radius: 26px; /* rounded edges matching footer */
+  border-radius: 26px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  z-index: 9000; /* sits above particle dust */
+  z-index: 9000;
+
+  /* Glow animation */
+  animation: headerGlow 6s ease-in-out infinite;
 }
 
-/* Left + Right toggle buttons */
-.cc-header-left,
-.cc-header-right {
-  display: flex;
-  align-items: center;
+/* Glow pulse */
+@keyframes headerGlow {
+  0%   { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
+  50%  { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
+  100% { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
 }
 
-.cc-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
+/* Crown shimmer */
+.cc-header-crown {
+  width: 72px;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.8));
+  animation: crownShimmer 4s ease-in-out infinite;
 }
 
+@keyframes crownShimmer {
+  0%   { filter: drop-shadow(0 0 6px rgba(255,255,255,0.8)); }
+  50%  { filter: drop-shadow(0 0 16px rgba(255,255,255,1)); }
+  100% { filter: drop-shadow(0 0 6px rgba(255,255,255,0.8)); }
+}
+
+/* Toggle buttons */
 .cc-toggle img {
   width: 42px;
   height: 42px;
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.8));
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .cc-toggle img:hover {
   transform: scale(1.15);
+  filter: drop-shadow(0 0 14px rgba(255,255,255,1));
 }
 
-/* Center crown + title + tagline + nav */
+/* Center content */
 .cc-header-center {
   text-align: center;
-}
-
-.cc-header-crown {
-  width: 72px;
-  margin-bottom: 6px;
 }
 
 .cc-header-title {
@@ -61,6 +69,7 @@
   margin-bottom: 12px;
 }
 
+/* Navigation */
 .cc-header-nav {
   display: flex;
   gap: 18px;
