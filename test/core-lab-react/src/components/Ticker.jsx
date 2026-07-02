@@ -1,4 +1,4 @@
-import "../styles/ticker.css";
+import "../styles/core.css";
 
 export default function Ticker() {
   return (

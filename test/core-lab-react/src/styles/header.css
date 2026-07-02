@@ -39,13 +39,22 @@
 }
 
 /* Toggle buttons */
+.cc-toggle {
+  background: transparent !important; /* remove white background */
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Increase toggle size by 40% */
 .cc-toggle img {
-  width: 42px;
-  height: 42px;
+  width: 58px;   /* was 42px */
+  height: 58px;  /* was 42px */
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.8));
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
+/* Hover glow */
 .cc-toggle img:hover {
   transform: scale(1.15);
   filter: drop-shadow(0 0 14px rgba(255,255,255,1));

@@ -1,14 +1,74 @@
 /* ============================================================
-   CORE-LAB — BASE PAGE
+   GLOBAL CORE-LAB FOUNDATION
 ============================================================ */
 
-body {
+/* Reset */
+* {
   margin: 0;
-  padding: 20px;
-  background: #05070b;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  background: #05070b; /* your original dark cosmic background */
   color: #fff;
   font-family: system-ui, sans-serif;
+  overflow-x: hidden;
+  padding: 20px; /* preserved from your original */
 }
+
+/* Layout wrapper */
+.core-layout {
+  width: 95%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Global glow utility */
+.glow {
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
+}
+
+/* Global frosted glass utility */
+.glass {
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 26px;
+}
+
+/* Global animation timing */
+:root {
+  --glow-speed: 6s;
+  --shimmer-speed: 4s;
+  --ticker-speed: 18s;
+}
+
+/* Theme system */
+[data-theme="dark"] {
+  --bg: #05070b;
+  --text: #fff;
+}
+
+[data-theme="light"] {
+  --bg: #f5f5f5;
+  --text: #222;
+}
+
+body[data-theme="dark"] {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body[data-theme="light"] {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ============================================================
+   IFRAME (LEGACY SUPPORT)
+============================================================ */
 
 iframe {
   width: 100%;
@@ -17,7 +77,6 @@ iframe {
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
-
 
 /* ============================================================
    LAB PANEL (DRAGGABLE)
@@ -57,7 +116,6 @@ iframe {
   border-top: 1px solid rgba(255,255,255,0.15);
 }
 
-
 /* ============================================================
    ERROR PANEL
 ============================================================ */
@@ -79,7 +137,6 @@ iframe {
   box-shadow: 0 0 12px rgba(255,0,0,0.4);
 }
 
-
 /* ============================================================
    FPS PANEL (DRAGGABLE)
 ============================================================ */
@@ -98,32 +155,29 @@ iframe {
   cursor: move;
 }
 
-
 /* ============================================================
    TICKER — CONTINUOUS SCROLL + MAGICAL GLOW
 ============================================================ */
 
-.cc-ticker {
+.ticker {
   width: 100%;
   overflow: hidden;
-  background: rgba(0,0,0,0.25);
-  padding: 10px 0;
+  white-space: nowrap;
 }
 
 .ticker-track {
-  display: flex;
+  display: inline-flex;
   gap: 60px;
-  white-space: nowrap;
   font-family: 'Cinzel Decorative', serif;
   font-size: 22px;
   font-weight: 700;
-  animation: ticker-scroll 18s linear infinite;
+  animation: tickerMove var(--ticker-speed) linear infinite;
 }
 
-/* Perfect continuous scroll */
-@keyframes ticker-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Continuous scroll */
+@keyframes tickerMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 /* Magical glow */
