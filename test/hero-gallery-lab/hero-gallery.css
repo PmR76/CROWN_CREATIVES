@@ -182,3 +182,45 @@
 .gallery-toast-hidden {
   display: none;
 }
+
+/* ============================================================
+   HERO CROWN — merged for gallery lab
+============================================================ */
+
+#hero-crown-container {
+  position: absolute;
+  top: 40px;                 /* sits above gallery lanes */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+  z-index: 999;              /* above gallery */
+}
+
+.hero-crown {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  filter: drop-shadow(0 0 20px var(--crown-glow-color));
+}
+
+#hero-crown-day { opacity: 1; }
+#hero-crown-night { opacity: 0; }
+
+body[data-theme="dark"] #hero-crown-day { opacity: 0; }
+body[data-theme="dark"] #hero-crown-night { opacity: 1; }
+
+.hero-crown.float {
+  animation: crownFloat 8s ease-in-out infinite;
+}
+
+@keyframes crownFloat {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}

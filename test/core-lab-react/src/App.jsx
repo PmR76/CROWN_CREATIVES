@@ -14,10 +14,10 @@ import "./styles/core.css";
 
 export default function App() {
 
-  useThemeEngine();   // ⭐ Theme engine now drives crown + gradients
+  useThemeEngine();
 
   useEffect(() => {
-    console.group("CORE-LAB DIAGNOSTICS");
+    console.group("CORE-LAB SNAPSHOT");
     console.log("Header Loaded:", true);
     console.log("Background3D Active:", true);
     console.log("HeroCrown Active:", true);
@@ -27,7 +27,6 @@ export default function App() {
     console.log("Footer Active:", true);
     console.log("CorePanel Active:", true);
     console.log("FPS Target:", 60);
-    console.log("Errors:", 0);
     console.groupEnd();
   }, []);
 
@@ -36,9 +35,10 @@ export default function App() {
       <Header />
       <Background3D />
 
+      <HeroCrown />     {/* sits above cards */}
+      <ThemePanel />    {/* admin panel always accessible */}
+
       <div className="core-layout">
-        <HeroCrown />
-        <ThemePanel />
         <Cards />
         <Ticker />
         <Footer />

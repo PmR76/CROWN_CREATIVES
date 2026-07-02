@@ -1,11 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hero Gallery Lab — E Update</title>
+  <meta charset="utf-8" />
 
-  <!-- GALLERY CSS -->
-  <link rel="stylesheet" href="hero-gallery.css">
+  <meta name="cc-lab" content="hero-gallery-lab">
+  <title>Crown Creatives – Hero Gallery Lab</title>
+
+  <!-- LAB CSS -->
+  <link rel="stylesheet" href="./hero-gallery.css">
+  <link rel="stylesheet" href="./hero-crown.css">
 
   <style>
     body {
@@ -28,59 +31,67 @@
   </style>
 </head>
 
-<body>
+<body data-lab-name="hero-gallery-lab">
 
-<div id="lab-title">HERO GALLERY LAB — E UPDATE — 25/06/2026</div>
+  <div id="lab-title">HERO GALLERY LAB — MERGED CROWN + GALLERY — 25/06/2026</div>
 
-<!-- LEFT LANE -->
-<div class="hero-gallery-lane hero-gallery-left">
-  <img class="hero-gallery-img" src="" alt="">
-</div>
-
-<!-- RIGHT LANE -->
-<div class="hero-gallery-lane hero-gallery-right">
-  <img class="hero-gallery-img" src="" alt="">
-</div>
-
-<!-- GLOW OVERLAY (optional, can be styled in CSS) -->
-<div class="hero-gallery-glow-overlay">
-  <div class="hero-gallery-glow-left"></div>
-  <div class="hero-gallery-glow-right"></div>
-</div>
-
-<!-- ADMIN OVERLAY (E-update) -->
-<div id="gallery-admin" class="gallery-admin gallery-admin-hidden">
-  <div class="gallery-admin-header">
-    <span>Hero Gallery Admin</span>
-    <button id="gallery-admin-close" type="button">×</button>
+  <!-- HERO CROWN -->
+  <div id="hero-crown-container">
+    <img id="hero-crown-day" class="hero-crown float" src="/assets/icons/day-crown.svg" alt="Day Crown">
+    <img id="hero-crown-night" class="hero-crown float" src="/assets/icons/night-crown.svg" alt="Night Crown">
   </div>
 
-  <div class="gallery-admin-body">
-    <div class="gallery-admin-row">
-      <button data-action="prev">Prev</button>
-      <button data-action="next">Next</button>
-      <button data-action="pause">Pause</button>
-      <button data-action="shuffle">Shuffle: Off</button>
+  <!-- LEFT LANE -->
+  <div class="hero-gallery-lane hero-gallery-left">
+    <img class="hero-gallery-img" src="" alt="">
+  </div>
+
+  <!-- RIGHT LANE -->
+  <div class="hero-gallery-lane hero-gallery-right">
+    <img class="hero-gallery-img" src="" alt="">
+  </div>
+
+  <!-- GLOW OVERLAY -->
+  <div class="hero-gallery-glow-overlay">
+    <div class="hero-gallery-glow-left"></div>
+    <div class="hero-gallery-glow-right"></div>
+  </div>
+
+  <!-- ADMIN OVERLAY -->
+  <div id="gallery-admin" class="gallery-admin gallery-admin-hidden">
+    <div class="gallery-admin-header">
+      <span>Hero Gallery Admin</span>
+      <button id="gallery-admin-close" type="button">×</button>
     </div>
 
-    <div class="gallery-admin-row">
-      <label for="gallery-speed">Speed</label>
-      <input id="gallery-speed" type="range" min="3000" max="15000" step="1000" value="6000">
-      <span id="gallery-speed-label">6s</span>
-    </div>
+    <div class="gallery-admin-body">
+      <div class="gallery-admin-row">
+        <button data-action="prev">Prev</button>
+        <button data-action="next">Next</button>
+        <button data-action="pause">Pause</button>
+        <button data-action="shuffle">Shuffle: Off</button>
+      </div>
 
-    <div class="gallery-admin-row">
-      <button id="gallery-refresh" type="button">Refresh Manifest</button>
-    </div>
+      <div class="gallery-admin-row">
+        <label for="gallery-speed">Speed</label>
+        <input id="gallery-speed" type="range" min="3000" max="15000" step="1000" value="6000">
+        <span id="gallery-speed-label">6s</span>
+      </div>
 
-    <div id="gallery-toast" class="gallery-toast gallery-toast-hidden">
-      <span id="gallery-toast-text"></span>
+      <div class="gallery-admin-row">
+        <button id="gallery-refresh" type="button">Refresh Manifest</button>
+      </div>
+
+      <div id="gallery-toast" class="gallery-toast gallery-toast-hidden">
+        <span id="gallery-toast-text"></span>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- GALLERY JS -->
-<script src="hero-gallery.js"></script>
+  <!-- LAB JS -->
+  <script src="./hero-gallery.js"></script>
+  <script src="./hero-crown.js"></script>
+  <script src="./lab-harness.js"></script>
 
 </body>
 </html>
