@@ -13,7 +13,8 @@ import CorePanel from "./components/CorePanel";
 import "./styles/core.css";
 
 export default function App() {
-    useThemeEngine();
+
+  useThemeEngine();   // ⭐ Theme engine now drives crown + gradients
 
   useEffect(() => {
     console.group("CORE-LAB DIAGNOSTICS");

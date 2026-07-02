@@ -1,32 +1,17 @@
 /* ============================================================
-   HERO CROWN — CORE-LAB REACT VERSION
+   HERO CROWN — CORE-LAB REACT VERSION (FINAL)
 ============================================================ */
 
-:root {
-  --active-day-gradient: var(--grad-sunrise);
-  --active-night-gradient: var(--grad-midnight-indigo);
-}
-
-/* Background driven by theme-engine */
-body {
-  background: var(--active-day-gradient);
-  transition: background 1.2s ease-in-out;
-}
-
-body[data-theme="dark"] {
-  background: var(--active-night-gradient);
-}
-
-/* Crown container */
+/* Crown container — centered + above cards */
 #hero-crown-container {
   position: absolute;
-  top: 220px;
+  top: 140px;                 /* raised higher */
   left: 50%;
   transform: translateX(-50%);
-  width: 460px;
-  height: 460px;
+  width: 380px;               /* perfect centering */
+  height: 380px;
   pointer-events: none;
-  z-index: 40;
+  z-index: 2000;              /* ABOVE cards */
 }
 
 /* Crown images */
@@ -36,7 +21,8 @@ body[data-theme="dark"] {
   height: auto;
   top: 0;
   left: 0;
-  transition: opacity 0.4s ease, transform 0.2s ease;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out, transform 0.2s ease;
   pointer-events: none;
   filter: drop-shadow(0 0 20px var(--crown-glow-color));
 }
@@ -49,42 +35,14 @@ body[data-theme="dark"] {
 body[data-theme="dark"] #hero-crown-day { opacity: 0; }
 body[data-theme="dark"] #hero-crown-night { opacity: 1; }
 
-/* Admin modes */
-#hero-crown-container.hero-crown-admin {
-  outline: 2px dashed rgba(255, 255, 255, 0.4);
-  cursor: move;
-}
-
-#hero-crown-container.hero-crown-resizing {
-  cursor: nwse-resize;
-}
-
-.hero-crown-resize-handle {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  right: -4px;
-  bottom: -4px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-  cursor: nwse-resize;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-#hero-crown-container.hero-crown-admin .hero-crown-resize-handle {
-  opacity: 1;
-}
-
 /* Float animation */
 .hero-crown.float {
-  animation: crownFloat 6s ease-in-out infinite;
+  animation: crownFloat 8s ease-in-out infinite;
 }
 
 @keyframes crownFloat {
   0%   { transform: translateY(0px); }
-  50%  { transform: translateY(-8px); }
+  50%  { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
 }
 

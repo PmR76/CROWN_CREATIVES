@@ -46,14 +46,14 @@ export default function HeroCrown() {
     <div id="hero-crown-container">
       <img
         id="hero-crown-day"
-        className="hero-crown"
+        className="hero-crown float"
         src="/assets/icons/day-crown.svg"
         alt="Day Crown"
       />
 
       <img
         id="hero-crown-night"
-        className="hero-crown"
+        className="hero-crown float"
         src="/assets/icons/night-crown.svg"
         alt="Night Crown"
       />
