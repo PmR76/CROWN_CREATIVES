@@ -181,15 +181,15 @@
 }
 
 /* ============================================================
-   HERO CROWN — merged for gallery lab (20% larger)
+   HERO CROWN — merged for gallery lab (FINAL)
 ============================================================ */
 
 #hero-crown-container {
   position: absolute;
-  top: 60px;                 /* sits under header, above cards */
+  top: 20px;                 /* sits under header */
   left: 50%;
   transform: translateX(-50%);
-  width: 360px;              /* 20% larger than 300px */
+  width: 360px;              /* 20% larger */
   height: 360px;             /* 20% larger */
   pointer-events: none;
   z-index: 1500;             /* ABOVE cards (1000), BELOW header (2000) */
