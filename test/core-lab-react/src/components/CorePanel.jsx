@@ -24,13 +24,14 @@ export default function CorePanel() {
     });
   };
 
-  const previewSite = () => {
-    window.open("https://www.crowncreatives.uk", "_blank");
-  };
+const previewSite = () => {
+  window.open("https://www.crowncreatives.uk", "_blank");
+};
 
-  const launchDeploy = () => {
-    window.open("https://github.com/pmr76/crowncreatives/actions", "_blank");
-  };
+const launchDeploy = () => {
+  window.open("https://github.com/pmr76/crowncreatives/actions", "_blank");
+};
+
 
   return (
     <div
