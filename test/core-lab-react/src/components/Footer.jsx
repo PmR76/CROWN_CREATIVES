@@ -1,7 +1,45 @@
-import { useCallback } from "react";
-import "./footer.css";
+import { useCallback, useEffect } from "react";
+import "../styles/footer.css";
 
 export default function Footer() {
+
+  /* ============================================================
+     FOOTER GLOW DIAGNOSTICS (runs every 1s)
+  ============================================================= */
+  useEffect(() => {
+    const footer = document.querySelector(".footer-glass");
+    if (!footer) return;
+
+    const anim = footer.getAnimations()[0];
+
+    const debug = () => {
+      const style = getComputedStyle(footer);
+
+      console.table({
+        animationName: style.animationName,
+        animationDuration: style.animationDuration,
+        animationTimingFunction: style.animationTimingFunction,
+        animationIterationCount: style.animationIterationCount,
+        playState: anim?.playState,
+        currentTime: anim?.currentTime,
+        boxShadow: style.boxShadow,
+        backdropFilter: style.backdropFilter,
+        filter: style.filter,
+        border: style.border,
+        outline: style.outline,
+        zIndex: style.zIndex,
+        width: footer.offsetWidth,
+        height: footer.offsetHeight
+      });
+    };
+
+    const interval = setInterval(debug, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  /* ============================================================
+     ICON HANDLERS
+  ============================================================= */
   const handleIconClick = useCallback((id) => {
     const links = {
       facebook: "https://facebook.com/crowncreatives",
@@ -20,6 +58,9 @@ export default function Footer() {
     });
   }, []);
 
+  /* ============================================================
+     FOOTER RENDER
+  ============================================================= */
   return (
     <footer id="cc-footer" className="cc-footer">
       <div className="footer-glass">

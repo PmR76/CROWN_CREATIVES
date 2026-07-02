@@ -13,20 +13,29 @@
   z-index: 20;
 }
 
-/* FROSTED GLASS PANEL */
+/* ============================================================
+   FROSTED GLASS PANEL — MATCHED TO HEADER GLOW
+============================================================ */
+
 .footer-glass {
   width: 92%;
   max-width: 1400px;
   padding: 28px 32px;
   border-radius: 26px;
 
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  /* MATCH HEADER BACKGROUND */
+  background: rgba(255, 255, 255, 0.08);
 
-  border: 1px solid rgba(255,255,255,0.22);
+  /* MATCH HEADER BLUR */
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+
+  /* MATCH HEADER BORDER */
+  border: 1px solid rgba(255,255,255,0.18);
+
+  /* MATCH HEADER GLOW INTENSITY */
   box-shadow:
-    0 0 25px rgba(255,255,255,0.18),
+    0 0 26px rgba(255,255,255,0.45),
     0 0 60px rgba(0,0,0,0.35);
 
   display: flex;
@@ -35,7 +44,7 @@
 
   transition: outline 0.25s ease;
 
-  /* NEW: Header Glow Pulse (matches header + cards) */
+  /* GLOW PULSE — EXACT MATCH TO HEADER + CARDS */
   animation: headerGlow var(--glow-speed, 6s) ease-in-out infinite;
 }
 
