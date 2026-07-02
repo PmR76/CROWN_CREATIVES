@@ -1,0 +1,72 @@
+.cc-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.cc-header-left,
+.cc-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.cc-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.cc-toggle img {
+  width: 42px;
+  height: 42px;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.8));
+  transition: transform 0.2s ease;
+}
+
+.cc-toggle img:hover {
+  transform: scale(1.15);
+}
+
+.cc-header-center {
+  text-align: center;
+}
+
+.cc-header-crown {
+  width: 72px;
+  margin-bottom: 6px;
+}
+
+.cc-header-title {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 32px;
+  color: white;
+  margin: 0;
+}
+
+.cc-header-tagline {
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 12px;
+}
+
+.cc-header-nav {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+.cc-header-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.cc-header-nav a:hover {
+  opacity: 0.6;
+}
