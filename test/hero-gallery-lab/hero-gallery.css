@@ -37,20 +37,18 @@
   filter: blur(0px);
 }
 
-/* Fade + parallax drift */
 .hero-gallery-img.visible {
   opacity: 1;
   transform: translateY(-10px) scale(1.02);
   filter: blur(0.5px);
 }
 
-/* Optional stronger DOF */
 .hero-gallery-img.dof-strong {
   filter: blur(2px);
 }
 
 /* ============================================================
-   GLOW OVERLAY (OPTIONAL)
+   GLOW OVERLAY
 ============================================================ */
 
 .hero-gallery-glow-overlay {
@@ -71,7 +69,6 @@
   transition: background-color 0.6s ease, opacity 0.6s ease;
 }
 
-/* Default glow colours */
 .hero-gallery-glow-left {
   background: rgba(120, 200, 255, 0.4);
 }
@@ -81,7 +78,7 @@
 }
 
 /* ============================================================
-   ADMIN PANEL — E UPDATE (BOTTOM-RIGHT FLOATING)
+   ADMIN PANEL
 ============================================================ */
 
 .gallery-admin {
@@ -184,18 +181,18 @@
 }
 
 /* ============================================================
-   HERO CROWN — merged for gallery lab
+   HERO CROWN — merged for gallery lab (20% larger)
 ============================================================ */
 
 #hero-crown-container {
   position: absolute;
-  top: 40px;                 /* sits above gallery lanes */
+  top: 60px;                 /* sits under header, above cards */
   left: 50%;
   transform: translateX(-50%);
-  width: 300px;
-  height: 300px;
+  width: 360px;              /* 20% larger than 300px */
+  height: 360px;             /* 20% larger */
   pointer-events: none;
-  z-index: 999;              /* above gallery */
+  z-index: 1500;             /* ABOVE cards (1000), BELOW header (2000) */
 }
 
 .hero-crown {
