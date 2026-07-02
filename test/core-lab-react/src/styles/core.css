@@ -11,11 +11,11 @@
 
 /* Body */
 body {
-  background: #05070b; /* your original dark cosmic background */
+  background: #05070b; /* cosmic background */
   color: #fff;
   font-family: system-ui, sans-serif;
   overflow-x: hidden;
-  padding: 20px; /* preserved from your original */
+  padding: 20px;
 }
 
 /* Layout wrapper */
@@ -26,26 +26,39 @@ body {
   z-index: 1000;
 }
 
-/* Global glow utility */
-.glow {
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
-}
+/* ============================================================
+   GLOBAL GLOW + FROSTED GLASS UTILITIES
+============================================================ */
 
-/* Global frosted glass utility */
-.glass {
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(18px) saturate(180%);
-  border-radius: 26px;
-}
-
-/* Global animation timing */
 :root {
   --glow-speed: 6s;
   --shimmer-speed: 4s;
   --ticker-speed: 18s;
 }
 
-/* Theme system */
+/* Glow utility */
+.glow {
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
+}
+
+/* Frosted glass utility */
+.glass {
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 26px;
+}
+
+/* Shared glow animation (header + cards + footer) */
+@keyframes headerGlow {
+  0%   { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
+  50%  { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
+  100% { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
+}
+
+/* ============================================================
+   THEME SYSTEM
+============================================================ */
+
 [data-theme="dark"] {
   --bg: #05070b;
   --text: #fff;
