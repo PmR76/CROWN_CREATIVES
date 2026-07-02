@@ -34,6 +34,9 @@
   align-items: center;
 
   transition: outline 0.25s ease;
+
+  /* NEW: Header Glow Pulse (matches header + cards) */
+  animation: headerGlow var(--glow-speed, 6s) ease-in-out infinite;
 }
 
 /* ADMIN MODE — DRAGGABLE FOOTER */
@@ -112,4 +115,14 @@
 
   text-align: center;
   line-height: 1.5;
+}
+
+/* ============================================================
+   SHARED GLOW ANIMATION (HEADER + CARDS + FOOTER)
+============================================================ */
+
+@keyframes headerGlow {
+  0%   { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
+  50%  { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
+  100% { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
 }

@@ -72,7 +72,7 @@ body.cards-lab {
 }
 
 /* ============================================================
-   FROSTED CARD + GRADIENT BORDER + GLOW PULSE
+   FROSTED CARD + GRADIENT BORDER + HEADER GLOW PULSE
 ============================================================ */
 
 .cc-cards .frost-card {
@@ -86,7 +86,7 @@ body.cards-lab {
   transform-style: preserve-3d;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 
-  /* NEW: Header Glow Pulse */
+  /* NEW: Header Glow Pulse (same as header) */
   animation: headerGlow var(--glow-speed, 6s) ease-in-out infinite;
 }
 
