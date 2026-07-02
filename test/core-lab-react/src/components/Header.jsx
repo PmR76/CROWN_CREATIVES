@@ -1,4 +1,4 @@
-import "./header.css";
+import "../styles/header.css";
 
 export default function Header() {
   const toggleSound = () => {
@@ -14,16 +14,14 @@ export default function Header() {
   return (
     <header className="cc-header">
 
-      {/* LEFT: SOUND TOGGLE */}
       <div className="cc-header-left">
         <button id="soundToggle" className="cc-toggle" onClick={toggleSound}>
           <img src="/assets/icons/music.png" alt="Sound Toggle" />
         </button>
       </div>
 
-      {/* CENTER: LOGO + TITLE + TAGLINE + NAV */}
       <div className="cc-header-center">
-        <a href="/index.html" className="cc-logo-link">
+        <a href="/" className="cc-logo-link">
           <img
             src="/assets/icons/head-crown.svg"
             className="cc-header-crown"
@@ -35,18 +33,17 @@ export default function Header() {
         <div className="cc-header-tagline">Artistry • Resilience • Imagination</div>
 
         <nav className="cc-header-nav">
-          <a href="/index.html">Home</a>
-          <a href="/about.html">About</a>
-          <a href="/gallery.html">Gallery</a>
-          <a href="/projects.html">Projects</a>
-          <a href="/videos.html">Videos</a>
-          <a href="/podcasts.html">Podcasts</a>
-          <a href="/blog.html">Blog</a>
-          <a href="/contact.html">Contact</a>
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/projects">Projects</a>
+          <a href="/videos">Videos</a>
+          <a href="/podcasts">Podcasts</a>
+          <a href="/blog">Blog</a>
+          <a href="/contact">Contact</a>
         </nav>
       </div>
 
-      {/* RIGHT: THEME TOGGLE */}
       <div className="cc-header-right">
         <button id="themeToggle" className="cc-toggle" onClick={toggleTheme}>
           <img src="/assets/icons/sun-moon.png" alt="Theme Toggle" />
