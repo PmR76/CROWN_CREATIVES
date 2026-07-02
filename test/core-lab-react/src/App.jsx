@@ -2,7 +2,8 @@ import { useEffect } from "react";
 
 import Header from "./components/Header";
 import Background3D from "./components/Background3D";
-import HeroCrown from "./components/HeroCrown";   // ⭐ NEW
+import ThemePanel from "./components/ThemePanel";   // ✔ FIXED
+import HeroCrown from "./components/HeroCrown";     // ✔ FIXED
 import Cards from "./components/Cards";
 import Ticker from "./components/Ticker";
 import Footer from "./components/Footer";
@@ -12,12 +13,12 @@ import "./styles/core.css";
 
 export default function App() {
 
-  // CORE-LAB DIAGNOSTICS (correctly inside component)
   useEffect(() => {
     console.group("CORE-LAB DIAGNOSTICS");
     console.log("Header Loaded:", true);
     console.log("Background3D Active:", true);
-    console.log("HeroCrown Active:", true);   // ⭐ NEW
+    console.log("HeroCrown Active:", true);
+    console.log("ThemePanel Active:", true);   // ⭐ NEW
     console.log("Cards Loaded:", true);
     console.log("Ticker Running:", true);
     console.log("Footer Active:", true);
@@ -29,18 +30,12 @@ export default function App() {
 
   return (
     <>
-      {/* HEADER ALWAYS FIRST */}
       <Header />
-
-      {/* 3D BACKGROUND */}
       <Background3D />
 
-      {/* MAIN CORE-LAB LAYOUT */}
       <div className="core-layout">
-
-        {/* HERO CROWN — FLOATING, THEME-REACTIVE */}
-        <HeroCrown />   {/* ⭐ NEW */}
-
+        <HeroCrown />
+        <ThemePanel />   {/* ⭐ FIXED POSITION */}
         <Cards />
         <Ticker />
         <Footer />
