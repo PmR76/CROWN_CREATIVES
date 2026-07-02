@@ -10,3 +10,20 @@ export default function Ticker() {
     </div>
   );
 }
+useEffect(() => {
+  const track = document.querySelector('.ticker-track');
+  if (!track) return;
+
+  const anim = track.getAnimations()[0];
+
+  setInterval(() => {
+    console.log({
+      currentTime: anim?.currentTime,
+      playState: anim?.playState,
+      duration: anim?.effect?.getComputedTiming()?.duration,
+      transform: getComputedStyle(track).transform,
+      width: track.scrollWidth,
+      parentWidth: track.parentElement.offsetWidth
+    });
+  }, 1000);
+}, []);
