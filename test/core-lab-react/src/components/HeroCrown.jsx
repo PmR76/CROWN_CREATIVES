@@ -16,6 +16,7 @@ export default function HeroCrown() {
       if (theme === "dark") {
         day.style.opacity = "0";
         night.style.opacity = "1";
+
         document.documentElement.style.setProperty(
           "--crown-glow-color",
           "rgba(120, 200, 255, 0.9)"
@@ -23,6 +24,7 @@ export default function HeroCrown() {
       } else {
         day.style.opacity = "1";
         night.style.opacity = "0";
+
         document.documentElement.style.setProperty(
           "--crown-glow-color",
           "rgba(255, 210, 150, 0.8)"
@@ -45,13 +47,14 @@ export default function HeroCrown() {
       <img
         id="hero-crown-day"
         className="hero-crown"
-        src="/assets/icons/day-crown.svg"   // ✔ FIXED
+        src="/assets/icons/day-crown.svg"
         alt="Day Crown"
       />
+
       <img
         id="hero-crown-night"
         className="hero-crown"
-        src="/assets/icons/night-crown.svg" // ✔ FIXED
+        src="/assets/icons/night-crown.svg"
         alt="Night Crown"
       />
     </div>

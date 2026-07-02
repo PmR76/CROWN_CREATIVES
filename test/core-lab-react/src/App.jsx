@@ -2,8 +2,8 @@ import { useEffect } from "react";
 
 import Header from "./components/Header";
 import Background3D from "./components/Background3D";
-import ThemePanel from "./components/ThemePanel";   // ✔ FIXED
-import HeroCrown from "./components/HeroCrown";     // ✔ FIXED
+import ThemePanel from "./components/ThemePanel";
+import HeroCrown from "./components/HeroCrown";
 import Cards from "./components/Cards";
 import Ticker from "./components/Ticker";
 import Footer from "./components/Footer";
@@ -18,7 +18,7 @@ export default function App() {
     console.log("Header Loaded:", true);
     console.log("Background3D Active:", true);
     console.log("HeroCrown Active:", true);
-    console.log("ThemePanel Active:", true);   // ⭐ NEW
+    console.log("ThemePanel Active:", true);
     console.log("Cards Loaded:", true);
     console.log("Ticker Running:", true);
     console.log("Footer Active:", true);
@@ -35,7 +35,7 @@ export default function App() {
 
       <div className="core-layout">
         <HeroCrown />
-        <ThemePanel />   {/* ⭐ FIXED POSITION */}
+        <ThemePanel />
         <Cards />
         <Ticker />
         <Footer />
