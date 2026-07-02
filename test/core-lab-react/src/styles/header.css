@@ -1,14 +1,20 @@
+/* Crown Creatives Cinematic Glass Header */
+
 .cc-header {
-  width: 100%;
+  width: 95%;
+  margin: 20px auto 0 auto; /* centers header like footer */
+  padding: 20px;
+  background: rgba(255,255,255,0.10); /* frosted glass */
+  backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 26px; /* rounded edges matching footer */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 24px;
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  position: relative;
+  z-index: 9000; /* sits above particle dust */
 }
 
+/* Left + Right toggle buttons */
 .cc-header-left,
 .cc-header-right {
   display: flex;
@@ -32,6 +38,7 @@
   transform: scale(1.15);
 }
 
+/* Center crown + title + tagline + nav */
 .cc-header-center {
   text-align: center;
 }
