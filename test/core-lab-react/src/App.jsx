@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Header from "./components/Header";
 import Background3D from "./components/Background3D";
 import ThemePanel from "./components/ThemePanel";
+import useThemeEngine from "./hooks/useThemeEngine";
 import HeroCrown from "./components/HeroCrown";
 import Cards from "./components/Cards";
 import Ticker from "./components/Ticker";
@@ -12,6 +13,7 @@ import CorePanel from "./components/CorePanel";
 import "./styles/core.css";
 
 export default function App() {
+    useThemeEngine();
 
   useEffect(() => {
     console.group("CORE-LAB DIAGNOSTICS");
