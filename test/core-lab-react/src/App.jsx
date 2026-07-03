@@ -58,13 +58,22 @@ export default function App() {
 
   return (
     <>
+      {/* HEADER ALWAYS FIRST */}
       <Header />
+
+      {/* BACKGROUND 3D (behind everything) */}
       <Background3D />
 
+      {/* HERO CROWN — sits directly under header */}
       <HeroCrown />
+
+      {/* THEME PANEL — admin overlay */}
       <ThemePanel />
+
+      {/* HERO GALLERY — sits directly under crown */}
       <HeroGallery />
 
+      {/* MAIN CORE-LAB LAYOUT */}
       <div className="core-layout">
         <Cards />
         <Ticker />

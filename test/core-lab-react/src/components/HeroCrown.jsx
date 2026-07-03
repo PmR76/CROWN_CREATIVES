@@ -4,6 +4,7 @@ import "../shared/hero-crown.css";
 
 export default function HeroCrown() {
   useEffect(() => {
+    // Initialize crown theme-reactive logic
     initHeroCrown(document);
   }, []);
 
@@ -15,6 +16,7 @@ export default function HeroCrown() {
         src="/assets/icons/day-crown.svg"
         alt="Day Crown"
       />
+
       <img
         id="hero-crown-night"
         className="hero-crown float"
