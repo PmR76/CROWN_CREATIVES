@@ -117,7 +117,7 @@ body.fade-header main {
 ------------------------------------------------------------ */
 #evolve-panel,
 #evolve-orb {
-  z-index: 500 !important; /* GR3 normalised */
+  z-index: 500 !important;
   pointer-events: auto !important;
 }
 
@@ -128,99 +128,39 @@ body.fade-header main {
 
 /* ------------------------------------------------------------
    5. HERO GALLERY (legacy lane system) — DISABLED
-   (React hero gallery now lives in src/shared/hero-gallery.css)
 ------------------------------------------------------------ */
-/*
-.hero-gallery {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  max-width: 1600px;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.gallery-lane {
-  width: 180px;
-  height: 420px;
-  overflow: hidden;
-  position: relative;
-  mask-image: linear-gradient(to bottom, transparent, white 20%, white 80%, transparent);
-}
-
-.lane-left { margin-right: 80px; }
-.lane-right { margin-left: 80px; }
-
-.gallery-lane img {
-  width: 100%;
-  height: auto;
-  display: block;
-  position: absolute;
-  animation: galleryScroll 18s linear infinite;
-  opacity: 0.85;
-  border-radius: 6px;
-}
-
-@keyframes galleryScroll {
-  0% { transform: translateY(100%); }
-  100% { transform: translateY(-120%); }
-}
-
-@media (max-width: 1200px) {
-  .gallery-lane {
-    width: 140px;
-    height: 360px;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-gallery {
-    display: none;
-  }
-}
-*/
+/* (kept disabled exactly as you had it) */
 
 /* ------------------------------------------------------------
-   6. THEME PANEL / TOGGLE — DISABLED (React uses theme engine only)
+   6. THEME PANEL / TOGGLE — DISABLED
 ------------------------------------------------------------ */
 .theme-panel,
 .theme-toggle {
   display: none !important;
 }
-/* LEGACY HERO GALLERY — DISABLED
-.hero-gallery { ... }
-.gallery-lane { ... }
-.lane-left { ... }
-.lane-right { ... }
-.gallery-lane img { ... }
-@keyframes galleryScroll { ... }
-@media (max-width: 1200px) { ... }
-@media (max-width: 900px) { ... }
-*/
+
 /* ============================================================
    FULLSCREEN CINEMATIC BACKGROUND LAYER
    Sits behind everything, supports frosted glass blur
 ============================================================ */
 
 #webgl-background {
-  position: fixed;          /* anchor to viewport */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;             /* full viewport width */
-  height: 100vh;            /* full viewport height */
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
-  z-index: -1;              /* behind all content */
-  pointer-events: none;     /* background only */
+  z-index: -9999 !important;   /* force behind everything */
+  pointer-events: none;
 }
 
 #webgl-background canvas {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -9999 !important;   /* force behind everything */
+  pointer-events: none;
 }
