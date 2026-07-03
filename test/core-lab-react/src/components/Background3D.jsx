@@ -6,6 +6,7 @@ export default function Background3D() {
     const container = document.getElementById("webgl-background");
     if (!container) return;
 
+    // Scene + Camera
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -15,10 +16,21 @@ export default function Background3D() {
     );
     camera.position.z = 5;
 
+    // Renderer (transparent, full‑screen)
     const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // Ensure canvas fills the fixed background container
+    renderer.domElement.style.position = "absolute";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.domElement.style.width = "100%";
+    renderer.domElement.style.height = "100%";
+
     container.appendChild(renderer.domElement);
 
+    // Particle Field
     const particles = new THREE.BufferGeometry();
     const count = 800;
     const positions = new Float32Array(count * 3);
@@ -39,6 +51,7 @@ export default function Background3D() {
     const points = new THREE.Points(particles, material);
     scene.add(points);
 
+    // Animation Loop
     const animate = () => {
       requestAnimationFrame(animate);
       points.rotation.y += 0.0008;
@@ -46,6 +59,23 @@ export default function Background3D() {
     };
 
     animate();
+
+    // Handle window resize (critical for full‑screen background)
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      container.removeChild(renderer.domElement);
+      renderer.dispose();
+    };
   }, []);
 
   return null;
