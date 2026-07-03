@@ -1,24 +1,37 @@
 /* ============================================================
-   HERO GALLERY — SHARED VERSION
+   HERO GALLERY — UNIFIED VERSION (React + Lab)
+   Crown sits directly under header
+   Gallery lanes sit left + right under crown
 ============================================================ */
+
+/* ------------------------------------------------------------
+   GALLERY LANES (Left + Right)
+------------------------------------------------------------ */
 
 .hero-gallery-lane {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 260px; /* directly under crown zone */
   width: 260px;
-  height: 70vh;
-  max-height: 600px;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 20;
+  height: calc(100vh - 260px - 200px); /* crown zone + footer zone */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 20;
 }
 
-.hero-gallery-left { left: 2vw; }
-.hero-gallery-right { right: 2vw; }
+.hero-gallery-left {
+  left: 2vw;
+}
+
+.hero-gallery-right {
+  right: 2vw;
+}
+
+/* ------------------------------------------------------------
+   GALLERY IMAGE FADE + PARALLAX DRIFT
+------------------------------------------------------------ */
 
 .hero-gallery-img {
   width: 100%;
@@ -38,6 +51,10 @@
   filter: blur(0.5px);
 }
 
+/* ------------------------------------------------------------
+   GLOW OVERLAY (Theme Reactive)
+------------------------------------------------------------ */
+
 .hero-gallery-glow-overlay {
   position: fixed;
   inset: 0;
@@ -56,10 +73,20 @@
   transition: background-color 0.6s ease, opacity 0.6s ease;
 }
 
-.hero-gallery-glow-left {
-  background: rgba(120, 200, 255, 0.4);
+/* DAY MODE */
+body:not([data-theme="dark"]) .hero-gallery-glow-left {
+  background: var(--gallery-glow-left);
 }
 
-.hero-gallery-glow-right {
-  background: rgba(255, 210, 150, 0.4);
+body:not([data-theme="dark"]) .hero-gallery-glow-right {
+  background: var(--gallery-glow-right);
+}
+
+/* NIGHT MODE */
+body[data-theme="dark"] .hero-gallery-glow-left {
+  background: var(--gallery-glow-left-dark);
+}
+
+body[data-theme="dark"] .hero-gallery-glow-right {
+  background: var(--gallery-glow-right-dark);
 }
