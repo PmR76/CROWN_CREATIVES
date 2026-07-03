@@ -8,15 +8,15 @@
 ------------------------------------------------------------ */
 
 #hero-crown-container {
-  position: relative;          /* stays in normal layout flow */
+  position: relative;
   width: 100%;
-  margin-top: 260px;           /* spacing BELOW header */
-  margin-bottom: 40px;         /* spacing ABOVE gallery */
+  margin-top: 60px;            /* crown sits below header */
+  margin-bottom: 40px;         /* space above gallery */
   display: flex;
   justify-content: center;
   align-items: center;
   pointer-events: none;
-  z-index: 1500;               /* above gallery, below header */
+  z-index: 1500;
 }
 
 /* ------------------------------------------------------------
@@ -36,27 +36,14 @@
   opacity: 1;
 }
 
-/* Default day crown visible */
-#hero-crown-day {
-  opacity: 1;
-}
+#hero-crown-day { opacity: 1; }
+#hero-crown-night { opacity: 0; }
 
-/* Default night crown hidden */
-#hero-crown-night {
-  opacity: 0;
-}
-
-/* Theme switching */
-body[data-theme="dark"] #hero-crown-day {
-  opacity: 0;
-}
-
-body[data-theme="dark"] #hero-crown-night {
-  opacity: 1;
-}
+body[data-theme="dark"] #hero-crown-day { opacity: 0; }
+body[data-theme="dark"] #hero-crown-night { opacity: 1; }
 
 /* ------------------------------------------------------------
-   3. FLOAT ANIMATION — Subtle cinematic movement
+   3. FLOAT ANIMATION
 ------------------------------------------------------------ */
 
 .hero-crown.float {
@@ -70,7 +57,7 @@ body[data-theme="dark"] #hero-crown-night {
 }
 
 /* ------------------------------------------------------------
-   4. DAY MODE GLOW + SHIMMER
+   4. DAY MODE GLOW
 ------------------------------------------------------------ */
 
 body:not([data-theme="dark"]) #hero-crown-container .hero-crown {
@@ -88,7 +75,7 @@ body:not([data-theme="dark"]) #hero-crown-container .hero-crown {
 }
 
 /* ------------------------------------------------------------
-   5. NIGHT MODE GLOW + PULSE
+   5. NIGHT MODE GLOW
 ------------------------------------------------------------ */
 
 body[data-theme="dark"] #hero-crown-container .hero-crown {
