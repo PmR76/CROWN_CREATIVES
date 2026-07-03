@@ -1,34 +1,39 @@
-/* ============================================================
-   CROWN CREATIVES — THEME ENGINE (MODE + EVENTS ONLY)
-============================================================ */
+// ============================================================
+// ThemeEngine — Crown Creatives
+// Controls day/night theme + crown transition
+// ============================================================
 
-(function () {
-
-  const toggle = document.getElementById("themeToggle");
-
-  function applyMode(mode) {
-    if (mode === "dark") {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
-
-    localStorage.setItem("cc-mode", mode);
-
-    document.dispatchEvent(new CustomEvent("theme-changed", { detail: mode }));
+export default class ThemeEngine {
+  constructor() {
+    this.root = document.body;
+    this.current = localStorage.getItem("cc-theme") || "day";
+    this.apply(this.current);
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  apply(theme) {
+    this.current = theme;
+    this.root.setAttribute("data-theme", theme);
+    localStorage.setItem("cc-theme", theme);
 
-    const savedMode = localStorage.getItem("cc-mode") || "day";
-    applyMode(savedMode);
+    // Trigger crown transition
+    const dayCrown = document.getElementById("hero-crown-day");
+    const nightCrown = document.getElementById("hero-crown-night");
 
-    if (toggle) {
-      toggle.addEventListener("click", () => {
-        const next = document.body.classList.contains("dark-mode") ? "day" : "dark";
-        applyMode(next);
-      });
+    if (dayCrown && nightCrown) {
+      if (theme === "day") {
+        dayCrown.classList.add("visible");
+        nightCrown.classList.remove("visible");
+      } else {
+        dayCrown.classList.remove("visible");
+        nightCrown.classList.add("visible");
+      }
     }
-  });
+  }
 
-})();
+  toggle() {
+    const next = this.current === "day" ? "night" : "day";
+    this.apply(next);
+  }
+}
+
+export const themeEngine = new ThemeEngine();
