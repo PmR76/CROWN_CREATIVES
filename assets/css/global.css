@@ -172,3 +172,10 @@ body.fade-header main {
   z-index: -9999 !important;   /* force behind everything */
   pointer-events: none;
 }
+/* ============================================================
+   GLOBAL TOP SPACING — Allows full header visibility
+============================================================ */
+
+body {
+  padding-top: 200px;   /* creates scrollable space above header */
+}
