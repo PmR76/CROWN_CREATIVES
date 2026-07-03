@@ -1,37 +1,54 @@
-/* Crown Creatives Cinematic Glass Header */
-/* FORCE HEADER + CONTENTS UP BY 250PX */
+/* ============================================================
+   CROWN CREATIVES — CINEMATIC GLASS HEADER (STABLE VERSION)
+   Clean • Centered • No Forced Upward Transform
+============================================================ */
+
+/* ------------------------------------------------------------
+   HEADER CONTAINER — ALWAYS ABOVE BACKGROUND
+------------------------------------------------------------ */
 header,
 .site-header,
 .site-header-inner,
 #header-container {
-  transform: translateY(-250px);
+  position: relative;
+  z-index: 9000;              /* stays above crown + gallery */
+  transform: none !important; /* REMOVE forced -250px offset */
 }
 
+/* ------------------------------------------------------------
+   CINEMATIC GLASS HEADER BLOCK
+------------------------------------------------------------ */
 .cc-header {
   width: 95%;
   margin: 20px auto 0 auto;
   padding: 20px;
+
   background: rgba(255,255,255,0.10);
   backdrop-filter: blur(18px) saturate(180%);
   border-radius: 26px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   position: relative;
   z-index: 9000;
 
-  /* Glow animation */
   animation: headerGlow 6s ease-in-out infinite;
 }
 
-/* Glow pulse */
+/* ------------------------------------------------------------
+   HEADER GLOW PULSE
+------------------------------------------------------------ */
 @keyframes headerGlow {
   0%   { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
   50%  { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
   100% { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
 }
 
-/* Crown shimmer */
+/* ------------------------------------------------------------
+   HEADER CROWN SHIMMER
+------------------------------------------------------------ */
 .cc-header-crown {
   width: 72px;
   margin-bottom: 6px;
@@ -45,29 +62,31 @@ header,
   100% { filter: drop-shadow(0 0 6px rgba(255,255,255,0.8)); }
 }
 
-/* Toggle buttons */
+/* ------------------------------------------------------------
+   TOGGLE BUTTONS
+------------------------------------------------------------ */
 .cc-toggle {
-  background: transparent !important; /* remove white background */
+  background: transparent !important;
   border: none;
   cursor: pointer;
   padding: 0;
 }
 
-/* Increase toggle size by 40% */
 .cc-toggle img {
-  width: 58px;   /* was 42px */
-  height: 58px;  /* was 42px */
+  width: 58px;
+  height: 58px;
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.8));
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* Hover glow */
 .cc-toggle img:hover {
   transform: scale(1.15);
   filter: drop-shadow(0 0 14px rgba(255,255,255,1));
 }
 
-/* Center content */
+/* ------------------------------------------------------------
+   CENTER BLOCK (TITLE + TAGLINE)
+------------------------------------------------------------ */
 .cc-header-center {
   text-align: center;
 }
@@ -85,7 +104,9 @@ header,
   margin-bottom: 12px;
 }
 
-/* Navigation */
+/* ------------------------------------------------------------
+   NAVIGATION
+------------------------------------------------------------ */
 .cc-header-nav {
   display: flex;
   gap: 18px;
