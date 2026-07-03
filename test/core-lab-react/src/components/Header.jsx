@@ -70,7 +70,7 @@ export default function Header({ toggleTheme }) {
           aria-label="Toggle theme"
         >
           <img
-            src="/assets/icons/sun-moon-magic.svg"
+            src="/assets/icons/sun-moon.svg"
             alt="Theme Toggle"
             className="cc-header-icon"
           />
