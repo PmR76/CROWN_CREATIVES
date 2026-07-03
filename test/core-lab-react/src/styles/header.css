@@ -1,23 +1,25 @@
 /* ============================================================
-   CROWN CREATIVES — CINEMATIC GLASS HEADER (STABLE VERSION)
-   Clean • Centered • No Forced Upward Transform
+   Crown Creatives Cinematic Glass Header
+   Corrected — Header lifted by 200px
 ============================================================ */
 
 /* ------------------------------------------------------------
-   HEADER CONTAINER — ALWAYS ABOVE BACKGROUND
+   HEADER POSITIONING — LIFTED ABOVE HERO CROWN
 ------------------------------------------------------------ */
+
 header,
 .site-header,
 .site-header-inner,
 #header-container {
   position: relative;
-  z-index: 9000;              /* stays above crown + gallery */
-  transform: none !important; /* REMOVE forced -250px offset */
+  top: -200px;              /* LIFT HEADER UP */
+  z-index: 9000;            /* stays above crown + gallery */
 }
 
 /* ------------------------------------------------------------
-   CINEMATIC GLASS HEADER BLOCK
+   CINEMATIC GLASS HEADER
 ------------------------------------------------------------ */
+
 .cc-header {
   width: 95%;
   margin: 20px auto 0 auto;
@@ -37,9 +39,7 @@ header,
   animation: headerGlow 6s ease-in-out infinite;
 }
 
-/* ------------------------------------------------------------
-   HEADER GLOW PULSE
------------------------------------------------------------- */
+/* Glow pulse */
 @keyframes headerGlow {
   0%   { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
   50%  { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
@@ -47,8 +47,9 @@ header,
 }
 
 /* ------------------------------------------------------------
-   HEADER CROWN SHIMMER
+   CROWN SHIMMER
 ------------------------------------------------------------ */
+
 .cc-header-crown {
   width: 72px;
   margin-bottom: 6px;
@@ -65,6 +66,7 @@ header,
 /* ------------------------------------------------------------
    TOGGLE BUTTONS
 ------------------------------------------------------------ */
+
 .cc-toggle {
   background: transparent !important;
   border: none;
@@ -85,8 +87,9 @@ header,
 }
 
 /* ------------------------------------------------------------
-   CENTER BLOCK (TITLE + TAGLINE)
+   CENTER CONTENT
 ------------------------------------------------------------ */
+
 .cc-header-center {
   text-align: center;
 }
@@ -107,6 +110,7 @@ header,
 /* ------------------------------------------------------------
    NAVIGATION
 ------------------------------------------------------------ */
+
 .cc-header-nav {
   display: flex;
   gap: 18px;
