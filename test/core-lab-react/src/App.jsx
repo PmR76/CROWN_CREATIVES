@@ -14,8 +14,10 @@ import "./styles/core.css";
 
 export default function App() {
 
+  // Theme engine (day/night switching)
   useThemeEngine();
 
+  // Initial diagnostics (one-time snapshot)
   useEffect(() => {
     console.group("CORE-LAB SNAPSHOT");
     console.log("Header Loaded:", true);
@@ -30,12 +32,34 @@ export default function App() {
     console.groupEnd();
   }, []);
 
+  // Periodic ticker + footer snapshot (every 6 seconds)
+  useEffect(() => {
+    const snapshot = () => {
+      const ticker = document.querySelector(".ticker-track");
+      const footer = document.querySelector(".footer-glass");
+
+      if (!ticker || !footer) return;
+
+      const tickerStyle = getComputedStyle(ticker);
+      const footerStyle = getComputedStyle(footer);
+
+      console.group("CORE SNAPSHOT");
+      console.log("Ticker Speed:", tickerStyle.animationDuration);
+      console.log("Footer Glow:", footerStyle.boxShadow);
+      console.log("Footer Blur:", footerStyle.backdropFilter);
+      console.groupEnd();
+    };
+
+    const interval = setInterval(snapshot, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <Header />
       <Background3D />
 
-      <HeroCrown />     {/* sits above cards */}
+      <HeroCrown />     {/* sits between header + cards */}
       <ThemePanel />    {/* admin panel always accessible */}
 
       <div className="core-layout">

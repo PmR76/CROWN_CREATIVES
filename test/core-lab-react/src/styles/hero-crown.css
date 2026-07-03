@@ -1,29 +1,29 @@
 /* ============================================================
-   HERO CROWN — CORE-LAB REACT VERSION (FINAL)
+   HERO CROWN — CORE-LAB REACT VERSION (FINAL CLEAN)
 ============================================================ */
 
-/* Crown container — centered + above cards */
+/* Crown container — centered between header + cards */
 #hero-crown-container {
   position: absolute;
-  top: 140px;                 /* raised higher */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 380px;               /* perfect centering */
-  height: 380px;
-  pointer-events: none;
-  z-index: 2000;              /* ABOVE cards */
-}
-
-/* Crown images */
-#hero-crown-container {
-  position: absolute;
-  top: -40px;                /* raised by 250px + crown offset */
+  top: 60px;                 /* sits under header */
   left: 50%;
   transform: translateX(-50%);
   width: 360px;              /* 20% larger */
   height: 360px;
   pointer-events: none;
   z-index: 1500;             /* above cards, below header */
+}
+
+/* Crown images */
+.hero-crown {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  filter: drop-shadow(0 0 20px var(--crown-glow-color));
 }
 
 /* Default visibility */
