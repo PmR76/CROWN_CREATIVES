@@ -1,6 +1,7 @@
 // ============================================================
 // Header.jsx — Crown Creatives Cinematic Header (FULL MERGED)
 // Restores head-crown.svg + theme toggle + sound toggle
+// Corrects broken icon paths
 // ============================================================
 
 import React from "react";
@@ -33,9 +34,9 @@ export default function Header({ toggleTheme }) {
       {/* CENTER: CROWN + TITLE + TAGLINE + NAV */}
       <div className="cc-header-center">
 
-        {/* HEADER CROWN (RESTORED) */}
+        {/* HEADER CROWN (FIXED PATH) */}
         <img
-          src="/assets/img/head-crown.svg"
+          src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
           className="cc-header-crown"
         />
@@ -61,7 +62,7 @@ export default function Header({ toggleTheme }) {
         </nav>
       </div>
 
-      {/* RIGHT: THEME TOGGLE (RESTORED) */}
+      {/* RIGHT: THEME TOGGLE (FIXED PATH + WORKING) */}
       <div className="cc-header-right">
         <button
           id="themeToggle"
@@ -70,7 +71,7 @@ export default function Header({ toggleTheme }) {
           aria-label="Toggle theme"
         >
           <img
-            src="/assets/icons/sun-moon.svg"
+            src="/assets/icons/sun-moon.png"
             alt="Theme Toggle"
             className="cc-header-icon"
           />
