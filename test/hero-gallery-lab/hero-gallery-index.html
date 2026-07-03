@@ -6,9 +6,9 @@
   <meta name="cc-lab" content="hero-gallery-lab">
   <title>Crown Creatives – Hero Gallery Lab</title>
 
-  <!-- LAB CSS -->
-  <link rel="stylesheet" href="./hero-gallery.css">
-  <link rel="stylesheet" href="./hero-crown.css">
+  <!-- SHARED CSS (Unified Crown + Gallery) -->
+  <link rel="stylesheet" href="./shared/hero-crown.css">
+  <link rel="stylesheet" href="./shared/hero-gallery.css">
 
   <style>
     body {
@@ -88,9 +88,13 @@
     </div>
   </div>
 
-  <!-- LAB JS -->
-  <script src="./hero-gallery.js"></script>
+  <!-- SHARED JS ENGINES -->
+  <script src="./shared/heroCrownEngine.js"></script>
+  <script src="./shared/heroGalleryEngine.js"></script>
+
+  <!-- LAB WRAPPERS -->
   <script src="./hero-crown.js"></script>
+  <script src="./hero-gallery.js"></script>
   <script src="./lab-harness.js"></script>
 
 </body>
