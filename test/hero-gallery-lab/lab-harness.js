@@ -1,4 +1,4 @@
-// Crown Creatives Lab Harness v2 (Strict Isolation)
+// Crown Creatives Lab Harness v3 (Strict Isolation + Unified Theme Engine)
 // Drop this file into every *-lab folder.
 
 (function () {
@@ -174,6 +174,23 @@
   }
 
   /* ============================================================
+     UNIFIED THEME ENGINE (React → Lab)
+     ============================================================ */
+
+  let theme = "light";
+
+  function applyTheme(next) {
+    theme = next;
+    document.body.dataset.theme = theme;
+
+    // Notify crown + gallery engines
+    window.dispatchEvent(new CustomEvent("theme-changed", { detail: theme }));
+  }
+
+  // Allow React to call setLabTheme()
+  window.setLabTheme = applyTheme;
+
+  /* ============================================================
      BOOTSTRAP (RUN ONCE)
      ============================================================ */
 
@@ -183,6 +200,9 @@
     errors();
     healthBadge();
     versionInfo();
+
+    // Apply initial theme
+    applyTheme(theme);
   });
 
 })();
