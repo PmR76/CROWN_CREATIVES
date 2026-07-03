@@ -127,16 +127,16 @@ body.fade-header main {
 }
 
 /* ------------------------------------------------------------
-   5. HERO GALLERY (legacy lane system)
-   — FIXED: removed transform that breaks fixed positioning
+   5. HERO GALLERY (legacy lane system) — DISABLED
+   (React hero gallery now lives in src/shared/hero-gallery.css)
 ------------------------------------------------------------ */
+/*
 .hero-gallery {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 100%;
   max-width: 1600px;
-  /* transform removed — this was breaking hero-crown */
   display: flex;
   justify-content: space-between;
   pointer-events: none;
@@ -180,4 +180,13 @@ body.fade-header main {
   .hero-gallery {
     display: none;
   }
+}
+*/
+
+/* ------------------------------------------------------------
+   6. THEME PANEL / TOGGLE — DISABLED (React uses theme engine only)
+------------------------------------------------------------ */
+.theme-panel,
+.theme-toggle {
+  display: none !important;
 }
