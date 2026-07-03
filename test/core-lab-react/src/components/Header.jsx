@@ -1,17 +1,18 @@
 // ============================================================
-// Header.jsx — Crown Creatives Cinematic Header
-// Sound toggle wired to SoundEngine
+// Header.jsx — Crown Creatives Cinematic Header (FULL MERGED)
+// Restores head-crown.svg + theme toggle + sound toggle
 // ============================================================
 
 import React from "react";
 import "../styles/header.css";
 import { useSoundEngine } from "../hooks/useSoundEngine";
 
-export default function Header() {
+export default function Header({ toggleTheme }) {
   const { isMuted, toggleSound } = useSoundEngine("default");
 
   return (
     <header className="cc-header">
+
       {/* LEFT: SOUND TOGGLE */}
       <div className="cc-header-left">
         <button
@@ -21,33 +22,61 @@ export default function Header() {
           aria-pressed={!isMuted}
           aria-label="Toggle sound"
         >
-          <img src="/assets/icons/music.png" alt="Sound Toggle" />
+          <img
+            src="/assets/icons/music.png"
+            alt="Sound Toggle"
+            className="cc-header-icon"
+          />
         </button>
       </div>
 
-      {/* CENTER: TITLE + TAGLINE */}
+      {/* CENTER: CROWN + TITLE + TAGLINE + NAV */}
       <div className="cc-header-center">
+
+        {/* HEADER CROWN (RESTORED) */}
+        <img
+          src="/assets/img/head-crown.svg"
+          alt="Crown Creatives Crown"
+          className="cc-header-crown"
+        />
+
+        {/* TITLE */}
         <h1 className="cc-header-title">Crown Creatives</h1>
+
+        {/* TAGLINE */}
         <p className="cc-header-tagline">
           Artistry • Resilience • Imagination
         </p>
 
+        {/* NAVIGATION */}
         <nav className="cc-header-nav">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#projects">Projects</a>
-          <a href="#videos">Videos</a>
-          <a href="#podcasts">Podcasts</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
+          <a href="/">HOME</a>
+          <a href="/about/">ABOUT</a>
+          <a href="/gallery/">GALLERY</a>
+          <a href="/projects/">PROJECTS</a>
+          <a href="/videos/">VIDEOS</a>
+          <a href="/podcasts/">PODCASTS</a>
+          <a href="/blog/">BLOG</a>
+          <a href="/contact/">CONTACT</a>
         </nav>
       </div>
 
-      {/* RIGHT: FUTURE TOGGLES / STATUS */}
+      {/* RIGHT: THEME TOGGLE (RESTORED) */}
       <div className="cc-header-right">
-        {/* reserved for theme toggle / status */}
+        <button
+          id="themeToggle"
+          className="cc-toggle"
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+        >
+          <img
+            src="/assets/icons/sun-moon-magic.svg"
+            alt="Theme Toggle"
+            className="cc-header-icon"
+          />
+        </button>
       </div>
+
     </header>
   );
 }
