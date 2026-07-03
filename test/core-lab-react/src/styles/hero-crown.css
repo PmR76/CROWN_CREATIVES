@@ -1,20 +1,18 @@
 /* ============================================================
-   HERO CROWN — CORE-LAB REACT VERSION (FINAL CLEAN)
+   HERO CROWN — SHARED VERSION
 ============================================================ */
 
-/* Crown container — centered between header + cards */
 #hero-crown-container {
   position: absolute;
-  top: 60px;                 /* sits under header */
+  top: 60px;                 /* under header, above cards */
   left: 50%;
   transform: translateX(-50%);
-  width: 360px;              /* 20% larger */
+  width: 360px;
   height: 360px;
   pointer-events: none;
-  z-index: 1500;             /* above cards, below header */
+  z-index: 1500;             /* below header, above cards/gallery */
 }
 
-/* Crown images */
 .hero-crown {
   position: absolute;
   width: 100%;
@@ -26,15 +24,12 @@
   filter: drop-shadow(0 0 20px var(--crown-glow-color));
 }
 
-/* Default visibility */
 #hero-crown-day { opacity: 1; }
 #hero-crown-night { opacity: 0; }
 
-/* Theme switching */
 body[data-theme="dark"] #hero-crown-day { opacity: 0; }
 body[data-theme="dark"] #hero-crown-night { opacity: 1; }
 
-/* Float animation */
 .hero-crown.float {
   animation: crownFloat 8s ease-in-out infinite;
 }
@@ -45,7 +40,6 @@ body[data-theme="dark"] #hero-crown-night { opacity: 1; }
   100% { transform: translateY(0px); }
 }
 
-/* Day shimmer */
 body:not([data-theme="dark"]) #hero-crown-container .hero-crown {
   filter:
     drop-shadow(0 0 12px rgba(255, 220, 150, 0.6))
@@ -60,7 +54,6 @@ body:not([data-theme="dark"]) #hero-crown-container .hero-crown {
   100% { opacity: 1; }
 }
 
-/* Night pulse */
 body[data-theme="dark"] #hero-crown-container .hero-crown {
   filter:
     drop-shadow(0 0 14px rgba(120, 200, 255, 0.9))

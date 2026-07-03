@@ -5,6 +5,7 @@ import Background3D from "./components/Background3D";
 import ThemePanel from "./components/ThemePanel";
 import useThemeEngine from "./hooks/useThemeEngine";
 import HeroCrown from "./components/HeroCrown";
+import HeroGallery from "./components/HeroGallery";
 import Cards from "./components/Cards";
 import Ticker from "./components/Ticker";
 import Footer from "./components/Footer";
@@ -13,16 +14,14 @@ import CorePanel from "./components/CorePanel";
 import "./styles/core.css";
 
 export default function App() {
-
-  // Theme engine (day/night switching)
   useThemeEngine();
 
-  // Initial diagnostics (one-time snapshot)
   useEffect(() => {
     console.group("CORE-LAB SNAPSHOT");
     console.log("Header Loaded:", true);
     console.log("Background3D Active:", true);
     console.log("HeroCrown Active:", true);
+    console.log("HeroGallery Active:", true);
     console.log("ThemePanel Active:", true);
     console.log("Cards Loaded:", true);
     console.log("Ticker Running:", true);
@@ -32,7 +31,6 @@ export default function App() {
     console.groupEnd();
   }, []);
 
-  // Periodic ticker + footer snapshot (every 6 seconds)
   useEffect(() => {
     const snapshot = () => {
       const ticker = document.querySelector(".ticker-track");
@@ -59,8 +57,9 @@ export default function App() {
       <Header />
       <Background3D />
 
-      <HeroCrown />     {/* sits between header + cards */}
-      <ThemePanel />    {/* admin panel always accessible */}
+      <HeroCrown />
+      <ThemePanel />
+      <HeroGallery />
 
       <div className="core-layout">
         <Cards />

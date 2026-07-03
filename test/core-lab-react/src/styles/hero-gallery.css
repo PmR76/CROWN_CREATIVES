@@ -1,0 +1,65 @@
+/* ============================================================
+   HERO GALLERY — SHARED VERSION
+============================================================ */
+
+.hero-gallery-lane {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  height: 70vh;
+  max-height: 600px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-gallery-left { left: 2vw; }
+.hero-gallery-right { right: 2vw; }
+
+.hero-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition:
+    opacity 1.8s ease-in-out,
+    transform 10s ease-out,
+    filter 10s ease-out;
+  filter: blur(0px);
+}
+
+.hero-gallery-img.visible {
+  opacity: 1;
+  transform: translateY(-10px) scale(1.02);
+  filter: blur(0.5px);
+}
+
+.hero-gallery-glow-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero-gallery-glow-left,
+.hero-gallery-glow-right {
+  width: 260px;
+  height: 100vh;
+  opacity: 0.25;
+  filter: blur(40px);
+  transition: background-color 0.6s ease, opacity 0.6s ease;
+}
+
+.hero-gallery-glow-left {
+  background: rgba(120, 200, 255, 0.4);
+}
+
+.hero-gallery-glow-right {
+  background: rgba(255, 210, 150, 0.4);
+}
