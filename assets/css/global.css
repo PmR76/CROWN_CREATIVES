@@ -190,3 +190,13 @@ body.fade-header main {
 .theme-toggle {
   display: none !important;
 }
+/* LEGACY HERO GALLERY — DISABLED
+.hero-gallery { ... }
+.gallery-lane { ... }
+.lane-left { ... }
+.lane-right { ... }
+.gallery-lane img { ... }
+@keyframes galleryScroll { ... }
+@media (max-width: 1200px) { ... }
+@media (max-width: 900px) { ... }
+*/
