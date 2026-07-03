@@ -1,22 +1,70 @@
-import { useEffect, useState } from "react";
+// ============================================================
+// useThemeEngine — Crown Creatives Unified Theme Hook
+// React + Global ThemeEngine + Crown Transition
+// ============================================================
+
+import { useEffect, useState, useCallback } from "react";
 
 export default function useThemeEngine() {
-  const [theme, setTheme] = useState("light");
+  // Load saved theme or default to "day"
+  const [theme, setTheme] = useState(
+    localStorage.getItem("cc-theme") || "day"
+  );
 
-  useEffect(() => {
-    document.body.dataset.theme = theme;
-    window.dispatchEvent(new CustomEvent("theme-changed", { detail: theme }));
-  }, [theme]);
+  // Apply theme to <body> + crown transition
+  const applyTheme = useCallback(
+    (nextTheme) => {
+      setTheme(nextTheme);
+      document.body.dataset.theme = nextTheme;
+      localStorage.setItem("cc-theme", nextTheme);
 
+      // Broadcast unified event
+      window.dispatchEvent(
+        new CustomEvent("theme-changed", { detail: nextTheme })
+      );
+
+      // Crown fade transition
+      const dayCrown = document.getElementById("hero-crown-day");
+      const nightCrown = document.getElementById("hero-crown-night");
+
+      if (dayCrown && nightCrown) {
+        if (nextTheme === "day") {
+          dayCrown.classList.add("visible");
+          nightCrown.classList.remove("visible");
+        } else {
+          dayCrown.classList.remove("visible");
+          nightCrown.classList.add("visible");
+        }
+      }
+    },
+    []
+  );
+
+  // Reactively apply theme whenever state changes
   useEffect(() => {
-    const handler = e => {
+    applyTheme(theme);
+  }, [theme, applyTheme]);
+
+  // Listen for external theme-set events (lab, header, etc.)
+  useEffect(() => {
+    const handler = (e) => {
       const next = e.detail;
-      setTheme(next);
+      applyTheme(next);
     };
 
     window.addEventListener("theme-set", handler);
     return () => window.removeEventListener("theme-set", handler);
-  }, []);
+  }, [applyTheme]);
 
-  return { theme, setTheme };
+  // Toggle theme (day ↔ night)
+  const toggleTheme = useCallback(() => {
+    const next = theme === "day" ? "night" : "day";
+    applyTheme(next);
+  }, [theme, applyTheme]);
+
+  return {
+    theme,
+    setTheme: applyTheme,
+    toggleTheme,
+  };
 }
