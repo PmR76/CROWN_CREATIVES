@@ -1,14 +1,14 @@
 // ============================================================
 // Header.jsx — Crown Creatives Cinematic Header (FULL MERGED)
-// Restores head-crown.svg + theme toggle + sound toggle
-// Corrects broken icon paths
+// Sound toggle + Theme toggle + Crown transition
 // ============================================================
 
 import React from "react";
 import "../styles/header.css";
 import { useSoundEngine } from "../hooks/useSoundEngine";
+import { themeEngine } from "../theme/ThemeEngine";
 
-export default function Header({ toggleTheme }) {
+export default function Header() {
   const { isMuted, toggleSound } = useSoundEngine("default");
 
   return (
@@ -20,36 +20,26 @@ export default function Header({ toggleTheme }) {
           id="soundToggle"
           className="cc-toggle"
           onClick={toggleSound}
-          aria-pressed={!isMuted}
-          aria-label="Toggle sound"
         >
-          <img
-            src="/assets/icons/music.png"
-            alt="Sound Toggle"
-            className="cc-header-icon"
-          />
+          <img src="/assets/icons/music.png" alt="Sound Toggle" />
         </button>
       </div>
 
       {/* CENTER: CROWN + TITLE + TAGLINE + NAV */}
       <div className="cc-header-center">
 
-        {/* HEADER CROWN (FIXED PATH) */}
+        {/* HEADER CROWN */}
         <img
           src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
           className="cc-header-crown"
         />
 
-        {/* TITLE */}
         <h1 className="cc-header-title">Crown Creatives</h1>
-
-        {/* TAGLINE */}
         <p className="cc-header-tagline">
           Artistry • Resilience • Imagination
         </p>
 
-        {/* NAVIGATION */}
         <nav className="cc-header-nav">
           <a href="/">HOME</a>
           <a href="/about/">ABOUT</a>
@@ -62,19 +52,14 @@ export default function Header({ toggleTheme }) {
         </nav>
       </div>
 
-      {/* RIGHT: THEME TOGGLE (FIXED PATH + WORKING) */}
+      {/* RIGHT: THEME TOGGLE */}
       <div className="cc-header-right">
         <button
           id="themeToggle"
           className="cc-toggle"
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
+          onClick={() => themeEngine.toggle()}
         >
-          <img
-            src="/assets/icons/sun-moon.png"
-            alt="Theme Toggle"
-            className="cc-header-icon"
-          />
+          <img src="/assets/icons/sun-moon.png" alt="Theme Toggle" />
         </button>
       </div>
 
