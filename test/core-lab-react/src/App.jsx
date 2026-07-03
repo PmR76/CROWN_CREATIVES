@@ -4,8 +4,10 @@ import Header from "./components/Header";
 import Background3D from "./components/Background3D";
 import ThemePanel from "./components/ThemePanel";
 import useThemeEngine from "./hooks/useThemeEngine";
+
 import HeroCrown from "./components/HeroCrown";
 import HeroGallery from "./components/HeroGallery";
+
 import Cards from "./components/Cards";
 import Ticker from "./components/Ticker";
 import Footer from "./components/Footer";
@@ -16,6 +18,7 @@ import "./styles/core.css";
 export default function App() {
   useThemeEngine();
 
+  // Initial diagnostics
   useEffect(() => {
     console.group("CORE-LAB SNAPSHOT");
     console.log("Header Loaded:", true);
@@ -31,6 +34,7 @@ export default function App() {
     console.groupEnd();
   }, []);
 
+  // Periodic snapshot (no spam)
   useEffect(() => {
     const snapshot = () => {
       const ticker = document.querySelector(".ticker-track");
