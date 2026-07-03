@@ -1,4 +1,11 @@
 /* Crown Creatives Cinematic Glass Header */
+/* FORCE HEADER + CONTENTS UP BY 250PX */
+header,
+.site-header,
+.site-header-inner,
+#header-container {
+  transform: translateY(-250px);
+}
 
 .cc-header {
   width: 95%;

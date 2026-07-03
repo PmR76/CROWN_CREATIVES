@@ -15,16 +15,15 @@
 }
 
 /* Crown images */
-.hero-crown {
+#hero-crown-container {
   position: absolute;
-  width: 100%;
-  height: auto;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out, transform 0.2s ease;
+  top: -40px;                /* raised by 250px + crown offset */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;              /* 20% larger */
+  height: 360px;
   pointer-events: none;
-  filter: drop-shadow(0 0 20px var(--crown-glow-color));
+  z-index: 1500;             /* above cards, below header */
 }
 
 /* Default visibility */

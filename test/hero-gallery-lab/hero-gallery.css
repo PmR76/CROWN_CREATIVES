@@ -186,13 +186,13 @@
 
 #hero-crown-container {
   position: absolute;
-  top: 20px;                 /* sits under header */
+  top: -40px;                /* match React crown position */
   left: 50%;
   transform: translateX(-50%);
-  width: 360px;              /* 20% larger */
-  height: 360px;             /* 20% larger */
+  width: 360px;
+  height: 360px;
   pointer-events: none;
-  z-index: 1500;             /* ABOVE cards (1000), BELOW header (2000) */
+  z-index: 999;              /* above gallery lanes */
 }
 
 .hero-crown {
