@@ -1,34 +1,63 @@
 /* ============================================================
-   HERO CROWN — SHARED VERSION
+   HERO CROWN — FINAL UNIFIED VERSION
+   Stable • Cinematic • Theme‑Reactive
 ============================================================ */
 
+/* ------------------------------------------------------------
+   1. HERO CROWN CONTAINER — Sits under header, above gallery
+------------------------------------------------------------ */
+
 #hero-crown-container {
-  position: absolute;
-  top: 60px;                 /* under header, above cards */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 360px;
-  height: 360px;
+  position: relative;          /* stays in normal layout flow */
+  width: 100%;
+  margin-top: 260px;           /* spacing BELOW header */
+  margin-bottom: 40px;         /* spacing ABOVE gallery */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   pointer-events: none;
-  z-index: 1500;             /* below header, above cards/gallery */
+  z-index: 1500;               /* above gallery, below header */
 }
+
+/* ------------------------------------------------------------
+   2. HERO CROWN IMAGES — Day/Night crowns
+------------------------------------------------------------ */
 
 .hero-crown {
-  position: absolute;
-  width: 100%;
+  width: 260px;
   height: auto;
-  top: 0;
-  left: 0;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 1s ease-in-out;
   filter: drop-shadow(0 0 20px var(--crown-glow-color));
+  pointer-events: none;
 }
 
-#hero-crown-day { opacity: 1; }
-#hero-crown-night { opacity: 0; }
+.hero-crown.visible {
+  opacity: 1;
+}
 
-body[data-theme="dark"] #hero-crown-day { opacity: 0; }
-body[data-theme="dark"] #hero-crown-night { opacity: 1; }
+/* Default day crown visible */
+#hero-crown-day {
+  opacity: 1;
+}
+
+/* Default night crown hidden */
+#hero-crown-night {
+  opacity: 0;
+}
+
+/* Theme switching */
+body[data-theme="dark"] #hero-crown-day {
+  opacity: 0;
+}
+
+body[data-theme="dark"] #hero-crown-night {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   3. FLOAT ANIMATION — Subtle cinematic movement
+------------------------------------------------------------ */
 
 .hero-crown.float {
   animation: crownFloat 8s ease-in-out infinite;
@@ -39,6 +68,10 @@ body[data-theme="dark"] #hero-crown-night { opacity: 1; }
   50%  { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
 }
+
+/* ------------------------------------------------------------
+   4. DAY MODE GLOW + SHIMMER
+------------------------------------------------------------ */
 
 body:not([data-theme="dark"]) #hero-crown-container .hero-crown {
   filter:
@@ -53,6 +86,10 @@ body:not([data-theme="dark"]) #hero-crown-container .hero-crown {
   50%  { opacity: 0.92; }
   100% { opacity: 1; }
 }
+
+/* ------------------------------------------------------------
+   5. NIGHT MODE GLOW + PULSE
+------------------------------------------------------------ */
 
 body[data-theme="dark"] #hero-crown-container .hero-crown {
   filter:
