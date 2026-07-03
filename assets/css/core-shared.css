@@ -3,7 +3,9 @@
    Stable • Modular • Conflict-Free
 ============================================================ */
 
-/* Base document */
+/* ------------------------------------------------------------
+   1. BASE DOCUMENT
+------------------------------------------------------------ */
 html, body {
   margin: 0;
   padding: 0;
@@ -12,68 +14,35 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Header layout */
-.cc-header-inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+/* ------------------------------------------------------------
+   2. REMOVE LEGACY HEADER SYSTEM (React header replaces this)
+------------------------------------------------------------ */
+/* Removed:
+   .cc-header-inner
+   .cc-logo
+   .cc-nav
+   .cc-nav a
+   body.dark-mode .cc-nav a
+   .cc-header-icon
+   .cc-header-icon:hover
+   #cc-header-right
+*/
 
-.cc-logo {
-  display: block;
-  margin: 0 auto;
-}
-
-/* Navigation */
-.cc-nav {
-  display: flex;
-  gap: 20px;
-}
-
-.cc-nav a {
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.3s ease;
-}
-
-body.dark-mode .cc-nav a {
-  color: rgba(255,255,255,0.85);
-}
-
-/* Header icons */
-.cc-header-icon {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-.cc-header-icon:hover {
-  opacity: 0.7;
-}
-
-/* Header right block */
-#cc-header-right {
-  position: absolute;
-  top: 18px;
-  right: 25px;
-  z-index: 999;
-  pointer-events: auto;
-}
-
-/* Page content wrapper */
+/* ------------------------------------------------------------
+   3. PAGE CONTENT WRAPPER
+------------------------------------------------------------ */
 #cc-page-content {
   position: relative;
   z-index: 5;
   overflow: visible; /* Prevent clipping of hero crown + galleries */
 }
 
-/* REMOVE THIS — handled in home.css */
-/*
-.night-nebula {
-  opacity: 0.6;
-  transition: opacity 1.5s ease;
-}
-*/
-/* GR3 removed !important on root */
+/* ------------------------------------------------------------
+   4. LEGACY NIGHT NEBULA — REMOVED
+------------------------------------------------------------ */
+/* .night-nebula { opacity: 0.6; transition: opacity 1.5s ease; } */
+
+/* ------------------------------------------------------------
+   5. GR3 ROOT CLEANUP
+------------------------------------------------------------ */
+/* No !important on root */
