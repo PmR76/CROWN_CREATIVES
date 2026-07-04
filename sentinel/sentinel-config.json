@@ -1,0 +1,20 @@
+{
+  "scan": [
+    "assets",
+    "test/core-lab-react/src",
+    "master"
+  ],
+  "ignore": [
+    "node_modules",
+    "dist",
+    "archive.disabled",
+    "backups",
+    "logs"
+  ],
+  "tags": {
+    "green": "healthy",
+    "amber": "weak",
+    "red": "broken",
+    "grey": "unused"
+  }
+}
