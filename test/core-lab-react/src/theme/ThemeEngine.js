@@ -1,6 +1,6 @@
 // ============================================================
-// ThemeEngine — Crown Creatives Global Theme Controller
-// Works with useThemeEngine + Header.jsx + hero-crown
+// ThemeEngine — Crown Creatives Unified Day/Night Engine
+// Controls background theme + crown fade + global theme state
 // ============================================================
 
 class ThemeEngine {
