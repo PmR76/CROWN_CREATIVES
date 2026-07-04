@@ -44,22 +44,37 @@
    SWATCHES — FIXED
 ------------------------------------------------------------ */
 .theme-swatch {
+  display: block;                 /* FIX: ensures swatch occupies space */
   width: 100%;
+  min-height: 40px;               /* FIX: prevents collapse */
   height: 40px;
   border-radius: 6px;
   cursor: pointer;
   border: 2px solid rgba(255,255,255,0.2);
-  transition: transform 0.2s ease, border-color 0.2s ease;
 
-  /* REQUIRED FOR GRADIENTS */
-  background-size: cover;
+  background-size: cover;         /* FIX: ensures gradient fills */
   background-position: center;
   background-repeat: no-repeat;
+  background-clip: padding-box;   /* FIX: prevents bleed */
 
-  /* ENSURE SWATCHES ARE ABOVE PANEL BACKGROUND */
-  position: relative;
-  z-index: 2;
+  position: relative;             /* FIX: ensures z-index works */
+  z-index: 2;                     /* FIX: prevents overlay blocking */
+
+  overflow: hidden;               /* FIX: prevents pseudo-element overlap */
+
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
+
+.theme-swatch:hover {
+  transform: scale(1.05);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.theme-swatch.selected {
+  border-color: #fff;
+  transform: scale(1.08);
+}
+
 
 /* ------------------------------------------------------------
    GRID
