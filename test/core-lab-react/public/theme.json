@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "updated": "2026-07-03",
   "themes": {
-    "light": {
+    "day": {
       "name": "Day",
       "background": "#f7e9ff",
       "text": "#222",
@@ -17,7 +17,7 @@
         "rgba(255, 210, 150, 0.4)"
       ]
     },
-    "dark": {
+    "night": {
       "name": "Night",
       "background": "#0a0a14",
       "text": "#e8f0ff",
