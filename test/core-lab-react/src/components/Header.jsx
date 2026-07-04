@@ -1,6 +1,5 @@
 // ============================================================
-// Header.jsx — Crown Creatives Cinematic Header (FINAL MERGED)
-// Sound toggle + Theme toggle + Day/Night Crown Transition
+// Header.jsx — Crown Creatives Cinematic Header (FINAL FIXED)
 // ============================================================
 
 import React from "react";
@@ -9,7 +8,6 @@ import { useSoundEngine } from "../hooks/useSoundEngine";
 import { themeEngine } from "../theme/ThemeEngine";
 
 export default function Header() {
-  // unified sound hook (no "default" argument)
   const { isMuted, toggleSound } = useSoundEngine();
 
   return (
@@ -17,43 +15,27 @@ export default function Header() {
 
       {/* LEFT: SOUND TOGGLE */}
       <div className="cc-header-left">
-        <button
-          id="soundToggle"
-          className="cc-toggle"
-          onClick={toggleSound}
-        >
+        <button id="soundToggle" className="cc-toggle" onClick={toggleSound}>
           <img src="/assets/icons/music.png" alt="Sound Toggle" />
         </button>
       </div>
 
-      {/* CENTER: CROWN + TITLE + TAGLINE + NAV */}
+      {/* CENTER: HEADER CROWN + TITLE + TAGLINE + NAV */}
       <div className="cc-header-center">
 
-        {/* DAY CROWN */}
+        {/* FIXED HEADER CROWN */}
         <img
-          id="hero-crown-day"
-          src="/assets/icons/day-crown.svg"
-          alt="Day Crown"
-          className="cc-header-crown visible"
-        />
-
-        {/* NIGHT CROWN */}
-        <img
-          id="hero-crown-night"
-          src="/assets/icons/night-crown.svg"
-          alt="Night Crown"
+          src="/assets/icons/head-crown.svg"
+          alt="Crown Creatives Crown"
           className="cc-header-crown"
         />
 
-        {/* TITLE */}
         <h1 className="cc-header-title">Crown Creatives</h1>
 
-        {/* TAGLINE */}
         <p className="cc-header-tagline">
           Artistry • Resilience • Imagination
         </p>
 
-        {/* NAVIGATION */}
         <nav className="cc-header-nav">
           <a href="/">HOME</a>
           <a href="/about/">ABOUT</a>
