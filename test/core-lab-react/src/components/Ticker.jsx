@@ -1,7 +1,9 @@
 import { useEffect } from "react";
-import "../styles/core.css";
+import "../styles/ticker.css";
 
 export default function Ticker() {
+  const message = "CREATIVITY IS COURAGE • IMAGINATION IS POWER • ART IS FREEDOM •";
+
   useEffect(() => {
     const track = document.querySelector('.ticker-track');
     if (!track) return;
@@ -22,13 +24,17 @@ export default function Ticker() {
 
   return (
     <div className="ticker">
-    <div className="ticker-track">
-  <span>CREATIVITY IS COURAGE • IMAGINATION IS POWER • ART IS FREEDOM •</span>
-  <span>CREATIVITY IS COURAGE • IMAGINATION IS POWER • ART IS FREEDOM •</span>
-  <span>CREATIVITY IS COURAGE • IMAGINATION IS POWER • ART IS FREEDOM •</span>
+      <div className="ticker-track">
+        {/* Track A */}
+        <span>{message}</span>
+        <span>{message}</span>
+        <span>{message}</span>
 
-</div>
-
+        {/* Track B (duplicate for seamless loop) */}
+        <span>{message}</span>
+        <span>{message}</span>
+        <span>{message}</span>
+      </div>
     </div>
   );
 }
