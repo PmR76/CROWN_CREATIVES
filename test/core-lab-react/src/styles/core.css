@@ -145,3 +145,26 @@ iframe {
 .ticker-track {
   animation: tickerMove var(--ticker-speed) linear infinite !important;
 }
+/* ============================================================
+   TICKER — FORCE RESTORE (IMMUNE TO DAY/NIGHT)
+============================================================ */
+
+.ticker-track {
+  font-family: 'Cinzel Decorative', serif !important;
+  animation: tickerMove var(--ticker-speed) linear infinite !important;
+  color: #fff !important;
+}
+
+.ticker-track span {
+  font-family: 'Cinzel Decorative', serif !important;
+  color: #fff !important;
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.8),
+    0 0 12px rgba(0,150,255,0.7),
+    0 0 22px rgba(0,150,255,0.6),
+    0 0 38px rgba(0,150,255,0.5) !important;
+}
+
+:root {
+  --ticker-speed: 18s !important;
+}
