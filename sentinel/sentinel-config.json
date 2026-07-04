@@ -2,7 +2,8 @@
   "scan": [
     "assets",
     "test/core-lab-react/src",
-    "master"
+    "master",
+    "labs"
   ],
   "ignore": [
     "node_modules",
@@ -17,6 +18,37 @@
     "test/core-lab-react/src/components",
     "test/core-lab-react/src/styles"
   ],
+  "ui": {
+    "coreReact": [
+      "test/core-lab-react/src/components",
+      "test/core-lab-react/src/styles",
+      "test/core-lab-react/src/shared"
+    ],
+    "labs": [
+      "labs"
+    ],
+    "legacy": [
+      "master",
+      "assets/css",
+      "assets/js.disabled",
+      "assets/modules.disabled"
+    ],
+    "componentNames": [
+      "Header",
+      "Footer",
+      "Ticker",
+      "HeroGallery",
+      "HeroCrown",
+      "CorePanel"
+    ],
+    "cssNames": [
+      "header.css",
+      "footer.css",
+      "hero-gallery.css",
+      "hero-crown.css",
+      "ticker.css"
+    ]
+  },
   "tags": {
     "green": "healthy",
     "amber": "weak",
