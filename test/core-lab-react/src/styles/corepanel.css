@@ -30,3 +30,47 @@
   background: rgba(255,255,255,0.25);
   transform: scale(1.05);
 }
+.core-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 260px;
+  background: rgba(10,10,20,0.92);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 14px;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+  z-index: 999999;
+}
+
+.core-panel-header {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.core-panel-section {
+  margin-bottom: 12px;
+}
+
+.core-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 0;
+}
+
+.ok {
+  color: #7CFC00;
+}
+
+.fail {
+  color: #FF6347;
+}
+
+.error-list {
+  margin: 6px 0 0 0;
+  padding-left: 14px;
+  font-size: 12px;
+  color: #ff8080;
+}
