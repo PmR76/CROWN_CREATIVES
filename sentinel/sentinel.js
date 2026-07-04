@@ -9,7 +9,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ------------------------------------------------------------
-// PATHS (bulletproof, no nested sentinel/sentinel)
+// PROJECT ROOT (one folder above /sentinel)
+// ------------------------------------------------------------
+const PROJECT_ROOT = path.join(__dirname, "..");
+
+// ------------------------------------------------------------
+// PATHS (bulletproof)
 // ------------------------------------------------------------
 const config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "sentinel-config.json"), "utf8")
@@ -22,10 +27,14 @@ const healthPath = path.join(__dirname, "sentinel-health.json");
 // ------------------------------------------------------------
 // SCAN FOLDERS
 // ------------------------------------------------------------
-function scanFolder(folder, tree = [], base = "") {
-  const full = path.join(base, folder);
-  const items = fs.readdirSync(full);
+function scanFolder(folder, tree = []) {
+  const full = path.join(PROJECT_ROOT, folder);
 
+  if (!fs.existsSync(full)) {
+    return { folder, items: [`❌ Missing folder: ${folder}`] };
+  }
+
+  const items = fs.readdirSync(full);
   const branch = { folder, items: [] };
 
   for (const item of items) {
@@ -34,7 +43,7 @@ function scanFolder(folder, tree = [], base = "") {
 
     if (stat.isDirectory()) {
       if (!config.ignore.includes(item)) {
-        branch.items.push(scanFolder(item, [], full));
+        branch.items.push(scanFolder(path.join(folder, item)));
       }
     } else {
       branch.items.push(item);
@@ -90,6 +99,9 @@ function computeHealth(tree) {
   function walk(node) {
     for (const item of node.items) {
       if (typeof item === "string") {
+        if (item.startsWith("❌ Missing folder")) {
+          missing.push(item);
+        }
         if (seen.has(item)) duplicates.push(item);
         seen.add(item);
       } else {
@@ -99,12 +111,6 @@ function computeHealth(tree) {
   }
 
   for (const root of tree) walk(root);
-
-  for (const required of config.required) {
-    if (!fs.existsSync(required)) {
-      missing.push(required);
-    }
-  }
 
   const health = {
     timestamp: new Date().toISOString(),
