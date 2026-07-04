@@ -1,11 +1,13 @@
-[
-  "34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3",
-  "alec_koff-carnaval-484622.mp3",
-  "bransboynd-retro-lounge-389644.mp3",
-  "denys_brodovskyi-sandbreaker-379630.mp3",
-  "energysound-powerful-percussion-513717.mp3",
-  "finley-chill-sunset-chill-nature-529994.mp3",
-  "ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3",
-  "kontraa-water-afro-pop-music-445661.mp3",
-  "rockot-experimental-cinematic-hip-hop-315904.mp3"
-]
+{
+  "tracks": {
+    "track1": "34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3",
+    "track2": "alec_koff-carnaval-484622.mp3",
+    "track3": "bransboynd-retro-lounge-389644.mp3",
+    "track4": "denys_brodovskyi-sandbreaker-379630.mp3",
+    "track5": "energysound-powerful-percussion-513717.mp3",
+    "track6": "finley-chill-sunset-chill-nature-529994.mp3",
+    "track7": "ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3",
+    "track8": "kontraa-water-afro-pop-music-445661.mp3",
+    "track9": "rockot-experimental-cinematic-hip-hop-315904.mp3"
+  }
+}
