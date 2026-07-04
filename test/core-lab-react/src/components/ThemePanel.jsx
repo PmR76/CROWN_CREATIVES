@@ -1,165 +1,162 @@
 import { useEffect, useState } from "react";
-import "../styles/theme-panel.css";
-import { themeEngine } from "../theme/ThemeEngine";
+import "../styles/corepanel.css";
 
-export default function ThemePanel() {
-  const dayThemes = [
-    "sunrise", "warm-daylight", "soft-sky", "sunset-glow",
-    "ocean-mist", "royal-ember", "solar-bloom", "crown-platinum",
-    "golden-horizon", "peach-bloom", "skyline-blue", "honey-aura",
-    "daybreak-rose", "citrus-warmth", "azure-cloud", "opal-morning"
-  ];
+export default function CorePanel() {
+  const [status, setStatus] = useState({
+    header: false,
+    footer: false,
+    ticker: false,
+    heroCrown: false,
+    heroGallery: false,
+    cards: false,
+    fps: 0,
+    errors: []
+  });
 
-  const nightThemes = [
-    "midnight-indigo", "royal-night", "aurora", "deep-space",
-    "deep-velvet", "cosmic-royal", "nebula-drift", "crown-nocturne",
-    "obsidian-dusk", "violet-comet", "galaxy-fade", "lunar-ice",
-    "nocturnal-ember", "shadow-royal", "midnight-teal", "stellar-drift"
-  ];
+  // ------------------------------------------------------------
+  // Corrected DOM detection
+  // ------------------------------------------------------------
+  function detectDOM() {
+    setStatus(prev => ({
+      ...prev,
 
-  const [selectedDay, setSelectedDay] = useState(null);
-  const [selectedNight, setSelectedNight] = useState(null);
+      header: !!document.querySelector("header, .cc-header, .header"),
 
+      footer: !!document.querySelector("footer, .cc-footer, .footer"),
+
+      ticker: !!document.querySelector(".ticker, .ticker-container, .ticker-wrapper"),
+
+      heroCrown: !!document.querySelector(
+        ".hero-crown, .hero-crown-section, .hero-crown-wrapper"
+      ),
+
+      heroGallery: !!document.querySelector(
+        ".hero-gallery, .hero-gallery-section, .hero-gallery-wrapper, .gallery-lane"
+      ),
+
+      cards: !!document.querySelector(
+        ".cards, .cards-container, .card-grid, .card-container"
+      )
+    }));
+  }
+
+  // Poll DOM every second
   useEffect(() => {
-    const panel = document.getElementById("themePanel");
+    detectDOM();
+    const interval = setInterval(detectDOM, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
-    function togglePanel(e) {
-      if (!window.__IS_ADMIN__) return;
-      if (e.key === "A" && e.shiftKey) {
-        panel.classList.toggle("open");
+  // ------------------------------------------------------------
+  // Correct FPS hook
+  // ------------------------------------------------------------
+  useEffect(() => {
+    let last = performance.now();
+    let frames = 0;
+
+    function measure(now) {
+      frames++;
+      if (now - last >= 1000) {
+        setStatus(prev => ({ ...prev, fps: frames }));
+        frames = 0;
+        last = now;
       }
+      requestAnimationFrame(measure);
     }
 
-    window.addEventListener("keydown", togglePanel);
-    return () => window.removeEventListener("keydown", togglePanel);
+    requestAnimationFrame(measure);
   }, []);
 
+  // ------------------------------------------------------------
+  // Error capture
+  // ------------------------------------------------------------
   useEffect(() => {
-    const page = window.__PAGE__ || "default";
-    setSelectedDay(localStorage.getItem(`${page}-dayThemeKey`));
-    setSelectedNight(localStorage.getItem(`${page}-nightThemeKey`));
-  }, []);
-
-  useEffect(() => {
-    themeEngine.loadPageTheme();
-  }, []);
-
-  function applyTheme(role, key) {
-    themeEngine.setBackgroundTheme(role, key);
-    const page = window.__PAGE__ || "default";
-
-    if (role === "day") {
-      setSelectedDay(key);
-      localStorage.setItem(`${page}-dayThemeKey`, key);
-    } else {
-      setSelectedNight(key);
-      localStorage.setItem(`${page}-nightThemeKey`, key);
+    function onError(e) {
+      setStatus(prev => ({
+        ...prev,
+        errors: [...prev.errors, e.message]
+      }));
     }
-  }
 
-  function randomDay() {
-    themeEngine.setRandomTheme("day", dayThemes);
-    const page = window.__PAGE__ || "default";
-    const randomKey = dayThemes[Math.floor(Math.random() * dayThemes.length)];
-    setSelectedDay(randomKey);
-    localStorage.setItem(`${page}-dayThemeKey`, randomKey);
-  }
+    window.addEventListener("error", onError);
+    return () => window.removeEventListener("error", onError);
+  }, []);
 
-  function randomNight() {
-    themeEngine.setRandomTheme("night", nightThemes);
-    const page = window.__PAGE__ || "default";
-    const randomKey = nightThemes[Math.floor(Math.random() * nightThemes.length)];
-    setSelectedNight(randomKey);
-    localStorage.setItem(`${page}-nightThemeKey`, randomKey);
-  }
+  // ------------------------------------------------------------
+  // Draggable panel
+  // ------------------------------------------------------------
+  useEffect(() => {
+    const panel = document.querySelector(".core-panel");
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    let initialLeft = 0;
+    let initialTop = 0;
 
-useEffect(() => {
-  const panel = document.getElementById("themePanel");
-  const header = panel.querySelector(".theme-panel-header");
+    function onMouseDown(e) {
+      dragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
 
-  let isDragging = false;
-  let startX = 0;
-  let startY = 0;
-  let initialLeft = 0;
-  let initialTop = 0;
+      const rect = panel.getBoundingClientRect();
+      initialLeft = rect.left;
+      initialTop = rect.top;
 
-  function onMouseDown(e) {
-    isDragging = true;
-    startX = e.clientX;
-    startY = e.clientY;
+      document.body.style.userSelect = "none";
+    }
 
-    const rect = panel.getBoundingClientRect();
-    initialLeft = rect.left;
-    initialTop = rect.top;
+    function onMouseMove(e) {
+      if (!dragging) return;
 
-    document.body.style.userSelect = "none";
-  }
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
 
-  function onMouseMove(e) {
-    if (!isDragging) return;
+      panel.style.left = `${initialLeft + dx}px`;
+      panel.style.top = `${initialTop + dy}px`;
+    }
 
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
+    function onMouseUp() {
+      dragging = false;
+      document.body.style.userSelect = "";
+    }
 
-    panel.style.left = `${initialLeft + dx}px`;
-    panel.style.top = `${initialTop + dy}px`;
-  }
+    panel.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
 
-  function onMouseUp() {
-    isDragging = false;
-    document.body.style.userSelect = "";
-  }
-
-  header.addEventListener("mousedown", onMouseDown);
-  window.addEventListener("mousemove", onMouseMove);
-  window.addEventListener("mouseup", onMouseUp);
-
-  return () => {
-    header.removeEventListener("mousedown", onMouseDown);
-    window.removeEventListener("mousemove", onMouseMove);
-    window.removeEventListener("mouseup", onMouseUp);
-  };
-}, []);
+    return () => {
+      panel.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+  }, []);
 
   return (
-    <div className="theme-panel" id="themePanel">
-      <div className="theme-panel-header">Theme Panel (Admin — SHIFT + A)</div>
+    <div className="core-panel">
+      <div className="core-panel-header">CORE DIAGNOSTICS</div>
 
-      <div className="theme-panel-section-label">Day Themes</div>
-      <div className="theme-swatch-grid">
-        {dayThemes.map(key => (
-          <div
-            key={key}
-            className={`theme-swatch ${selectedDay === key ? "selected" : ""}`}
-            style={{ background: `var(--grad-${key})` }}
-            onClick={() => applyTheme("day", key)}
-          />
-        ))}
+      <div className="core-panel-section">
+        <div className="core-item">Header: <span className={status.header ? "ok" : "fail"}>{status.header ? "Loaded" : "Missing"}</span></div>
+        <div className="core-item">Footer: <span className={status.footer ? "ok" : "fail"}>{status.footer ? "Loaded" : "Missing"}</span></div>
+        <div className="core-item">Ticker: <span className={status.ticker ? "ok" : "fail"}>{status.ticker ? "Running" : "Missing"}</span></div>
+        <div className="core-item">Hero Crown: <span className={status.heroCrown ? "ok" : "fail"}>{status.heroCrown ? "Active" : "Missing"}</span></div>
+        <div className="core-item">Hero Gallery: <span className={status.heroGallery ? "ok" : "fail"}>{status.heroGallery ? "Active" : "Missing"}</span></div>
+        <div className="core-item">Cards: <span className={status.cards ? "ok" : "fail"}>{status.cards ? "Loaded" : "Missing"}</span></div>
+        <div className="core-item">FPS: <span className="ok">{status.fps}</span></div>
       </div>
 
-      <button className="theme-panel-button" onClick={randomDay}>
-        Random Day Theme
-      </button>
-
-      <div className="theme-panel-section-label">Night Themes</div>
-      <div className="theme-swatch-grid">
-        {nightThemes.map(key => (
-          <div
-            key={key}
-            className={`theme-swatch ${selectedNight === key ? "selected" : ""}`}
-            style={{ background: `var(--grad-${key})` }}
-            onClick={() => applyTheme("night", key)}
-          />
-        ))}
+      <div className="core-panel-section">
+        <div className="core-item">
+          Errors:
+          {status.errors.length === 0 ? (
+            <span className="ok">None</span>
+          ) : (
+            <ul className="error-list">
+              {status.errors.map((e, i) => <li key={i}>{e}</li>)}
+            </ul>
+          )}
+        </div>
       </div>
-
-      <button className="theme-panel-button" onClick={randomNight}>
-        Random Night Theme
-      </button>
-
-      <p className="theme-panel-meta">
-        Admin only — press SHIFT + A to open/close.
-      </p>
     </div>
   );
 }
