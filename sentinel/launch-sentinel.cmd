@@ -1,3 +1,3 @@
 @echo off
-node sentinel/sentinel.js
+node "%~dp0sentinel.js"
 pause
