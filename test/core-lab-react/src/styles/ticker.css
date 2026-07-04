@@ -46,3 +46,6 @@
 .ticker-track {
   white-space: nowrap !important;
 }
+:root {
+  --ticker-speed: 26s;
+}
