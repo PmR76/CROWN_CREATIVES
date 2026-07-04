@@ -1,6 +1,6 @@
 // ============================================================
-// Header.jsx — Crown Creatives Cinematic Header (FULL MERGED)
-// Sound toggle + Theme toggle + Crown transition
+// Header.jsx — Crown Creatives Cinematic Header (FINAL MERGED)
+// Sound toggle + Theme toggle + Day/Night Crown Transition
 // ============================================================
 
 import React from "react";
@@ -9,7 +9,8 @@ import { useSoundEngine } from "../hooks/useSoundEngine";
 import { themeEngine } from "../theme/ThemeEngine";
 
 export default function Header() {
-  const { isMuted, toggleSound } = useSoundEngine("default");
+  // unified sound hook (no "default" argument)
+  const { isMuted, toggleSound } = useSoundEngine();
 
   return (
     <header className="cc-header">
@@ -28,18 +29,31 @@ export default function Header() {
       {/* CENTER: CROWN + TITLE + TAGLINE + NAV */}
       <div className="cc-header-center">
 
-        {/* HEADER CROWN */}
+        {/* DAY CROWN */}
         <img
-          src="/assets/icons/head-crown.svg"
-          alt="Crown Creatives Crown"
+          id="hero-crown-day"
+          src="/assets/icons/day-crown.svg"
+          alt="Day Crown"
+          className="cc-header-crown visible"
+        />
+
+        {/* NIGHT CROWN */}
+        <img
+          id="hero-crown-night"
+          src="/assets/icons/night-crown.svg"
+          alt="Night Crown"
           className="cc-header-crown"
         />
 
+        {/* TITLE */}
         <h1 className="cc-header-title">Crown Creatives</h1>
+
+        {/* TAGLINE */}
         <p className="cc-header-tagline">
           Artistry • Resilience • Imagination
         </p>
 
+        {/* NAVIGATION */}
         <nav className="cc-header-nav">
           <a href="/">HOME</a>
           <a href="/about/">ABOUT</a>
