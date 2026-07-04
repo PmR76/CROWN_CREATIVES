@@ -73,49 +73,53 @@ export default function ThemePanel() {
     localStorage.setItem(`${page}-nightThemeKey`, randomKey);
   }
 
-  // Draggable panel
-  useEffect(() => {
-    const panel = document.getElementById("themePanel");
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-    let initialTop = 0;
-    let initialRight = 0;
+useEffect(() => {
+  const panel = document.getElementById("themePanel");
+  const header = panel.querySelector(".theme-panel-header");
 
-    function onMouseDown(e) {
-      isDragging = true;
-      startX = e.clientX;
-      startY = e.clientY;
-      const rect = panel.getBoundingClientRect();
-      initialTop = rect.top;
-      initialRight = window.innerWidth - rect.right;
-      document.body.style.userSelect = "none";
-    }
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let initialLeft = 0;
+  let initialTop = 0;
 
-    function onMouseMove(e) {
-      if (!isDragging) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-      panel.style.top = `${initialTop + dy}px`;
-      panel.style.right = `${initialRight - dx}px`;
-    }
+  function onMouseDown(e) {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
 
-    function onMouseUp() {
-      isDragging = false;
-      document.body.style.userSelect = "";
-    }
+    const rect = panel.getBoundingClientRect();
+    initialLeft = rect.left;
+    initialTop = rect.top;
 
-    const header = panel.querySelector(".theme-panel-header");
-    header.addEventListener("mousedown", onMouseDown);
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", onMouseUp);
+    document.body.style.userSelect = "none";
+  }
 
-    return () => {
-      header.removeEventListener("mousedown", onMouseDown);
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseup", onMouseUp);
-    };
-  }, []);
+  function onMouseMove(e) {
+    if (!isDragging) return;
+
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    panel.style.left = `${initialLeft + dx}px`;
+    panel.style.top = `${initialTop + dy}px`;
+  }
+
+  function onMouseUp() {
+    isDragging = false;
+    document.body.style.userSelect = "";
+  }
+
+  header.addEventListener("mousedown", onMouseDown);
+  window.addEventListener("mousemove", onMouseMove);
+  window.addEventListener("mouseup", onMouseUp);
+
+  return () => {
+    header.removeEventListener("mousedown", onMouseDown);
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("mouseup", onMouseUp);
+  };
+}, []);
 
   return (
     <div className="theme-panel" id="themePanel">
