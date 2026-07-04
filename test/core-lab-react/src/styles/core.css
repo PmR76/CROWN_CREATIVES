@@ -133,10 +133,15 @@ iframe {
 }
 
 /* (remaining sections unchanged) */
-/* FORCE TICKER SPEED AFTER THEME SWITCH */
+
+/* ============================================================
+   FORCE TICKER ANIMATION (DAY/NIGHT SAFE)
+============================================================ */
+
 :root {
   --ticker-speed: 18s;
 }
+
 .ticker-track {
   animation: tickerMove var(--ticker-speed) linear infinite !important;
 }
