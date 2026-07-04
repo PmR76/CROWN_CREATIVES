@@ -13,29 +13,32 @@ export default function CorePanel() {
     errors: []
   });
 
-function detectDOM() {
-  setStatus(prev => ({
-    ...prev,
+  // ------------------------------------------------------------
+  // DOM Detection
+  // ------------------------------------------------------------
+  function detectDOM() {
+    setStatus(prev => ({
+      ...prev,
 
-    header: !!document.querySelector("header, .cc-header, .header"),
+      header: !!document.querySelector("header, .cc-header, .header"),
 
-    footer: !!document.querySelector("footer, .cc-footer, .footer"),
+      footer: !!document.querySelector("footer, .cc-footer, .footer"),
 
-    ticker: !!document.querySelector(".ticker, .ticker-container, .ticker-wrapper"),
+      ticker: !!document.querySelector(".ticker, .ticker-container, .ticker-wrapper"),
 
-    heroCrown: !!document.querySelector(
-      ".hero-crown, .hero-crown-section, .hero-crown-wrapper"
-    ),
+      heroCrown: !!document.querySelector(
+        ".hero-crown, .hero-crown-section, .hero-crown-wrapper"
+      ),
 
-    heroGallery: !!document.querySelector(
-      ".hero-gallery, .hero-gallery-section, .hero-gallery-wrapper, .gallery-lane"
-    ),
+      heroGallery: !!document.querySelector(
+        ".hero-gallery, .hero-gallery-section, .hero-gallery-wrapper, .gallery-lane"
+      ),
 
-    cards: !!document.querySelector(
-      ".cards, .cards-container, .card-grid, .card-container"
-    )
-  }));
-}
+      cards: !!document.querySelector(
+        ".cards, .cards-container, .card-grid, .card-container"
+      )
+    }));
+  }
 
   useEffect(() => {
     detectDOM();
@@ -43,6 +46,9 @@ function detectDOM() {
     return () => clearInterval(interval);
   }, []);
 
+  // ------------------------------------------------------------
+  // FPS Detection
+  // ------------------------------------------------------------
   useEffect(() => {
     let last = performance.now();
     let frames = 0;
@@ -60,6 +66,9 @@ function detectDOM() {
     requestAnimationFrame(measure);
   }, []);
 
+  // ------------------------------------------------------------
+  // Error Capture
+  // ------------------------------------------------------------
   useEffect(() => {
     function onError(e) {
       setStatus(prev => ({
@@ -72,7 +81,9 @@ function detectDOM() {
     return () => window.removeEventListener("error", onError);
   }, []);
 
-  // Draggable panel
+  // ------------------------------------------------------------
+  // Draggable Panel
+  // ------------------------------------------------------------
   useEffect(() => {
     const panel = document.querySelector(".core-panel");
     let dragging = false;
@@ -119,6 +130,9 @@ function detectDOM() {
     };
   }, []);
 
+  // ------------------------------------------------------------
+  // Render Panel
+  // ------------------------------------------------------------
   return (
     <div className="core-panel">
       <div className="core-panel-header">CORE DIAGNOSTICS</div>
@@ -131,6 +145,11 @@ function detectDOM() {
         <div className="core-item">Hero Gallery: <span className={status.heroGallery ? "ok" : "fail"}>{status.heroGallery ? "Active" : "Missing"}</span></div>
         <div className="core-item">Cards: <span className={status.cards ? "ok" : "fail"}>{status.cards ? "Loaded" : "Missing"}</span></div>
         <div className="core-item">FPS: <span className="ok">{status.fps}</span></div>
+
+        {/* SENTINEL INTEGRATION */}
+        <div className="core-item">
+          Sentinel: <span className="ok">Ready</span>
+        </div>
       </div>
 
       <div className="core-panel-section">
