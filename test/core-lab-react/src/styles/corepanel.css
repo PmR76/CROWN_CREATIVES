@@ -1,18 +1,36 @@
+/* ============================================================
+   CORE PANEL — FROSTED GLASS + SCROLLABLE + DRAGGABLE
+============================================================ */
+
 .core-panel {
   position: fixed;
-  z-index: 9999;
+  bottom: 20px;
+  right: 20px;
+  width: 260px;
+
+  /* Frosted glass */
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(18px);
+
   border-radius: 18px;
   padding: 20px;
   color: white;
+  font-family: system-ui, sans-serif;
+
   cursor: grab;
   user-select: none;
-  width: 240px;
+  z-index: 999999;
+
+  /* Scrollable if content grows */
+  max-height: 300px;
+  overflow-y: auto;
 }
+
 .core-panel:active {
   cursor: grabbing;
 }
+
+/* Buttons (if used) */
 .core-btn {
   width: 100%;
   margin-top: 10px;
@@ -30,36 +48,27 @@
   background: rgba(255,255,255,0.25);
   transform: scale(1.05);
 }
-.core-panel {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 260px;
-  background: rgba(10,10,20,0.92);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 14px;
-  color: #fff;
-  font-family: system-ui, sans-serif;
-  z-index: 999999;
-}
 
+/* Header */
 .core-panel-header {
   font-weight: 700;
   text-align: center;
   margin-bottom: 10px;
 }
 
+/* Sections */
 .core-panel-section {
   margin-bottom: 12px;
 }
 
+/* Items */
 .core-item {
   display: flex;
   justify-content: space-between;
   margin: 4px 0;
 }
 
+/* Status colours */
 .ok {
   color: #7CFC00;
 }
@@ -68,6 +77,7 @@
   color: #FF6347;
 }
 
+/* Error list */
 .error-list {
   margin: 6px 0 0 0;
   padding-left: 14px;
