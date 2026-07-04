@@ -13,24 +13,24 @@ export default function CorePanel() {
     errors: []
   });
 
-  // ------------------------------------------------------------
-  // Detect DOM components
-  // ------------------------------------------------------------
   function detectDOM() {
     setStatus(prev => ({
       ...prev,
-      header: !!document.querySelector(".cc-header"),
-      footer: !!document.querySelector(".cc-footer"),
-      ticker: !!document.querySelector(".ticker-container"),
-      heroCrown: !!document.querySelector(".hero-crown"),
-      heroGallery: !!document.querySelector(".hero-gallery"),
-      cards: !!document.querySelector(".cards-container")
+      header: !!document.querySelector("header, .cc-header, .header"),
+      footer: !!document.querySelector("footer, .cc-footer, .footer"),
+      ticker: !!document.querySelector(".ticker, .ticker-container, .ticker-wrapper"),
+      heroCrown: !!document.querySelector(".hero-crown, .hero-crown-section"),
+      heroGallery: !!document.querySelector(".hero-gallery, .hero-gallery-section"),
+      cards: !!document.querySelector(".cards, .cards-container, .card-grid")
     }));
   }
 
-  // ------------------------------------------------------------
-  // FPS detection
-  // ------------------------------------------------------------
+  useEffect(() => {
+    detectDOM();
+    const interval = setInterval(detectDOM, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   useEffect(() => {
     let last = performance.now();
     let frames = 0;
@@ -48,9 +48,6 @@ export default function CorePanel() {
     requestAnimationFrame(measure);
   }, []);
 
-  // ------------------------------------------------------------
-  // Error capture
-  // ------------------------------------------------------------
   useEffect(() => {
     function onError(e) {
       setStatus(prev => ({
@@ -63,18 +60,7 @@ export default function CorePanel() {
     return () => window.removeEventListener("error", onError);
   }, []);
 
-  // ------------------------------------------------------------
-  // Poll DOM every second
-  // ------------------------------------------------------------
-  useEffect(() => {
-    detectDOM();
-    const interval = setInterval(detectDOM, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // ------------------------------------------------------------
   // Draggable panel
-  // ------------------------------------------------------------
   useEffect(() => {
     const panel = document.querySelector(".core-panel");
     let dragging = false;
@@ -126,45 +112,13 @@ export default function CorePanel() {
       <div className="core-panel-header">CORE DIAGNOSTICS</div>
 
       <div className="core-panel-section">
-        <div className="core-item">
-          Header: <span className={status.header ? "ok" : "fail"}>
-            {status.header ? "Loaded" : "Missing"}
-          </span>
-        </div>
-
-        <div className="core-item">
-          Footer: <span className={status.footer ? "ok" : "fail"}>
-            {status.footer ? "Loaded" : "Missing"}
-          </span>
-        </div>
-
-        <div className="core-item">
-          Ticker: <span className={status.ticker ? "ok" : "fail"}>
-            {status.ticker ? "Running" : "Missing"}
-          </span>
-        </div>
-
-        <div className="core-item">
-          Hero Crown: <span className={status.heroCrown ? "ok" : "fail"}>
-            {status.heroCrown ? "Active" : "Missing"}
-          </span>
-        </div>
-
-        <div className="core-item">
-          Hero Gallery: <span className={status.heroGallery ? "ok" : "fail"}>
-            {status.heroGallery ? "Active" : "Missing"}
-          </span>
-        </div>
-
-        <div className="core-item">
-          Cards: <span className={status.cards ? "ok" : "fail"}>
-            {status.cards ? "Loaded" : "Missing"}
-          </span>
-        </div>
-
-        <div className="core-item">
-          FPS: <span className="ok">{status.fps}</span>
-        </div>
+        <div className="core-item">Header: <span className={status.header ? "ok" : "fail"}>{status.header ? "Loaded" : "Missing"}</span></div>
+        <div className="core-item">Footer: <span className={status.footer ? "ok" : "fail"}>{status.footer ? "Loaded" : "Missing"}</span></div>
+        <div className="core-item">Ticker: <span className={status.ticker ? "ok" : "fail"}>{status.ticker ? "Running" : "Missing"}</span></div>
+        <div className="core-item">Hero Crown: <span className={status.heroCrown ? "ok" : "fail"}>{status.heroCrown ? "Active" : "Missing"}</span></div>
+        <div className="core-item">Hero Gallery: <span className={status.heroGallery ? "ok" : "fail"}>{status.heroGallery ? "Active" : "Missing"}</span></div>
+        <div className="core-item">Cards: <span className={status.cards ? "ok" : "fail"}>{status.cards ? "Loaded" : "Missing"}</span></div>
+        <div className="core-item">FPS: <span className="ok">{status.fps}</span></div>
       </div>
 
       <div className="core-panel-section">
@@ -174,9 +128,7 @@ export default function CorePanel() {
             <span className="ok">None</span>
           ) : (
             <ul className="error-list">
-              {status.errors.map((e, i) => (
-                <li key={i}>{e}</li>
-              ))}
+              {status.errors.map((e, i) => <li key={i}>{e}</li>)}
             </ul>
           )}
         </div>
