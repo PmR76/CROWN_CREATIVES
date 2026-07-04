@@ -4,6 +4,7 @@ import path from "path";
 const config = JSON.parse(fs.readFileSync("sentinel/sentinel-config.json", "utf8"));
 const registryPath = "sentinel/sentinel-registry.json";
 const treePath = "sentinel/sentinel-tree.txt";
+const healthPath = "sentinel/sentinel-health.json";
 
 function scanFolder(folder, tree = [], base = "") {
   const full = path.join(base, folder);
@@ -56,14 +57,58 @@ function formatTree(tree, indent = 0) {
   return out;
 }
 
+function computeHealth(tree) {
+  let missing = [];
+  let duplicates = [];
+  let seen = new Set();
+
+  function walk(node) {
+    for (const item of node.items) {
+      if (typeof item === "string") {
+        if (seen.has(item)) duplicates.push(item);
+        seen.add(item);
+      } else {
+        walk(item);
+      }
+    }
+  }
+
+  for (const root of tree) walk(root);
+
+  for (const required of config.required) {
+    if (!fs.existsSync(required)) {
+      missing.push(required);
+    }
+  }
+
+  const health = {
+    timestamp: new Date().toISOString(),
+    missing,
+    duplicates,
+    status:
+      missing.length > 0
+        ? "red"
+        : duplicates.length > 0
+        ? "amber"
+        : "green"
+  };
+
+  fs.writeFileSync(healthPath, JSON.stringify(health, null, 2));
+  return health;
+}
+
 function runSentinel() {
   console.log("=== SENTINEL SNAPSHOT ===");
 
   const tree = buildTree();
   fs.writeFileSync(registryPath, JSON.stringify(tree, null, 2));
 
+  const health = computeHealth(tree);
+
   console.log("Snapshot complete.");
   console.log("File tree saved to sentinel-tree.txt");
+  console.log("Health report saved to sentinel-health.json");
+  console.log("Sentinel status:", health.status);
 }
 
 runSentinel();

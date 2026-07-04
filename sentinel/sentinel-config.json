@@ -11,6 +11,12 @@
     "backups",
     "logs"
   ],
+  "required": [
+    "assets/icons",
+    "assets/images",
+    "test/core-lab-react/src/components",
+    "test/core-lab-react/src/styles"
+  ],
   "tags": {
     "green": "healthy",
     "amber": "weak",
