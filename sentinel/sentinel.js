@@ -4,6 +4,10 @@ import path from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const config = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "sentinel-config.json"), "utf8")
+);
+
 const registryPath = path.join(__dirname, "sentinel-registry.json");
 const treePath = path.join(__dirname, "sentinel-tree.txt");
 const healthPath = path.join(__dirname, "sentinel-health.json");
