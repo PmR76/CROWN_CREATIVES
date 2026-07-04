@@ -8,10 +8,8 @@ export default function ThemePanel() {
     const panel = document.getElementById("themePanel");
 
     function togglePanel(e) {
-      // ADMIN ONLY
       if (!window.__IS_ADMIN__) return;
 
-      // SHIFT + A toggles panel
       if (e.key === "A" && e.shiftKey) {
         panel.classList.toggle("open");
       }
@@ -48,7 +46,7 @@ export default function ThemePanel() {
   }
 
   return (
-    <div id="themePanel" className="theme-panel">
+    <div className="theme-panel" id="themePanel">
 
       <div className="theme-panel-header">Theme Panel</div>
 
