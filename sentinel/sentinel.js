@@ -1,9 +1,8 @@
-import fs from "fs";
+import { fileURLToPath } from "url";
 import path from "path";
 
-const config = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "sentinel-config.json"), "utf8")
-);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const registryPath = path.join(__dirname, "sentinel-registry.json");
 const treePath = path.join(__dirname, "sentinel-tree.txt");
