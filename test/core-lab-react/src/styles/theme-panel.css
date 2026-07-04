@@ -1,14 +1,12 @@
 /* ============================================================
-   THEME PANEL — CLEAN + FINAL VERSION
-   Crown Creatives — SHIFT+T Admin Panel
+   THEME PANEL — FINAL VERSION (WITH SWATCHES)
 ============================================================ */
 
-/* Floating panel container */
 .theme-panel {
   position: fixed;
   top: 80px;
   right: 40px;
-  width: 260px;
+  width: 300px;
   background: rgba(10,10,20,0.92);
   backdrop-filter: blur(14px);
   border-radius: 14px;
@@ -17,68 +15,58 @@
   font-family: system-ui, sans-serif;
   font-size: 14px;
   box-shadow: 0 0 26px rgba(0,0,0,0.6);
-  display: none;              /* Hidden until SHIFT+T */
+  display: none;
   z-index: 999999;
 }
 
-/* SHIFT+T toggles this */
 .theme-panel.open {
   display: block;
 }
 
-/* Header */
 .theme-panel-header {
   font-weight: 700;
   text-align: center;
   margin-bottom: 12px;
 }
 
-/* Section blocks */
-.theme-section {
-  margin-bottom: 16px;
+.theme-panel-section-label {
+  font-size: 13px;
+  opacity: 0.8;
+  margin: 12px 0 6px 0;
 }
 
-.theme-section h3 {
-  margin-bottom: 8px;
-  font-size: 15px;
-  font-weight: 600;
+.theme-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
-/* Buttons */
-.theme-section button {
+.theme-swatch {
   width: 100%;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.12);
-  border: none;
-  color: #fff;
+  height: 40px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  border: 2px solid rgba(255,255,255,0.2);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.theme-section button:hover {
-  background: rgba(255,255,255,0.22);
+.theme-swatch:hover {
+  transform: scale(1.05);
+  border-color: rgba(255,255,255,0.5);
 }
 
-/* Footer meta text */
+.theme-swatch.selected {
+  border-color: #fff;
+  transform: scale(1.08);
+}
+
 .theme-panel-meta {
   margin-top: 10px;
   text-align: center;
   font-size: 12px;
   opacity: 0.7;
 }
-
-/* ============================================================
-   REMOVED LEGACY PANEL SYSTEM
-   (Old #theme-panel, swatches, grids, scroll areas)
-============================================================ */
-
-/* All legacy selectors removed:
-   #theme-panel
-   #theme-panel-header
-   #theme-panel-close
-   .theme-swatch
-   .theme-swatch-grid
-   .theme-panel-body
-   .theme-panel-button
-*/
