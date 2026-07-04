@@ -137,3 +137,6 @@ iframe {
 :root {
   --ticker-speed: 18s;
 }
+.ticker-track {
+  animation: tickerMove var(--ticker-speed) linear infinite !important;
+}
