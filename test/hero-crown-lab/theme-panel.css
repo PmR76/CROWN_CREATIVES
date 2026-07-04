@@ -102,3 +102,8 @@
 .theme-panel-button:hover {
   background: rgba(255,255,255,0.2);
 }
+.theme-panel {
+  position: fixed;
+  left: 40px; /* instead of right */
+  top: 80px;
+}
