@@ -14,6 +14,18 @@ export default function CorePanel() {
   });
 
   // ------------------------------------------------------------
+  // SENTINEL STATUS (v1.1)
+  // ------------------------------------------------------------
+  const [sentinel, setSentinel] = useState("grey");
+
+  useEffect(() => {
+    fetch("/sentinel/sentinel-health.json")
+      .then(res => res.json())
+      .then(data => setSentinel(data.status))
+      .catch(() => setSentinel("grey"));
+  }, []);
+
+  // ------------------------------------------------------------
   // DOM Detection
   // ------------------------------------------------------------
   function detectDOM() {
@@ -138,17 +150,62 @@ export default function CorePanel() {
       <div className="core-panel-header">CORE DIAGNOSTICS</div>
 
       <div className="core-panel-section">
-        <div className="core-item">Header: <span className={status.header ? "ok" : "fail"}>{status.header ? "Loaded" : "Missing"}</span></div>
-        <div className="core-item">Footer: <span className={status.footer ? "ok" : "fail"}>{status.footer ? "Loaded" : "Missing"}</span></div>
-        <div className="core-item">Ticker: <span className={status.ticker ? "ok" : "fail"}>{status.ticker ? "Running" : "Missing"}</span></div>
-        <div className="core-item">Hero Crown: <span className={status.heroCrown ? "ok" : "fail"}>{status.heroCrown ? "Active" : "Missing"}</span></div>
-        <div className="core-item">Hero Gallery: <span className={status.heroGallery ? "ok" : "fail"}>{status.heroGallery ? "Active" : "Missing"}</span></div>
-        <div className="core-item">Cards: <span className={status.cards ? "ok" : "fail"}>{status.cards ? "Loaded" : "Missing"}</span></div>
-        <div className="core-item">FPS: <span className="ok">{status.fps}</span></div>
-
-        {/* SENTINEL INTEGRATION */}
         <div className="core-item">
-          Sentinel: <span className="ok">Ready</span>
+          Header: <span className={status.header ? "ok" : "fail"}>
+            {status.header ? "Loaded" : "Missing"}
+          </span>
+        </div>
+
+        <div className="core-item">
+          Footer: <span className={status.footer ? "ok" : "fail"}>
+            {status.footer ? "Loaded" : "Missing"}
+          </span>
+        </div>
+
+        <div className="core-item">
+          Ticker: <span className={status.ticker ? "ok" : "fail"}>
+            {status.ticker ? "Running" : "Missing"}
+          </span>
+        </div>
+
+        <div className="core-item">
+          Hero Crown: <span className={status.heroCrown ? "ok" : "fail"}>
+            {status.heroCrown ? "Active" : "Missing"}
+          </span>
+        </div>
+
+        <div className="core-item">
+          Hero Gallery: <span className={status.heroGallery ? "ok" : "fail"}>
+            {status.heroGallery ? "Active" : "Missing"}
+          </span>
+        </div>
+
+        <div className="core-item">
+          Cards: <span className={status.cards ? "ok" : "fail"}>
+            {status.cards ? "Loaded" : "Missing"}
+          </span>
+        </div>
+
+        <div className="core-item">
+          FPS: <span className="ok">{status.fps}</span>
+        </div>
+
+        {/* SENTINEL v1.1 — LIVE STATUS */}
+        <div className="core-item">
+          Sentinel:{" "}
+          <span
+            className={
+              sentinel === "green"
+                ? "ok"
+                : sentinel === "amber"
+                ? "warn"
+                : sentinel === "red"
+                ? "fail"
+                : "grey"
+            }
+          >
+            {sentinel}
+          </span>
         </div>
       </div>
 
@@ -159,7 +216,9 @@ export default function CorePanel() {
             <span className="ok">None</span>
           ) : (
             <ul className="error-list">
-              {status.errors.map((e, i) => <li key={i}>{e}</li>)}
+              {status.errors.map((e, i) => (
+                <li key={i}>{e}</li>
+              ))}
             </ul>
           )}
         </div>
