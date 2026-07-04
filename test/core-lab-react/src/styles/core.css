@@ -133,3 +133,7 @@ iframe {
 }
 
 /* (remaining sections unchanged) */
+/* FORCE TICKER SPEED AFTER THEME SWITCH */
+:root {
+  --ticker-speed: 18s;
+}
