@@ -1,53 +1,50 @@
-// ============================================================
-// ThemeEngine — Crown Creatives Unified Day/Night Engine
-// Controls background theme + crown fade + global theme state
-// ============================================================
+export const themeEngine = {
 
-class ThemeEngine {
-  constructor() {
-    this.root = document.body;
+  // PUBLIC toggle (header button)
+  toggle() {
+    const body = document.body;
+    const current = body.getAttribute("data-theme");
 
-    // Load saved theme or default to "day"
-    this.current = localStorage.getItem("cc-theme") || "day";
+    if (current === "day") {
+      body.setAttribute("data-theme", "night");
+      document.documentElement.style.setProperty(
+        "--active-night-gradient",
+        localStorage.getItem(`${window.__PAGE__}-nightTheme`)
+      );
+    } else {
+      body.setAttribute("data-theme", "day");
+      document.documentElement.style.setProperty(
+        "--active-day-gradient",
+        localStorage.getItem(`${window.__PAGE__}-dayTheme`)
+      );
+    }
+  },
+
+  // ADMIN: set day or night theme from swatch
+  setBackgroundTheme(role, key) {
+    const gradient = `var(--grad-${key})`;
+
+    // Save per page
+    localStorage.setItem(`${window.__PAGE__}-${role}Theme`, gradient);
 
     // Apply immediately
-    this.apply(this.current);
-  }
+    if (role === "day") {
+      document.documentElement.style.setProperty("--active-day-gradient", gradient);
+    } else {
+      document.documentElement.style.setProperty("--active-night-gradient", gradient);
+    }
+  },
 
-  apply(theme) {
-    this.current = theme;
+  // Load saved theme when page loads
+  loadPageTheme() {
+    const day = localStorage.getItem(`${window.__PAGE__}-dayTheme`);
+    const night = localStorage.getItem(`${window.__PAGE__}-nightTheme`);
 
-    // Set <body data-theme="">
-    this.root.dataset.theme = theme;
-
-    // Persist
-    localStorage.setItem("cc-theme", theme);
-
-    // Broadcast unified event
-    window.dispatchEvent(
-      new CustomEvent("theme-changed", { detail: theme })
-    );
-
-    // Crown transition
-    const dayCrown = document.getElementById("hero-crown-day");
-    const nightCrown = document.getElementById("hero-crown-night");
-
-    if (dayCrown && nightCrown) {
-      if (theme === "day") {
-        dayCrown.classList.add("visible");
-        nightCrown.classList.remove("visible");
-      } else {
-        dayCrown.classList.remove("visible");
-        nightCrown.classList.add("visible");
-      }
+    if (day) {
+      document.documentElement.style.setProperty("--active-day-gradient", day);
+    }
+    if (night) {
+      document.documentElement.style.setProperty("--active-night-gradient", night);
     }
   }
-
-  toggle() {
-    const next = this.current === "day" ? "night" : "day";
-    this.apply(next);
-  }
-}
-
-export const themeEngine = new ThemeEngine();
-export default themeEngine;
+};
