@@ -1,37 +1,36 @@
+// ============================================================
+// Auto Manifest Generator — Crown Creatives
+// Watches /public/assets/sounds and regenerates sound-manifest.json
+// ============================================================
+
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const soundsDir = path.resolve("public/assets/sounds");
+const manifestFile = path.join(soundsDir, "sound-manifest.json");
 
-// REAL repo root = one level above /scripts/
-const rootDir = path.join(__dirname, "..");
+function generateManifest() {
+  const files = fs.readdirSync(soundsDir)
+    .filter(f => f.toLowerCase().endsWith(".mp3"));
 
-// Sound folder
-const soundDir = path.join(rootDir, "assets", "sounds");
+  const manifest = {
+    tracks: {}
+  };
 
-// Output manifest
-const manifestPath = path.join(soundDir, "sound-manifest.json");
+  files.forEach((file, index) => {
+    manifest.tracks[`track${index + 1}`] = file;
+  });
 
-// Allowed audio extensions
-const allowed = [".mp3", ".wav", ".ogg", ".MP3", ".WAV"];
+  fs.writeFileSync(manifestFile, JSON.stringify(manifest, null, 2));
+  console.log(`✔ Sound manifest updated (${files.length} tracks)`);
+}
 
-function getSounds() {
-  if (!fs.existsSync(soundDir)) {
-    console.log("Sound folder missing:", soundDir);
-    return [];
+generateManifest();
+
+// Watch for changes
+fs.watch(soundsDir, { persistent: true }, (event, filename) => {
+  if (filename && filename.toLowerCase().endsWith(".mp3")) {
+    console.log(`🔄 Change detected: ${filename}`);
+    generateManifest();
   }
-
-  const files = fs.readdirSync(soundDir);
-  return files.filter(f => allowed.includes(path.extname(f)));
-}
-
-function build() {
-  const sounds = getSounds();
-  console.log("Sound files found:", sounds);
-  fs.writeFileSync(manifestPath, JSON.stringify(sounds, null, 2));
-  console.log("Sound manifest written:", manifestPath);
-}
-
-build();
+});
