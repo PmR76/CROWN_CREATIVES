@@ -13,17 +13,29 @@ export default function CorePanel() {
     errors: []
   });
 
-  function detectDOM() {
-    setStatus(prev => ({
-      ...prev,
-      header: !!document.querySelector("header, .cc-header, .header"),
-      footer: !!document.querySelector("footer, .cc-footer, .footer"),
-      ticker: !!document.querySelector(".ticker, .ticker-container, .ticker-wrapper"),
-      heroCrown: !!document.querySelector(".hero-crown, .hero-crown-section"),
-      heroGallery: !!document.querySelector(".hero-gallery, .hero-gallery-section"),
-      cards: !!document.querySelector(".cards, .cards-container, .card-grid")
-    }));
-  }
+function detectDOM() {
+  setStatus(prev => ({
+    ...prev,
+
+    header: !!document.querySelector("header, .cc-header, .header"),
+
+    footer: !!document.querySelector("footer, .cc-footer, .footer"),
+
+    ticker: !!document.querySelector(".ticker, .ticker-container, .ticker-wrapper"),
+
+    heroCrown: !!document.querySelector(
+      ".hero-crown, .hero-crown-section, .hero-crown-wrapper"
+    ),
+
+    heroGallery: !!document.querySelector(
+      ".hero-gallery, .hero-gallery-section, .hero-gallery-wrapper, .gallery-lane"
+    ),
+
+    cards: !!document.querySelector(
+      ".cards, .cards-container, .card-grid, .card-container"
+    )
+  }));
+}
 
   useEffect(() => {
     detectDOM();
