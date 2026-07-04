@@ -1,10 +1,13 @@
 import fs from "fs";
 import path from "path";
 
-const config = JSON.parse(fs.readFileSync("sentinel/sentinel-config.json", "utf8"));
-const registryPath = "sentinel/sentinel-registry.json";
-const treePath = "sentinel/sentinel-tree.txt";
-const healthPath = "sentinel/sentinel-health.json";
+const config = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "sentinel-config.json"), "utf8")
+);
+
+const registryPath = path.join(__dirname, "sentinel-registry.json");
+const treePath = path.join(__dirname, "sentinel-tree.txt");
+const healthPath = path.join(__dirname, "sentinel-health.json");
 
 function scanFolder(folder, tree = [], base = "") {
   const full = path.join(base, folder);
