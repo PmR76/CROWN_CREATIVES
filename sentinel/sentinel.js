@@ -1,9 +1,16 @@
-import { fileURLToPath } from "url";
+import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
+// ------------------------------------------------------------
+// ES MODULE SAFE __dirname
+// ------------------------------------------------------------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// ------------------------------------------------------------
+// PATHS (bulletproof, no nested sentinel/sentinel)
+// ------------------------------------------------------------
 const config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "sentinel-config.json"), "utf8")
 );
@@ -12,6 +19,9 @@ const registryPath = path.join(__dirname, "sentinel-registry.json");
 const treePath = path.join(__dirname, "sentinel-tree.txt");
 const healthPath = path.join(__dirname, "sentinel-health.json");
 
+// ------------------------------------------------------------
+// SCAN FOLDERS
+// ------------------------------------------------------------
 function scanFolder(folder, tree = [], base = "") {
   const full = path.join(base, folder);
   const items = fs.readdirSync(full);
@@ -34,6 +44,9 @@ function scanFolder(folder, tree = [], base = "") {
   return branch;
 }
 
+// ------------------------------------------------------------
+// BUILD TREE
+// ------------------------------------------------------------
 function buildTree() {
   const tree = [];
 
@@ -45,6 +58,9 @@ function buildTree() {
   return tree;
 }
 
+// ------------------------------------------------------------
+// FORMAT TREE (pretty output)
+// ------------------------------------------------------------
 function formatTree(tree, indent = 0) {
   let out = "";
   const pad = "   ".repeat(indent);
@@ -63,6 +79,9 @@ function formatTree(tree, indent = 0) {
   return out;
 }
 
+// ------------------------------------------------------------
+// HEALTH CHECK
+// ------------------------------------------------------------
 function computeHealth(tree) {
   let missing = [];
   let duplicates = [];
@@ -103,6 +122,9 @@ function computeHealth(tree) {
   return health;
 }
 
+// ------------------------------------------------------------
+// RUN SENTINEL
+// ------------------------------------------------------------
 function runSentinel() {
   console.log("=== SENTINEL SNAPSHOT ===");
 
