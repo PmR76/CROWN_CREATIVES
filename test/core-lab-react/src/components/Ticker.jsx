@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "../styles/ticker.css";
 
 export default function Ticker() {
-  const message = "CREATIVITY IS COURAGE • IMAGINATION IS POWER • ART IS FREEDOM •";
+  const message = "CREATIVITY IS COURAGE • IMAGINATION IS POWER • ART IS FREEDOM •CREATIVITY IS COURAGE • IMAGINATION IS POWER • ART IS FREEDOM •";
 
   useEffect(() => {
     const track = document.querySelector('.ticker-track');
