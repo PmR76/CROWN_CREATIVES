@@ -1,34 +1,13 @@
 {
-  "timestamp": "2026-07-04T19:35:30.251Z",
-  "missing": [],
-  "duplicates": [
-    "day-crown.svg",
-    "day-crown.svg",
-    "day-crown.svg",
-    "night-crown.svg",
-    "night-crown.svg",
-    "day-crown.svg",
-    "favicon.ico",
-    "head-crown.svg",
-    "night-crown.svg",
-    "fallback.jpeg",
-    "gold-crown.png",
-    "neon-crown.png",
-    "sun-moon.png",
-    "hero-gallery.js",
-    "config.json",
-    "config.json",
-    "evolve-glitch.mp4",
-    "evolve-glitch_v2.mp4",
-    "evolve-glitch_v3.mp4",
-    "footer.css",
-    "hero-crown.css",
-    "hero-gallery.css",
-    "footer.css",
-    "header.css",
-    "hero-crown.css",
-    "hero-gallery.css",
-    "ticker.css"
+  "timestamp": "2026-07-04T23:10:57.777Z",
+  "missing": [
+    "assets/icons",
+    "assets/images"
   ],
-  "status": "amber"
+  "duplicates": [
+    "footer.css",
+    "hero-crown.css",
+    "hero-gallery.css"
+  ],
+  "status": "red"
 }

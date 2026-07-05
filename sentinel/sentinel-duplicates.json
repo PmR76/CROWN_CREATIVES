@@ -1,0 +1,23 @@
+[
+  {
+    "name": "footer.css",
+    "locations": [
+      "test\\core-lab-react\\src\\components",
+      "test\\core-lab-react\\src\\styles"
+    ]
+  },
+  {
+    "name": "hero-crown.css",
+    "locations": [
+      "test\\core-lab-react\\src\\shared",
+      "test\\core-lab-react\\src\\styles"
+    ]
+  },
+  {
+    "name": "hero-gallery.css",
+    "locations": [
+      "test\\core-lab-react\\src\\shared",
+      "test\\core-lab-react\\src\\styles"
+    ]
+  }
+]

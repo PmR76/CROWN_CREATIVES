@@ -1,0 +1,52 @@
+{
+  "legacyActive": [
+    "master"
+  ],
+  "labActive": [
+    "labs"
+  ],
+  "coreActive": [],
+  "cssConflicts": [
+    {
+      "name": "footer.css",
+      "folder": "test\\core-lab-react\\src\\components",
+      "group": "other"
+    },
+    {
+      "name": "hero-crown.css",
+      "folder": "test\\core-lab-react\\src\\shared",
+      "group": "other"
+    },
+    {
+      "name": "hero-gallery.css",
+      "folder": "test\\core-lab-react\\src\\shared",
+      "group": "other"
+    },
+    {
+      "name": "footer.css",
+      "folder": "test\\core-lab-react\\src\\styles",
+      "group": "other"
+    },
+    {
+      "name": "header.css",
+      "folder": "test\\core-lab-react\\src\\styles",
+      "group": "other"
+    },
+    {
+      "name": "hero-crown.css",
+      "folder": "test\\core-lab-react\\src\\styles",
+      "group": "other"
+    },
+    {
+      "name": "hero-gallery.css",
+      "folder": "test\\core-lab-react\\src\\styles",
+      "group": "other"
+    },
+    {
+      "name": "ticker.css",
+      "folder": "test\\core-lab-react\\src\\styles",
+      "group": "other"
+    }
+  ],
+  "componentConflicts": []
+}
