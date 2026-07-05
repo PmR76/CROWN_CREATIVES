@@ -1,6 +1,6 @@
 // ============================================================
-// CROWN CREATIVES — THEME PANEL (GR1 CLEAN)
-// Draggable • SHIFT+A Toggle • Gradient Swatches • Day/Night
+// CROWN CREATIVES — FROSTED THEME PANEL (GR1)
+// Draggable • SHIFT+A Toggle • Scrollable • Gradient Swatches
 // ============================================================
 
 import { useEffect, useState } from "react";
