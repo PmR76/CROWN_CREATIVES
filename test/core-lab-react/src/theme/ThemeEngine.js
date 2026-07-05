@@ -9,6 +9,25 @@ class ThemeEngine {
 
     // Apply immediately on load
     this.applyGradient(this.currentRole, this.currentKey);
+
+    // Initial snapshot
+    this.dispatchSnapshot();
+  }
+
+  // ------------------------------------------------------------
+  // Dispatch Theme Snapshot (Diagnostics + DevTools)
+  // ------------------------------------------------------------
+  dispatchSnapshot() {
+    window.dispatchEvent(
+      new CustomEvent("theme-snapshot", {
+        detail: {
+          role: this.currentRole,
+          key: this.currentKey,
+          applied: document.body.style.background,
+          timestamp: Date.now()
+        }
+      })
+    );
   }
 
   // ------------------------------------------------------------
@@ -23,11 +42,15 @@ class ThemeEngine {
 
     this.applyGradient(role, key);
 
+    // Notify listeners
     window.dispatchEvent(
       new CustomEvent("theme-gradient-changed", {
         detail: { role, key }
       })
     );
+
+    // Snapshot for diagnostics
+    this.dispatchSnapshot();
   }
 
   // ------------------------------------------------------------

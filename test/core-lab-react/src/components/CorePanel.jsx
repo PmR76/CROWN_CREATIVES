@@ -26,29 +26,40 @@ export default function CorePanel() {
   }, []);
 
   // ------------------------------------------------------------
+  // THEME STATUS (GREEN / RED / GREY)
+  // ------------------------------------------------------------
+  const [themeStatus, setThemeStatus] = useState("grey");
+
+  useEffect(() => {
+    function onSnapshot(e) {
+      const snap = e.detail;
+
+      // DevTools meaningful snapshot
+      console.log("[THEME SNAPSHOT]", snap);
+
+      if (!snap.role || !snap.key || !snap.applied) {
+        setThemeStatus("red");
+      } else {
+        setThemeStatus("green");
+      }
+    }
+
+    window.addEventListener("theme-snapshot", onSnapshot);
+    return () => window.removeEventListener("theme-snapshot", onSnapshot);
+  }, []);
+
+  // ------------------------------------------------------------
   // DOM Detection
   // ------------------------------------------------------------
   function detectDOM() {
     setStatus(prev => ({
       ...prev,
-
       header: !!document.querySelector("header, .cc-header, .header"),
-
       footer: !!document.querySelector("footer, .cc-footer, .footer"),
-
       ticker: !!document.querySelector(".ticker, .ticker-container, .ticker-wrapper"),
-
-      heroCrown: !!document.querySelector(
-        ".hero-crown, .hero-crown-section, .hero-crown-wrapper"
-      ),
-
-      heroGallery: !!document.querySelector(
-        ".hero-gallery, .hero-gallery-section, .hero-gallery-wrapper, .gallery-lane"
-      ),
-
-      cards: !!document.querySelector(
-        ".cards, .cards-container, .card-grid, .card-container"
-      )
+      heroCrown: !!document.querySelector(".hero-crown, .hero-crown-section, .hero-crown-wrapper"),
+      heroGallery: !!document.querySelector(".hero-gallery, .hero-gallery-section, .hero-gallery-wrapper, .gallery-lane"),
+      cards: !!document.querySelector(".cards, .cards-container, .card-grid, .card-container")
     }));
   }
 
@@ -190,7 +201,23 @@ export default function CorePanel() {
           FPS: <span className="ok">{status.fps}</span>
         </div>
 
-        {/* SENTINEL v1.1 — LIVE STATUS */}
+        {/* THEME STATUS */}
+        <div className="core-item">
+          Theme:{" "}
+          <span
+            className={
+              themeStatus === "green"
+                ? "ok"
+                : themeStatus === "red"
+                ? "fail"
+                : "grey"
+            }
+          >
+            {themeStatus}
+          </span>
+        </div>
+
+        {/* SENTINEL */}
         <div className="core-item">
           Sentinel:{" "}
           <span
