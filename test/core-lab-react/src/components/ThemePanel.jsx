@@ -5,6 +5,7 @@
 
 import { useEffect, useState } from "react";
 import "../styles/theme-panel.css";
+import "../shared/theme.css";
 import { themeEngine } from "../theme/ThemeEngine";
 
 export default function ThemePanel() {
@@ -132,9 +133,7 @@ export default function ThemePanel() {
               <div
                 key={g}
                 className={`swatch ${key === g ? "selected" : ""}`}
-                style={{
-                  background: `var(--grad-${g})`
-                }}
+                style={{ background: `var(--grad-${g})` }}
                 onClick={() => setKey(g)}
               >
                 {g}
