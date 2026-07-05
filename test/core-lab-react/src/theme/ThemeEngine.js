@@ -1,87 +1,85 @@
-// src/theme/ThemeEngine.js
+import { useEffect, useState } from "react";
+import "../styles/theme-panel.css";
+import { themeEngine } from "../theme/ThemeEngine";
 
-export const themeEngine = {
-  // PUBLIC: header day/night toggle
-  toggle() {
-    const body = document.body;
-    const current = body.getAttribute("data-theme") || "day";
+export default function ThemePanel() {
+  const [isOpen, setIsOpen] = useState(false);
 
-    const page = window.__PAGE__ || "default";
-
-    const dayGradient =
-      localStorage.getItem(`${page}-dayTheme`) || `var(--grad-sunrise)`;
-    const nightGradient =
-      localStorage.getItem(`${page}-nightTheme`) || `var(--grad-midnight-indigo)`;
-
-    if (current === "day") {
-      body.setAttribute("data-theme", "night");
-      document.documentElement.style.setProperty(
-        "--active-night-gradient",
-        nightGradient
-      );
-    } else {
-      body.setAttribute("data-theme", "day");
-      document.documentElement.style.setProperty(
-        "--active-day-gradient",
-        dayGradient
-      );
-    }
-  },
-
-  // ADMIN: set day or night theme from swatch
-  setBackgroundTheme(role, key) {
-    const page = window.__PAGE__ || "default";
-    const gradient = `var(--grad-${key})`;
-
-    // Save gradient and key per page
-    localStorage.setItem(`${page}-${role}Theme`, gradient);
-    localStorage.setItem(`${page}-${role}ThemeKey`, key);
-
-    // Apply immediately
-    if (role === "day") {
-      document.documentElement.style.setProperty(
-        "--active-day-gradient",
-        gradient
-      );
-    } else {
-      document.documentElement.style.setProperty(
-        "--active-night-gradient",
-        gradient
-      );
-    }
-  },
-
-  // Load saved theme when page loads
-  loadPageTheme() {
-    const page = window.__PAGE__ || "default";
-
-    const day = localStorage.getItem(`${page}-dayTheme`);
-    const night = localStorage.getItem(`${page}-nightTheme`);
-
-    if (day) {
-      document.documentElement.style.setProperty("--active-day-gradient", day);
-    }
-    if (night) {
-      document.documentElement.style.setProperty(
-        "--active-night-gradient",
-        night
-      );
+  // ------------------------------------------------------------
+  // SHIFT + A — Toggle Panel
+  // ------------------------------------------------------------
+  useEffect(() => {
+    function handleKey(e) {
+      if (e.key === "A" && e.shiftKey) {
+        setIsOpen(prev => !prev);
+      }
     }
 
-    // Sync with system dark mode (optional)
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
 
-    const body = document.body;
-    if (!body.getAttribute("data-theme")) {
-      body.setAttribute("data-theme", prefersDark ? "night" : "day");
+  // ------------------------------------------------------------
+  // Draggable Panel
+  // ------------------------------------------------------------
+  useEffect(() => {
+    const panel = document.getElementById("themePanel");
+    if (!panel) return;
+
+    const header = panel.querySelector(".theme-panel-header");
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let initialLeft = 0;
+    let initialTop = 0;
+
+    function onMouseDown(e) {
+      isDragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      const rect = panel.getBoundingClientRect();
+      initialLeft = rect.left;
+      initialTop = rect.top;
+      document.body.style.userSelect = "none";
     }
-  },
 
-  // Random theme for current role
-  setRandomTheme(role, keys) {
-    const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    this.setBackgroundTheme(role, randomKey);
-  }
-};
+    function onMouseMove(e) {
+      if (!isDragging) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      panel.style.left = `${initialLeft + dx}px`;
+      panel.style.top = `${initialTop + dy}px`;
+    }
+
+    function onMouseUp() {
+      isDragging = false;
+      document.body.style.userSelect = "";
+    }
+
+    header.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+
+    return () => {
+      header.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+  }, []);
+
+  // ------------------------------------------------------------
+  // Render
+  // ------------------------------------------------------------
+  return (
+    <div
+      id="themePanel"
+      className={`theme-panel ${isOpen ? "open" : ""}`}
+    >
+      <div className="theme-panel-header">
+        Theme Panel (SHIFT + A)
+      </div>
+
+      {/* Your swatches + buttons remain unchanged */}
+    </div>
+  );
+}
