@@ -53,7 +53,8 @@ export default function Header() {
         <button
           id="themeToggle"
           className="cc-toggle"
-          onClick={() => themeEngine.toggle()}
+          onClick={() => window.dispatchEvent(new CustomEvent("theme-set", { detail: theme === "day" ? "night" : "day" }))}
+
         >
           <img src="/assets/icons/sun-moon.png" alt="Theme Toggle" />
         </button>
