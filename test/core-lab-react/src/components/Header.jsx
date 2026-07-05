@@ -5,7 +5,6 @@
 import React from "react";
 import "../styles/header.css";
 import { useSoundEngine } from "../hooks/useSoundEngine";
-import { themeEngine } from "../theme/ThemeEngine";
 
 export default function Header() {
   const { isMuted, toggleSound } = useSoundEngine();
@@ -23,7 +22,6 @@ export default function Header() {
       {/* CENTER: HEADER CROWN + TITLE + TAGLINE + NAV */}
       <div className="cc-header-center">
 
-        {/* FIXED HEADER CROWN */}
         <img
           src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
@@ -53,8 +51,15 @@ export default function Header() {
         <button
           id="themeToggle"
           className="cc-toggle"
-          onClick={() => window.dispatchEvent(new CustomEvent("theme-set", { detail: theme === "day" ? "night" : "day" }))}
+          onClick={() => {
+            const next =
+              document.body.dataset.theme === "day" ? "night" : "day";
 
+            // Fire the correct React theme event
+            window.dispatchEvent(
+              new CustomEvent("theme-set", { detail: next })
+            );
+          }}
         >
           <img src="/assets/icons/sun-moon.png" alt="Theme Toggle" />
         </button>
