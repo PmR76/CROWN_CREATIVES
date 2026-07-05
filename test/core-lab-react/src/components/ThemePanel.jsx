@@ -1,9 +1,16 @@
+// ============================================================
+// CROWN CREATIVES — THEME PANEL (GR1 CLEAN)
+// Draggable • SHIFT+A Toggle • Gradient Swatches • Day/Night
+// ============================================================
+
 import { useEffect, useState } from "react";
 import "../styles/theme-panel.css";
 import { themeEngine } from "../theme/ThemeEngine";
 
 export default function ThemePanel() {
   const [isOpen, setIsOpen] = useState(false);
+  const [role, setRole] = useState("day");
+  const [key, setKey] = useState("sunrise");
 
   // ------------------------------------------------------------
   // SHIFT + A — Toggle Panel
@@ -14,7 +21,6 @@ export default function ThemePanel() {
         setIsOpen(prev => !prev);
       }
     }
-
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
@@ -68,6 +74,24 @@ export default function ThemePanel() {
   }, []);
 
   // ------------------------------------------------------------
+  // Gradient Swatches (36+)
+  // ------------------------------------------------------------
+  const gradientKeys = [
+    "sunrise", "sunset", "dusk", "dawn", "neon", "aqua", "forest",
+    "gold", "purple", "crimson", "ocean", "sky", "mint", "lava",
+    "peach", "rose", "violet", "steel", "nightfall", "midnight",
+    "storm", "ember", "ice", "sand", "crown", "royal", "emerald",
+    "blush", "shadow", "plasma", "nova", "flare", "aurora", "zen"
+  ];
+
+  // ------------------------------------------------------------
+  // Apply Theme
+  // ------------------------------------------------------------
+  function applyTheme() {
+    themeEngine.setBackgroundTheme(role, key);
+  }
+
+  // ------------------------------------------------------------
   // Render
   // ------------------------------------------------------------
   return (
@@ -76,10 +100,57 @@ export default function ThemePanel() {
       className={`theme-panel ${isOpen ? "open" : ""}`}
     >
       <div className="theme-panel-header">
-        Theme Panel (SHIFT + A)
+        Theme Panel — SHIFT + A
       </div>
 
-      {/* Your swatches + buttons remain unchanged */}
+      <div className="theme-panel-body">
+
+        {/* ROLE SELECTOR */}
+        <div className="theme-section">
+          <div className="theme-label">Mode</div>
+          <div className="theme-role-buttons">
+            <button
+              className={role === "day" ? "active" : ""}
+              onClick={() => setRole("day")}
+            >
+              Day
+            </button>
+            <button
+              className={role === "night" ? "active" : ""}
+              onClick={() => setRole("night")}
+            >
+              Night
+            </button>
+          </div>
+        </div>
+
+        {/* SWATCH GRID */}
+        <div className="theme-section">
+          <div className="theme-label">Gradients</div>
+          <div className="swatch-grid">
+            {gradientKeys.map((g) => (
+              <div
+                key={g}
+                className={`swatch ${key === g ? "selected" : ""}`}
+                style={{
+                  background: `var(--grad-${g})`
+                }}
+                onClick={() => setKey(g)}
+              >
+                {g}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* APPLY BUTTON */}
+        <div className="theme-section">
+          <button className="apply-btn" onClick={applyTheme}>
+            Apply Theme
+          </button>
+        </div>
+
+      </div>
     </div>
   );
 }
