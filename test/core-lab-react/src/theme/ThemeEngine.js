@@ -1,85 +1,62 @@
-import { useEffect, useState } from "react";
-import "../styles/theme-panel.css";
-import { themeEngine } from "../theme/ThemeEngine";
+// ============================================================
+// ThemeEngine — Gradient + Background Engine
+// ============================================================
 
-export default function ThemePanel() {
-  const [isOpen, setIsOpen] = useState(false);
+class ThemeEngine {
+  constructor() {
+    this.currentRole = "day";
+    this.currentKey = localStorage.getItem("cc-theme-key") || "sunrise";
+
+    // Apply immediately on load
+    this.applyGradient(this.currentRole, this.currentKey);
+  }
 
   // ------------------------------------------------------------
-  // SHIFT + A — Toggle Panel
+  // Set Background Theme (Day/Night + Gradient Key)
   // ------------------------------------------------------------
-  useEffect(() => {
-    function handleKey(e) {
-      if (e.key === "A" && e.shiftKey) {
-        setIsOpen(prev => !prev);
-      }
+  setBackgroundTheme(role, key) {
+    this.currentRole = role;
+    this.currentKey = key;
+
+    localStorage.setItem("cc-theme-role", role);
+    localStorage.setItem("cc-theme-key", key);
+
+    this.applyGradient(role, key);
+
+    window.dispatchEvent(
+      new CustomEvent("theme-gradient-changed", {
+        detail: { role, key }
+      })
+    );
+  }
+
+  // ------------------------------------------------------------
+  // Apply Gradient to Document
+  // ------------------------------------------------------------
+  applyGradient(role, key) {
+    const varName = `--grad-${key}`;
+    const gradient = getComputedStyle(document.documentElement)
+      .getPropertyValue(varName)
+      .trim();
+
+    if (!gradient) {
+      console.warn(`Missing gradient variable: ${varName}`);
+      return;
     }
 
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, []);
+    document.body.style.background = gradient;
+    document.body.dataset.themeRole = role;
+    document.body.dataset.themeKey = key;
+  }
 
   // ------------------------------------------------------------
-  // Draggable Panel
+  // Restore Last Saved Theme
   // ------------------------------------------------------------
-  useEffect(() => {
-    const panel = document.getElementById("themePanel");
-    if (!panel) return;
-
-    const header = panel.querySelector(".theme-panel-header");
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-    let initialLeft = 0;
-    let initialTop = 0;
-
-    function onMouseDown(e) {
-      isDragging = true;
-      startX = e.clientX;
-      startY = e.clientY;
-      const rect = panel.getBoundingClientRect();
-      initialLeft = rect.left;
-      initialTop = rect.top;
-      document.body.style.userSelect = "none";
-    }
-
-    function onMouseMove(e) {
-      if (!isDragging) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-      panel.style.left = `${initialLeft + dx}px`;
-      panel.style.top = `${initialTop + dy}px`;
-    }
-
-    function onMouseUp() {
-      isDragging = false;
-      document.body.style.userSelect = "";
-    }
-
-    header.addEventListener("mousedown", onMouseDown);
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", onMouseUp);
-
-    return () => {
-      header.removeEventListener("mousedown", onMouseDown);
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseup", onMouseUp);
-    };
-  }, []);
-
-  // ------------------------------------------------------------
-  // Render
-  // ------------------------------------------------------------
-  return (
-    <div
-      id="themePanel"
-      className={`theme-panel ${isOpen ? "open" : ""}`}
-    >
-      <div className="theme-panel-header">
-        Theme Panel (SHIFT + A)
-      </div>
-
-      {/* Your swatches + buttons remain unchanged */}
-    </div>
-  );
+  restore() {
+    const role = localStorage.getItem("cc-theme-role") || "day";
+    const key = localStorage.getItem("cc-theme-key") || "sunrise";
+    this.setBackgroundTheme(role, key);
+  }
 }
+
+export const themeEngine = new ThemeEngine();
