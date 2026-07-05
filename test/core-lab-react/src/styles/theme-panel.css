@@ -1,31 +1,99 @@
-.core-panel {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 260px;
+/* ============================================================
+   CROWN CREATIVES — FROSTED THEME PANEL (GR1)
+   ============================================================ */
 
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(18px);
-  border-radius: 18px;
+#themePanel {
+  position: fixed !important;
+  top: 120px !important;
+  right: 40px !important;
+  width: 380px !important;
+  height: 520px !important;
+  z-index: 999999 !important;
 
-  padding: 20px;
+  backdrop-filter: blur(18px) saturate(180%) !important;
+  background: rgba(30, 30, 30, 0.55) !important;
+
+  border-radius: 14px !important;
+  box-shadow: 0 0 25px rgba(0,0,0,0.45) !important;
+
+  display: none;
+}
+
+#themePanel.open {
+  display: block !important;
+}
+
+.theme-panel-header {
+  padding: 12px 16px;
+  font-weight: 600;
   color: white;
-  font-family: system-ui, sans-serif;
-
   cursor: grab;
-  user-select: none;
-  z-index: 999999;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.25);
+  border-radius: 14px 14px 0 0;
+}
 
-  max-height: 300px;
+.theme-panel-body {
+  padding: 14px;
+  height: calc(520px - 60px);
   overflow-y: auto;
 }
 
-.core-panel:active {
-  cursor: grabbing;
+.theme-section {
+  margin-bottom: 20px;
 }
-#themePanel {
-  position: fixed !important;
-  z-index: 999999 !important;
-  overflow: visible !important;
-  display: block !important;
+
+.theme-label {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
+
+.theme-role-buttons button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  cursor: pointer;
+}
+
+.theme-role-buttons .active {
+  background: rgba(255,255,255,0.35);
+}
+
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.swatch {
+  height: 60px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 11px;
+  text-shadow: 0 0 4px black;
+}
+
+.swatch.selected {
+  border-color: white;
+}
+
+.apply-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.25);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
 }
