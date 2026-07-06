@@ -9,10 +9,14 @@ export default function ThemePanel() {
   const [key, setKey] = useState("sunrise");
   const [adminUnlocked, setAdminUnlocked] = useState(false);
 
-  // SHIFT + A — Toggle Panel
+  // ------------------------------------------------------------
+  // SHIFT + A — Toggle Panel (with password)
+  // ------------------------------------------------------------
   useEffect(() => {
     function handleKey(e) {
       if (e.key === "A" && e.shiftKey) {
+
+        // Password gate
         if (!adminUnlocked) {
           const pass = prompt("Enter admin password:");
           if (pass === "CROWN26") {
@@ -21,16 +25,21 @@ export default function ThemePanel() {
           } else {
             alert("Incorrect password.");
           }
-        } else {
-          setIsOpen(prev => !prev);
+          return;
         }
+
+        // Already unlocked
+        setIsOpen(prev => !prev);
       }
     }
+
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [adminUnlocked]);
 
+  // ------------------------------------------------------------
   // Draggable Panel
+  // ------------------------------------------------------------
   useEffect(() => {
     const panel = document.getElementById("themePanel");
     if (!panel) return;
@@ -78,6 +87,9 @@ export default function ThemePanel() {
     };
   }, []);
 
+  // ------------------------------------------------------------
+  // Gradient Keys
+  // ------------------------------------------------------------
   const gradientKeys = [
     "sunrise","sunset","dusk","dawn","neon","aqua","forest",
     "gold","purple","crimson","ocean","sky","mint","lava",
@@ -86,24 +98,45 @@ export default function ThemePanel() {
     "blush","shadow","plasma","nova","flare","aurora","zen"
   ];
 
+  // ------------------------------------------------------------
+  // Apply Theme
+  // ------------------------------------------------------------
   function applyTheme() {
     themeEngine.setBackgroundTheme(role, key);
   }
 
+  // ------------------------------------------------------------
+  // Render
+  // ------------------------------------------------------------
   return (
     <div id="themePanel" className={`theme-panel ${isOpen ? "open" : ""}`}>
-      <div className="theme-panel-header">Theme Panel — SHIFT + A</div>
+      
+      <div className="theme-panel-header">
+        Theme Panel — SHIFT + A
+      </div>
 
       <div className="theme-panel-body">
 
+        {/* MODE SELECTOR */}
         <div className="theme-section">
           <div className="theme-label">Mode</div>
           <div className="theme-role-buttons">
-            <button className={role === "day" ? "active" : ""} onClick={() => setRole("day")}>Day</button>
-            <button className={role === "night" ? "active" : ""} onClick={() => setRole("night")}>Night</button>
+            <button
+              className={role === "day" ? "active" : ""}
+              onClick={() => setRole("day")}
+            >
+              Day
+            </button>
+            <button
+              className={role === "night" ? "active" : ""}
+              onClick={() => setRole("night")}
+            >
+              Night
+            </button>
           </div>
         </div>
 
+        {/* SWATCH GRID */}
         <div className="theme-section">
           <div className="theme-label">Gradients</div>
           <div className="swatch-grid">
@@ -120,8 +153,11 @@ export default function ThemePanel() {
           </div>
         </div>
 
+        {/* APPLY BUTTON */}
         <div className="theme-section">
-          <button className="apply-btn" onClick={applyTheme}>Apply Theme</button>
+          <button className="apply-btn" onClick={applyTheme}>
+            Apply Theme
+          </button>
         </div>
 
       </div>

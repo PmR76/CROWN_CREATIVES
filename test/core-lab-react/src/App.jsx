@@ -18,8 +18,9 @@ import CorePanel from "./components/CorePanel";
 import "./styles/core.css";
 
 export default function App() {
-  // Mount theme engine once for the whole app
-  useThemeEngine();
+
+  // FIX: capture hook return so React treats it as a proper hook
+  const { themeRole } = useThemeEngine();
 
   return (
     <>
