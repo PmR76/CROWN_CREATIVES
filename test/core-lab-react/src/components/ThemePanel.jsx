@@ -20,25 +20,19 @@ export default function ThemePanel() {
   useEffect(() => {
     function handleKey(e) {
       if (e.key === "A" && e.shiftKey) {
-        console.log("SHIFT+A fired");
 
-        // Password gate
         if (!adminUnlocked) {
           const pass = prompt("Enter admin password:");
           if (pass === "CROWN26") {
-            console.log("Admin unlocked");
             setAdminUnlocked(true);
             setIsOpen(prev => !prev);
-            console.log("setIsOpen triggered (after unlock)");
           } else {
             alert("Incorrect password.");
           }
           return;
         }
 
-        // Already unlocked
         setIsOpen(prev => !prev);
-        console.log("setIsOpen triggered (already unlocked)");
       }
     }
 
@@ -50,26 +44,20 @@ export default function ThemePanel() {
   // Draggable Panel
   // ------------------------------------------------------------
   useEffect(() => {
-    const panel = document.getElementById("theme-panel");
-    if (!panel) {
-      console.warn("ThemePanel: #theme-panel not found in DOM");
-      return;
-    }
+    const panel = document.getElementById("themePanel");
+    if (!panel) return;
 
     const header = panel.querySelector(".theme-panel-header");
-    if (!header) {
-      console.warn("ThemePanel: .theme-panel-header not found");
-      return;
-    }
+    if (!header) return;
 
-    let isDragging = false;
+    let dragging = false;
     let startX = 0;
     let startY = 0;
     let initialLeft = 0;
     let initialTop = 0;
 
     function onMouseDown(e) {
-      isDragging = true;
+      dragging = true;
       startX = e.clientX;
       startY = e.clientY;
       const rect = panel.getBoundingClientRect();
@@ -79,7 +67,7 @@ export default function ThemePanel() {
     }
 
     function onMouseMove(e) {
-      if (!isDragging) return;
+      if (!dragging) return;
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
       panel.style.left = `${initialLeft + dx}px`;
@@ -87,7 +75,7 @@ export default function ThemePanel() {
     }
 
     function onMouseUp() {
-      isDragging = false;
+      dragging = false;
       document.body.style.userSelect = "";
     }
 
@@ -117,7 +105,6 @@ export default function ThemePanel() {
   // Apply Theme
   // ------------------------------------------------------------
   function applyTheme() {
-    console.log("ApplyTheme:", role, key);
     themeEngine.setBackgroundTheme(role, key);
   }
 
@@ -126,8 +113,8 @@ export default function ThemePanel() {
   // ------------------------------------------------------------
   return (
     <div
-      id="theme-panel"
-      className={`theme-panel ${isOpen ? "theme-panel-visible" : ""}`}
+      id="themePanel"
+      className={`theme-panel ${isOpen ? "open" : ""}`}
     >
       <div className="theme-panel-header">
         Theme Panel — SHIFT + A

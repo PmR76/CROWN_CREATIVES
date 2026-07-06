@@ -72,7 +72,6 @@
   color: #fff;
   cursor: pointer;
   font-size: 12px;
-  letter-spacing: 0.4px;
 }
 
 .theme-role-buttons button.active {
@@ -93,13 +92,11 @@
   border: 1px solid rgba(255,255,255,0.25);
   font-size: 9px;
   text-transform: lowercase;
-  letter-spacing: 0.4px;
   color: #fff;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 4px;
-  text-shadow: 0 0 6px rgba(0,0,0,0.8);
 }
 
 .swatch.selected {
@@ -116,7 +113,4 @@
   background: rgba(0,0,0,0.5);
   color: #fff;
   cursor: pointer;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
 }
