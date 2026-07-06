@@ -27,7 +27,7 @@
   top: calc(50% - 100px);        /* MOVE UP BY 100PX */
   transform: translate(-50%, -50%);
 
-  width: 100%;                   /* INCREASE SIZE BY 40% */
+  width: 40%;                   /* INCREASE SIZE BY 40% */
   height: auto;
 
   opacity: 0;
