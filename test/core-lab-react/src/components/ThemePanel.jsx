@@ -34,6 +34,8 @@ export default function ThemePanel() {
     if (!panel) return;
 
     const header = panel.querySelector(".theme-panel-header");
+    if (!header) return;
+
     let isDragging = false;
     let startX = 0;
     let startY = 0;
@@ -75,7 +77,7 @@ export default function ThemePanel() {
   }, []);
 
   // ------------------------------------------------------------
-  // Gradient Swatches (36+)
+  // Gradient Swatches (keys)
   // ------------------------------------------------------------
   const gradientKeys = [
     "sunrise", "sunset", "dusk", "dawn", "neon", "aqua", "forest",

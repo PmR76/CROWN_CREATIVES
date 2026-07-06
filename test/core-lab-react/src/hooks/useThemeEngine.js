@@ -6,13 +6,13 @@ import { useEffect, useState, useCallback } from "react";
 
 export default function useThemeEngine() {
   const [theme, setTheme] = useState(
-    localStorage.getItem("cc-theme") || "day"
+    localStorage.getItem("cc-theme-role") || "day"
   );
 
   const applyTheme = useCallback((nextTheme) => {
     setTheme(nextTheme);
-    document.body.dataset.theme = nextTheme;
-    localStorage.setItem("cc-theme", nextTheme);
+    document.body.dataset.themeRole = nextTheme;
+    localStorage.setItem("cc-theme-role", nextTheme);
 
     window.dispatchEvent(
       new CustomEvent("theme-changed", { detail: nextTheme })

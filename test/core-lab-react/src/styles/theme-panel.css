@@ -1,97 +1,137 @@
 /* ============================================================
-   CROWN CREATIVES — THEME PANEL (FULL 32 SWATCHES)
-   Matches gradients.css exactly
+   CROWN CREATIVES — THEME PANEL (FLOATING + SCROLLABLE)
+   Fully fixed — no layout push, matches ThemePanel.jsx
 ============================================================ */
 
-#theme-panel {
-  position: fixed;
+#themePanel {
+  position: fixed;                 /* FLOAT ABOVE PAGE */
   top: 80px;
   left: 20px;
-  width: 260px;
-  padding: 20px;
-  border-radius: 18px;
 
-  background: rgba(0,0,0,0.45);
+  width: 260px;
+  height: 420px;                   /* MATCH DIAGNOSTICS */
+  padding: 20px;
+
+  background: rgba(0,0,0,0.55);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
   border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 18px;
   box-shadow: 0 0 22px rgba(0,0,0,0.45);
+
+  overflow-y: auto;                /* INTERNAL SCROLL */
+  overflow-x: hidden;
 
   z-index: 9999;
   color: white;
   font-family: 'Cinzel Decorative', serif;
+
+  display: none;                   /* HIDDEN UNTIL SHIFT+A */
 }
 
-#theme-panel h3 {
-  margin: 0 0 12px 0;
-  font-size: 18px;
-  letter-spacing: 0.5px;
+.theme-panel.open {
+  display: block;
+}
+
+/* HEADER + BODY */
+.theme-panel-header {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  margin-bottom: 12px;
+  cursor: move;
   text-align: center;
 }
 
+.theme-panel-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* SECTIONS */
+.theme-section {
+  margin-bottom: 8px;
+}
+
+.theme-label {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+
+/* ROLE BUTTONS */
+.theme-role-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.theme-role-buttons button {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-role-buttons button.active {
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
 /* SWATCH GRID */
-.theme-swatches {
+.swatch-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
 /* SWATCH BOX */
-.theme-swatch {
-  width: 48px;
-  height: 48px;
+.swatch {
+  height: 40px;
   border-radius: 10px;
   cursor: pointer;
   border: 1px solid rgba(255,255,255,0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 9px;
+  text-transform: lowercase;
+  letter-spacing: 0.4px;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 4px;
+  text-shadow: 0 0 6px rgba(0,0,0,0.8);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.theme-swatch:hover {
-  transform: scale(1.12);
+.swatch.selected {
+  transform: scale(1.06);
+  box-shadow: 0 0 12px rgba(255,255,255,0.9);
+  border-color: rgba(255,255,255,0.8);
+}
+
+/* APPLY BUTTON */
+.apply-btn {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.apply-btn:hover {
+  background: rgba(255,255,255,0.18);
   box-shadow: 0 0 12px rgba(255,255,255,0.8);
 }
-
-/* ============================================================
-   DAY SWATCHES — 16
-============================================================ */
-
-.theme-swatch[data-key="sunrise"]           { background: var(--grad-sunrise); }
-.theme-swatch[data-key="warm-daylight"]     { background: var(--grad-warm-daylight); }
-.theme-swatch[data-key="soft-sky"]          { background: var(--grad-soft-sky); }
-.theme-swatch[data-key="sunset-glow"]       { background: var(--grad-sunset-glow); }
-.theme-swatch[data-key="ocean-mist"]        { background: var(--grad-ocean-mist); }
-.theme-swatch[data-key="royal-ember"]       { background: var(--grad-royal-ember); }
-.theme-swatch[data-key="solar-bloom"]       { background: var(--grad-solar-bloom); }
-.theme-swatch[data-key="crown-platinum"]    { background: var(--grad-crown-platinum); }
-
-.theme-swatch[data-key="golden-horizon"]    { background: var(--grad-golden-horizon); }
-.theme-swatch[data-key="peach-bloom"]       { background: var(--grad-peach-bloom); }
-.theme-swatch[data-key="skyline-blue"]      { background: var(--grad-skyline-blue); }
-.theme-swatch[data-key="honey-aura"]        { background: var(--grad-honey-aura); }
-.theme-swatch[data-key="daybreak-rose"]     { background: var(--grad-daybreak-rose); }
-.theme-swatch[data-key="citrus-warmth"]     { background: var(--grad-citrus-warmth); }
-.theme-swatch[data-key="azure-cloud"]       { background: var(--grad-azure-cloud); }
-.theme-swatch[data-key="opal-morning"]      { background: var(--grad-opal-morning); }
-
-/* ============================================================
-   NIGHT SWATCHES — 16
-============================================================ */
-
-.theme-swatch[data-key="midnight-indigo"]   { background: var(--grad-midnight-indigo); }
-.theme-swatch[data-key="royal-night"]       { background: var(--grad-royal-night); }
-.theme-swatch[data-key="aurora"]            { background: var(--grad-aurora); }
-.theme-swatch[data-key="deep-space"]        { background: var(--grad-deep-space); }
-.theme-swatch[data-key="deep-velvet"]       { background: var(--grad-deep-velvet); }
-.theme-swatch[data-key="cosmic-royal"]      { background: var(--grad-cosmic-royal); }
-.theme-swatch[data-key="nebula-drift"]      { background: var(--grad-nebula-drift); }
-.theme-swatch[data-key="crown-nocturne"]    { background: var(--grad-crown-nocturne); }
-
-.theme-swatch[data-key="obsidian-dusk"]     { background: var(--grad-obsidian-dusk); }
-.theme-swatch[data-key="violet-comet"]      { background: var(--grad-violet-comet); }
-.theme-swatch[data-key="galaxy-fade"]       { background: var(--grad-galaxy-fade); }
-.theme-swatch[data-key="lunar-ice"]         { background: var(--grad-lunar-ice); }
-.theme-swatch[data-key="nocturnal-ember"]   { background: var(--grad-nocturnal-ember); }
-.theme-swatch[data-key="shadow-royal"]      { background: var(--grad-shadow-royal); }
-.theme-swatch[data-key="midnight-teal"]     { background: var(--grad-midnight-teal); }
-.theme-swatch[data-key="stellar-drift"]     { background: var(--grad-stellar-drift); }

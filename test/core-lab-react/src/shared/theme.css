@@ -32,13 +32,13 @@
 }
 
 /* DAY MODE */
-body:not([data-theme="dark"]) {
+body:not([data-themeRole="night"]) {
   background: var(--theme-bg);
   color: var(--theme-text);
 }
 
 /* NIGHT MODE */
-body[data-theme="dark"] {
+body[data-themeRole="night"] {
   background: var(--theme-bg-dark);
   color: var(--theme-text-dark);
 }
