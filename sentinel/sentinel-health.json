@@ -1,19 +1,6 @@
 {
-  "timestamp": "2026-07-06T13:37:13.091Z",
+  "timestamp": "2026-07-06T14:30:49.344Z",
   "missing": [],
-  "duplicates": [
-    "day-crown.svg",
-    "head-crown.svg",
-    "night-crown.svg",
-    "favicon.ico",
-    "evolve-glitch.mp4",
-    "evolve-glitch_v2.mp4",
-    "evolve-glitch_v3.mp4",
-    "gold-crown.png",
-    "neon-crown.png",
-    "sun-moon.png",
-    "fallback.jpeg",
-    "config.json"
-  ],
-  "status": "amber"
+  "duplicates": [],
+  "status": "green"
 }

@@ -1,18 +1,8 @@
 {
-  "paths": [
-    "./"
-  ],
-  "include": [
-    "**/*.html",
-    "**/*.htm",
-    "**/*.css",
-    "**/*.js"
-  ],
-  "exclude": [
-    "node_modules/**",
-    "tools/**",
-    "scanner-v3/reports/**",
-    "**/*.gr3.bak"
-  ],
-  "reportOutput": "tools/scanner-v3/reports"
+  "title": "Crown in Motion",
+  "description": "A focused reel on the Crown Creatives identity in motion, glow, and atmosphere.",
+  "reel": "https://www.instagram.com/reel/YYYYYYYY",
+  "still": "still.jpg",
+  "motion": "motion.mp4",
+  "tags": ["Brand", "Motion"]
 }

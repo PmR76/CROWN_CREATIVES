@@ -17,16 +17,13 @@
             🟢 Crown creatives day_night_night.png
             🟢 day-crown-1400 - Copy.png
             🟢 day-crown-1400.png
-            🟢 day-crown.svg
             📁 assets\icons\CC_V2\New_Look\Final_1400px
-               🟢 day-crown.svg
                🟢 night-crown.svg
             📁 assets\icons\CC_V2\New_Look\Final_2000px
                🟢 day-background.png.png
                🟢 day-crown - Copy.svg
                🟢 day-crown-v3.svg
                🟢 day-crown-V4.txt
-               🟢 day-crown.svg
                🟢 day-crown.zip
                🟢 day-crown3.png
                🟢 day-crown5.svg
@@ -43,19 +40,16 @@
                🟢 New logo web-2 (1).png
                🟢 night-crown - Copy.svg
                🟢 night-crown-v3.svg
-               🟢 night-crown.svg
                🟢 night-crown3.png
                🟢 night-crown5.svg
                🟢 night-crown_V2.png
             🟢 night-crown-1400.png
          🟢 night-crown.png
-         🟢 night-crown.svg
          🟢 night-crownV6.svg
       🟢 construct-neon.png
       🟢 copilot-magic.svg
       🟢 Crown Creatives Header.png
       🟢 Crown Creatives Header.svg
-      🟢 day-crown.svg
       🟢 devsuite-green.png
       🟢 devsuite-neon.png
       🟢 diagnostic-green.png
@@ -73,14 +67,12 @@
       🟢 evolve-neon.svg
       🟢 evolve4.svg
       🟢 facebook-magic.svg
-      🟢 favicon.ico
       🟢 favicon.png
       🟢 github-recovery-codes.txt
       🟢 gold-crown.png
       🟢 handshake-green.png
       🟢 handshake-neon.png
       🟢 head-crown.ico
-      🟢 head-crown.svg
       📁 assets\icons\images
          🟢 image1.png
          🟢 M-FIX.ico
@@ -101,7 +93,6 @@
       🟢 nav-green.png
       🟢 neon-crown.png
       🟢 neon-crown.svg
-      🟢 night-crown.svg
       📁 assets\icons\reels
          🟢 facebook.png
          🟢 instagram.png
@@ -130,11 +121,9 @@
          🟢 crow.jpeg
          🟢 day-background.jpeg
          🟢 dice-tower.jpeg
-         🟢 fallback.jpeg
          🟢 fly.jpeg
          🟢 framed-but.jpeg
          🟢 gallery-manifest.json
-         🟢 gold-crown.png
          🟢 Grief Cafe.png
          🟢 House-V2.jpeg
          🟢 Jane_Austine.jpeg
@@ -143,14 +132,12 @@
          🟢 Mushroom.jpeg
          🟢 mushroomV2.png
          🟢 my-story-photoV3.png
-         🟢 neon-crown.png
          🟢 night-background.jpeg
          🟢 painting2.jpg
          🟢 sanding.jpg
          🟢 sculpture.jpeg
          🟢 skull.jpeg
          🟢 stars-darkness.jpeg
-         🟢 sun-moon.png
          🟢 tree.jpeg
          🟢 wave.jpeg
          🟢 white-butterfly.jpeg
@@ -160,9 +147,7 @@
          🟢 config.json
          🟢 read.md
       📁 assets\projects.disabled\project1
-         🟢 config.json
       📁 assets\projects.disabled\project2
-         🟢 config.json
       📁 assets\projects.disabled\project3
    📁 assets\sounds
       🟢 34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3
@@ -179,9 +164,6 @@
       🟢 rockot-experimental-cinematic-hip-hop-315904.mp3
       🟢 sound-manifest.json
    📁 assets\videos
-      🟢 evolve-glitch.mp4
-      🟢 evolve-glitch_v2.mp4
-      🟢 evolve-glitch_v3.mp4
 📁 test/core-lab-react/src
    🟢 App.jsx
    📁 test\core-lab-react\src\components
