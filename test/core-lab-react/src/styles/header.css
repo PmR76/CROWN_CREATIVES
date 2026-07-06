@@ -1,18 +1,17 @@
 /* ============================================================
    Crown Creatives Cinematic Glass Header — FINAL VERSION
-   Stable • No Negative Offsets • Full Visibility
+   Stable • 150px Lift • Full Visibility
 ============================================================ */
 
 /* ------------------------------------------------------------
-   HEADER CONTAINER — ALWAYS ABOVE BACKGROUND
+   HEADER CONTAINER — LIFTED BY 150PX
 ------------------------------------------------------------ */
 header,
 .site-header,
 .site-header-inner,
 #header-container {
   position: relative;
-  top: 0 !important;               /* NO NEGATIVE OFFSET */
-  transform: none !important;      /* NO TRANSLATE UP */
+  top: -150px !important;          /* LIFT HEADER UP */
   z-index: 9000;                   /* stays above crown + gallery */
 }
 
