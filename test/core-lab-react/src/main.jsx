@@ -1,8 +1,7 @@
 // ============================================================
-// main.jsx — React Entry Point (FINAL CLEAN VERSION)
+// main.jsx — React Entry Point (STRICT MODE REMOVED)
 // ============================================================
 
-// GLOBAL ERROR VISIBILITY (safe + minimal)
 window.addEventListener("error", (e) => {
   console.log("GLOBAL ERROR:", e.error);
 });
@@ -15,32 +14,19 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
-// ============================================================
-// GLOBAL CSS — Loaded once, in stable order
-// ============================================================
-
-// Core layout + components
+// GLOBAL CSS
 import "./styles/header.css";
 import "./styles/footer.css";
 import "./styles/cards.css";
 import "./styles/ticker.css";
 import "./styles/corepanel.css";
-
-// Hero systems
 import "./styles/hero-crown.css";
 import "./styles/hero-gallery.css";
-
-// Theme systems
 import "./styles/theme-panel.css";
-import "./styles/gradients.css";   // gradient variables
-import "./shared/theme.css";       // theme engine variables
+import "./styles/gradients.css";
+import "./shared/theme.css";
 
-// ============================================================
-// MOUNT APP
-// ============================================================
-
+// MOUNT APP — STRICTMODE REMOVED
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <App />
 );
