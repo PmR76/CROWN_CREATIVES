@@ -97,3 +97,9 @@
   font-size: 15px;
   cursor: pointer;
 }
+#themePanel {
+  position: fixed !important;
+  z-index: 999999 !important;
+  overflow: visible !important;
+  display: block !important;
+}
