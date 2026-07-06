@@ -14,7 +14,11 @@ export default function Header() {
 
       {/* LEFT: SOUND TOGGLE */}
       <div className="cc-header-left">
-        <button id="soundToggle" className="cc-toggle" onClick={toggleSound}>
+        <button
+          id="soundToggle"
+          className="cc-toggle"
+          onClick={toggleSound}
+        >
           <img src="/assets/icons/music.png" alt="Sound Toggle" />
         </button>
       </div>

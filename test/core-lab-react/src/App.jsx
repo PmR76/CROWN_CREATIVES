@@ -6,6 +6,7 @@ import React from "react";
 import useThemeEngine from "./hooks/useThemeEngine";
 
 // COMPONENTS
+import FaultScanner from "./FaultScanner";
 import Header from "./components/Header";
 import Background3D from "./components/Background3D";
 import ThemePanel from "./components/ThemePanel";
@@ -26,6 +27,9 @@ export default function App() {
 
   return (
     <>
+      {/* RUNTIME FAULT SCANNER */}
+      <FaultScanner />
+
       {/* HEADER ALWAYS FIRST */}
       <Header />
 
