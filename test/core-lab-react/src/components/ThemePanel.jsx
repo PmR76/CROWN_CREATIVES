@@ -1,44 +1,54 @@
 // ============================================================
-// ThemePanel.jsx — Crown Creatives Theme System
+// ThemePanel.jsx — Crown Creatives Theme System (FINAL ALIGNED)
 // SHIFT + A • Password Gate • Draggable • Gradient Swatches
 // ============================================================
 
 import { useEffect, useState } from "react";
 import "../styles/theme-panel.css";
-import "../shared/theme.css";
 import { themeEngine } from "../theme/ThemeEngine";
 
 export default function ThemePanel() {
   const [isOpen, setIsOpen] = useState(false);
-  const [role, setRole] = useState("day");
-  const [key, setKey] = useState("sunrise");
-  const [adminUnlocked, setAdminUnlocked] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [role, setRole] = useState("day");       // unified theme mode
+  const [gradient, setGradient] = useState("sunrise");
+  const [password, setPassword] = useState("");
 
   // ------------------------------------------------------------
-  // SHIFT + A — Toggle Panel (with password)
+  // SHIFT + A — Open Panel (password gate)
   // ------------------------------------------------------------
   useEffect(() => {
     function handleKey(e) {
-      if (e.key === "A" && e.shiftKey) {
-
-        if (!adminUnlocked) {
-          const pass = prompt("Enter admin password:");
-          if (pass === "CROWN26") {
-            setAdminUnlocked(true);
-            setIsOpen(prev => !prev);
-          } else {
-            alert("Incorrect password.");
-          }
-          return;
-        }
-
-        setIsOpen(prev => !prev);
+      if (e.shiftKey && e.key.toLowerCase() === "a") {
+        setIsOpen(true);
       }
     }
-
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [adminUnlocked]);
+  }, []);
+
+  // ------------------------------------------------------------
+  // Admin Unlock
+  // ------------------------------------------------------------
+  function handleUnlock() {
+    if (password === "CROWN26") {
+      setIsAdmin(true);
+    } else {
+      alert("Incorrect password.");
+    }
+  }
+
+  // ------------------------------------------------------------
+  // Apply Theme (Unified Layer 3 API)
+  // ------------------------------------------------------------
+  function applyTheme() {
+    themeEngine.setBackgroundTheme(role, gradient);
+
+    // Also fire the unified theme-set event for React
+    window.dispatchEvent(
+      new CustomEvent("theme-set", { detail: role })
+    );
+  }
 
   // ------------------------------------------------------------
   // Draggable Panel
@@ -60,9 +70,11 @@ export default function ThemePanel() {
       dragging = true;
       startX = e.clientX;
       startY = e.clientY;
+
       const rect = panel.getBoundingClientRect();
       initialLeft = rect.left;
       initialTop = rect.top;
+
       document.body.style.userSelect = "none";
     }
 
@@ -91,7 +103,7 @@ export default function ThemePanel() {
   }, []);
 
   // ------------------------------------------------------------
-  // Gradient Keys
+  // Gradient Keys (unchanged)
   // ------------------------------------------------------------
   const gradientKeys = [
     "sunrise","sunset","dusk","dawn","neon","aqua","forest",
@@ -102,69 +114,86 @@ export default function ThemePanel() {
   ];
 
   // ------------------------------------------------------------
-  // Apply Theme
-  // ------------------------------------------------------------
-  function applyTheme() {
-    themeEngine.setBackgroundTheme(role, key);
-  }
-
-  // ------------------------------------------------------------
   // Render
   // ------------------------------------------------------------
+  if (!isOpen) return null;
+
   return (
-    <div
-      id="themePanel"
-      className={`theme-panel ${isOpen ? "open" : ""}`}
-    >
-      <div className="theme-panel-header">
-        Theme Panel — SHIFT + A
-      </div>
+    <div id="themePanel" className={`theme-panel ${isOpen ? "open" : ""}`}>
+      <div className="theme-panel-header">Theme Panel — SHIFT + A</div>
 
       <div className="theme-panel-body">
 
-        {/* MODE SELECTOR */}
-        <div className="theme-section">
-          <div className="theme-label">Mode</div>
-          <div className="theme-role-buttons">
-            <button
-              className={role === "day" ? "active" : ""}
-              onClick={() => setRole("day")}
-            >
-              Day
-            </button>
-            <button
-              className={role === "night" ? "active" : ""}
-              onClick={() => setRole("night")}
-            >
-              Night
+        {/* ADMIN GATE */}
+        {!isAdmin && (
+          <div className="theme-section">
+            <div className="theme-label">Admin Access</div>
+            <input
+              type="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button className="apply-btn" onClick={handleUnlock}>
+              Unlock
             </button>
           </div>
-        </div>
+        )}
 
-        {/* SWATCH GRID */}
-        <div className="theme-section">
-          <div className="theme-label">Gradients</div>
-          <div className="swatch-grid">
-            {gradientKeys.map((g) => (
-              <div
-                key={g}
-                className={`swatch ${key === g ? "selected" : ""}`}
-                style={{ background: `var(--grad-${g})` }}
-                onClick={() => setKey(g)}
-              >
-                {g}
+        {/* MAIN PANEL */}
+        {isAdmin && (
+          <>
+            {/* MODE SELECTOR */}
+            <div className="theme-section">
+              <div className="theme-label">Mode</div>
+              <div className="theme-role-buttons">
+                <button
+                  className={role === "day" ? "active" : ""}
+                  onClick={() => setRole("day")}
+                >
+                  Day
+                </button>
+                <button
+                  className={role === "dark" ? "active" : ""}
+                  onClick={() => setRole("dark")}
+                >
+                  Night
+                </button>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* APPLY BUTTON */}
-        <div className="theme-section">
-          <button className="apply-btn" onClick={applyTheme}>
-            Apply Theme
-          </button>
-        </div>
+            {/* SWATCH GRID */}
+            <div className="theme-section">
+              <div className="theme-label">Gradients</div>
+              <div className="swatch-grid">
+                {gradientKeys.map((g) => (
+                  <div
+                    key={g}
+                    className={`swatch ${gradient === g ? "selected" : ""}`}
+                    style={{ background: `var(--grad-${g})` }}
+                    onClick={() => setGradient(g)}
+                  >
+                    {g}
+                  </div>
+                ))}
+              </div>
+            </div>
 
+            {/* APPLY BUTTON */}
+            <div className="theme-section">
+              <button className="apply-btn" onClick={applyTheme}>
+                Apply Theme
+              </button>
+            </div>
+
+            {/* CLOSE BUTTON */}
+            <div className="theme-section">
+              <button className="apply-btn" onClick={() => setIsOpen(false)}>
+                Close Panel
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
