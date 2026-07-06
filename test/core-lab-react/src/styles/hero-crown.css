@@ -91,3 +91,31 @@ body[data-theme="dark"] #hero-crown-container .hero-crown {
   50%  { opacity: 1; }
   100% { opacity: 0.85; }
 }
+.hero-crown {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 240px;
+  height: auto;
+}
+
+#hero-crown-day {
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 8s ease-in-out;
+}
+
+#hero-crown-night {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 8s ease-in-out;
+}
+
+body[data-themeRole="night"] #hero-crown-day {
+  opacity: 0;
+}
+
+body[data-themeRole="night"] #hero-crown-night {
+  opacity: 1;
+}
