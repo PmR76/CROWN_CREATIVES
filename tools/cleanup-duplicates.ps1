@@ -47,11 +47,13 @@ foreach ($item in $duplicates) {
     Write-Host "Keeping canonical: $($canonical.FullName)" -ForegroundColor Green
 
     # Move all others to archive.disabled
-    foreach ($file in $foundFiles[1..($foundFiles.Count - 1)]) {
-        $dest = Join-Path $archive $file.Name
+    if ($foundFiles.Count -gt 1) {
+        foreach ($file in $foundFiles[1..($foundFiles.Count - 1)]) {
+            $dest = Join-Path $archive $file.Name
 
-        Write-Host "Archiving duplicate: $($file.FullName)" -ForegroundColor Magenta
-        Move-Item -Path $file.FullName -Destination $dest -Force
+            Write-Host "Archiving duplicate: $($file.FullName)" -ForegroundColor Magenta
+            Move-Item -Path $file.FullName -Destination $dest -Force
+        }
     }
 }
 
@@ -73,4 +75,4 @@ foreach ($folder in $legacyFolders) {
 }
 
 Write-Host "`n=== LAYER 1 CLEANUP COMPLETE ===" -ForegroundColor Cyan
-Write-Host "Run Sentinel again to confirm status is GREEN."
+Write-Host "Run Sentinel again to confirm status is GREEN." -ForegroundColor Cyan
