@@ -1,18 +1,18 @@
 /* ============================================================
    Crown Creatives Cinematic Glass Header — FINAL VERSION
-   Stable • 150px Lift • Full Visibility
+   Stable • 60px Lift • Full Visibility
 ============================================================ */
 
 /* ------------------------------------------------------------
-   HEADER CONTAINER — LIFTED BY 150PX
+   HEADER CONTAINER — LIFTED BY 60PX
 ------------------------------------------------------------ */
 header,
 .site-header,
 .site-header-inner,
 #header-container {
   position: relative;
-  top: -150px !important;          /* LIFT HEADER UP */
-  z-index: 9000;                   /* stays above crown + gallery */
+  top: -60px !important;          /* LIFT HEADER UP BY 60PX */
+  z-index: 9000;                  /* stays above crown + gallery */
 }
 
 /* ------------------------------------------------------------
