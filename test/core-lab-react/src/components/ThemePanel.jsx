@@ -1,3 +1,8 @@
+// ============================================================
+// ThemePanel.jsx — Crown Creatives Theme System
+// SHIFT + A • Password Gate • Draggable • Gradient Swatches
+// ============================================================
+
 import { useEffect, useState } from "react";
 import "../styles/theme-panel.css";
 import "../shared/theme.css";
@@ -15,13 +20,16 @@ export default function ThemePanel() {
   useEffect(() => {
     function handleKey(e) {
       if (e.key === "A" && e.shiftKey) {
+        console.log("SHIFT+A fired");
 
         // Password gate
         if (!adminUnlocked) {
           const pass = prompt("Enter admin password:");
           if (pass === "CROWN26") {
+            console.log("Admin unlocked");
             setAdminUnlocked(true);
             setIsOpen(prev => !prev);
+            console.log("setIsOpen triggered (after unlock)");
           } else {
             alert("Incorrect password.");
           }
@@ -30,6 +38,7 @@ export default function ThemePanel() {
 
         // Already unlocked
         setIsOpen(prev => !prev);
+        console.log("setIsOpen triggered (already unlocked)");
       }
     }
 
@@ -41,11 +50,17 @@ export default function ThemePanel() {
   // Draggable Panel
   // ------------------------------------------------------------
   useEffect(() => {
-    const panel = document.getElementById("themePanel");
-    if (!panel) return;
+    const panel = document.getElementById("theme-panel");
+    if (!panel) {
+      console.warn("ThemePanel: #theme-panel not found in DOM");
+      return;
+    }
 
     const header = panel.querySelector(".theme-panel-header");
-    if (!header) return;
+    if (!header) {
+      console.warn("ThemePanel: .theme-panel-header not found");
+      return;
+    }
 
     let isDragging = false;
     let startX = 0;
@@ -102,6 +117,7 @@ export default function ThemePanel() {
   // Apply Theme
   // ------------------------------------------------------------
   function applyTheme() {
+    console.log("ApplyTheme:", role, key);
     themeEngine.setBackgroundTheme(role, key);
   }
 
@@ -109,8 +125,10 @@ export default function ThemePanel() {
   // Render
   // ------------------------------------------------------------
   return (
-    <div id="themePanel" className={`theme-panel ${isOpen ? "open" : ""}`}>
-      
+    <div
+      id="theme-panel"
+      className={`theme-panel ${isOpen ? "theme-panel-visible" : ""}`}
+    >
       <div className="theme-panel-header">
         Theme Panel — SHIFT + A
       </div>
