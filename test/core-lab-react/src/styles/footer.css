@@ -9,14 +9,16 @@
   padding: 40px 0;
   display: flex;
   justify-content: center;
+
   position: relative;
-  z-index: 20;
+  z-index: 10;
+
+  margin-top: 50px;              /* SHIFT FOOTER DOWN BY 50PX */
 }
 
 /* ============================================================
    FROSTED GLASS PANEL — MATCHED TO HEADER GLOW
 ============================================================ */
-
 .footer-glass {
   width: 92%;
   max-width: 1400px;
@@ -129,7 +131,6 @@
 /* ============================================================
    SHARED GLOW ANIMATION (HEADER + CARDS + FOOTER)
 ============================================================ */
-
 @keyframes headerGlow {
   0%   { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
   50%  { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
