@@ -45,8 +45,14 @@ body.cards-lab {
 }
 
 @keyframes floatUp {
-  0% { transform: translateY(0) scale(1); opacity: 0.4; }
-  100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-120vh) scale(0.5);
+    opacity: 0;
+  }
 }
 
 /* ============================================================
@@ -57,6 +63,9 @@ body.cards-lab {
   width: 100%;
   display: flex;
   justify-content: center;
+
+  /* MOVE CARDS DOWN BY 200PX */
+  margin-top: 200px;
 }
 
 .cc-cards .cards-wrapper {
@@ -79,14 +88,17 @@ body.cards-lab {
   position: relative;
   padding: 32px;
   border-radius: var(--card-radius);
+
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+
   background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
   transform-style: preserve-3d;
+
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 
-  /* NEW: Header Glow Pulse (same as header) */
+  /* Header Glow Pulse (same as header + footer) */
   animation: headerGlow var(--glow-speed, 6s) ease-in-out infinite;
 }
 
@@ -97,19 +109,18 @@ body.cards-lab {
   inset: 0;
   padding: var(--card-border-size);
   border-radius: inherit;
+
   background: linear-gradient(
     0deg,
     var(--active-day-gradient, #fff),
     var(--active-night-gradient, #fff)
   );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+
   animation: borderSweep 6s linear infinite;
 }
 
@@ -128,8 +139,8 @@ body.cards-lab {
 ============================================================ */
 
 @keyframes headerGlow {
-  0%   { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
-  50%  { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
+  0% { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
+  50% { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
   100% { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
 }
 
