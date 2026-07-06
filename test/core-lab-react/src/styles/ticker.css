@@ -9,7 +9,7 @@
   white-space: nowrap;
 
   /* MOVE TICKER DOWN BY 200PX */
-  margin-top: 200px;
+  margin-top: 250px;
 }
 
 /* Ticker track */
@@ -52,5 +52,5 @@
 
 /* Speed variable */
 :root {
-  --ticker-speed: 36s;
+  --ticker-speed: 46s;
 }
