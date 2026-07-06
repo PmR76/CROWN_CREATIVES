@@ -1,8 +1,3 @@
-// ============================================================
-// CROWN CREATIVES — FROSTED THEME PANEL (GR1)
-// Draggable • SHIFT+A Toggle • Scrollable • Gradient Swatches
-// ============================================================
-
 import { useEffect, useState } from "react";
 import "../styles/theme-panel.css";
 import "../shared/theme.css";
@@ -12,23 +7,30 @@ export default function ThemePanel() {
   const [isOpen, setIsOpen] = useState(false);
   const [role, setRole] = useState("day");
   const [key, setKey] = useState("sunrise");
+  const [adminUnlocked, setAdminUnlocked] = useState(false);
 
-  // ------------------------------------------------------------
   // SHIFT + A — Toggle Panel
-  // ------------------------------------------------------------
   useEffect(() => {
     function handleKey(e) {
       if (e.key === "A" && e.shiftKey) {
-        setIsOpen(prev => !prev);
+        if (!adminUnlocked) {
+          const pass = prompt("Enter admin password:");
+          if (pass === "CROWN26") {
+            setAdminUnlocked(true);
+            setIsOpen(prev => !prev);
+          } else {
+            alert("Incorrect password.");
+          }
+        } else {
+          setIsOpen(prev => !prev);
+        }
       }
     }
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, []);
+  }, [adminUnlocked]);
 
-  // ------------------------------------------------------------
   // Draggable Panel
-  // ------------------------------------------------------------
   useEffect(() => {
     const panel = document.getElementById("themePanel");
     if (!panel) return;
@@ -76,58 +78,32 @@ export default function ThemePanel() {
     };
   }, []);
 
-  // ------------------------------------------------------------
-  // Gradient Swatches (keys)
-  // ------------------------------------------------------------
   const gradientKeys = [
-    "sunrise", "sunset", "dusk", "dawn", "neon", "aqua", "forest",
-    "gold", "purple", "crimson", "ocean", "sky", "mint", "lava",
-    "peach", "rose", "violet", "steel", "nightfall", "midnight",
-    "storm", "ember", "ice", "sand", "crown", "royal", "emerald",
-    "blush", "shadow", "plasma", "nova", "flare", "aurora", "zen"
+    "sunrise","sunset","dusk","dawn","neon","aqua","forest",
+    "gold","purple","crimson","ocean","sky","mint","lava",
+    "peach","rose","violet","steel","nightfall","midnight",
+    "storm","ember","ice","sand","crown","royal","emerald",
+    "blush","shadow","plasma","nova","flare","aurora","zen"
   ];
 
-  // ------------------------------------------------------------
-  // Apply Theme
-  // ------------------------------------------------------------
   function applyTheme() {
     themeEngine.setBackgroundTheme(role, key);
   }
 
-  // ------------------------------------------------------------
-  // Render
-  // ------------------------------------------------------------
   return (
-    <div
-      id="themePanel"
-      className={`theme-panel ${isOpen ? "open" : ""}`}
-    >
-      <div className="theme-panel-header">
-        Theme Panel — SHIFT + A
-      </div>
+    <div id="themePanel" className={`theme-panel ${isOpen ? "open" : ""}`}>
+      <div className="theme-panel-header">Theme Panel — SHIFT + A</div>
 
       <div className="theme-panel-body">
 
-        {/* ROLE SELECTOR */}
         <div className="theme-section">
           <div className="theme-label">Mode</div>
           <div className="theme-role-buttons">
-            <button
-              className={role === "day" ? "active" : ""}
-              onClick={() => setRole("day")}
-            >
-              Day
-            </button>
-            <button
-              className={role === "night" ? "active" : ""}
-              onClick={() => setRole("night")}
-            >
-              Night
-            </button>
+            <button className={role === "day" ? "active" : ""} onClick={() => setRole("day")}>Day</button>
+            <button className={role === "night" ? "active" : ""} onClick={() => setRole("night")}>Night</button>
           </div>
         </div>
 
-        {/* SWATCH GRID */}
         <div className="theme-section">
           <div className="theme-label">Gradients</div>
           <div className="swatch-grid">
@@ -144,11 +120,8 @@ export default function ThemePanel() {
           </div>
         </div>
 
-        {/* APPLY BUTTON */}
         <div className="theme-section">
-          <button className="apply-btn" onClick={applyTheme}>
-            Apply Theme
-          </button>
+          <button className="apply-btn" onClick={applyTheme}>Apply Theme</button>
         </div>
 
       </div>

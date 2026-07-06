@@ -1,38 +1,23 @@
-// ============================================================
-// useThemeEngine — React Hook Unified with ThemeEngine
-// ============================================================
-
 import { useEffect, useState, useCallback } from "react";
 
 export default function useThemeEngine() {
-  const [theme, setTheme] = useState(
+  const [themeRole, setThemeRole] = useState(
     localStorage.getItem("cc-theme-role") || "day"
   );
 
-  const applyTheme = useCallback((nextTheme) => {
-    setTheme(nextTheme);
-    document.body.dataset.themeRole = nextTheme;
-    localStorage.setItem("cc-theme-role", nextTheme);
+  const applyTheme = useCallback((nextRole) => {
+    setThemeRole(nextRole);
+    document.body.dataset.themeRole = nextRole;
+    localStorage.setItem("cc-theme-role", nextRole);
 
     window.dispatchEvent(
-      new CustomEvent("theme-changed", { detail: nextTheme })
+      new CustomEvent("theme-changed", { detail: nextRole })
     );
   }, []);
 
   useEffect(() => {
-    applyTheme(theme);
-  }, [theme, applyTheme]);
+    applyTheme(themeRole);
+  }, [themeRole, applyTheme]);
 
-  useEffect(() => {
-    const handler = (e) => applyTheme(e.detail);
-    window.addEventListener("theme-set", handler);
-    return () => window.removeEventListener("theme-set", handler);
-  }, [applyTheme]);
-
-  const toggleTheme = useCallback(() => {
-    const next = theme === "day" ? "night" : "day";
-    applyTheme(next);
-  }, [theme, applyTheme]);
-
-  return { theme, toggleTheme };
+  return { themeRole };
 }

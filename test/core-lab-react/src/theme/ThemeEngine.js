@@ -1,22 +1,12 @@
-// ============================================================
-// ThemeEngine — Gradient + Background Engine
-// ============================================================
-
 class ThemeEngine {
   constructor() {
-    this.currentRole = "day";
+    this.currentRole = localStorage.getItem("cc-theme-role") || "day";
     this.currentKey = localStorage.getItem("cc-theme-key") || "sunrise";
 
-    // Apply immediately on load
     this.applyGradient(this.currentRole, this.currentKey);
-
-    // Initial snapshot
     this.dispatchSnapshot();
   }
 
-  // ------------------------------------------------------------
-  // Dispatch Theme Snapshot (Diagnostics + DevTools)
-  // ------------------------------------------------------------
   dispatchSnapshot() {
     window.dispatchEvent(
       new CustomEvent("theme-snapshot", {
@@ -30,9 +20,6 @@ class ThemeEngine {
     );
   }
 
-  // ------------------------------------------------------------
-  // Set Background Theme (Day/Night + Gradient Key)
-  // ------------------------------------------------------------
   setBackgroundTheme(role, key) {
     this.currentRole = role;
     this.currentKey = key;
@@ -42,20 +29,15 @@ class ThemeEngine {
 
     this.applyGradient(role, key);
 
-    // Notify listeners
     window.dispatchEvent(
       new CustomEvent("theme-gradient-changed", {
         detail: { role, key }
       })
     );
 
-    // Snapshot for diagnostics
     this.dispatchSnapshot();
   }
 
-  // ------------------------------------------------------------
-  // Apply Gradient to Document
-  // ------------------------------------------------------------
   applyGradient(role, key) {
     const varName = `--grad-${key}`;
     const gradient = getComputedStyle(document.documentElement)
@@ -70,15 +52,6 @@ class ThemeEngine {
     document.body.style.background = gradient;
     document.body.dataset.themeRole = role;
     document.body.dataset.themeKey = key;
-  }
-
-  // ------------------------------------------------------------
-  // Restore Last Saved Theme
-  // ------------------------------------------------------------
-  restore() {
-    const role = localStorage.getItem("cc-theme-role") || "day";
-    const key = localStorage.getItem("cc-theme-key") || "sunrise";
-    this.setBackgroundTheme(role, key);
   }
 }
 
