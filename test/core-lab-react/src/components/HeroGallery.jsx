@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { initHeroGallery } from "../shared/heroGalleryEngine";
-import "../shared/hero-gallery.css";
 
 export default function HeroGallery() {
   useEffect(() => {

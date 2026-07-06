@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { initHeroCrown } from "../shared/heroCrownEngine";
-import "../shared/hero-crown.css";
 
 export default function HeroCrown() {
   useEffect(() => {
