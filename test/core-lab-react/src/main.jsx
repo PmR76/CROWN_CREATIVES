@@ -2,6 +2,7 @@
 // main.jsx — React Entry Point (STRICT MODE REMOVED)
 // ============================================================
 
+// GLOBAL ERROR VISIBILITY
 window.addEventListener("error", (e) => {
   console.log("GLOBAL ERROR:", e.error);
 });
@@ -14,7 +15,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
-// GLOBAL CSS
+// ============================================================
+// GLOBAL CSS — Loaded once
+// ============================================================
+
 import "./styles/header.css";
 import "./styles/footer.css";
 import "./styles/cards.css";
@@ -26,7 +30,10 @@ import "./styles/theme-panel.css";
 import "./styles/gradients.css";
 import "./shared/theme.css";
 
+// ============================================================
 // MOUNT APP — STRICTMODE REMOVED
+// ============================================================
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <App />
 );
