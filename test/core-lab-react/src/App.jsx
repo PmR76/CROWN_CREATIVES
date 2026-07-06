@@ -1,10 +1,11 @@
 // ============================================================
-// App.jsx — Crown Creatives Core Lab React
+// App.jsx — Crown Creatives Core Lab React (FINAL CLEAN VERSION)
 // ============================================================
 
 import React from "react";
 import useThemeEngine from "./hooks/useThemeEngine";
 
+// COMPONENTS
 import Header from "./components/Header";
 import Background3D from "./components/Background3D";
 import ThemePanel from "./components/ThemePanel";
@@ -15,12 +16,13 @@ import Ticker from "./components/Ticker";
 import Footer from "./components/Footer";
 import CorePanel from "./components/CorePanel";
 
+// GLOBAL CORE CSS
 import "./styles/core.css";
 
 export default function App() {
 
-  // FIX: capture hook return so React treats it as a proper hook
-  const { themeRole } = useThemeEngine();
+  // Mount theme engine once
+  const { theme } = useThemeEngine();
 
   return (
     <>
