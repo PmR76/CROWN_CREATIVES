@@ -26,9 +26,10 @@
   color: white;
   font-family: 'Cinzel Decorative', serif;
 
-  display: none;
+  display: none; /* hidden by default */
 }
 
+/* visibility controlled by React state */
 .theme-panel.open {
   display: block;
 }
