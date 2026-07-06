@@ -1,23 +1,27 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 export default function useThemeEngine() {
-  const [themeRole, setThemeRole] = useState(
-    localStorage.getItem("cc-theme-role") || "day"
+  const [theme, setTheme] = useState(
+    localStorage.getItem("cc-theme") || "day"
   );
 
-  const applyTheme = useCallback((nextRole) => {
-    setThemeRole(nextRole);
-    document.body.dataset.themeRole = nextRole;
-    localStorage.setItem("cc-theme-role", nextRole);
-
-    window.dispatchEvent(
-      new CustomEvent("theme-changed", { detail: nextRole })
-    );
-  }, []);
-
   useEffect(() => {
-    applyTheme(themeRole);
-  }, [themeRole, applyTheme]);
+    function handleThemeSet(e) {
+      const next = e.detail;
+      setTheme(next);
+      document.body.dataset.theme = next;
+      localStorage.setItem("cc-theme", next);
+    }
 
-  return { themeRole };
+    window.addEventListener("theme-set", handleThemeSet);
+
+    // Apply initial theme
+    document.body.dataset.theme = theme;
+
+    return () => {
+      window.removeEventListener("theme-set", handleThemeSet);
+    };
+  }, [theme]);
+
+  return { theme };
 }

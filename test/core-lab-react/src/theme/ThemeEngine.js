@@ -1,9 +1,11 @@
 class ThemeEngine {
   constructor() {
-    this.currentRole = localStorage.getItem("cc-theme-role") || "day";
-    this.currentKey = localStorage.getItem("cc-theme-key") || "sunrise";
+    this.currentTheme = localStorage.getItem("cc-theme") || "day";
+    this.currentGradient = localStorage.getItem("cc-gradient") || "sunrise";
 
-    this.applyGradient(this.currentRole, this.currentKey);
+    this.applyGradient(this.currentGradient);
+    document.body.dataset.theme = this.currentTheme;
+
     this.dispatchSnapshot();
   }
 
@@ -11,8 +13,8 @@ class ThemeEngine {
     window.dispatchEvent(
       new CustomEvent("theme-snapshot", {
         detail: {
-          role: this.currentRole,
-          key: this.currentKey,
+          theme: this.currentTheme,
+          gradient: this.currentGradient,
           applied: document.body.style.background,
           timestamp: Date.now()
         }
@@ -20,25 +22,24 @@ class ThemeEngine {
     );
   }
 
-  setBackgroundTheme(role, key) {
-    this.currentRole = role;
-    this.currentKey = key;
+  setBackgroundTheme(theme, gradient) {
+    this.currentTheme = theme;
+    this.currentGradient = gradient;
 
-    localStorage.setItem("cc-theme-role", role);
-    localStorage.setItem("cc-theme-key", key);
+    localStorage.setItem("cc-theme", theme);
+    localStorage.setItem("cc-gradient", gradient);
 
-    this.applyGradient(role, key);
+    document.body.dataset.theme = theme;
+    this.applyGradient(gradient);
 
     window.dispatchEvent(
-      new CustomEvent("theme-gradient-changed", {
-        detail: { role, key }
-      })
+      new CustomEvent("theme-set", { detail: theme })
     );
 
     this.dispatchSnapshot();
   }
 
-  applyGradient(role, key) {
+  applyGradient(key) {
     const varName = `--grad-${key}`;
     const gradient = getComputedStyle(document.documentElement)
       .getPropertyValue(varName)
@@ -50,8 +51,6 @@ class ThemeEngine {
     }
 
     document.body.style.background = gradient;
-    document.body.dataset.themeRole = role;
-    document.body.dataset.themeKey = key;
   }
 }
 
