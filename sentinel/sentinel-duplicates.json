@@ -1,23 +1,92 @@
 [
   {
-    "name": "footer.css",
+    "name": "day-crown.svg",
     "locations": [
-      "test\\core-lab-react\\src\\components",
-      "test\\core-lab-react\\src\\styles"
+      "assets\\icons\\CC_V2",
+      "assets\\icons\\CC_V2\\New_Look",
+      "assets\\icons\\CC_V2\\New_Look\\Final_1400px",
+      "assets\\icons\\CC_V2\\New_Look\\Final_2000px",
+      "assets\\icons"
     ]
   },
   {
-    "name": "hero-crown.css",
+    "name": "head-crown.svg",
     "locations": [
-      "test\\core-lab-react\\src\\shared",
-      "test\\core-lab-react\\src\\styles"
+      "assets\\icons\\CC_V2",
+      "assets\\icons"
     ]
   },
   {
-    "name": "hero-gallery.css",
+    "name": "night-crown.svg",
     "locations": [
-      "test\\core-lab-react\\src\\shared",
-      "test\\core-lab-react\\src\\styles"
+      "assets\\icons\\CC_V2\\New_Look\\Final_1400px",
+      "assets\\icons\\CC_V2\\New_Look\\Final_2000px",
+      "assets\\icons\\CC_V2",
+      "assets\\icons"
+    ]
+  },
+  {
+    "name": "favicon.ico",
+    "locations": [
+      "assets\\icons\\CC_V2\\New_Look\\Final_2000px\\favicon_io (1)",
+      "assets\\icons"
+    ]
+  },
+  {
+    "name": "evolve-glitch.mp4",
+    "locations": [
+      "assets\\icons",
+      "assets\\videos"
+    ]
+  },
+  {
+    "name": "evolve-glitch_v2.mp4",
+    "locations": [
+      "assets\\icons",
+      "assets\\videos"
+    ]
+  },
+  {
+    "name": "evolve-glitch_v3.mp4",
+    "locations": [
+      "assets\\icons",
+      "assets\\videos"
+    ]
+  },
+  {
+    "name": "gold-crown.png",
+    "locations": [
+      "assets\\icons",
+      "assets\\images\\gallery"
+    ]
+  },
+  {
+    "name": "neon-crown.png",
+    "locations": [
+      "assets\\icons",
+      "assets\\images\\gallery"
+    ]
+  },
+  {
+    "name": "sun-moon.png",
+    "locations": [
+      "assets\\icons",
+      "assets\\images\\gallery"
+    ]
+  },
+  {
+    "name": "fallback.jpeg",
+    "locations": [
+      "assets\\images",
+      "assets\\images\\gallery"
+    ]
+  },
+  {
+    "name": "config.json",
+    "locations": [
+      "assets\\projects.disabled\\project-template",
+      "assets\\projects.disabled\\project1",
+      "assets\\projects.disabled\\project2"
     ]
   }
 ]

@@ -1,12 +1,193 @@
 📁 assets
-   🟢 ❌ Missing folder: assets
+   📁 assets\config
+   📁 assets\icons
+      🟢 cc-head.svg
+      🟢 CC-logo (1).svg
+      🟢 cc-logo-v2.svg
+      🟢 cc-logo.png
+      🟢 CC-logo.svg
+      📁 assets\icons\CC_V2
+         🟢 day-crown - Copy (5).svg
+         🟢 day-crown-v2.png
+         🟢 day-crown.png.png
+         🟢 day-crown.svg
+         🟢 head-crown.svg
+         📁 assets\icons\CC_V2\New_Look
+            🟢 Crown creatives day_night_day.png
+            🟢 Crown creatives day_night_night.png
+            🟢 day-crown-1400 - Copy.png
+            🟢 day-crown-1400.png
+            🟢 day-crown.svg
+            📁 assets\icons\CC_V2\New_Look\Final_1400px
+               🟢 day-crown.svg
+               🟢 night-crown.svg
+            📁 assets\icons\CC_V2\New_Look\Final_2000px
+               🟢 day-background.png.png
+               🟢 day-crown - Copy.svg
+               🟢 day-crown-v3.svg
+               🟢 day-crown-V4.txt
+               🟢 day-crown.svg
+               🟢 day-crown.zip
+               🟢 day-crown3.png
+               🟢 day-crown5.svg
+               🟢 day-crown_V2.png
+               📁 assets\icons\CC_V2\New_Look\Final_2000px\favicon_io (1)
+                  🟢 android-chrome-192x192.png
+                  🟢 android-chrome-512x512.png
+                  🟢 apple-touch-icon.png
+                  🟢 favicon-16x16.png
+                  🟢 favicon-32x32.png
+                  🟢 favicon.ico
+                  🟢 site.webmanifest
+               🟢 favicon_io (1).zip
+               🟢 New logo web-2 (1).png
+               🟢 night-crown - Copy.svg
+               🟢 night-crown-v3.svg
+               🟢 night-crown.svg
+               🟢 night-crown3.png
+               🟢 night-crown5.svg
+               🟢 night-crown_V2.png
+            🟢 night-crown-1400.png
+         🟢 night-crown.png
+         🟢 night-crown.svg
+         🟢 night-crownV6.svg
+      🟢 construct-neon.png
+      🟢 copilot-magic.svg
+      🟢 Crown Creatives Header.png
+      🟢 Crown Creatives Header.svg
+      🟢 day-crown.svg
+      🟢 devsuite-green.png
+      🟢 devsuite-neon.png
+      🟢 diagnostic-green.png
+      🟢 email-magic.svg
+      🟢 evolve-blue.ico
+      🟢 evolve-blue.png
+      🟢 evolve-glitch.mp4
+      🟢 evolve-glitch_v2.mp4
+      🟢 evolve-glitch_v3.mp4
+      🟢 evolve-green.png
+      🟢 evolve-logo.png
+      🟢 evolve-logo.svg
+      🟢 evolve-neon.ico
+      🟢 evolve-neon.png
+      🟢 evolve-neon.svg
+      🟢 evolve4.svg
+      🟢 facebook-magic.svg
+      🟢 favicon.ico
+      🟢 favicon.png
+      🟢 github-recovery-codes.txt
+      🟢 gold-crown.png
+      🟢 handshake-green.png
+      🟢 handshake-neon.png
+      🟢 head-crown.ico
+      🟢 head-crown.svg
+      📁 assets\icons\images
+         🟢 image1.png
+         🟢 M-FIX.ico
+         🟢 M-FIX.jpeg
+         🟢 M-SCAN.ico
+         🟢 M-SCAN.jpeg
+         🟢 sun-moon.jpeg
+         🟢 Untitled - 27 May 2026 at 12.22.14-24.png
+      🟢 instagram-magic.svg
+      🟢 med-neon.ico
+      🟢 med-neon.png
+      🟢 med-neon2.png
+      🟢 mother.ico
+      🟢 mother.png
+      🟢 music-v2.png
+      🟢 music.png
+      🟢 music3.png
+      🟢 nav-green.png
+      🟢 neon-crown.png
+      🟢 neon-crown.svg
+      🟢 night-crown.svg
+      📁 assets\icons\reels
+         🟢 facebook.png
+         🟢 instagram.png
+         🟢 youtube.png
+      🟢 sentenil-green.png
+      🟢 sentinel-neon.png
+      🟢 sound-magic.svg
+      🟢 sound-reactive.svg
+      🟢 sun-moon-animated.svg
+      🟢 sun-moon.png
+      🟢 tracecore.ico
+      🟢 tracecore.png
+      🟢 tree-green.ico
+      🟢 tree-green.png
+      🟢 up-arrow-magic.svg
+   📁 assets\images
+      🟢 fallback.jpeg
+      📁 assets\images\gallery
+         🟢 20260612_104446743_iOS.jpg
+         🟢 20260612_104446849_iOS.jpg
+         🟢 20260612_104447134_iOS.jpg
+         🟢 20260612_104447271_iOS.jpg
+         🟢 20260612_104447357_iOS.jpg
+         🟢 butterfly.jpeg
+         🟢 butterfly2.jpeg
+         🟢 crow.jpeg
+         🟢 day-background.jpeg
+         🟢 dice-tower.jpeg
+         🟢 fallback.jpeg
+         🟢 fly.jpeg
+         🟢 framed-but.jpeg
+         🟢 gallery-manifest.json
+         🟢 gold-crown.png
+         🟢 Grief Cafe.png
+         🟢 House-V2.jpeg
+         🟢 Jane_Austine.jpeg
+         🟢 just-crown.svg
+         🟢 kermit.jpeg
+         🟢 Mushroom.jpeg
+         🟢 mushroomV2.png
+         🟢 my-story-photoV3.png
+         🟢 neon-crown.png
+         🟢 night-background.jpeg
+         🟢 painting2.jpg
+         🟢 sanding.jpg
+         🟢 sculpture.jpeg
+         🟢 skull.jpeg
+         🟢 stars-darkness.jpeg
+         🟢 sun-moon.png
+         🟢 tree.jpeg
+         🟢 wave.jpeg
+         🟢 white-butterfly.jpeg
+   📁 assets\podcasts
+   📁 assets\projects.disabled
+      📁 assets\projects.disabled\project-template
+         🟢 config.json
+         🟢 read.md
+      📁 assets\projects.disabled\project1
+         🟢 config.json
+      📁 assets\projects.disabled\project2
+         🟢 config.json
+      📁 assets\projects.disabled\project3
+   📁 assets\sounds
+      🟢 34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3
+      🟢 alec_koff-carnaval-484622.mp3
+      🟢 bransboynd-retro-lounge-389644.mp3
+      🟢 denys_brodovskyi-sandbreaker-379630.mp3
+      🟢 energysound-powerful-percussion-513717.mp3
+      🟢 finley-chill-sunset-chill-nature-529994.mp3
+      🟢 ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3
+      🟢 kontraa-water-afro-pop-music-445661.mp3
+      🟢 loksii-no-copyright-music-211881.mp3
+      🟢 placidplace-relaxing-piano-with-soft-female-vocals-85658.mp3
+      🟢 ribhavagrawal-relaxing-music-with-nature-sounds-284494.mp3
+      🟢 rockot-experimental-cinematic-hip-hop-315904.mp3
+      🟢 sound-manifest.json
+   📁 assets\videos
+      🟢 evolve-glitch.mp4
+      🟢 evolve-glitch_v2.mp4
+      🟢 evolve-glitch_v3.mp4
 📁 test/core-lab-react/src
    🟢 App.jsx
    📁 test\core-lab-react\src\components
       🟢 Background3D.jsx
       🟢 Cards.jsx
       🟢 CorePanel.jsx
-      🟢 footer.css
       🟢 Footer.jsx
       🟢 Header.jsx
       🟢 HeroCrown.jsx
@@ -20,8 +201,6 @@
    🟢 main.jsx
    📁 test\core-lab-react\src\shared
       🟢 desktop.ini
-      🟢 hero-crown.css
-      🟢 hero-gallery.css
       🟢 HeroCrownEngine.js
       🟢 heroGalleryEngine.js
       🟢 theme.css

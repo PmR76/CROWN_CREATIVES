@@ -1,13 +1,19 @@
 {
-  "timestamp": "2026-07-05T21:17:56.612Z",
-  "missing": [
-    "assets/icons",
-    "assets/images"
-  ],
+  "timestamp": "2026-07-06T01:52:04.375Z",
+  "missing": [],
   "duplicates": [
-    "footer.css",
-    "hero-crown.css",
-    "hero-gallery.css"
+    "day-crown.svg",
+    "head-crown.svg",
+    "night-crown.svg",
+    "favicon.ico",
+    "evolve-glitch.mp4",
+    "evolve-glitch_v2.mp4",
+    "evolve-glitch_v3.mp4",
+    "gold-crown.png",
+    "neon-crown.png",
+    "sun-moon.png",
+    "fallback.jpeg",
+    "config.json"
   ],
-  "status": "red"
+  "status": "amber"
 }
