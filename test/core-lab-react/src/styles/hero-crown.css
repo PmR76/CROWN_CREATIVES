@@ -1,17 +1,16 @@
 /* ============================================================
    HERO CROWN — FINAL UNIFIED VERSION
-   Stable • Cinematic • Theme‑Reactive
+   Stable • Cinematic • Theme‑Reactive • Lifted + Enlarged
 ============================================================ */
 
 /* ------------------------------------------------------------
    1. HERO CROWN CONTAINER — Sits under header, above gallery
 ------------------------------------------------------------ */
-
 #hero-crown-container {
   position: relative;
   width: 100%;
-  margin-top: 60px;            /* crown sits below header */
-  margin-bottom: 40px;         /* space above gallery */
+  margin-top: 60px;              /* crown sits below header */
+  margin-bottom: 40px;           /* space above gallery */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,86 +19,27 @@
 }
 
 /* ------------------------------------------------------------
-   2. HERO CROWN IMAGES — Day/Night crowns
+   2. HERO CROWN — Centered, Lifted + Enlarged
 ------------------------------------------------------------ */
-
-.hero-crown {
-  width: 260px;
-  height: auto;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  filter: drop-shadow(0 0 20px var(--crown-glow-color));
-  pointer-events: none;
-}
-
-.hero-crown.visible {
-  opacity: 1;
-}
-
-#hero-crown-day { opacity: 1; }
-#hero-crown-night { opacity: 0; }
-
-body[data-theme="dark"] #hero-crown-day { opacity: 0; }
-body[data-theme="dark"] #hero-crown-night { opacity: 1; }
-
-/* ------------------------------------------------------------
-   3. FLOAT ANIMATION
------------------------------------------------------------- */
-
-.hero-crown.float {
-  animation: crownFloat 8s ease-in-out infinite;
-}
-
-@keyframes crownFloat {
-  0%   { transform: translateY(0px); }
-  50%  { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-/* ------------------------------------------------------------
-   4. DAY MODE GLOW
------------------------------------------------------------- */
-
-body:not([data-theme="dark"]) #hero-crown-container .hero-crown {
-  filter:
-    drop-shadow(0 0 12px rgba(255, 220, 150, 0.6))
-    drop-shadow(0 0 24px rgba(255, 200, 120, 0.4))
-    drop-shadow(0 0 36px rgba(255, 180, 100, 0.3));
-  animation: crownDayShimmer 6s ease-in-out infinite;
-}
-
-@keyframes crownDayShimmer {
-  0%   { opacity: 1; }
-  50%  { opacity: 0.92; }
-  100% { opacity: 1; }
-}
-
-/* ------------------------------------------------------------
-   5. NIGHT MODE GLOW
------------------------------------------------------------- */
-
-body[data-theme="dark"] #hero-crown-container .hero-crown {
-  filter:
-    drop-shadow(0 0 14px rgba(120, 200, 255, 0.9))
-    drop-shadow(0 0 28px rgba(160, 120, 255, 0.8))
-    drop-shadow(0 0 48px rgba(120, 80, 255, 0.6));
-  animation: crownNightPulse 4s ease-in-out infinite;
-}
-
-@keyframes crownNightPulse {
-  0%   { opacity: 0.85; }
-  50%  { opacity: 1; }
-  100% { opacity: 0.85; }
-}
 .hero-crown {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: calc(50% - 100px);        /* MOVE UP BY 100PX */
   transform: translate(-50%, -50%);
-  width: 240px;
+
+  width: 140%;                   /* INCREASE SIZE BY 40% */
   height: auto;
+
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+
+  pointer-events: none;
+  z-index: 5000;
 }
 
+/* ------------------------------------------------------------
+   3. DAY / NIGHT CROWN LAYERING + FADE
+------------------------------------------------------------ */
 #hero-crown-day {
   z-index: 2;
   opacity: 1;
@@ -118,4 +58,51 @@ body[data-themeRole="night"] #hero-crown-day {
 
 body[data-themeRole="night"] #hero-crown-night {
   opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   4. FLOAT ANIMATION (Cinematic Hover)
+------------------------------------------------------------ */
+.hero-crown.float {
+  animation: crownFloat 8s ease-in-out infinite;
+}
+
+@keyframes crownFloat {
+  0%   { transform: translate(-50%, -50%) translateY(0px); }
+  50%  { transform: translate(-50%, -50%) translateY(-10px); }
+  100% { transform: translate(-50%, -50%) translateY(0px); }
+}
+
+/* ------------------------------------------------------------
+   5. DAY MODE GLOW (Warm Gold)
+------------------------------------------------------------ */
+body:not([data-themeRole="night"]) #hero-crown-container .hero-crown {
+  filter:
+    drop-shadow(0 0 12px rgba(255, 220, 150, 0.6))
+    drop-shadow(0 0 24px rgba(255, 200, 120, 0.4))
+    drop-shadow(0 0 36px rgba(255, 180, 100, 0.3));
+  animation: crownDayShimmer 6s ease-in-out infinite;
+}
+
+@keyframes crownDayShimmer {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.92; }
+  100% { opacity: 1; }
+}
+
+/* ------------------------------------------------------------
+   6. NIGHT MODE GLOW (Cool Neon)
+------------------------------------------------------------ */
+body[data-themeRole="night"] #hero-crown-container .hero-crown {
+  filter:
+    drop-shadow(0 0 14px rgba(120, 200, 255, 0.9))
+    drop-shadow(0 0 28px rgba(160, 120, 255, 0.8))
+    drop-shadow(0 0 48px rgba(120, 80, 255, 0.6));
+  animation: crownNightPulse 4s ease-in-out infinite;
+}
+
+@keyframes crownNightPulse {
+  0%   { opacity: 0.85; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.85; }
 }
