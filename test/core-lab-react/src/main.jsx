@@ -1,3 +1,11 @@
+window.addEventListener("error", (e) => {
+  console.log("GLOBAL ERROR:", e.error);
+});
+
+window.addEventListener("unhandledrejection", (e) => {
+  console.log("PROMISE ERROR:", e.reason);
+});
+
 // ============================================================
 // main.jsx — React Entry Point (FINAL CLEAN VERSION)
 // ============================================================

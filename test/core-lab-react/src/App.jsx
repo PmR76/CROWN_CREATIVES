@@ -32,13 +32,13 @@ export default function App() {
       {/* 3D BACKGROUND */}
       <Background3D />
 
-      {/* HERO CROWN — sits under header */}
+      {/* HERO CROWN */}
       <HeroCrown />
 
-      {/* THEME PANEL — admin overlay */}
+      {/* THEME PANEL */}
       <ThemePanel />
 
-      {/* HERO GALLERY — sits under crown */}
+      {/* HERO GALLERY */}
       <HeroGallery />
 
       {/* MAIN CORE-LAB LAYOUT */}

@@ -3,6 +3,9 @@
 // SHIFT + A • Password Gate • Draggable • Gradient Swatches
 // ============================================================
 
+console.log("ThemePanel mounted");
+
+
 import { useEffect, useState, useRef } from "react";
 import "../styles/theme-panel.css";
 import { themeEngine } from "../theme/ThemeEngine";
