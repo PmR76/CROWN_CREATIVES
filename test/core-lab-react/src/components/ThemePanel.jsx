@@ -1,18 +1,21 @@
 // ============================================================
-// ThemePanel.jsx — Crown Creatives Theme System (FINAL ALIGNED)
+// ThemePanel.jsx — Crown Creatives Theme System (FINAL FIXED)
 // SHIFT + A • Password Gate • Draggable • Gradient Swatches
 // ============================================================
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../styles/theme-panel.css";
 import { themeEngine } from "../theme/ThemeEngine";
 
 export default function ThemePanel() {
   const [isOpen, setIsOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [role, setRole] = useState("day");       // unified theme mode
+  const [role, setRole] = useState("day");        // unified theme mode
   const [gradient, setGradient] = useState("sunrise");
   const [password, setPassword] = useState("");
+
+  // Ref for draggable panel
+  const panelRef = useRef(null);
 
   // ------------------------------------------------------------
   // SHIFT + A — Open Panel (password gate)
@@ -44,17 +47,17 @@ export default function ThemePanel() {
   function applyTheme() {
     themeEngine.setBackgroundTheme(role, gradient);
 
-    // Also fire the unified theme-set event for React
+    // Fire unified theme event for React + diagnostics
     window.dispatchEvent(
       new CustomEvent("theme-set", { detail: role })
     );
   }
 
   // ------------------------------------------------------------
-  // Draggable Panel
+  // Draggable Panel — SAFE (runs only after mount)
   // ------------------------------------------------------------
   useEffect(() => {
-    const panel = document.getElementById("themePanel");
+    const panel = panelRef.current;
     if (!panel) return;
 
     const header = panel.querySelector(".theme-panel-header");
@@ -100,10 +103,10 @@ export default function ThemePanel() {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
     };
-  }, []);
+  }, [isOpen]);
 
   // ------------------------------------------------------------
-  // Gradient Keys (unchanged)
+  // Gradient Keys
   // ------------------------------------------------------------
   const gradientKeys = [
     "sunrise","sunset","dusk","dawn","neon","aqua","forest",
@@ -119,7 +122,11 @@ export default function ThemePanel() {
   if (!isOpen) return null;
 
   return (
-    <div id="themePanel" className={`theme-panel ${isOpen ? "open" : ""}`}>
+    <div
+      id="themePanel"
+      ref={panelRef}
+      className={`theme-panel ${isOpen ? "open" : ""}`}
+    >
       <div className="theme-panel-header">Theme Panel — SHIFT + A</div>
 
       <div className="theme-panel-body">
