@@ -19,15 +19,15 @@
 }
 
 /* ------------------------------------------------------------
-   2. HERO CROWN — Centered, Lifted + Enlarged
+   2. HERO CROWN — Centered, Moved DOWN by 100px
 ------------------------------------------------------------ */
 .hero-crown {
   position: absolute;
   left: 50%;
-  top: calc(50% - 50px);        /* MOVE UP BY 50PX */
+  top: calc(50% + 120px);        /* MOVE DOWN BY 100PX */
   transform: translate(-50%, -50%);
 
-  width: 30%;                   /* INCREASE SIZE BY 20% */
+  width: 30%;                    /* INCREASE SIZE BY 20% */
   height: auto;
 
   opacity: 0;

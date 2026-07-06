@@ -13,7 +13,7 @@
   position: relative;
   z-index: 10;
 
-  margin-top: 150px;              /* SHIFT FOOTER DOWN BY 50PX */
+  margin-top: 50px;              /* MOVE FOOTER DOWN BY 100PX */
 }
 
 /* ============================================================

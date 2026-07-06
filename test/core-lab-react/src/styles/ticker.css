@@ -8,8 +8,8 @@
   overflow: hidden;
   white-space: nowrap;
 
-  /* MOVE TICKER DOWN BY 200PX */
-  margin-top: 250px;
+  /* MOVE TICKER UP BY 300PX */
+  margin-top: -50px;
 }
 
 /* Ticker track */
