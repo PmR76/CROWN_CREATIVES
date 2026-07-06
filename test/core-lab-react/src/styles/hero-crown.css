@@ -9,7 +9,7 @@
 #hero-crown-container {
   position: relative;
   width: 100%;
-  margin-top: 60px;              /* crown sits below header */
+  margin-top: 20px;              /* crown sits below header */
   margin-bottom: 40px;           /* space above gallery */
   display: flex;
   justify-content: center;
@@ -27,7 +27,7 @@
   top: calc(50% - 100px);        /* MOVE UP BY 100PX */
   transform: translate(-50%, -50%);
 
-  width: 40%;                   /* INCREASE SIZE BY 40% */
+  width: 20%;                   /* INCREASE SIZE BY 20% */
   height: auto;
 
   opacity: 0;
