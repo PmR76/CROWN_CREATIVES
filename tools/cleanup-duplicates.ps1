@@ -22,7 +22,8 @@ foreach ($item in $duplicates) {
     $name = $item.name
     $locations = $item.locations
 
-    Write-Host "`nProcessing duplicate: $name" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "Processing duplicate: $name" -ForegroundColor Yellow
 
     $foundFiles = @()
 
@@ -69,10 +70,12 @@ $legacyFolders = @(
 foreach ($folder in $legacyFolders) {
     if (Test-Path $folder) {
         $disabled = $folder + ".disabled"
-        Write-Host "`nDisabling legacy folder: $folder" -ForegroundColor Red
+        Write-Host ""
+        Write-Host "Disabling legacy folder: $folder" -ForegroundColor Red
         Rename-Item -Path $folder -NewName $disabled -Force
     }
 }
 
-Write-Host "`n=== LAYER 1 CLEANUP COMPLETE ===" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "=== LAYER 1 CLEANUP COMPLETE ===" -ForegroundColor Cyan
 Write-Host "Run Sentinel again to confirm status is GREEN." -ForegroundColor Cyan
