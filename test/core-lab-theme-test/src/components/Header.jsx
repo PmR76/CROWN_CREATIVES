@@ -34,12 +34,19 @@ export default function Header() {
       ============================================================ */}
       <div className="hero-header-center">
 
-        {/* Crown with magical glow */}
-        <img
-          src="/assets/icons/head-crown.svg"
-          alt="Crown Creatives Crown"
-          className="cc-header-crown magical-crown-glow"
-        />
+        {/* Dual crown system for magical day/night fade */}
+        <div className="hero-crown">
+          <img
+            src="/assets/icons/day-crown.svg"
+            className="crown crown-day"
+            alt="Day Crown"
+          />
+          <img
+            src="/assets/icons/night-crown.svg"
+            className="crown crown-night"
+            alt="Night Crown"
+          />
+        </div>
 
         <h1 className="cc-header-title">Crown Creatives</h1>
 
