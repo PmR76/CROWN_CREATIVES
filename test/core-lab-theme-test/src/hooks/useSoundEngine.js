@@ -1,29 +1,23 @@
 // ============================================================
-// useSoundEngine.js — Final Non-Conflicting Music Engine
+// useSoundEngine.js — Final Working Version
 // ============================================================
 
 import { useEffect, useRef, useState } from "react";
 
 export function useSoundEngine() {
   const audioRef = useRef(null);
-  const [isMuted, setIsMuted] = useState(true); // start muted
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
-    // Create audio instance
     const audio = new Audio("/assets/audio/crown-theme.mp3");
     audio.loop = true;
     audio.volume = 0.6;
-    audio.muted = true; // start muted
+    audio.muted = true;
 
     audioRef.current = audio;
 
-    // Attempt autoplay after first user gesture
     const unlockAudio = () => {
-      audioRef.current
-        ?.play()
-        .catch(() => {
-          // Autoplay blocked — user will toggle manually
-        });
+      audioRef.current?.play().catch(() => {});
     };
 
     window.addEventListener("click", unlockAudio, { once: true });
