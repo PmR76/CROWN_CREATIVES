@@ -1,3 +1,7 @@
+/* ============================================================
+   Theme Panel — Admin Console
+   ============================================================ */
+
 .theme-panel {
   position: fixed;
   inset: 0;
@@ -5,42 +9,48 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
 }
 
 .theme-panel-inner {
-  pointer-events: auto;
   background: rgba(10, 10, 20, 0.9);
   border-radius: 18px;
   padding: 24px 28px;
   color: #fff;
-  min-width: 260px;
-  max-width: 360px;
+  min-width: 320px;
+  max-width: 420px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(18px);
 }
 
-.theme-panel-inner h2 {
-  margin: 0 0 12px;
-  font-size: 1rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  opacity: 0.8;
+.theme-password {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 12px;
+}
+
+.theme-login-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #ffaa33;
+  cursor: pointer;
 }
 
 .theme-swatches {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .theme-swatches button {
-  flex: 1;
   border: none;
-  border-radius: 999px;
-  padding: 8px 0;
+  border-radius: 8px;
+  padding: 10px;
   cursor: pointer;
-  background: linear-gradient(135deg, #ffcc88, #ff6699);
-  color: #1a1a1a;
-  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }

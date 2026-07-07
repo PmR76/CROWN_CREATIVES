@@ -1,11 +1,18 @@
+/* ============================================================
+   Global Background — Theme Reactive (Admin Controlled)
+   ============================================================ */
+
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, #ffcc88 0%, #1a1a2f 40%, #050510 100%);
-  color: #fff;
   overflow: hidden;
+
+  /* DEFAULT DAY (fallback if admin hasn't chosen one yet) */
+  background: radial-gradient(circle at top, #ffffff 0%, #ffe9c9 40%, #ffd9a1 100%);
+  transition: background 1.2s ease-in-out;
 }
 
+/* DEFAULT NIGHT (fallback) */
 body[data-theme="dark"] {
-  background: radial-gradient(circle at top, #4455aa 0%, #050510 40%, #000000 100%);
+  background: radial-gradient(circle at top, #1a1a2f 0%, #050510 40%, #000000 100%);
 }
