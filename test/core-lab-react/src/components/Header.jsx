@@ -11,13 +11,10 @@ export default function Header() {
 
   return (
     <header className="cc-header">
+
       {/* LEFT: SOUND TOGGLE */}
       <div className="cc-header-left">
-        <button
-          id="soundToggle"
-          className="cc-toggle"
-          onClick={toggleSound}
-        >
+        <button id="soundToggle" className="cc-toggle" onClick={toggleSound}>
           <img src="/assets/icons/music.png" alt="Sound Toggle" />
         </button>
       </div>
@@ -30,11 +27,9 @@ export default function Header() {
           className="cc-header-crown"
         />
         <h1 className="cc-header-title">Crown Creatives</h1>
-        <p className="cc-header-tagline">
-          Artistry • Resilience • Imagination
-        </p>
+        <p className="cc-header-tagline">Artistry • Resilience • Imagination</p>
 
-        {/* React-era nav: no hard page jumps */}
+        {/* React-safe nav */}
         <nav className="cc-header-nav">
           <button>HOME</button>
           <button>ABOUT</button>
@@ -56,10 +51,8 @@ export default function Header() {
             const current = document.body.dataset.theme || "day";
             const next = current === "night" ? "day" : "night";
 
-            // Update body dataset directly
             document.body.dataset.theme = next;
 
-            // Notify theme engine / diagnostics
             window.dispatchEvent(
               new CustomEvent("theme-set", { detail: next })
             );
@@ -68,6 +61,7 @@ export default function Header() {
           <img src="/assets/icons/sun-moon.png" alt="Theme Toggle" />
         </button>
       </div>
+
     </header>
   );
 }
