@@ -17,7 +17,7 @@ export default function Header() {
       <div className="hero-header-right">
         <button className="theme-toggle" onClick={toggleTheme}>
           <img
-            src="/assets/icons/sun-moon.png"
+            src="/assets/icons/sun-moon2.png"
             alt="Theme toggle"
             className="theme-toggle-icon"
           />
