@@ -4,11 +4,11 @@
 
 .hero-header {
   position: fixed;
-  top: 10px; /* ensures crown is fully visible */
+  top: 10px;
   left: 0;
   right: 0;
 
-  height: 140px; /* enough room for crown + fade + text */
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -38,7 +38,7 @@
    ============================================================ */
 
 .reduced-crown {
-  width: 108px; /* reduced by 10% */
+  width: 108px;
   height: auto;
   margin-bottom: 4px;
 
@@ -147,7 +147,7 @@ body[data-theme="night"] .cc-header-nav button {
 }
 
 /* ============================================================
-   Theme Toggle
+   Theme Toggle — Neon Glow
    ============================================================ */
 
 .theme-toggle {
@@ -183,7 +183,7 @@ body[data-theme="night"] .theme-toggle-icon {
 }
 
 /* ============================================================
-   SOUND TOGGLE — FIXED HOVER + GLOW
+   SOUND TOGGLE — Hover + Reactive Glow (Final)
    ============================================================ */
 
 .sound-toggle {
@@ -195,6 +195,7 @@ body[data-theme="night"] .theme-toggle-icon {
   display: flex;
   align-items: center;
   transition: transform 0.3s ease;
+  z-index: 9999; /* ensures hover works */
 }
 
 .sound-toggle:hover {
@@ -209,15 +210,17 @@ body[data-theme="night"] .theme-toggle-icon {
           drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
           drop-shadow(0 0 42px rgba(255, 255, 255, 0.45));
 
-  transition: filter 0.4s ease;
+  transition: filter 0.4s ease, transform 0.4s ease;
 }
 
+/* Hover glow */
 .sound-toggle:hover .sound-toggle-icon {
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1))
           drop-shadow(0 0 40px rgba(255, 255, 255, 0.85))
           drop-shadow(0 0 60px rgba(255, 255, 255, 0.7));
 }
 
+/* Night mode glow */
 body[data-theme="night"] .sound-toggle-icon {
   filter: drop-shadow(0 0 14px rgba(255, 200, 120, 0.85))
           drop-shadow(0 0 28px rgba(255, 160, 80, 0.65))
@@ -228,4 +231,18 @@ body[data-theme="night"] .sound-toggle:hover .sound-toggle-icon {
   filter: drop-shadow(0 0 20px rgba(255, 200, 120, 1))
           drop-shadow(0 0 40px rgba(255, 160, 80, 0.85))
           drop-shadow(0 0 60px rgba(255, 120, 40, 0.7));
+}
+
+/* ============================================================
+   SOUND-REACTIVE GLOW (when playing)
+   ============================================================ */
+
+.sound-toggle-icon.playing {
+  animation: pulseGlow 1.4s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
