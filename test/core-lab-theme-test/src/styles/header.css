@@ -39,19 +39,12 @@
 .theme-toggle,
 .sound-toggle {
   border: none;
-
-  /* REMOVE GLOW */
   background: rgba(0, 0, 0, 0.35);
-  box-shadow: none;
-  filter: none;
-
   border-radius: 999px;
   padding: 6px 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
-
-  /* REMOVE BLUR LIGHT */
   backdrop-filter: none;
 }
 
@@ -60,3 +53,4 @@
   width: 22px;
   height: 22px;
 }
+
