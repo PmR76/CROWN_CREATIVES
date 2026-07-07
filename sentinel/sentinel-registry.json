@@ -262,7 +262,7 @@
       {
         "folder": "test\\core-lab-react\\src\\hooks",
         "items": [
-          "useDiagnostics.disabled",
+          "useDiagnostics.js",
           "useSoundEngine.js",
           "useThemeEngine.js"
         ]

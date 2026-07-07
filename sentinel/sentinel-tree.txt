@@ -179,7 +179,7 @@
       🟢 Ticker.jsx
    🟢 FaultScanner.jsx
    📁 test\core-lab-react\src\hooks
-      🟢 useDiagnostics.disabled
+      🟢 useDiagnostics.js
       🟢 useSoundEngine.js
       🟢 useThemeEngine.js
    🟢 main.jsx
