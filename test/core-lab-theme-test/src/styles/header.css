@@ -36,7 +36,36 @@
   align-items: center;
 }
 
-.theme-toggle,
+/* ============================================================
+   Theme Toggle — Increased by 100%
+   ============================================================ */
+
+.theme-toggle {
+  border: none;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+
+  /* DOUBLE SIZE */
+  padding: 12px 20px;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  /* REMOVE BLUR LIGHT */
+  backdrop-filter: none;
+}
+
+.theme-toggle-icon {
+  /* DOUBLE SIZE */
+  width: 44px;
+  height: 44px;
+}
+
+/* ============================================================
+   Sound Toggle — unchanged
+   ============================================================ */
+
 .sound-toggle {
   border: none;
   background: rgba(0, 0, 0, 0.35);
@@ -48,9 +77,7 @@
   backdrop-filter: none;
 }
 
-.theme-toggle-icon,
 .sound-toggle-icon {
   width: 22px;
   height: 22px;
 }
-
