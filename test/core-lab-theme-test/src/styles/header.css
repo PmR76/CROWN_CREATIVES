@@ -1,37 +1,22 @@
 /* ============================================================
-   Header — Cinematic + Magical Fade + Neon Toggles + Frosted Glass
+   Header — Cinematic + Magical Fade + Neon Toggles (Transparent)
    ============================================================ */
-
-.frosted-header {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border-radius: 18px;
-
-  /* Ensure header is fully visible */
-  margin: 10px auto 0 auto; /* 10px from top of screen */
-  width: calc(100% - 48px);
-
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-}
 
 .hero-header {
   position: fixed;
-  top: 0;
+  top: 10px; /* ensures crown is fully visible */
   left: 0;
   right: 0;
 
-  /* Increased height so crown + nav fit */
-  height: 140px;
-
+  height: 140px; /* enough room for crown + fade + text */
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  /* Extra padding to ensure crown is fully visible */
   padding: 20px 32px 12px 32px;
 
   z-index: 50;
+  background: transparent; /* no frosted glass */
   color: #fff;
   font-family: "Cinzel Decorative", serif;
 }
@@ -74,12 +59,12 @@ body[data-theme="night"] .reduced-crown {
 }
 
 /* ============================================================
-   Magical Crown Fade — Day ↔ Night
+   Magical Crown Fade — Day ↔ Night (8 seconds)
    ============================================================ */
 
 .hero-crown {
   position: relative;
-  width: 200px; /* scaled down to match reduced crown */
+  width: 200px;
   height: auto;
   margin-bottom: 8px;
 }
@@ -163,7 +148,7 @@ body[data-theme="night"] .cc-header-nav button {
 }
 
 /* ============================================================
-   Theme Toggle — Container (fully invisible)
+   Theme Toggle — Container
    ============================================================ */
 
 .theme-toggle {
@@ -217,7 +202,7 @@ body[data-theme="night"] .theme-toggle:hover .theme-toggle-icon {
 }
 
 /* ============================================================
-   Sound Toggle — Container (fully invisible)
+   Sound Toggle — Container
    ============================================================ */
 
 .sound-toggle {
