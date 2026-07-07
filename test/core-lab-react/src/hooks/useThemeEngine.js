@@ -1,3 +1,7 @@
+// ============================================================
+// useThemeEngine.js — React Hook Bridge to ThemeEngine
+// ============================================================
+
 import { useEffect, useState } from "react";
 
 export default function useThemeEngine() {
@@ -7,7 +11,8 @@ export default function useThemeEngine() {
 
   useEffect(() => {
     function handleThemeSet(e) {
-      const next = e.detail;
+      const next = e.detail || "day";
+
       setTheme(next);
       document.body.dataset.theme = next;
       localStorage.setItem("cc-theme", next);
