@@ -1,6 +1,9 @@
 {
-  "timestamp": "2026-07-07T10:10:44.993Z",
-  "missing": [],
+  "timestamp": "2026-07-07T10:15:46.635Z",
+  "missing": [
+    "assets/icons",
+    "assets/images"
+  ],
   "duplicates": [],
-  "status": "green"
+  "status": "red"
 }
