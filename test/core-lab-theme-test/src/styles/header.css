@@ -1,0 +1,45 @@
+.hero-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 50;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.hero-header-left .brand-mark {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.hero-header-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.theme-toggle,
+.sound-toggle {
+  border: none;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(12px);
+}
+
+.theme-toggle-icon,
+.sound-toggle-icon {
+  width: 22px;
+  height: 22px;
+}
