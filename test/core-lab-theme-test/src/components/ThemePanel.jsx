@@ -6,7 +6,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "../styles/theme-panel.css";
 
 // ============================================================
-// Gradient Libraries — Cinematic Day + Night Themes
+// Gradient Libraries — Cinematic Day + Night Themes (30 each)
 // ============================================================
 
 const daySwatches = [
@@ -19,7 +19,27 @@ const daySwatches = [
   "linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%)",
   "linear-gradient(135deg, #c1dfc4 0%, #deecdd 100%)",
   "linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)",
-  "linear-gradient(135deg, #f6f0c4 0%, #f4d7a7 100%)"
+  "linear-gradient(135deg, #f6f0c4 0%, #f4d7a7 100%)",
+  "linear-gradient(135deg, #fddb92 0%, #d1fdff 100%)",
+  "linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%)",
+  "linear-gradient(135deg, #fffcdf 0%, #ffefc1 100%)",
+  "linear-gradient(135deg, #ffe6fa 0%, #fcd1ff 100%)",
+  "linear-gradient(135deg, #fff5f7 0%, #ffe3e9 100%)",
+  "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+  "linear-gradient(135deg, #fef9d7 0%, #f9d29d 100%)",
+  "linear-gradient(135deg, #fffcf7 0%, #f3e7e9 100%)",
+  "linear-gradient(135deg, #fffbd5 0%, #b20a2c 100%)",
+  "linear-gradient(135deg, #ffefba 0%, #ffffff 100%)",
+  "linear-gradient(135deg, #ffe8ec 0%, #f7d9e3 100%)",
+  "linear-gradient(135deg, #fff7e5 0%, #ffd9a8 100%)",
+  "linear-gradient(135deg, #ffe3e3 0%, #ffc9c9 100%)",
+  "linear-gradient(135deg, #fff9e6 0%, #ffe7c4 100%)",
+  "linear-gradient(135deg, #fef6ff 0%, #f7e8ff 100%)",
+  "linear-gradient(135deg, #fff8f0 0%, #ffe4c4 100%)",
+  "linear-gradient(135deg, #fdf6e3 0%, #fae1c2 100%)",
+  "linear-gradient(135deg, #fff0f5 0%, #ffd6e8 100%)",
+  "linear-gradient(135deg, #fffdf2 0%, #ffe9c7 100%)",
+  "linear-gradient(135deg, #fff7fa 0%, #ffe3f2 100%)"
 ];
 
 const nightSwatches = [
@@ -32,7 +52,26 @@ const nightSwatches = [
   "linear-gradient(135deg, #232526 0%, #414345 100%)",
   "linear-gradient(135deg, #1f1c2c 0%, #928dab 100%)",
   "linear-gradient(135deg, #16222a 0%, #3a6073 100%)",
-  "linear-gradient(135deg, #000000 0%, #434343 100%)"
+  "linear-gradient(135deg, #000000 0%, #434343 100%)",
+  "linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%)",
+  "linear-gradient(135deg, #3a1c71 0%, #d76d77 50%, #ffaf7b 100%)",
+  "linear-gradient(135deg, #2b5876 0%, #4e4376 100%)",
+  "linear-gradient(135deg, #232526 0%, #414345 100%)",
+  "linear-gradient(135deg, #1f1c2c 0%, #928dab 100%)",
+  "linear-gradient(135deg, #16222a 0%, #3a6073 100%)",
+  "linear-gradient(135deg, #000000 0%, #434343 100%)",
+  "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+  "linear-gradient(135deg, #2d0b5a 0%, #642b73 100%)",
+  "linear-gradient(135deg, #000000 0%, #0f2027 100%)",
+  "linear-gradient(135deg, #1c1c33 0%, #3c3c66 100%)",
+  "linear-gradient(135deg, #0a0a0f 0%, #1a1a2f 100%)",
+  "linear-gradient(135deg, #1b1b2f 0%, #3d3d5c 100%)",
+  "linear-gradient(135deg, #0d0d0d 0%, #2b2b2b 100%)",
+  "linear-gradient(135deg, #1a0f2f 0%, #3a1f5f 100%)",
+  "linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%)",
+  "linear-gradient(135deg, #1a1a55 0%, #0f0f33 100%)",
+  "linear-gradient(135deg, #0f2f2f 0%, #1a4f4f 100%)",
+  "linear-gradient(135deg, #050510 0%, #1a1a2f 100%)"
 ];
 
 // ============================================================
@@ -94,19 +133,17 @@ export default function ThemePanel() {
   };
 
   // ============================================================
-  // Apply swatch (Day or Night)
+  // Apply swatch (Day or Night) — FIXED
   // ============================================================
   const applySwatch = (mode, gradient) => {
     localStorage.setItem(`theme-${mode}`, gradient);
 
-    // Update CSS variables
     if (mode === "day") {
       document.body.style.setProperty("--day-bg", gradient);
     } else {
       document.body.style.setProperty("--night-bg", gradient);
     }
 
-    // Apply immediately if current theme matches
     const current = document.body.dataset.theme || "day";
     if (current === mode) {
       document.body.style.background = gradient;
@@ -114,11 +151,11 @@ export default function ThemePanel() {
   };
 
   // ============================================================
-  // Load saved theme on mount + react to theme changes
+  // Load saved theme on mount + react to theme changes — FIXED
   // ============================================================
   useEffect(() => {
     const day = localStorage.getItem("theme-day");
-    const night = localStorage.getItem("theme-dark");
+    const night = localStorage.getItem("theme-night");
     const current = document.body.dataset.theme || "day";
 
     if (day) document.body.style.setProperty("--day-bg", day);
@@ -127,19 +164,19 @@ export default function ThemePanel() {
     if (current === "day" && day) {
       document.body.style.background = day;
     }
-    if (current === "dark" && night) {
+    if (current === "night" && night) {
       document.body.style.background = night;
     }
 
     window.addEventListener("theme-set", (e) => {
       const mode = e.detail;
       const day = localStorage.getItem("theme-day");
-      const night = localStorage.getItem("theme-dark");
+      const night = localStorage.getItem("theme-night");
 
       if (mode === "day" && day) {
         document.body.style.background = day;
       }
-      if (mode === "dark" && night) {
+      if (mode === "night" && night) {
         document.body.style.background = night;
       }
     });
@@ -192,16 +229,16 @@ export default function ThemePanel() {
               ))}
             </div>
 
-            {/* ============================ NIGHT SWATCHES ============================ */}
+            {/* ============================ NIGHT SWATCHES — FIXED ============================ */}
             <h3>Night Themes</h3>
             <div className="theme-swatches">
               {nightSwatches.map((g, i) => (
                 <button
                   key={i}
-                  onClick={() => applySwatch("dark", g)}
+                  onClick={() => applySwatch("night", g)}
                   style={{ background: g }}
                   className={`swatch-btn ${
-                    localStorage.getItem("theme-dark") === g ? "selected" : ""
+                    localStorage.getItem("theme-night") === g ? "selected" : ""
                   }`}
                 />
               ))}
