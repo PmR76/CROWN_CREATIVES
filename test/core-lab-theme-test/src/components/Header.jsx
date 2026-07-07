@@ -10,7 +10,7 @@ export default function Header() {
   const { isMuted, toggleSound } = useSoundEngine();
 
   return (
-    <header className="hero-header">
+    <header className="hero-header frosted-header">
 
       {/* ============================================================
          LEFT — SOUND TOGGLE (Neon, enlarged, no panel)
@@ -34,7 +34,14 @@ export default function Header() {
       ============================================================ */}
       <div className="hero-header-center">
 
-        {/* Dual crown system for magical day/night fade */}
+        {/* Always-visible hero crown (glowing, reduced 50%) */}
+        <img
+          src="/assets/icons/head-crown.svg"
+          alt="Crown Creatives Crown"
+          className="hero-crown-base reduced-crown"
+        />
+
+        {/* Magical fade overlay crowns */}
         <div className="hero-crown">
           <img
             src="/assets/icons/day-crown.svg"
