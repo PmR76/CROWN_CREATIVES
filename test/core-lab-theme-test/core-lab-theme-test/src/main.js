@@ -1,5 +1,15 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
 
-createApp(App).mount('#app')
+import "./styles/gradients.css";
+import "./styles/background3d.css";
+import "./styles/hero-crown.css";
+import "./styles/header.css";
+import "./styles/theme-panel.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
