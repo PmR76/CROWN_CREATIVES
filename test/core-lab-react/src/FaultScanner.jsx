@@ -1,14 +1,10 @@
 // ============================================================
 // FaultScanner.jsx — Crown Creatives Runtime Fault Scanner
 // ============================================================
-// This component detects ANY React runtime error, ANY mount
-// failure, ANY swallowed exception, and logs EXACTLY what broke.
-// ============================================================
 
 import { useEffect } from "react";
 
 export default function FaultScanner() {
-
   useEffect(() => {
     console.log("FaultScanner: ACTIVE");
 
@@ -22,7 +18,7 @@ export default function FaultScanner() {
       console.log("❌ PROMISE ERROR:", e.reason);
     });
 
-    // COMPONENT MOUNT CHECKS
+    // COMPONENT MOUNT CHECKS (simple visibility flags)
     const components = [
       "Header",
       "Background3D",
@@ -38,7 +34,6 @@ export default function FaultScanner() {
     components.forEach((name) => {
       console.log(`🔍 Checking mount: ${name}`);
     });
-
   }, []);
 
   return null;
