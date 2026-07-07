@@ -11,7 +11,6 @@ export default function Header() {
 
   return (
     <header className="cc-header">
-
       {/* LEFT: SOUND TOGGLE */}
       <div className="cc-header-left">
         <button
@@ -30,22 +29,21 @@ export default function Header() {
           alt="Crown Creatives Crown"
           className="cc-header-crown"
         />
-
         <h1 className="cc-header-title">Crown Creatives</h1>
-
         <p className="cc-header-tagline">
           Artistry • Resilience • Imagination
         </p>
 
+        {/* React-era nav: no hard page jumps */}
         <nav className="cc-header-nav">
-          <a href="/">HOME</a>
-          <a href="/about/">ABOUT</a>
-          <a href="/gallery/">GALLERY</a>
-          <a href="/projects/">PROJECTS</a>
-          <a href="/videos/">VIDEOS</a>
-          <a href="/podcasts/">PODCASTS</a>
-          <a href="/blog/">BLOG</a>
-          <a href="/contact/">CONTACT</a>
+          <button>HOME</button>
+          <button>ABOUT</button>
+          <button>GALLERY</button>
+          <button>PROJECTS</button>
+          <button>VIDEOS</button>
+          <button>PODCASTS</button>
+          <button>BLOG</button>
+          <button>CONTACT</button>
         </nav>
       </div>
 
@@ -56,8 +54,12 @@ export default function Header() {
           className="cc-toggle"
           onClick={() => {
             const current = document.body.dataset.theme || "day";
-            const next = current === "dark" ? "day" : "dark";
+            const next = current === "night" ? "day" : "night";
 
+            // Update body dataset directly
+            document.body.dataset.theme = next;
+
+            // Notify theme engine / diagnostics
             window.dispatchEvent(
               new CustomEvent("theme-set", { detail: next })
             );
@@ -66,7 +68,6 @@ export default function Header() {
           <img src="/assets/icons/sun-moon.png" alt="Theme Toggle" />
         </button>
       </div>
-
     </header>
   );
 }

@@ -1,3 +1,7 @@
+// ============================================================
+// ThemeEngine.js — Unified Theme Engine (DAY/NIGHT + Gradients)
+// ============================================================
+
 class ThemeEngine {
   constructor() {
     this.currentTheme = localStorage.getItem("cc-theme") || "day";
