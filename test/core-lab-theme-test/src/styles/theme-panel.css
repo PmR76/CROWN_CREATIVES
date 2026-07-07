@@ -1,56 +1,93 @@
 /* ============================================================
-   Theme Panel — Admin Console
+   Theme Panel — Admin Console (Draggable + Swatches)
    ============================================================ */
 
 .theme-panel {
   position: fixed;
-  inset: 0;
-  z-index: 60;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: 120px;
+  left: 120px;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 .theme-panel-inner {
-  background: rgba(10, 10, 20, 0.9);
-  border-radius: 18px;
-  padding: 24px 28px;
+  width: 340px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 20px;
   color: #fff;
-  min-width: 320px;
-  max-width: 420px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(18px);
+  pointer-events: auto;
+  cursor: move;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+}
+
+.theme-panel-inner h2,
+.theme-panel-inner h3 {
+  margin: 0 0 12px 0;
+  font-family: "Cinzel Decorative", serif;
+  letter-spacing: 0.05em;
 }
 
 .theme-password {
   width: 100%;
   padding: 10px;
-  border-radius: 8px;
-  border: none;
   margin-bottom: 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
 }
 
 .theme-login-btn {
   width: 100%;
   padding: 10px;
-  border-radius: 8px;
+  background: #444;
   border: none;
-  background: #ffaa33;
+  border-radius: 6px;
+  color: #fff;
   cursor: pointer;
+  margin-bottom: 12px;
 }
+
+.theme-login-btn:hover {
+  background: #666;
+}
+
+/* ============================================================
+   Swatch Grid
+   ============================================================ */
 
 .theme-swatches {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
   margin-bottom: 20px;
 }
 
-.theme-swatches button {
+.swatch-btn {
+  width: 100%;
+  height: 40px;
+  border-radius: 6px;
   border: none;
-  border-radius: 8px;
-  padding: 10px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.swatch-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================================
+   Selected Swatch Indicator
+   ============================================================ */
+
+.swatch-btn.selected {
+  outline: 3px solid #fff;
+  box-shadow: 0 0 12px rgba(255,255,255,0.8);
+}
+
+body[data-theme="night"] .swatch-btn.selected {
+  outline: 3px solid #ffcc88;
+  box-shadow: 0 0 12px rgba(255,200,120,0.8);
 }
