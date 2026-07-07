@@ -16,7 +16,6 @@
   color: #fff;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* No glow/light */
   background: none;
   box-shadow: none;
   filter: none;
@@ -37,47 +36,37 @@
 }
 
 /* ============================================================
-   Theme Toggle — Container (no background panel)
+   Theme Toggle — Container (fully invisible)
    ============================================================ */
 
 .theme-toggle {
   border: none;
-  background: none; /* removed panel */
-  border-radius: 999px;
-
-  /* Double size */
-  padding: 12px 20px;
-
+  background: none; /* no plate */
+  padding: 0;       /* remove circular space */
+  margin: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
 
-  /* Neon glow around the container */
-  box-shadow:
-    0 0 12px rgba(255, 255, 255, 0.6),
-    0 0 24px rgba(255, 255, 255, 0.4),
-    0 0 36px rgba(255, 255, 255, 0.2);
-
-  transition: box-shadow 0.4s ease, transform 0.3s ease;
+  /* remove container glow */
+  box-shadow: none;
+  transition: transform 0.3s ease;
 }
 
 .theme-toggle:hover {
   transform: scale(1.08);
-  box-shadow:
-    0 0 16px rgba(255, 255, 255, 0.8),
-    0 0 32px rgba(255, 255, 255, 0.6),
-    0 0 48px rgba(255, 255, 255, 0.4);
 }
 
 /* ============================================================
-   Theme Toggle Icon — Transparent + Neon Glow
+   Theme Toggle Icon — Transparent + Neon Glow + Hover Shimmer
    ============================================================ */
 
 .theme-toggle-icon {
   width: 44px;
   height: 44px;
-  background: none; /* ensure no panel */
+  background: none;
 
+  /* Base day glow */
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8))
           drop-shadow(0 0 20px rgba(255, 255, 255, 0.6))
           drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
@@ -92,7 +81,7 @@ body[data-theme="dark"] .theme-toggle-icon {
           drop-shadow(0 0 30px rgba(255, 120, 40, 0.4));
 }
 
-/* Hover intensification */
+/* Hover intensification (merged optional shimmer) */
 .theme-toggle:hover .theme-toggle-icon {
   filter: drop-shadow(0 0 16px rgba(255, 255, 255, 1))
           drop-shadow(0 0 32px rgba(255, 255, 255, 0.8))
