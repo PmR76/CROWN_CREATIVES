@@ -1,5 +1,5 @@
 /* ============================================================
-   Header — Clean Version (No Glow, No Light, No Shimmer)
+   Header — Clean Version + Neon Theme Toggle
    ============================================================ */
 
 .hero-header {
@@ -16,7 +16,7 @@
   color: #fff;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* REMOVE ALL LIGHT/GLOW */
+  /* No glow/light */
   background: none;
   box-shadow: none;
   filter: none;
@@ -37,7 +37,7 @@
 }
 
 /* ============================================================
-   Theme Toggle — Increased by 100%
+   Theme Toggle — 100% Larger + Neon Glow
    ============================================================ */
 
 .theme-toggle {
@@ -45,21 +45,51 @@
   background: rgba(0, 0, 0, 0.35);
   border-radius: 999px;
 
-  /* DOUBLE SIZE */
+  /* Double size */
   padding: 12px 20px;
 
   cursor: pointer;
   display: flex;
   align-items: center;
 
-  /* REMOVE BLUR LIGHT */
-  backdrop-filter: none;
+  /* Neon glow */
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.6),
+    0 0 24px rgba(255, 255, 255, 0.4),
+    0 0 36px rgba(255, 255, 255, 0.2);
+
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 16px rgba(255, 255, 255, 0.8),
+    0 0 32px rgba(255, 255, 255, 0.6),
+    0 0 48px rgba(255, 255, 255, 0.4);
 }
 
 .theme-toggle-icon {
-  /* DOUBLE SIZE */
   width: 44px;
   height: 44px;
+}
+
+/* ============================================================
+   Night Mode — Golden Neon Glow
+   ============================================================ */
+
+body[data-theme="dark"] .theme-toggle {
+  box-shadow:
+    0 0 12px rgba(255, 200, 120, 0.6),
+    0 0 24px rgba(255, 160, 80, 0.4),
+    0 0 36px rgba(255, 120, 40, 0.2);
+}
+
+body[data-theme="dark"] .theme-toggle:hover {
+  box-shadow:
+    0 0 16px rgba(255, 200, 120, 0.8),
+    0 0 32px rgba(255, 160, 80, 0.6),
+    0 0 48px rgba(255, 120, 40, 0.4);
 }
 
 /* ============================================================
