@@ -20,7 +20,7 @@ export default function Header() {
           onClick={toggleSound}
         >
           <img
-            src="/assets/icons/sound.svg"
+            src="/assets/icons/music.png"
             alt="Sound Toggle"
             className="sound-toggle-icon"
           />
