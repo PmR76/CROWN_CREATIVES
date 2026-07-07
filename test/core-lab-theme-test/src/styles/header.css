@@ -7,8 +7,11 @@
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
   border-radius: 18px;
-  margin: 12px auto;
+
+  /* Ensure header is fully visible */
+  margin: 10px auto 0 auto; /* 10px from top of screen */
   width: calc(100% - 48px);
+
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
 }
 
@@ -17,11 +20,17 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 96px; /* increased to show full crown + nav */
+
+  /* Increased height so crown + nav fit */
+  height: 140px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 32px;
+
+  /* Extra padding to ensure crown is fully visible */
+  padding: 20px 32px 12px 32px;
+
   z-index: 50;
   color: #fff;
   font-family: "Cinzel Decorative", serif;
@@ -41,11 +50,11 @@
 }
 
 /* ============================================================
-   Always-visible hero crown (base glow, reduced 50%)
+   Always-visible hero crown (base glow, reduced 10%)
    ============================================================ */
 
 .reduced-crown {
-  width: 120px; /* 50% of previous 240px */
+  width: 108px; /* reduced by 10% */
   height: auto;
   margin-bottom: 4px;
 
@@ -95,6 +104,24 @@ body[data-theme="night"] .reduced-crown {
 }
 
 /* ============================================================
+   Responsive Header Text — Day vs Night
+   ============================================================ */
+
+body[data-theme="day"] .cc-header-title,
+body[data-theme="day"] .cc-header-tagline,
+body[data-theme="day"] .cc-header-nav button {
+  color: #222; /* dark text for bright backgrounds */
+  text-shadow: none;
+}
+
+body[data-theme="night"] .cc-header-title,
+body[data-theme="night"] .cc-header-tagline,
+body[data-theme="night"] .cc-header-nav button {
+  color: #fff; /* light text for dark backgrounds */
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================================
    Title + Tagline
    ============================================================ */
 
@@ -124,7 +151,6 @@ body[data-theme="night"] .reduced-crown {
 .cc-header-nav button {
   background: none;
   border: none;
-  color: #fff;
   font-size: 0.85rem;
   letter-spacing: 0.08em;
   cursor: pointer;
@@ -157,7 +183,7 @@ body[data-theme="night"] .reduced-crown {
 }
 
 /* ============================================================
-   Theme Toggle Icon — 50% Larger + Neon Glow + Hover Shimmer
+   Theme Toggle Icon — Neon Glow + Hover Shimmer
    ============================================================ */
 
 .theme-toggle-icon {
@@ -211,7 +237,7 @@ body[data-theme="night"] .theme-toggle:hover .theme-toggle-icon {
 }
 
 /* ============================================================
-   Sound Toggle Icon — 50% Larger + Neon Glow + Hover Shimmer
+   Sound Toggle Icon — Neon Glow + Hover Shimmer
    ============================================================ */
 
 .sound-toggle-icon {
