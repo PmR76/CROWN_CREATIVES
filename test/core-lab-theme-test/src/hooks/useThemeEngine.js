@@ -1,5 +1,5 @@
 // ============================================================
-// useThemeEngine.js — Theme Wiring (Header + ThemePanel + Rotation)
+// useThemeEngine.js — Final Theme Engine
 // ============================================================
 
 import { useEffect } from "react";
@@ -7,7 +7,7 @@ import { scheduleMidnightRotation } from "../scripts/theme-rotation";
 
 export function useThemeEngine() {
   useEffect(() => {
-    // Ensure dataset theme is initialised
+    // Ensure theme dataset exists
     if (!document.body.dataset.theme) {
       document.body.dataset.theme = "day";
     }
@@ -20,6 +20,7 @@ export function useThemeEngine() {
     if (night) document.body.style.setProperty("--night-bg", night);
 
     const current = document.body.dataset.theme;
+
     if (current === "day" && day) {
       document.body.style.background = day;
     }
@@ -27,7 +28,7 @@ export function useThemeEngine() {
       document.body.style.background = night;
     }
 
-    // Start midnight rotation
+    // Midnight rotation
     scheduleMidnightRotation();
   }, []);
 }
