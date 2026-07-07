@@ -7,28 +7,41 @@
   top: 120px;
   left: 120px;
   z-index: 9999;
-  pointer-events: none;
+  pointer-events: auto; /* FIXED: panel is interactive */
 }
 
 .theme-panel-inner {
-  width: 340px;
+  width: 360px;
   background: rgba(0, 0, 0, 0.65);
   border: 2px solid rgba(255, 255, 255, 0.25);
   border-radius: 12px;
   padding: 20px;
   color: #fff;
-  pointer-events: auto;
-  cursor: move;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
   backdrop-filter: blur(8px);
+
+  position: absolute; /* REQUIRED for dragging */
 }
 
-.theme-panel-inner h2,
-.theme-panel-inner h3 {
-  margin: 0 0 12px 0;
-  font-family: "Cinzel Decorative", serif;
-  letter-spacing: 0.05em;
+/* ============================================================
+   Drag Handle
+   ============================================================ */
+
+.drag-handle {
+  cursor: move;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
 }
+
+.drag-handle h2 {
+  margin: 0;
+  font-family: "Cinzel Decorative", serif;
+}
+
+/* ============================================================
+   Login
+   ============================================================ */
 
 .theme-password {
   width: 100%;

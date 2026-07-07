@@ -1,5 +1,5 @@
 // ============================================================
-// Header.jsx — Crown Creatives Cinematic Header (Theme-Test Edition)
+// Header.jsx — Crown Creatives Cinematic Header (Final Version)
 // ============================================================
 
 import React from "react";
@@ -7,13 +7,13 @@ import "../styles/header.css";
 import { useSoundEngine } from "../hooks/useSoundEngine";
 
 export default function Header() {
-  const { isMuted, toggleSound } = useSoundEngine();
+  const { toggleSound } = useSoundEngine();
 
   return (
-    <header className="hero-header frosted-header">
+    <header className="hero-header">
 
       {/* ============================================================
-         LEFT — SOUND TOGGLE (Neon, enlarged, no panel)
+         LEFT — SOUND TOGGLE
       ============================================================ */}
       <div className="hero-header-left">
         <button
@@ -34,11 +34,11 @@ export default function Header() {
       ============================================================ */}
       <div className="hero-header-center">
 
-        {/* Always-visible hero crown (glowing, reduced 50%) */}
+        {/* Always-visible hero crown (glowing, reduced 10%) */}
         <img
           src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
-          className="hero-crown-base reduced-crown"
+          className="reduced-crown"
         />
 
         {/* Magical fade overlay crowns */}
@@ -61,7 +61,6 @@ export default function Header() {
           Artistry • Resilience • Imagination
         </p>
 
-        {/* Navigation */}
         <nav className="cc-header-nav">
           <button>HOME</button>
           <button>ABOUT</button>
@@ -75,7 +74,7 @@ export default function Header() {
       </div>
 
       {/* ============================================================
-         RIGHT — THEME TOGGLE (Neon, enlarged, no panel)
+         RIGHT — THEME TOGGLE
       ============================================================ */}
       <div className="hero-header-right">
         <button

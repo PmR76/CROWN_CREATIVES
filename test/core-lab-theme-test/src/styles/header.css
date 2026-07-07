@@ -16,8 +16,7 @@
   padding: 20px 32px 12px 32px;
 
   z-index: 50;
-  background: transparent; /* no frosted glass */
-  color: #fff;
+  background: transparent;
   font-family: "Cinzel Decorative", serif;
 }
 
@@ -95,15 +94,15 @@ body[data-theme="night"] .reduced-crown {
 body[data-theme="day"] .cc-header-title,
 body[data-theme="day"] .cc-header-tagline,
 body[data-theme="day"] .cc-header-nav button {
-  color: #222; /* dark text for bright backgrounds */
+  color: #222;
   text-shadow: none;
 }
 
 body[data-theme="night"] .cc-header-title,
 body[data-theme="night"] .cc-header-tagline,
 body[data-theme="night"] .cc-header-nav button {
-  color: #fff; /* light text for dark backgrounds */
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  color: #fff;
+  text-shadow: 0 0 6px rgba(255,255,255,0.4);
 }
 
 /* ============================================================
@@ -148,7 +147,7 @@ body[data-theme="night"] .cc-header-nav button {
 }
 
 /* ============================================================
-   Theme Toggle — Container
+   Theme Toggle
    ============================================================ */
 
 .theme-toggle {
@@ -159,7 +158,6 @@ body[data-theme="night"] .cc-header-nav button {
   cursor: pointer;
   display: flex;
   align-items: center;
-  box-shadow: none;
   transition: transform 0.3s ease;
 }
 
@@ -167,14 +165,9 @@ body[data-theme="night"] .cc-header-nav button {
   transform: scale(1.08);
 }
 
-/* ============================================================
-   Theme Toggle Icon — Neon Glow + Hover Shimmer
-   ============================================================ */
-
 .theme-toggle-icon {
   width: 66px;
   height: 66px;
-  background: none;
 
   filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.85))
           drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
@@ -189,20 +182,8 @@ body[data-theme="night"] .theme-toggle-icon {
           drop-shadow(0 0 42px rgba(255, 120, 40, 0.45));
 }
 
-.theme-toggle:hover .theme-toggle-icon {
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1))
-          drop-shadow(0 0 40px rgba(255, 255, 255, 0.85))
-          drop-shadow(0 0 60px rgba(255, 255, 255, 0.7));
-}
-
-body[data-theme="night"] .theme-toggle:hover .theme-toggle-icon {
-  filter: drop-shadow(0 0 20px rgba(255, 200, 120, 1))
-          drop-shadow(0 0 40px rgba(255, 160, 80, 0.85))
-          drop-shadow(0 0 60px rgba(255, 120, 40, 0.7));
-}
-
 /* ============================================================
-   Sound Toggle — Container
+   Sound Toggle
    ============================================================ */
 
 .sound-toggle {
@@ -213,7 +194,6 @@ body[data-theme="night"] .theme-toggle:hover .theme-toggle-icon {
   cursor: pointer;
   display: flex;
   align-items: center;
-  box-shadow: none;
   transition: transform 0.3s ease;
 }
 
@@ -221,14 +201,9 @@ body[data-theme="night"] .theme-toggle:hover .theme-toggle-icon {
   transform: scale(1.08);
 }
 
-/* ============================================================
-   Sound Toggle Icon — Neon Glow + Hover Shimmer
-   ============================================================ */
-
 .sound-toggle-icon {
   width: 66px;
   height: 66px;
-  background: none;
 
   filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.85))
           drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
@@ -241,16 +216,4 @@ body[data-theme="night"] .sound-toggle-icon {
   filter: drop-shadow(0 0 14px rgba(255, 200, 120, 0.85))
           drop-shadow(0 0 28px rgba(255, 160, 80, 0.65))
           drop-shadow(0 0 42px rgba(255, 120, 40, 0.45));
-}
-
-.sound-toggle:hover .sound-toggle-icon {
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1))
-          drop-shadow(0 0 40px rgba(255, 255, 255, 0.85))
-          drop-shadow(0 0 60px rgba(255, 255, 255, 0.7));
-}
-
-body[data-theme="night"] .sound-toggle:hover .sound-toggle-icon {
-  filter: drop-shadow(0 0 20px rgba(255, 200, 120, 1))
-          drop-shadow(0 0 40px rgba(255, 160, 80, 0.85))
-          drop-shadow(0 0 60px rgba(255, 120, 40, 0.7));
 }
