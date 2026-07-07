@@ -1,5 +1,5 @@
 /* ============================================================
-   Header — Clean Version + Neon Theme Toggle Icon
+   Header — Clean Version + Neon Theme & Sound Icons
    ============================================================ */
 
 .hero-header {
@@ -31,7 +31,7 @@
 
 .hero-header-right {
   display: flex;
-  gap: 12px;
+  gap: 18px; /* increased spacing for larger icons */
   align-items: center;
 }
 
@@ -41,14 +41,12 @@
 
 .theme-toggle {
   border: none;
-  background: none; /* no plate */
-  padding: 0;       /* remove circular space */
+  background: none;
+  padding: 0;
   margin: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
-
-  /* remove container glow */
   box-shadow: none;
   transition: transform 0.3s ease;
 }
@@ -58,58 +56,95 @@
 }
 
 /* ============================================================
-   Theme Toggle Icon — Transparent + Neon Glow + Hover Shimmer
+   Theme Toggle Icon — 50% Larger + Neon Glow + Hover Shimmer
    ============================================================ */
 
 .theme-toggle-icon {
-  width: 44px;
-  height: 44px;
+  width: 66px;   /* 44px → 66px (50% increase) */
+  height: 66px;
   background: none;
 
   /* Base day glow */
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8))
-          drop-shadow(0 0 20px rgba(255, 255, 255, 0.6))
-          drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.85))
+          drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
+          drop-shadow(0 0 42px rgba(255, 255, 255, 0.45));
 
   transition: filter 0.4s ease;
 }
 
 /* Night mode glow */
 body[data-theme="dark"] .theme-toggle-icon {
-  filter: drop-shadow(0 0 10px rgba(255, 200, 120, 0.8))
-          drop-shadow(0 0 20px rgba(255, 160, 80, 0.6))
-          drop-shadow(0 0 30px rgba(255, 120, 40, 0.4));
+  filter: drop-shadow(0 0 14px rgba(255, 200, 120, 0.85))
+          drop-shadow(0 0 28px rgba(255, 160, 80, 0.65))
+          drop-shadow(0 0 42px rgba(255, 120, 40, 0.45));
 }
 
-/* Hover intensification (merged optional shimmer) */
+/* Hover intensification */
 .theme-toggle:hover .theme-toggle-icon {
-  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 1))
-          drop-shadow(0 0 32px rgba(255, 255, 255, 0.8))
-          drop-shadow(0 0 48px rgba(255, 255, 255, 0.6));
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1))
+          drop-shadow(0 0 40px rgba(255, 255, 255, 0.85))
+          drop-shadow(0 0 60px rgba(255, 255, 255, 0.7));
 }
 
 body[data-theme="dark"] .theme-toggle:hover .theme-toggle-icon {
-  filter: drop-shadow(0 0 16px rgba(255, 200, 120, 1))
-          drop-shadow(0 0 32px rgba(255, 160, 80, 0.8))
-          drop-shadow(0 0 48px rgba(255, 120, 40, 0.6));
+  filter: drop-shadow(0 0 20px rgba(255, 200, 120, 1))
+          drop-shadow(0 0 40px rgba(255, 160, 80, 0.85))
+          drop-shadow(0 0 60px rgba(255, 120, 40, 0.7));
 }
 
 /* ============================================================
-   Sound Toggle — unchanged
+   Sound Toggle — Container (fully invisible)
    ============================================================ */
 
 .sound-toggle {
   border: none;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 999px;
-  padding: 6px 10px;
+  background: none; /* remove panel */
+  padding: 0;
+  margin: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
-  backdrop-filter: none;
+  box-shadow: none;
+  transition: transform 0.3s ease;
 }
 
+.sound-toggle:hover {
+  transform: scale(1.08);
+}
+
+/* ============================================================
+   Sound Toggle Icon — 50% Larger + Neon Glow + Hover Shimmer
+   ============================================================ */
+
 .sound-toggle-icon {
-  width: 22px;
-  height: 22px;
+  width: 66px;   /* match theme icon */
+  height: 66px;
+  background: none;
+
+  /* Base day glow */
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.85))
+          drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
+          drop-shadow(0 0 42px rgba(255, 255, 255, 0.45));
+
+  transition: filter 0.4s ease;
+}
+
+/* Night mode glow */
+body[data-theme="dark"] .sound-toggle-icon {
+  filter: drop-shadow(0 0 14px rgba(255, 200, 120, 0.85))
+          drop-shadow(0 0 28px rgba(255, 160, 80, 0.65))
+          drop-shadow(0 0 42px rgba(255, 120, 40, 0.45));
+}
+
+/* Hover intensification */
+.sound-toggle:hover .sound-toggle-icon {
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1))
+          drop-shadow(0 0 40px rgba(255, 255, 255, 0.85))
+          drop-shadow(0 0 60px rgba(255, 255, 255, 0.7));
+}
+
+body[data-theme="dark"] .sound-toggle:hover .sound-toggle-icon {
+  filter: drop-shadow(0 0 20px rgba(255, 200, 120, 1))
+          drop-shadow(0 0 40px rgba(255, 160, 80, 0.85))
+          drop-shadow(0 0 60px rgba(255, 120, 40, 0.7));
 }
