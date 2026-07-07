@@ -7,7 +7,6 @@ export default defineConfig({
     port: 49152,
     strictPort: true,
     host: true,
-    open: true   // ← THIS auto-opens your browser
+    open: false   // ← DO NOT AUTO-OPEN THE WRONG PAGE
   }
 });
-

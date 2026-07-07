@@ -174,8 +174,10 @@
       🟢 Header.jsx
       🟢 HeroCrown.jsx
       🟢 HeroGallery.jsx
+      🟢 SentinelPanel.jsx
       🟢 ThemePanel.jsx
       🟢 Ticker.jsx
+   🟢 FaultScanner.jsx
    📁 test\core-lab-react\src\hooks
       🟢 useDiagnostics.disabled
       🟢 useSoundEngine.js

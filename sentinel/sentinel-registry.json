@@ -253,10 +253,12 @@
           "Header.jsx",
           "HeroCrown.jsx",
           "HeroGallery.jsx",
+          "SentinelPanel.jsx",
           "ThemePanel.jsx",
           "Ticker.jsx"
         ]
       },
+      "FaultScanner.jsx",
       {
         "folder": "test\\core-lab-react\\src\\hooks",
         "items": [

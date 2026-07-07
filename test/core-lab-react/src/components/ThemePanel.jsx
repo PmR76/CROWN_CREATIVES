@@ -3,9 +3,6 @@
 // SHIFT + A • Password Gate • Draggable • Gradient Swatches
 // ============================================================
 
-console.log("ThemePanel mounted");
-
-
 import { useEffect, useState, useRef } from "react";
 import "../styles/theme-panel.css";
 import { themeEngine } from "../theme/ThemeEngine";
@@ -21,6 +18,13 @@ export default function ThemePanel() {
   const panelRef = useRef(null);
 
   // ------------------------------------------------------------
+  // Debug: confirm mount
+  // ------------------------------------------------------------
+  useEffect(() => {
+    console.log("ThemePanel mounted");
+  }, []);
+
+  // ------------------------------------------------------------
   // SHIFT + A — Open Panel (password gate)
   // ------------------------------------------------------------
   useEffect(() => {
@@ -29,6 +33,7 @@ export default function ThemePanel() {
         setIsOpen(true);
       }
     }
+
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
@@ -48,11 +53,14 @@ export default function ThemePanel() {
   // Apply Theme (Unified Layer 3 API)
   // ------------------------------------------------------------
   function applyTheme() {
+    // role: "day" | "night" to match CSS (data-themeRole="night")
     themeEngine.setBackgroundTheme(role, gradient);
 
     // Fire unified theme event for React + diagnostics
     window.dispatchEvent(
-      new CustomEvent("theme-set", { detail: role })
+      new CustomEvent("theme-set", {
+        detail: role
+      })
     );
   }
 
@@ -133,7 +141,6 @@ export default function ThemePanel() {
       <div className="theme-panel-header">Theme Panel — SHIFT + A</div>
 
       <div className="theme-panel-body">
-
         {/* ADMIN GATE */}
         {!isAdmin && (
           <div className="theme-section">
@@ -164,8 +171,8 @@ export default function ThemePanel() {
                   Day
                 </button>
                 <button
-                  className={role === "dark" ? "active" : ""}
-                  onClick={() => setRole("dark")}
+                  className={role === "night" ? "active" : ""}
+                  onClick={() => setRole("night")}
                 >
                   Night
                 </button>

@@ -21,7 +21,6 @@ import CorePanel from "./components/CorePanel";
 import "./styles/core.css";
 
 export default function App() {
-
   // Mount theme engine once
   const { theme } = useThemeEngine();
 
