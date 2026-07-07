@@ -18,19 +18,13 @@ export default function ThemePanel() {
   const panelRef = useRef(null);
 
   // ------------------------------------------------------------
-  // Debug: confirm mount
-  // ------------------------------------------------------------
-  useEffect(() => {
-    console.log("ThemePanel mounted");
-  }, []);
-
-  // ------------------------------------------------------------
-  // SHIFT + A — Open Panel (password gate)
+  // SHIFT + A — Open/Toggle Panel (password gate)
   // ------------------------------------------------------------
   useEffect(() => {
     function handleKey(e) {
       if (e.shiftKey && e.key.toLowerCase() === "a") {
-        setIsOpen(true);
+        setIsOpen((prev) => !prev);
+        window.__shiftAActive = true;
       }
     }
 
@@ -44,6 +38,7 @@ export default function ThemePanel() {
   function handleUnlock() {
     if (password === "CROWN26") {
       setIsAdmin(true);
+      window.__themeAdmin = true;
     } else {
       alert("Incorrect password.");
     }
@@ -53,21 +48,28 @@ export default function ThemePanel() {
   // Apply Theme (Unified Layer 3 API)
   // ------------------------------------------------------------
   function applyTheme() {
-    // role: "day" | "night" to match CSS (data-themeRole="night")
-    themeEngine.setBackgroundTheme(role, gradient);
+    // IMPORTANT: use "day" / "night" to match core.css
+    const resolvedRole = role === "dark" ? "night" : role;
+
+    themeEngine.setBackgroundTheme(resolvedRole, gradient);
 
     // Fire unified theme event for React + diagnostics
     window.dispatchEvent(
       new CustomEvent("theme-set", {
-        detail: role
+        detail: { role: resolvedRole, gradient }
       })
     );
+
+    window.__activeThemeRole = resolvedRole;
+    window.__activeThemeGradient = gradient;
   }
 
   // ------------------------------------------------------------
   // Draggable Panel — SAFE (runs only after mount)
   // ------------------------------------------------------------
   useEffect(() => {
+    if (!isOpen) return;
+
     const panel = panelRef.current;
     if (!panel) return;
 
@@ -84,11 +86,9 @@ export default function ThemePanel() {
       dragging = true;
       startX = e.clientX;
       startY = e.clientY;
-
       const rect = panel.getBoundingClientRect();
       initialLeft = rect.left;
       initialTop = rect.top;
-
       document.body.style.userSelect = "none";
     }
 
@@ -171,8 +171,8 @@ export default function ThemePanel() {
                   Day
                 </button>
                 <button
-                  className={role === "night" ? "active" : ""}
-                  onClick={() => setRole("night")}
+                  className={role === "dark" ? "active" : ""}
+                  onClick={() => setRole("dark")}
                 >
                   Night
                 </button>
@@ -205,7 +205,10 @@ export default function ThemePanel() {
 
             {/* CLOSE BUTTON */}
             <div className="theme-section">
-              <button className="apply-btn" onClick={() => setIsOpen(false)}>
+              <button
+                className="apply-btn"
+                onClick={() => setIsOpen(false)}
+              >
                 Close Panel
               </button>
             </div>

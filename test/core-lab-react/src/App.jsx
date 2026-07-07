@@ -24,6 +24,9 @@ export default function App() {
   // Mount theme engine once
   const { theme } = useThemeEngine();
 
+  // Expose theme for diagnostics / Sentinel
+  window.__activeTheme = theme;
+
   return (
     <>
       {/* RUNTIME FAULT SCANNER */}
@@ -38,7 +41,7 @@ export default function App() {
       {/* HERO CROWN */}
       <HeroCrown />
 
-      {/* THEME PANEL */}
+      {/* THEME PANEL (SHIFT + A) */}
       <ThemePanel />
 
       {/* HERO GALLERY */}
