@@ -36,3 +36,53 @@
     transform: translateY(0px) scale(1);
   }
 }
+/* /* ============================================================
+   Crown Glow — Behind Crown (Theme Reactive)
+   ============================================================ */
+
+#hero-crown-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  z-index: -1; /* ⭐ Glow behind crown */
+  filter: blur(40px);
+  animation: crown-glow-pulse 6s ease-in-out infinite;
+}
+
+/* ⭐ DAY MODE — White Radiant Glow */
+body[data-theme="day"] #hero-crown-container::before {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(255, 255, 255, 0.35) 35%,
+    rgba(255, 255, 255, 0.15) 60%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+}
+
+/* ⭐ NIGHT MODE — Golden Glow */
+body[data-theme="dark"] #hero-crown-container::before {
+  background: radial-gradient(
+    circle,
+    rgba(255, 210, 120, 0.55) 0%,
+    rgba(255, 180, 80, 0.35) 35%,
+    rgba(255, 150, 60, 0.15) 60%,
+    rgba(255, 120, 40, 0.05) 100%
+  );
+}
+
+@keyframes crown-glow-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+}
