@@ -1,10 +1,10 @@
 // ============================================================
-// Header.jsx — Crown Creatives Cinematic Header (Final Version)
+// Header.jsx — Final Sound + Theme Toggle (Working)
 // ============================================================
 
 import React from "react";
 import "../styles/header.css";
-import { useSoundEngine } from "../hooks/useSoundEngine";
+import { useSoundEngine } from "../hooks/useSoundEngine.js";
 
 export default function Header() {
   const { toggleSound } = useSoundEngine();
@@ -12,9 +12,7 @@ export default function Header() {
   return (
     <header className="hero-header">
 
-      {/* ============================================================
-         LEFT — SOUND TOGGLE
-      ============================================================ */}
+      {/* SOUND TOGGLE */}
       <div className="hero-header-left">
         <button
           id="soundToggle"
@@ -22,44 +20,29 @@ export default function Header() {
           onClick={toggleSound}
         >
           <img
-            src="/assets/icons/music.png"
+            src="/assets/icons/sound-magic.svg"
             alt="Sound Toggle"
             className="sound-toggle-icon"
           />
         </button>
       </div>
 
-      {/* ============================================================
-         CENTER — Crown + Title + Tagline + Navigation
-      ============================================================ */}
+      {/* CENTER */}
       <div className="hero-header-center">
 
-        {/* Always-visible hero crown (glowing, reduced 10%) */}
         <img
           src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
           className="reduced-crown"
         />
 
-        {/* Magical fade overlay crowns */}
         <div className="hero-crown">
-          <img
-            src="/assets/icons/day-crown.svg"
-            className="crown crown-day"
-            alt="Day Crown"
-          />
-          <img
-            src="/assets/icons/night-crown.svg"
-            className="crown crown-night"
-            alt="Night Crown"
-          />
+          <img src="/assets/icons/day-crown.svg" className="crown crown-day" />
+          <img src="/assets/icons/night-crown.svg" className="crown crown-night" />
         </div>
 
         <h1 className="cc-header-title">Crown Creatives</h1>
-
-        <p className="cc-header-tagline">
-          Artistry • Resilience • Imagination
-        </p>
+        <p className="cc-header-tagline">Artistry • Resilience • Imagination</p>
 
         <nav className="cc-header-nav">
           <button>HOME</button>
@@ -73,9 +56,7 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* ============================================================
-         RIGHT — THEME TOGGLE
-      ============================================================ */}
+      {/* THEME TOGGLE */}
       <div className="hero-header-right">
         <button
           id="themeToggle"
