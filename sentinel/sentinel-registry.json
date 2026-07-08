@@ -26,6 +26,12 @@
       },
       "FaultScanner.jsx",
       {
+        "folder": "test\\core-lab-react\\src\\gallery",
+        "items": [
+          "GalleryEngine.js"
+        ]
+      },
+      {
         "folder": "test\\core-lab-react\\src\\hooks",
         "items": [
           "useDiagnostics.js",

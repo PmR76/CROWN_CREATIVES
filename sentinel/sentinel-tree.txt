@@ -14,6 +14,8 @@
       🟢 ThemePanel.jsx
       🟢 Ticker.jsx
    🟢 FaultScanner.jsx
+   📁 test\core-lab-react\src\gallery
+      🟢 GalleryEngine.js
    📁 test\core-lab-react\src\hooks
       🟢 useDiagnostics.js
       🟢 useSoundEngine.js
