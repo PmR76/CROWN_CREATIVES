@@ -1,2 +1,2 @@
-import { runSentinelManifestScanner } from "./sentinel/SentinelManifestScanner.js";
+import { runSentinelManifestScanner } from "./SentinelManifestScanner.js";
 runSentinelManifestScanner();
