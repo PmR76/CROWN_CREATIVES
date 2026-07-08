@@ -1,7 +1,3 @@
-// ============================================================
-// SoundEngine — Shared Manifest Loader for Both React Labs
-// ============================================================
-
 class SoundEngine {
   constructor() {
     this.manifestUrl = "/manifests/sound-manifest.json";
