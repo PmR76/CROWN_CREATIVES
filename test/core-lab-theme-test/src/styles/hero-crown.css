@@ -86,3 +86,30 @@ body[data-theme="dark"] #hero-crown-container::before {
     opacity: 0.75;
   }
 }
+@keyframes crownNightPulse {
+  0%   { opacity: 0.85; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+.hero-crown {
+  transition: opacity 8s ease-in-out, filter 8s ease-in-out;
+}
+
+.hero-crown.day {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+
+.hero-crown.night {
+  opacity: 1;
+  filter: drop-shadow(0 0 25px rgba(0, 255, 255, 0.8));
+}
+.hero-crown.night {
+  animation: neonPulse 4s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0% { filter: drop-shadow(0 0 15px rgba(0,255,255,0.6)); }
+  50% { filter: drop-shadow(0 0 35px rgba(0,255,255,1)); }
+  100% { filter: drop-shadow(0 0 15px rgba(0,255,255,0.6)); }
+}
