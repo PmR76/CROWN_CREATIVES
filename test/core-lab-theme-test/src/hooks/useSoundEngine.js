@@ -10,8 +10,7 @@ export function useSoundEngine() {
 
   useEffect(() => {
     // Initialise engine once
-    soundEngine.init();
-
+    
     // Start muted by default
     soundEngine.isMuted = true;
 
