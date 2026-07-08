@@ -1,6 +1,5 @@
 // ============================================================
-// HeroCrown.jsx — Cinematic Crown (Isolated Theme Lab Version)
-// Date: 2026-07-07 13:55 BST
+// HeroCrown.jsx — Cinematic Crown (Theme Test Lab Version)
 // ============================================================
 
 import { useEffect } from "react";
