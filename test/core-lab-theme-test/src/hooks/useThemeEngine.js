@@ -1,5 +1,5 @@
 // ============================================================
-// useThemeEngine.js — Final Theme Engine
+// useThemeEngine.js — Final Theme Engine (No Sound Conflicts)
 // ============================================================
 
 import { useEffect } from "react";
