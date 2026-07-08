@@ -1,5 +1,5 @@
 // ============================================================
-// App.jsx — Crown Creatives Theme Test Lab (Clean Version)
+// App.jsx — Crown Creatives Theme Test Lab (Minimal + Correct)
 // ============================================================
 
 import React from "react";
@@ -8,9 +8,8 @@ import Header from "./components/Header.jsx";
 import Background3D from "./components/Background3D.jsx";
 import HeroCrown from "./components/HeroCrown.jsx";
 import ThemePanel from "./components/ThemePanel.jsx";
-import Footer from "./components/Footer.jsx";
-import SentinelPanel from "./components/SentinelPanel.jsx";
 
+// IMPORTANT: named import
 import { useThemeEngine } from "./hooks/useThemeEngine.js";
 
 export default function App() {
@@ -24,13 +23,6 @@ export default function App() {
       <Background3D />
       <HeroCrown />
       <ThemePanel />
-
-      {/* Sentinel diagnostics */}
-      <div style={{ padding: "20px" }}>
-        <SentinelPanel />
-      </div>
-
-      <Footer />
     </>
   );
 }
