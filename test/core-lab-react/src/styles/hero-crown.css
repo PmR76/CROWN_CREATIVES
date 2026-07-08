@@ -119,3 +119,12 @@ body[data-themeRole="night"] #hero-crown-container .hero-crown {
   opacity: 1;
   filter: drop-shadow(0 0 25px rgba(0, 255, 255, 0.8));
 }
+.hero-crown.night {
+  animation: neonPulse 4s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0% { filter: drop-shadow(0 0 15px rgba(0,255,255,0.6)); }
+  50% { filter: drop-shadow(0 0 35px rgba(0,255,255,1)); }
+  100% { filter: drop-shadow(0 0 15px rgba(0,255,255,0.6)); }
+}
