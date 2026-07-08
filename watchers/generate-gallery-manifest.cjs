@@ -34,11 +34,12 @@ function buildManifest() {
   const manifest = { images: files };
   const json = JSON.stringify(manifest, null, 2);
 
-  config.projects.forEach(target => {
-    const outPath = path.join(target, OUTPUT_NAME);
-    fs.writeFileSync(outPath, json);
-    console.log("Updated:", outPath);
-  });
+config.projects.forEach(target => {
+  const outPath = path.join(target, OUTPUT_NAME);
+  console.log("Writing gallery manifest to:", outPath);
+  fs.writeFileSync(outPath, json);
+});
+
 }
 
 buildManifest();
