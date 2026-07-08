@@ -1,5 +1,5 @@
 // ============================================================
-// Header.jsx — Final Sound + Theme Toggle (Working)
+// Header.jsx — Final Sound + Theme Toggle + Crown Fade
 // ============================================================
 
 import React from "react";

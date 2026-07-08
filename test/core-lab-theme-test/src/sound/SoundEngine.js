@@ -6,12 +6,10 @@
 class SoundEngine {
   constructor() {
     this.manifestUrl = "/assets/sounds/sound-manifest.json";
-
-    this.files = [];        // raw file list
-    this.playlist = [];     // shuffled playlist
-    this.pointer = 0;       // current index
-    this.lastTrack = null;  // avoid immediate repeat
-
+    this.files = [];      // raw file list
+    this.playlist = [];   // shuffled playlist
+    this.pointer = 0;     // current index
+    this.lastTrack = null;
     this.audio = null;
     this.isPlaying = false;
     this.isMuted = true;
@@ -24,8 +22,8 @@ class SoundEngine {
     try {
       const res = await fetch(this.manifestUrl);
       if (!res.ok) throw new Error("Manifest missing");
-
       const data = await res.json();
+
       this.files = Object.values(data.tracks).map(
         file => `/assets/sounds/${file}`
       );
@@ -44,7 +42,6 @@ class SoundEngine {
     try {
       const res = await fetch("/assets/sounds/");
       const text = await res.text();
-
       const matches = [...text.matchAll(/href="([^"]+\.mp3)"/g)];
       this.files = matches.map(m => "/assets/sounds/" + m[1]);
     } catch (err) {
@@ -70,7 +67,6 @@ class SoundEngine {
   // ------------------------------------------------------------
   buildPlaylist() {
     if (!this.files || this.files.length === 0) return [];
-
     let list = this.shuffle(this.files);
 
     if (this.lastTrack && list.length > 1 && list[0] === this.lastTrack) {
@@ -90,7 +86,6 @@ class SoundEngine {
     if (!this.playlist || this.playlist.length === 0) {
       const hasManifest = await this.loadManifest();
       if (!hasManifest) await this.scanFolder();
-
       this.playlist = this.buildPlaylist();
     }
 
@@ -101,8 +96,8 @@ class SoundEngine {
 
     const track = this.playlist[this.pointer];
     this.lastTrack = track;
-
     this.pointer++;
+
     if (this.pointer >= this.playlist.length) {
       this.playlist = this.buildPlaylist();
     }
@@ -140,7 +135,7 @@ class SoundEngine {
   }
 
   // ------------------------------------------------------------
-  // Toggle playback
+  // Toggle playback (called from React hook)
   // ------------------------------------------------------------
   toggle() {
     this.isMuted = !this.isMuted;
@@ -173,22 +168,10 @@ class SoundEngine {
   }
 
   // ------------------------------------------------------------
-  // Bind toggle button
-  // ------------------------------------------------------------
-  bindToggle() {
-    const toggle = document.getElementById("soundToggle");
-    if (!toggle) {
-      console.warn("Sound toggle not found.");
-      return;
-    }
-    toggle.addEventListener("click", () => this.toggle());
-  }
-
-  // ------------------------------------------------------------
-  // Init
+  // Init (no DOM binding here; React handles click)
   // ------------------------------------------------------------
   init() {
-    this.bindToggle();
+    // Reserved for future preloading if needed
   }
 }
 

@@ -1,50 +1,38 @@
 // ============================================================
-// useSoundEngine.js — Final Working Version + Reactive Glow
+// useSoundEngine.js — React Hook Wrapper for SoundEngine
 // ============================================================
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import soundEngine from "../sound/SoundEngine.js";
 
 export function useSoundEngine() {
-  const audioRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
-    const audio = new Audio("/assets/audio/crown-theme.mp3");
-    audio.loop = true;
-    audio.volume = 0.6;
-    audio.muted = true;
+    // Initialise engine once
+    soundEngine.init();
 
-    audioRef.current = audio;
-
-    // Unlock audio on first user gesture
-    const unlockAudio = () => {
-      audioRef.current?.play().catch(() => {});
-    };
-
-    window.addEventListener("click", unlockAudio, { once: true });
+    // Start muted by default
+    soundEngine.isMuted = true;
 
     return () => {
-      audioRef.current?.pause();
-      audioRef.current = null;
+      soundEngine.stop();
     };
   }, []);
 
   const toggleSound = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
     const icon = document.querySelector(".sound-toggle-icon");
 
-    if (isMuted) {
-      audio.muted = false;
-      audio.play().catch(() => {});
+    soundEngine.toggle();
+    const nowMuted = soundEngine.isMuted;
+
+    if (!nowMuted) {
       icon?.classList.add("playing");
-      setIsMuted(false);
     } else {
-      audio.muted = true;
       icon?.classList.remove("playing");
-      setIsMuted(true);
     }
+
+    setIsMuted(nowMuted);
   };
 
   return { isMuted, toggleSound };
