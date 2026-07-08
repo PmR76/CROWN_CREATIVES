@@ -19,7 +19,7 @@ export default function HeroCrown() {
       <img
         id="hero-crown-night"
         className="hero-crown float"
-        src="/assets/icons/night-crown.svg"
+        src="/assets/icons/night-crown.png"
         alt="Night Crown"
       />
     </div>
