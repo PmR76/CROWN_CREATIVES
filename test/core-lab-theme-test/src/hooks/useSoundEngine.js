@@ -1,5 +1,5 @@
 // ============================================================
-// useSoundEngine.js — Final Working Version
+// useSoundEngine.js — Final Working Version + Reactive Glow
 // ============================================================
 
 import { useEffect, useRef, useState } from "react";
@@ -16,6 +16,7 @@ export function useSoundEngine() {
 
     audioRef.current = audio;
 
+    // Unlock audio on first user gesture
     const unlockAudio = () => {
       audioRef.current?.play().catch(() => {});
     };
@@ -32,12 +33,16 @@ export function useSoundEngine() {
     const audio = audioRef.current;
     if (!audio) return;
 
+    const icon = document.querySelector(".sound-toggle-icon");
+
     if (isMuted) {
       audio.muted = false;
       audio.play().catch(() => {});
+      icon?.classList.add("playing");
       setIsMuted(false);
     } else {
       audio.muted = true;
+      icon?.classList.remove("playing");
       setIsMuted(true);
     }
   };
