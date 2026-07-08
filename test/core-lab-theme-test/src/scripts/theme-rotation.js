@@ -27,8 +27,10 @@ export function scheduleMidnightRotation() {
     }
   }
 
+  // Run once on load
   rotateThemes();
 
+  // Schedule at local midnight
   const now = new Date();
   const nextMidnight = new Date();
   nextMidnight.setHours(24, 0, 0, 0);
