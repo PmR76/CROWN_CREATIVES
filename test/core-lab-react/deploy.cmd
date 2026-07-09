@@ -1,30 +1,24 @@
 @echo off
-title Crown Creatives — Core Lab React Launcher
+setlocal
+
+REM ============================================================
+REM  Crown Creatives — Core Lab React Launcher (Vite)
+REM ============================================================
+
+REM --- Always start from the project root ---
+cd /d "%~dp0"
 
 echo.
-echo ================================================
-echo   Crown Creatives — Core Lab React Launcher
-echo ================================================
+echo  🔵 Launching Core Lab React (Vite Dev Server)
+echo  📁 Working Directory: %cd%
 echo.
 
-REM --- Move to project directory ---
-cd /d C:\DEV\CROWN_CREATIVES\test\core-lab-react
+REM --- Start Vite dev server ---
+call npm run dev
 
-REM --- Ensure node_modules exists ---
-if not exist node_modules (
-    echo Installing dependencies...
-    npm install
-)
+echo.
+echo  🟢 Core Lab React is running.
+echo  🌐 Open your browser at: http://localhost:5173
+echo.
 
-REM --- Kill common Vite ports (5173–5176) ---
-echo Clearing ports...
-npx kill-port 5173 >nul 2>&1
-npx kill-port 5174 >nul 2>&1
-npx kill-port 5175 >nul 2>&1
-npx kill-port 5176 >nul 2>&1
-
-REM --- Start Vite ---
-echo Starting Vite dev server...
-npm run dev
-
-pause
+endlocal
