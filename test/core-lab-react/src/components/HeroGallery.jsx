@@ -1,12 +1,10 @@
-import { useEffect } from "react";
-import { initHeroGallery } from "../shared/heroGalleryEngine";
+// ============================================================
+// HeroGallery.jsx — Static Cinematic Lanes (Engine Removed)
+// ============================================================
+
+import React from "react";
 
 export default function HeroGallery() {
-  useEffect(() => {
-    // Initialize hero gallery lanes + image cycling
-    initHeroGallery(document);
-  }, []);
-
   return (
     <div className="hero-gallery-container">
       <div className="hero-gallery-lane hero-gallery-left">
