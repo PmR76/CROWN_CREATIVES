@@ -3,7 +3,7 @@
 // ============================================================
 
 import { useEffect } from "react";
-import { scheduleMidnightRotation } from "../theme-rotation"; // ✅ corrected path
+import { scheduleMidnightRotation } from "../theme/theme-rotation.js"; // ✅ correct path
 
 export function useThemeEngine() {
   useEffect(() => {
