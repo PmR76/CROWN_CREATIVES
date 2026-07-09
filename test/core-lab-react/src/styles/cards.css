@@ -64,8 +64,8 @@ body.cards-lab {
   display: flex;
   justify-content: center;
 
-  /* MOVE CARDS DOWN BY 200PX */
-  margin-top: 200px;
+  /* MOVE CARDS DOWN BY 450PX */
+  margin-top: 450px;
 }
 
 .cc-cards .cards-wrapper {
