@@ -71,11 +71,11 @@ export default function Header() {
             );
           }}
         >
-          <img
-            src="/assets/icons/sun-moon2.png"
-            alt="Theme Toggle"
-            className="theme-toggle-icon"
-          />
+    <img
+  src="/assets/icons/sun-moon.png"
+  alt="Theme Toggle"
+  className="theme-toggle-icon"
+/>
         </button>
       </div>
 
