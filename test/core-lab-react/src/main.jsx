@@ -27,8 +27,7 @@ import "./styles/corepanel.css";
 import "./styles/hero-crown.css";
 import "./styles/hero-gallery.css";
 import "./styles/theme-panel.css";
-import "./styles/gradients.css";
-import "./shared/theme.css";
+import "./styles/background3d.css";
 
 // ============================================================
 // MOUNT APP — STRICTMODE REMOVED
