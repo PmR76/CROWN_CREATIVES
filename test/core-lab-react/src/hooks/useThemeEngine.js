@@ -1,34 +1,24 @@
 // ============================================================
-// useThemeEngine.js — Final Theme Engine (No Sound Conflicts)
+// useThemeEngine.js — Crown Creatives Theme Engine Hook
 // ============================================================
 
 import { useEffect } from "react";
-import { scheduleMidnightRotation } from "../scripts/theme-rotation";
+import { scheduleMidnightRotation } from "../theme-rotation"; // ✅ corrected path
 
 export function useThemeEngine() {
   useEffect(() => {
-    // Ensure theme dataset exists
-    if (!document.body.dataset.theme) {
-      document.body.dataset.theme = "day";
-    }
-
-    // Load stored gradients
-    const day = localStorage.getItem("theme-day");
-    const night = localStorage.getItem("theme-night");
-
-    if (day) document.body.style.setProperty("--day-bg", day);
-    if (night) document.body.style.setProperty("--night-bg", night);
-
-    const current = document.body.dataset.theme;
-
-    if (current === "day" && day) {
-      document.body.style.background = day;
-    }
-    if (current === "night" && night) {
-      document.body.style.background = night;
-    }
-
-    // Midnight rotation
+    // Initialize theme rotation once
     scheduleMidnightRotation();
+
+    // Listen for theme changes
+    const handleThemeChange = (event) => {
+      document.body.setAttribute("data-theme", event.detail.theme);
+    };
+
+    window.addEventListener("themeChange", handleThemeChange);
+
+    return () => {
+      window.removeEventListener("themeChange", handleThemeChange);
+    };
   }, []);
 }
