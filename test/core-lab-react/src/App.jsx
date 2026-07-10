@@ -32,11 +32,14 @@ export default function App() {
       {/* Cinematic Header System */}
       <Header />
       <Background3D />
+
+      {/* FIX: Gallery moved ABOVE the crown */}
+      <HeroGallery />
+
       <HeroCrown />
       <ThemePanel />
 
       {/* Core Lab React Content */}
-      <HeroGallery />
       <Cards />
       <Ticker />
       <CorePanel />
