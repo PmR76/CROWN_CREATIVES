@@ -1,25 +1,29 @@
-// ============================================================
-// HeroGallery.jsx — Cinematic Dual-Lane Gallery (Manifest-Based)
-// ============================================================
+// C:\DEV\CROWN_CREATIVES\test\core-lab-react\src\components\HeroGallery.jsx
 
 import { useEffect, useState } from "react";
 import { loadGallery } from "../gallery/GalleryEngine";
+import { runGallerySentinel } from "../sentinel/GallerySentinel";
 
 export default function HeroGallery() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
     async function init() {
+      // Run sentinel first for diagnostics
+      const sentinelReport = await runGallerySentinel();
+      console.log("[HeroGallery] Sentinel report:", sentinelReport);
+
       try {
         const loaded = await loadGallery();
 
         if (!loaded || loaded.length === 0) {
+          console.warn("[HeroGallery] loadGallery returned empty array.");
           setImages(["/assets/images/fallback.jpeg"]);
         } else {
           setImages(loaded);
         }
       } catch (err) {
-        console.warn("Gallery load failed:", err);
+        console.warn("[HeroGallery] Gallery load failed:", err);
         setImages(["/assets/images/fallback.jpeg"]);
       }
     }
