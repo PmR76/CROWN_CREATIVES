@@ -6,6 +6,10 @@ import React, { useEffect, useState, useRef } from "react";
 import "../styles/theme-panel.css";
 import { useThemeEngine } from "../hooks/useThemeEngine.js";
 
+// ============================================================
+// Gradient Libraries — Day + Night (30 each)
+// ============================================================
+
 const daySwatches = [
   "linear-gradient(135deg, #ffecd2, #fcb69f)",
   "linear-gradient(135deg, #ffe29f, #ffa99f, #ff719a)",
@@ -71,15 +75,21 @@ const nightSwatches = [
   "linear-gradient(135deg, #050510, #1a1a2f)"
 ];
 
+// ============================================================
+// Component
+// ============================================================
+
 export default function ThemePanel() {
   const [visible, setVisible] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
+
   const panelRef = useRef(null);
   const dragOffset = useRef({ x: 0, y: 0 });
 
   const { setThemeDirect } = useThemeEngine();
 
+  // SHIFT+A toggle
   useEffect(() => {
     const handler = (e) => {
       if (e.key.toLowerCase() === "a" && e.shiftKey) {
@@ -91,9 +101,7 @@ export default function ThemePanel() {
   }, []);
 
   const unlock = () => {
-    if (password === "Crown26") {
-      setAuthenticated(true);
-    }
+    if (password === "Crown26") setAuthenticated(true);
   };
 
   const startDrag = (e) => {
@@ -117,6 +125,7 @@ export default function ThemePanel() {
     window.removeEventListener("mouseup", stopDrag);
   };
 
+  // Apply swatch
   const applySwatch = (mode, gradient) => {
     localStorage.setItem(`theme-${mode}`, gradient);
 
@@ -126,13 +135,14 @@ export default function ThemePanel() {
       document.documentElement.style.setProperty("--active-night-gradient", gradient);
     }
 
-    // ensure inline background is not locking things
+    // Remove inline background override
     document.body.style.background = "";
 
-    // keep theme role in sync
+    // Sync theme role
     setThemeDirect(mode);
   };
 
+  // Load saved gradients
   useEffect(() => {
     const savedDay = localStorage.getItem("theme-day");
     const savedNight = localStorage.getItem("theme-night");
@@ -151,11 +161,7 @@ export default function ThemePanel() {
 
   return (
     <div className="theme-panel">
-      <div
-        className="theme-panel-inner"
-        ref={panelRef}
-        onMouseDown={startDrag}
-      >
+      <div className="theme-panel-inner" ref={panelRef} onMouseDown={startDrag}>
         {!authenticated && (
           <>
             <h2>Admin Login</h2>

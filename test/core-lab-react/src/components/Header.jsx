@@ -66,7 +66,7 @@ export default function Header() {
           onClick={toggleTheme}
         >
           <img
-            src="/assets/icons/sun-moon2.png"
+            src="/assets/icons/sun-moon.png"
             alt="Theme Toggle"
             className="theme-toggle-icon"
           />
