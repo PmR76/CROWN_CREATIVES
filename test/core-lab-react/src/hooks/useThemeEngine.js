@@ -3,16 +3,35 @@
 // ============================================================
 
 import { useEffect } from "react";
-import { scheduleMidnightRotation } from "../theme/theme-rotation.js"; // ✅ correct path
+import { scheduleMidnightRotation } from "../theme/theme-rotation.js";
 
 export function useThemeEngine() {
   useEffect(() => {
-    // Initialize theme rotation once
+    // ------------------------------------------------------------
+    // INITIALIZE MIDNIGHT ROTATION
+    // ------------------------------------------------------------
     scheduleMidnightRotation();
 
-    // Listen for theme changes
+    // ------------------------------------------------------------
+    // HANDLE THEME CHANGE EVENTS
+    // ------------------------------------------------------------
     const handleThemeChange = (event) => {
-      document.body.setAttribute("data-theme", event.detail.theme);
+      const { role, key } = event.detail;
+
+      // Apply theme to DOM
+      document.body.setAttribute("data-theme", role);
+      document.body.setAttribute("data-theme-key", key);
+
+      // Dispatch diagnostics snapshot
+      window.dispatchEvent(
+        new CustomEvent("theme-snapshot", {
+          detail: {
+            role,
+            key,
+            applied: true
+          }
+        })
+      );
     };
 
     window.addEventListener("themeChange", handleThemeChange);

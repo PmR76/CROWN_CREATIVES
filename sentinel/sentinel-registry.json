@@ -35,18 +35,16 @@
         "folder": "test\\core-lab-react\\src\\hooks",
         "items": [
           "useDiagnostics.js",
+          "useSentinelManifestScanner.js",
           "useSoundEngine.js",
           "useThemeEngine.js"
         ]
       },
       "main.jsx",
       {
-        "folder": "test\\core-lab-react\\src\\shared",
+        "folder": "test\\core-lab-react\\src\\sentinel",
         "items": [
-          "desktop.ini",
-          "HeroCrownEngine.js",
-          "heroGalleryEngine.js",
-          "theme.css"
+          "GallerySentinel.js"
         ]
       },
       {
@@ -58,6 +56,7 @@
       {
         "folder": "test\\core-lab-react\\src\\styles",
         "items": [
+          "background3d.css",
           "cards.css",
           "core.css",
           "corepanel.css",
@@ -66,6 +65,7 @@
           "header.css",
           "hero-crown.css",
           "hero-gallery.css",
+          "sentinel-panel.css",
           "theme-panel.css",
           "ticker.css"
         ]
@@ -73,7 +73,7 @@
       {
         "folder": "test\\core-lab-react\\src\\theme",
         "items": [
-          "ThemeEngine.js"
+          "theme-rotation.js"
         ]
       }
     ]

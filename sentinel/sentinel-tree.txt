@@ -18,17 +18,16 @@
       🟢 GalleryEngine.js
    📁 test\core-lab-react\src\hooks
       🟢 useDiagnostics.js
+      🟢 useSentinelManifestScanner.js
       🟢 useSoundEngine.js
       🟢 useThemeEngine.js
    🟢 main.jsx
-   📁 test\core-lab-react\src\shared
-      🟢 desktop.ini
-      🟢 HeroCrownEngine.js
-      🟢 heroGalleryEngine.js
-      🟢 theme.css
+   📁 test\core-lab-react\src\sentinel
+      🟢 GallerySentinel.js
    📁 test\core-lab-react\src\sound
       🟢 SoundEngine.js
    📁 test\core-lab-react\src\styles
+      🟢 background3d.css
       🟢 cards.css
       🟢 core.css
       🟢 corepanel.css
@@ -37,10 +36,11 @@
       🟢 header.css
       🟢 hero-crown.css
       🟢 hero-gallery.css
+      🟢 sentinel-panel.css
       🟢 theme-panel.css
       🟢 ticker.css
    📁 test\core-lab-react\src\theme
-      🟢 ThemeEngine.js
+      🟢 theme-rotation.js
 📁 master
    🟢 ❌ Missing folder: master
 📁 labs
