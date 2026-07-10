@@ -34,27 +34,43 @@ export default function HeroGallery() {
   }, []);
 
   // ------------------------------------------------------------
-  // ROTATION LOGIC — FIXED + INSIDE COMPONENT
+  // MAGICAL ALTERNATING LANE LOGIC
   // ------------------------------------------------------------
   useEffect(() => {
     if (images.length === 0) return;
 
     let index = 0;
+    let showLeft = true;
+
+    const leftImg = document.querySelector(".hero-gallery-left img");
+    const rightImg = document.querySelector(".hero-gallery-right img");
+
+    // Initial state
+    if (leftImg && rightImg) {
+      leftImg.src = images[index];
+      rightImg.src = images[(index + 1) % images.length];
+
+      leftImg.classList.add("visible");
+      rightImg.classList.remove("visible");
+    }
 
     const interval = setInterval(() => {
       index = (index + 1) % images.length;
 
-      const leftImg = document.querySelector(".hero-gallery-left img");
-      const rightImg = document.querySelector(".hero-gallery-right img");
-
-      if (leftImg && rightImg) {
+      if (showLeft) {
+        // Fade out right, fade in left
+        rightImg.classList.remove("visible");
         leftImg.src = images[index];
-        rightImg.src = images[(index + 1) % images.length];
-
         leftImg.classList.add("visible");
+      } else {
+        // Fade out left, fade in right
+        leftImg.classList.remove("visible");
+        rightImg.src = images[index];
         rightImg.classList.add("visible");
       }
-    }, 4000);
+
+      showLeft = !showLeft;
+    }, 8000); // 8 seconds hold time
 
     return () => clearInterval(interval);
   }, [images]);

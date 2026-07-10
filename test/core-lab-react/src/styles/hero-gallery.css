@@ -82,3 +82,13 @@
 .hero-gallery-lane {
   top: calc(50% - 50px); /* moved up by 50px */
 }
+.hero-gallery-img {
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out, transform 10s ease-out, filter 10s ease-out;
+}
+
+.hero-gallery-img.visible {
+  opacity: 1;
+  transform: translateY(-10px) scale(1.02);
+  filter: blur(0.5px);
+}
