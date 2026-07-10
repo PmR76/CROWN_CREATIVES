@@ -1,29 +1,20 @@
+// C:\DEV\CROWN_CREATIVES\test\core-lab-react\src\components\CorePanel.jsx
+
 import { useEffect, useState } from "react";
+import { useDiagnostics } from "../hooks/useDiagnostics";
 import "../styles/corepanel.css";
 
 export default function CorePanel() {
+  // Unified diagnostics engine
+  const { fps, gallery, cards, sentinel } = useDiagnostics();
+
   const [status, setStatus] = useState({
     header: false,
     footer: false,
     ticker: false,
     heroCrown: false,
-    heroGallery: false,
-    cards: false,
-    fps: 0,
     errors: []
   });
-
-  // ------------------------------------------------------------
-  // SENTINEL STATUS (v1.1)
-  // ------------------------------------------------------------
-  const [sentinel, setSentinel] = useState("grey");
-
-  useEffect(() => {
-    fetch("/sentinel/sentinel-health.json")
-      .then(res => res.json())
-      .then(data => setSentinel(data.status))
-      .catch(() => setSentinel("grey"));
-  }, []);
 
   // ------------------------------------------------------------
   // THEME STATUS (GREEN / RED / GREY)
@@ -34,7 +25,6 @@ export default function CorePanel() {
     function onSnapshot(e) {
       const snap = e.detail;
 
-      // DevTools meaningful snapshot
       console.log("[THEME SNAPSHOT]", snap);
 
       if (!snap.role || !snap.key || !snap.applied) {
@@ -49,7 +39,7 @@ export default function CorePanel() {
   }, []);
 
   // ------------------------------------------------------------
-  // DOM Detection
+  // DOM Detection (Header, Footer, Ticker, Crown)
   // ------------------------------------------------------------
   function detectDOM() {
     setStatus(prev => ({
@@ -57,9 +47,7 @@ export default function CorePanel() {
       header: !!document.querySelector("header, .cc-header, .header"),
       footer: !!document.querySelector("footer, .cc-footer, .footer"),
       ticker: !!document.querySelector(".ticker, .ticker-container, .ticker-wrapper"),
-      heroCrown: !!document.querySelector(".hero-crown, .hero-crown-section, .hero-crown-wrapper"),
-      heroGallery: !!document.querySelector(".hero-gallery, .hero-gallery-section, .hero-gallery-wrapper, .gallery-lane"),
-      cards: !!document.querySelector(".cards, .cards-container, .card-grid, .card-container")
+      heroCrown: !!document.querySelector(".hero-crown, .hero-crown-section, .hero-crown-wrapper")
     }));
   }
 
@@ -67,26 +55,6 @@ export default function CorePanel() {
     detectDOM();
     const interval = setInterval(detectDOM, 1000);
     return () => clearInterval(interval);
-  }, []);
-
-  // ------------------------------------------------------------
-  // FPS Detection
-  // ------------------------------------------------------------
-  useEffect(() => {
-    let last = performance.now();
-    let frames = 0;
-
-    function measure(now) {
-      frames++;
-      if (now - last >= 1000) {
-        setStatus(prev => ({ ...prev, fps: frames }));
-        frames = 0;
-        last = now;
-      }
-      requestAnimationFrame(measure);
-    }
-
-    requestAnimationFrame(measure);
   }, []);
 
   // ------------------------------------------------------------
@@ -185,20 +153,21 @@ export default function CorePanel() {
           </span>
         </div>
 
+        {/* NEW — Unified Diagnostics */}
         <div className="core-item">
-          Hero Gallery: <span className={status.heroGallery ? "ok" : "fail"}>
-            {status.heroGallery ? "Active" : "Missing"}
+          Hero Gallery: <span className={gallery === "Active" ? "ok" : "fail"}>
+            {gallery}
           </span>
         </div>
 
         <div className="core-item">
-          Cards: <span className={status.cards ? "ok" : "fail"}>
-            {status.cards ? "Loaded" : "Missing"}
+          Cards: <span className={cards === "Loaded" ? "ok" : "fail"}>
+            {cards}
           </span>
         </div>
 
         <div className="core-item">
-          FPS: <span className="ok">{status.fps}</span>
+          FPS: <span className="ok">{fps}</span>
         </div>
 
         {/* THEME STATUS */}
