@@ -79,3 +79,6 @@
 .hero-gallery-glow-right {
   background: rgba(255, 210, 150, 0.4);
 }
+.hero-gallery-lane {
+  top: calc(50% - 50px); /* moved up by 50px */
+}
