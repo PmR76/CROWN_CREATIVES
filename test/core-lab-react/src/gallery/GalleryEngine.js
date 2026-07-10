@@ -1,9 +1,19 @@
 // ============================================================
-// GalleryEngine — Shared Manifest Loader for Both React Labs
+// GalleryEngine — Auto-Populated Manifest Loader (Correct Path)
 // ============================================================
 
 export async function loadGallery() {
-  const res = await fetch("/manifests/gallery-manifest.json");
+  // Correct manifest path (matches your screenshot)
+  const res = await fetch("/assets/images/gallery/gallery-manifest.json");
+
   const data = await res.json();
-  return data.images.map(f => `/gallery/${f}`);
+
+  // Manifest is a simple array of filenames
+  if (!Array.isArray(data)) {
+    console.warn("Gallery manifest is not an array:", data);
+    return [];
+  }
+
+  // Map filenames to correct public path
+  return data.map(f => `/assets/images/gallery/${f}`);
 }
