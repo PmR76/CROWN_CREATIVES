@@ -4,6 +4,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import "../styles/theme-panel.css";
+import { useThemeEngine } from "../hooks/useThemeEngine";
 
 // ============================================================
 // Gradient Libraries — Cinematic Day + Night Themes (30 each)
@@ -82,13 +83,12 @@ export default function ThemePanel() {
   const [visible, setVisible] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
-
   const panelRef = useRef(null);
   const dragOffset = useRef({ x: 0, y: 0 });
 
-  // ============================================================
+  const { setThemeDirect } = useThemeEngine();
+
   // SHIFT + A toggles panel visibility
-  // ============================================================
   useEffect(() => {
     const handler = (e) => {
       if (e.key.toLowerCase() === "a" && e.shiftKey) {
@@ -99,23 +99,19 @@ export default function ThemePanel() {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
-  // ============================================================
   // Admin unlock
-  // ============================================================
   const unlock = () => {
     if (password === "Crown26") {
       setAuthenticated(true);
     }
   };
 
-  // ============================================================
   // Dragging logic
-  // ============================================================
   const startDrag = (e) => {
     const panel = panelRef.current;
     dragOffset.current = {
       x: e.clientX - panel.offsetLeft,
-      y: e.clientY - panel.offsetTop,
+      y: e.clientY - panel.offsetTop
     };
     window.addEventListener("mousemove", dragMove);
     window.addEventListener("mouseup", stopDrag);
@@ -132,9 +128,7 @@ export default function ThemePanel() {
     window.removeEventListener("mouseup", stopDrag);
   };
 
-  // ============================================================
-  // Apply swatch (Day or Night) — FIXED
-  // ============================================================
+  // Apply swatch (Day or Night)
   const applySwatch = (mode, gradient) => {
     localStorage.setItem(`theme-${mode}`, gradient);
 
@@ -148,11 +142,12 @@ export default function ThemePanel() {
     if (current === mode) {
       document.body.style.background = gradient;
     }
+
+    // Sync with theme engine so Background3D + crown react
+    setThemeDirect(mode);
   };
 
-  // ============================================================
-  // Load saved theme on mount + react to theme changes — FIXED
-  // ============================================================
+  // Load saved theme on mount + react to theme changes
   useEffect(() => {
     const day = localStorage.getItem("theme-day");
     const night = localStorage.getItem("theme-night");
@@ -168,7 +163,7 @@ export default function ThemePanel() {
       document.body.style.background = night;
     }
 
-    window.addEventListener("theme-set", (e) => {
+    const onThemeSet = (e) => {
       const mode = e.detail;
       const day = localStorage.getItem("theme-day");
       const night = localStorage.getItem("theme-night");
@@ -179,17 +174,14 @@ export default function ThemePanel() {
       if (mode === "night" && night) {
         document.body.style.background = night;
       }
-    });
+    };
+
+    window.addEventListener("theme-set", onThemeSet);
+    return () => window.removeEventListener("theme-set", onThemeSet);
   }, []);
 
-  // ============================================================
-  // Panel hidden?
-  // ============================================================
   if (!visible) return null;
 
-  // ============================================================
-  // Render
-  // ============================================================
   return (
     <div className="theme-panel">
       <div className="theme-panel-inner" ref={panelRef} onMouseDown={startDrag}>
@@ -214,7 +206,6 @@ export default function ThemePanel() {
           <>
             <h2>Theme Swatches</h2>
 
-            {/* ============================ DAY SWATCHES ============================ */}
             <h3>Day Themes</h3>
             <div className="theme-swatches">
               {daySwatches.map((g, i) => (
@@ -229,7 +220,6 @@ export default function ThemePanel() {
               ))}
             </div>
 
-            {/* ============================ NIGHT SWATCHES — FIXED ============================ */}
             <h3>Night Themes</h3>
             <div className="theme-swatches">
               {nightSwatches.map((g, i) => (
