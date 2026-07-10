@@ -92,3 +92,6 @@
   transform: translateY(-10px) scale(1.02);
   filter: blur(0.5px);
 }
+.hero-gallery-container {
+  margin-top: -350px;
+}

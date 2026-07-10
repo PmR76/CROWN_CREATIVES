@@ -171,3 +171,6 @@ iframe {
 :root {
   --ticker-speed: 66s !important;
 }
+body {
+  transition: background 8s ease-in-out;
+}

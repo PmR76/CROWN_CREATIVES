@@ -136,3 +136,8 @@
   50%  { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
   100% { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
 }
+.cc-footer,
+footer {
+  position: relative;
+  top: 300px;
+}

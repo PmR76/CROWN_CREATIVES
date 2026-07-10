@@ -54,3 +54,9 @@
 :root {
   --ticker-speed: 46s;
 }
+.ticker,
+.ticker-container,
+.ticker-wrapper {
+  position: relative;
+  top: 300px;
+}
