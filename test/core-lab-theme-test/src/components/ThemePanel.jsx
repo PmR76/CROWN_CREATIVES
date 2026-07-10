@@ -86,9 +86,7 @@ export default function ThemePanel() {
   const panelRef = useRef(null);
   const dragOffset = useRef({ x: 0, y: 0 });
 
-  // ============================================================
   // SHIFT + A toggles panel visibility
-  // ============================================================
   useEffect(() => {
     const handler = (e) => {
       if (e.key.toLowerCase() === "a" && e.shiftKey) {
@@ -99,18 +97,14 @@ export default function ThemePanel() {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
-  // ============================================================
   // Admin unlock
-  // ============================================================
   const unlock = () => {
     if (password === "Crown26") {
       setAuthenticated(true);
     }
   };
 
-  // ============================================================
   // Dragging logic
-  // ============================================================
   const startDrag = (e) => {
     const panel = panelRef.current;
     dragOffset.current = {
@@ -132,64 +126,37 @@ export default function ThemePanel() {
     window.removeEventListener("mouseup", stopDrag);
   };
 
-  // ============================================================
-  // Apply swatch (Day or Night) — FIXED
-  // ============================================================
+  // Apply swatch (Day or Night) — drives CSS vars only
   const applySwatch = (mode, gradient) => {
     localStorage.setItem(`theme-${mode}`, gradient);
 
     if (mode === "day") {
-      document.body.style.setProperty("--day-bg", gradient);
+      document.documentElement.style.setProperty("--active-day-gradient", gradient);
     } else {
-      document.body.style.setProperty("--night-bg", gradient);
-    }
-
-    const current = document.body.dataset.theme || "day";
-    if (current === mode) {
-      document.body.style.background = gradient;
+      document.documentElement.style.setProperty("--active-night-gradient", gradient);
     }
   };
 
-  // ============================================================
-  // Load saved theme on mount + react to theme changes — FIXED
-  // ============================================================
+  // Load saved gradients on mount — no inline background
   useEffect(() => {
-    const day = localStorage.getItem("theme-day");
-    const night = localStorage.getItem("theme-night");
-    const current = document.body.dataset.theme || "day";
+    const savedDay = localStorage.getItem("theme-day");
+    const savedNight = localStorage.getItem("theme-night");
 
-    if (day) document.body.style.setProperty("--day-bg", day);
-    if (night) document.body.style.setProperty("--night-bg", night);
-
-    if (current === "day" && day) {
-      document.body.style.background = day;
+    if (savedDay) {
+      document.documentElement.style.setProperty("--active-day-gradient", savedDay);
     }
-    if (current === "night" && night) {
-      document.body.style.background = night;
+    if (savedNight) {
+      document.documentElement.style.setProperty("--active-night-gradient", savedNight);
     }
 
-    window.addEventListener("theme-set", (e) => {
-      const mode = e.detail;
-      const day = localStorage.getItem("theme-day");
-      const night = localStorage.getItem("theme-night");
-
-      if (mode === "day" && day) {
-        document.body.style.background = day;
-      }
-      if (mode === "night" && night) {
-        document.body.style.background = night;
-      }
-    });
+    // Ensure no inline background override
+    document.body.style.background = "";
   }, []);
 
-  // ============================================================
   // Panel hidden?
-  // ============================================================
   if (!visible) return null;
 
-  // ============================================================
   // Render
-  // ============================================================
   return (
     <div className="theme-panel">
       <div className="theme-panel-inner" ref={panelRef} onMouseDown={startDrag}>
@@ -214,7 +181,7 @@ export default function ThemePanel() {
           <>
             <h2>Theme Swatches</h2>
 
-            {/* ============================ DAY SWATCHES ============================ */}
+            {/* Day Swatches */}
             <h3>Day Themes</h3>
             <div className="theme-swatches">
               {daySwatches.map((g, i) => (
@@ -229,7 +196,7 @@ export default function ThemePanel() {
               ))}
             </div>
 
-            {/* ============================ NIGHT SWATCHES — FIXED ============================ */}
+            {/* Night Swatches */}
             <h3>Night Themes</h3>
             <div className="theme-swatches">
               {nightSwatches.map((g, i) => (
