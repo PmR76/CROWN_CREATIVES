@@ -64,13 +64,10 @@
   background: rgba(255, 210, 150, 0.4);
 }
 .hero-gallery-container {
-  position: relative !important;
-  z-index: 99999 !important;
-  opacity: 1 !important;
-  display: block !important;
-  height: auto !important;
-  min-height: 300px !important;
-  transform: none !important;
-  pointer-events: auto !important;
-  background: rgba(255,0,0,0.1); /* temporary red tint so we SEE it */
+  position: relative;
+  z-index: 9999;
+  opacity: 1;
+  display: block;
+  height: auto;
+  min-height: 300px;
 }
