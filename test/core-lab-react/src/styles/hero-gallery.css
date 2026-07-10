@@ -1,12 +1,12 @@
 /* ============================================================
-   HERO GALLERY — SHARED VERSION (FIXED)
+   HERO GALLERY — SHARED VERSION (FULLY FIXED)
    ============================================================ */
 
-/* Container: anchors the gallery in the hero area */
+/* Container: sits naturally under the crown without pushing cards */
 .hero-gallery-container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 0;              /* no forced vertical space */
   pointer-events: none;
   z-index: 20;
 }
@@ -39,21 +39,21 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 1; /* was 0 — made visible */
+  opacity: 1;
   transition: opacity 1.8s ease-in-out,
               transform 10s ease-out,
               filter 10s ease-out;
   filter: blur(0px);
 }
 
-/* Optional cinematic “active” state */
+/* Cinematic active state */
 .hero-gallery-img.visible {
   opacity: 1;
   transform: translateY(-10px) scale(1.02);
   filter: blur(0.5px);
 }
 
-/* Glow overlay: soft side glows */
+/* Glow overlay */
 .hero-gallery-glow-overlay {
   position: fixed;
   inset: 0;
