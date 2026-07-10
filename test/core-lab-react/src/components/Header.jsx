@@ -5,10 +5,12 @@
 import React from "react";
 import "../styles/header.css";
 import { useSoundEngine } from "../hooks/useSoundEngine.js";
+import { useThemeEngine } from "../hooks/useThemeEngine.js";
 import { NavLink } from "react-router-dom";
 
 export default function Header() {
   const { toggleSound } = useSoundEngine();
+  const { toggleTheme } = useThemeEngine();   // <-- NEW: use theme engine
 
   return (
     <header className="hero-header">
@@ -48,57 +50,57 @@ export default function Header() {
         {/* NAVIGATION — NOW USING NavLink WITH ACTIVE GLOW */}
         <nav className="cc-header-nav">
 
-          <NavLink 
-            to="/" 
+          <NavLink
+            to="/"
             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
           >
             HOME
           </NavLink>
 
-          <NavLink 
-            to="/about" 
+          <NavLink
+            to="/about"
             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
           >
             ABOUT
           </NavLink>
 
-          <NavLink 
-            to="/gallery" 
+          <NavLink
+            to="/gallery"
             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
           >
             GALLERY
           </NavLink>
 
-          <NavLink 
-            to="/projects" 
+          <NavLink
+            to="/projects"
             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
           >
             PROJECTS
           </NavLink>
 
-          <NavLink 
-            to="/videos" 
+          <NavLink
+            to="/videos"
             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
           >
             VIDEOS
           </NavLink>
 
-          <NavLink 
-            to="/podcasts" 
+          <NavLink
+            to="/podcasts"
             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
           >
             PODCASTS
           </NavLink>
 
-          <NavLink 
-            to="/blog" 
+          <NavLink
+            to="/blog"
             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
           >
             BLOG
           </NavLink>
 
-          <NavLink 
-            to="/contact" 
+          <NavLink
+            to="/contact"
             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
           >
             CONTACT
@@ -107,20 +109,12 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* THEME TOGGLE */}
+      {/* THEME TOGGLE — NOW USING toggleTheme() */}
       <div className="hero-header-right">
         <button
           id="themeToggle"
           className="theme-toggle"
-          onClick={() => {
-            const current = document.body.dataset.theme || "day";
-            const next = current === "night" ? "day" : "night";
-            document.body.dataset.theme = next;
-
-            window.dispatchEvent(
-              new CustomEvent("theme-set", { detail: next })
-            );
-          }}
+          onClick={toggleTheme}   // <-- FIXED: uses theme engine
         >
           <img
             src="/assets/icons/sun-moon.png"
