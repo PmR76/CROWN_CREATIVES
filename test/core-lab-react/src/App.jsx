@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Layout from "./components/Layout";
+
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Gallery from "./pages/Gallery";
@@ -19,20 +21,22 @@ export default function App() {
 
   return (
     <>
-      {/* Background3D must be mounted globally */}
+      {/* Global background */}
       <Background3D />
 
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/podcasts" element={<Podcasts />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/videos" element={<Videos />} />
+            <Route path="/podcasts" element={<Podcasts />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </Layout>
       </BrowserRouter>
     </>
   );
