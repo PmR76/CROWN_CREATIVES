@@ -92,11 +92,14 @@ export default function Background3D() {
       requestAnimationFrame(animateTween);
     };
 
+    // Apply initial theme
     applyTheme(document.body.dataset.theme || "day");
 
+    // Listen for theme changes
     const handleThemeSet = (e) => applyTheme(e.detail);
     window.addEventListener("theme-set", handleThemeSet);
 
+    // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
       points.rotation.y += 0.0008;
@@ -105,6 +108,7 @@ export default function Background3D() {
 
     animate();
 
+    // Resize handler
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();

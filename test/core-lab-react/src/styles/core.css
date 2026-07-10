@@ -184,3 +184,24 @@ iframe {
 :root {
   --ticker-speed: 66s !important;
 }
+/* ============================================================
+   CORE — Unified Background System
+============================================================ */
+
+:root {
+  --active-day-gradient: var(--grad-sunrise);
+  --active-night-gradient: var(--grad-midnight-indigo);
+}
+
+body {
+  background: var(--active-day-gradient);
+  transition: background 8s ease-in-out;
+}
+
+body[data-theme="night"] {
+  background: var(--active-night-gradient);
+}
+
+body[data-theme="day"] {
+  background: var(--active-day-gradient);
+}
