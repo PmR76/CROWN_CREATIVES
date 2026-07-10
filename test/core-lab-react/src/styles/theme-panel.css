@@ -1,42 +1,58 @@
 /* ============================================================
    Theme Panel — Admin Console (Draggable + Swatches)
+   Final Unified Version
 ============================================================ */
 
 .theme-panel {
   position: fixed;
-  top: 40px;
-  right: 40px;
+  bottom: 20px;
+  left: 20px;
   z-index: 999999;
   pointer-events: none; /* wrapper does not block page */
 }
 
 .theme-panel-inner {
-  width: 360px;
-  background: rgba(10, 10, 20, 0.92);
-  border: 2px solid rgba(255, 255, 255, 0.25);
+  width: 320px;
+  background: rgba(20, 20, 30, 0.92);
   border-radius: 14px;
   padding: 20px;
+
   color: #fff;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  font-family: system-ui, sans-serif;
+
+  box-shadow: 0 0 26px rgba(0,0,0,0.6);
   backdrop-filter: blur(14px);
+
   position: absolute;
   pointer-events: auto; /* panel itself is interactive */
+
+  /* Cinematic fade-in */
+  opacity: 0;
+  animation: panelFadeIn 0.5s ease forwards;
 }
 
-/* Drag Handle */
-.drag-handle {
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   Drag Handle
+============================================================ */
+
+.theme-panel-inner h2 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   cursor: move;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 
-.drag-handle h2 {
-  margin: 0;
-  font-family: "Cinzel Decorative", serif;
-}
+/* ============================================================
+   Login
+============================================================ */
 
-/* Login */
 .theme-password {
   width: 100%;
   padding: 10px;
@@ -44,24 +60,37 @@
   border-radius: 6px;
   border: none;
   outline: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
 }
 
 .theme-login-btn {
   width: 100%;
   padding: 10px;
-  background: #444;
-  border: none;
   border-radius: 6px;
+  border: none;
+  background: #4a90e2;
   color: #fff;
   cursor: pointer;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  transition: background 0.2s ease;
 }
 
 .theme-login-btn:hover {
-  background: #666;
+  background: #6ab0ff;
 }
 
-/* Swatch Grid */
+/* ============================================================
+   Swatch Grid
+============================================================ */
+
+.theme-panel-inner h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .theme-swatches {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -71,7 +100,7 @@
 
 .swatch-btn {
   width: 100%;
-  height: 40px;
+  height: 36px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
@@ -79,7 +108,7 @@
 }
 
 .swatch-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 /* Selected Swatch */
@@ -88,7 +117,8 @@
   box-shadow: 0 0 12px rgba(255,255,255,0.8);
 }
 
+/* Night Mode Selected Glow */
 body[data-theme="night"] .swatch-btn.selected {
-  outline: 3px solid #ffcc88;
-  box-shadow: 0 0 12px rgba(255,200,120,0.8);
+  outline: 3px solid #88ccff;
+  box-shadow: 0 0 12px rgba(120,200,255,0.8);
 }

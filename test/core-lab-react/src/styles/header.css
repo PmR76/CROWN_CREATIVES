@@ -1,6 +1,13 @@
 /* ============================================================
-   Header — Cinematic + Magical Fade + Neon Toggles (Transparent)
-   ============================================================ */
+   CROWN CREATIVES — CINEMATIC HEADER
+   Magical Glow • Neon Toggles • Cinzel Decorative
+============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
+
+/* ============================================================
+   HEADER WRAPPER — Fixed Cinematic Bar
+============================================================ */
 
 .hero-header {
   position: fixed;
@@ -9,21 +16,24 @@
   right: 0;
 
   height: 140px;
+  padding: 20px 32px 12px 32px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 20px 32px 12px 32px;
-
-  z-index: 50;
   background: transparent;
   font-family: "Cinzel Decorative", serif;
+
+  z-index: 1000;
+  pointer-events: none; /* crown + glow don't block UI */
 }
 
 .hero-header-left,
 .hero-header-right {
   display: flex;
   align-items: center;
+  pointer-events: auto; /* toggles remain clickable */
 }
 
 .hero-header-center {
@@ -31,11 +41,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  pointer-events: auto;
 }
 
 /* ============================================================
-   Always-visible hero crown (base glow, reduced 10%)
-   ============================================================ */
+   ALWAYS-VISIBLE REDUCED CROWN (Base Glow)
+============================================================ */
 
 .reduced-crown {
   width: 108px;
@@ -58,8 +69,8 @@ body[data-theme="night"] .reduced-crown {
 }
 
 /* ============================================================
-   Magical Crown Fade — Day ↔ Night (8 seconds)
-   ============================================================ */
+   MAGICAL CROWN FADE — Day ↔ Night (8 seconds)
+============================================================ */
 
 .hero-crown {
   position: relative;
@@ -72,8 +83,10 @@ body[data-theme="night"] .reduced-crown {
   position: absolute;
   top: 0;
   left: 0;
+
   width: 100%;
   height: auto;
+
   opacity: 0;
   transition: opacity 8s ease-in-out;
   pointer-events: none;
@@ -88,9 +101,22 @@ body[data-theme="night"] .reduced-crown {
 }
 
 /* ============================================================
-   Responsive Header Text — Day vs Night
-   ============================================================ */
+   TITLE + TAGLINE — Cinematic Typography
+============================================================ */
 
+.cc-header-title {
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  margin: 6px 0 2px 0;
+}
+
+.cc-header-tagline {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+
+/* Day vs Night text */
 body[data-theme="day"] .cc-header-title,
 body[data-theme="day"] .cc-header-tagline,
 body[data-theme="day"] .cc-header-nav button {
@@ -106,24 +132,8 @@ body[data-theme="night"] .cc-header-nav button {
 }
 
 /* ============================================================
-   Title + Tagline
-   ============================================================ */
-
-.cc-header-title {
-  font-size: 1.6rem;
-  letter-spacing: 0.08em;
-  margin: 6px 0 2px 0;
-}
-
-.cc-header-tagline {
-  font-size: 0.85rem;
-  opacity: 0.85;
-  margin-bottom: 12px;
-}
-
-/* ============================================================
-   Navigation
-   ============================================================ */
+   NAVIGATION — Cinematic Glow
+============================================================ */
 
 .cc-header-nav {
   display: flex;
@@ -135,10 +145,13 @@ body[data-theme="night"] .cc-header-nav button {
 .cc-header-nav button {
   background: none;
   border: none;
+
   font-size: 0.85rem;
   letter-spacing: 0.08em;
+
   cursor: pointer;
   opacity: 0.85;
+
   transition: opacity 0.3s ease;
 }
 
@@ -147,17 +160,19 @@ body[data-theme="night"] .cc-header-nav button {
 }
 
 /* ============================================================
-   Theme Toggle — Neon Glow
-   ============================================================ */
+   THEME TOGGLE — Neon Glow
+============================================================ */
 
 .theme-toggle {
   border: none;
   background: none;
   padding: 0;
   margin: 0;
+
   cursor: pointer;
   display: flex;
   align-items: center;
+
   transition: transform 0.3s ease;
 }
 
@@ -169,33 +184,37 @@ body[data-theme="night"] .cc-header-nav button {
   width: 66px;
   height: 66px;
 
-  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.85))
-          drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
-          drop-shadow(0 0 42px rgba(255, 255, 255, 0.45));
+  filter:
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
+    drop-shadow(0 0 42px rgba(255, 255, 255, 0.45));
 
   transition: filter 0.4s ease;
 }
 
 body[data-theme="night"] .theme-toggle-icon {
-  filter: drop-shadow(0 0 14px rgba(255, 200, 120, 0.85))
-          drop-shadow(0 0 28px rgba(255, 160, 80, 0.65))
-          drop-shadow(0 0 42px rgba(255, 120, 40, 0.45));
+  filter:
+    drop-shadow(0 0 14px rgba(255, 200, 120, 0.85))
+    drop-shadow(0 0 28px rgba(255, 160, 80, 0.65))
+    drop-shadow(0 0 42px rgba(255, 120, 40, 0.45));
 }
 
 /* ============================================================
-   SOUND TOGGLE — Hover + Reactive Glow (Final)
-   ============================================================ */
+   SOUND TOGGLE — Reactive Glow + Pulse
+============================================================ */
 
 .sound-toggle {
   border: none;
   background: none;
   padding: 0;
   margin: 0;
+
   cursor: pointer;
   display: flex;
   align-items: center;
+
   transition: transform 0.3s ease;
-  z-index: 9999; /* ensures hover works */
+  z-index: 9999;
 }
 
 .sound-toggle:hover {
@@ -206,58 +225,44 @@ body[data-theme="night"] .theme-toggle-icon {
   width: 66px;
   height: 66px;
 
-  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.85))
-          drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
-          drop-shadow(0 0 42px rgba(255, 255, 255, 0.45));
+  filter:
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
+    drop-shadow(0 0 42px rgba(255, 255, 255, 0.45));
 
   transition: filter 0.4s ease, transform 0.4s ease;
 }
 
 /* Hover glow */
 .sound-toggle:hover .sound-toggle-icon {
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1))
-          drop-shadow(0 0 40px rgba(255, 255, 255, 0.85))
-          drop-shadow(0 0 60px rgba(255, 255, 255, 0.7));
+  filter:
+    drop-shadow(0 0 20px rgba(255, 255, 255, 1))
+    drop-shadow(0 0 40px rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 60px rgba(255, 255, 255, 0.7));
 }
 
-/* Night mode glow */
+/* Night glow */
 body[data-theme="night"] .sound-toggle-icon {
-  filter: drop-shadow(0 0 14px rgba(255, 200, 120, 0.85))
-          drop-shadow(0 0 28px rgba(255, 160, 80, 0.65))
-          drop-shadow(0 0 42px rgba(255, 120, 40, 0.45));
+  filter:
+    drop-shadow(0 0 14px rgba(255, 200, 120, 0.85))
+    drop-shadow(0 0 28px rgba(255, 160, 80, 0.65))
+    drop-shadow(0 0 42px rgba(255, 120, 40, 0.45));
 }
 
 body[data-theme="night"] .sound-toggle:hover .sound-toggle-icon {
-  filter: drop-shadow(0 0 20px rgba(255, 200, 120, 1))
-          drop-shadow(0 0 40px rgba(255, 160, 80, 0.85))
-          drop-shadow(0 0 60px rgba(255, 120, 40, 0.7));
+  filter:
+    drop-shadow(0 0 20px rgba(255, 200, 120, 1))
+    drop-shadow(0 0 40px rgba(255, 160, 80, 0.85))
+    drop-shadow(0 0 60px rgba(255, 120, 40, 0.7));
 }
 
-/* ============================================================
-   SOUND-REACTIVE GLOW (when playing)
-   ============================================================ */
-
+/* Pulse when playing */
 .sound-toggle-icon.playing {
   animation: pulseGlow 1.4s infinite ease-in-out;
 }
 
 @keyframes pulseGlow {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
   100% { transform: scale(1); }
-}
-.nav-link {
-  color: var(--text-color);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  transition: 0.3s ease;
-}
-
-.nav-link:hover {
-  text-shadow: 0 0 6px var(--accent-glow);
-}
-
-.nav-link.active {
-  color: var(--accent-glow);
-  text-shadow: 0 0 8px var(--accent-glow), 0 0 16px var(--accent-glow);
 }
