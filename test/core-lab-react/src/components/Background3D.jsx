@@ -10,9 +10,6 @@ export default function Background3D() {
     const container = document.getElementById("webgl-background");
     if (!container) return;
 
-    // ------------------------------------------------------------
-    // SCENE SETUP
-    // ------------------------------------------------------------
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(
@@ -35,9 +32,6 @@ export default function Background3D() {
 
     container.appendChild(renderer.domElement);
 
-    // ------------------------------------------------------------
-    // PARTICLE FIELD
-    // ------------------------------------------------------------
     const particles = new THREE.BufferGeometry();
     const count = 800;
     const positions = new Float32Array(count * 3);
@@ -59,36 +53,50 @@ export default function Background3D() {
     scene.add(points);
 
     // ------------------------------------------------------------
-    // THEME REACTIVITY — LISTEN FOR theme-set
+    // THEME REACTIVITY — 8 SECOND MAGICAL FADE
     // ------------------------------------------------------------
     const applyTheme = (theme) => {
+      let targetColor;
+      let targetOpacity;
+
       if (theme === "night") {
-        material.color.set(0x66ccff); // neon blue
-        material.opacity = 0.35;
+        targetColor = new THREE.Color(0x66ccff); // neon blue
+        targetOpacity = 0.35;
       } else if (theme === "day") {
-        material.color.set(0xffffff); // bright white
-        material.opacity = 0.5;
+        targetColor = new THREE.Color(0xffffff); // bright white
+        targetOpacity = 0.5;
       } else {
-        // admin / custom themes
-        material.color.set(0xffcc66); // gold
-        material.opacity = 0.45;
+        targetColor = new THREE.Color(0xffcc66); // gold
+        targetOpacity = 0.45;
       }
+
+      const duration = 8000;
+      const start = performance.now();
+
+      const initialColor = material.color.clone();
+      const initialOpacity = material.opacity;
+
+      const animateTween = (time) => {
+        const t = Math.min((time - start) / duration, 1);
+
+        material.color.r = initialColor.r + (targetColor.r - initialColor.r) * t;
+        material.color.g = initialColor.g + (targetColor.g - initialColor.g) * t;
+        material.color.b = initialColor.b + (targetColor.b - initialColor.b) * t;
+
+        material.opacity =
+          initialOpacity + (targetOpacity - initialOpacity) * t;
+
+        if (t < 1) requestAnimationFrame(animateTween);
+      };
+
+      requestAnimationFrame(animateTween);
     };
 
-    // Apply initial theme
     applyTheme(document.body.dataset.theme || "day");
 
-    // Listen for theme changes
-    const handleThemeSet = (event) => {
-      const theme = event.detail;
-      applyTheme(theme);
-    };
-
+    const handleThemeSet = (e) => applyTheme(e.detail);
     window.addEventListener("theme-set", handleThemeSet);
 
-    // ------------------------------------------------------------
-    // ANIMATION LOOP
-    // ------------------------------------------------------------
     const animate = () => {
       requestAnimationFrame(animate);
       points.rotation.y += 0.0008;
@@ -97,9 +105,6 @@ export default function Background3D() {
 
     animate();
 
-    // ------------------------------------------------------------
-    // RESIZE HANDLER
-    // ------------------------------------------------------------
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -108,9 +113,6 @@ export default function Background3D() {
 
     window.addEventListener("resize", handleResize);
 
-    // ------------------------------------------------------------
-    // CLEANUP
-    // ------------------------------------------------------------
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("theme-set", handleThemeSet);

@@ -12,45 +12,36 @@ export default function HeroCrown() {
     if (!day || !night) return;
 
     const apply = (theme) => {
-      if (theme === "dark") {
-        day.style.opacity = "0";
-        night.style.opacity = "1";
-
-        day.classList.remove("day");
-        night.classList.add("night");
+      if (theme === "night") {
+        day.classList.remove("active");
+        night.classList.add("active");
       } else {
-        day.style.opacity = "1";
-        night.style.opacity = "0";
-
-        night.classList.remove("night");
-        day.classList.add("day");
+        night.classList.remove("active");
+        day.classList.add("active");
       }
     };
 
-    const initialTheme =
-      document.body.dataset.theme === "dark" ? "dark" : "day";
+    const initialTheme = document.body.dataset.theme || "day";
     apply(initialTheme);
 
     const handler = (e) => apply(e.detail);
     window.addEventListener("theme-set", handler);
 
-    return () => {
-      window.removeEventListener("theme-set", handler);
-    };
+    return () => window.removeEventListener("theme-set", handler);
   }, []);
 
   return (
     <div id="hero-crown-container">
       <img
         id="hero-crown-day"
-        className="hero-crown float day"
+        className="hero-crown active"
         src="/assets/icons/day-crown.svg"
         alt="Day Crown"
       />
 
       <img
         id="hero-crown-night"
-        className="hero-crown float night"
+        className="hero-crown"
         src="/assets/icons/night-crown.svg"
         alt="Night Crown"
       />

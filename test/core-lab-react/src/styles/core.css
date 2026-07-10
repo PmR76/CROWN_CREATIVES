@@ -48,7 +48,7 @@
   --grad-starlight-veil: linear-gradient(135deg, #232526, #414345);
   --grad-aurora-veil: linear-gradient(135deg, #00c6ff, #0072ff);
 
-  /* ACTIVE DAY/NIGHT */
+  /* ACTIVE DAY/NIGHT — DEFAULTS */
   --active-day-gradient: var(--grad-sunrise);
   --active-night-gradient: var(--grad-midnight-indigo);
 
@@ -74,12 +74,14 @@
   box-sizing: border-box;
 }
 
+/* Base body styles + 8s background fade */
 body {
   background: var(--active-day-gradient);
   color: #fff;
   font-family: system-ui, sans-serif;
   overflow-x: hidden;
   padding: 20px;
+  transition: background 8s ease-in-out;
 }
 
 .core-layout {
@@ -100,6 +102,16 @@ body[data-theme="night"] {
 
 body[data-theme="day"] {
   background: var(--active-day-gradient);
+  color: #222;
+}
+
+/* Nav night/day colours */
+[data-theme="night"] .nav-link {
+  color: #e6f3ff;
+  text-shadow: 0 0 6px rgba(0,150,255,0.6);
+}
+
+[data-theme="day"] .nav-link {
   color: #222;
 }
 
@@ -148,6 +160,7 @@ iframe {
     transform: translateX(-100%);
   }
 }
+
 /* ============================================================
    TICKER — FORCE RESTORE (IMMUNE TO DAY/NIGHT)
 ============================================================ */
@@ -170,7 +183,4 @@ iframe {
 
 :root {
   --ticker-speed: 66s !important;
-}
-body {
-  transition: background 8s ease-in-out;
 }

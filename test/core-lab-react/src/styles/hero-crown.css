@@ -104,3 +104,15 @@ body[data-theme="dark"] #hero-crown-container::before {
   50%  { transform: scale(1.08); opacity: 1; }
   100% { transform: scale(1); opacity: 0.75; }
 }
+.hero-crown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 8s ease-in-out;
+}
+
+.hero-crown.active {
+  opacity: 1;
+}

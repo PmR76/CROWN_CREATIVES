@@ -104,3 +104,18 @@ body[data-theme="night"] .swatch-btn.selected {
   outline: 3px solid #ffcc88;
   box-shadow: 0 0 12px rgba(255,200,120,0.8);
 }
+.theme-panel {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  z-index: 999999;
+  pointer-events: none; /* panel wrapper */
+}
+
+.theme-panel-inner {
+  pointer-events: auto; /* actual draggable panel */
+  background: rgba(10,10,20,0.92);
+  backdrop-filter: blur(14px);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
