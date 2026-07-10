@@ -1,20 +1,18 @@
 // ============================================================
-// Header.jsx — Final Sound + Theme Toggle + Crown Fade + Active Nav
+// Header.jsx — Final Sound + Theme Toggle + Crown Fade
 // ============================================================
 
 import React from "react";
 import "../styles/header.css";
 import { useSoundEngine } from "../hooks/useSoundEngine.js";
 import { useThemeEngine } from "../hooks/useThemeEngine.js";
-import { NavLink } from "react-router-dom";
 
 export default function Header() {
   const { toggleSound } = useSoundEngine();
-  const { toggleTheme } = useThemeEngine();   // <-- NEW: use theme engine
+  const { toggleTheme } = useThemeEngine();
 
   return (
     <header className="hero-header">
-
       {/* SOUND TOGGLE */}
       <div className="hero-header-left">
         <button
@@ -32,7 +30,6 @@ export default function Header() {
 
       {/* CENTER */}
       <div className="hero-header-center">
-
         <img
           src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
@@ -45,85 +42,36 @@ export default function Header() {
         </div>
 
         <h1 className="cc-header-title">Crown Creatives</h1>
-        <p className="cc-header-tagline">Artistry • Resilience • Imagination</p>
+        <p className="cc-header-tagline">
+          Artistry • Resilience • Imagination
+        </p>
 
-        {/* NAVIGATION — NOW USING NavLink WITH ACTIVE GLOW */}
         <nav className="cc-header-nav">
-
-          <NavLink
-            to="/"
-            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-          >
-            HOME
-          </NavLink>
-
-          <NavLink
-            to="/about"
-            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-          >
-            ABOUT
-          </NavLink>
-
-          <NavLink
-            to="/gallery"
-            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-          >
-            GALLERY
-          </NavLink>
-
-          <NavLink
-            to="/projects"
-            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-          >
-            PROJECTS
-          </NavLink>
-
-          <NavLink
-            to="/videos"
-            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-          >
-            VIDEOS
-          </NavLink>
-
-          <NavLink
-            to="/podcasts"
-            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-          >
-            PODCASTS
-          </NavLink>
-
-          <NavLink
-            to="/blog"
-            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-          >
-            BLOG
-          </NavLink>
-
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-          >
-            CONTACT
-          </NavLink>
-
+          <button>HOME</button>
+          <button>ABOUT</button>
+          <button>GALLERY</button>
+          <button>PROJECTS</button>
+          <button>VIDEOS</button>
+          <button>PODCASTS</button>
+          <button>BLOG</button>
+          <button>CONTACT</button>
         </nav>
       </div>
 
-      {/* THEME TOGGLE — NOW USING toggleTheme() */}
+      {/* THEME TOGGLE */}
       <div className="hero-header-right">
         <button
           id="themeToggle"
           className="theme-toggle"
-          onClick={toggleTheme}   // <-- FIXED: uses theme engine
+          onClick={toggleTheme}
         >
           <img
-            src="/assets/icons/sun-moon.png"
+            src="/assets/icons/sun-moon2.png"
             alt="Theme Toggle"
             className="theme-toggle-icon"
           />
         </button>
       </div>
-
     </header>
   );
 }

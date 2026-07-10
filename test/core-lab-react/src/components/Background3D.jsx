@@ -52,21 +52,18 @@ export default function Background3D() {
     const points = new THREE.Points(particles, material);
     scene.add(points);
 
-    // ------------------------------------------------------------
-    // THEME REACTIVITY — 8 SECOND MAGICAL FADE
-    // ------------------------------------------------------------
     const applyTheme = (theme) => {
       let targetColor;
       let targetOpacity;
 
       if (theme === "night") {
-        targetColor = new THREE.Color(0x66ccff); // neon blue
+        targetColor = new THREE.Color(0x66ccff);
         targetOpacity = 0.35;
       } else if (theme === "day") {
-        targetColor = new THREE.Color(0xffffff); // bright white
+        targetColor = new THREE.Color(0xffffff);
         targetOpacity = 0.5;
       } else {
-        targetColor = new THREE.Color(0xffcc66); // gold
+        targetColor = new THREE.Color(0xffcc66);
         targetOpacity = 0.45;
       }
 
@@ -92,14 +89,11 @@ export default function Background3D() {
       requestAnimationFrame(animateTween);
     };
 
-    // Apply initial theme
     applyTheme(document.body.dataset.theme || "day");
 
-    // Listen for theme changes
     const handleThemeSet = (e) => applyTheme(e.detail);
     window.addEventListener("theme-set", handleThemeSet);
 
-    // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
       points.rotation.y += 0.0008;
@@ -108,7 +102,6 @@ export default function Background3D() {
 
     animate();
 
-    // Resize handler
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();

@@ -4,6 +4,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import "../styles/theme-panel.css";
+import { useThemeEngine } from "../hooks/useThemeEngine.js";
 
 const daySwatches = [
   "linear-gradient(135deg, #ffecd2, #fcb69f)",
@@ -74,9 +75,10 @@ export default function ThemePanel() {
   const [visible, setVisible] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
-
   const panelRef = useRef(null);
   const dragOffset = useRef({ x: 0, y: 0 });
+
+  const { setThemeDirect } = useThemeEngine();
 
   useEffect(() => {
     const handler = (e) => {
@@ -98,7 +100,7 @@ export default function ThemePanel() {
     const panel = panelRef.current;
     dragOffset.current = {
       x: e.clientX - panel.offsetLeft,
-      y: e.clientY - panel.offsetTop,
+      y: e.clientY - panel.offsetTop
     };
     window.addEventListener("mousemove", dragMove);
     window.addEventListener("mouseup", stopDrag);
@@ -124,8 +126,11 @@ export default function ThemePanel() {
       document.documentElement.style.setProperty("--active-night-gradient", gradient);
     }
 
-    // Remove inline background override
+    // ensure inline background is not locking things
     document.body.style.background = "";
+
+    // keep theme role in sync
+    setThemeDirect(mode);
   };
 
   useEffect(() => {
@@ -139,7 +144,6 @@ export default function ThemePanel() {
       document.documentElement.style.setProperty("--active-night-gradient", savedNight);
     }
 
-    // Remove inline background override
     document.body.style.background = "";
   }, []);
 
@@ -147,7 +151,11 @@ export default function ThemePanel() {
 
   return (
     <div className="theme-panel">
-      <div className="theme-panel-inner" ref={panelRef} onMouseDown={startDrag}>
+      <div
+        className="theme-panel-inner"
+        ref={panelRef}
+        onMouseDown={startDrag}
+      >
         {!authenticated && (
           <>
             <h2>Admin Login</h2>

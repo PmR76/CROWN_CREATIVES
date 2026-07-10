@@ -8,6 +8,8 @@ import Videos from "./pages/Videos";
 import Podcasts from "./pages/Podcasts";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
+import Background3D from "./components/Background3D";
+
 
 export default function App() {
   return (

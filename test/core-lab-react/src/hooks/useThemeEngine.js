@@ -3,16 +3,15 @@
 // ============================================================
 
 import { useEffect, useState } from "react";
-import { scheduleMidnightRotation } from "../theme/theme-rotation.js";
 
 export function useThemeEngine() {
   const [theme, setTheme] = useState("day");
 
-  // Apply theme + dispatch theme-set
+  // Apply theme to body + dispatch theme-set
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
 
-    // Remove any inline background override
+    // Ensure no inline background override
     document.body.style.background = "";
 
     window.dispatchEvent(
@@ -27,10 +26,6 @@ export function useThemeEngine() {
   const setThemeDirect = (nextTheme) => {
     setTheme(nextTheme);
   };
-
-  useEffect(() => {
-    scheduleMidnightRotation();
-  }, []);
 
   return {
     theme,

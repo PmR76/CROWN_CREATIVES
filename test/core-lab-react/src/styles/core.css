@@ -16,37 +16,11 @@
   --grad-solar-bloom: linear-gradient(135deg, #fbc2eb, #a6c1ee);
   --grad-crown-platinum: linear-gradient(135deg, #d9d9d9, #f6f6f6, #ffffff);
 
-  /* DAY EXPANSION */
-  --grad-sunrise-blush: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  --grad-peach-horizon: linear-gradient(135deg, #ffecd2, #fcb69f);
-  --grad-coral-bloom: linear-gradient(135deg, #ff6e7f, #bfe9ff);
-  --grad-apricot-sky: linear-gradient(135deg, #f6d365, #fda085);
-  --grad-golden-hour: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-  --grad-sherbet-glow: linear-gradient(135deg, #fddb92, #d1fdff);
-  --grad-ember-mist: linear-gradient(135deg, #fcb045, #fd1d1d, #833ab4);
-  --grad-radiant-dawn: linear-gradient(135deg, #ff9a9e, #fecfef);
-
   /* NIGHT THEMES */
   --grad-midnight-indigo: linear-gradient(135deg, #1a237e, #283593, #3949ab);
   --grad-royal-night: linear-gradient(135deg, #4a148c, #12005e, #000000);
   --grad-aurora: linear-gradient(135deg, #00c9ff, #92fe9d, #7f00ff);
   --grad-deep-space: linear-gradient(135deg, #0f2027, #203a43, #000000);
-
-  /* NEW NIGHT THEMES */
-  --grad-deep-velvet: linear-gradient(135deg, #2b1055, #7597de);
-  --grad-cosmic-royal: linear-gradient(135deg, #4b006e, #19002e);
-  --grad-nebula-drift: linear-gradient(135deg, #5f2c82, #49a09d);
-  --grad-crown-nocturne: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-
-  /* NIGHT EXPANSION */
-  --grad-nebula-violet: linear-gradient(135deg, #a18cd1, #fbc2eb);
-  --grad-midnight-royal: linear-gradient(135deg, #141e30, #243b55);
-  --grad-cosmic-indigo: linear-gradient(135deg, #3f2b96, #a8c0ff);
-  --grad-ultraviolet-drift: linear-gradient(135deg, #654ea3, #eaafc8);
-  --grad-deep-abyss: linear-gradient(135deg, #000428, #004e92);
-  --grad-lunar-ice: linear-gradient(135deg, #cfd9df, #e2ebf0);
-  --grad-starlight-veil: linear-gradient(135deg, #232526, #414345);
-  --grad-aurora-veil: linear-gradient(135deg, #00c6ff, #0072ff);
 
   /* ACTIVE DAY/NIGHT — DEFAULTS */
   --active-day-gradient: var(--grad-sunrise);
@@ -183,25 +157,4 @@ iframe {
 
 :root {
   --ticker-speed: 66s !important;
-}
-/* ============================================================
-   CORE — Unified Background System
-============================================================ */
-
-:root {
-  --active-day-gradient: var(--grad-sunrise);
-  --active-night-gradient: var(--grad-midnight-indigo);
-}
-
-body {
-  background: var(--active-day-gradient);
-  transition: background 8s ease-in-out;
-}
-
-body[data-theme="night"] {
-  background: var(--active-night-gradient);
-}
-
-body[data-theme="day"] {
-  background: var(--active-day-gradient);
 }
