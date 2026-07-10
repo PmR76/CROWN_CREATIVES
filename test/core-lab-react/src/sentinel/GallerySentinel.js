@@ -81,5 +81,7 @@ export async function runGallerySentinel() {
     report.error = err.message;
     report.finalStatus = "UNEXPECTED_ERROR";
     return report;
+    window.__sentinel_ok = true;
+
   }
 }
