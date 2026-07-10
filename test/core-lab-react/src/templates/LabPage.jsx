@@ -22,8 +22,7 @@ export default function LabPage({ title, children }) {
       <Header />
 
       <main className="lab-content">
-        <h1 className="lab-title">{title}</h1>
-        {children}
+            {children}
       </main>
 
       <HeroCrown />

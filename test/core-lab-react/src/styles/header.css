@@ -246,3 +246,18 @@ body[data-theme="night"] .sound-toggle:hover .sound-toggle-icon {
   50% { transform: scale(1.08); }
   100% { transform: scale(1); }
 }
+.nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  text-shadow: 0 0 6px var(--accent-glow);
+}
+
+.nav-link.active {
+  color: var(--accent-glow);
+  text-shadow: 0 0 8px var(--accent-glow), 0 0 16px var(--accent-glow);
+}

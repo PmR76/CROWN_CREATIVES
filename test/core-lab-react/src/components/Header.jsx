@@ -1,10 +1,11 @@
 // ============================================================
-// Header.jsx — Final Sound + Theme Toggle + Crown Fade
+// Header.jsx — Final Sound + Theme Toggle + Crown Fade + Active Nav
 // ============================================================
 
 import React from "react";
 import "../styles/header.css";
 import { useSoundEngine } from "../hooks/useSoundEngine.js";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   const { toggleSound } = useSoundEngine();
@@ -44,15 +45,65 @@ export default function Header() {
         <h1 className="cc-header-title">Crown Creatives</h1>
         <p className="cc-header-tagline">Artistry • Resilience • Imagination</p>
 
+        {/* NAVIGATION — NOW USING NavLink WITH ACTIVE GLOW */}
         <nav className="cc-header-nav">
-          <button>HOME</button>
-          <button>ABOUT</button>
-          <button>GALLERY</button>
-          <button>PROJECTS</button>
-          <button>VIDEOS</button>
-          <button>PODCASTS</button>
-          <button>BLOG</button>
-          <button>CONTACT</button>
+
+          <NavLink 
+            to="/" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            HOME
+          </NavLink>
+
+          <NavLink 
+            to="/about" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            ABOUT
+          </NavLink>
+
+          <NavLink 
+            to="/gallery" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            GALLERY
+          </NavLink>
+
+          <NavLink 
+            to="/projects" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            PROJECTS
+          </NavLink>
+
+          <NavLink 
+            to="/videos" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            VIDEOS
+          </NavLink>
+
+          <NavLink 
+            to="/podcasts" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            PODCASTS
+          </NavLink>
+
+          <NavLink 
+            to="/blog" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            BLOG
+          </NavLink>
+
+          <NavLink 
+            to="/contact" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            CONTACT
+          </NavLink>
+
         </nav>
       </div>
 
@@ -71,11 +122,11 @@ export default function Header() {
             );
           }}
         >
-    <img
-  src="/assets/icons/sun-moon.png"
-  alt="Theme Toggle"
-  className="theme-toggle-icon"
-/>
+          <img
+            src="/assets/icons/sun-moon.png"
+            alt="Theme Toggle"
+            className="theme-toggle-icon"
+          />
         </button>
       </div>
 
