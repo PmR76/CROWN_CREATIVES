@@ -13,6 +13,7 @@ export default function Header() {
 
   return (
     <header className="hero-header">
+
       {/* SOUND TOGGLE */}
       <div className="hero-header-left">
         <button
@@ -30,16 +31,16 @@ export default function Header() {
 
       {/* CENTER */}
       <div className="hero-header-center">
+
+        {/* ✔ KEEP THIS — correct header crown */}
         <img
           src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
           className="reduced-crown"
         />
 
-        <div className="hero-crown">
-          <img src="/assets/icons/day-crown.svg" className="crown crown-day" />
-          <img src="/assets/icons/night-crown.svg" className="crown crown-night" />
-        </div>
+        {/* ❌ REMOVE THIS — duplicate hero crown */}
+        {/* (removed) */}
 
         <h1 className="cc-header-title">Crown Creatives</h1>
         <p className="cc-header-tagline">
@@ -72,6 +73,7 @@ export default function Header() {
           />
         </button>
       </div>
+
     </header>
   );
 }

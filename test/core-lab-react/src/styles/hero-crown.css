@@ -17,10 +17,11 @@
   top: 0;
   left: 50%;
 
-  width: 330px;      /* 150% size increase */
-  height: 330px;     /* 150% size increase */
+  width: 480px;      /* 200% size increase */
+  height: 480px;     /* 200% size increase */
 
-  transform: translateX(-50%) translateY(200px); /* Move down 200px */
+  /* ⭐ Move crown UP by 150px (200px → 50px) */
+  transform: translateX(-50%) translateY(50px);
 
   opacity: 0;
   transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
@@ -70,7 +71,8 @@ body[data-theme="night"] .hero-crown-img.active {
 }
 
 @keyframes crownFloat {
-  0%   { transform: translateX(-50%) translateY(200px); }
-  50%  { transform: translateX(-50%) translateY(190px); }
-  100% { transform: translateX(-50%) translateY(200px); }
+  /* Float animation follows the new 50px baseline */
+  0%   { transform: translateX(-50%) translateY(50px); }
+  50%  { transform: translateX(-50%) translateY(40px); }
+  100% { transform: translateX(-50%) translateY(50px); }
 }
