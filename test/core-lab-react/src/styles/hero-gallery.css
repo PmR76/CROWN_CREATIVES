@@ -1,6 +1,21 @@
 /* ============================================================
-   HERO GALLERY — SHARED VERSION (FULLY FIXED)
-   ============================================================ */
+   HERO GALLERY — SHARED VERSION (FULLY FIXED + MERGED)
+============================================================ */
+
+/* Main gallery wrapper (merged from your new block) */
+.hero-gallery {
+  width: 100%;
+  max-width: 1400px;
+
+  /* ⭐ Move gallery UP by another 150px (10px → -140px) */
+  margin: -640px auto 80px auto;
+
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  pointer-events: none;
+  z-index: 20;
+}
 
 /* Container: sits naturally under the crown without pushing cards */
 .hero-gallery-container {
@@ -9,12 +24,17 @@
   height: 0;              /* no forced vertical space */
   pointer-events: none;
   z-index: 20;
+
+  margin-top: 0;
 }
 
 /* Lanes: left/right vertical strips */
 .hero-gallery-lane {
   position: absolute;
-  top: 50%;
+
+  /* Your corrected lane offset */
+  top: calc(50% - 50px);
+
   transform: translateY(-50%);
   width: 260px;
   height: 70vh;
@@ -34,15 +54,18 @@
   right: 2vw;
 }
 
-/* Images: visible by default */
+/* Images */
 .hero-gallery-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 1;
-  transition: opacity 1.8s ease-in-out,
-              transform 10s ease-out,
-              filter 10s ease-out;
+
+  opacity: 0; /* merged corrected state */
+  transition:
+    opacity 1.8s ease-in-out,
+    transform 10s ease-out,
+    filter 10s ease-out;
+
   filter: blur(0px);
 }
 
@@ -78,20 +101,4 @@
 
 .hero-gallery-glow-right {
   background: rgba(255, 210, 150, 0.4);
-}
-.hero-gallery-lane {
-  top: calc(50% - 50px); /* moved up by 50px */
-}
-.hero-gallery-img {
-  opacity: 0;
-  transition: opacity 1.8s ease-in-out, transform 10s ease-out, filter 10s ease-out;
-}
-
-.hero-gallery-img.visible {
-  opacity: 1;
-  transform: translateY(-10px) scale(1.02);
-  filter: blur(0.5px);
-}
-.hero-gallery-container {
-  margin-top: -350px;
 }
