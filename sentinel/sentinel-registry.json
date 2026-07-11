@@ -15,10 +15,13 @@
           "Background3D.jsx",
           "Cards.jsx",
           "CorePanel.jsx",
+          "DiagnosticsPanel.jsx",
           "Footer.jsx",
+          "FrostedCards.jsx",
           "Header.jsx",
           "HeroCrown.jsx",
           "HeroGallery.jsx",
+          "Layout.jsx",
           "SentinelPanel.jsx",
           "ThemePanel.jsx",
           "Ticker.jsx"
@@ -42,6 +45,19 @@
       },
       "main.jsx",
       {
+        "folder": "test\\core-lab-react\\src\\pages",
+        "items": [
+          "About.jsx",
+          "Blog.jsx",
+          "Contact.jsx",
+          "Gallery.jsx",
+          "Home.jsx",
+          "Podcasts.jsx",
+          "Projects.jsx",
+          "Videos.jsx"
+        ]
+      },
+      {
         "folder": "test\\core-lab-react\\src\\sentinel",
         "items": [
           "GallerySentinel.js"
@@ -60,7 +76,9 @@
           "cards.css",
           "core.css",
           "corepanel.css",
+          "diagnostics.css",
           "footer.css",
+          "frosted-cards.css",
           "gradients.css",
           "header.css",
           "hero-crown.css",
@@ -68,6 +86,12 @@
           "sentinel-panel.css",
           "theme-panel.css",
           "ticker.css"
+        ]
+      },
+      {
+        "folder": "test\\core-lab-react\\src\\templates",
+        "items": [
+          "LabPage.jsx"
         ]
       },
       {

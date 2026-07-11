@@ -6,10 +6,13 @@
       🟢 Background3D.jsx
       🟢 Cards.jsx
       🟢 CorePanel.jsx
+      🟢 DiagnosticsPanel.jsx
       🟢 Footer.jsx
+      🟢 FrostedCards.jsx
       🟢 Header.jsx
       🟢 HeroCrown.jsx
       🟢 HeroGallery.jsx
+      🟢 Layout.jsx
       🟢 SentinelPanel.jsx
       🟢 ThemePanel.jsx
       🟢 Ticker.jsx
@@ -22,6 +25,15 @@
       🟢 useSoundEngine.js
       🟢 useThemeEngine.js
    🟢 main.jsx
+   📁 test\core-lab-react\src\pages
+      🟢 About.jsx
+      🟢 Blog.jsx
+      🟢 Contact.jsx
+      🟢 Gallery.jsx
+      🟢 Home.jsx
+      🟢 Podcasts.jsx
+      🟢 Projects.jsx
+      🟢 Videos.jsx
    📁 test\core-lab-react\src\sentinel
       🟢 GallerySentinel.js
    📁 test\core-lab-react\src\sound
@@ -31,7 +43,9 @@
       🟢 cards.css
       🟢 core.css
       🟢 corepanel.css
+      🟢 diagnostics.css
       🟢 footer.css
+      🟢 frosted-cards.css
       🟢 gradients.css
       🟢 header.css
       🟢 hero-crown.css
@@ -39,6 +53,8 @@
       🟢 sentinel-panel.css
       🟢 theme-panel.css
       🟢 ticker.css
+   📁 test\core-lab-react\src\templates
+      🟢 LabPage.jsx
    📁 test\core-lab-react\src\theme
       🟢 theme-rotation.js
 📁 master
