@@ -1,8 +1,8 @@
 // ============================================================
-// AdminContext.jsx — Crown Creatives Editor OS Global State
+// AdminContext.jsx — Global Admin State
 // ============================================================
 
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const AdminContext = createContext();
 
@@ -10,18 +10,20 @@ export function AdminProvider({ children }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
-  const enterAdmin = () => {
-    setIsAdmin(true);
-    setIsPaused(true);
-  };
-
-  const exitAdmin = () => {
-    setIsAdmin(false);
-    setIsPaused(false);
-  };
+  // ⭐ NEW: AdminPanel open/close toggle
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   return (
-    <AdminContext.Provider value={{ isAdmin, isPaused, enterAdmin, exitAdmin }}>
+    <AdminContext.Provider
+      value={{
+        isAdmin,
+        setIsAdmin,
+        isPaused,
+        setIsPaused,
+        isPanelOpen,
+        setIsPanelOpen
+      }}
+    >
       {children}
     </AdminContext.Provider>
   );
