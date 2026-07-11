@@ -15,10 +15,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
+// ⭐ Crown Creatives Editor OS — Global Admin Provider
+import { AdminProvider } from "./admin/AdminContext";
+
 // ============================================================
 // GLOBAL CSS — Loaded once
 // ============================================================
-
 import "./styles/header.css";
 import "./styles/footer.css";
 import "./styles/cards.css";
@@ -32,7 +34,8 @@ import "./styles/background3d.css";
 // ============================================================
 // MOUNT APP — STRICTMODE REMOVED
 // ============================================================
-
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <App />
+  <AdminProvider>
+    <App />
+  </AdminProvider>
 );

@@ -1,15 +1,16 @@
 // ============================================================
 // HeroGallery.jsx — Draggable, Snapping, Persistent Dual-Lane Gallery
+// Crown Creatives Editor OS Integration
 // ============================================================
 
 import { useEffect, useState, useRef } from "react";
 import { loadGallery } from "../gallery/GalleryEngine";
 import { runGallerySentinel } from "../sentinel/GallerySentinel";
-import ThemePanel from "../components/ThemePanel";
+import { useAdmin } from "../admin/AdminContext";
 
 export default function HeroGallery() {
+  const { isAdmin, isPaused } = useAdmin();   // ⭐ Global Admin OS state
   const [images, setImages] = useState([]);
-  const [adminMode, setAdminMode] = useState(false);
 
   const leftLaneRef = useRef(null);
   const rightLaneRef = useRef(null);
@@ -39,7 +40,7 @@ export default function HeroGallery() {
     let pos = { x: 0, y: 0 };
 
     function onMouseDown(e) {
-      if (!adminMode) return;
+      if (!isAdmin) return;  // ⭐ Only draggable in Admin Mode
       e.preventDefault();
 
       pos.x = e.clientX;
@@ -101,27 +102,17 @@ export default function HeroGallery() {
   }
 
   // ------------------------------------------------------------
-  // ADMIN MODE TOGGLE (Shift + A)
+  // ENABLE DRAGGING WHEN ADMIN MODE ACTIVATES
   // ------------------------------------------------------------
   useEffect(() => {
-    function onKey(e) {
-      if (e.key === "A" && e.shiftKey) {
-        const newMode = !adminMode;
-        setAdminMode(newMode);
-
-        if (newMode) {
-          document.body.classList.add("gallery-edit-mode");
-          makeDraggable(leftLaneRef, "lane-left-pos");
-          makeDraggable(rightLaneRef, "lane-right-pos");
-        } else {
-          document.body.classList.remove("gallery-edit-mode");
-        }
-      }
+    if (isAdmin) {
+      document.body.classList.add("gallery-edit-mode");
+      makeDraggable(leftLaneRef, "lane-left-pos");
+      makeDraggable(rightLaneRef, "lane-right-pos");
+    } else {
+      document.body.classList.remove("gallery-edit-mode");
     }
-
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [adminMode]);
+  }, [isAdmin]);
 
   // ------------------------------------------------------------
   // INITIAL LOAD: Sentinel + Gallery Manifest
@@ -167,7 +158,7 @@ export default function HeroGallery() {
     }
 
     const interval = setInterval(() => {
-      if (adminMode) return; // ⭐ Pause in admin mode
+      if (isPaused) return;  // ⭐ Pause everything in Admin Mode
 
       index = (index + 1) % images.length;
 
@@ -185,7 +176,7 @@ export default function HeroGallery() {
     }, 8000);
 
     return () => clearInterval(interval);
-  }, [images, adminMode]);
+  }, [images, isPaused]);
 
   // ------------------------------------------------------------
   // INITIAL IMAGE SELECTION
@@ -214,9 +205,6 @@ export default function HeroGallery() {
         <div className="hero-gallery-glow-left"></div>
         <div className="hero-gallery-glow-right"></div>
       </div>
-
-      {/* ⭐ THEME PANEL SHOWS IN ADMIN MODE */}
-      {adminMode && <ThemePanel />}
     </div>
   );
 }
