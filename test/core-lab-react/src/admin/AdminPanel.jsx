@@ -1,9 +1,9 @@
 // ============================================================
-// AdminPanel.jsx — Crown Creatives Editor OS Control Panel
+// AdminPanel.jsx — Draggable OS Window + 60 Swatches + Live Preview
 // ============================================================
 
+import React, { useEffect, useRef } from "react";
 import { useAdmin } from "./AdminContext";
-import { useState, useEffect } from "react";
 
 export default function AdminPanel({
   cardsConfig,
@@ -14,132 +14,170 @@ export default function AdminPanel({
   currentTheme,
   setCurrentTheme
 }) {
-  const { exitAdmin } = useAdmin();
+  const { isAdmin } = useAdmin();
+  const panelRef = useRef(null);
+  const dragHandleRef = useRef(null);
 
-  const [localCards, setLocalCards] = useState(cardsConfig);
-  const [localTicker, setLocalTicker] = useState(tickerText);
-  const [localTheme, setLocalTheme] = useState(currentTheme);
-
-  // Load saved values on mount
+  // ------------------------------------------------------------
+  // DRAG LOGIC — Only header is draggable
+  // ------------------------------------------------------------
   useEffect(() => {
-    const savedCards = JSON.parse(localStorage.getItem("cardsConfig"));
-    const savedTicker = localStorage.getItem("tickerText");
-    const savedTheme = localStorage.getItem("currentTheme");
+    const el = panelRef.current;
+    const handle = dragHandleRef.current;
+    if (!el || !handle) return;
 
-    if (savedCards) setLocalCards(savedCards);
-    if (savedTicker) setLocalTicker(savedTicker);
-    if (savedTheme) setLocalTheme(savedTheme);
+    let pos = { x: 0, y: 0 };
+
+    function onMouseDown(e) {
+      e.preventDefault();
+      pos.x = e.clientX;
+      pos.y = e.clientY;
+
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseup", onMouseUp);
+    }
+
+    function onMouseMove(e) {
+      const dx = e.clientX - pos.x;
+      const dy = e.clientY - pos.y;
+
+      pos.x = e.clientX;
+      pos.y = e.clientY;
+
+      el.style.left = el.offsetLeft + dx + "px";
+      el.style.top = el.offsetTop + dy + "px";
+    }
+
+    function onMouseUp() {
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+    }
+
+    handle.addEventListener("mousedown", onMouseDown);
+
+    return () => handle.removeEventListener("mousedown", onMouseDown);
   }, []);
 
-  function handleSave() {
-    // Persist everything
-    localStorage.setItem("cardsConfig", JSON.stringify(localCards));
-    localStorage.setItem("tickerText", localTicker);
-    localStorage.setItem("currentTheme", localTheme);
-
-    // Push values back to app state
-    setCardsConfig(localCards);
-    setTickerText(localTicker);
-    setCurrentTheme(localTheme);
-
-    // Exit admin mode → resume OS
-    exitAdmin();
+  // ------------------------------------------------------------
+  // LIVE PREVIEW — Hovering a swatch previews background
+  // ------------------------------------------------------------
+  function previewTheme(preview) {
+    document.body.style.background = preview;
   }
 
-  return (
-    <div className="admin-panel">
-      <h2 className="admin-panel-title">Crown Creatives Editor OS</h2>
+  // ------------------------------------------------------------
+  // APPLY THEME — Clicking a swatch sets the theme
+  // ------------------------------------------------------------
+  function applyTheme(id, preview) {
+    setCurrentTheme(id);
+    localStorage.setItem("currentTheme", id);
+    document.body.style.background = preview;
+  }
 
-      {/* ======================================================
-         SECTION: Colour Swatches (Day/Night Gradients)
-      ====================================================== */}
-      <section className="admin-section">
-        <h3 className="admin-section-title">Colour Swatches</h3>
-        <p className="admin-section-subtitle">Day & Night Gradient Themes</p>
+  // ------------------------------------------------------------
+  // SAVE BUTTON — Saves cards + ticker
+  // ------------------------------------------------------------
+  function saveAll() {
+    localStorage.setItem("cardsConfig", JSON.stringify(cardsConfig));
+    localStorage.setItem("tickerText", tickerText);
+    alert("Saved!");
+  }
+
+  if (!isAdmin) return null;
+
+  return (
+    <div
+      ref={panelRef}
+      className="admin-panel"
+      style={{
+        position: "fixed",
+        top: "20%",
+        left: "20%",
+        width: "480px",
+        zIndex: 999999,
+        background: "rgba(20,20,30,0.92)",
+        borderRadius: "16px",
+        backdropFilter: "blur(18px)",
+        boxShadow: "0 0 40px rgba(0,0,0,0.6)",
+        overflowY: "auto"
+      }}
+    >
+      {/* ⭐ DRAG HANDLE */}
+      <div
+        ref={dragHandleRef}
+        style={{
+          padding: "14px",
+          background: "rgba(255,255,255,0.08)",
+          borderTopLeftRadius: "16px",
+          borderTopRightRadius: "16px",
+          cursor: "move",
+          fontWeight: "700",
+          letterSpacing: "1px",
+          textAlign: "center"
+        }}
+      >
+        Crown Creatives — Admin Panel
+      </div>
+
+      <div style={{ padding: "20px" }}>
+        {/* ============================================================
+            SWATCH GRID — 60 swatches (30 day + 30 night)
+        ============================================================ */}
+        <h3 className="admin-section-title">Theme Swatches</h3>
+        <p className="admin-section-subtitle">
+          Hover to preview • Click to apply
+        </p>
 
         <div className="swatch-grid">
           {gradients.map((g, i) => (
             <button
               key={i}
-              className={`swatch ${localTheme === g.id ? "active" : ""}`}
+              className={`swatch ${currentTheme === g.id ? "active" : ""}`}
               style={{ background: g.preview }}
-              onClick={() => setLocalTheme(g.id)}
+              onMouseEnter={() => previewTheme(g.preview)}
+              onClick={() => applyTheme(g.id, g.preview)}
             />
           ))}
         </div>
-      </section>
 
-      {/* ======================================================
-         SECTION: Frosted Cards Text
-      ====================================================== */}
-      <section className="admin-section">
-        <h3 className="admin-section-title">Frosted Cards (Ad Panels)</h3>
+        {/* ============================================================
+            EDITABLE CARDS
+        ============================================================ */}
+        <h3 className="admin-section-title">Frosted Cards</h3>
 
-        <label className="admin-label">
-          Card 1 Text
-          <input
-            className="admin-input"
-            value={localCards[0]}
-            onChange={(e) =>
-              setLocalCards((prev) => {
-                const next = [...prev];
-                next[0] = e.target.value;
-                return next;
-              })
-            }
-          />
-        </label>
+        {cardsConfig.map((text, index) => (
+          <label key={index} className="admin-label">
+            Card {index + 1}
+            <input
+              className="admin-input"
+              value={cardsConfig[index]}
+              onChange={(e) => {
+                const updated = [...cardsConfig];
+                updated[index] = e.target.value;
+                setCardsConfig(updated);
+              }}
+            />
+          </label>
+        ))}
 
-        <label className="admin-label">
-          Card 2 Text
-          <input
-            className="admin-input"
-            value={localCards[1]}
-            onChange={(e) =>
-              setLocalCards((prev) => {
-                const next = [...prev];
-                next[1] = e.target.value;
-                return next;
-              })
-            }
-          />
-        </label>
-
-        <label className="admin-label">
-          Card 3 Text
-          <input
-            className="admin-input"
-            value={localCards[2]}
-            onChange={(e) =>
-              setLocalCards((prev) => {
-                const next = [...prev];
-                next[2] = e.target.value;
-                return next;
-              })
-            }
-          />
-        </label>
-      </section>
-
-      {/* ======================================================
-         SECTION: Ticker Text
-      ====================================================== */}
-      <section className="admin-section">
+        {/* ============================================================
+            TICKER TEXT
+        ============================================================ */}
         <h3 className="admin-section-title">Ticker Text</h3>
 
         <input
           className="admin-input"
-          value={localTicker}
-          onChange={(e) => setLocalTicker(e.target.value)}
+          value={tickerText}
+          onChange={(e) => setTickerText(e.target.value)}
         />
-      </section>
 
-      {/* ======================================================
-         SAVE BUTTON
-      ====================================================== */}
-      <button className="admin-save-button" onClick={handleSave}>
-        Save & Exit Admin
-      </button>
+        {/* ============================================================
+            SAVE BUTTON
+        ============================================================ */}
+        <button className="admin-save-button" onClick={saveAll}>
+          Save All
+        </button>
+      </div>
     </div>
   );
 }
