@@ -14,9 +14,27 @@ export default function AdminPanel({
   currentTheme,
   setCurrentTheme
 }) {
-  const { isAdmin } = useAdmin();
+  // ⭐ NEW: Panel open/close toggle from context
+  const { isAdmin, isPanelOpen, setIsPanelOpen } = useAdmin();
+
+  // ⭐ Only render when admin + panel open
+  if (!isAdmin || !isPanelOpen) return null;
+
   const panelRef = useRef(null);
   const dragHandleRef = useRef(null);
+
+  // ------------------------------------------------------------
+  // SHIFT + A toggles AdminPanel open/closed
+  // ------------------------------------------------------------
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === "A" && e.shiftKey) {
+        setIsPanelOpen((prev) => !prev);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   // ------------------------------------------------------------
   // DRAG LOGIC — Only header is draggable
@@ -83,23 +101,26 @@ export default function AdminPanel({
     alert("Saved!");
   }
 
-  if (!isAdmin) return null;
-
+  // ------------------------------------------------------------
+  // RENDER — Centered + draggable
+  // ------------------------------------------------------------
   return (
     <div
       ref={panelRef}
       className="admin-panel"
       style={{
         position: "fixed",
-        top: "20%",
-        left: "20%",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)", // ⭐ Center window
         width: "480px",
+        maxHeight: "80vh",
+        overflowY: "auto",
         zIndex: 999999,
         background: "rgba(20,20,30,0.92)",
         borderRadius: "16px",
         backdropFilter: "blur(18px)",
-        boxShadow: "0 0 40px rgba(0,0,0,0.6)",
-        overflowY: "auto"
+        boxShadow: "0 0 40px rgba(0,0,0,0.6)"
       }}
     >
       {/* ⭐ DRAG HANDLE */}
