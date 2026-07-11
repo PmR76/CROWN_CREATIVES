@@ -1,12 +1,12 @@
 // ============================================================
-// AdminGate.jsx — Draggable Password Window (Shift + A)
+// AdminGate.jsx — Draggable Password Window + SHIFT+A Toggle
 // ============================================================
 
 import React, { useState, useEffect, useRef } from "react";
 import { useAdmin } from "./AdminContext";
 
 export default function AdminGate() {
-  const { isAdmin, setIsAdmin } = useAdmin();
+  const { isAdmin, setIsAdmin, isPanelOpen, setIsPanelOpen } = useAdmin();
   const [visible, setVisible] = useState(false);
   const [password, setPassword] = useState("");
 
@@ -14,20 +14,27 @@ export default function AdminGate() {
   const dragHandleRef = useRef(null);
 
   // ------------------------------------------------------------
-  // SHOW PASSWORD WINDOW ON SHIFT + A
+  // SHIFT + A — Login OR Toggle Admin Panel
   // ------------------------------------------------------------
   useEffect(() => {
     function onKey(e) {
-      if (e.key === "A" && e.shiftKey && !isAdmin) {
-        setVisible(true);
+      if (e.key === "A" && e.shiftKey) {
+        if (!isAdmin) {
+          // Not logged in → show login window
+          setVisible(true);
+        } else {
+          // Logged in → toggle AdminPanel
+          setIsPanelOpen(prev => !prev);
+        }
       }
     }
+
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isAdmin]);
 
   // ------------------------------------------------------------
-  // DRAG LOGIC — ONLY DRAG HANDLE IS DRAGGABLE
+  // DRAG LOGIC — Only header is draggable
   // ------------------------------------------------------------
   useEffect(() => {
     const el = gateRef.current;
@@ -73,13 +80,14 @@ export default function AdminGate() {
     if (password === "Crown26") {
       setIsAdmin(true);
       setVisible(false);
+      setIsPanelOpen(true); // ⭐ Open AdminPanel automatically
     } else {
       alert("Incorrect password");
     }
   }
 
   // ------------------------------------------------------------
-  // RENDER
+  // RENDER — Only show login window when visible AND not admin
   // ------------------------------------------------------------
   if (!visible || isAdmin) return null;
 
@@ -89,14 +97,15 @@ export default function AdminGate() {
       className="admin-gate-window"
       style={{
         position: "fixed",
-        top: "30%",
-        left: "30%",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
         zIndex: 999999,
         background: "rgba(20,20,30,0.92)",
         padding: "0",
         borderRadius: "12px",
         backdropFilter: "blur(14px)",
-        boxShadow: "0 0 30px rgba(0,0,0,0.6)",
+        boxShadow: "0 0 30px rgba(0,0,0,0.6)"
       }}
     >
       {/* ⭐ DRAG HANDLE */}
@@ -109,13 +118,13 @@ export default function AdminGate() {
           borderTopRightRadius: "12px",
           cursor: "move",
           fontWeight: "600",
-          letterSpacing: "1px",
+          letterSpacing: "1px"
         }}
       >
         Admin Login
       </div>
 
-      {/* ⭐ CONTENT AREA (NOT DRAGGABLE) */}
+      {/* ⭐ CONTENT AREA */}
       <div style={{ padding: "20px" }}>
         <input
           type="password"
@@ -129,7 +138,7 @@ export default function AdminGate() {
             border: "none",
             marginBottom: "12px",
             background: "rgba(255,255,255,0.1)",
-            color: "#fff",
+            color: "#fff"
           }}
         />
 
@@ -142,7 +151,7 @@ export default function AdminGate() {
             border: "none",
             background: "#4a90e2",
             color: "#fff",
-            cursor: "pointer",
+            cursor: "pointer"
           }}
         >
           Unlock Admin Mode

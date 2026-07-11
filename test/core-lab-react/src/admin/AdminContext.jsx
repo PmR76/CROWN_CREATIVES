@@ -1,5 +1,5 @@
 // ============================================================
-// AdminContext.jsx — Global Admin State
+// AdminContext.jsx
 // ============================================================
 
 import React, { createContext, useContext, useState } from "react";
@@ -8,9 +8,6 @@ const AdminContext = createContext();
 
 export function AdminProvider({ children }) {
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // ⭐ NEW: AdminPanel open/close toggle
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   return (
@@ -18,8 +15,6 @@ export function AdminProvider({ children }) {
       value={{
         isAdmin,
         setIsAdmin,
-        isPaused,
-        setIsPaused,
         isPanelOpen,
         setIsPanelOpen
       }}
