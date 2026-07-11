@@ -4,11 +4,16 @@
 
 import React from "react";
 import HeroCrown from "../components/HeroCrown";
+import HeroGallery from "../components/HeroGallery";
 
 export default function Home() {
   return (
     <div className="page-home">
+
       <HeroCrown />
+
+      {/* ⭐ Reinstated Hero Gallery */}
+      <HeroGallery />
 
       <section className="cc-section">
         <h2>Artistry</h2>
@@ -24,6 +29,7 @@ export default function Home() {
         <h2>Imagination</h2>
         <p>The spark that turns ideas into reality and stories into worlds.</p>
       </section>
+
     </div>
   );
 }
