@@ -1,12 +1,11 @@
 /* ============================================================
-   Diagnostics Panel — Crown Creatives
-   Final Unified Version
+   Diagnostics Panel — Draggable Cinematic Overlay
 ============================================================ */
 
 .diagnostics-panel {
-  position: fixed;
+  position: absolute;
+  left: 20px;
   top: 20px;
-  right: 20px;
 
   background: rgba(10, 10, 20, 0.85);
   backdrop-filter: blur(12px);
@@ -21,7 +20,9 @@
   z-index: 999999;
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
 
-  /* Smooth fade-in for cinematic UI */
+  cursor: default;
+  pointer-events: auto;
+
   opacity: 0;
   animation: diagFadeIn 0.6s ease forwards;
 }
@@ -31,16 +32,13 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.diagnostics-panel h3 {
-  margin-bottom: 10px;
-  font-size: 16px;
+/* Drag handle */
+.diag-drag-handle {
   font-weight: 700;
-
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.diagnostics-panel p {
-  margin: 4px 0;
-  opacity: 0.9;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  cursor: move;
 }
