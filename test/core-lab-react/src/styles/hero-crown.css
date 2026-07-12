@@ -3,10 +3,14 @@
 ============================================================ */
 
 .hero-crown-wrapper {
-  position: relative;
-  width: 480px;      /* 200% size increase */
-  height: 480px;     /* 200% size increase */
-  margin: 40px auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 480px;
+  height: 480px;
+
   pointer-events: none;
   z-index: 30;
 }
@@ -17,16 +21,20 @@
   top: 0;
   left: 50%;
 
-  width: 480px;      /* 200% size increase */
-  height: 480px;     /* 200% size increase */
+  width: 480px;
+  height: 480px;
+
+  /* Default baseline */
+  transform: translateX(-50%) translateY(150px);
+
+  opacity: 0;
+  transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
+  object-fit: contain;
+}
 
 /* Move DAY crown down by 10px */
 #hero-crown-day.hero-crown-img {
   transform: translateX(-50%) translateY(80px);
-}
-  opacity: 0;
-  transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
-  object-fit: contain;
 }
 
 /* Active crown (theme-reactive) */
@@ -72,8 +80,16 @@ body[data-theme="night"] .hero-crown-img.active {
 }
 
 @keyframes crownFloat {
-  /* Float animation follows the new 50px baseline */
-  0%   { transform: translateX(-50%) translateY(50px); }
-  50%  { transform: translateX(-50%) translateY(40px); }
-  100% { transform: translateX(-50%) translateY(50px); }
+  0%   { transform: translateX(-50%) translateY(80px); }
+  50%  { transform: translateX(-50%) translateY(70px); }
+  100% { transform: translateX(-50%) translateY(80px); }
+}
+
+/* ============================================================
+   ADMIN MODE — Crown becomes draggable
+============================================================ */
+
+body[data-admin="true"] .hero-crown-wrapper {
+  cursor: move;
+  pointer-events: auto;
 }

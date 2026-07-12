@@ -2,6 +2,10 @@
   --card-border-size: 2px;
   --card-radius: 22px;
   --particle-color: rgba(255,255,255,0.35);
+
+  /* Night-mode text glow */
+  --cinzel-night-color: #f6f6ff;
+  --cinzel-night-shadow: 0 0 10px rgba(255,255,255,0.55);
 }
 
 /* Standalone cards-lab page body (only if body has class="cards-lab") */
@@ -45,14 +49,8 @@ body.cards-lab {
 }
 
 @keyframes floatUp {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0.4;
-  }
-  100% {
-    transform: translateY(-120vh) scale(0.5);
-    opacity: 0;
-  }
+  0% { transform: translateY(0) scale(1); opacity: 0.4; }
+  100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
 }
 
 /* ============================================================
@@ -85,17 +83,14 @@ body.cards-lab {
 ============================================================ */
 
 .cc-cards .frost-card {
-  position: relative;
+  position: relative; /* Normal mode */
   padding: 32px;
   border-radius: var(--card-radius);
-
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-
   background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
   transform-style: preserve-3d;
-
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 
   /* Header Glow Pulse (same as header + footer) */
@@ -109,18 +104,15 @@ body.cards-lab {
   inset: 0;
   padding: var(--card-border-size);
   border-radius: inherit;
-
   background: linear-gradient(
     0deg,
     var(--active-day-gradient, #fff),
     var(--active-night-gradient, #fff)
   );
-
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-
   animation: borderSweep 6s linear infinite;
 }
 
@@ -165,6 +157,29 @@ body.cards-lab {
   opacity: 0.85;
   text-align: center;
   font-family: 'Cinzel Decorative', serif;
+}
+
+/* ⭐ NIGHT MODE — Lighten Cinzel Decorative text */
+body[data-theme="night"] .cc-cards .frost-card h2,
+body[data-theme="night"] .cc-cards .frost-card p {
+  color: var(--cinzel-night-color);
+  text-shadow: var(--cinzel-night-shadow);
+}
+
+/* ============================================================
+   ADMIN MODE — Make cards draggable
+============================================================ */
+
+/* Remove grid lock so cards can move freely */
+body[data-admin="true"] .cards-wrapper {
+  display: block !important;
+}
+
+/* Cards become draggable */
+body[data-admin="true"] .frost-card {
+  position: absolute !important;
+  cursor: move;
+  pointer-events: auto;
 }
 
 .footer-spacer {

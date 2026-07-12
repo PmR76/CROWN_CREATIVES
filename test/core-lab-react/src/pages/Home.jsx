@@ -85,22 +85,6 @@ export default function Home() {
       {/* ⭐ Ticker (now editable + draggable) */}
       <Ticker tickerText={tickerText} />
 
-      {/* Legacy CC Sections */}
-      <section className="cc-section">
-        <h2>Artistry</h2>
-        <p>{cardsConfig[0]}</p>
-      </section>
-
-      <section className="cc-section">
-        <h2>Resilience</h2>
-        <p>{cardsConfig[1]}</p>
-      </section>
-
-      <section className="cc-section">
-        <h2>Imagination</h2>
-        <p>{cardsConfig[2]}</p>
-      </section>
-
-    </div>
+      </div>
   );
 }
