@@ -111,6 +111,40 @@ export default function AdminPanel({
   }
 
   // ------------------------------------------------------------
+  // RANDOM DAY/NIGHT GENERATOR — Picks one day + one night theme
+  // ------------------------------------------------------------
+  function randomizeThemes() {
+    const daySwatches = gradients.filter(g => g.type === "day");
+    const nightSwatches = gradients.filter(g => g.type === "night");
+
+    const randomDay = daySwatches[Math.floor(Math.random() * daySwatches.length)];
+    const randomNight = nightSwatches[Math.floor(Math.random() * nightSwatches.length)];
+
+    // Save both
+    localStorage.setItem("theme-day", randomDay.preview);
+    localStorage.setItem("theme-day-id", randomDay.id);
+
+    localStorage.setItem("theme-night", randomNight.preview);
+    localStorage.setItem("theme-night-id", randomNight.id);
+
+    // Apply CSS variables
+    document.body.style.setProperty("--day-bg", randomDay.preview);
+    document.body.style.setProperty("--night-bg", randomNight.preview);
+
+    // Apply current background based on theme
+    const current = document.body.dataset.theme || "day";
+    document.body.style.background =
+      current === "day" ? randomDay.preview : randomNight.preview;
+
+    // Update UI highlight
+    setCurrentTheme(current === "day" ? randomDay.id : randomNight.id);
+
+    // Update dataset locks
+    document.body.dataset.dayLock = randomDay.id;
+    document.body.dataset.nightLock = randomNight.id;
+  }
+
+  // ------------------------------------------------------------
   // RENDER — Centered + draggable
   // ------------------------------------------------------------
   return (
@@ -172,9 +206,10 @@ export default function AdminPanel({
                 style={{
                   background: g.preview,
                   boxShadow:
-                    currentTheme === g.id ||
                     document.body.dataset.dayLock === g.id
-                      ? "0 0 12px 4px rgba(255,255,255,0.8)"
+                      ? "0 0 14px 5px rgba(255,255,255,0.9)"   // ⭐ neon lock glow
+                      : currentTheme === g.id
+                      ? "0 0 10px 3px rgba(255,255,255,0.6)"   // preview glow
                       : "none"
                 }}
                 onMouseEnter={() => previewTheme(g.preview)}
@@ -210,9 +245,10 @@ export default function AdminPanel({
                 style={{
                   background: g.preview,
                   boxShadow:
-                    currentTheme === g.id ||
                     document.body.dataset.nightLock === g.id
-                      ? "0 0 12px 4px rgba(0,150,255,0.8)"
+                      ? "0 0 14px 5px rgba(0,150,255,0.9)"     // ⭐ neon lock glow
+                      : currentTheme === g.id
+                      ? "0 0 10px 3px rgba(0,150,255,0.6)"     // preview glow
                       : "none"
                 }}
                 onMouseEnter={() => previewTheme(g.preview)}
@@ -260,6 +296,17 @@ export default function AdminPanel({
         ============================================================ */}
         <button className="admin-save-button" onClick={saveAll}>
           Save All
+        </button>
+
+        {/* ============================================================
+            RANDOM DAY/NIGHT GENERATOR BUTTON
+        ============================================================ */}
+        <button
+          className="admin-save-button"
+          onClick={randomizeThemes}
+          style={{ marginTop: "12px" }}
+        >
+          Random Day/Night Theme
         </button>
       </div>
     </div>
