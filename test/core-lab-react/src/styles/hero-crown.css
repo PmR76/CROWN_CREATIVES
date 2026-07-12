@@ -2,39 +2,38 @@
    Hero Crown — Cinematic Day/Night Fade (Corrected Position + Scale)
 ============================================================ */
 
+/* ============================================================
+   WRAPPER — Absolute Centre Positioning
+============================================================ */
+
 .hero-crown-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   width: 480px;
   height: 480px;
-
   pointer-events: none;
   z-index: 30;
 }
 
-/* Crown images (day + night) */
+/* ============================================================
+   Crown images (day + night)
+============================================================ */
+
 .hero-crown-img {
   position: absolute;
   top: 0;
   left: 50%;
-
   width: 480px;
   height: 480px;
+  object-fit: contain;
 
-  /* Default baseline */
-  transform: translateX(-50%) translateY(150px);
+  /* ⭐ NEW baseline: 200px ABOVE absolute centre */
+  transform: translateX(-50%) translateY(-200px);
 
   opacity: 0;
   transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
-  object-fit: contain;
-}
-
-/* Move DAY crown down by 10px */
-#hero-crown-day.hero-crown-img {
-  transform: translateX(-50%) translateY(80px);
 }
 
 /* Active crown (theme-reactive) */
@@ -79,10 +78,11 @@ body[data-theme="night"] .hero-crown-img.active {
   animation: crownFloat 10s ease-in-out infinite;
 }
 
+/* ⭐ Updated float animation for new baseline */
 @keyframes crownFloat {
-  0%   { transform: translateX(-50%) translateY(80px); }
-  50%  { transform: translateX(-50%) translateY(70px); }
-  100% { transform: translateX(-50%) translateY(80px); }
+  0%   { transform: translateX(-50%) translateY(-200px); }
+  50%  { transform: translateX(-50%) translateY(-210px); }
+  100% { transform: translateX(-50%) translateY(-200px); }
 }
 
 /* ============================================================

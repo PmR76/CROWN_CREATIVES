@@ -2,37 +2,6 @@
    Hero Crown — Cinematic Day/Night Fade (Corrected Position + Scale)
 ============================================================ */
 
-.hero-crown-wrapper {
-  position: relative;
-  width: 480px;      /* 200% size increase */
-  height: 480px;     /* 200% size increase */
-  margin: 40px auto;
-  pointer-events: none;
-  z-index: 30;
-}
-
-/* Crown images (day + night) */
-.hero-crown-img {
-  position: absolute;
-  top: 0;
-  left: 50%;
-
-  width: 480px;      /* 200% size increase */
-  height: 480px;     /* 200% size increase */
-
-  /* Default baseline */
-  transform: translateX(-50%) translateY(70px);
-
-  opacity: 0;
-  transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
-  object-fit: contain;
-}
-
-/* Move DAY crown down by 10px */
-#hero-crown-day.hero-crown-img {
-  transform: translateX(-50%) translateY(80px);
-}
-
 /* Active crown (theme-reactive) */
 .hero-crown-img.active {
   opacity: 1;
@@ -77,7 +46,7 @@ body[data-theme="night"] .hero-crown-img.active {
 
 @keyframes crownFloat {
   /* Float animation follows the new baseline */
-  0%   { transform: translateX(-50%) translateY(80px); }
-  50%  { transform: translateX(-50%) translateY(70px); }
-  100% { transform: translateX(-50%) translateY(80px); }
+  0%   { transform: translateX(-50%) translateY(100px); }
+  50%  { transform: translateX(-50%) translateY(100px); }
+  100% { transform: translateX(-50%) translateY(100px); }
 }
