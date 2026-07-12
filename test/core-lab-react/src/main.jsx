@@ -23,7 +23,7 @@ import { AdminProvider } from "./admin/AdminContext";
 // ============================================================
 import "./styles/header.css";
 import "./styles/footer.css";
-import "./styles/cards.css";
+import "./styles/frosted-cards.css";
 import "./styles/ticker.css";
 import "./styles/corepanel.css";
 import "./styles/hero-crown.css";
