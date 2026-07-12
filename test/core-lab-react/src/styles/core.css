@@ -1,160 +1,83 @@
 /* ============================================================
-   GRADIENT ENGINE — MASTER DEFINITIONS
-   Crown Creatives — Final Canonical Version
+   Hero Crown — Cinematic Day/Night Fade (Corrected Position + Scale)
 ============================================================ */
 
-:root {
-  /* DAY THEMES */
-  --grad-sunrise: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
-  --grad-warm-daylight: linear-gradient(135deg, #ffe0b2, #ffd54f);
-  --grad-soft-sky: linear-gradient(135deg, #b3e5fc, #e1f5fe, #ffffff);
-  --grad-sunset-glow: linear-gradient(135deg, #ff9966, #ff5e62, #8e54e9);
-
-  /* NEW DAY THEMES */
-  --grad-ocean-mist: linear-gradient(135deg, #a8edea, #fed6e3);
-  --grad-royal-ember: linear-gradient(135deg, #f6d365, #fda085);
-  --grad-solar-bloom: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-  --grad-crown-platinum: linear-gradient(135deg, #d9d9d9, #f6f6f6, #ffffff);
-
-  /* NIGHT THEMES */
-  --grad-midnight-indigo: linear-gradient(135deg, #1a237e, #283593, #3949ab);
-  --grad-royal-night: linear-gradient(135deg, #4a148c, #12005e, #000000);
-  --grad-aurora: linear-gradient(135deg, #00c9ff, #92fe9d, #7f00ff);
-  --grad-deep-space: linear-gradient(135deg, #0f2027, #203a43, #000000);
-
-  /* ACTIVE DAY/NIGHT — DEFAULTS */
-  --active-day-gradient: var(--grad-sunrise);
-  --active-night-gradient: var(--grad-midnight-indigo);
-
-  /* GLOW VARIABLES */
-  --glow-sunrise: rgba(255, 180, 200, 0.6);
-  --glow-warm-daylight: rgba(255, 220, 120, 0.6);
-  --glow-soft-sky: rgba(180, 230, 255, 0.6);
-  --glow-sunset-glow: rgba(255, 120, 120, 0.6);
-
-  /* GLOBAL SPEEDS */
-  --glow-speed: 6s;
-  --shimmer-speed: 4s;
-  --ticker-speed: 18s;
-}
-
-/* ============================================================
-   GLOBAL CORE-LAB FOUNDATION
-============================================================ */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Base body styles + 8s background fade */
-body {
-  background: var(--active-day-gradient);
-  color: #fff;
-  font-family: system-ui, sans-serif;
-  overflow-x: hidden;
-  padding: 20px;
-  transition: background 8s ease-in-out;
-}
-
-.core-layout {
-  width: 95%;
-  margin: 0 auto;
+.hero-crown-wrapper {
   position: relative;
-  z-index: 1000;
+  width: 480px;      /* 200% size increase */
+  height: 480px;     /* 200% size increase */
+  margin: 40px auto;
+  pointer-events: none;
+  z-index: 30;
+}
+
+/* Crown images (day + night) */
+.hero-crown-img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  width: 480px;      /* 200% size increase */
+  height: 480px;     /* 200% size increase */
+
+  /* Default baseline */
+  transform: translateX(-50%) translateY(70px);
+
+  opacity: 0;
+  transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
+  object-fit: contain;
+}
+
+/* Move DAY crown down by 10px */
+#hero-crown-day.hero-crown-img {
+  transform: translateX(-50%) translateY(80px);
+}
+
+/* Active crown (theme-reactive) */
+.hero-crown-img.active {
+  opacity: 1;
 }
 
 /* ============================================================
-   THEME SYSTEM (UPDATED TO DAY/NIGHT)
+   Day Mode Glow — Warm Gold
 ============================================================ */
 
-body[data-theme="night"] {
-  background: var(--active-night-gradient);
-  color: #fff;
-}
-
-body[data-theme="day"] {
-  background: var(--active-day-gradient);
-  color: #222;
-}
-
-/* Nav night/day colours */
-[data-theme="night"] .nav-link {
-  color: #e6f3ff;
-  text-shadow: 0 0 6px rgba(0,150,255,0.6);
-}
-
-[data-theme="day"] .nav-link {
-  color: #222;
+body[data-theme="day"] .hero-crown-img.active {
+  filter:
+    drop-shadow(0 0 12px rgba(255, 220, 150, 0.6))
+    drop-shadow(0 0 24px rgba(255, 200, 120, 0.4))
+    drop-shadow(0 0 36px rgba(255, 180, 100, 0.3));
 }
 
 /* ============================================================
-   IFRAME (LEGACY SUPPORT)
+   Night Mode Glow — Cool Neon
 ============================================================ */
 
-iframe {
-  width: 100%;
-  height: 1000px;
-  border: 1px solid #444;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+body[data-theme="night"] .hero-crown-img.active {
+  filter:
+    drop-shadow(0 0 14px rgba(120, 200, 255, 0.9))
+    drop-shadow(0 0 28px rgba(160, 120, 255, 0.8))
+    drop-shadow(0 0 48px rgba(120, 80, 255, 0.6));
+  animation: crownNightPulse 4s ease-in-out infinite;
+}
+
+@keyframes crownNightPulse {
+  0%   { opacity: 0.85; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.85; }
 }
 
 /* ============================================================
-   LAB PANEL (DRAGGABLE)
+   Cinematic Hover Float (Optional)
 ============================================================ */
 
-#lab-panel {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 280px;
-  background: rgba(10,10,20,0.92);
-  backdrop-filter: blur(14px);
-  border-radius: 14px;
-  padding: 12px 14px;
-  color: #fff;
-  font-family: system-ui, sans-serif;
-  font-size: 13px;
-  z-index: 999999;
-  box-shadow: 0 0 26px rgba(0,0,0,0.6);
-  cursor: move;
+.hero-crown-img.float {
+  animation: crownFloat 10s ease-in-out infinite;
 }
 
-/* ============================================================
-   TICKER ANIMATION — REQUIRED
-============================================================ */
-
-@keyframes tickerMove {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-/* ============================================================
-   TICKER — FORCE RESTORE (IMMUNE TO DAY/NIGHT)
-============================================================ */
-
-.ticker-track {
-  font-family: 'Cinzel Decorative', serif !important;
-  animation: tickerMove var(--ticker-speed) linear infinite !important;
-  color: #fff !important;
-}
-
-.ticker-track span {
-  font-family: 'Cinzel Decorative', serif !important;
-  color: #fff !important;
-  text-shadow:
-    0 0 6px rgba(255,255,255,0.8),
-    0 0 12px rgba(0,150,255,0.7),
-    0 0 22px rgba(0,150,255,0.6),
-    0 0 38px rgba(0,150,255,0.5) !important;
-}
-
-:root {
-  --ticker-speed: 66s !important;
+@keyframes crownFloat {
+  /* Float animation follows the new baseline */
+  0%   { transform: translateX(-50%) translateY(80px); }
+  50%  { transform: translateX(-50%) translateY(70px); }
+  100% { transform: translateX(-50%) translateY(80px); }
 }
