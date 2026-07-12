@@ -1,28 +1,56 @@
 // ============================================================
-// HeroCrown.jsx — Cinematic Crown Fade (Day/Night Reactive)
+// HeroCrown.jsx — Cinematic Crown (Theme Test Lab Version)
 // ============================================================
 
-import React, { useEffect, useState } from "react";
-import "../styles/hero-crown.css";
+import { useEffect } from "react";
 
 export default function HeroCrown() {
-  const [theme, setTheme] = useState(document.body.dataset.theme || "day");
-
   useEffect(() => {
-    const handler = (e) => setTheme(e.detail);
+    const day = document.getElementById("hero-crown-day");
+    const night = document.getElementById("hero-crown-night");
+    if (!day || !night) return;
+
+    const apply = (theme) => {
+      if (theme === "night") {
+        day.style.opacity = "0";
+        night.style.opacity = "1";
+        day.classList.remove("day");
+        night.classList.add("night");
+      } else {
+        day.style.opacity = "1";
+        night.style.opacity = "0";
+        night.classList.remove("night");
+        day.classList.add("day");
+      }
+    };
+
+    // ⭐ FIX: use "night" instead of "dark"
+    const initialTheme =
+      document.body.dataset.theme === "night" ? "night" : "day";
+
+    apply(initialTheme);
+
+    const handler = (e) => apply(e.detail);
     window.addEventListener("theme-set", handler);
-    return () => window.removeEventListener("theme-set", handler);
+
+    return () => {
+      window.removeEventListener("theme-set", handler);
+    };
   }, []);
 
   return (
-    <div className="hero-crown-wrapper">
+    <div id="hero-crown-container">
       <img
+        id="hero-crown-day"
+        className="hero-crown float day"
         src="/assets/icons/day-crown.svg"
-        className={`hero-crown-img ${theme === "day" ? "active" : ""}`}
+        alt="Day Crown"
       />
       <img
+        id="hero-crown-night"
+        className="hero-crown float night"
         src="/assets/icons/night-crown.svg"
-        className={`hero-crown-img ${theme === "night" ? "active" : ""}`}
+        alt="Night Crown"
       />
     </div>
   );

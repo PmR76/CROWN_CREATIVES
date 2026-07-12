@@ -1,35 +1,57 @@
 // ============================================================
-// useThemeEngine.js — Crown Creatives Theme Engine Hook
+// useThemeEngine.js — Crown Creatives Unified Theme Engine
 // ============================================================
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export function useThemeEngine() {
-  const [theme, setTheme] = useState("day");
 
-  // Apply theme to body + dispatch theme-set
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
+  // ------------------------------------------------------------
+  // APPLY THEME — sets dataset.theme + correct background
+  // ------------------------------------------------------------
+  function applyTheme(nextTheme) {
+    // Update dataset theme
+    document.body.dataset.theme = nextTheme;
 
-    // Ensure no inline background override
-    document.body.style.background = "";
+    // Load saved gradients
+    const day = localStorage.getItem("theme-day");
+    const night = localStorage.getItem("theme-night");
 
+    // Apply correct background immediately
+    document.body.style.background =
+      nextTheme === "day" ? day : night;
+
+    // Dispatch theme-set event (AdminPanel + Layout.jsx listen)
     window.dispatchEvent(
-      new CustomEvent("theme-set", { detail: theme })
+      new CustomEvent("theme-set", { detail: nextTheme })
     );
-  }, [theme]);
+  }
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "night" ? "day" : "night"));
-  };
+  // ------------------------------------------------------------
+  // TOGGLE THEME — day ↔ night
+  // ------------------------------------------------------------
+  function toggleTheme() {
+    const current = document.body.dataset.theme || "day";
+    const next = current === "day" ? "night" : "day";
+    applyTheme(next);
+  }
 
-  const setThemeDirect = (nextTheme) => {
-    setTheme(nextTheme);
-  };
+  // ------------------------------------------------------------
+  // INITIALIZE — ensure dataset.theme exists + apply background
+  // ------------------------------------------------------------
+  useEffect(() => {
+    const existing = document.body.dataset.theme;
 
+    // Default to day if missing
+    const initial = existing || "day";
+    applyTheme(initial);
+  }, []);
+
+  // ------------------------------------------------------------
+  // PUBLIC API
+  // ------------------------------------------------------------
   return {
-    theme,
     toggleTheme,
-    setThemeDirect
+    setThemeDirect: applyTheme
   };
 }
