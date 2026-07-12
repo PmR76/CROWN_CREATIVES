@@ -20,9 +20,10 @@
   width: 480px;      /* 200% size increase */
   height: 480px;     /* 200% size increase */
 
-  /* ⭐ Move crown UP by 150px (200px → 50px) */
-  transform: translateX(-50%) translateY(70px);
-
+/* Move DAY crown down by 10px */
+#hero-crown-day.hero-crown-img {
+  transform: translateX(-50%) translateY(80px);
+}
   opacity: 0;
   transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
   object-fit: contain;

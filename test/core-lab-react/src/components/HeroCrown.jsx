@@ -1,5 +1,5 @@
 // ============================================================
-// HeroCrown.jsx — Cinematic Crown (Theme Test Lab Version)
+// HeroCrown.jsx — Cinematic Crown (Corrected to match CSS)
 // ============================================================
 
 import { useEffect } from "react";
@@ -8,23 +8,20 @@ export default function HeroCrown() {
   useEffect(() => {
     const day = document.getElementById("hero-crown-day");
     const night = document.getElementById("hero-crown-night");
+
     if (!day || !night) return;
 
     const apply = (theme) => {
       if (theme === "night") {
-        day.style.opacity = "0";
-        night.style.opacity = "1";
-        day.classList.remove("day");
-        night.classList.add("night");
+        day.classList.remove("active");
+        night.classList.add("active");
       } else {
-        day.style.opacity = "1";
-        night.style.opacity = "0";
-        night.classList.remove("night");
-        day.classList.add("day");
+        night.classList.remove("active");
+        day.classList.add("active");
       }
     };
 
-    // ⭐ FIX: use "night" instead of "dark"
+    // Correct initial theme
     const initialTheme =
       document.body.dataset.theme === "night" ? "night" : "day";
 
@@ -39,16 +36,17 @@ export default function HeroCrown() {
   }, []);
 
   return (
-    <div id="hero-crown-container">
+    <div className="hero-crown-wrapper">
       <img
         id="hero-crown-day"
-        className="hero-crown float day"
+        className="hero-crown-img float"
         src="/assets/icons/day-crown.svg"
         alt="Day Crown"
       />
+
       <img
         id="hero-crown-night"
-        className="hero-crown float night"
+        className="hero-crown-img float"
         src="/assets/icons/night-crown.svg"
         alt="Night Crown"
       />
