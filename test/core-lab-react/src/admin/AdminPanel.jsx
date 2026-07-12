@@ -14,7 +14,7 @@ export default function AdminPanel({
   currentTheme,
   setCurrentTheme
 }) {
-  // ⭐ NEW: Panel open/close toggle from context
+  // ⭐ Panel open/close toggle from context
   const { isAdmin, isPanelOpen, setIsPanelOpen } = useAdmin();
 
   // ⭐ Only render when admin + panel open
@@ -29,7 +29,7 @@ export default function AdminPanel({
   useEffect(() => {
     function onKey(e) {
       if (e.key === "A" && e.shiftKey) {
-        setIsPanelOpen((prev) => !prev);
+        setIsPanelOpen(prev => !prev);
       }
     }
     window.addEventListener("keydown", onKey);
@@ -84,11 +84,22 @@ export default function AdminPanel({
   }
 
   // ------------------------------------------------------------
-  // APPLY THEME — Clicking a swatch sets the theme
+  // APPLY THEME — Single tap = preview, Double tap = lock
   // ------------------------------------------------------------
-  function applyTheme(id, preview) {
+  function applyTheme(id, preview, isDoubleTap = false) {
     setCurrentTheme(id);
-    localStorage.setItem("currentTheme", id);
+
+    // ⭐ Double‑tap = LOCK the theme
+    if (isDoubleTap) {
+      if (id.startsWith("day-")) {
+        localStorage.setItem("theme-day", preview);
+      }
+      if (id.startsWith("night-")) {
+        localStorage.setItem("theme-night", preview);
+      }
+    }
+
+    // ⭐ Always preview immediately
     document.body.style.background = preview;
   }
 
@@ -112,7 +123,7 @@ export default function AdminPanel({
         position: "fixed",
         top: "50%",
         left: "50%",
-        transform: "translate(-50%, -50%)", // ⭐ Center window
+        transform: "translate(-50%, -50%)",
         width: "480px",
         maxHeight: "80vh",
         overflowY: "auto",
@@ -142,23 +153,63 @@ export default function AdminPanel({
 
       <div style={{ padding: "20px" }}>
         {/* ============================================================
-            SWATCH GRID — 60 swatches (30 day + 30 night)
+            DAY SWATCHES — 30 swatches
         ============================================================ */}
-        <h3 className="admin-section-title">Theme Swatches</h3>
-        <p className="admin-section-subtitle">
-          Hover to preview • Click to apply
-        </p>
+        <h3 className="admin-section-title">Day Themes</h3>
+        <p className="admin-section-subtitle">Hover to preview • Tap to preview • Double‑tap to lock</p>
 
         <div className="swatch-grid">
-          {gradients.map((g, i) => (
-            <button
-              key={i}
-              className={`swatch ${currentTheme === g.id ? "active" : ""}`}
-              style={{ background: g.preview }}
-              onMouseEnter={() => previewTheme(g.preview)}
-              onClick={() => applyTheme(g.id, g.preview)}
-            />
-          ))}
+          {gradients
+            .filter(g => g.type === "day")
+            .map((g, i) => (
+              <button
+                key={i}
+                className={`swatch ${currentTheme === g.id ? "active" : ""}`}
+                style={{
+                  background: g.preview,
+                  boxShadow:
+                    currentTheme === g.id
+                      ? "0 0 12px 4px rgba(255,255,255,0.6)"
+                      : "none"
+                }}
+                onMouseEnter={() => previewTheme(g.preview)}
+                onClick={(e) => {
+                  const isDoubleTap = e.detail === 2;
+                  applyTheme(g.id, g.preview, isDoubleTap);
+                }}
+              />
+            ))}
+        </div>
+
+        {/* ============================================================
+            NIGHT SWATCHES — 30 swatches
+        ============================================================ */}
+        <h3 className="admin-section-title" style={{ marginTop: "30px" }}>
+          Night Themes
+        </h3>
+        <p className="admin-section-subtitle">Hover to preview • Tap to preview • Double‑tap to lock</p>
+
+        <div className="swatch-grid">
+          {gradients
+            .filter(g => g.type === "night")
+            .map((g, i) => (
+              <button
+                key={i}
+                className={`swatch ${currentTheme === g.id ? "active" : ""}`}
+                style={{
+                  background: g.preview,
+                  boxShadow:
+                    currentTheme === g.id
+                      ? "0 0 12px 4px rgba(0,150,255,0.6)"
+                      : "none"
+                }}
+                onMouseEnter={() => previewTheme(g.preview)}
+                onClick={(e) => {
+                  const isDoubleTap = e.detail === 2;
+                  applyTheme(g.id, g.preview, isDoubleTap);
+                }}
+              />
+            ))}
         </div>
 
         {/* ============================================================
