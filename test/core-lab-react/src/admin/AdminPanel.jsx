@@ -14,10 +14,8 @@ export default function AdminPanel({
   currentTheme,
   setCurrentTheme
 }) {
-  // ⭐ Panel open/close toggle from context
   const { isAdmin, isPanelOpen, setIsPanelOpen } = useAdmin();
 
-  // ⭐ Only render when admin + panel open
   if (!isAdmin || !isPanelOpen) return null;
 
   const panelRef = useRef(null);
@@ -89,17 +87,17 @@ export default function AdminPanel({
   function applyTheme(id, preview, isDoubleTap = false) {
     setCurrentTheme(id);
 
-    // ⭐ Double‑tap = LOCK the theme
     if (isDoubleTap) {
       if (id.startsWith("day-")) {
         localStorage.setItem("theme-day", preview);
+        localStorage.setItem("theme-day-id", id);
       }
       if (id.startsWith("night-")) {
         localStorage.setItem("theme-night", preview);
+        localStorage.setItem("theme-night-id", id);
       }
     }
 
-    // ⭐ Always preview immediately
     document.body.style.background = preview;
   }
 
@@ -164,12 +162,19 @@ export default function AdminPanel({
             .map((g, i) => (
               <button
                 key={i}
-                className={`swatch ${currentTheme === g.id ? "active" : ""}`}
+                className={`swatch ${
+                  currentTheme === g.id ||
+                  document.body.dataset.dayLock === g.id ||
+                  document.body.dataset.nightLock === g.id
+                    ? "active"
+                    : ""
+                }`}
                 style={{
                   background: g.preview,
                   boxShadow:
-                    currentTheme === g.id
-                      ? "0 0 12px 4px rgba(255,255,255,0.6)"
+                    currentTheme === g.id ||
+                    document.body.dataset.dayLock === g.id
+                      ? "0 0 12px 4px rgba(255,255,255,0.8)"
                       : "none"
                 }}
                 onMouseEnter={() => previewTheme(g.preview)}
@@ -195,12 +200,19 @@ export default function AdminPanel({
             .map((g, i) => (
               <button
                 key={i}
-                className={`swatch ${currentTheme === g.id ? "active" : ""}`}
+                className={`swatch ${
+                  currentTheme === g.id ||
+                  document.body.dataset.nightLock === g.id ||
+                  document.body.dataset.dayLock === g.id
+                    ? "active"
+                    : ""
+                }`}
                 style={{
                   background: g.preview,
                   boxShadow:
-                    currentTheme === g.id
-                      ? "0 0 12px 4px rgba(0,150,255,0.6)"
+                    currentTheme === g.id ||
+                    document.body.dataset.nightLock === g.id
+                      ? "0 0 12px 4px rgba(0,150,255,0.8)"
                       : "none"
                 }}
                 onMouseEnter={() => previewTheme(g.preview)}

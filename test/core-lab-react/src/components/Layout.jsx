@@ -29,11 +29,23 @@ export default function Layout({ children }) {
       localStorage.setItem("theme-night", night);
     }
 
-    // 3. Apply CSS variables (never empty)
+    // ⭐ 3. Restore locked swatch IDs (day + night)
+    const savedDayId = localStorage.getItem("theme-day-id");
+    const savedNightId = localStorage.getItem("theme-night-id");
+
+    if (savedDayId) {
+      document.body.dataset.dayLock = savedDayId;
+    }
+
+    if (savedNightId) {
+      document.body.dataset.nightLock = savedNightId;
+    }
+
+    // 4. Apply CSS variables (never empty)
     document.body.style.setProperty("--day-bg", day);
     document.body.style.setProperty("--night-bg", night);
 
-    // 4. Apply correct background BEFORE render
+    // 5. Apply correct background BEFORE render
     const current = document.body.dataset.theme || "day";
 
     if (current === "day") {
