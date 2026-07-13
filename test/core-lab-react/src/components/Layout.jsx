@@ -15,7 +15,6 @@ import { useSoundEngine } from "../hooks/useSoundEngine";
 
 export default function Layout({ children }) {
 
-  // ⭐ Global engines (theme + sound)
   useThemeEngine();
   useSoundEngine();
 
@@ -24,26 +23,20 @@ export default function Layout({ children }) {
   return (
     <div className="layout-root">
 
-      {/* ⭐ Global Header */}
       <Header />
 
-      {/* ⭐ Page Content */}
       <main className="page-content">
         {children}
       </main>
 
-      {/* ⭐ Global Cinematic Elements */}
+      {/* ⭐ GLOBAL HERO ELEMENTS */}
       <HeroCrown />
       <HeroGallery />
       <Ticker />
 
-      {/* ⭐ Global Footer */}
       <Footer />
 
-      {/* ⭐ Admin Theme Panel */}
       <ThemePanel />
-
-      {/* ⭐ Dev Diagnostics */}
       {isDev && <CorePanel />}
     </div>
   );

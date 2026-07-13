@@ -1,5 +1,5 @@
 /* ============================================================
-   Hero Crown — Cinematic Day/Night Fade (Viewport Centre)
+   Hero Crown — Cinematic Day/Night Fade (Viewport Centre + 100px Up)
 ============================================================ */
 
 /* ============================================================
@@ -33,8 +33,8 @@
   height: 480px;
   object-fit: contain;
 
-  /* ⭐ EXACT viewport centre */
-  transform: translateY(0);
+  /* ⭐ 100px ABOVE viewport centre */
+  transform: translateY(-100px);
 
   opacity: 0;
   transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
@@ -82,11 +82,11 @@ body[data-theme="night"] .hero-crown-img.active {
   animation: crownFloat 10s ease-in-out infinite;
 }
 
-/* ⭐ Float animation aligned to true centre */
+/* ⭐ Float animation aligned to 100px baseline */
 @keyframes crownFloat {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+  0%   { transform: translateY(-100px); }
+  50%  { transform: translateY(-110px); }
+  100% { transform: translateY(-100px); }
 }
 
 /* ============================================================

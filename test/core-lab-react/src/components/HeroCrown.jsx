@@ -6,7 +6,8 @@ import { useThemeEngine } from "../hooks/useThemeEngine";
 
 export default function HeroCrown() {
 
-  const { theme } = useThemeEngine();   // "day" or "night"
+  // ⭐ Theme engine provides "day" or "night"
+  const { theme } = useThemeEngine();
 
   return (
     <div className="hero-crown-wrapper">
