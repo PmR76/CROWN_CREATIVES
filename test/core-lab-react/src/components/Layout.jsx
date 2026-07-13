@@ -1,70 +1,50 @@
 // ============================================================
-// Layout.jsx — Global Wrapper + Day/Night Theme Loader
+// Layout.jsx — Global Cinematic Frame for Crown Creatives
 // ============================================================
 
-import React, { useEffect } from "react";
 import Header from "./Header";
-import DiagnosticsPanel from "./DiagnosticsPanel";
-import AdminGate from "../admin/AdminGate";
-import gradients from "../theme/theme-rotation"; // ⭐ REQUIRED for fallback values
+import Footer from "./Footer";
+import HeroCrown from "./HeroCrown";
+import HeroGallery from "./HeroGallery";
+import Ticker from "./Ticker";
+import ThemePanel from "./ThemePanel";
+import CorePanel from "./CorePanel";
+
+import { useThemeEngine } from "../hooks/useThemeEngine";
+import { useSoundEngine } from "../hooks/useSoundEngine";
 
 export default function Layout({ children }) {
 
-  // ------------------------------------------------------------
-  // ⭐ Bullet‑proof theme loader — prevents white reset forever
-  // ------------------------------------------------------------
-  useEffect(() => {
-    // 1. Load saved values
-    let day = localStorage.getItem("theme-day");
-    let night = localStorage.getItem("theme-night");
+  // ⭐ Global engines (theme + sound)
+  useThemeEngine();
+  useSoundEngine();
 
-    // 2. Bullet‑proof fallback (never allow null)
-    if (!day) {
-      day = gradients.find(g => g.id === "day-1").preview;
-      localStorage.setItem("theme-day", day);
-    }
-
-    if (!night) {
-      night = gradients.find(g => g.id === "night-1").preview;
-      localStorage.setItem("theme-night", night);
-    }
-
-    // ⭐ 3. Restore locked swatch IDs (day + night)
-    const savedDayId = localStorage.getItem("theme-day-id");
-    const savedNightId = localStorage.getItem("theme-night-id");
-
-    if (savedDayId) {
-      document.body.dataset.dayLock = savedDayId;
-    }
-
-    if (savedNightId) {
-      document.body.dataset.nightLock = savedNightId;
-    }
-
-    // 4. Apply CSS variables (never empty)
-    document.body.style.setProperty("--day-bg", day);
-    document.body.style.setProperty("--night-bg", night);
-
-    // 5. Apply correct background BEFORE render
-    const current = document.body.dataset.theme || "day";
-
-    if (current === "day") {
-      document.body.style.background = day;
-    } else {
-      document.body.style.background = night;
-    }
-  }, []);
+  const isDev = !import.meta.env.PROD;
 
   return (
-    <div className="core-layout">
+    <div className="layout-root">
+
+      {/* ⭐ Global Header */}
       <Header />
 
-      {/* ⭐ AdminGate listens for Shift + A */}
-      <AdminGate />
+      {/* ⭐ Page Content */}
+      <main className="page-content">
+        {children}
+      </main>
 
-      {children}
+      {/* ⭐ Global Cinematic Elements */}
+      <HeroCrown />
+      <HeroGallery />
+      <Ticker />
 
-      <DiagnosticsPanel />
+      {/* ⭐ Global Footer */}
+      <Footer />
+
+      {/* ⭐ Admin Theme Panel */}
+      <ThemePanel />
+
+      {/* ⭐ Dev Diagnostics */}
+      {isDev && <CorePanel />}
     </div>
   );
 }

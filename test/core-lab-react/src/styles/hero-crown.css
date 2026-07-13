@@ -1,18 +1,24 @@
 /* ============================================================
-   Hero Crown — Cinematic Day/Night Fade (Corrected Position + Scale)
+   Hero Crown — Cinematic Day/Night Fade (Viewport Centre)
 ============================================================ */
 
 /* ============================================================
-   WRAPPER — Absolute Centre Positioning
+   WRAPPER — True Viewport Centre Positioning
 ============================================================ */
 
 .hero-crown-wrapper {
-  position: absolute;
+  position: fixed;            /* ⭐ TRUE viewport centre */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   width: 480px;
   height: 480px;
+
+  display: flex;              /* ⭐ Centre crowns inside wrapper */
+  justify-content: center;
+  align-items: center;
+
   pointer-events: none;
   z-index: 30;
 }
@@ -22,15 +28,13 @@
 ============================================================ */
 
 .hero-crown-img {
-  position: absolute;
-  top: 0;
-  left: 50%;
+  position: relative;         /* ⭐ No absolute positioning */
   width: 480px;
   height: 480px;
   object-fit: contain;
 
-  /* ⭐ NEW baseline: 200px ABOVE absolute centre */
-  transform: translateX(-50%) translateY(-200px);
+  /* ⭐ EXACT viewport centre */
+  transform: translateY(0);
 
   opacity: 0;
   transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
@@ -78,11 +82,11 @@ body[data-theme="night"] .hero-crown-img.active {
   animation: crownFloat 10s ease-in-out infinite;
 }
 
-/* ⭐ Updated float animation for new baseline */
+/* ⭐ Float animation aligned to true centre */
 @keyframes crownFloat {
-  0%   { transform: translateX(-50%) translateY(-200px); }
-  50%  { transform: translateX(-50%) translateY(-210px); }
-  100% { transform: translateX(-50%) translateY(-200px); }
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
 }
 
 /* ============================================================
