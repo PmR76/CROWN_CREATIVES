@@ -7,7 +7,7 @@
 ============================================================ */
 
 .hero-crown-wrapper {
-  position: fixed;            /* ⭐ TRUE viewport centre */
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -15,7 +15,7 @@
   width: 480px;
   height: 480px;
 
-  display: flex;              /* ⭐ Centre crowns inside wrapper */
+  display: flex;
   justify-content: center;
   align-items: center;
 
@@ -28,7 +28,6 @@
 ============================================================ */
 
 .hero-crown-img {
-  position: relative;         /* ⭐ No absolute positioning */
   width: 480px;
   height: 480px;
   object-fit: contain;
@@ -37,7 +36,7 @@
   transform: translateY(-100px);
 
   opacity: 0;
-  transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
+  transition: opacity 1.8s ease-in-out, filter 1.8s ease-in-out;
 }
 
 /* Active crown (theme-reactive) */
@@ -57,7 +56,7 @@ body[data-theme="day"] .hero-crown-img.active {
 }
 
 /* ============================================================
-   Night Mode Glow — Cool Neon
+   Night Mode Glow — Cool Neon + Pulse
 ============================================================ */
 
 body[data-theme="night"] .hero-crown-img.active {

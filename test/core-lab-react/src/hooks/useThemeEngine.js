@@ -1,15 +1,22 @@
 // ============================================================
-// useThemeEngine.js — Crown Creatives Unified Theme Engine
+// useThemeEngine.js — Crown Creatives Unified Theme Engine (GR1)
 // ============================================================
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function useThemeEngine() {
+
+  // ⭐ Internal React state (this was missing)
+  const [theme, setTheme] = useState("day");
 
   // ------------------------------------------------------------
   // APPLY THEME — sets dataset.theme + correct background
   // ------------------------------------------------------------
   function applyTheme(nextTheme) {
+
+    // Update React state
+    setTheme(nextTheme);
+
     // Update dataset theme
     document.body.dataset.theme = nextTheme;
 
@@ -48,9 +55,10 @@ export function useThemeEngine() {
   }, []);
 
   // ------------------------------------------------------------
-  // PUBLIC API
+  // PUBLIC API — NOW RETURNS THEME (GR1 FIX)
   // ------------------------------------------------------------
   return {
+    theme,              // ⭐ THIS FIXES HERO-CROWN
     toggleTheme,
     setThemeDirect: applyTheme
   };
