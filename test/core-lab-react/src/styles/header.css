@@ -26,7 +26,7 @@
   font-family: "Cinzel Decorative", serif;
 
   z-index: 1000;
-  pointer-events: none; /* crown + glow don't block UI */
+  pointer-events: none;
 }
 
 .hero-header-left,
@@ -34,7 +34,7 @@
 .hero-header-center {
   display: flex;
   align-items: center;
-  pointer-events: auto; /* toggles remain clickable */
+  pointer-events: auto;
 }
 
 /* ============================================================
@@ -79,7 +79,6 @@ body[data-theme="night"] .reduced-crown {
   text-align: center;
 }
 
-/* Day vs Night text */
 body[data-theme="day"] .cc-header-title,
 body[data-theme="day"] .cc-header-tagline,
 body[data-theme="day"] .cc-header-nav button {
@@ -192,7 +191,6 @@ body[data-theme="night"] .theme-toggle-icon {
   transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* Hover glow */
 .sound-toggle:hover .sound-toggle-icon {
   filter:
     drop-shadow(0 0 20px rgba(255, 255, 255, 1))
@@ -200,7 +198,6 @@ body[data-theme="night"] .theme-toggle-icon {
     drop-shadow(0 0 60px rgba(255, 255, 255, 0.7));
 }
 
-/* Night glow */
 body[data-theme="night"] .sound-toggle-icon {
   filter:
     drop-shadow(0 0 14px rgba(255, 200, 120, 0.85))
@@ -215,7 +212,6 @@ body[data-theme="night"] .sound-toggle:hover .sound-toggle-icon {
     drop-shadow(0 0 60px rgba(255, 120, 40, 0.7));
 }
 
-/* Pulse when playing */
 .sound-toggle-icon.playing {
   animation: pulseGlow 1.4s infinite ease-in-out;
 }

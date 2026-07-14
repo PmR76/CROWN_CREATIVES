@@ -1,13 +1,11 @@
 /* ============================================================
-   CROWN CREATIVES — CINEMATIC GRADIENT LIBRARY
-   Unified + Production Ready
+   CROWN CREATIVES — CINEMATIC GRADIENT LIBRARY (GR1)
 ============================================================ */
 
 :root {
   /* ============================================================
      DAY THEMES — Warm, Magical, Cinematic
   ============================================================ */
-
   --grad-sunrise: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
   --grad-warm-daylight: linear-gradient(135deg, #ffe0b2, #ffd54f);
   --grad-soft-sky: linear-gradient(135deg, #b3e5fc, #e1f5fe, #ffffff);
@@ -16,7 +14,6 @@
   /* ============================================================
      NIGHT THEMES — Deep, Neon, Cinematic
   ============================================================ */
-
   --grad-midnight-indigo: linear-gradient(135deg, #1a237e, #283593, #3949ab);
   --grad-royal-night: linear-gradient(135deg, #4a148c, #12005e, #000000);
   --grad-aurora: linear-gradient(135deg, #00c9ff, #92fe9d, #7f00ff);
@@ -25,7 +22,6 @@
   /* ============================================================
      ACTIVE GRADIENTS — Controlled by Theme Engine
   ============================================================ */
-
   --active-day-gradient: var(--grad-sunrise);
   --active-night-gradient: var(--grad-midnight-indigo);
 }

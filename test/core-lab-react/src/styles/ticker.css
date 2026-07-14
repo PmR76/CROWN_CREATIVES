@@ -1,5 +1,5 @@
 /* ============================================================
-   TICKER — CONTINUOUS SCROLL + MAGICAL GLOW (FINAL MERGED)
+   TICKER — CONTINUOUS SCROLL + MAGICAL GLOW (GR1)
 ============================================================ */
 
 /* Ticker container */
@@ -7,8 +7,6 @@
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-
-  /* MOVE TICKER UP BY 300PX */
   margin-top: -50px;
 }
 
@@ -53,10 +51,4 @@
 /* Speed variable */
 :root {
   --ticker-speed: 46s;
-}
-.ticker,
-.ticker-container,
-.ticker-wrapper {
-  position: relative;
-  top: 300px;
 }

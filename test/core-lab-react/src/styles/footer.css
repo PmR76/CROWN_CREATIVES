@@ -13,29 +13,25 @@
   position: relative;
   z-index: 10;
 
-  margin-top: 0px;              /* MOVE FOOTER DOWN BY 100PX */
+  margin-top: 0px;
 }
 
 /* ============================================================
    FROSTED GLASS PANEL — MATCHED TO HEADER GLOW
 ============================================================ */
+
 .footer-glass {
   width: 92%;
   max-width: 1400px;
   padding: 28px 32px;
   border-radius: 26px;
 
-  /* MATCH HEADER BACKGROUND */
   background: rgba(255, 255, 255, 0.08);
-
-  /* MATCH HEADER BLUR */
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
 
-  /* MATCH HEADER BORDER */
   border: 1px solid rgba(255,255,255,0.18);
 
-  /* MATCH HEADER GLOW INTENSITY */
   box-shadow:
     0 0 26px rgba(255,255,255,0.45),
     0 0 60px rgba(0,0,0,0.35);
@@ -46,7 +42,6 @@
 
   transition: outline 0.25s ease;
 
-  /* GLOW PULSE — EXACT MATCH TO HEADER + CARDS */
   animation: headerGlow var(--glow-speed, 6s) ease-in-out infinite;
 }
 
@@ -131,13 +126,9 @@
 /* ============================================================
    SHARED GLOW ANIMATION (HEADER + CARDS + FOOTER)
 ============================================================ */
+
 @keyframes headerGlow {
   0%   { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
   50%  { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
   100% { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
-}
-.cc-footer,
-footer {
-  position: relative;
-  top: 300px;
 }

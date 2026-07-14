@@ -1,14 +1,11 @@
 /* ============================================================
-   HERO GALLERY — DRAGGABLE LANE VERSION
+   HERO GALLERY — DRAGGABLE LANE VERSION (GR1)
 ============================================================ */
 
 .hero-gallery {
   width: 100%;
   max-width: 1400px;
-
-  /* ⭐ Overlap navigation by 100px */
   margin: -100px auto 80px auto;
-
   display: flex;
   justify-content: center;
   gap: 24px;
@@ -16,29 +13,29 @@
   z-index: 20;
 }
 
-/* Container: MUST have height for movement + dragging */
+/* ⭐ FIX: Give gallery real height so footer sits correctly */
 .hero-gallery-container {
   position: relative;
   width: 100%;
-  height: auto;
+  height: 70vh;        /* <— FIXED: prevents huge empty space */
+  min-height: 600px;   /* <— fallback for small screens */
   pointer-events: none;
   z-index: 20;
 }
 
-/* Lanes: draggable, free-positioned */
 .hero-gallery-lane {
-  position: absolute;        /* ⭐ required for dragging */
-  top: 0;                    /* ⭐ remove vertical lock */
-  left: 0;                   /* ⭐ starting point */
-  transform: none;           /* ⭐ remove centering lock */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: none;
 
   width: 260px;
   height: 70vh;
   max-height: 600px;
   overflow: hidden;
 
-  pointer-events: auto;      /* ⭐ allow dragging */
-  cursor: grab;              /* ⭐ visual cue */
+  pointer-events: auto;
+  cursor: grab;
 
   display: flex;
   align-items: center;
@@ -51,7 +48,6 @@
   cursor: grabbing;
 }
 
-/* Images */
 .hero-gallery-img {
   width: 100%;
   height: 100%;
@@ -72,7 +68,6 @@
   filter: blur(0.5px);
 }
 
-/* Glow overlay */
 .hero-gallery-glow-overlay {
   position: fixed;
   inset: 0;

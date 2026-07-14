@@ -1,5 +1,5 @@
 // ============================================================
-// Layout.jsx — Global Cinematic Frame for Crown Creatives
+// Layout.jsx — Global Cinematic Frame for Crown Creatives (GR1)
 // ============================================================
 
 import Header from "./Header";
@@ -29,7 +29,6 @@ export default function Layout({ children }) {
         {children}
       </main>
 
-      {/* ⭐ GLOBAL HERO ELEMENTS */}
       <HeroCrown />
       <HeroGallery />
       <Ticker />
@@ -38,6 +37,7 @@ export default function Layout({ children }) {
 
       <ThemePanel />
       {isDev && <CorePanel />}
+
     </div>
   );
 }

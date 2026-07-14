@@ -16,12 +16,10 @@
 .frosted-cards {
   width: 100%;
   max-width: 1400px;
-  margin: 120px auto 120px auto;
-
+  margin: 120px auto;
   display: flex;
   justify-content: center;
   gap: 40px;
-
   padding: 20px;
   z-index: 30;
   position: relative;
@@ -48,10 +46,9 @@
 
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 
-  position: relative; /* Normal mode */
+  position: relative;
 }
 
-/* Hover lift */
 .frosted-card:hover {
   transform: translateY(-6px);
   box-shadow:
@@ -78,7 +75,6 @@
   font-family: 'Cinzel Decorative', serif;
 }
 
-/* Night mode text glow */
 body[data-theme="night"] .frosted-card h3,
 body[data-theme="night"] .frosted-card p {
   color: var(--cinzel-night-color);
@@ -96,7 +92,6 @@ body[data-theme="night"] .frosted-card p {
   z-index: 9999;
 }
 
-/* Optional: paused mode (editor OS) */
 .cards-paused {
   opacity: 0.4;
   pointer-events: none;

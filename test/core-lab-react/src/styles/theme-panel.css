@@ -1,6 +1,5 @@
 /* ============================================================
-   Crown Creatives Editor OS — Admin Panel Styling
-   Replaces old ThemePanel styles
+   Crown Creatives Editor OS — Admin Panel Styling (GR1)
 ============================================================ */
 
 /* ============================================================
@@ -94,7 +93,6 @@
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
 }
 
-/* Night mode glow */
 body[data-theme="night"] .swatch.active {
   outline: 3px solid #88ccff;
   box-shadow: 0 0 12px rgba(120, 200, 255, 0.8);
