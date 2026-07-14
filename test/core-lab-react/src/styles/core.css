@@ -50,3 +50,10 @@ body[data-theme="night"] .hero-crown-img.active {
   50%  { transform: translateX(-50%) translateY(100px); }
   100% { transform: translateX(-50%) translateY(100px); }
 }
+.page-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ⭐ FIXES LEFT SHIFT */
+  justify-content: flex-start;
+}

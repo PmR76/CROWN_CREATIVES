@@ -96,3 +96,21 @@ body[data-admin="true"] .hero-crown-wrapper {
   cursor: move;
   pointer-events: auto;
 }
+.hero-crown-img {
+  width: 480px;
+  height: 480px;
+  object-fit: contain;
+  transform: translateY(-100px);
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out, filter 1.8s ease-in-out;
+}
+
+.hero-crown-img.float {
+  animation: crownFloat 10s ease-in-out infinite;
+}
+
+@keyframes crownFloat {
+  0%   { transform: translateY(-100px); }
+  50%  { transform: translateY(-110px); }
+  100% { transform: translateY(-100px); }
+}

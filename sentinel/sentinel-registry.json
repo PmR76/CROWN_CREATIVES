@@ -8,12 +8,19 @@
   {
     "folder": "test/core-lab-react/src",
     "items": [
+      {
+        "folder": "test\\core-lab-react\\src\\admin",
+        "items": [
+          "AdminContext.jsx",
+          "AdminGate.jsx",
+          "AdminPanel.jsx"
+        ]
+      },
       "App.jsx",
       {
         "folder": "test\\core-lab-react\\src\\components",
         "items": [
           "Background3D.jsx",
-          "Cards.jsx",
           "CorePanel.jsx",
           "DiagnosticsPanel.jsx",
           "Footer.jsx",
@@ -73,7 +80,6 @@
         "folder": "test\\core-lab-react\\src\\styles",
         "items": [
           "background3d.css",
-          "cards.css",
           "core.css",
           "corepanel.css",
           "diagnostics.css",

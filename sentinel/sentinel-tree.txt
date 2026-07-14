@@ -1,10 +1,13 @@
 📁 assets
    🟢 ❌ Missing folder: assets
 📁 test/core-lab-react/src
+   📁 test\core-lab-react\src\admin
+      🟢 AdminContext.jsx
+      🟢 AdminGate.jsx
+      🟢 AdminPanel.jsx
    🟢 App.jsx
    📁 test\core-lab-react\src\components
       🟢 Background3D.jsx
-      🟢 Cards.jsx
       🟢 CorePanel.jsx
       🟢 DiagnosticsPanel.jsx
       🟢 Footer.jsx
@@ -40,7 +43,6 @@
       🟢 SoundEngine.js
    📁 test\core-lab-react\src\styles
       🟢 background3d.css
-      🟢 cards.css
       🟢 core.css
       🟢 corepanel.css
       🟢 diagnostics.css
