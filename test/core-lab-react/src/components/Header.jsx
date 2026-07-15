@@ -9,21 +9,32 @@ import { useSoundEngine } from "../hooks/useSoundEngine.js";
 export default function Header() {
   const { toggleSound } = useSoundEngine();
 
+  // ------------------------------------------------------------
+  // THEME TOGGLE — Corrected + Working
+  // ------------------------------------------------------------
   function toggleTheme() {
     const current = document.body.dataset.theme || "day";
     const next = current === "day" ? "night" : "day";
 
+    // Set theme
     document.body.dataset.theme = next;
 
+    // Apply background from saved values
+    const dayBg = localStorage.getItem("theme-day");
+    const nightBg = localStorage.getItem("theme-night");
+
+    if (next === "day" && dayBg) {
+      document.body.style.background = dayBg;
+    } else if (next === "night" && nightBg) {
+      document.body.style.background = nightBg;
+    }
+
+    // Notify all components (HeroCrown, Gallery, Footer, etc.)
     window.dispatchEvent(
       new CustomEvent("theme-set", {
         detail: next,
       })
     );
-
-    const day = localStorage.getItem("theme-day");
-    const night = localStorage.getItem("theme-night");
-    document.body.style.background = next === "day" ? day : night;
   }
 
   return (
@@ -43,7 +54,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* CENTER — Crown, Title, Tagline, Nav (ALL CENTERED) */}
+      {/* CENTER — Crown, Title, Tagline, Nav */}
       <div className="hero-header-center">
         <img
           src="/assets/icons/head-crown.svg"
