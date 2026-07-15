@@ -1,65 +1,33 @@
 // ============================================================
-// useThemeEngine.js — Crown Creatives Unified Theme Engine (GR1)
+// useThemeEngine.js — Theme Hook for Components (GR1)
 // ============================================================
 
 import { useEffect, useState } from "react";
+import { initThemeEngine, setThemeDirect as setThemeDirectEngine } from "../theme/themeEngine.js";
 
 export function useThemeEngine() {
+  const [theme, setTheme] = useState(
+    document.body.dataset.theme || "day"
+  );
 
-  // ⭐ Internal React state (this was missing)
-  const [theme, setTheme] = useState("day");
-
-  // ------------------------------------------------------------
-  // APPLY THEME — sets dataset.theme + correct background
-  // ------------------------------------------------------------
-  function applyTheme(nextTheme) {
-
-    // Update React state
-    setTheme(nextTheme);
-
-    // Update dataset theme
-    document.body.dataset.theme = nextTheme;
-
-    // Load saved gradients
-    const day = localStorage.getItem("theme-day");
-    const night = localStorage.getItem("theme-night");
-
-    // Apply correct background immediately
-    document.body.style.background =
-      nextTheme === "day" ? day : night;
-
-    // Dispatch theme-set event (AdminPanel + Layout.jsx listen)
-    window.dispatchEvent(
-      new CustomEvent("theme-set", { detail: nextTheme })
-    );
-  }
-
-  // ------------------------------------------------------------
-  // TOGGLE THEME — day ↔ night
-  // ------------------------------------------------------------
-  function toggleTheme() {
-    const current = document.body.dataset.theme || "day";
-    const next = current === "day" ? "night" : "day";
-    applyTheme(next);
-  }
-
-  // ------------------------------------------------------------
-  // INITIALIZE — ensure dataset.theme exists + apply background
-  // ------------------------------------------------------------
   useEffect(() => {
-    const existing = document.body.dataset.theme;
+    // Ensure initial theme is applied once
+    initThemeEngine();
 
-    // Default to day if missing
-    const initial = existing || "day";
-    applyTheme(initial);
+    const handler = (e) => {
+      setTheme(e.detail);
+    };
+
+    window.addEventListener("theme-set", handler);
+
+    return () => {
+      window.removeEventListener("theme-set", handler);
+    };
   }, []);
 
-  // ------------------------------------------------------------
-  // PUBLIC API — NOW RETURNS THEME (GR1 FIX)
-  // ------------------------------------------------------------
-  return {
-    theme,              // ⭐ THIS FIXES HERO-CROWN
-    toggleTheme,
-    setThemeDirect: applyTheme
+  const setThemeDirect = (next) => {
+    setThemeDirectEngine(next);
   };
+
+  return { theme, setThemeDirect };
 }

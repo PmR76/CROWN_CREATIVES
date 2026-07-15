@@ -1,6 +1,6 @@
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import Background3D from "../components/Background3D";
+import Footer from "../components/Footer";
 import Ticker from "../components/Ticker";
 import HeroCrown from "../components/HeroCrown";
 import HeroGallery from "../components/HeroGallery";

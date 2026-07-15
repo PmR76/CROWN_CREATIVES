@@ -2,44 +2,21 @@
 // Header.jsx — Cinematic Centered Crown + Nav (GR1)
 // ============================================================
 
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/header.css";
 import { useSoundEngine } from "../hooks/useSoundEngine.js";
+import { initThemeEngine, toggleTheme } from "../theme/themeEngine.js";
 
 export default function Header() {
   const { toggleSound } = useSoundEngine();
 
-  // ------------------------------------------------------------
-  // THEME TOGGLE — Corrected + Working
-  // ------------------------------------------------------------
-  function toggleTheme() {
-    const current = document.body.dataset.theme || "day";
-    const next = current === "day" ? "night" : "day";
-
-    // Set theme
-    document.body.dataset.theme = next;
-
-    // Apply background from saved values
-    const dayBg = localStorage.getItem("theme-day");
-    const nightBg = localStorage.getItem("theme-night");
-
-    if (next === "day" && dayBg) {
-      document.body.style.background = dayBg;
-    } else if (next === "night" && nightBg) {
-      document.body.style.background = nightBg;
-    }
-
-    // Notify all components (HeroCrown, Gallery, Footer, etc.)
-    window.dispatchEvent(
-      new CustomEvent("theme-set", {
-        detail: next,
-      })
-    );
-  }
+  useEffect(() => {
+    initThemeEngine();
+  }, []);
 
   return (
     <header className="hero-header">
-      {/* LEFT — Sound */}
+
       <div className="hero-header-left">
         <button
           id="soundToggle"
@@ -54,7 +31,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* CENTER — Crown, Title, Tagline, Nav */}
       <div className="hero-header-center">
         <img
           src="/assets/icons/head-crown.svg"
@@ -63,6 +39,7 @@ export default function Header() {
         />
 
         <h1 className="cc-header-title">Crown Creatives</h1>
+
         <p className="cc-header-tagline">
           Artistry • Resilience • Imagination
         </p>
@@ -79,7 +56,6 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* RIGHT — Theme */}
       <div className="hero-header-right">
         <button
           id="themeToggle"
@@ -93,6 +69,7 @@ export default function Header() {
           />
         </button>
       </div>
+
     </header>
   );
 }

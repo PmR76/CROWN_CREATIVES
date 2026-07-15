@@ -1,0 +1,16 @@
+/* ============================================================
+   Theme CSS — Day/Night Background Gradients (GR1)
+============================================================ */
+
+:root {
+  --theme-day-gradient: radial-gradient(circle at top, #ffe9c0 0%, #ffb3c0 40%, #ff7aa2 80%);
+  --theme-night-gradient: radial-gradient(circle at top, #050816 0%, #0b1024 40%, #141b3a 80%);
+}
+
+body[data-theme="day"] {
+  background: var(--theme-day-gradient);
+}
+
+body[data-theme="night"] {
+  background: var(--theme-night-gradient);
+}

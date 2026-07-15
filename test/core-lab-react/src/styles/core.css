@@ -1,11 +1,41 @@
 /* ============================================================
-   Core Layout — Global Page Structure (GR1)
+   Core Layout — Global Page Structure (GR1 Stable)
+   Fixes hero crown spacing, header overlap, gallery alignment
 ============================================================ */
 
 .page-content {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  /* ⭐ Natural stacking instead of forced top alignment */
   justify-content: flex-start;
+
+  /* ⭐ Do NOT center all children horizontally */
+  /* Hero sections handle their own centering */
+  align-items: stretch;
+
+  /* ⭐ Prevent layout collapse */
+  min-height: 100vh;
+
+  /* ⭐ Allow hero sections to push down naturally */
+  position: relative;
+}
+
+/* ============================================================
+   Section Defaults — Ensures natural vertical flow
+============================================================ */
+
+section {
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+/* ============================================================
+   Fix global overflow issues (gallery lanes, crown float)
+============================================================ */
+
+body, html {
+  overflow-x: hidden;
 }
