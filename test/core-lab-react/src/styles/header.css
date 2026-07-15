@@ -1,12 +1,12 @@
 /* ============================================================
-   CROWN CREATIVES — CINEMATIC HEADER
-   Magical Glow • Neon Toggles • Cinzel Decorative
+CROWN CREATIVES — CINEMATIC HEADER
+Magical Glow • Neon Toggles • Cinzel Decorative
 ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
 
 /* ============================================================
-   HEADER WRAPPER — Fixed Cinematic Bar
+HEADER WRAPPER — Fixed Cinematic Bar
 ============================================================ */
 
 .hero-header {
@@ -15,42 +15,48 @@
   left: 0;
   right: 0;
   height: 140px;
-
   padding: 20px 32px 12px 32px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   background: transparent;
   font-family: "Cinzel Decorative", serif;
-
   z-index: 1000;
   pointer-events: none;
 }
 
 .hero-header-left,
-.hero-header-right,
-.hero-header-center {
+.hero-header-right {
   display: flex;
   align-items: center;
+  justify-content: center;
   pointer-events: auto;
 }
 
+/* CENTER BLOCK — STACKED + FULLY CENTERED */
+
+.hero-header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  text-align: center;
+}
+
 /* ============================================================
-   HEADER CROWN — Always Visible (Small Crown)
+HEADER CROWN — Centered Above Title
 ============================================================ */
 
 .reduced-crown {
   width: 108px;
   height: auto;
-  margin-bottom: 4px;
-
+  margin-bottom: 6px;
+  display: block;
   filter:
     drop-shadow(0 0 12px rgba(255, 255, 255, 0.9))
     drop-shadow(0 0 24px rgba(255, 215, 120, 0.7))
     drop-shadow(0 0 36px rgba(255, 180, 80, 0.5));
-
   transition: filter 0.4s ease;
 }
 
@@ -62,20 +68,20 @@ body[data-theme="night"] .reduced-crown {
 }
 
 /* ============================================================
-   HEADER TITLE + TAGLINE — Cinematic Typography
+HEADER TITLE + TAGLINE — Cinematic Typography
 ============================================================ */
 
 .cc-header-title {
   font-size: 1.6rem;
   letter-spacing: 0.08em;
-  margin: 6px 0 2px 0;
+  margin: 4px 0 2px 0;
   text-align: center;
 }
 
 .cc-header-tagline {
   font-size: 0.85rem;
   opacity: 0.85;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -94,7 +100,7 @@ body[data-theme="night"] .cc-header-nav button {
 }
 
 /* ============================================================
-   NAVIGATION — Cinematic Glow
+NAVIGATION — Centered Under Tagline
 ============================================================ */
 
 .cc-header-nav {
@@ -119,7 +125,7 @@ body[data-theme="night"] .cc-header-nav button {
 }
 
 /* ============================================================
-   THEME TOGGLE — Neon Glow
+THEME TOGGLE — Neon Glow
 ============================================================ */
 
 .theme-toggle {
@@ -128,10 +134,10 @@ body[data-theme="night"] .cc-header-nav button {
   padding: 0;
   margin: 0;
   cursor: pointer;
-
   display: flex;
   align-items: center;
   transition: transform 0.3s ease;
+  pointer-events: auto;
 }
 
 .theme-toggle:hover {
@@ -141,12 +147,10 @@ body[data-theme="night"] .cc-header-nav button {
 .theme-toggle-icon {
   width: 66px;
   height: 66px;
-
   filter:
     drop-shadow(0 0 14px rgba(255, 255, 255, 0.85))
     drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
     drop-shadow(0 0 42px rgba(255, 255, 255, 0.45));
-
   transition: filter 0.4s ease;
 }
 
@@ -158,7 +162,7 @@ body[data-theme="night"] .theme-toggle-icon {
 }
 
 /* ============================================================
-   SOUND TOGGLE — Reactive Glow + Pulse
+SOUND TOGGLE — Reactive Glow + Pulse
 ============================================================ */
 
 .sound-toggle {
@@ -167,12 +171,11 @@ body[data-theme="night"] .theme-toggle-icon {
   padding: 0;
   margin: 0;
   cursor: pointer;
-
   display: flex;
   align-items: center;
   transition: transform 0.3s ease;
-
   z-index: 9999;
+  pointer-events: auto;
 }
 
 .sound-toggle:hover {
@@ -182,12 +185,10 @@ body[data-theme="night"] .theme-toggle-icon {
 .sound-toggle-icon {
   width: 66px;
   height: 66px;
-
   filter:
     drop-shadow(0 0 14px rgba(255, 255, 255, 0.85))
     drop-shadow(0 0 28px rgba(255, 255, 255, 0.65))
     drop-shadow(0 0 42px rgba(255, 255, 255, 0.45));
-
   transition: filter 0.4s ease, transform 0.4s ease;
 }
 
@@ -217,7 +218,7 @@ body[data-theme="night"] .sound-toggle:hover .sound-toggle-icon {
 }
 
 @keyframes pulseGlow {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.08); }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
   100% { transform: scale(1); }
 }

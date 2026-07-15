@@ -1,5 +1,5 @@
 // ============================================================
-// Header.jsx — Final Sound + Theme Toggle + Crown Fade
+// Header.jsx — Cinematic Centered Crown + Nav (GR1)
 // ============================================================
 
 import React from "react";
@@ -9,29 +9,26 @@ import { useSoundEngine } from "../hooks/useSoundEngine.js";
 export default function Header() {
   const { toggleSound } = useSoundEngine();
 
-  // ⭐ NEW — Correct theme toggle logic
   function toggleTheme() {
     const current = document.body.dataset.theme || "day";
     const next = current === "day" ? "night" : "day";
 
-    // Update dataset theme
     document.body.dataset.theme = next;
 
-    // Dispatch theme-set event (AdminPanel + Layout.jsx listen for this)
     window.dispatchEvent(
-      new CustomEvent("theme-set", { detail: next })
+      new CustomEvent("theme-set", {
+        detail: next,
+      })
     );
 
-    // Apply correct background immediately
     const day = localStorage.getItem("theme-day");
     const night = localStorage.getItem("theme-night");
-
     document.body.style.background = next === "day" ? day : night;
   }
 
   return (
     <header className="hero-header">
-      {/* SOUND TOGGLE */}
+      {/* LEFT — Sound */}
       <div className="hero-header-left">
         <button
           id="soundToggle"
@@ -46,9 +43,8 @@ export default function Header() {
         </button>
       </div>
 
-      {/* CENTER */}
+      {/* CENTER — Crown, Title, Tagline, Nav (ALL CENTERED) */}
       <div className="hero-header-center">
-        {/* ✔ Correct crown */}
         <img
           src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
@@ -72,7 +68,7 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* THEME TOGGLE */}
+      {/* RIGHT — Theme */}
       <div className="hero-header-right">
         <button
           id="themeToggle"

@@ -1,13 +1,13 @@
 // ============================================================
 // Ticker.jsx — Editable, Draggable, Pausing Cinematic Ticker
-// Crown Creatives Editor OS Integration
+// Crown Creatives Editor OS Integration (GR1 Stable)
 // ============================================================
 
 import { useEffect, useRef } from "react";
 import { useAdmin } from "../admin/AdminContext";
 import "../styles/ticker.css";
 
-export default function Ticker({ tickerText }) {
+export default function Ticker() {
   const { isAdmin, isPaused } = useAdmin();   // ⭐ Global admin + pause state
   const tickerRef = useRef(null);
 
@@ -91,19 +91,21 @@ export default function Ticker({ tickerText }) {
   }, [isAdmin]);
 
   // ------------------------------------------------------------
-  // RENDER
+  // RENDER — STATIC TEXT (Guaranteed Visible)
   // ------------------------------------------------------------
   return (
     <div className={`ticker ${isPaused ? "ticker-paused" : ""}`} ref={tickerRef}>
       <div className="ticker-track">
-        <span>{tickerText}</span>
-        <span>{tickerText}</span>
-        <span>{tickerText}</span>
+
+        <span>CROWN CREATIVES — IMAGINATION BECOMES REALITY</span>
+        <span>CINEMATIC UI • MAGICAL GRADIENTS • EDITOR OS</span>
+        <span>ARTISTRY • RESILIENCE • IMAGINATION</span>
 
         {/* Duplicate for seamless loop */}
-        <span>{tickerText}</span>
-        <span>{tickerText}</span>
-        <span>{tickerText}</span>
+        <span>CROWN CREATIVES — IMAGINATION BECOMES REALITY</span>
+        <span>CINEMATIC UI • MAGICAL GRADIENTS • EDITOR OS</span>
+        <span>ARTISTRY • RESILIENCE • IMAGINATION</span>
+
       </div>
     </div>
   );

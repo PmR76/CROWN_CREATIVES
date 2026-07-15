@@ -1,5 +1,5 @@
 // ============================================================
-// HeroCrown.jsx — Cinematic Crown (Corrected + Admin Drag)
+// HeroCrown.jsx — Cinematic Crown (8s Transition + Admin Drag)
 // ============================================================
 
 import { useEffect } from "react";
@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export default function HeroCrown() {
 
   // ------------------------------------------------------------
-  // THEME SWITCHING — Day ↔ Night
+  // THEME SWITCHING — Day ↔ Night (with 50ms fade sync)
   // ------------------------------------------------------------
   useEffect(() => {
     const day = document.getElementById("hero-crown-day");
@@ -17,19 +17,30 @@ export default function HeroCrown() {
 
     const apply = (theme) => {
       if (theme === "night") {
+        // Fade day out
         day.classList.remove("active");
-        night.classList.add("active");
+
+        // Delay night fade-in so CSS can animate
+        setTimeout(() => {
+          night.classList.add("active");
+        }, 50);
+
       } else {
         night.classList.remove("active");
-        day.classList.add("active");
+
+        setTimeout(() => {
+          day.classList.add("active");
+        }, 50);
       }
     };
 
+    // Initial theme
     const initialTheme =
       document.body.dataset.theme === "night" ? "night" : "day";
 
     apply(initialTheme);
 
+    // Listen for theme changes
     const handler = (e) => apply(e.detail);
     window.addEventListener("theme-set", handler);
 
@@ -83,7 +94,7 @@ export default function HeroCrown() {
     <div className="hero-crown-wrapper">
       <img
         id="hero-crown-day"
-        className="hero-crown-img float"
+        className="hero-crown-img float active"
         src="/assets/icons/day-crown.svg"
         alt="Day Crown"
       />

@@ -1,5 +1,5 @@
 // ============================================================
-// main.jsx — React Entry Point (STRICT MODE REMOVED)
+// main.jsx — React Entry Point (GR1 Stable)
 // ============================================================
 
 // GLOBAL ERROR VISIBILITY
@@ -15,19 +15,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
-// ⭐ Crown Creatives Editor OS — Global Admin Provider
+// Crown Creatives Editor OS — Global Admin Provider
 import { AdminProvider } from "./admin/AdminContext";
 
 // ============================================================
-// GLOBAL CSS — Loaded once
+// GLOBAL CSS — Loaded once (NO homepage CSS here)
 // ============================================================
 import "./styles/header.css";
 import "./styles/footer.css";
-import "./styles/frosted-cards.css";
-import "./styles/ticker.css";
 import "./styles/corepanel.css";
-import "./styles/hero-crown.css";
-import "./styles/hero-gallery.css";
 import "./styles/theme-panel.css";
 import "./styles/background3d.css";
 

@@ -4,9 +4,6 @@
 
 import Header from "./Header";
 import Footer from "./Footer";
-import HeroCrown from "./HeroCrown";
-import HeroGallery from "./HeroGallery";
-import Ticker from "./Ticker";
 import ThemePanel from "./ThemePanel";
 import CorePanel from "./CorePanel";
 
@@ -28,10 +25,6 @@ export default function Layout({ children }) {
       <main className="page-content">
         {children}
       </main>
-
-      <HeroCrown />
-      <HeroGallery />
-      <Ticker />
 
       <Footer />
 
