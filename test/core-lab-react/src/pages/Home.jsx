@@ -16,9 +16,6 @@ export default function Home() {
   return (
     <div className="home-page">
 
-      {/* HERO CROWN */}
-      <HeroCrown />
-
       {/* HERO GALLERY */}
       <HeroGallery />
 
