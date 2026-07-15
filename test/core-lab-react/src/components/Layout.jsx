@@ -1,5 +1,5 @@
 // ============================================================
-// Layout.jsx — Global Cinematic Frame for Crown Creatives (GR1)
+// Layout.jsx — GR1 Unified Cinematic Zone
 // ============================================================
 
 import Header from "./Header";
@@ -13,33 +13,27 @@ import { useSoundEngine } from "../hooks/useSoundEngine";
 
 export default function Layout({ children }) {
 
-  // ------------------------------------------------------------
-  // HOOKS — MUST BE TOP LEVEL AND ALWAYS IN SAME ORDER
-  // ------------------------------------------------------------
   useThemeEngine();
   useSoundEngine();
 
   const isDev = !import.meta.env.PROD;
 
-  // ------------------------------------------------------------
-  // RENDER — PURE JSX, NO HOOKS, NO STATE UPDATES
-  // ------------------------------------------------------------
   return (
     <div className="layout-root">
 
       <Header />
 
-      {/* ⭐ 3D Background — Mounted Immediately Under Header */}
-      <Background3D />
-
-      <main className="page-content">
-        {children}
-      </main>
+      {/* ⭐ Unified Cinematic Zone */}
+      <section className="cinematic-zone">
+        <Background3D />
+        <div className="cinematic-content">
+          {children}
+        </div>
+      </section>
 
       <Footer />
 
       <ThemePanel />
-
       {isDev && <CorePanel />}
 
     </div>

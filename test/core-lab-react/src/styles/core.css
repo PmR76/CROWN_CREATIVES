@@ -39,3 +39,39 @@ section {
 body, html {
   overflow-x: hidden;
 }
+/* ============================================================
+   CINEMATIC ZONE — Unified Sky + Crown + Hero Area
+============================================================ */
+
+.cinematic-zone {
+  position: relative;
+  width: 100%;
+  min-height: 680px; /* tighter, more cinematic */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px; /* tighter under header */
+}
+
+
+.background-3d {
+  position: absolute;
+  top: -120px; /* pulls nebula upward behind header */
+  left: 0;
+  width: 100%;
+  height: calc(100% + 200px); /* extends sky downward */
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+.cinematic-content {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1100px; /* tighter */
+  padding: 20px 30px; /* tighter */
+  margin-top: -40px; /* pulls content upward into the cinematic zone */
+}
+
