@@ -1,5 +1,5 @@
 // ============================================================
-// Background3D.jsx — GR1 Cinematic Starfield + Nebula Layer
+// Background3D.jsx — GR1 Cinematic Nebula Pulse + Crown Sync
 // ============================================================
 
 import { useEffect, useRef } from "react";
@@ -40,7 +40,7 @@ export default function Background3D() {
     }
 
     // ------------------------------------------------------------
-    // NEBULA — Soft drifting clouds
+    // NEBULA — Drift + Pulse + Magical Shimmer
     // ------------------------------------------------------------
     const nebula = [];
     const nebulaCount = 5;
@@ -49,10 +49,23 @@ export default function Background3D() {
       nebula.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 400 + 250, // radius
+        r: Math.random() * 400 + 250,
         dx: (Math.random() - 0.5) * 0.1,
         dy: (Math.random() - 0.5) * 0.1,
+        shimmerOffset: Math.random() * Math.PI * 2,
       });
+    }
+
+    // Pulse timer
+    let pulseTime = 0;
+
+    // Crown sync (reads CSS variable)
+    function getCrownGlow() {
+      const glow = getComputedStyle(document.body)
+        .getPropertyValue("--crown-glow")
+        .trim();
+
+      return glow ? parseFloat(glow) : 1;
     }
 
     // ------------------------------------------------------------
@@ -66,7 +79,16 @@ export default function Background3D() {
       ctx.clearRect(0, 0, w, h);
 
       // ------------------------------------------------------------
-      // Draw nebula (soft drifting clouds)
+      // Nebula Pulse — breathing luminosity wave
+      // ------------------------------------------------------------
+      pulseTime += 0.005;
+
+      const themePulse = 1 + Math.sin(pulseTime) * 0.15;
+      const crownPulse = getCrownGlow() * 0.2 + 1;
+      const combinedPulse = themePulse * crownPulse;
+
+      // ------------------------------------------------------------
+      // Draw nebula (drift + pulse + shimmer)
       // ------------------------------------------------------------
       for (let n of nebula) {
         n.x += n.dx;
@@ -78,13 +100,23 @@ export default function Background3D() {
         if (n.y < -n.r) n.y = h + n.r;
         if (n.y > h + n.r) n.y = -n.r;
 
+        // Magical shimmer
+        n.shimmerOffset += 0.002;
+        const shimmer = 1 + Math.sin(n.shimmerOffset) * 0.1;
+
         const gradient = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
 
         if (theme === "night") {
-          gradient.addColorStop(0, "rgba(120, 80, 255, 0.35)");
+          gradient.addColorStop(
+            0,
+            `rgba(120, 80, 255, ${0.35 * combinedPulse * shimmer})`
+          );
           gradient.addColorStop(1, "rgba(20, 10, 40, 0)");
         } else {
-          gradient.addColorStop(0, "rgba(255, 200, 150, 0.25)");
+          gradient.addColorStop(
+            0,
+            `rgba(255, 200, 150, ${0.25 * combinedPulse * shimmer})`
+          );
           gradient.addColorStop(1, "rgba(255, 230, 200, 0)");
         }
 
