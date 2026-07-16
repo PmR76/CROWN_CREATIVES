@@ -1,0 +1,24 @@
+{
+  "name": "sentinel",
+  "version": "1.0.0",
+  "description": "Crown Creatives Sentinel Watchkeeper",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "handshake": "node index.js --handshake"
+  },
+  "keywords": [
+    "sentinel",
+    "watchkeeper",
+    "diagnostics",
+    "crowncreatives"
+  ],
+  "author": "Pete",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "node-fetch": "^3.3.2"
+  }
+}

@@ -7,7 +7,12 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto; /* single scrollbar */
+  background: transparent !important; /* aurora must be visible */
 }
+
+/* ============================================================
+   Page Content Wrapper
+============================================================ */
 
 .page-content {
   width: 100%;
@@ -37,7 +42,7 @@ section {
 .layout-root {
   margin: 0;
   padding: 0;
-  background: transparent;
+  background: transparent !important; /* remove gradient hills */
   width: 100%;
   min-height: 100vh;
   overflow: visible;
@@ -56,20 +61,34 @@ section {
   align-items: flex-start;
   padding-top: 40px;
   overflow: visible;
+  background: transparent !important; /* remove old gradients */
 }
 
-/* Background canvas */
-.background-3d {
+/* ============================================================
+   Aurora Background Canvas (NEW ENGINE)
+============================================================ */
+
+.background-aurora {
   position: absolute;
-  top: -120px;                 /* restored GR1 */
+  top: -120px;                 /* pull aurora UP */
   left: 0;
   width: 100%;
-  height: calc(100% + 200px);  /* restored GR1 */
+  height: calc(100% + 200px);  /* extend UP, never down */
   pointer-events: none;
   z-index: 1;
+  opacity: 0.85;
 }
 
-/* Cinematic content */
+/* REMOVE OLD BACKGROUND ENGINE */
+.background-3d,
+#webgl-background {
+  display: none !important;
+}
+
+/* ============================================================
+   Cinematic Content
+============================================================ */
+
 .cinematic-content {
   position: relative;
   z-index: 5;
@@ -90,7 +109,7 @@ section {
   height: 70vh;        /* match overlay + lanes */
   min-height: 600px;
   overflow: visible;
-  margin-top: 100px;   /* your adjusted value */
+  margin-top: 100px;
 }
 
 .hero-gallery-lane {
@@ -99,12 +118,10 @@ section {
   overflow: visible;
 }
 
-/* Left lane — shifted 175px left */
 .hero-gallery-left {
   left: calc(50% - 300px - 260px - 175px);
 }
 
-/* Right lane — shifted 175px left */
 .hero-gallery-right {
   left: calc(50% + 300px - 175px);
 }
@@ -136,6 +153,19 @@ section {
 footer {
   position: relative;
   top: -300px;
-  margin-bottom: -300px; /* match top offset */
+  margin-bottom: -300px;
   padding-bottom: 0;
+}
+
+/* ============================================================
+   Sparkle Circle — Electric Blue Neon (GR1)
+============================================================ */
+
+.sparkle-circle {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  filter: blur(12px) drop-shadow(0 0 18px rgba(0, 150, 255, 0.9));
+  opacity: 0.85;
+  pointer-events: none;
 }
