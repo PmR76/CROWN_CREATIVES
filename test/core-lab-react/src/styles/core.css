@@ -1,5 +1,5 @@
 /* ============================================================
-   Core Layout — Global Page Structure (Stable Reset)
+   Core Layout — Global Page Structure (GR1 Stable)
 ============================================================ */
 
 html, body {
@@ -17,6 +17,7 @@ html, body {
   align-items: stretch;
   min-height: 100vh;
   position: relative;
+  overflow: visible;
 }
 
 /* ============================================================
@@ -49,22 +50,21 @@ section {
 .cinematic-zone {
   position: relative;
   width: 100%;
-  min-height: 680px;
+  min-height: 680px; /* GR1 height */
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding-top: 40px;
-  overflow-x: hidden;
-  overflow-y: visible;
+  overflow: visible;
 }
 
 /* Background canvas */
 .background-3d {
   position: absolute;
-  top: -120px;
+  top: -120px;                 /* restored GR1 */
   left: 0;
   width: 100%;
-  height: calc(100% + 200px);
+  height: calc(100% + 200px);  /* restored GR1 */
   pointer-events: none;
   z-index: 1;
 }
@@ -81,15 +81,16 @@ section {
 }
 
 /* ============================================================
-   HERO GALLERY — Lanes shifted 175px left
+   HERO GALLERY — Correct Left/Right Placement (GR1)
 ============================================================ */
 
 .hero-gallery-container {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 70vh;        /* match overlay + lanes */
+  min-height: 600px;
   overflow: visible;
-  margin-top: 200px;
+  margin-top: 100px;   /* your adjusted value */
 }
 
 .hero-gallery-lane {
@@ -109,30 +110,32 @@ section {
 }
 
 /* ============================================================
-   Frosted Cards — Position Adjustments
+   Frosted Cards — GR1 Positioning
 ============================================================ */
 
 .frosted-cards {
   position: relative;
-  left: -200px;   /* move cards left */
-  top: -325px;    /* move cards up */
+  left: -200px;
+  top: -175px;
 }
 
 /* ============================================================
-   Ticker — Position Adjustments
+   Ticker — GR1 Positioning
 ============================================================ */
 
 .ticker {
   position: relative;
-  top: -350px;    /* move ticker up */
-  left: -175px;   /* move ticker left */
+  top: -250px;
+  left: -175px;
 }
 
 /* ============================================================
-   Footer — Position Adjustments
+   Footer — GR1 Positioning + Gap Collapse
 ============================================================ */
 
 footer {
   position: relative;
-  top: -325px;    /* move footer up */
+  top: -300px;
+  margin-bottom: -300px; /* match top offset */
+  padding-bottom: 0;
 }

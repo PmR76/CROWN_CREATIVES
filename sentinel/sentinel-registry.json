@@ -91,6 +91,7 @@
           "hero-gallery.css",
           "sentinel-panel.css",
           "theme-panel.css",
+          "theme.css",
           "ticker.css"
         ]
       },
@@ -103,7 +104,8 @@
       {
         "folder": "test\\core-lab-react\\src\\theme",
         "items": [
-          "theme-rotation.js"
+          "theme-rotation.js",
+          "themeEngine.js"
         ]
       }
     ]
