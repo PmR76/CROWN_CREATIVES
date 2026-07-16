@@ -1,9 +1,6 @@
 {
   "scan": [
-    "assets",
-    "test/core-lab-react/src",
-    "master",
-    "labs"
+    "test/core-lab-react/src"
   ],
   "ignore": [
     "node_modules",
@@ -13,26 +10,16 @@
     "logs"
   ],
   "required": [
-    "assets/icons",
-    "assets/images",
     "test/core-lab-react/src/components",
     "test/core-lab-react/src/styles"
   ],
   "ui": {
     "coreReact": [
       "test/core-lab-react/src/components",
-      "test/core-lab-react/src/styles",
-      "test/core-lab-react/src/shared"
+      "test/core-lab-react/src/styles"
     ],
-    "labs": [
-      "labs"
-    ],
-    "legacy": [
-      "master",
-      "assets/css",
-      "assets/js.disabled",
-      "assets/modules.disabled"
-    ],
+    "labs": [],
+    "legacy": [],
     "componentNames": [
       "Header",
       "Footer",

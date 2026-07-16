@@ -1,11 +1,5 @@
 [
   {
-    "folder": "assets",
-    "items": [
-      "❌ Missing folder: assets"
-    ]
-  },
-  {
     "folder": "test/core-lab-react/src",
     "items": [
       {
@@ -110,18 +104,6 @@
           "themeEngine.js"
         ]
       }
-    ]
-  },
-  {
-    "folder": "master",
-    "items": [
-      "❌ Missing folder: master"
-    ]
-  },
-  {
-    "folder": "labs",
-    "items": [
-      "❌ Missing folder: labs"
     ]
   }
 ]

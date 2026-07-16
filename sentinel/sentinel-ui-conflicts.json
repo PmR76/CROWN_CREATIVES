@@ -1,10 +1,6 @@
 {
-  "legacyActive": [
-    "master"
-  ],
-  "labActive": [
-    "labs"
-  ],
+  "legacyActive": [],
+  "labActive": [],
   "coreActive": [],
   "cssConflicts": [
     {

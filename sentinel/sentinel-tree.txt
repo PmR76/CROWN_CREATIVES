@@ -1,5 +1,3 @@
-📁 assets
-   🟢 ❌ Missing folder: assets
 📁 test/core-lab-react/src
    📁 test\core-lab-react\src\admin
       🟢 AdminContext.jsx
@@ -63,7 +61,3 @@
    📁 test\core-lab-react\src\theme
       🟢 theme-rotation.js
       🟢 themeEngine.js
-📁 master
-   🟢 ❌ Missing folder: master
-📁 labs
-   🟢 ❌ Missing folder: labs
