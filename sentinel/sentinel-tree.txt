@@ -39,6 +39,8 @@
       🟢 Videos.jsx
    📁 test\core-lab-react\src\sentinel
       🟢 GallerySentinel.js
+      🟢 SentinelPanel.tsx
+      🟢 useSentinel.ts
    📁 test\core-lab-react\src\sound
       🟢 SoundEngine.js
    📁 test\core-lab-react\src\styles

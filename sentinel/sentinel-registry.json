@@ -67,7 +67,9 @@
       {
         "folder": "test\\core-lab-react\\src\\sentinel",
         "items": [
-          "GallerySentinel.js"
+          "GallerySentinel.js",
+          "SentinelPanel.tsx",
+          "useSentinel.ts"
         ]
       },
       {

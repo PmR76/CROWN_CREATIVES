@@ -8,8 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Load config
-const configPath = path.join(process.cwd(), "sentinel.config.json");
+// Load config (bulletproof Windows-safe path)
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const configPath = path.join(__dirname, "sentinel.config.json");
 const config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
 
 // Timestamp helper

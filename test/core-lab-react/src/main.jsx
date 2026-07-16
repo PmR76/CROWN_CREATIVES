@@ -1,11 +1,12 @@
 // ============================================================
-// main.jsx — React Entry Point (GR1 Stable)
+// main.jsx — React Entry Point (GR1 Stable + Sentinel)
 // ============================================================
 
 // GLOBAL ERROR VISIBILITY
 window.addEventListener("error", (e) => {
   console.log("GLOBAL ERROR:", e.error);
 });
+
 window.addEventListener("unhandledrejection", (e) => {
   console.log("PROMISE ERROR:", e.reason);
 });
@@ -18,22 +19,26 @@ import App from "./App";
 import { AdminProvider } from "./admin/AdminContext";
 
 // ============================================================
-// GLOBAL CSS — Loaded once (NO homepage CSS here)
+// GLOBAL CSS — Loaded once
 // ============================================================
 import "./styles/header.css";
 import "./styles/footer.css";
 import "./styles/corepanel.css";
 import "./styles/theme-panel.css";
 import "./styles/background3d.css";
-
-/* ⭐ ADD THIS — this loads your cinematic layout + crown positioning */
 import "./styles/core.css";
 
 // ============================================================
-// MOUNT APP — STRICTMODE REMOVED
+// SENTINEL WATCHKEEPER PANEL
+// ============================================================
+import { SentinelPanel } from "./sentinel/SentinelPanel";
+
+// ============================================================
+// MOUNT APP — SINGLE ROOT (Correct)
 // ============================================================
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AdminProvider>
     <App />
+    <SentinelPanel />   {/* ⭐ Now the panel will appear */}
   </AdminProvider>
 );

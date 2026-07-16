@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export function useSentinelStatus() {
   const [status, setStatus] = useState(null);
@@ -8,8 +8,9 @@ export function useSentinelStatus() {
   async function refresh() {
     setLoading(true);
     setError(null);
+
     try {
-      const res = await fetch('http://localhost:5175/sentinel/status');
+      const res = await fetch("http://localhost:5175/sentinel/status");
       const json = await res.json();
       setStatus(json);
     } catch (err) {
@@ -27,6 +28,6 @@ export function useSentinelStatus() {
 }
 
 export async function triggerSentinelHandshake() {
-  const res = await fetch('http://localhost:5175/sentinel/handshake');
+  const res = await fetch("http://localhost:5175/sentinel/handshake");
   return await res.json();
 }

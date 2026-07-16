@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useSentinelStatus, triggerSentinelHandshake } from './useSentinel';
+import React, { useState } from "react";
+import { useSentinelStatus, triggerSentinelHandshake } from "./useSentinel";
 
 export function SentinelPanel() {
-  const { status, loading, error, refresh } = useSentinelStatus();
-  const [handshakeResult, setHandshakeResult] = useState(null);
+  const sentinel = useSentinelStatus();
+  const [handshakeResult, setHandshakeResult] = useState<any>(null);
   const [handshakeLoading, setHandshakeLoading] = useState(false);
 
   async function handleHandshake() {
@@ -12,66 +12,99 @@ export function SentinelPanel() {
       const result = await triggerSentinelHandshake();
       setHandshakeResult(result);
     } catch (err) {
-      console.error('Sentinel handshake error', err);
+      console.error("Sentinel handshake error", err);
     } finally {
       setHandshakeLoading(false);
-      refresh();
+      sentinel.refresh();
     }
   }
+
+  const box = {
+    padding: "6px 10px",
+    borderRadius: "6px",
+    marginTop: "4px",
+    fontSize: "11px",
+    background: "rgba(255,255,255,0.06)",
+    border: "1px solid rgba(255,255,255,0.12)"
+  };
 
   return (
     <div
       style={{
-        position: 'fixed',
-        bottom: 20,
-        right: 20,
-        padding: '12px 16px',
-        borderRadius: 12,
-        background: 'rgba(10, 10, 20, 0.9)',
-        color: '#fff',
-        fontSize: 12,
+        position: "fixed",
+        bottom: "20px",
+        right: "20px",
+        padding: "14px 18px",
+        borderRadius: "14px",
+        background: "rgba(10, 10, 20, 0.92)",
+        color: "#fff",
+        fontSize: "12px",
         zIndex: 99999,
-        boxShadow: '0 0 18px rgba(0, 200, 255, 0.6)'
+        width: "240px",
+        boxShadow: "0 0 22px rgba(0, 200, 255, 0.55)",
+        backdropFilter: "blur(8px)"
       }}
     >
-      <div style={{ marginBottom: 8, fontWeight: 'bold', letterSpacing: '0.08em' }}>
+      <div style={{ fontWeight: "bold", marginBottom: "10px", letterSpacing: "0.08em" }}>
         SENTINEL WATCHKEEPER
       </div>
 
-      {loading ? (
-        <div>Loading status…</div>
-      ) : error ? (
-        <div style={{ color: '#ff8080' }}>Error: {String(error)}</div>
-      ) : status ? (
-        <div style={{ marginBottom: 8 }}>
-          <div>Dev: {status.dev.status} ({status.dev.durationMs} ms)</div>
-          <div>Prod: {status.prod.status} ({status.prod.durationMs} ms)</div>
-        </div>
-      ) : (
-        <div>No status yet.</div>
-      )}
+      <div style={box}>
+        {sentinel.loading && <div>Checking status…</div>}
+        {sentinel.error && <div style={{ color: "#ff8080" }}>Error: {String(sentinel.error)}</div>}
+
+        {sentinel.status && (
+          <div>
+            <div>
+              <strong>Dev:</strong>{" "}
+              <span style={{ color: sentinel.status.dev.ok ? "#00eaff" : "#ff8080" }}>
+                {sentinel.status.dev.status} ({sentinel.status.dev.durationMs}ms)
+              </span>
+            </div>
+
+            <div>
+              <strong>Prod:</strong>{" "}
+              <span style={{ color: sentinel.status.prod.ok ? "#00eaff" : "#ff8080" }}>
+                {sentinel.status.prod.status} ({sentinel.status.prod.durationMs}ms)
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
 
       <button
         onClick={handleHandshake}
         disabled={handshakeLoading}
         style={{
-          marginTop: 6,
-          padding: '6px 10px',
-          borderRadius: 8,
-          border: 'none',
-          cursor: 'pointer',
-          background: 'linear-gradient(135deg, #00c9ff, #7f00ff)',
-          color: '#fff',
-          fontSize: 11,
-          letterSpacing: '0.08em'
+          marginTop: "10px",
+          padding: "8px 12px",
+          borderRadius: "8px",
+          border: "none",
+          cursor: "pointer",
+          background: "linear-gradient(135deg, #00c9ff, #7f00ff)",
+          color: "#fff",
+          fontSize: "12px",
+          letterSpacing: "0.08em",
+          width: "100%"
         }}
       >
-        {handshakeLoading ? 'RUNNING SENTINEL…' : 'RUN SENTINEL HANDSHAKE'}
+        {handshakeLoading ? "RUNNING…" : "RUN SENTINEL HANDSHAKE"}
       </button>
 
       {handshakeResult && (
-        <div style={{ marginTop: 8, maxHeight: 160, overflow: 'auto', fontSize: 10 }}>
-          <pre style={{ whiteSpace: 'pre-wrap' }}>
+        <div
+          style={{
+            marginTop: "10px",
+            maxHeight: "180px",
+            overflow: "auto",
+            fontSize: "10px",
+            background: "rgba(255,255,255,0.04)",
+            padding: "8px",
+            borderRadius: "8px",
+            border: "1px solid rgba(255,255,255,0.1)"
+          }}
+        >
+          <pre style={{ whiteSpace: "pre-wrap" }}>
             {JSON.stringify(handshakeResult.compare, null, 2)}
           </pre>
         </div>
