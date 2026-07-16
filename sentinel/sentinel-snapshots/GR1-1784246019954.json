@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-07-16T23:53:39.953Z",
+  "dev": {
+    "status": 200,
+    "ok": true,
+    "bodyLength": 820
+  },
+  "prod": {
+    "status": 200,
+    "ok": true,
+    "bodyLength": 639
+  },
+  "compare": {
+    "statusMatch": true,
+    "okMatch": true,
+    "bodySizeDelta": 181
+  }
+}
