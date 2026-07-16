@@ -1,0 +1,40 @@
+{
+  "schema": {
+    "version": "1.0.0",
+    "fields": {
+      "env": "dev|prod",
+      "route": "string",
+      "url": "string",
+      "status": "number",
+      "ok": "boolean",
+      "durationMs": "number",
+      "bodyLength": "number",
+      "errors": "array",
+      "timestamp": "string"
+    }
+  },
+  "timestamp": "2026-07-16T21:24:58.586Z",
+  "dev": {
+    "env": "dev",
+    "url": "http://localhost:5173",
+    "status": 200,
+    "ok": true,
+    "durationMs": 4,
+    "bodyLength": 820,
+    "error": null
+  },
+  "prod": {
+    "env": "prod",
+    "url": "https://www.crowncreatives.uk",
+    "status": 404,
+    "ok": false,
+    "durationMs": 34,
+    "bodyLength": 0,
+    "error": null
+  },
+  "compare": {
+    "statusMatch": false,
+    "okMatch": false,
+    "bodySizeDelta": 820
+  }
+}
