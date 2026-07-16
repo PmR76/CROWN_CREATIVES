@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const readline = require("readline");
-const gr1 = require("./sentinel-gr1");
-const gr2 = require("./sentinel-gr2");
-const gr3 = require("./sentinel-gr3");
+import readline from "readline";
+import runGR1 from "./sentinel-gr1.js";
+import runGR2 from "./sentinel-gr2.js";
+import runGR3 from "./sentinel-gr3.js";
 
 console.log("Sentinel CLI");
 console.log("============");
@@ -21,13 +21,13 @@ const rl = readline.createInterface({
 rl.question("Select an option: ", async (answer) => {
   switch (answer.trim()) {
     case "1":
-      await gr1();
+      await runGR1();
       break;
     case "2":
-      await gr2();
+      await runGR2();
       break;
     case "3":
-      await gr3();
+      await runGR3();
       break;
     case "0":
       console.log("Exiting Sentinel CLI.");
