@@ -1,0 +1,39 @@
+{
+  "schema": {
+    "version": "1.0.0",
+    "fields": {
+      "env": "dev|prod",
+      "route": "string",
+      "url": "string",
+      "status": "number",
+      "ok": "boolean",
+      "durationMs": "number",
+      "bodyLength": "number",
+      "errors": "array",
+      "timestamp": "string"
+    }
+  },
+  "timestamp": "2026-07-16T21:07:07.690Z",
+  "dev": {
+    "env": "dev",
+    "url": "http://localhost:5176",
+    "status": 0,
+    "ok": false,
+    "durationMs": 2,
+    "error": "FetchError: request to http://localhost:5176/ failed, reason: "
+  },
+  "prod": {
+    "env": "prod",
+    "url": "https://www.crowncreatives.uk",
+    "status": 404,
+    "ok": false,
+    "durationMs": 64,
+    "bodyLength": 0,
+    "error": null
+  },
+  "compare": {
+    "statusMatch": false,
+    "okMatch": true,
+    "bodySizeDelta": null
+  }
+}

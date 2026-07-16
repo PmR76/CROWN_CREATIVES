@@ -1,6 +1,5 @@
 {
-  "devUrl": "http://localhost:5174",
+  "devUrl": "http://localhost:5176",
   "prodUrl": "https://www.crowncreatives.uk",
-  "snapshotPath": "./sentinel-snapshots",
-  "timeoutMs": 5000
+  "timeoutMs": 2000
 }

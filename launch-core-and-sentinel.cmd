@@ -7,18 +7,14 @@ echo   Starting Crown Core (Vite) + Sentinel...
 echo ============================================
 echo.
 
-REM --- START REACT DEV SERVER (VITE) ---
-echo [CORE] Starting Vite dev server...
+REM --- START REACT DEV SERVER ---
 cd /d "C:\DEV\CROWN_CREATIVES\test\core-lab-react"
 start "Crown Core Dev" cmd /c "npm run dev"
 
 REM --- START SENTINEL (AUTO-RESTART) ---
-echo [SENTINEL] Starting Sentinel Watchkeeper...
 cd /d "C:\DEV\CROWN_CREATIVES\sentinel"
 
 :sentinel_loop
 node index.js
-echo.
-echo [SENTINEL] Server exited. Restarting in 3 seconds...
 timeout /t 3 >nul
 goto sentinel_loop
