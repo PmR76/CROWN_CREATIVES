@@ -5,6 +5,7 @@ import fetch from "node-fetch";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { CloudflareProfile } from "./profiles/cloudflare.js";
 
 const app = express();
 app.use(cors());
@@ -101,6 +102,9 @@ app.get("/sentinel/handshake", async (req, res) => {
       bodySizeDelta: dev.bodyLength - prod.bodyLength
     }
   };
+
+  const cloudflareIssues = CloudflareProfile.diagnose(prod);
+snapshot.cloudflare = cloudflareIssues;
 
   const fileName = `sentinel-${timestamp.replace(/[:]/g, "_")}.json`;
   const filePath = path.join(process.cwd(), "sentinel-snapshots", fileName);
