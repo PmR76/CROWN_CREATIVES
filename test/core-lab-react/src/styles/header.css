@@ -222,3 +222,10 @@ body[data-theme="night"] .sound-toggle:hover .sound-toggle-icon {
   50% { transform: scale(1.08); }
   100% { transform: scale(1); }
 }
+.header-crown {
+  position: relative;
+  width: 80px;
+  height: auto;
+  z-index: 5;
+  pointer-events: none;
+}

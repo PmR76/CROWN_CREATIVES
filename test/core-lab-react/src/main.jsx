@@ -6,7 +6,6 @@
 window.addEventListener("error", (e) => {
   console.log("GLOBAL ERROR:", e.error);
 });
-
 window.addEventListener("unhandledrejection", (e) => {
   console.log("PROMISE ERROR:", e.reason);
 });
@@ -26,6 +25,9 @@ import "./styles/footer.css";
 import "./styles/corepanel.css";
 import "./styles/theme-panel.css";
 import "./styles/background3d.css";
+
+/* ⭐ ADD THIS — this loads your cinematic layout + crown positioning */
+import "./styles/core.css";
 
 // ============================================================
 // MOUNT APP — STRICTMODE REMOVED

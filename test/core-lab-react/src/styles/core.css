@@ -1,29 +1,26 @@
 /* ============================================================
-   Core Layout — Global Page Structure (GR1 Stable)
-   Fixes hero crown spacing, header overlap, gallery alignment
+   Core Layout — Global Page Structure (Stable Reset)
 ============================================================ */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto; /* single scrollbar */
+}
 
 .page-content {
   width: 100%;
   display: flex;
   flex-direction: column;
-
-  /* ⭐ Natural stacking instead of forced top alignment */
   justify-content: flex-start;
-
-  /* ⭐ Do NOT center all children horizontally */
-  /* Hero sections handle their own centering */
   align-items: stretch;
-
-  /* ⭐ Prevent layout collapse */
   min-height: 100vh;
-
-  /* ⭐ Allow hero sections to push down naturally */
   position: relative;
 }
 
 /* ============================================================
-   Section Defaults — Ensures natural vertical flow
+   Section Defaults
 ============================================================ */
 
 section {
@@ -33,85 +30,109 @@ section {
 }
 
 /* ============================================================
-   Fix global overflow issues (gallery lanes, crown float)
-============================================================ */
-
-body, html {
-  overflow-x: hidden;
-}
-
-/* ============================================================
-   LAYOUT ROOT — Tightened Cinematic Structure
+   Layout Root
 ============================================================ */
 
 .layout-root {
   margin: 0;
   padding: 0;
-  background: transparent; /* prevents mismatched background */
+  background: transparent;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: visible;
 }
 
 /* ============================================================
-   CINEMATIC ZONE — Unified Sky + Crown + Hero Area
+   Cinematic Zone
 ============================================================ */
 
 .cinematic-zone {
   position: relative;
   width: 100%;
-  min-height: 680px; /* tighter, more cinematic */
-  overflow: hidden;
+  min-height: 680px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 40px; /* tighter under header */
+  padding-top: 40px;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 /* Background canvas */
 .background-3d {
   position: absolute;
-  top: -120px; /* pulls nebula upward behind header */
+  top: -120px;
   left: 0;
   width: 100%;
-  height: calc(100% + 200px); /* extends sky downward */
+  height: calc(100% + 200px);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Cinematic content block */
+/* Cinematic content */
 .cinematic-content {
   position: relative;
   z-index: 5;
   width: 100%;
-  max-width: 1100px; /* tighter */
-  padding: 20px 30px; /* tighter */
-  margin-top: -40px; /* pulls content upward into the cinematic zone */
+  max-width: 1100px;
+  padding: 20px 30px;
+  margin-top: -40px;
+  overflow: visible;
 }
 
 /* ============================================================
-   HEADER / FOOTER TIGHTENING
+   HERO GALLERY — Lanes shifted 175px left
 ============================================================ */
 
-header {
-  margin-bottom: 0;
-  padding-bottom: 10px;
+.hero-gallery-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: visible;
+  margin-top: 200px;
 }
+
+.hero-gallery-lane {
+  position: absolute;
+  top: 0;
+  overflow: visible;
+}
+
+/* Left lane — shifted 175px left */
+.hero-gallery-left {
+  left: calc(50% - 300px - 260px - 175px);
+}
+
+/* Right lane — shifted 175px left */
+.hero-gallery-right {
+  left: calc(50% + 300px - 175px);
+}
+
+/* ============================================================
+   Frosted Cards — Position Adjustments
+============================================================ */
+
+.frosted-cards {
+  position: relative;
+  left: -200px;   /* move cards left */
+  top: -325px;    /* move cards up */
+}
+
+/* ============================================================
+   Ticker — Position Adjustments
+============================================================ */
+
+.ticker {
+  position: relative;
+  top: -350px;    /* move ticker up */
+  left: -175px;   /* move ticker left */
+}
+
+/* ============================================================
+   Footer — Position Adjustments
+============================================================ */
 
 footer {
-  margin-top: 0;
-  padding-top: 20px;
+  position: relative;
+  top: -325px;    /* move footer up */
 }
-
-/* ============================================================
-   HERO CROWN — Fixed Cinematic Position
-============================================================ */
-.reduced-crown {
-  position: fixed;     /* ⭐ FIXED TO VIEWPORT */
-  top: 300px;          /* EXACT distance from top of screen */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  pointer-events: none;
-}
-

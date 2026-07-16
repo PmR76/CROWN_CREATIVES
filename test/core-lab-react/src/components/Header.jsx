@@ -32,14 +32,15 @@ export default function Header() {
       </div>
 
       <div className="hero-header-center">
+
+        {/* ⭐ FIX: header crown must NOT use reduced-crown */}
         <img
           src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
-          className="reduced-crown"
+          className="header-crown"
         />
 
         <h1 className="cc-header-title">Crown Creatives</h1>
-
         <p className="cc-header-tagline">
           Artistry • Resilience • Imagination
         </p>
