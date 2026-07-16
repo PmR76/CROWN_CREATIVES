@@ -1,8 +1,8 @@
-const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
+import axios from "axios";
+import fs from "fs";
+import path from "path";
 
-module.exports = async function runGR1() {
+export default async function runGR1() {
   console.log("[GR1] Running Sentinel Handshake...");
 
   const dev = "http://localhost:5173";
@@ -30,8 +30,8 @@ module.exports = async function runGR1() {
     }
   };
 
-  const outPath = path.join(__dirname, "sentinel-snapshots", `GR1-${Date.now()}.json`);
+  const outPath = path.join(path.resolve(), "sentinel-snapshots", `GR1-${Date.now()}.json`);
   fs.writeFileSync(outPath, JSON.stringify(report, null, 2));
 
   console.log("[GR1] Snapshot written:", outPath);
-};
+}

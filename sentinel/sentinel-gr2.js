@@ -1,13 +1,13 @@
-const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
+import axios from "axios";
+import fs from "fs";
+import path from "path";
 
 const ROUTES = [
   "/", "/about", "/gallery", "/projects", "/videos",
   "/podcast", "/blog", "/contact"
 ];
 
-module.exports = async function runGR2() {
+export default async function runGR2() {
   console.log("[GR2] Running Deep Scan...");
 
   const prod = "https://www.crowncreatives.uk";
@@ -36,8 +36,8 @@ module.exports = async function runGR2() {
     }
   };
 
-  const outPath = path.join(__dirname, "sentinel-snapshots", `GR2-${Date.now()}.json`);
+  const outPath = path.join(path.resolve(), "sentinel-snapshots", `GR2-${Date.now()}.json`);
   fs.writeFileSync(outPath, JSON.stringify(report, null, 2));
 
   console.log("[GR2] Snapshot written:", outPath);
-};
+}
