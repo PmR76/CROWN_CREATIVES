@@ -15,5 +15,10 @@ export default defineConfig({
         });
       }
     }
-  ]
+  ],
+
+  // ⭐ THIS is the correct place for the build config
+  build: {
+    copyPublicDir: true
+  }
 });
