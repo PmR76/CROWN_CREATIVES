@@ -2,8 +2,29 @@
   "legacyActive": [],
   "labActive": [],
   "coreActive": [
-    "src"
+    "test/core-lab-react/src"
   ],
   "cssConflicts": [],
-  "componentConflicts": []
+  "componentConflicts": [
+    {
+      "name": "sun-moon.png",
+      "folder": "test\\core-lab-react\\public\\assets\\icons",
+      "group": "other"
+    },
+    {
+      "name": "sun-moon.png",
+      "folder": "test\\core-lab-react\\public\\assets\\images\\gallery",
+      "group": "other"
+    },
+    {
+      "name": "fallback.jpeg",
+      "folder": "test\\core-lab-react\\public\\assets\\images",
+      "group": "other"
+    },
+    {
+      "name": "fallback.jpeg",
+      "folder": "test\\core-lab-react\\public\\assets\\images\\gallery",
+      "group": "other"
+    }
+  ]
 }
