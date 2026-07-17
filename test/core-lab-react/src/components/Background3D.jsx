@@ -3,7 +3,7 @@
 // ============================================================
 
 import { useEffect } from "react";
-import "../styles/background-3d.css";
+import "../styles/background3d.css";
 
 export default function Background3D() {
   useEffect(() => {

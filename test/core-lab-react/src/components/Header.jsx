@@ -1,5 +1,5 @@
 // ============================================================
-// Header.jsx — Cinematic Centered Crown + Nav (GR1)
+// Header.jsx — Cinematic Centered Crown + Nav (GR1 Restored)
 // ============================================================
 
 import React, { useEffect } from "react";
@@ -17,6 +17,7 @@ export default function Header() {
   return (
     <header className="hero-header">
 
+      {/* LEFT — Sound */}
       <div className="hero-header-left">
         <button
           id="soundToggle"
@@ -31,13 +32,13 @@ export default function Header() {
         </button>
       </div>
 
+      {/* CENTER — Crown + Title + Tagline + Nav */}
       <div className="hero-header-center">
 
-        {/* ⭐ FIX: header crown must NOT use reduced-crown */}
         <img
           src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
-          className="header-crown"
+          className="reduced-crown"
         />
 
         <h1 className="cc-header-title">Crown Creatives</h1>
@@ -57,6 +58,7 @@ export default function Header() {
         </nav>
       </div>
 
+      {/* RIGHT — Theme */}
       <div className="hero-header-right">
         <button
           id="themeToggle"
