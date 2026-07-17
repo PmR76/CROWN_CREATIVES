@@ -18,7 +18,7 @@ import App from "./App";
 // Crown Creatives Editor OS — Global Admin Provider
 import { AdminProvider } from "./admin/AdminContext";
 
-// React Router
+// React Router — THIS MUST BE THE ONLY ROUTER IN YOUR APP
 import { BrowserRouter as Router } from "react-router-dom";
 
 // ============================================================
