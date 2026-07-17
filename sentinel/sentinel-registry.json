@@ -61,8 +61,33 @@
       {
         "folder": "test\\core-lab-react\\src\\sentinel",
         "items": [
+          {
+            "folder": "test\\core-lab-react\\src\\sentinel\\dashboard",
+            "items": [
+              "SentinelDashboard.jsx",
+              "SentinelRoute.jsx"
+            ]
+          },
           "GallerySentinel.js",
+          "MusicSentinel.js",
+          {
+            "folder": "test\\core-lab-react\\src\\sentinel\\panels",
+            "items": [
+              "CloudflarePanel.jsx",
+              "DuplicatesPanel.jsx",
+              "HandshakePanel.jsx",
+              "StatusPanel.jsx",
+              "UIConflictsPanel.jsx"
+            ]
+          },
           "SentinelPanel.tsx",
+          {
+            "folder": "test\\core-lab-react\\src\\sentinel\\styles",
+            "items": [
+              "sentinel-dashboard.css",
+              "sentinel-panels.css"
+            ]
+          },
           "useSentinel.ts"
         ]
       },

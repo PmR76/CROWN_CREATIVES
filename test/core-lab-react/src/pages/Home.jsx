@@ -14,7 +14,7 @@ import Ticker from "../components/Ticker";
 import { runGallerySentinel } from "../sentinel/GallerySentinel";
 import { runMusicSentinel } from "../sentinel/MusicSentinel";
 
-import "../styles/background-3d.css";
+import "../styles/background3d.css";
 import "../styles/hero-gallery.css";
 import "../styles/frosted-cards.css";
 import "../styles/ticker.css";

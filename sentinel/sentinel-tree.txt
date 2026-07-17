@@ -36,8 +36,21 @@
       🟢 Projects.jsx
       🟢 Videos.jsx
    📁 test\core-lab-react\src\sentinel
+      📁 test\core-lab-react\src\sentinel\dashboard
+         🟢 SentinelDashboard.jsx
+         🟢 SentinelRoute.jsx
       🟢 GallerySentinel.js
+      🟢 MusicSentinel.js
+      📁 test\core-lab-react\src\sentinel\panels
+         🟢 CloudflarePanel.jsx
+         🟢 DuplicatesPanel.jsx
+         🟢 HandshakePanel.jsx
+         🟢 StatusPanel.jsx
+         🟢 UIConflictsPanel.jsx
       🟢 SentinelPanel.tsx
+      📁 test\core-lab-react\src\sentinel\styles
+         🟢 sentinel-dashboard.css
+         🟢 sentinel-panels.css
       🟢 useSentinel.ts
    📁 test\core-lab-react\src\sound
       🟢 SoundEngine.js
