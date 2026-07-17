@@ -1,0 +1,26 @@
+{
+  "devUrl": "http://localhost:5176",
+  "prodUrl": "https://www.crowncreatives.uk",
+  "timeoutMs": 2000,
+  "ui": {
+    "coreReact": [
+      "test/core-lab-react/src",
+      "src",
+      "core",
+      "components"
+    ]
+  },
+  "scan": [
+    "src",
+    "public"
+  ],
+  "ignore": [
+    "node_modules",
+    ".git",
+    "dist"
+  ],
+  "required": [
+    "src",
+    "public"
+  ]
+}
