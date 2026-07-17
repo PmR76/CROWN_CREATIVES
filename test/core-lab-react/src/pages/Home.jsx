@@ -5,7 +5,7 @@
 
 import { useEffect, useState } from "react";
 
-import Background3D from "../components/Background3D";
+import Background3D from "../components/Background3D"
 import Header from "../components/Header";
 import HeroCrown from "../components/HeroCrown";
 import HeroGallery from "../components/HeroGallery";
