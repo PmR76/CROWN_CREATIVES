@@ -14,15 +14,20 @@ export default function Home() {
   return (
     <main className="home-page">
 
+      {/* HERO GALLERY */}
       <section className="home-section">
         <HeroGallery />
       </section>
 
+      {/* FROSTED CARDS */}
       <section className="home-section">
         <FrostedCards />
       </section>
 
-      <Ticker />
+      {/* TICKER */}
+      <section className="home-section">
+        <Ticker />
+      </section>
 
     </main>
   );

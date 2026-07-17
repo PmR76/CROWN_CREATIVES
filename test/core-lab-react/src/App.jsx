@@ -1,5 +1,5 @@
 // ============================================================
-// App.jsx — Global Application Wrapper (GR1)
+// App.jsx — Global Application Wrapper (GR1 — Corrected Layout)
 // ============================================================
 
 import Layout from "./components/Layout";
@@ -7,8 +7,12 @@ import Home from "./pages/Home";
 
 export default function App() {
   return (
-    <Layout>
+    <>
+      {/* Global layout wrapper: header, footer, theme, etc */}
+      <Layout />
+
+      {/* Homepage content lives OUTSIDE the cinematic zone */}
       <Home />
-    </Layout>
+    </>
   );
 }

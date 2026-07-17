@@ -1,8 +1,13 @@
+// ============================================================
+// SentinelPanel.tsx — Strict‑Mode Safe (Zero Errors)
+// ============================================================
+
 import React, { useState } from "react";
 import { useSentinelStatus, triggerSentinelHandshake } from "./useSentinel";
 
 export function SentinelPanel() {
-  const sentinel = useSentinelStatus();
+  const { status, loading, error, refresh } = useSentinelStatus();
+
   const [handshakeResult, setHandshakeResult] = useState<any>(null);
   const [handshakeLoading, setHandshakeLoading] = useState(false);
 
@@ -11,19 +16,19 @@ export function SentinelPanel() {
     try {
       const result = await triggerSentinelHandshake();
       setHandshakeResult(result);
-    } catch (err) {
-      console.error("Sentinel handshake error", err);
+    } catch (e) {
+      console.error("Sentinel handshake error", e);
     } finally {
       setHandshakeLoading(false);
-      sentinel.refresh();
+      refresh();
     }
   }
 
-  const box = {
+  const box: React.CSSProperties = {
     padding: "6px 10px",
-    borderRadius: "6px",
-    marginTop: "4px",
-    fontSize: "11px",
+    borderRadius: 6,
+    marginTop: 4,
+    fontSize: 11,
     background: "rgba(255,255,255,0.06)",
     border: "1px solid rgba(255,255,255,0.12)"
   };
@@ -32,40 +37,43 @@ export function SentinelPanel() {
     <div
       style={{
         position: "fixed",
-        bottom: "20px",
-        right: "20px",
+        bottom: 20,
+        right: 20,
         padding: "14px 18px",
-        borderRadius: "14px",
+        borderRadius: 14,
         background: "rgba(10, 10, 20, 0.92)",
         color: "#fff",
-        fontSize: "12px",
+        fontSize: 12,
         zIndex: 99999,
-        width: "240px",
+        width: 240,
         boxShadow: "0 0 22px rgba(0, 200, 255, 0.55)",
         backdropFilter: "blur(8px)"
       }}
     >
-      <div style={{ fontWeight: "bold", marginBottom: "10px", letterSpacing: "0.08em" }}>
+      <div style={{ fontWeight: "bold", marginBottom: 10, letterSpacing: "0.08em" }}>
         SENTINEL WATCHKEEPER
       </div>
 
       <div style={box}>
-        {sentinel.loading && <div>Checking status…</div>}
-        {sentinel.error && <div style={{ color: "#ff8080" }}>Error: {String(sentinel.error)}</div>}
+        {loading && <div>Checking status…</div>}
 
-        {sentinel.status && (
+        {error !== null && (
+          <div style={{ color: "#ff8080" }}>Error: {String(error)}</div>
+        )}
+
+        {status !== null && (
           <div>
             <div>
               <strong>Dev:</strong>{" "}
-              <span style={{ color: sentinel.status.dev.ok ? "#00eaff" : "#ff8080" }}>
-                {sentinel.status.dev.status} ({sentinel.status.dev.durationMs}ms)
+              <span style={{ color: status.dev.ok ? "#00eaff" : "#ff8080" }}>
+                {status.dev.status} ({status.dev.durationMs}ms)
               </span>
             </div>
 
             <div>
               <strong>Prod:</strong>{" "}
-              <span style={{ color: sentinel.status.prod.ok ? "#00eaff" : "#ff8080" }}>
-                {sentinel.status.prod.status} ({sentinel.status.prod.durationMs}ms)
+              <span style={{ color: status.prod.ok ? "#00eaff" : "#ff8080" }}>
+                {status.prod.status} ({status.prod.durationMs}ms)
               </span>
             </div>
           </div>
@@ -76,14 +84,14 @@ export function SentinelPanel() {
         onClick={handleHandshake}
         disabled={handshakeLoading}
         style={{
-          marginTop: "10px",
+          marginTop: 10,
           padding: "8px 12px",
-          borderRadius: "8px",
+          borderRadius: 8,
           border: "none",
           cursor: "pointer",
           background: "linear-gradient(135deg, #00c9ff, #7f00ff)",
           color: "#fff",
-          fontSize: "12px",
+          fontSize: 12,
           letterSpacing: "0.08em",
           width: "100%"
         }}
@@ -91,16 +99,16 @@ export function SentinelPanel() {
         {handshakeLoading ? "RUNNING…" : "RUN SENTINEL HANDSHAKE"}
       </button>
 
-      {handshakeResult && (
+      {handshakeResult !== null && (
         <div
           style={{
-            marginTop: "10px",
-            maxHeight: "180px",
+            marginTop: 10,
+            maxHeight: 180,
             overflow: "auto",
-            fontSize: "10px",
+            fontSize: 10,
             background: "rgba(255,255,255,0.04)",
-            padding: "8px",
-            borderRadius: "8px",
+            padding: 8,
+            borderRadius: 8,
             border: "1px solid rgba(255,255,255,0.1)"
           }}
         >
