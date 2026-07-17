@@ -3,20 +3,12 @@
   "prodUrl": "https://www.crowncreatives.uk",
   "timeoutMs": 2000,
 
-  "scan": [
-    "src",
-    "public",
-    "sentinel"
-  ],
-
-  "ignore": [
-    "node_modules",
-    ".git",
-    "dist"
-  ],
-
-  "required": [
-    "src",
-    "public"
-  ]
+  "ui": {
+    "coreReact": [
+      "test/core-lab-react/src",
+      "src",
+      "core",
+      "components"
+    ]
+  }
 }

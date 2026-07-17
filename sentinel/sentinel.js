@@ -1,3 +1,79 @@
+// ============================================================
+// SAFE MODE: Auto‑repair config and prevent crashes
+// ============================================================
+
+function ensureConfigShape(config) {
+  const repaired = { ...config };
+
+  // Ensure UI block exists
+  if (!repaired.ui) {
+    console.warn("[Sentinel Safe Mode] Missing 'ui' block — creating default.");
+    repaired.ui = {};
+  }
+
+  // Ensure coreReact exists
+  if (!Array.isArray(repaired.ui.coreReact)) {
+    console.warn("[Sentinel Safe Mode] Missing 'ui.coreReact' — inserting defaults.");
+    repaired.ui.coreReact = [
+      "src",
+      "core-lab-react/src",
+      "components"
+    ];
+  }
+
+  // Ensure scan exists
+  if (!Array.isArray(repaired.scan)) {
+    console.warn("[Sentinel Safe Mode] Missing 'scan' — inserting defaults.");
+    repaired.scan = ["src", "public"];
+  }
+
+  // Ensure ignore exists
+  if (!Array.isArray(repaired.ignore)) {
+    console.warn("[Sentinel Safe Mode] Missing 'ignore' — inserting defaults.");
+    repaired.ignore = ["node_modules", ".git", "dist"];
+  }
+
+  // Ensure required exists
+  if (!Array.isArray(repaired.required)) {
+    console.warn("[Sentinel Safe Mode] Missing 'required' — inserting defaults.");
+    repaired.required = ["src", "public"];
+  }
+
+  // Ensure URLs exist
+  if (!repaired.devUrl) {
+    console.warn("[Sentinel Safe Mode] Missing 'devUrl' — inserting placeholder.");
+    repaired.devUrl = "http://localhost:5176";
+  }
+
+  if (!repaired.prodUrl) {
+    console.warn("[Sentinel Safe Mode] Missing 'prodUrl' — inserting placeholder.");
+    repaired.prodUrl = "https://example.com";
+  }
+
+  // Ensure timeout exists
+  if (!repaired.timeoutMs) {
+    console.warn("[Sentinel Safe Mode] Missing 'timeoutMs' — inserting default.");
+    repaired.timeoutMs = 2000;
+  }
+
+  return repaired;
+}
+
+// Apply safe mode repair
+const safeConfig = ensureConfigShape(config);
+
+// Optionally write repaired config back to disk
+try {
+  fs.writeFileSync(
+    path.join(__dirname, "sentinel-config.repaired.json"),
+    JSON.stringify(safeConfig, null, 2),
+    "utf8"
+  );
+  console.warn("[Sentinel Safe Mode] Repaired config written to sentinel-config.repaired.json");
+} catch (err) {
+  console.warn("[Sentinel Safe Mode] Could not write repaired config:", err);
+}
+
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
