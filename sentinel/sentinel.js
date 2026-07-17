@@ -1,17 +1,29 @@
-// ============================================================
-// SAFE MODE: Auto‑repair config and prevent crashes
-// ============================================================
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-function ensureConfigShape(config) {
-  const repaired = { ...config };
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const PROJECT_ROOT = path.join(__dirname, "..");
 
-  // Ensure UI block exists
+// ------------------------------------------------------------
+// 1. Load config FIRST
+// ------------------------------------------------------------
+const config = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "sentinel-config.json"), "utf8")
+);
+
+// ------------------------------------------------------------
+// 2. SAFE MODE — now config exists, so we can repair it
+// ------------------------------------------------------------
+function ensureConfigShape(cfg) {
+  const repaired = { ...cfg };
+
   if (!repaired.ui) {
     console.warn("[Sentinel Safe Mode] Missing 'ui' block — creating default.");
     repaired.ui = {};
   }
 
-  // Ensure coreReact exists
   if (!Array.isArray(repaired.ui.coreReact)) {
     console.warn("[Sentinel Safe Mode] Missing 'ui.coreReact' — inserting defaults.");
     repaired.ui.coreReact = [
@@ -21,25 +33,21 @@ function ensureConfigShape(config) {
     ];
   }
 
-  // Ensure scan exists
   if (!Array.isArray(repaired.scan)) {
     console.warn("[Sentinel Safe Mode] Missing 'scan' — inserting defaults.");
     repaired.scan = ["src", "public"];
   }
 
-  // Ensure ignore exists
   if (!Array.isArray(repaired.ignore)) {
     console.warn("[Sentinel Safe Mode] Missing 'ignore' — inserting defaults.");
     repaired.ignore = ["node_modules", ".git", "dist"];
   }
 
-  // Ensure required exists
   if (!Array.isArray(repaired.required)) {
     console.warn("[Sentinel Safe Mode] Missing 'required' — inserting defaults.");
     repaired.required = ["src", "public"];
   }
 
-  // Ensure URLs exist
   if (!repaired.devUrl) {
     console.warn("[Sentinel Safe Mode] Missing 'devUrl' — inserting placeholder.");
     repaired.devUrl = "http://localhost:5176";
@@ -50,7 +58,6 @@ function ensureConfigShape(config) {
     repaired.prodUrl = "https://example.com";
   }
 
-  // Ensure timeout exists
   if (!repaired.timeoutMs) {
     console.warn("[Sentinel Safe Mode] Missing 'timeoutMs' — inserting default.");
     repaired.timeoutMs = 2000;
@@ -59,10 +66,9 @@ function ensureConfigShape(config) {
   return repaired;
 }
 
-// Apply safe mode repair
 const safeConfig = ensureConfigShape(config);
 
-// Optionally write repaired config back to disk
+// Optional: write repaired config
 try {
   fs.writeFileSync(
     path.join(__dirname, "sentinel-config.repaired.json"),
@@ -74,23 +80,17 @@ try {
   console.warn("[Sentinel Safe Mode] Could not write repaired config:", err);
 }
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const PROJECT_ROOT = path.join(__dirname, "..");
-
-const config = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "sentinel-config.json"), "utf8")
-);
-
+// ------------------------------------------------------------
+// 3. Now use safeConfig everywhere
+// ------------------------------------------------------------
 const registryPath = path.join(__dirname, "sentinel-registry.json");
 const treePath = path.join(__dirname, "sentinel-tree.txt");
 const healthPath = path.join(__dirname, "sentinel-health.json");
 const duplicatesPath = path.join(__dirname, "sentinel-duplicates.json");
 const uiConflictsPath = path.join(__dirname, "sentinel-ui-conflicts.json");
+
+// Example usage:
+const uiConfig = safeConfig.ui;
 
 // ------------------------------------------------------------
 // SCAN FOLDERS
