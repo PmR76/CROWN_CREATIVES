@@ -1,11 +1,6 @@
-// ============================================================
-// Home.jsx — Crown Creatives Homepage (GR1 Unified Layout)
-// Sentinel‑Integrated Homepage + Cosmic Nebula 2.0
-// ============================================================
-
 import { useEffect, useState } from "react";
 
-import Background3D from "../components/Background3D"
+import Background3D from "../components/Background3D";
 import Header from "../components/Header";
 import HeroCrown from "../components/HeroCrown";
 import HeroGallery from "../components/HeroGallery";
@@ -13,7 +8,6 @@ import FrostedCards from "../components/FrostedCards";
 import Ticker from "../components/Ticker";
 import Footer from "../components/Footer";
 
-// Sentinel v2.0
 import { runGallerySentinel } from "../sentinel/GallerySentinel";
 import { runMusicSentinel } from "../sentinel/MusicSentinel";
 
@@ -28,19 +22,11 @@ import "../styles/footer.css";
 export default function Home() {
   const [sentinelStatus, setSentinelStatus] = useState("BOOTING");
 
-  // ------------------------------------------------------------
-  // SENTINEL BOOT SEQUENCE
-  // ------------------------------------------------------------
   useEffect(() => {
     async function boot() {
       try {
         const galleryReport = await runGallerySentinel();
         const musicReport = await runMusicSentinel();
-
-        console.group("🔵 Sentinel Homepage Diagnostics");
-        console.log("Gallery Sentinel:", galleryReport);
-        console.log("Music Sentinel:", musicReport);
-        console.groupEnd();
 
         if (
           galleryReport.finalStatus === "OK" &&
@@ -50,8 +36,7 @@ export default function Home() {
         } else {
           setSentinelStatus("WARN");
         }
-      } catch (err) {
-        console.error("Sentinel boot error:", err);
+      } catch {
         setSentinelStatus("ERROR");
       }
     }
@@ -59,9 +44,6 @@ export default function Home() {
     boot();
   }, []);
 
-  // ------------------------------------------------------------
-  // SENTINEL BADGE (FIXED)
-  // ------------------------------------------------------------
   const badge =
     sentinelStatus === "OK"
       ? "🟢 Sentinel OK"
