@@ -5,7 +5,7 @@
 
 import { useEffect, useState } from "react";
 
-import Background3D from "../components/Background3D";
+import Background3D from "../components/background3D";
 import HeroGallery from "../components/HeroGallery";
 import FrostedCards from "../components/FrostedCards";
 import Ticker from "../components/Ticker";
