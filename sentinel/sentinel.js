@@ -19,84 +19,36 @@ const config = JSON.parse(
 function ensureConfigShape(cfg) {
   const repaired = { ...cfg };
 
-  if (!repaired.ui) {
-    console.warn("[Sentinel Safe Mode] Missing 'ui' block — creating default.");
-    repaired.ui = {};
-  }
+  if (!repaired.ui) repaired.ui = {};
+  if (!Array.isArray(repaired.ui.coreReact)) repaired.ui.coreReact = ["test/core-lab-react/src"];
+  if (!Array.isArray(repaired.ui.labs)) repaired.ui.labs = [];
+  if (!Array.isArray(repaired.ui.legacy)) repaired.ui.legacy = [];
+  if (!Array.isArray(repaired.ui.cssNames)) repaired.ui.cssNames = [];
 
-  if (!Array.isArray(repaired.ui.coreReact)) {
-    console.warn("[Sentinel Safe Mode] Missing 'ui.coreReact' — inserting defaults.");
-    repaired.ui.coreReact = [
-      "src",
-      "core-lab-react/src",
-      "components"
-    ];
-  }
+  if (!Array.isArray(repaired.scan)) repaired.scan = ["test/core-lab-react/src", "test/core-lab-react/public"];
+  if (!Array.isArray(repaired.ignore)) repaired.ignore = ["node_modules", ".git", "dist"];
+  if (!Array.isArray(repaired.required)) repaired.required = ["test/core-lab-react/src", "test/core-lab-react/public"];
 
-  if (!Array.isArray(repaired.ui.labs)) {
-    console.warn("[Sentinel Safe Mode] Missing 'ui.labs' — inserting defaults.");
-    repaired.ui.labs = [];
-  }
-
-  if (!Array.isArray(repaired.ui.legacy)) {
-    console.warn("[Sentinel Safe Mode] Missing 'ui.legacy' — inserting defaults.");
-    repaired.ui.legacy = [];
-  }
-
-  if (!Array.isArray(repaired.ui.cssNames)) {
-    console.warn("[Sentinel Safe Mode] Missing 'ui.cssNames' — inserting defaults.");
-    repaired.ui.cssNames = [];
-  }
-
-  if (!Array.isArray(repaired.scan)) {
-    console.warn("[Sentinel Safe Mode] Missing 'scan' — inserting defaults.");
-    repaired.scan = ["src", "public"];
-  }
-
-  if (!Array.isArray(repaired.ignore)) {
-    console.warn("[Sentinel Safe Mode] Missing 'ignore' — inserting defaults.");
-    repaired.ignore = ["node_modules", ".git", "dist"];
-  }
-
-  if (!Array.isArray(repaired.required)) {
-    console.warn("[Sentinel Safe Mode] Missing 'required' — inserting defaults.");
-    repaired.required = ["src", "public"];
-  }
-
-  if (!repaired.devUrl) {
-    console.warn("[Sentinel Safe Mode] Missing 'devUrl' — inserting placeholder.");
-    repaired.devUrl = "http://localhost:5176";
-  }
-
-  if (!repaired.prodUrl) {
-    console.warn("[Sentinel Safe Mode] Missing 'prodUrl' — inserting placeholder.");
-    repaired.prodUrl = "https://example.com";
-  }
-
-  if (!repaired.timeoutMs) {
-    console.warn("[Sentinel Safe Mode] Missing 'timeoutMs' — inserting default.");
-    repaired.timeoutMs = 2000;
-  }
+  if (!repaired.devUrl) repaired.devUrl = "http://localhost:5176";
+  if (!repaired.prodUrl) repaired.prodUrl = "https://example.com";
+  if (!repaired.timeoutMs) repaired.timeoutMs = 2000;
 
   return repaired;
 }
 
 const safeConfig = ensureConfigShape(config);
 
-// Optional: write repaired config
+// Write repaired config
 try {
   fs.writeFileSync(
     path.join(__dirname, "sentinel-config.repaired.json"),
     JSON.stringify(safeConfig, null, 2),
     "utf8"
   );
-  console.warn("[Sentinel Safe Mode] Repaired config written to sentinel-config.repaired.json");
-} catch (err) {
-  console.warn("[Sentinel Safe Mode] Could not write repaired config:", err);
-}
+} catch {}
 
 // ------------------------------------------------------------
-// 3. Now use safeConfig everywhere
+// 3. Paths
 // ------------------------------------------------------------
 const registryPath = path.join(__dirname, "sentinel-registry.json");
 const treePath = path.join(__dirname, "sentinel-tree.txt");
@@ -169,7 +121,7 @@ function formatTree(tree, indent = 0) {
 }
 
 // ------------------------------------------------------------
-// DUPLICATES + MISSING
+// COLLECT FILES
 // ------------------------------------------------------------
 function collectFiles(tree) {
   const files = [];
@@ -190,6 +142,38 @@ function collectFiles(tree) {
   return { files, folders };
 }
 
+// ------------------------------------------------------------
+// ENFORCE UNIQUENESS — delete duplicate files
+// ------------------------------------------------------------
+function enforceUniqueness(duplicates) {
+  const deletions = [];
+
+  for (const d of duplicates) {
+    const { name, locations } = d;
+
+    const canonical = locations[0];
+
+    for (const loc of locations.slice(1)) {
+      const fullPath = path.join(PROJECT_ROOT, loc, name);
+
+      if (fs.existsSync(fullPath)) {
+        fs.unlinkSync(fullPath);
+        deletions.push({ name, deletedFrom: loc });
+      }
+    }
+  }
+
+  fs.writeFileSync(
+    path.join(__dirname, "sentinel-cleanup.json"),
+    JSON.stringify(deletions, null, 2)
+  );
+
+  return deletions;
+}
+
+// ------------------------------------------------------------
+// HEALTH CHECK
+// ------------------------------------------------------------
 function computeHealth(tree) {
   const { files } = collectFiles(tree);
 
@@ -199,33 +183,25 @@ function computeHealth(tree) {
 
   for (const required of safeConfig.required) {
     const full = path.join(PROJECT_ROOT, required);
-    if (!fs.existsSync(full)) {
-      missing.push(required);
-    }
+    if (!fs.existsSync(full)) missing.push(required);
   }
 
   for (const file of files) {
     const key = file.name;
-    if (!seen.has(key)) {
-      seen.set(key, []);
-    }
+    if (!seen.has(key)) seen.set(key, []);
     seen.get(key).push(file.folder);
   }
 
   for (const [name, locations] of seen.entries()) {
-    if (locations.length > 1) {
-      duplicates.push({ name, locations });
-    }
+    if (locations.length > 1) duplicates.push({ name, locations });
   }
 
   fs.writeFileSync(duplicatesPath, JSON.stringify(duplicates, null, 2));
 
   const status =
-    missing.length > 0
-      ? "red"
-      : duplicates.length > 0
-      ? "amber"
-      : "green";
+    missing.length > 0 ? "red" :
+    duplicates.length > 0 ? "amber" :
+    "green";
 
   const health = {
     timestamp: new Date().toISOString(),
@@ -239,7 +215,7 @@ function computeHealth(tree) {
 }
 
 // ------------------------------------------------------------
-// UI CONFLICT DETECTION (v1.2)
+// UI CONFLICT DETECTION
 // ------------------------------------------------------------
 function detectUIConflicts(tree, duplicates) {
   const { files } = collectFiles(tree);
@@ -264,13 +240,10 @@ function detectUIConflicts(tree, duplicates) {
 
     if (uiConfig.cssNames.includes(name)) {
       const group =
-        inGroup(folder, coreReactRoots)
-          ? "core"
-          : inGroup(folder, labRoots)
-          ? "lab"
-          : inGroup(folder, legacyRoots)
-          ? "legacy"
-          : "other";
+        inGroup(folder, coreReactRoots) ? "core" :
+        inGroup(folder, labRoots) ? "lab" :
+        inGroup(folder, legacyRoots) ? "legacy" :
+        "other";
 
       cssConflicts.push({ name, folder, group });
     }
@@ -279,23 +252,14 @@ function detectUIConflicts(tree, duplicates) {
   for (const d of duplicates) {
     for (const loc of d.locations) {
       const group =
-        inGroup(loc, coreReactRoots)
-          ? "core"
-          : inGroup(loc, labRoots)
-          ? "lab"
-          : inGroup(loc, legacyRoots)
-          ? "legacy"
-          : "other";
+        inGroup(loc, coreReactRoots) ? "core" :
+        inGroup(loc, labRoots) ? "lab" :
+        inGroup(loc, legacyRoots) ? "legacy" :
+        "other";
 
-      if (uiConfig.cssNames.includes(d.name)) {
-        continue;
+      if (!uiConfig.cssNames.includes(d.name)) {
+        componentConflicts.push({ name: d.name, folder: loc, group });
       }
-
-      componentConflicts.push({
-        name: d.name,
-        folder: loc,
-        group
-      });
     }
   }
 
@@ -328,22 +292,22 @@ function runSentinel() {
   fs.writeFileSync(registryPath, JSON.stringify(tree, null, 2));
 
   const { health, duplicates } = computeHealth(tree);
+
+  if (duplicates.length > 0) {
+    console.log("Duplicates detected — enforcing uniqueness...");
+    const deletions = enforceUniqueness(duplicates);
+    console.log("Deleted duplicates:", deletions);
+
+    const tree2 = buildTree();
+    const { health: health2 } = computeHealth(tree2);
+
+    console.log("Post-cleanup Sentinel status:", health2.status);
+  }
+
   const uiConflicts = detectUIConflicts(tree, duplicates);
 
   console.log("Snapshot complete.");
-  console.log("File tree saved to sentinel-tree.txt");
-  console.log("Registry saved to sentinel-registry.json");
-  console.log("Health report saved to sentinel-health.json");
-  console.log("Duplicates saved to sentinel-duplicates.json");
-  console.log("UI conflicts saved to sentinel-ui-conflicts.json");
   console.log("Sentinel status:", health.status);
-
-  if (uiConflicts.legacyActive.length > 0) {
-    console.log("Legacy UI still active in:", uiConflicts.legacyActive);
-  }
-  if (uiConflicts.labActive.length > 0) {
-    console.log("Labs active in:", uiConflicts.labActive);
-  }
 }
 
 runSentinel();
