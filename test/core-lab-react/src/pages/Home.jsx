@@ -2,29 +2,28 @@
 // Home.jsx — Crown Creatives Homepage (GR1 Unified Layout)
 // ============================================================
 
-import HeroCrown from "../components/HeroCrown";
 import HeroGallery from "../components/HeroGallery";
 import FrostedCards from "../components/FrostedCards";
 import Ticker from "../components/Ticker";
 
-import "../styles/hero-crown.css";
 import "../styles/hero-gallery.css";
 import "../styles/frosted-cards.css";
 import "../styles/ticker.css";
 
 export default function Home() {
   return (
-    <div className="home-page">
+    <main className="home-page">
 
-      {/* HERO GALLERY */}
-      <HeroGallery />
+      <section className="home-section">
+        <HeroGallery />
+      </section>
 
-      {/* FROSTED CARDS */}
-      <FrostedCards />
+      <section className="home-section">
+        <FrostedCards />
+      </section>
 
-      {/* TICKER */}
       <Ticker />
 
-    </div>
+    </main>
   );
 }
