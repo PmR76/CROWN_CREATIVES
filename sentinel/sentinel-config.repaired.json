@@ -8,7 +8,10 @@
       "src",
       "core",
       "components"
-    ]
+    ],
+    "labs": [],
+    "legacy": [],
+    "cssNames": []
   },
   "scan": [
     "src",

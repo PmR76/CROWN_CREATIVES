@@ -33,6 +33,21 @@ function ensureConfigShape(cfg) {
     ];
   }
 
+  if (!Array.isArray(repaired.ui.labs)) {
+    console.warn("[Sentinel Safe Mode] Missing 'ui.labs' — inserting defaults.");
+    repaired.ui.labs = [];
+  }
+
+  if (!Array.isArray(repaired.ui.legacy)) {
+    console.warn("[Sentinel Safe Mode] Missing 'ui.legacy' — inserting defaults.");
+    repaired.ui.legacy = [];
+  }
+
+  if (!Array.isArray(repaired.ui.cssNames)) {
+    console.warn("[Sentinel Safe Mode] Missing 'ui.cssNames' — inserting defaults.");
+    repaired.ui.cssNames = [];
+  }
+
   if (!Array.isArray(repaired.scan)) {
     console.warn("[Sentinel Safe Mode] Missing 'scan' — inserting defaults.");
     repaired.scan = ["src", "public"];
@@ -89,9 +104,6 @@ const healthPath = path.join(__dirname, "sentinel-health.json");
 const duplicatesPath = path.join(__dirname, "sentinel-duplicates.json");
 const uiConflictsPath = path.join(__dirname, "sentinel-ui-conflicts.json");
 
-// Example usage:
-const uiConfig = safeConfig.ui;
-
 // ------------------------------------------------------------
 // SCAN FOLDERS
 // ------------------------------------------------------------
@@ -110,7 +122,7 @@ function scanFolder(folder) {
     const stat = fs.statSync(itemPath);
 
     if (stat.isDirectory()) {
-      if (!config.ignore.includes(item)) {
+      if (!safeConfig.ignore.includes(item)) {
         branch.items.push(scanFolder(path.join(folder, item)));
       }
     } else {
@@ -127,7 +139,7 @@ function scanFolder(folder) {
 function buildTree() {
   const tree = [];
 
-  for (const folder of config.scan) {
+  for (const folder of safeConfig.scan) {
     tree.push(scanFolder(folder));
   }
 
@@ -185,7 +197,7 @@ function computeHealth(tree) {
   const duplicates = [];
   const missing = [];
 
-  for (const required of config.required) {
+  for (const required of safeConfig.required) {
     const full = path.join(PROJECT_ROOT, required);
     if (!fs.existsSync(full)) {
       missing.push(required);
@@ -232,7 +244,7 @@ function computeHealth(tree) {
 function detectUIConflicts(tree, duplicates) {
   const { files } = collectFiles(tree);
 
-  const uiConfig = config.ui;
+  const uiConfig = safeConfig.ui;
   const coreReactRoots = uiConfig.coreReact;
   const labRoots = uiConfig.labs;
   const legacyRoots = uiConfig.legacy;
@@ -276,7 +288,6 @@ function detectUIConflicts(tree, duplicates) {
           : "other";
 
       if (uiConfig.cssNames.includes(d.name)) {
-        // already captured above
         continue;
       }
 
