@@ -1,6 +1,9 @@
 {
-  "timestamp": "2026-07-16T20:09:52.762Z",
-  "missing": [],
+  "timestamp": "2026-07-17T09:15:48.543Z",
+  "missing": [
+    "src",
+    "public"
+  ],
   "duplicates": [],
-  "status": "green"
+  "status": "red"
 }
