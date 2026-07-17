@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 export function useSentinelStatus() {
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any>(null);
 
   async function refresh() {
     setLoading(true);

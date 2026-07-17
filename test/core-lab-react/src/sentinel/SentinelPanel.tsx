@@ -33,6 +33,33 @@ export function SentinelPanel() {
     border: "1px solid rgba(255,255,255,0.12)"
   };
 
+  // STRICT-MODE SAFE NARROWING
+  const s = status;
+  const h = handshakeResult;
+
+  // ⭐ WORKAROUND: extract JSX into a function so TS stops collapsing to never
+  function renderStatusBlock() {
+    if (!s) return null;
+
+    return (
+      <div>
+        <div>
+          <strong>Dev:</strong>{" "}
+          <span style={{ color: s.dev.ok ? "#00eaff" : "#ff8080" }}>
+            {s.dev.status} ({s.dev.durationMs}ms)
+          </span>
+        </div>
+
+        <div>
+          <strong>Prod:</strong>{" "}
+          <span style={{ color: s.prod.ok ? "#00eaff" : "#ff8080" }}>
+            {s.prod.status} ({s.prod.durationMs}ms)
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       style={{
@@ -61,23 +88,7 @@ export function SentinelPanel() {
           <div style={{ color: "#ff8080" }}>Error: {String(error)}</div>
         )}
 
-        {status !== null && (
-          <div>
-            <div>
-              <strong>Dev:</strong>{" "}
-              <span style={{ color: status.dev.ok ? "#00eaff" : "#ff8080" }}>
-                {status.dev.status} ({status.dev.durationMs}ms)
-              </span>
-            </div>
-
-            <div>
-              <strong>Prod:</strong>{" "}
-              <span style={{ color: status.prod.ok ? "#00eaff" : "#ff8080" }}>
-                {status.prod.status} ({status.prod.durationMs}ms)
-              </span>
-            </div>
-          </div>
-        )}
+        {renderStatusBlock()}
       </div>
 
       <button
@@ -99,7 +110,7 @@ export function SentinelPanel() {
         {handshakeLoading ? "RUNNING…" : "RUN SENTINEL HANDSHAKE"}
       </button>
 
-      {handshakeResult !== null && (
+      {h && (
         <div
           style={{
             marginTop: 10,
@@ -113,7 +124,7 @@ export function SentinelPanel() {
           }}
         >
           <pre style={{ whiteSpace: "pre-wrap" }}>
-            {JSON.stringify(handshakeResult.compare, null, 2)}
+            {JSON.stringify(h.compare, null, 2)}
           </pre>
         </div>
       )}
