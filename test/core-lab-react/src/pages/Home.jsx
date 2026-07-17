@@ -44,25 +44,11 @@ export default function Home() {
     boot();
   }, []);
 
-  const badge =
-    sentinelStatus === "OK"
-      ? "🟢 Sentinel OK"
-      : sentinelStatus === "WARN"
-      ? "🟡 Sentinel Warnings"
-      : sentinelStatus === "ERROR"
-      ? "🔴 Sentinel Error"
-      : "⚪ Booting Sentinel…";
-
-  return (
     <main className="home-page">
 
       <Background3D />
 
       <Header />
-
-      <div className="sentinel-status-badge">
-        {badge}
-      </div>
 
       <HeroCrown />
 
@@ -81,5 +67,5 @@ export default function Home() {
       <Footer />
 
     </main>
-  );
+  ;
 }
