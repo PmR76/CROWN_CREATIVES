@@ -5,6 +5,7 @@
 import StatusPanel from "../panels/StatusPanel";
 import HandshakePanel from "../panels/HandshakePanel";
 import CloudflarePanel from "../panels/CloudflarePanel";
+import UIConflictsPanel from "../panels/UIConflictsPanel";
 
 import "../styles/sentinel-dashboard.css";
 
@@ -14,6 +15,7 @@ export default function SentinelDashboard() {
       <StatusPanel />
       <HandshakePanel />
       <CloudflarePanel />
+      <UIConflictsPanel />
     </div>
   );
 }
