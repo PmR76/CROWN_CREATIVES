@@ -4,7 +4,7 @@
 
 export async function runMusicSentinel() {
   const report = {
-    manifestUrl: "/manifests/sound-manifest.json", // ✅ Correct path
+    manifestUrl: "/manifests/sound-manifest.json", // ✅ correct path
     manifestExists: false,
     manifestValid: false,
     manifestLength: 0,
