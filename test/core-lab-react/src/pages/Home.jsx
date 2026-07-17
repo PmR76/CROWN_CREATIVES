@@ -5,7 +5,7 @@
 
 import { useEffect, useState } from "react";
 
-import Background3D from "../components/background3D";
+import Background3D from "../components/Background3D";
 import Header from "../components/Header";
 import HeroCrown from "../components/HeroCrown";
 import HeroGallery from "../components/HeroGallery";
@@ -29,7 +29,7 @@ export default function Home() {
   const [sentinelStatus, setSentinelStatus] = useState("BOOTING");
 
   // ------------------------------------------------------------
-  // SENTINEL BOOT SEQUENCE (Homepage-Level Diagnostics)
+  // SENTINEL BOOT SEQUENCE
   // ------------------------------------------------------------
   useEffect(() => {
     async function boot() {
@@ -60,7 +60,7 @@ export default function Home() {
   }, []);
 
   // ------------------------------------------------------------
-  // SENTINEL STATUS BADGE (Non-blocking UI Indicator)
+  // SENTINEL BADGE (FIXED)
   // ------------------------------------------------------------
   const badge =
     sentinelStatus === "OK"
@@ -74,13 +74,15 @@ export default function Home() {
   return (
     <main className="home-page">
 
-      {/* Cosmic Nebula 2.0 Background */}
       <Background3D />
 
-      {/* Sentinel Status Badge */}
+      <Header />
+
       <div className="sentinel-status-badge">
         {badge}
       </div>
+
+      <HeroCrown />
 
       <section className="home-section">
         <HeroGallery />
@@ -93,6 +95,8 @@ export default function Home() {
       <section className="home-section">
         <Ticker />
       </section>
+
+      <Footer />
 
     </main>
   );
