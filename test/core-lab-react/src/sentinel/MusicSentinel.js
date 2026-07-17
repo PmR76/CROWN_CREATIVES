@@ -1,10 +1,10 @@
 // ============================================================
-// MusicSentinel — Safe, Non‑Blocking Diagnostics
+// MusicSentinel — Safe, Non‑Blocking Diagnostics (Fixed)
 // ============================================================
 
 export async function runMusicSentinel() {
   const report = {
-    manifestUrl: "/sounds/sound-manifest.json",
+    manifestUrl: "/manifests/sound-manifest.json", // ✅ Correct path
     manifestExists: false,
     manifestValid: false,
     manifestLength: 0,
@@ -23,7 +23,15 @@ export async function runMusicSentinel() {
 
     report.manifestExists = true;
 
-    const data = await res.json();
+    const text = await res.text();
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      report.error = "Manifest fetch returned HTML instead of JSON.";
+      report.finalStatus = "MANIFEST_INVALID_JSON";
+      return report;
+    }
 
     if (!Array.isArray(data)) {
       report.error = "Sound manifest JSON is not an array.";
