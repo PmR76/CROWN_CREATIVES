@@ -1,86 +1,75 @@
 /* ============================================================
-   Arcane Aurora Field — GR1 Background (FINAL CLEAN VERSION)
-============================================================ */
+   Cosmic Nebula 2.0 — Cinematic 3D Background
+   ============================================================ */
 
-/* REMOVE ALL OLD BACKGROUND ENGINES */
-#webgl-background,
-.background-3d {
-  display: none !important;
-}
-
-/* REMOVE ANY PAGE-WIDE BACKGROUND GRADIENTS */
-body,
-.layout-root,
-.cinematic-zone {
-  background: transparent !important;
-}
-
-/* ============================================================
-   MAIN AURORA CANVAS — MUST BE ABSOLUTE
-============================================================ */
-
-.background-aurora {
-  position: absolute;          /* critical: prevents layout push */
-  top: -120px;                 /* pulls aurora UP into crown zone */
-  left: 0;
-  width: 100%;
-  height: calc(100% + 200px);  /* extends UP, never down */
+.cosmic-3d-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
   pointer-events: none;
-  z-index: 1;                  /* sits behind crown + content */
-  opacity: 0.85;
+  background: radial-gradient(circle at 50% 50%, #050014, #000010);
 }
 
 /* ============================================================
-   Sparkle Circle — Electric Blue Neon (GR1)
-============================================================ */
-
-.sparkle-circle {
-  width: 170px;                /* +50px wider */
-  height: 170px;               /* +50px taller */
-  border-radius: 50%;
-
-  background: radial-gradient(
-    circle,
-    rgba(0, 180, 255, 0.9) 0%,
-    rgba(0, 120, 255, 0.6) 40%,
-    rgba(0, 80, 200, 0.3) 70%,
-    rgba(0, 40, 120, 0.0) 100%
-  );
-
-  filter: blur(12px)
-          drop-shadow(0 0 18px rgba(0, 150, 255, 0.9));
-
-  opacity: 0.85;
-  pointer-events: none;
-}
-
-/* ============================================================
-   Optional Shimmer Float (Magical Particle)
-============================================================ */
-
-.aurora-shimmer {
+   1. STARFIELD — Parallax Drift
+   ============================================================ */
+.cosmic-stars {
   position: absolute;
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  pointer-events: none;
-
-  background: radial-gradient(
-    circle,
-    rgba(0, 180, 255, 0.9) 0%,
-    rgba(0, 120, 255, 0.6) 40%,
-    rgba(0, 80, 200, 0.3) 70%,
-    rgba(0, 40, 120, 0.0) 100%
-  );
-
-  filter: blur(12px)
-          drop-shadow(0 0 18px rgba(0, 150, 255, 0.9));
-
-  animation: shimmerFloat 12s ease-in-out infinite;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.9) 0%, transparent 70%),
+    radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 70%),
+    radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%),
+    radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
+  background-size: 3px 3px, 2px 2px, 4px 4px, 3px 3px;
+  background-position: 20% 30%, 80% 40%, 50% 70%, 30% 90%;
+  animation: starParallax 60s linear infinite;
+  opacity: 0.7;
 }
 
-@keyframes shimmerFloat {
-  0%   { transform: translateY(0px) translateX(0px); }
-  50%  { transform: translateY(-40px) translateX(20px); }
-  100% { transform: translateY(0px) translateX(0px); }
+@keyframes starParallax {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-300px); }
+}
+
+/* ============================================================
+   2. NEBULA CORE — Pulsing Cosmic Swirl
+   ============================================================ */
+.cosmic-nebula {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 70%,
+      rgba(120, 0, 255, 0.35) 0%,
+      rgba(0, 120, 255, 0.25) 40%,
+      rgba(0, 0, 40, 0.9) 100%);
+  filter: blur(40px);
+  animation: nebulaPulse 90s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+@keyframes nebulaPulse {
+  0%   { transform: scale(1) translate(0, 0); }
+  50%  { transform: scale(1.2) translate(-50px, -30px); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+
+/* ============================================================
+   3. FOG LAYER — Depth + 3D Drift
+   ============================================================ */
+.cosmic-fog-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 60% 40%,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0) 70%);
+  filter: blur(80px);
+  animation: fogDrift 120s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+@keyframes fogDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(60px, -40px) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
 }

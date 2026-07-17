@@ -1,10 +1,11 @@
 // ============================================================
 // Home.jsx — Crown Creatives Homepage (GR1 Unified Layout)
-// Sentinel‑Integrated Homepage
+// Sentinel‑Integrated Homepage + Cosmic Nebula 2.0
 // ============================================================
 
 import { useEffect, useState } from "react";
 
+import Background3D from "../components/Background3D";
 import HeroGallery from "../components/HeroGallery";
 import FrostedCards from "../components/FrostedCards";
 import Ticker from "../components/Ticker";
@@ -13,6 +14,7 @@ import Ticker from "../components/Ticker";
 import { runGallerySentinel } from "../sentinel/GallerySentinel";
 import { runMusicSentinel } from "../sentinel/MusicSentinel";
 
+import "../styles/background-3d.css";
 import "../styles/hero-gallery.css";
 import "../styles/frosted-cards.css";
 import "../styles/ticker.css";
@@ -34,7 +36,6 @@ export default function Home() {
         console.log("Music Sentinel:", musicReport);
         console.groupEnd();
 
-        // Sentinel status logic (non-blocking)
         if (
           galleryReport.finalStatus === "OK" &&
           musicReport.finalStatus === "OK"
@@ -66,6 +67,9 @@ export default function Home() {
 
   return (
     <main className="home-page">
+
+      {/* Cosmic Nebula 2.0 Background */}
+      <Background3D />
 
       {/* Sentinel Status Badge */}
       <div className="sentinel-status-badge">
