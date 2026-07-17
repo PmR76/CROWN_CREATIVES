@@ -1,28 +1,61 @@
+// ============================================================
+// build-manifests.js — Unified Media Scanner (Images + Sounds)
+// ============================================================
+
 import fs from "fs";
 import path from "path";
 
-const root = process.cwd();
-const soundsDir = path.join(root, "public", "sounds");
-const galleryDir = path.join(root, "public", "gallery");
-const manifestsDir = path.join(root, "public", "manifests");
+// ------------------------------------------------------------
+// FOLDERS
+// ------------------------------------------------------------
+const galleryFolder = path.join(process.cwd(), "public/assets/images/gallery");
+const soundFolder   = path.join(process.cwd(), "public/sounds");
 
-if (!fs.existsSync(manifestsDir)) {
-  fs.mkdirSync(manifestsDir);
+// ------------------------------------------------------------
+// OUTPUT MANIFESTS
+// ------------------------------------------------------------
+const galleryManifest = path.join(galleryFolder, "gallery-manifest.json");
+const soundManifest   = path.join(soundFolder, "sound-manifest.json");
+
+// ------------------------------------------------------------
+// SCAN A FOLDER
+// ------------------------------------------------------------
+function scanFolder(folder) {
+  if (!fs.existsSync(folder)) {
+    console.error("Folder missing:", folder);
+    return [];
+  }
+
+  const files = fs.readdirSync(folder)
+    .filter(f => !f.startsWith("."))
+    .filter(f => !fs.lstatSync(path.join(folder, f)).isDirectory());
+
+  return files;
 }
 
-function buildSoundManifest() {
-  const files = fs.readdirSync(soundsDir).filter(f => f.endsWith(".mp3"));
-  const json = { tracks: files };
-  fs.writeFileSync(path.join(manifestsDir, "sound-manifest.json"), JSON.stringify(json, null, 2));
+// ------------------------------------------------------------
+// WRITE MANIFEST
+// ------------------------------------------------------------
+function writeManifest(filePath, list) {
+  fs.writeFileSync(filePath, JSON.stringify(list, null, 2));
+  console.log("Updated manifest:", filePath);
 }
 
-function buildGalleryManifest() {
-  const files = fs.readdirSync(galleryDir).filter(f => /\.(png|jpg|jpeg|webp)$/i.test(f));
-  const json = { images: files };
-  fs.writeFileSync(path.join(manifestsDir, "gallery-manifest.json"), JSON.stringify(json, null, 2));
+// ------------------------------------------------------------
+// RUN SCANNER
+// ------------------------------------------------------------
+function run() {
+  console.log("=== Unified Media Scanner ===");
+
+  // 1. Gallery
+  const galleryFiles = scanFolder(galleryFolder);
+  writeManifest(galleryManifest, galleryFiles);
+
+  // 2. Sounds
+  const soundFiles = scanFolder(soundFolder);
+  writeManifest(soundManifest, soundFiles);
+
+  console.log("=== Scanner Complete ===");
 }
 
-buildSoundManifest();
-buildGalleryManifest();
-
-console.log("Manifests built successfully.");
+run();
