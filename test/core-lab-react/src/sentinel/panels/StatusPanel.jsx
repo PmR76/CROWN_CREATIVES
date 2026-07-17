@@ -1,55 +1,146 @@
 // ============================================================
-// StatusPanel.jsx — Sentinel v2.0 Status Panel
+// StatusPanel.jsx — Sentinel v2.0 Status Diagnostics
 // ============================================================
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../styles/sentinel-panels.css";
 
 export default function StatusPanel() {
-  const [status, setStatus] = useState(null);
+  // ------------------------------------------------------------
+  // Visibility Toggle (SHIFT + S)
+  // ------------------------------------------------------------
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    function toggle(e) {
+      if (e.key === "S" && e.shiftKey) {
+        setVisible(v => !v);
+      }
+    }
+    window.addEventListener("keydown", toggle);
+    return () => window.removeEventListener("keydown", toggle);
+  }, []);
+
+  if (!visible) return null;
+
+  // ------------------------------------------------------------
+  // Draggable Panel
+  // ------------------------------------------------------------
+  const [dragging, setDragging] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const panelRef = useRef(null);
+
+  function onMouseDown(e) {
+    setDragging(true);
+    setOffset({
+      x: e.clientX - panelRef.current.offsetLeft,
+      y: e.clientY - panelRef.current.offsetTop
+    });
+  }
+
+  function onMouseMove(e) {
+    if (!dragging) return;
+    panelRef.current.style.left = `${e.clientX - offset.x}px`;
+    panelRef.current.style.top = `${e.clientY - offset.y}px`;
+  }
+
+  function onMouseUp() {
+    setDragging(false);
+  }
+
+  // ------------------------------------------------------------
+  // Data Fetch
+  // ------------------------------------------------------------
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:5175/sentinel/status")
       .then(res => res.json())
-      .then(data => setStatus(data))
-      .catch(() => setStatus({ error: true }));
+      .then(json => setData(json))
+      .catch(() => setData({ error: true }));
   }, []);
 
-  if (!status) return <div className="sentinel-panel loading">Loading...</div>;
+  // ------------------------------------------------------------
+  // Loading / Error States
+  // ------------------------------------------------------------
+  if (!data) {
+    return (
+      <div
+        ref={panelRef}
+        className="sentinel-panel loading"
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        style={{ position: "fixed", top: "10%", left: "10%" }}
+      >
+        Loading status...
+      </div>
+    );
+  }
 
+  if (data.error) {
+    return (
+      <div
+        ref={panelRef}
+        className="sentinel-panel status-red"
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        style={{ position: "fixed", top: "10%", left: "10%" }}
+      >
+        <h2>Status</h2>
+        <p>Error loading status diagnostics.</p>
+      </div>
+    );
+  }
+
+  // ------------------------------------------------------------
+  // Render Panel
+  // ------------------------------------------------------------
   return (
-    <div className={`sentinel-panel status-${status.status}`}>
-      <h2>Sentinel Status</h2>
+    <div
+      ref={panelRef}
+      className="sentinel-panel"
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      style={{ position: "fixed", top: "10%", left: "10%" }}
+    >
+      <h2>Status Diagnostics</h2>
 
       <div className="row">
         <span>Environment:</span>
-        <strong>{status.env}</strong>
+        <strong>{data.environment}</strong>
       </div>
 
       <div className="row">
-        <span>HTTP Status:</span>
-        <strong>{status.status}</strong>
+        <span>Version:</span>
+        <strong>{data.version}</strong>
       </div>
 
       <div className="row">
-        <span>OK:</span>
-        <strong>{status.ok ? "Yes" : "No"}</strong>
+        <span>Uptime:</span>
+        <strong>{data.uptime}</strong>
       </div>
 
       <div className="row">
-        <span>Duration:</span>
-        <strong>{status.durationMs}ms</strong>
+        <span>Checks Passed:</span>
+        <strong>{data.passed}</strong>
       </div>
 
       <div className="row">
-        <span>Body Size:</span>
-        <strong>{status.bodyLength} bytes</strong>
+        <span>Checks Failed:</span>
+        <strong>{data.failed}</strong>
       </div>
 
-      <div className="row">
-        <span>Timestamp:</span>
-        <strong>{status.timestamp}</strong>
-      </div>
+      {data.errors?.length > 0 && (
+        <div className="detail-block">
+          <h3>Errors</h3>
+          {data.errors.map((err, i) => (
+            <div className="row" key={i}>{err}</div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

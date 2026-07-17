@@ -1,11 +1,11 @@
 // ============================================================
-// HandshakePanel.jsx — Sentinel v2.0 Handshake Diagnostics
+// DuplicatesPanel.jsx — Sentinel v2.0 Duplicate Asset Scanner
 // ============================================================
 
 import { useEffect, useState, useRef } from "react";
 import "../styles/sentinel-panels.css";
 
-export default function HandshakePanel() {
+export default function DuplicatesPanel() {
   // ------------------------------------------------------------
   // Visibility Toggle (SHIFT + S)
   // ------------------------------------------------------------
@@ -54,7 +54,7 @@ export default function HandshakePanel() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5175/sentinel/handshake")
+    fetch("http://localhost:5175/sentinel/duplicates")
       .then(res => res.json())
       .then(json => setData(json))
       .catch(() => setData({ error: true }));
@@ -71,9 +71,9 @@ export default function HandshakePanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "15%", left: "15%" }}
+        style={{ position: "fixed", top: "30%", left: "30%" }}
       >
-        Loading handshake diagnostics...
+        Scanning for duplicates...
       </div>
     );
   }
@@ -86,13 +86,15 @@ export default function HandshakePanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "15%", left: "15%" }}
+        style={{ position: "fixed", top: "30%", left: "30%" }}
       >
-        <h2>Handshake</h2>
-        <p>Error loading handshake diagnostics.</p>
+        <h2>Duplicates</h2>
+        <p>Error loading duplicate scan.</p>
       </div>
     );
   }
+
+  const { cssDuplicates, assetDuplicates, componentDuplicates } = data;
 
   // ------------------------------------------------------------
   // Render Panel
@@ -104,35 +106,48 @@ export default function HandshakePanel() {
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
-      style={{ position: "fixed", top: "15%", left: "15%" }}
+      style={{ position: "fixed", top: "30%", left: "30%" }}
     >
-      <h2>Sentinel Handshake</h2>
+      <h2>Duplicate Scanner</h2>
 
       <div className="row">
-        <span>Initiated:</span>
-        <strong>{data.initiated ? "Yes" : "No"}</strong>
+        <span>CSS Duplicates:</span>
+        <strong>{cssDuplicates.length}</strong>
       </div>
 
       <div className="row">
-        <span>Timestamp:</span>
-        <strong>{data.timestamp}</strong>
+        <span>Asset Duplicates:</span>
+        <strong>{assetDuplicates.length}</strong>
       </div>
 
       <div className="row">
-        <span>Direction:</span>
-        <strong>{data.direction || "None"}</strong>
+        <span>Component Duplicates:</span>
+        <strong>{componentDuplicates.length}</strong>
       </div>
 
-      <div className="row">
-        <span>Events:</span>
-        <strong>{data.events?.length || 0}</strong>
-      </div>
-
-      {data.events?.length > 0 && (
+      {cssDuplicates.length > 0 && (
         <div className="detail-block">
-          <h3>Events</h3>
-          {data.events.map((evt, i) => (
-            <div className="row" key={i}>{evt}</div>
+          <h3>CSS Duplicates</h3>
+          {cssDuplicates.map((item, i) => (
+            <div className="row" key={i}>{item}</div>
+          ))}
+        </div>
+      )}
+
+      {assetDuplicates.length > 0 && (
+        <div className="detail-block">
+          <h3>Asset Duplicates</h3>
+          {assetDuplicates.map((item, i) => (
+            <div className="row" key={i}>{item}</div>
+          ))}
+        </div>
+      )}
+
+      {componentDuplicates.length > 0 && (
+        <div className="detail-block">
+          <h3>Component Duplicates</h3>
+          {componentDuplicates.map((item, i) => (
+            <div className="row" key={i}>{item}</div>
           ))}
         </div>
       )}
