@@ -36,3 +36,15 @@
   justify-content: space-between;
   margin: 8px 0;
 }
+.sentinel-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999; /* ⭐ Always on top */
+  background: rgba(20, 20, 30, 0.92);
+  border-radius: 14px;
+  padding: 20px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
