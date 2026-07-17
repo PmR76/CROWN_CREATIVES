@@ -9,7 +9,7 @@ export default function DuplicatesPanel() {
   // ------------------------------------------------------------
   // Visibility Toggle (SHIFT + S)
   // ------------------------------------------------------------
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false); // ⭐ start hidden on live
 
   useEffect(() => {
     function toggle(e) {
@@ -49,7 +49,7 @@ export default function DuplicatesPanel() {
   }
 
   // ------------------------------------------------------------
-  // Data Fetch
+  // Data Fetch (correct endpoint)
   // ------------------------------------------------------------
   const [data, setData] = useState(null);
 
@@ -71,7 +71,12 @@ export default function DuplicatesPanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "30%", left: "30%" }}
+        style={{
+          position: "fixed",
+          top: "30%",
+          left: "30%",
+          zIndex: 999999
+        }}
       >
         Scanning for duplicates...
       </div>
@@ -86,7 +91,12 @@ export default function DuplicatesPanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "30%", left: "30%" }}
+        style={{
+          position: "fixed",
+          top: "30%",
+          left: "30%",
+          zIndex: 999999
+        }}
       >
         <h2>Duplicates</h2>
         <p>Error loading duplicate scan.</p>
@@ -106,7 +116,12 @@ export default function DuplicatesPanel() {
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
-      style={{ position: "fixed", top: "30%", left: "30%" }}
+      style={{
+        position: "fixed",
+        top: "30%",
+        left: "30%",
+        zIndex: 999999
+      }}
     >
       <h2>Duplicate Scanner</h2>
 

@@ -9,7 +9,7 @@ export default function CloudflarePanel() {
   // ------------------------------------------------------------
   // Visibility Toggle (SHIFT + S)
   // ------------------------------------------------------------
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false); // ⭐ start hidden on live
 
   useEffect(() => {
     function toggle(e) {
@@ -49,7 +49,7 @@ export default function CloudflarePanel() {
   }
 
   // ------------------------------------------------------------
-  // Data Fetch
+  // Data Fetch (correct endpoint)
   // ------------------------------------------------------------
   const [data, setData] = useState(null);
 
@@ -71,7 +71,12 @@ export default function CloudflarePanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "25%", left: "25%" }}
+        style={{
+          position: "fixed",
+          top: "25%",
+          left: "25%",
+          zIndex: 999999
+        }}
       >
         Loading Cloudflare diagnostics...
       </div>
@@ -86,7 +91,12 @@ export default function CloudflarePanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "25%", left: "25%" }}
+        style={{
+          position: "fixed",
+          top: "25%",
+          left: "25%",
+          zIndex: 999999
+        }}
       >
         <h2>Cloudflare</h2>
         <p>Error loading Cloudflare diagnostics.</p>
@@ -104,7 +114,12 @@ export default function CloudflarePanel() {
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
-      style={{ position: "fixed", top: "25%", left: "25%" }}
+      style={{
+        position: "fixed",
+        top: "25%",
+        left: "25%",
+        zIndex: 999999
+      }}
     >
       <h2>Cloudflare Diagnostics</h2>
 

@@ -9,7 +9,7 @@ export default function StatusPanel() {
   // ------------------------------------------------------------
   // Visibility Toggle (SHIFT + S)
   // ------------------------------------------------------------
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false); // ⭐ start hidden on live
 
   useEffect(() => {
     function toggle(e) {
@@ -49,7 +49,7 @@ export default function StatusPanel() {
   }
 
   // ------------------------------------------------------------
-  // Data Fetch
+  // Data Fetch (correct endpoint)
   // ------------------------------------------------------------
   const [data, setData] = useState(null);
 
@@ -71,7 +71,12 @@ export default function StatusPanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "10%", left: "10%" }}
+        style={{
+          position: "fixed",
+          top: "10%",
+          left: "10%",
+          zIndex: 999999
+        }}
       >
         Loading status...
       </div>
@@ -86,7 +91,12 @@ export default function StatusPanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "10%", left: "10%" }}
+        style={{
+          position: "fixed",
+          top: "10%",
+          left: "10%",
+          zIndex: 999999
+        }}
       >
         <h2>Status</h2>
         <p>Error loading status diagnostics.</p>
@@ -104,7 +114,12 @@ export default function StatusPanel() {
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
-      style={{ position: "fixed", top: "10%", left: "10%" }}
+      style={{
+        position: "fixed",
+        top: "10%",
+        left: "10%",
+        zIndex: 999999
+      }}
     >
       <h2>Status Diagnostics</h2>
 

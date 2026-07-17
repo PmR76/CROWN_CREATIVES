@@ -9,7 +9,7 @@ export default function HandshakePanel() {
   // ------------------------------------------------------------
   // Visibility Toggle (SHIFT + S)
   // ------------------------------------------------------------
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false); // ⭐ start hidden on live
 
   useEffect(() => {
     function toggle(e) {
@@ -49,7 +49,7 @@ export default function HandshakePanel() {
   }
 
   // ------------------------------------------------------------
-  // Data Fetch
+  // Data Fetch (correct endpoint)
   // ------------------------------------------------------------
   const [data, setData] = useState(null);
 
@@ -71,7 +71,12 @@ export default function HandshakePanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "15%", left: "15%" }}
+        style={{
+          position: "fixed",
+          top: "15%",
+          left: "15%",
+          zIndex: 999999
+        }}
       >
         Loading handshake diagnostics...
       </div>
@@ -86,7 +91,12 @@ export default function HandshakePanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "15%", left: "15%" }}
+        style={{
+          position: "fixed",
+          top: "15%",
+          left: "15%",
+          zIndex: 999999
+        }}
       >
         <h2>Handshake</h2>
         <p>Error loading handshake diagnostics.</p>
@@ -95,7 +105,7 @@ export default function HandshakePanel() {
   }
 
   // ------------------------------------------------------------
-  // Render Panel
+  // Render Panel (updated to match Watchkeeper JSON)
   // ------------------------------------------------------------
   return (
     <div
@@ -104,38 +114,34 @@ export default function HandshakePanel() {
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
-      style={{ position: "fixed", top: "15%", left: "15%" }}
+      style={{
+        position: "fixed",
+        top: "15%",
+        left: "15%",
+        zIndex: 999999
+      }}
     >
       <h2>Sentinel Handshake</h2>
 
       <div className="row">
-        <span>Initiated:</span>
-        <strong>{data.initiated ? "Yes" : "No"}</strong>
+        <span>Status Match:</span>
+        <strong>{data.statusMatch ? "Yes" : "No"}</strong>
+      </div>
+
+      <div className="row">
+        <span>OK Match:</span>
+        <strong>{data.okMatch ? "Yes" : "No"}</strong>
+      </div>
+
+      <div className="row">
+        <span>Body Size Delta:</span>
+        <strong>{data.bodySizeDelta}</strong>
       </div>
 
       <div className="row">
         <span>Timestamp:</span>
         <strong>{data.timestamp}</strong>
       </div>
-
-      <div className="row">
-        <span>Direction:</span>
-        <strong>{data.direction || "None"}</strong>
-      </div>
-
-      <div className="row">
-        <span>Events:</span>
-        <strong>{data.events?.length || 0}</strong>
-      </div>
-
-      {data.events?.length > 0 && (
-        <div className="detail-block">
-          <h3>Events</h3>
-          {data.events.map((evt, i) => (
-            <div className="row" key={i}>{evt}</div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

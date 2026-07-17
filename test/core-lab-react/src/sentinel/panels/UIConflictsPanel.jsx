@@ -9,7 +9,7 @@ export default function UIConflictsPanel() {
   // ------------------------------------------------------------
   // Visibility Toggle (SHIFT + S)
   // ------------------------------------------------------------
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false); // default: hidden on live site
 
   useEffect(() => {
     function toggle(e) {
@@ -49,17 +49,20 @@ export default function UIConflictsPanel() {
   }
 
   // ------------------------------------------------------------
-  // Data Fetch
+  // Data Fetch (FIXED — no .js suffix)
   // ------------------------------------------------------------
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5175/sentinel/ui-conflicts")
+    fetch("http://localhost:5175/sentinel/ui-conflicts") // FIXED
       .then(res => res.json())
       .then(json => setData(json))
       .catch(() => setData({ error: true }));
   }, []);
 
+  // ------------------------------------------------------------
+  // Loading / Error States
+  // ------------------------------------------------------------
   if (!data) {
     return (
       <div
@@ -68,7 +71,12 @@ export default function UIConflictsPanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "20%", left: "20%" }}
+        style={{
+          position: "fixed",
+          top: "20%",
+          left: "20%",
+          zIndex: 999999
+        }}
       >
         Loading...
       </div>
@@ -83,7 +91,12 @@ export default function UIConflictsPanel() {
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        style={{ position: "fixed", top: "20%", left: "20%" }}
+        style={{
+          position: "fixed",
+          top: "20%",
+          left: "20%",
+          zIndex: 999999
+        }}
       >
         <h2>UI Conflicts</h2>
         <p>Error loading UI conflict data.</p>
@@ -103,7 +116,12 @@ export default function UIConflictsPanel() {
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
-      style={{ position: "fixed", top: "20%", left: "20%" }}
+      style={{
+        position: "fixed",
+        top: "20%",
+        left: "20%",
+        zIndex: 999999
+      }}
     >
       <h2>UI Conflicts</h2>
 
