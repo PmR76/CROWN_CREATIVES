@@ -1,0 +1,12 @@
+/* ============================================================
+   Sentinel Dashboard — Layout Container
+   ============================================================ */
+
+.sentinel-dashboard {
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  background: rgba(0, 0, 0, 0.35);
+  min-height: 100vh;
+}

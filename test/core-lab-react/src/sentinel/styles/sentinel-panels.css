@@ -1,0 +1,38 @@
+/* ============================================================
+   Sentinel Panels — Frosted OS Windows
+   ============================================================ */
+
+.sentinel-panel {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 20px;
+  width: 320px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.sentinel-panel.loading {
+  opacity: 0.6;
+}
+
+.sentinel-panel.status-green {
+  border-color: #00ff9d;
+  box-shadow: 0 0 20px #00ff9d;
+}
+
+.sentinel-panel.status-amber {
+  border-color: #ffcc00;
+  box-shadow: 0 0 20px #ffcc00;
+}
+
+.sentinel-panel.status-red {
+  border-color: #ff0044;
+  box-shadow: 0 0 20px #ff0044;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}

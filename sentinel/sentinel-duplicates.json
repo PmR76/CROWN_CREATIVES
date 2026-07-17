@@ -1,16 +1,1 @@
-[
-  {
-    "name": "sun-moon.png",
-    "locations": [
-      "test\\core-lab-react\\public\\assets\\icons",
-      "test\\core-lab-react\\public\\assets\\images\\gallery"
-    ]
-  },
-  {
-    "name": "fallback.jpeg",
-    "locations": [
-      "test\\core-lab-react\\public\\assets\\images",
-      "test\\core-lab-react\\public\\assets\\images\\gallery"
-    ]
-  }
-]
+[]

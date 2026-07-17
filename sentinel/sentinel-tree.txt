@@ -87,7 +87,6 @@
             🟢 crow.jpeg
             🟢 day-background.jpeg
             🟢 dice-tower.jpeg
-            🟢 fallback.jpeg
             🟢 fly.jpeg
             🟢 framed-but.jpeg
             🟢 gallery-manifest.json
@@ -107,7 +106,6 @@
             🟢 sculpture.jpeg
             🟢 skull.jpeg
             🟢 stars-darkness.jpeg
-            🟢 sun-moon.png
             🟢 tree.jpeg
             🟢 wave.jpeg
             🟢 white-butterfly.jpeg

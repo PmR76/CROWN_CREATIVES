@@ -1,9 +1,6 @@
 {
-  "timestamp": "2026-07-17T09:53:44.188Z",
+  "timestamp": "2026-07-17T10:12:56.440Z",
   "missing": [],
-  "duplicates": [
-    "sun-moon.png",
-    "fallback.jpeg"
-  ],
-  "status": "amber"
+  "duplicates": [],
+  "status": "green"
 }

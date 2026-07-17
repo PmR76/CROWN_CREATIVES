@@ -1,5 +1,5 @@
 // ============================================================
-// main.jsx — React Entry Point (GR1 Stable + Sentinel)
+// main.jsx — React Entry Point (GR1 Stable + Sentinel + Router)
 // ============================================================
 
 // GLOBAL ERROR VISIBILITY
@@ -17,6 +17,9 @@ import App from "./App";
 
 // Crown Creatives Editor OS — Global Admin Provider
 import { AdminProvider } from "./admin/AdminContext";
+
+// React Router
+import { BrowserRouter as Router } from "react-router-dom";
 
 // ============================================================
 // GLOBAL CSS — Loaded once
@@ -37,8 +40,10 @@ import { SentinelPanel } from "./sentinel/SentinelPanel";
 // MOUNT APP — SINGLE ROOT (Correct)
 // ============================================================
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AdminProvider>
-    <App />
-    <SentinelPanel />   {/* ⭐ Now the panel will appear */}
-  </AdminProvider>
+  <Router>
+    <AdminProvider>
+      <App />
+      <SentinelPanel />
+    </AdminProvider>
+  </Router>
 );
