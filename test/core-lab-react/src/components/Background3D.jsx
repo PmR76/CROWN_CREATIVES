@@ -1,20 +1,32 @@
-// ============================================================
-// Background3D.jsx — Cosmic Nebula 2.0 (GR1 Cinematic Backdrop)
-// ============================================================
-
-import { useEffect } from "react";
-import "../styles/background3d.css";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Environment } from "@react-three/drei";
 
 export default function Background3D() {
-  useEffect(() => {
-    // Nothing needed here yet — CSS handles animation
-  }, []);
-
   return (
-    <div className="cosmic-3d-container">
-      <div className="cosmic-stars"></div>
-      <div className="cosmic-nebula"></div>
-      <div className="cosmic-fog-layer"></div>
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        zIndex: -1
+      }}
+    >
+      <Canvas>
+        <ambientLight intensity={0.4} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
+
+        {/* Replace with your nebula model */}
+        <mesh>
+          <sphereGeometry args={[5, 32, 32]} />
+          <meshStandardMaterial color="#222" />
+        </mesh>
+
+        <OrbitControls enableZoom={false} enablePan={false} />
+
+        <Environment preset="sunset" />
+      </Canvas>
     </div>
   );
 }
