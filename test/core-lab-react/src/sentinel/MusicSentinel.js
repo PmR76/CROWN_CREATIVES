@@ -1,5 +1,5 @@
 // ============================================================
-// MusicSentinel — Safe, Non‑Blocking Diagnostics (Fixed)
+// MusicSentinel — Safe, Non‑Blocking Diagnostics (Final Fix)
 // ============================================================
 
 export async function runMusicSentinel() {
@@ -33,14 +33,14 @@ export async function runMusicSentinel() {
       return report;
     }
 
-    if (!Array.isArray(data)) {
-      report.error = "Sound manifest JSON is not an array.";
+    if (!Array.isArray(data.tracks)) {
+      report.error = "Sound manifest JSON does not contain a 'tracks' array.";
       report.finalStatus = "MANIFEST_INVALID_SHAPE";
       return report;
     }
 
     report.manifestValid = true;
-    report.manifestLength = data.length;
+    report.manifestLength = data.tracks.length;
 
     return report;
 
