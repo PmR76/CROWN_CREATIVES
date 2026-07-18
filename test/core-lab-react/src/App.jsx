@@ -1,22 +1,29 @@
 // ============================================================
-// App.jsx — Global Application Wrapper (GR1 — Corrected Layout)
+// App.jsx — Global Application Wrapper with Routes
 // ============================================================
 
 import { Routes, Route } from "react-router-dom";
 
-import Layout from "./components/Layout";
 import Home from "./pages/Home";
-
-// Sentinel v2.0 Dashboard
-import SentinelRoute from "./sentinel/dashboard/SentinelRoute";
+import About from "./pages/About";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
+import Podcasts from "./pages/Podcasts";
+import Projects from "./pages/Projects";
+import Videos from "./pages/Videos";
 
 export default function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sentinel" element={<SentinelRoute />} />
-      </Routes>
-    </Layout>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/gallery" element={<Gallery />} />
+      <Route path="/podcasts" element={<Podcasts />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/videos" element={<Videos />} />
+    </Routes>
   );
 }
