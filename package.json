@@ -12,11 +12,15 @@
   },
   "devDependencies": {
     "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3"
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "vite": "^8.1.5"
   },
   "scripts": {
     "scan": "node scripts/build-manifests.js",
-  "dev": "vite --port 5173 --open --clearScreen false > vite-port.log",
-  "build": "npm run scan && vite build"
+    "dev": "vite --port 5173 --open --clearScreen false",
+    "build": "npm run scan && vite build"
   }
 }
