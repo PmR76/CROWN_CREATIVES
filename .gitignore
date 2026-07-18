@@ -19,3 +19,6 @@ yarn-error.log*
 Thumbs.db
 .vscode/
 test/core-lab-react/dist/
+# Ignore environment and secret files
+.env
+replace.txt
