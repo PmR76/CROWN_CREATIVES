@@ -4,17 +4,53 @@
   <meta charset="UTF-8">
   <title>Watchkeeper Panel</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #111; color: #0f0; padding: 20px; }
-    .controls { margin-bottom: 20px; }
-    button { margin-right: 10px; padding: 8px 12px; }
-    footer { margin-top: 30px; font-size: 0.9em; color: #888; }
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #111; 
+      color: #0f0; 
+      padding: 20px; 
+    }
+    .controls { 
+      margin-bottom: 20px; 
+    }
+    button { 
+      margin-right: 10px; 
+      padding: 8px 12px; 
+      background: #222; 
+      color: #0f0; 
+      border: 1px solid #0f0; 
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0f0;
+      color: #111;
+    }
+    footer { 
+      margin-top: 30px; 
+      font-size: 0.9em; 
+      color: #888; 
+    }
+    h2 {
+      margin-top: 40px;
+      color: #0f0;
+    }
+    #filetree {
+      background:#222; 
+      color:#0f0; 
+      padding:10px; 
+      max-height:400px; 
+      overflow:auto; 
+      border:1px solid #0f0;
+    }
   </style>
 </head>
 <body>
+
   <h1>Watchkeeper Preview</h1>
 
   <div class="controls">
     <button onclick="togglePreview()">Open/Close Preview</button>
+
     <a href="https://www.crowncreatives.uk" target="_blank">
       <button>Launch Live Site</button>
     </a>
@@ -23,6 +59,10 @@
   <div id="preview" style="display:none;">
     <iframe src="http://localhost:5173" width="100%" height="600"></iframe>
   </div>
+
+  <h2>Project File Tree</h2>
+  <button onclick="loadTree()">Load File Tree</button>
+  <pre id="filetree">Click "Load File Tree" to fetch project structure...</pre>
 
   <footer>
     Deployed: <span id="stamp"></span>
@@ -33,7 +73,21 @@
       const p = document.getElementById("preview");
       p.style.display = (p.style.display === "none") ? "block" : "none";
     }
+
+    async function loadTree() {
+      try {
+        const res = await fetch("http://localhost:5175/sentinel/filetree");
+        const tree = await res.json();
+        document.getElementById("filetree").textContent =
+          JSON.stringify(tree, null, 2);
+      } catch (err) {
+        document.getElementById("filetree").textContent =
+          "Error loading file tree: " + err;
+      }
+    }
+
     document.getElementById("stamp").textContent = new Date().toLocaleString();
   </script>
+
 </body>
 </html>
