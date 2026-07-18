@@ -11,6 +11,9 @@ REM --- START REACT DEV SERVER ---
 cd /d "C:\DEV\CROWN_CREATIVES\test\core-lab-react"
 start "Crown Core Dev" cmd /c "npm run dev"
 
+REM --- AUTO-OPEN BROWSER ---
+start "" "http://localhost:5173"
+
 REM --- START SENTINEL (AUTO-RESTART) ---
 cd /d "C:\DEV\CROWN_CREATIVES\sentinel"
 
