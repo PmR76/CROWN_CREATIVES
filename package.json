@@ -16,7 +16,7 @@
   },
   "scripts": {
     "scan": "node scripts/build-manifests.js",
-    "dev": "npm run scan && vite --port 5173 --open --clearScreen false > vite-port.log",
-    "build": "npm run scan && vite build"
+  "dev": "vite --port 5173 --open --clearScreen false > vite-port.log",
+  "build": "npm run scan && vite build"
   }
 }
