@@ -51,8 +51,10 @@ export default function Home() {
   return (
     <main className="home-page">
 
+      {/* ⭐ 3D background sits BEHIND everything */}
       <Background3D />
 
+      {/* ⭐ Your homepage content sits ABOVE it */}
       <Header />
 
       <div className="sentinel-status-badge">
@@ -74,7 +76,6 @@ export default function Home() {
       </section>
 
       <Footer />
-
     </main>
   );
 }
