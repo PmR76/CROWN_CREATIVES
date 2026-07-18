@@ -2,7 +2,7 @@ import { detectVitePort } from "./vite-port.js";
 import express from "express";
 import cors from "cors";
 import fetch from "node-fetch";
-import fs from "fs";
+import fs, { readdirSync, statSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { CloudflareProfile } from "./profiles/cloudflare.js";
@@ -137,6 +137,32 @@ app.get("/sentinel/status", async (req, res) => {
       error: prod.error || null
     }
   });
+});
+
+// FILE TREE ENDPOINT
+function walk(dir) {
+  const result = [];
+  const list = readdirSync(dir);
+
+  for (const file of list) {
+    const full = path.join(dir, file);
+    const stat = statSync(full);
+
+    result.push({
+      name: file,
+      path: full,
+      type: stat.isDirectory() ? "directory" : "file",
+      children: stat.isDirectory() ? walk(full) : []
+    });
+  }
+
+  return result;
+}
+
+app.get("/sentinel/filetree", (req, res) => {
+  const root = path.join(__dirname, ".."); // CROWN_CREATIVES root
+  const tree = walk(root);
+  res.json(tree);
 });
 
 // SERVE WATCHKEEPER PANEL
