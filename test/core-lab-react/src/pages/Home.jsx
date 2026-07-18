@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Background3D from "../components/background3D";
+import Background3D from "../components/Background3D";
 import Header from "../components/Header";
 import HeroCrown from "../components/HeroCrown";
 import HeroGallery from "../components/HeroGallery";
@@ -8,7 +8,10 @@ import FrostedCards from "../components/FrostedCards";
 import Ticker from "../components/Ticker";
 import Footer from "../components/Footer";
 
-import { runMusicSentinel } from "../sentinel/MusicSentinel"; // ✅ only MusicSentinel now
+// ⭐ Sentinel UI
+import SentinelPanel from "../components/SentinelPanel";
+
+import { runMusicSentinel } from "../sentinel/MusicSentinel";
 
 import "../styles/background3d.css";
 import "../styles/header.css";
@@ -17,6 +20,7 @@ import "../styles/hero-gallery.css";
 import "../styles/frosted-cards.css";
 import "../styles/ticker.css";
 import "../styles/footer.css";
+import "../styles/sentinel-panel.css";
 
 export default function Home() {
   const [sentinelStatus, setSentinelStatus] = useState("BOOTING");
@@ -59,6 +63,9 @@ export default function Home() {
         {badge}
       </div>
 
+      {/* ⭐ Sentinel Watchkeeper UI */}
+      <SentinelPanel />
+
       <HeroCrown />
 
       <section className="home-section">
@@ -88,11 +95,11 @@ export default function Home() {
           background: "#fff",
           zIndex: 9999,
           boxShadow: "0 0 12px rgba(0,0,0,0.5)",
-          resize: "both",        // ✅ resizable
-          overflow: "hidden",    // ✅ keeps iframe inside
-          cursor: "move"         // ✅ draggable cursor
+          resize: "both",
+          overflow: "hidden",
+          cursor: "move"
         }}
-        draggable="true"          // ✅ makes it draggable
+        draggable="true"
         onDragStart={(e) => {
           const el = e.currentTarget;
           e.dataTransfer.setData("text/plain", "");
@@ -106,7 +113,7 @@ export default function Home() {
           const offsetY = parseInt(el.dataset.offsetY, 10);
           el.style.left = `${e.clientX - offsetX}px`;
           el.style.top = `${e.clientY - offsetY}px`;
-          el.style.bottom = "auto"; // ✅ switch to absolute positioning
+          el.style.bottom = "auto";
           el.style.right = "auto";
           el.style.position = "absolute";
         }}
