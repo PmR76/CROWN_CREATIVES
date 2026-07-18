@@ -14,11 +14,29 @@ if (!token || !zoneId) {
 
 async function runDeployment() {
   try {
-    const res = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/analytics/dashboard`, {
+    const query = `
+      query {
+        viewer {
+          zones(filter: { zoneTag: "${zoneId}" }) {
+            httpRequestsAdaptiveGroups(limit: 1) {
+              sum {
+                requests
+                bytes
+                threats
+              }
+            }
+          }
+        }
+      }
+    `;
+
+    const res = await fetch("https://api.cloudflare.com/client/v4/graphql", {
+      method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json"
-      }
+      },
+      body: JSON.stringify({ query })
     });
 
     const data = await res.json();

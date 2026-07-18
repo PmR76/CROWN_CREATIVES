@@ -1,6 +1,10 @@
 {
+  "name": "crown_creatives",
+  "version": "1.0.0",
+  "type": "module",
   "dependencies": {
     "dotenv": "^17.4.2",
+    "node-fetch": "^3.3.2",
     "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
