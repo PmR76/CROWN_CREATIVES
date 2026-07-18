@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function SentinelWatchkeeper() {
-  const [visible, setVisible] = useState(true);
+export default function WatchkeeperPanel() {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [fileTree, setFileTree] = useState(null);
   const [status, setStatus] = useState(null);
   const [handshake, setHandshake] = useState(null);
+  const [visible, setVisible] = useState(true);
 
   // Draggable panel
   const panelRef = useRef(null);
@@ -79,7 +79,7 @@ export default function SentinelWatchkeeper() {
         position: "fixed",
         bottom: "20px",
         right: "20px",
-        width: "380px",
+        width: "420px",
         background: "#111",
         border: "2px solid #0f0",
         padding: "15px",
