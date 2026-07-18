@@ -104,7 +104,7 @@ app.get("/sentinel/handshake", async (req, res) => {
   };
 
   const cloudflareIssues = CloudflareProfile.diagnose(prod);
-snapshot.cloudflare = cloudflareIssues;
+  snapshot.cloudflare = cloudflareIssues;
 
   const fileName = `sentinel-${timestamp.replace(/[:]/g, "_")}.json`;
   const filePath = path.join(process.cwd(), "sentinel-snapshots", fileName);
@@ -138,6 +138,9 @@ app.get("/sentinel/status", async (req, res) => {
     }
   });
 });
+
+// SERVE WATCHKEEPER PANEL
+app.use("/watchkeeper", express.static(path.join(__dirname, "public/watchkeeper")));
 
 // SERVER
 const port = 5175;
