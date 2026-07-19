@@ -1,0 +1,48 @@
+{
+  "schema": {
+    "version": "1.0.0",
+    "fields": {
+      "env": "dev|prod",
+      "route": "string",
+      "url": "string",
+      "status": "number",
+      "ok": "boolean",
+      "durationMs": "number",
+      "bodyLength": "number",
+      "errors": "array",
+      "timestamp": "string"
+    }
+  },
+  "timestamp": "2026-07-18T23:58:06.833Z",
+  "dev": {
+    "env": "dev",
+    "url": "http://localhost:5173",
+    "status": 200,
+    "ok": true,
+    "durationMs": 16,
+    "bodyLength": 820,
+    "error": null
+  },
+  "prod": {
+    "env": "prod",
+    "url": "https://www.crowncreatives.uk",
+    "status": 200,
+    "ok": true,
+    "durationMs": 470,
+    "bodyLength": 639,
+    "error": null
+  },
+  "compare": {
+    "statusMatch": true,
+    "okMatch": true,
+    "bodySizeDelta": 181
+  },
+  "cloudflare": [
+    "Cloudflare is not serving index.html.",
+    "Check Cloudflare Pages build settings:",
+    "• Root directory must be: test/core-lab-react",
+    "• Build command must be: npm run build",
+    "• Output directory must be: dist",
+    "• Ensure _redirects is inside dist/"
+  ]
+}
