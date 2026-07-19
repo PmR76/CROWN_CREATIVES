@@ -1,13 +1,18 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 
-function CosmicGradient({ theme }) {
+function MagicalGradient({ theme }) {
   const mesh = useRef();
+  const blendRef = useRef(theme === "day" ? 0 : 1);
 
-  useFrame(({ clock }) => {
-    mesh.current.material.uniforms.time.value = clock.elapsedTime;
+  // Animate blend value over 8 seconds
+  useFrame(() => {
+    const target = theme === "day" ? 0 : 1;
+    blendRef.current = THREE.MathUtils.lerp(blendRef.current, target, 0.02);
+
+    mesh.current.material.uniforms.blend.value = blendRef.current;
+    mesh.current.material.uniforms.time.value += 0.01;
   });
 
   return (
@@ -17,18 +22,17 @@ function CosmicGradient({ theme }) {
         side={THREE.BackSide}
         uniforms={{
           time: { value: 0 },
+          blend: { value: theme === "day" ? 0 : 1 },
 
-          // DAY colours
-          dayColor1: { value: new THREE.Color("#ffcf9f") },   // soft gold
-          dayColor2: { value: new THREE.Color("#ff8bd1") },   // pink nebula
-          dayColor3: { value: new THREE.Color("#ffd27f") },   // warm glow
+          // DAY colours — bright, magical, colourful
+          day1: { value: new THREE.Color("#ffb37a") }, // coral gold
+          day2: { value: new THREE.Color("#ff7acb") }, // magical pink
+          day3: { value: new THREE.Color("#ffd27f") }, // warm glow
 
-          // NIGHT colours
-          nightColor1: { value: new THREE.Color("#0a0a1a") }, // deep indigo
-          nightColor2: { value: new THREE.Color("#1a0033") }, // violet nebula
-          nightColor3: { value: new THREE.Color("#330066") }, // cosmic purple
-
-          blend: { value: theme === "day" ? 0 : 1 } // 0 = day, 1 = night
+          // NIGHT colours — deep neon magical
+          night1: { value: new THREE.Color("#0a0033") }, // deep indigo
+          night2: { value: new THREE.Color("#4b00ff") }, // neon violet
+          night3: { value: new THREE.Color("#00c8ff") }, // electric blue
         }}
         vertexShader={`
           varying vec2 vUv;
@@ -41,29 +45,29 @@ function CosmicGradient({ theme }) {
           uniform float time;
           uniform float blend;
 
-          uniform vec3 dayColor1;
-          uniform vec3 dayColor2;
-          uniform vec3 dayColor3;
+          uniform vec3 day1;
+          uniform vec3 day2;
+          uniform vec3 day3;
 
-          uniform vec3 nightColor1;
-          uniform vec3 nightColor2;
-          uniform vec3 nightColor3;
+          uniform vec3 night1;
+          uniform vec3 night2;
+          uniform vec3 night3;
 
           varying vec2 vUv;
 
           void main() {
-            float t = sin(time * 0.1) * 0.5 + 0.5;
+            float wave = sin(vUv.y * 8.0 + time * 0.5) * 0.5 + 0.5;
 
             // DAY gradient
-            vec3 dayGrad = mix(dayColor1, dayColor2, vUv.y);
-            dayGrad = mix(dayGrad, dayColor3, t * 0.3);
+            vec3 d = mix(day1, day2, vUv.y);
+            d = mix(d, day3, wave);
 
             // NIGHT gradient
-            vec3 nightGrad = mix(nightColor1, nightColor2, vUv.y);
-            nightGrad = mix(nightGrad, nightColor3, t * 0.3);
+            vec3 n = mix(night1, night2, vUv.y);
+            n = mix(n, night3, wave);
 
-            // Blend based on theme toggle
-            vec3 finalColor = mix(dayGrad, nightGrad, blend);
+            // Magical blend
+            vec3 finalColor = mix(d, n, blend);
 
             gl_FragColor = vec4(finalColor, 1.0);
           }
@@ -73,16 +77,21 @@ function CosmicGradient({ theme }) {
   );
 }
 
-function ParticleField() {
-  const count = 5000;
+function MagicalParticles({ theme }) {
+  const ref = useRef();
+  const count = 4000;
   const positions = new Float32Array(count * 3);
 
   for (let i = 0; i < count * 3; i++) {
     positions[i] = (Math.random() - 0.5) * 200;
   }
 
+  useFrame(() => {
+    ref.current.rotation.y += 0.0004;
+  });
+
   return (
-    <points>
+    <points ref={ref}>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
@@ -92,11 +101,10 @@ function ParticleField() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.4}
-        color="#ffffff"
-        sizeAttenuation
+        size={theme === "day" ? 0.6 : 0.8}
+        color={theme === "day" ? "#ffffff" : "#88ccff"}
         transparent
-        opacity={0.7}
+        opacity={theme === "day" ? 0.7 : 0.9}
       />
     </points>
   );
@@ -105,7 +113,7 @@ function ParticleField() {
 export default function Background3D() {
   const [theme, setTheme] = useState("day");
 
-  // Detect theme changes from your toggle
+  // Detect theme toggle
   useEffect(() => {
     const observer = new MutationObserver(() => {
       const t = document.documentElement.getAttribute("data-theme");
@@ -114,28 +122,17 @@ export default function Background3D() {
 
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["data-theme"]
+      attributeFilter: ["data-theme"],
     });
 
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
-        zIndex: -1,
-        pointerEvents: "none"
-      }}
-    >
+    <div className="background3d-container">
       <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
-        <CosmicGradient theme={theme} />
-        <ParticleField />
-        <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
+        <MagicalGradient theme={theme} />
+        <MagicalParticles theme={theme} />
       </Canvas>
     </div>
   );

@@ -1,75 +1,49 @@
 /* ============================================================
-   Cosmic Nebula 2.0 — Cinematic 3D Background
+   Cosmic Background — Magical Day/Night Theme Support
    ============================================================ */
 
-.cosmic-3d-container {
+.background3d-container {
   position: fixed;
   inset: 0;
   z-index: -1;
-  overflow: hidden;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 50%, #050014, #000010);
+
+  /* Smooth fade-in when page loads */
+  opacity: 0;
+  animation: bgFadeIn 2s ease forwards;
+}
+
+/* Magical fade-in */
+@keyframes bgFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ============================================================
-   1. STARFIELD — Parallax Drift
+   DAY MODE — bright, colourful, magical
    ============================================================ */
-.cosmic-stars {
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.9) 0%, transparent 70%),
-    radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 70%),
-    radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%),
-    radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
-  background-size: 3px 3px, 2px 2px, 4px 4px, 3px 3px;
-  background-position: 20% 30%, 80% 40%, 50% 70%, 30% 90%;
-  animation: starParallax 60s linear infinite;
-  opacity: 0.7;
-}
 
-@keyframes starParallax {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-300px); }
+:root[data-theme="day"] .background3d-container {
+  filter: brightness(1.15) saturate(1.3);
+  transition: filter 8s ease;
 }
 
 /* ============================================================
-   2. NEBULA CORE — Pulsing Cosmic Swirl
+   NIGHT MODE — deep, neon, cosmic
    ============================================================ */
-.cosmic-nebula {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 70%,
-      rgba(120, 0, 255, 0.35) 0%,
-      rgba(0, 120, 255, 0.25) 40%,
-      rgba(0, 0, 40, 0.9) 100%);
-  filter: blur(40px);
-  animation: nebulaPulse 90s ease-in-out infinite;
-  opacity: 0.9;
-}
 
-@keyframes nebulaPulse {
-  0%   { transform: scale(1) translate(0, 0); }
-  50%  { transform: scale(1.2) translate(-50px, -30px); }
-  100% { transform: scale(1) translate(0, 0); }
+:root[data-theme="night"] .background3d-container {
+  filter: brightness(0.9) saturate(1.6);
+  transition: filter 8s ease;
 }
 
 /* ============================================================
-   3. FOG LAYER — Depth + 3D Drift
+   MOBILE FALLBACK
    ============================================================ */
-.cosmic-fog-layer {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 60% 40%,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0) 70%);
-  filter: blur(80px);
-  animation: fogDrift 120s ease-in-out infinite;
-  opacity: 0.4;
-}
 
-@keyframes fogDrift {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(60px, -40px) scale(1.1); }
-  100% { transform: translate(0, 0) scale(1); }
+@media (max-width: 768px) {
+  .background3d-container {
+    opacity: 0.7;
+    filter: blur(2px);
+  }
 }
