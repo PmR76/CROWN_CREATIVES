@@ -1,0 +1,9 @@
+{
+  "env": "prod",
+  "status": "OK",
+  "ok": true,
+  "message": "Sentinel backend disabled in production (static mode).",
+  "devUrl": "http://localhost:5175",
+  "prodUrl": "https://www.crowncreatives.uk",
+  "timestamp": "2026-07-19T20:00:00Z"
+}
