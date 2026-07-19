@@ -1,0 +1,314 @@
+// ============================================================
+// AdminPanel.jsx — Draggable OS Window + 60 Swatches + Live Preview
+// ============================================================
+
+import React, { useEffect, useRef } from "react";
+import { useAdmin } from "./AdminContext";
+
+export default function AdminPanel({
+  cardsConfig,
+  setCardsConfig,
+  tickerText,
+  setTickerText,
+  gradients,
+  currentTheme,
+  setCurrentTheme
+}) {
+  const { isAdmin, isPanelOpen, setIsPanelOpen } = useAdmin();
+
+  if (!isAdmin || !isPanelOpen) return null;
+
+  const panelRef = useRef(null);
+  const dragHandleRef = useRef(null);
+
+  // ------------------------------------------------------------
+  // SHIFT + A toggles AdminPanel open/closed
+  // ------------------------------------------------------------
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === "A" && e.shiftKey) {
+        setIsPanelOpen(prev => !prev);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  // ------------------------------------------------------------
+  // DRAG LOGIC — Only header is draggable
+  // ------------------------------------------------------------
+  useEffect(() => {
+    const el = panelRef.current;
+    const handle = dragHandleRef.current;
+    if (!el || !handle) return;
+
+    let pos = { x: 0, y: 0 };
+
+    function onMouseDown(e) {
+      e.preventDefault();
+      pos.x = e.clientX;
+      pos.y = e.clientY;
+
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseup", onMouseUp);
+    }
+
+    function onMouseMove(e) {
+      const dx = e.clientX - pos.x;
+      const dy = e.clientY - pos.y;
+
+      pos.x = e.clientX;
+      pos.y = e.clientY;
+
+      el.style.left = el.offsetLeft + dx + "px";
+      el.style.top = el.offsetTop + dy + "px";
+    }
+
+    function onMouseUp() {
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+    }
+
+    handle.addEventListener("mousedown", onMouseDown);
+
+    return () => handle.removeEventListener("mousedown", onMouseDown);
+  }, []);
+
+  // ------------------------------------------------------------
+  // LIVE PREVIEW — Hovering a swatch previews background
+  // ------------------------------------------------------------
+  function previewTheme(preview) {
+    document.body.style.background = preview;
+  }
+
+  // ------------------------------------------------------------
+  // APPLY THEME — Single tap = preview, Double tap = lock
+  // ------------------------------------------------------------
+  function applyTheme(id, preview, isDoubleTap = false) {
+    setCurrentTheme(id);
+
+    if (isDoubleTap) {
+      if (id.startsWith("day-")) {
+        localStorage.setItem("theme-day", preview);
+        localStorage.setItem("theme-day-id", id);
+      }
+      if (id.startsWith("night-")) {
+        localStorage.setItem("theme-night", preview);
+        localStorage.setItem("theme-night-id", id);
+      }
+    }
+
+    document.body.style.background = preview;
+  }
+
+  // ------------------------------------------------------------
+  // SAVE BUTTON — Saves cards + ticker
+  // ------------------------------------------------------------
+  function saveAll() {
+    localStorage.setItem("cardsConfig", JSON.stringify(cardsConfig));
+    localStorage.setItem("tickerText", tickerText);
+    alert("Saved!");
+  }
+
+  // ------------------------------------------------------------
+  // RANDOM DAY/NIGHT GENERATOR — Picks one day + one night theme
+  // ------------------------------------------------------------
+  function randomizeThemes() {
+    const daySwatches = gradients.filter(g => g.type === "day");
+    const nightSwatches = gradients.filter(g => g.type === "night");
+
+    const randomDay = daySwatches[Math.floor(Math.random() * daySwatches.length)];
+    const randomNight = nightSwatches[Math.floor(Math.random() * nightSwatches.length)];
+
+    // Save both
+    localStorage.setItem("theme-day", randomDay.preview);
+    localStorage.setItem("theme-day-id", randomDay.id);
+
+    localStorage.setItem("theme-night", randomNight.preview);
+    localStorage.setItem("theme-night-id", randomNight.id);
+
+    // Apply CSS variables
+    document.body.style.setProperty("--day-bg", randomDay.preview);
+    document.body.style.setProperty("--night-bg", randomNight.preview);
+
+    // Apply current background based on theme
+    const current = document.body.dataset.theme || "day";
+    document.body.style.background =
+      current === "day" ? randomDay.preview : randomNight.preview;
+
+    // Update UI highlight
+    setCurrentTheme(current === "day" ? randomDay.id : randomNight.id);
+
+    // Update dataset locks
+    document.body.dataset.dayLock = randomDay.id;
+    document.body.dataset.nightLock = randomNight.id;
+  }
+
+  // ------------------------------------------------------------
+  // RENDER — Centered + draggable
+  // ------------------------------------------------------------
+  return (
+    <div
+      ref={panelRef}
+      className="admin-panel"
+      style={{
+        position: "fixed",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "480px",
+        maxHeight: "80vh",
+        overflowY: "auto",
+        zIndex: 999999,
+        background: "rgba(20,20,30,0.92)",
+        borderRadius: "16px",
+        backdropFilter: "blur(18px)",
+        boxShadow: "0 0 40px rgba(0,0,0,0.6)"
+      }}
+    >
+      {/* ⭐ DRAG HANDLE */}
+      <div
+        ref={dragHandleRef}
+        style={{
+          padding: "14px",
+          background: "rgba(255,255,255,0.08)",
+          borderTopLeftRadius: "16px",
+          borderTopRightRadius: "16px",
+          cursor: "move",
+          fontWeight: "700",
+          letterSpacing: "1px",
+          textAlign: "center"
+        }}
+      >
+        Crown Creatives — Admin Panel
+      </div>
+
+      <div style={{ padding: "20px" }}>
+        {/* ============================================================
+            DAY SWATCHES — 30 swatches
+        ============================================================ */}
+        <h3 className="admin-section-title">Day Themes</h3>
+        <p className="admin-section-subtitle">Hover to preview • Tap to preview • Double‑tap to lock</p>
+
+        <div className="swatch-grid">
+          {gradients
+            .filter(g => g.type === "day")
+            .map((g, i) => (
+              <button
+                key={i}
+                className={`swatch ${
+                  currentTheme === g.id ||
+                  document.body.dataset.dayLock === g.id ||
+                  document.body.dataset.nightLock === g.id
+                    ? "active"
+                    : ""
+                }`}
+                style={{
+                  background: g.preview,
+                  boxShadow:
+                    document.body.dataset.dayLock === g.id
+                      ? "0 0 14px 5px rgba(255,255,255,0.9)"   // ⭐ neon lock glow
+                      : currentTheme === g.id
+                      ? "0 0 10px 3px rgba(255,255,255,0.6)"   // preview glow
+                      : "none"
+                }}
+                onMouseEnter={() => previewTheme(g.preview)}
+                onClick={(e) => {
+                  const isDoubleTap = e.detail === 2;
+                  applyTheme(g.id, g.preview, isDoubleTap);
+                }}
+              />
+            ))}
+        </div>
+
+        {/* ============================================================
+            NIGHT SWATCHES — 30 swatches
+        ============================================================ */}
+        <h3 className="admin-section-title" style={{ marginTop: "30px" }}>
+          Night Themes
+        </h3>
+        <p className="admin-section-subtitle">Hover to preview • Tap to preview • Double‑tap to lock</p>
+
+        <div className="swatch-grid">
+          {gradients
+            .filter(g => g.type === "night")
+            .map((g, i) => (
+              <button
+                key={i}
+                className={`swatch ${
+                  currentTheme === g.id ||
+                  document.body.dataset.nightLock === g.id ||
+                  document.body.dataset.dayLock === g.id
+                    ? "active"
+                    : ""
+                }`}
+                style={{
+                  background: g.preview,
+                  boxShadow:
+                    document.body.dataset.nightLock === g.id
+                      ? "0 0 14px 5px rgba(0,150,255,0.9)"     // ⭐ neon lock glow
+                      : currentTheme === g.id
+                      ? "0 0 10px 3px rgba(0,150,255,0.6)"     // preview glow
+                      : "none"
+                }}
+                onMouseEnter={() => previewTheme(g.preview)}
+                onClick={(e) => {
+                  const isDoubleTap = e.detail === 2;
+                  applyTheme(g.id, g.preview, isDoubleTap);
+                }}
+              />
+            ))}
+        </div>
+
+        {/* ============================================================
+            EDITABLE CARDS
+        ============================================================ */}
+        <h3 className="admin-section-title">Frosted Cards</h3>
+
+        {cardsConfig.map((text, index) => (
+          <label key={index} className="admin-label">
+            Card {index + 1}
+            <input
+              className="admin-input"
+              value={cardsConfig[index]}
+              onChange={(e) => {
+                const updated = [...cardsConfig];
+                updated[index] = e.target.value;
+                setCardsConfig(updated);
+              }}
+            />
+          </label>
+        ))}
+
+        {/* ============================================================
+            TICKER TEXT
+        ============================================================ */}
+        <h3 className="admin-section-title">Ticker Text</h3>
+
+        <input
+          className="admin-input"
+          value={tickerText}
+          onChange={(e) => setTickerText(e.target.value)}
+        />
+
+        {/* ============================================================
+            SAVE BUTTON
+        ============================================================ */}
+        <button className="admin-save-button" onClick={saveAll}>
+          Save All
+        </button>
+
+        {/* ============================================================
+            RANDOM DAY/NIGHT GENERATOR BUTTON
+        ============================================================ */}
+        <button
+          className="admin-save-button"
+          onClick={randomizeThemes}
+          style={{ marginTop: "12px" }}
+        >
+          Random Day/Night Theme
+        </button>
+      </div>
+    </div>
+  );
+}

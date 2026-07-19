@@ -1,29 +1,28 @@
 {
-  "name": "crown_creatives",
+  "name": "core-lab-react",
   "version": "1.0.0",
-  "type": "module",
-  "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.6.1",
-    "axios": "^1.18.1",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "node-fetch": "^3.3.2",
-    "react-router-dom": "^7.18.1",
-    "three": "^0.185.1"
-  },
-  "devDependencies": {
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.3",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "vite": "^8.1.5"
-  },
+  "private": true,
+
   "scripts": {
-    "scan": "node scripts/build-manifests.js",
-    "dev": "cd test/core-lab-react && vite --port 5173 --open --clearScreen false",
-    "build": "npm run scan && vite build"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "sound-watch": "node scripts/build-sound-manifest.js"
+  },
+
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^7.18.1",
+
+    "three": "^0.165.0",
+    "@react-three/fiber": "^8.0.0",
+    "@react-three/drei": "^9.0.0"
+  },
+
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "vite": "^5.0.0"
   }
 }
+ 

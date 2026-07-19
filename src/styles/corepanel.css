@@ -1,0 +1,146 @@
+/* ============================================================
+   CORE PANEL — FROSTED GLASS + SCROLLABLE + DRAGGABLE (GR1)
+============================================================ */
+
+.core-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 260px;
+
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px);
+
+  border-radius: 18px;
+  padding: 20px;
+  color: white;
+  font-family: system-ui, sans-serif;
+
+  cursor: grab;
+  user-select: none;
+  z-index: 999999;
+
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.core-panel:active {
+  cursor: grabbing;
+}
+
+/* Buttons */
+.core-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.core-btn:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.05);
+}
+
+/* Header */
+.core-panel-header {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Sections */
+.core-panel-section {
+  margin-bottom: 12px;
+}
+
+/* Items */
+.core-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 0;
+}
+
+/* Status colours */
+.ok {
+  color: #7CFC00;
+}
+
+.fail {
+  color: #FF6347;
+}
+
+/* Error list */
+.error-list {
+  margin: 6px 0 0 0;
+  padding-left: 14px;
+  font-size: 12px;
+  color: #ff8080;
+}
+
+/* ============================================================
+   SENTINEL PANEL — Diagnostics Output (GR1)
+============================================================ */
+
+.sentinel-panel {
+  background: #111;
+  color: #eee;
+  padding: 20px;
+  border-radius: 12px;
+  font-family: Consolas, monospace;
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #333;
+}
+
+.sentinel-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sentinel-section {
+  margin-bottom: 25px;
+}
+
+.sentinel-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #333;
+}
+
+.sentinel-pass {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.sentinel-fail {
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.sentinel-check {
+  font-weight: bold;
+}
+
+.sentinel-status {
+  font-weight: bold;
+}
+
+.sentinel-summary {
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #333;
+}
+
+.sentinel-summary-pass {
+  color: #00ff00;
+}
+
+.sentinel-summary-fail {
+  color: #ff4444;
+}
