@@ -3,5 +3,5 @@
   "status": "OK",
   "ok": true,
   "message": "Sentinel backend disabled in production. Using static registry snapshot.",
-  "timestamp": "2026-07-19T20:00:00Z"
+  "timestamp": "2026-07-19T22:00:00Z"
 }
