@@ -1,10 +1,14 @@
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
 function CosmicGradient() {
   const mesh = useRef();
+
+  useFrame(({ clock }) => {
+    mesh.current.material.uniforms.time.value = clock.elapsedTime;
+  });
 
   return (
     <mesh ref={mesh}>
@@ -43,6 +47,40 @@ function CosmicGradient() {
   );
 }
 
+function CustomStars() {
+  const ref = useRef();
+  const starCount = 3000;
+  const positions = new Float32Array(starCount * 3);
+
+  for (let i = 0; i < starCount * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 200;
+  }
+
+  useFrame(() => {
+    ref.current.rotation.y += 0.0005;
+  });
+
+  return (
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          array={positions}
+          count={starCount}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.5}
+        color="#ffffff"
+        sizeAttenuation
+        transparent
+        opacity={0.8}
+      />
+    </points>
+  );
+}
+
 function ParticleField() {
   const count = 5000;
   const positions = new Float32Array(count * 3);
@@ -62,11 +100,11 @@ function ParticleField() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.5}
-        color="#ffffff"
+        size={0.4}
+        color="#88ccff"
         sizeAttenuation
         transparent
-        opacity={0.8}
+        opacity={0.6}
       />
     </points>
   );
@@ -86,16 +124,9 @@ export default function Background3D() {
       }}
     >
       <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
-        {/* Cosmic gradient background */}
         <CosmicGradient />
-
-        {/* Particle field */}
+        <CustomStars />
         <ParticleField />
-
-        {/* Stars for extra depth */}
-        <Stars radius={100} depth={50} count={3000} factor={4} fade />
-
-        {/* Camera controls (disabled interaction) */}
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
       </Canvas>
     </div>
