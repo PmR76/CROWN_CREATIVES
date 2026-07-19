@@ -1,5 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 
+const DEV_BASE = "http://localhost:5175";
+const DEV_PREVIEW = "http://localhost:5173";
+
+// Static, production-safe endpoints
+const PROD_STATUS_URL = "/sentinel-prod.json";
+const PROD_FILETREE_URL = "/sentinel-filetree.json";
+
 export default function WatchkeeperPanel() {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [fileTree, setFileTree] = useState(null);
@@ -11,6 +18,11 @@ export default function WatchkeeperPanel() {
   const panelRef = useRef(null);
   const [dragging, setDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  const isProd =
+    typeof window !== "undefined" &&
+    window.location.hostname !== "localhost" &&
+    window.location.hostname !== "127.0.0.1";
 
   function onMouseDown(e) {
     setDragging(true);
@@ -30,21 +42,43 @@ export default function WatchkeeperPanel() {
     setDragging(false);
   }
 
-  // Sentinel status
+  // Sentinel status (dev: backend, prod: static)
   async function loadStatus() {
+    const url = isProd ? PROD_STATUS_URL : `${DEV_BASE}/sentinel/status`;
+
     try {
-      const res = await fetch("http://localhost:5175/sentinel/status");
+      const res = await fetch(url);
       const json = await res.json();
       setStatus(json);
     } catch (err) {
-      setStatus({ error: String(err) });
+      if (isProd) {
+        setStatus({
+          env: "prod",
+          status: "OK",
+          ok: true,
+          message:
+            "Sentinel backend disabled in production. Using static status snapshot."
+        });
+      } else {
+        setStatus({ error: String(err) });
+      }
     }
   }
 
-  // Sentinel handshake
+  // Sentinel handshake (dev only, prod: controlled no-op)
   async function runHandshake() {
+    if (isProd) {
+      setHandshake({
+        env: "prod",
+        finalStatus: "STATIC",
+        message:
+          "Handshake disabled in production. Live pipeline controlled via core-lab registry."
+      });
+      return;
+    }
+
     try {
-      const res = await fetch("http://localhost:5175/sentinel/handshake");
+      const res = await fetch(`${DEV_BASE}/sentinel/handshake`);
       const json = await res.json();
       setHandshake(json);
     } catch (err) {
@@ -52,14 +86,23 @@ export default function WatchkeeperPanel() {
     }
   }
 
-  // File tree
+  // File tree (dev: live backend, prod: static snapshot)
   async function loadTree() {
+    const url = isProd ? PROD_FILETREE_URL : `${DEV_BASE}/sentinel/filetree`;
+
     try {
-      const res = await fetch("http://localhost:5175/sentinel/filetree");
+      const res = await fetch(url);
       const json = await res.json();
       setFileTree(json);
     } catch (err) {
-      setFileTree({ error: String(err) });
+      if (isProd) {
+        setFileTree({
+          error:
+            "Static file tree not available. Core-lab registry controls live pipeline."
+        });
+      } else {
+        setFileTree({ error: String(err) });
+      }
     }
   }
 
@@ -68,6 +111,10 @@ export default function WatchkeeperPanel() {
   }, []);
 
   if (!visible) return null;
+
+  const envLabel = isProd
+    ? "Production (Static / Registry Mode)"
+    : "Development (Live Backend Mode)";
 
   return (
     <div
@@ -91,6 +138,9 @@ export default function WatchkeeperPanel() {
       }}
     >
       <h2 style={{ marginTop: 0 }}>SENTINEL WATCHKEEPER</h2>
+      <div style={{ marginBottom: "8px", fontSize: "0.9rem" }}>
+        Environment: {envLabel}
+      </div>
 
       {/* Sentinel Status */}
       <div style={{ marginBottom: "10px" }}>
@@ -98,8 +148,22 @@ export default function WatchkeeperPanel() {
           <div>Error: {status.error}</div>
         ) : status ? (
           <>
-            <div>Dev: {status.dev.status} ({status.dev.durationMs}ms)</div>
-            <div>Prod: {status.prod.status} ({status.prod.durationMs}ms)</div>
+            {status.dev && status.prod ? (
+              <>
+                <div>
+                  Dev: {status.dev.status} ({status.dev.durationMs}ms)
+                </div>
+                <div>
+                  Prod: {status.prod.status} ({status.prod.durationMs}ms)
+                </div>
+              </>
+            ) : (
+              <>
+                <div>Env: {status.env}</div>
+                <div>Status: {status.status}</div>
+                {status.message && <div>Message: {status.message}</div>}
+              </>
+            )}
           </>
         ) : (
           <div>Loading status...</div>
@@ -108,15 +172,38 @@ export default function WatchkeeperPanel() {
 
       <button onClick={runHandshake}>RUN SENTINEL HANDSHAKE</button>
 
+      {handshake && (
+        <pre
+          style={{
+            background: "#222",
+            color: "#0f0",
+            padding: "8px",
+            marginTop: "8px",
+            maxHeight: "120px",
+            overflow: "auto",
+            border: "1px solid #0f0"
+          }}
+        >
+          {JSON.stringify(handshake, null, 2)}
+        </pre>
+      )}
+
       {/* Preview */}
       <h3>Preview</h3>
-      <button onClick={() => setPreviewOpen(!previewOpen)}>
-        {previewOpen ? "Close Preview" : "Open Preview"}
+      <button
+        onClick={() => setPreviewOpen(!previewOpen)}
+        disabled={isProd}
+        style={{
+          opacity: isProd ? 0.6 : 1,
+          cursor: isProd ? "not-allowed" : "pointer"
+        }}
+      >
+        {previewOpen ? "Close Preview" : isProd ? "Preview (Dev Only)" : "Open Preview"}
       </button>
 
-      {previewOpen && (
+      {previewOpen && !isProd && (
         <iframe
-          src="http://localhost:5173"
+          src={DEV_PREVIEW}
           width="100%"
           height="200"
           style={{ marginTop: "10px", border: "1px solid #0f0" }}
@@ -125,7 +212,9 @@ export default function WatchkeeperPanel() {
 
       {/* File Tree */}
       <h3>Project File Tree</h3>
-      <button onClick={loadTree}>Load File Tree</button>
+      <button onClick={loadTree}>
+        {isProd ? "Load Static File Tree" : "Load File Tree"}
+      </button>
 
       <pre
         style={{
