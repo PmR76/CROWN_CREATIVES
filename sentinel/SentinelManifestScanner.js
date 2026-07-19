@@ -1,13 +1,8 @@
 import fs from "fs";
 import path from "path";
 
-const ROOT = "C:/DEV/CROWN_CREATIVES/test";
-
-function findLabs() {
-  return fs.readdirSync(ROOT)
-    .filter(name => name.startsWith("core-lab-"))
-    .map(name => path.join(ROOT, name));
-}
+// NEW ROOT — your live site is now at project root
+const ROOT = "C:/DEV/CROWN_CREATIVES/public";
 
 function checkFolder(folder) {
   return fs.existsSync(folder) ? "OK" : "Missing";
@@ -23,11 +18,11 @@ function readJSON(file) {
   }
 }
 
-function scanLab(labPath) {
-  const publicPath = path.join(labPath, "public");
-  const manifestsPath = path.join(publicPath, "manifests");
-  const soundsPath = path.join(publicPath, "sounds");
-  const galleryPath = path.join(publicPath, "gallery");
+export function runSentinelManifestScanner() {
+  const publicPath = ROOT;
+  const manifestsPath = path.join(ROOT, "manifests");
+  const soundsPath = path.join(ROOT, "sounds");
+  const galleryPath = path.join(ROOT, "gallery");
 
   const soundManifest = path.join(manifestsPath, "sound-manifest.json");
   const galleryManifest = path.join(manifestsPath, "gallery-manifest.json");
@@ -43,8 +38,8 @@ function scanLab(labPath) {
     ? fs.readdirSync(galleryPath).filter(f => /\.(png|jpg|jpeg|webp)$/i.test(f))
     : [];
 
-  return {
-    lab: path.basename(labPath),
+  const result = {
+    site: "root-site",
 
     folders: {
       public: checkFolder(publicPath),
@@ -77,14 +72,9 @@ function scanLab(labPath) {
           : "OK"
     }
   };
-}
-
-export function runSentinelManifestScanner() {
-  const labs = findLabs();
-  const results = labs.map(scanLab);
 
   console.log("=== SENTINEL MANIFEST SCANNER ===");
-  console.log(JSON.stringify(results, null, 2));
+  console.log(JSON.stringify(result, null, 2));
 
-  return results;
+  return result;
 }
