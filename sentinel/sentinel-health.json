@@ -1,6 +1,9 @@
 {
-  "timestamp": "2026-07-18T23:01:31.667Z",
-  "missing": [],
+  "timestamp": "2026-07-19T14:03:56.737Z",
+  "missing": [
+    "test/core-lab-react/src",
+    "test/core-lab-react/public"
+  ],
   "duplicates": [],
-  "status": "green"
+  "status": "red"
 }
