@@ -1,9 +1,9 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 
-function CosmicGradient() {
+function CosmicGradient({ theme }) {
   const mesh = useRef();
 
   useFrame(({ clock }) => {
@@ -16,10 +16,19 @@ function CosmicGradient() {
       <shaderMaterial
         side={THREE.BackSide}
         uniforms={{
-          color1: { value: new THREE.Color("#0a0a1a") },
-          color2: { value: new THREE.Color("#1a0033") },
-          color3: { value: new THREE.Color("#330066") },
-          time: { value: 0 }
+          time: { value: 0 },
+
+          // DAY colours
+          dayColor1: { value: new THREE.Color("#ffcf9f") },   // soft gold
+          dayColor2: { value: new THREE.Color("#ff8bd1") },   // pink nebula
+          dayColor3: { value: new THREE.Color("#ffd27f") },   // warm glow
+
+          // NIGHT colours
+          nightColor1: { value: new THREE.Color("#0a0a1a") }, // deep indigo
+          nightColor2: { value: new THREE.Color("#1a0033") }, // violet nebula
+          nightColor3: { value: new THREE.Color("#330066") }, // cosmic purple
+
+          blend: { value: theme === "day" ? 0 : 1 } // 0 = day, 1 = night
         }}
         vertexShader={`
           varying vec2 vUv;
@@ -29,55 +38,38 @@ function CosmicGradient() {
           }
         `}
         fragmentShader={`
-          uniform vec3 color1;
-          uniform vec3 color2;
-          uniform vec3 color3;
           uniform float time;
+          uniform float blend;
+
+          uniform vec3 dayColor1;
+          uniform vec3 dayColor2;
+          uniform vec3 dayColor3;
+
+          uniform vec3 nightColor1;
+          uniform vec3 nightColor2;
+          uniform vec3 nightColor3;
+
           varying vec2 vUv;
 
           void main() {
             float t = sin(time * 0.1) * 0.5 + 0.5;
-            vec3 gradient = mix(color1, color2, vUv.y);
-            gradient = mix(gradient, color3, t * 0.3);
-            gl_FragColor = vec4(gradient, 1.0);
+
+            // DAY gradient
+            vec3 dayGrad = mix(dayColor1, dayColor2, vUv.y);
+            dayGrad = mix(dayGrad, dayColor3, t * 0.3);
+
+            // NIGHT gradient
+            vec3 nightGrad = mix(nightColor1, nightColor2, vUv.y);
+            nightGrad = mix(nightGrad, nightColor3, t * 0.3);
+
+            // Blend based on theme toggle
+            vec3 finalColor = mix(dayGrad, nightGrad, blend);
+
+            gl_FragColor = vec4(finalColor, 1.0);
           }
         `}
       />
     </mesh>
-  );
-}
-
-function CustomStars() {
-  const ref = useRef();
-  const starCount = 3000;
-  const positions = new Float32Array(starCount * 3);
-
-  for (let i = 0; i < starCount * 3; i++) {
-    positions[i] = (Math.random() - 0.5) * 200;
-  }
-
-  useFrame(() => {
-    ref.current.rotation.y += 0.0005;
-  });
-
-  return (
-    <points ref={ref}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          array={positions}
-          count={starCount}
-          itemSize={3}
-        />
-      </bufferGeometry>
-      <pointsMaterial
-        size={0.5}
-        color="#ffffff"
-        sizeAttenuation
-        transparent
-        opacity={0.8}
-      />
-    </points>
   );
 }
 
@@ -101,16 +93,33 @@ function ParticleField() {
       </bufferGeometry>
       <pointsMaterial
         size={0.4}
-        color="#88ccff"
+        color="#ffffff"
         sizeAttenuation
         transparent
-        opacity={0.6}
+        opacity={0.7}
       />
     </points>
   );
 }
 
 export default function Background3D() {
+  const [theme, setTheme] = useState("day");
+
+  // Detect theme changes from your toggle
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const t = document.documentElement.getAttribute("data-theme");
+      if (t) setTheme(t);
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"]
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
       style={{
@@ -124,8 +133,7 @@ export default function Background3D() {
       }}
     >
       <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
-        <CosmicGradient />
-        <CustomStars />
+        <CosmicGradient theme={theme} />
         <ParticleField />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
       </Canvas>
