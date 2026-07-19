@@ -2,18 +2,24 @@
   "name": "core-lab-react",
   "version": "1.0.0",
   "private": true,
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "sound-watch": "node scripts/build-sound-manifest.js"
   },
+
   "dependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^7.18.1",
-    "three": "^0.160.0"
+
+    "three": "^0.165.0",
+    "@react-three/fiber": "^8.0.0",
+    "@react-three/drei": "^9.0.0"
   },
+
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
     "vite": "^5.0.0"
