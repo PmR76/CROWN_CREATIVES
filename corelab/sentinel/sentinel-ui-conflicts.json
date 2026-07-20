@@ -2,8 +2,62 @@
   "legacyActive": [],
   "labActive": [],
   "coreActive": [
-    "test/core-lab-react/src"
+    "src",
+    "src\\components",
+    "src\\components\\WatchkeeperHUD",
+    "src\\gallery",
+    "src\\hooks",
+    "src\\pages",
+    "src\\sentinel\\dashboard",
+    "src\\sentinel",
+    "src\\sentinel\\panels",
+    "src\\sentinel\\styles",
+    "src\\sound",
+    "src\\styles",
+    "src\\templates",
+    "src\\theme"
   ],
   "cssConflicts": [],
-  "componentConflicts": []
+  "componentConflicts": [
+    {
+      "name": "StatusPanel.jsx",
+      "folder": "src\\sentinel\\panels",
+      "group": "core"
+    },
+    {
+      "name": "StatusPanel.jsx",
+      "folder": "sentinel",
+      "group": "other"
+    },
+    {
+      "name": "SentinelPanel.tsx",
+      "folder": "src\\sentinel",
+      "group": "core"
+    },
+    {
+      "name": "SentinelPanel.tsx",
+      "folder": "sentinel",
+      "group": "other"
+    },
+    {
+      "name": "index.html",
+      "folder": "public",
+      "group": "other"
+    },
+    {
+      "name": "index.html",
+      "folder": "sentinel\\public\\watchkeeper",
+      "group": "other"
+    },
+    {
+      "name": "sound-manifest.json",
+      "folder": "public\\manifests",
+      "group": "other"
+    },
+    {
+      "name": "sound-manifest.json",
+      "folder": "public\\sounds",
+      "group": "other"
+    }
+  ]
 }

@@ -1,14 +1,15 @@
 {
-  "devUrl": "http://localhost:5176",
+  "devUrl": "http://localhost:5173",
   "prodUrl": "https://www.crowncreatives.uk",
   "timeoutMs": 2000,
   "scan": [
-    "test/core-lab-react/src",
-    "test/core-lab-react/public"
+    "src",
+    "public",
+    "sentinel"
   ],
   "required": [
-    "test/core-lab-react/src",
-    "test/core-lab-react/public"
+    "src",
+    "public"
   ],
   "ignore": [
     "node_modules",
@@ -17,7 +18,7 @@
   ],
   "ui": {
     "coreReact": [
-      "test/core-lab-react/src"
+      "src"
     ],
     "labs": [],
     "legacy": [],

@@ -1,14 +1,382 @@
 [
   {
-    "folder": "test/core-lab-react/src",
+    "folder": "src",
     "items": [
-      "❌ Missing folder: test/core-lab-react/src"
+      {
+        "folder": "src\\admin",
+        "items": []
+      },
+      "App.jsx",
+      {
+        "folder": "src\\assets",
+        "items": [
+          {
+            "folder": "src\\assets\\cosmic",
+            "items": []
+          },
+          {
+            "folder": "src\\assets\\images",
+            "items": []
+          },
+          {
+            "folder": "src\\assets\\sounds",
+            "items": []
+          }
+        ]
+      },
+      {
+        "folder": "src\\components",
+        "items": [
+          "buildstamp.css",
+          "Buildstamp.jsx",
+          "Layout.jsx",
+          {
+            "folder": "src\\components\\WatchkeeperHUD",
+            "items": [
+              "watchkeeper-hud.css",
+              "WatchkeeperHUD.jsx"
+            ]
+          }
+        ]
+      },
+      "FaultScanner.jsx",
+      {
+        "folder": "src\\gallery",
+        "items": [
+          "GalleryEngine.js"
+        ]
+      },
+      {
+        "folder": "src\\hooks",
+        "items": [
+          "useDiagnostics.js",
+          "useSentinelManifestScanner.js",
+          "useSoundEngine.js",
+          "useThemeEngine.js"
+        ]
+      },
+      "main.jsx",
+      {
+        "folder": "src\\pages",
+        "items": [
+          "About.jsx",
+          "Blog.jsx",
+          "Contact.jsx",
+          "Gallery.jsx",
+          "Home.jsx",
+          "Podcasts.jsx",
+          "Projects.jsx",
+          "Videos.jsx"
+        ]
+      },
+      {
+        "folder": "src\\sentinel",
+        "items": [
+          {
+            "folder": "src\\sentinel\\dashboard",
+            "items": [
+              "SentinelDashboard.jsx",
+              "SentinelRoute.jsx"
+            ]
+          },
+          "GallerySentinel.js",
+          "MusicSentinel.js",
+          {
+            "folder": "src\\sentinel\\panels",
+            "items": [
+              "CloudflarePanel.jsx",
+              "DuplicatesPanel.jsx",
+              "HandshakePanel.jsx",
+              "StatusPanel.jsx",
+              "UIConflictsPanel.jsx"
+            ]
+          },
+          "SentinelPanel.tsx",
+          {
+            "folder": "src\\sentinel\\styles",
+            "items": [
+              "sentinel-dashboard.css",
+              "sentinel-panels.css"
+            ]
+          },
+          "useSentinel.ts"
+        ]
+      },
+      {
+        "folder": "src\\sound",
+        "items": [
+          "SoundEngine.js"
+        ]
+      },
+      {
+        "folder": "src\\styles",
+        "items": [
+          "app.css"
+        ]
+      },
+      {
+        "folder": "src\\templates",
+        "items": [
+          "LabPage.jsx"
+        ]
+      },
+      {
+        "folder": "src\\theme",
+        "items": [
+          "theme-rotation.js",
+          "themeEngine.js"
+        ]
+      }
     ]
   },
   {
-    "folder": "test/core-lab-react/public",
+    "folder": "public",
     "items": [
-      "❌ Missing folder: test/core-lab-react/public"
+      {
+        "folder": "public\\assets",
+        "items": [
+          {
+            "folder": "public\\assets\\icons",
+            "items": [
+              "copilot.svg",
+              "day-crown.svg",
+              "email.svg",
+              "facebook.svg",
+              "head-crown.svg",
+              "instagram.svg",
+              "music.png",
+              "night-crown.svg",
+              "sun-moon.png"
+            ]
+          },
+          {
+            "folder": "public\\assets\\images",
+            "items": [
+              "fallback.jpeg",
+              {
+                "folder": "public\\assets\\images\\gallery",
+                "items": [
+                  "20260612_104446743_iOS.jpg",
+                  "20260612_104446849_iOS.jpg",
+                  "20260612_104447134_iOS.jpg",
+                  "20260612_104447271_iOS.jpg",
+                  "20260612_104447357_iOS.jpg",
+                  "butterfly.jpeg",
+                  "butterfly2.jpeg",
+                  "crow.jpeg",
+                  "day-background.jpeg",
+                  "dice-tower.jpeg",
+                  "fly.jpeg",
+                  "framed-but.jpeg",
+                  "gallery-manifest.json",
+                  "gold-crown.png",
+                  "Grief Cafe.png",
+                  "House-V2.jpeg",
+                  "Jane_Austine.jpeg",
+                  "just-crown.svg",
+                  "kermit.jpeg",
+                  "Mushroom.jpeg",
+                  "mushroomV2.png",
+                  "my-story-photoV3.png",
+                  "neon-crown.png",
+                  "night-background.jpeg",
+                  "painting2.jpg",
+                  "sanding.jpg",
+                  "sculpture.jpeg",
+                  "skull.jpeg",
+                  "stars-darkness.jpeg",
+                  "tree.jpeg",
+                  "wave.jpeg",
+                  "white-butterfly.jpeg"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "index.html",
+      {
+        "folder": "public\\manifests",
+        "items": [
+          "sound-manifest.json"
+        ]
+      },
+      "sentinel-filetree.json",
+      "sentinel-prod.json",
+      {
+        "folder": "public\\sounds",
+        "items": [
+          "34910776-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-royalty-free-use-202298.mp3",
+          "alec_koff-carnaval-484622.mp3",
+          "bransboynd-retro-lounge-389644.mp3",
+          "denys_brodovskyi-sandbreaker-379630.mp3",
+          "energysound-powerful-percussion-513717.mp3",
+          "finley-chill-sunset-chill-nature-529994.mp3",
+          "grand_project-wonders-of-the-earth-550792.mp3",
+          "ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3",
+          "kontraa-water-afro-pop-music-445661.mp3",
+          "loksii-no-copyright-music-211881.mp3",
+          "meditativetiger-tibetan-bowl-sound-bath-experience-388616.mp3",
+          "mickeyscat-moment-of-peace-mickeyscat-554494.mp3",
+          "placidplace-relaxing-piano-with-soft-female-vocals-85658.mp3",
+          "ribhavagrawal-relaxing-music-with-nature-sounds-284494.mp3",
+          "rockot-experimental-cinematic-hip-hop-315904.mp3",
+          "sound-manifest.json"
+        ]
+      },
+      "theme.json",
+      "_redirects.txt"
+    ]
+  },
+  {
+    "folder": "sentinel",
+    "items": [
+      "auto-start.cmd",
+      "index.js",
+      "launch-sentinel-menu.cmd",
+      "launch-sentinel-snapshot.cmd",
+      "launcher-sentinel.cmd",
+      "package-lock.json",
+      "package.json",
+      {
+        "folder": "sentinel\\profiles",
+        "items": [
+          "cloudflare.js"
+        ]
+      },
+      {
+        "folder": "sentinel\\public",
+        "items": [
+          {
+            "folder": "sentinel\\public\\watchkeeper",
+            "items": [
+              "index.html"
+            ]
+          }
+        ]
+      },
+      "run-sentinel-manifest-scan.js",
+      "sentinel-cli.js",
+      "sentinel-config.json",
+      "sentinel-config.repaired.json",
+      "sentinel-corelab-checks.js",
+      "sentinel-duplicates.json",
+      "sentinel-gr1.js",
+      "sentinel-gr2.js",
+      "sentinel-gr3.js",
+      "sentinel-health.json",
+      "sentinel-registry.json",
+      {
+        "folder": "sentinel\\sentinel-snapshots",
+        "items": [
+          "GR1-1784246019954.json",
+          "GR1-1784482352134.json",
+          "GR2-1784246020331.json",
+          "GR2-1784482352903.json",
+          "sentinel-2026-07-16T20_14_34.350Z.json",
+          "sentinel-2026-07-16T20_25_30.899Z.json",
+          "sentinel-2026-07-16T20_37_59.108Z.json",
+          "sentinel-2026-07-16T20_41_06.207Z.json",
+          "sentinel-2026-07-16T20_55_10.457Z.json",
+          "sentinel-2026-07-16T21_07_07.690Z.json",
+          "sentinel-2026-07-16T21_18_24.192Z.json",
+          "sentinel-2026-07-16T21_24_58.586Z.json",
+          "sentinel-2026-07-16T21_41_47.016Z.json",
+          "sentinel-2026-07-16T21_49_57.172Z.json",
+          "sentinel-2026-07-16T21_51_20.249Z.json",
+          "sentinel-2026-07-16T22_20_00.838Z.json",
+          "sentinel-2026-07-16T22_33_37.823Z.json",
+          "sentinel-2026-07-16T22_44_22.256Z.json",
+          "sentinel-2026-07-16T22_44_24.855Z.json",
+          "sentinel-2026-07-16T22_44_25.623Z.json",
+          "sentinel-2026-07-16T22_44_26.217Z.json",
+          "sentinel-2026-07-16T22_44_27.200Z.json",
+          "sentinel-2026-07-16T22_51_32.124Z.json",
+          "sentinel-2026-07-16T23_17_44.209Z.json",
+          "sentinel-2026-07-17T09_14_37.392Z.json",
+          "sentinel-2026-07-17T09_15_12.534Z.json",
+          "sentinel-2026-07-17T09_22_11.084Z.json",
+          "sentinel-2026-07-17T09_22_13.818Z.json",
+          "sentinel-2026-07-17T09_23_53.526Z.json",
+          "sentinel-2026-07-17T09_23_55.677Z.json",
+          "sentinel-2026-07-17T09_24_15.029Z.json",
+          "sentinel-2026-07-17T10_13_50.756Z.json",
+          "sentinel-2026-07-17T10_24_08.625Z.json",
+          "sentinel-2026-07-17T15_41_42.389Z.json",
+          "sentinel-2026-07-17T16_16_17.971Z.json",
+          "sentinel-2026-07-17T16_32_31.360Z.json",
+          "sentinel-2026-07-17T16_32_52.882Z.json",
+          "sentinel-2026-07-17T17_02_46.116Z.json",
+          "sentinel-2026-07-17T17_03_08.495Z.json",
+          "sentinel-2026-07-17T17_03_36.334Z.json",
+          "sentinel-2026-07-17T17_09_16.408Z.json",
+          "sentinel-2026-07-17T17_09_31.770Z.json",
+          "sentinel-2026-07-17T17_11_38.685Z.json",
+          "sentinel-2026-07-17T17_13_10.721Z.json",
+          "sentinel-2026-07-17T17_13_41.086Z.json",
+          "sentinel-2026-07-17T17_15_47.494Z.json",
+          "sentinel-2026-07-17T17_15_53.732Z.json",
+          "sentinel-2026-07-17T17_28_06.392Z.json",
+          "sentinel-2026-07-17T17_28_26.745Z.json",
+          "sentinel-2026-07-17T17_28_56.176Z.json",
+          "sentinel-2026-07-17T17_30_22.983Z.json",
+          "sentinel-2026-07-17T19_15_00.325Z.json",
+          "sentinel-2026-07-17T19_16_42.333Z.json",
+          "sentinel-2026-07-17T19_17_38.904Z.json",
+          "sentinel-2026-07-17T19_18_07.151Z.json",
+          "sentinel-2026-07-17T19_18_22.143Z.json",
+          "sentinel-2026-07-17T19_20_45.026Z.json",
+          "sentinel-2026-07-17T19_20_48.459Z.json",
+          "sentinel-2026-07-17T19_21_01.884Z.json",
+          "sentinel-2026-07-17T19_25_41.946Z.json",
+          "sentinel-2026-07-17T19_31_57.975Z.json",
+          "sentinel-2026-07-17T19_41_33.153Z.json",
+          "sentinel-2026-07-17T19_41_48.002Z.json",
+          "sentinel-2026-07-17T19_41_50.576Z.json",
+          "sentinel-2026-07-17T19_43_34.104Z.json",
+          "sentinel-2026-07-17T20_21_02.210Z.json",
+          "sentinel-2026-07-17T20_26_31.146Z.json",
+          "sentinel-2026-07-17T20_51_42.133Z.json",
+          "sentinel-2026-07-17T21_20_22.867Z.json",
+          "sentinel-2026-07-17T21_20_24.131Z.json",
+          "sentinel-2026-07-18T12_09_48.356Z.json",
+          "sentinel-2026-07-18T12_10_23.836Z.json",
+          "sentinel-2026-07-18T12_22_33.299Z.json",
+          "sentinel-2026-07-18T12_44_20.727Z.json",
+          "sentinel-2026-07-18T12_48_31.103Z.json",
+          "sentinel-2026-07-18T12_50_41.018Z.json",
+          "sentinel-2026-07-18T22_34_41.615Z.json",
+          "sentinel-2026-07-18T22_49_17.149Z.json",
+          "sentinel-2026-07-18T22_49_19.908Z.json",
+          "sentinel-2026-07-18T22_54_09.559Z.json",
+          "sentinel-2026-07-18T22_54_14.478Z.json",
+          "sentinel-2026-07-18T23_03_10.111Z.json",
+          "sentinel-2026-07-18T23_11_21.852Z.json",
+          "sentinel-2026-07-18T23_17_39.713Z.json",
+          "sentinel-2026-07-18T23_18_32.563Z.json",
+          "sentinel-2026-07-18T23_18_36.508Z.json",
+          "sentinel-2026-07-18T23_20_17.463Z.json",
+          "sentinel-2026-07-18T23_36_00.826Z.json",
+          "sentinel-2026-07-18T23_36_01.713Z.json",
+          "sentinel-2026-07-18T23_36_31.410Z.json",
+          "sentinel-2026-07-18T23_36_53.438Z.json",
+          "sentinel-2026-07-18T23_58_06.833Z.json",
+          "sentinel-2026-07-19T00_23_54.201Z.json",
+          "sentinel-2026-07-19T00_37_38.300Z.json",
+          "sentinel-2026-07-19T17_05_29.827Z.json",
+          "sentinel-2026-07-19T17_06_06.220Z.json",
+          "sentinel-2026-07-19T17_11_28.213Z.json",
+          "sentinel-2026-07-19T17_11_30.899Z.json"
+        ]
+      },
+      "sentinel-tree.txt",
+      "sentinel-ui-conflicts.json",
+      "sentinel.config.json",
+      "sentinel.js",
+      "SentinelManifestScanner.js",
+      "SentinelPanel.tsx",
+      "StatusPanel.jsx",
+      "vite-port.js"
     ]
   }
 ]
