@@ -5,7 +5,7 @@
   "scripts": {
     "//": "Sentinel Build Guard — prevents catastrophic breakage",
     "verify": "node scripts/verify-folders.js",
-    "prebuild": "npm run verify && node scripts/build-manifests.js && node scripts/build-sound-manifest.js",
+    "prebuild": "npm run verify && node test/core-lab-react/scripts/build-manifests.js && node test/core-lab-react/scripts/build-sound-manifest.js",
     "build": "vite build",
     "dev": "vite",
     "preview": "vite preview"
