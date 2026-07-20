@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { runSentinelManifestScanner } from "./sentinel/SentinelManifestScanner.js";
+
+// Correct Layer 3 path
+import { runSentinelManifestScanner } from "./corelab/sentinel/SentinelManifestScanner.js";
 
 export default defineConfig({
   plugins: [
@@ -16,8 +18,6 @@ export default defineConfig({
       }
     }
   ],
-
-  // ⭐ THIS is the correct place for the build config
   build: {
     copyPublicDir: true
   }
