@@ -1,0 +1,42 @@
+import React from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import "./styles/gradients.css";
+import "./styles/app.css";
+
+export default function Layout({ children }) {
+  return (
+    <div className="corelab-shell gradient-night">
+      
+      {/* OS TOP BAR */}
+      <div className="os-topbar">
+        <div className="os-left">
+          <span className="os-crown">👑</span>
+          <span className="os-title">Crown Creatives OS</span>
+        </div>
+        <div className="os-right">
+          <span className="os-status">Online</span>
+        </div>
+      </div>
+
+      {/* MAIN WINDOW */}
+      <main className="os-window">
+        {children}
+      </main>
+
+      {/* OS DOCK */}
+      <div className="os-dock">
+        <a href="/">Home</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/projects">Projects</a>
+        <a href="/videos">Videos</a>
+        <a href="/podcasts">Podcasts</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+
+      {/* FOOTER (optional) */}
+      <Footer />
+    </div>
+  );
+}

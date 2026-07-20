@@ -1,0 +1,65 @@
+/* OS SHELL */
+.corelab-shell {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #eee;
+  font-family: "Inter", sans-serif;
+}
+
+/* TOP BAR */
+.os-topbar {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.os-crown {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.os-title {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.os-status {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* MAIN WINDOW */
+.os-window {
+  flex: 1;
+  padding: 24px;
+  backdrop-filter: blur(6px);
+}
+
+/* DOCK */
+.os-dock {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  align-items: center;
+  background: rgba(0,0,0,0.35);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.os-dock a {
+  color: #eee;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.os-dock a:hover {
+  opacity: 1;
+}
