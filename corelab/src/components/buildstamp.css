@@ -1,0 +1,16 @@
+.buildstamp {
+  position: fixed;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(0,0,0,0.55);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #eee;
+  z-index: 99999;
+  font-family: "Inter", sans-serif;
+}
+
+.dev-info {
+  opacity: 0.8;
+}
