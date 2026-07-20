@@ -160,13 +160,10 @@ function walk(dir) {
 }
 
 app.get("/sentinel/filetree", (req, res) => {
-  const root = path.join(__dirname, ".."); // CROWN_CREATIVES root
+  const root = path.join(__dirname, "..", "corelab"); // FIXED ROOT
   const tree = walk(root);
   res.json(tree);
 });
-
-// SERVE WATCHKEEPER PANEL
-app.use("/watchkeeper", express.static(path.join(__dirname, "public/watchkeeper")));
 
 // SERVER
 const port = 5175;
