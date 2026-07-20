@@ -160,7 +160,8 @@ function walk(dir) {
 }
 
 app.get("/sentinel/filetree", (req, res) => {
- const root = path.join(__dirname, ".."); // FIXED ROOT
+  // FIXED ROOT: corelab project root
+  const root = path.join(__dirname, "..");
   const tree = walk(root);
   res.json(tree);
 });
