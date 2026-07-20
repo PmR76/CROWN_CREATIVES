@@ -3,6 +3,7 @@
   "displayName": "Core Lab Watchers",
   "publisher": "local",
   "version": "1.0.0",
+  "type": "commonjs",
   "engines": {
     "vscode": "^1.80.0"
   },
