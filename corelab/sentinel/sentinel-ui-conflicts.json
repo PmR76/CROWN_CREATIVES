@@ -18,46 +18,5 @@
     "src\\theme"
   ],
   "cssConflicts": [],
-  "componentConflicts": [
-    {
-      "name": "StatusPanel.jsx",
-      "folder": "src\\sentinel\\panels",
-      "group": "core"
-    },
-    {
-      "name": "StatusPanel.jsx",
-      "folder": "sentinel",
-      "group": "other"
-    },
-    {
-      "name": "SentinelPanel.tsx",
-      "folder": "src\\sentinel",
-      "group": "core"
-    },
-    {
-      "name": "SentinelPanel.tsx",
-      "folder": "sentinel",
-      "group": "other"
-    },
-    {
-      "name": "index.html",
-      "folder": "public",
-      "group": "other"
-    },
-    {
-      "name": "index.html",
-      "folder": "sentinel\\public\\watchkeeper",
-      "group": "other"
-    },
-    {
-      "name": "sound-manifest.json",
-      "folder": "public\\manifests",
-      "group": "other"
-    },
-    {
-      "name": "sound-manifest.json",
-      "folder": "public\\sounds",
-      "group": "other"
-    }
-  ]
+  "componentConflicts": []
 }

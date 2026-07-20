@@ -220,8 +220,7 @@
           "mickeyscat-moment-of-peace-mickeyscat-554494.mp3",
           "placidplace-relaxing-piano-with-soft-female-vocals-85658.mp3",
           "ribhavagrawal-relaxing-music-with-nature-sounds-284494.mp3",
-          "rockot-experimental-cinematic-hip-hop-315904.mp3",
-          "sound-manifest.json"
+          "rockot-experimental-cinematic-hip-hop-315904.mp3"
         ]
       },
       "theme.json",
@@ -249,13 +248,12 @@
         "items": [
           {
             "folder": "sentinel\\public\\watchkeeper",
-            "items": [
-              "index.html"
-            ]
+            "items": []
           }
         ]
       },
       "run-sentinel-manifest-scan.js",
+      "sentinel-cleanup.json",
       "sentinel-cli.js",
       "sentinel-config.json",
       "sentinel-config.repaired.json",
@@ -374,8 +372,6 @@
       "sentinel.config.json",
       "sentinel.js",
       "SentinelManifestScanner.js",
-      "SentinelPanel.tsx",
-      "StatusPanel.jsx",
       "vite-port.js"
     ]
   }
