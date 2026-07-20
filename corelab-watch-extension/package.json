@@ -1,18 +1,14 @@
 {
-  "name": "watch-corelab",
+  "name": "corelab-watch-extension",
   "displayName": "Core Lab Watchers",
-  "description": "Auto-start gallery and sound watchers for Crown Creatives Core Lab.",
-  "version": "1.0.0",
   "publisher": "local",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.80.0"
   },
   "main": "./extension.js",
   "activationEvents": [
-    "workspaceContains:**"
+    "*"
   ],
-  "contributes": {},
-  "categories": [
-    "Other"
-  ]
+  "contributes": {}
 }
