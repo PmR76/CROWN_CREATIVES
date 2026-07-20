@@ -1,4 +1,5 @@
 {
+  "devPort": 5173,
   "devUrl": "http://localhost:5173",
   "prodUrl": "https://www.crowncreatives.uk",
   "timeoutMs": 2000,
