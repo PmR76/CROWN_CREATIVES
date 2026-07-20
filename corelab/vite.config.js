@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 import { runSentinelManifestScanner } from "./sentinel/SentinelManifestScanner.js";
+import { detectVitePort } from "./vite-port.js";
 
 export default defineConfig({
   plugins: [
