@@ -9,5 +9,7 @@
   "python.testing.pytestEnabled": false,
   "python.testing.unittestEnabled": true,
 
-  "task.runOnFolderOpen": "Watch Gallery"
+  "task.runOnFolderOpen": "Watch Gallery",
+
+  "extensions.autoUpdate": true
 }
