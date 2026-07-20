@@ -11,5 +11,9 @@
   "activationEvents": [
     "*"
   ],
-  "contributes": {}
+  "contributes": {},
+  "repository": {
+    "type": "git",
+    "url": "https://example.com/your-repo.git"
+  }
 }
