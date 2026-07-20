@@ -1,8 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// Correct Layer 3 path
-import { runSentinelManifestScanner } from "./corelab/sentinel/SentinelManifestScanner.js";
+import { runSentinelManifestScanner } from "./sentinel/SentinelManifestScanner.js";
 
 export default defineConfig({
   plugins: [
