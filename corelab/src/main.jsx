@@ -9,7 +9,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App.jsx";
 
 // Core Lab OS Providers
-import { AdminProvider } from "./admin/AdminContext";
+import { AdminProvider } from "./admin/AdminContext.jsx";
 
 // Watchkeeper HUD (Layer 3 — Bottom Drawer)
 import WatchkeeperHUD from "./components/WatchkeeperHUD/WatchkeeperHUD.jsx";
@@ -27,7 +27,15 @@ import "./styles/footer.css";
 // ============================================================
 // MOUNT — SINGLE ROOT
 // ============================================================
-ReactDOM.createRoot(document.getElementById("root")).render(
+
+const rootElement = document.getElementById("root");
+
+// Safety: prevent null-root crash (white screen)
+if (!rootElement) {
+  console.error("❌ Root element #root not found — React cannot mount.");
+}
+
+ReactDOM.createRoot(rootElement).render(
   <Router>
     <AdminProvider>
       <App />
