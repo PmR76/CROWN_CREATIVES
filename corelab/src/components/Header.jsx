@@ -1,5 +1,5 @@
 // ============================================================
-// Header.jsx — Cinematic Centered Crown + Nav (GR1 Restored)
+// Header.jsx — Cinematic Centered Crown + Nav (GR1 Stable)
 // ============================================================
 
 import React, { useEffect } from "react";
@@ -9,13 +9,23 @@ import "../styles/header.css";
 import { useSoundEngine } from "../hooks/useSoundEngine.js";
 
 // Theme Engine
-import { initThemeEngine, toggleTheme } from "../theme/themeEngine.js";
+import {
+  initThemeEngine,
+  toggleTheme
+} from "../theme/themeEngine.js";
 
 export default function Header() {
   const { toggleSound } = useSoundEngine();
 
+  // ------------------------------------------------------------
+  // INITIALISE THEME ENGINE SAFELY
+  // ------------------------------------------------------------
   useEffect(() => {
-    initThemeEngine();
+    try {
+      initThemeEngine();
+    } catch (err) {
+      console.warn("ThemeEngine init failed:", err);
+    }
   }, []);
 
   return (
@@ -38,7 +48,6 @@ export default function Header() {
 
       {/* CENTER — Crown + Title + Tagline + Nav */}
       <div className="hero-header-center">
-
         <img
           src="/assets/icons/head-crown.svg"
           alt="Crown Creatives Crown"
@@ -46,6 +55,7 @@ export default function Header() {
         />
 
         <h1 className="cc-header-title">Crown Creatives</h1>
+
         <p className="cc-header-tagline">
           Artistry • Resilience • Imagination
         </p>
@@ -67,7 +77,13 @@ export default function Header() {
         <button
           id="themeToggle"
           className="theme-toggle"
-          onClick={toggleTheme}
+          onClick={() => {
+            try {
+              toggleTheme();
+            } catch (err) {
+              console.warn("Theme toggle failed:", err);
+            }
+          }}
         >
           <img
             src="/assets/icons/sun-moon.png"
