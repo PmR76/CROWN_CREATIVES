@@ -10,7 +10,7 @@ function checkFolder(relativePath) {
   const fullPath = path.join(ROOT, relativePath);
 
   if (!fs.existsSync(fullPath)) {
-    console.error(`❌ Missing required folder: ${relativePath}`);
+    console.error(`✖ Missing required folder: ${relativePath}`);
     process.exit(1);
   } else {
     console.log(`✔ Found: ${relativePath}`);
@@ -21,6 +21,8 @@ console.log("🔍 Verifying required folders...");
 
 [
   "public/assets/images/gallery",
+  "public/assets/icons",
+  "public/manifests",
   "public/sounds"
 ].forEach(checkFolder);
 
