@@ -1,3 +1,7 @@
+// ============================================================
+// Buildstamp.jsx — Runtime Build Tag (GR1 Stable)
+// ============================================================
+
 import React from "react";
 import "./buildstamp.css";
 
@@ -6,9 +10,18 @@ export default function Buildstamp() {
     window.location.hostname === "localhost" ||
     window.location.search.includes("dev=true");
 
+  // Prevent runtime crash on SSR or hydration edge cases
+  const builtTime = (() => {
+    try {
+      return new Date().toLocaleString();
+    } catch {
+      return "unknown";
+    }
+  })();
+
   const stamp = {
     version: "v1.0.0",
-    built: new Date().toLocaleString(),
+    built: builtTime,
     env: isDev ? "dev" : "prod",
   };
 
