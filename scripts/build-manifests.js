@@ -1,38 +1,54 @@
 // ============================================================
 // build-manifests.js — Unified Media Scanner (Images + Sounds)
+// Cloudflare‑safe + corelab‑aligned
 // ============================================================
 
 import fs from "fs";
 import path from "path";
 
 // ------------------------------------------------------------
-// ROOT & FOLDERS (Cloudflare + local safe)
+// ROOT DETECTION (works on Cloudflare + local)
 // ------------------------------------------------------------
 const ROOT = fs.existsSync(path.join(process.cwd(), "corelab"))
   ? path.join(process.cwd(), "corelab")
   : process.cwd();
 
+// ------------------------------------------------------------
+// FOLDERS (correct new structure)
+// ------------------------------------------------------------
 const galleryFolder = path.join(ROOT, "public/assets/images/gallery");
 const soundFolder   = path.join(ROOT, "public/sounds");
+const manifestFolder = path.join(ROOT, "public/manifests");
 
 // ------------------------------------------------------------
-// OUTPUT MANIFESTS
+// OUTPUT MANIFEST PATHS
 // ------------------------------------------------------------
-const galleryManifest = path.join(galleryFolder, "gallery-manifest.json");
-const soundManifest   = path.join(soundFolder, "sound-manifest.json");
+const galleryManifest = path.join(manifestFolder, "gallery-manifest.json");
+const soundManifest   = path.join(manifestFolder, "sound-manifest.json");
+
+// ------------------------------------------------------------
+// ENSURE MANIFEST FOLDER EXISTS
+// ------------------------------------------------------------
+if (!fs.existsSync(manifestFolder)) {
+  fs.mkdirSync(manifestFolder, { recursive: true });
+}
 
 // ------------------------------------------------------------
 // SCAN A FOLDER
 // ------------------------------------------------------------
-function scanFolder(folder) {
+function scanFolder(folder, filterFn = null) {
   if (!fs.existsSync(folder)) {
     console.error("Folder missing:", folder);
     return [];
   }
 
-  const files = fs.readdirSync(folder)
+  let files = fs.readdirSync(folder)
     .filter(f => !f.startsWith("."))
     .filter(f => !fs.lstatSync(path.join(folder, f)).isDirectory());
+
+  if (filterFn) {
+    files = files.filter(filterFn);
+  }
 
   return files;
 }
@@ -51,12 +67,16 @@ function writeManifest(filePath, list) {
 function run() {
   console.log("=== Unified Media Scanner ===");
 
-  // 1. Gallery
+  // --------------------------------------------------------
+  // 1. Gallery Images
+  // --------------------------------------------------------
   const galleryFiles = scanFolder(galleryFolder);
   writeManifest(galleryManifest, galleryFiles);
 
-  // 2. Sounds
-  const soundFiles = scanFolder(soundFolder);
+  // --------------------------------------------------------
+  // 2. Sounds (.mp3 only)
+  // --------------------------------------------------------
+  const soundFiles = scanFolder(soundFolder, f => f.toLowerCase().endsWith(".mp3"));
   writeManifest(soundManifest, soundFiles);
 
   console.log("=== Scanner Complete ===");
