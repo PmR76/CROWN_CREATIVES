@@ -1,6 +1,5 @@
 // ============================================================
-// Background3D.jsx — Immersive Particle Field (Isolated Theme Lab)
-// Date: 2026-07-07 13:55 BST
+// Background3D.jsx — Immersive Particle Field (GR1 Stable)
 // ============================================================
 
 import { useEffect } from "react";
@@ -11,7 +10,10 @@ export default function Background3D() {
     const container = document.getElementById("webgl-background");
     if (!container) return;
 
+    // Scene
     const scene = new THREE.Scene();
+
+    // Camera
     const camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
@@ -20,6 +22,7 @@ export default function Background3D() {
     );
     camera.position.z = 5;
 
+    // Renderer
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -32,6 +35,7 @@ export default function Background3D() {
 
     container.appendChild(renderer.domElement);
 
+    // Particles
     const particles = new THREE.BufferGeometry();
     const count = 800;
     const positions = new Float32Array(count * 3);
@@ -52,6 +56,7 @@ export default function Background3D() {
     const points = new THREE.Points(particles, material);
     scene.add(points);
 
+    // Animation Loop
     const animate = () => {
       requestAnimationFrame(animate);
       points.rotation.y += 0.0008;
@@ -60,6 +65,7 @@ export default function Background3D() {
 
     animate();
 
+    // Resize Handler
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -68,6 +74,7 @@ export default function Background3D() {
 
     window.addEventListener("resize", handleResize);
 
+    // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
       container.removeChild(renderer.domElement);
