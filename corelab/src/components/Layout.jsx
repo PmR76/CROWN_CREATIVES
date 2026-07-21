@@ -9,8 +9,8 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 
 // Styles
-import "./styles/gradients.css";
-import "./styles/app.css";
+import "../styles/gradients.css";
+import "../styles/app.css";
 
 export default function Layout({ children }) {
   return (

@@ -56,16 +56,16 @@ export default function Background3D() {
     const points = new THREE.Points(particles, material);
     scene.add(points);
 
-    // Animation Loop
+    let frameId;
+
     const animate = () => {
-      requestAnimationFrame(animate);
+      frameId = requestAnimationFrame(animate);
       points.rotation.y += 0.0008;
       renderer.render(scene, camera);
     };
 
     animate();
 
-    // Resize Handler
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -74,13 +74,18 @@ export default function Background3D() {
 
     window.addEventListener("resize", handleResize);
 
-    // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
-      container.removeChild(renderer.domElement);
+      if (frameId) cancelAnimationFrame(frameId);
+      try {
+        container.removeChild(renderer.domElement);
+      } catch {
+        // ignore if already removed
+      }
       renderer.dispose();
     };
   }, []);
 
-  return <div id="webgl-background"></div>;
+  // Attach to existing #webgl-background in index.html
+  return null;
 }
