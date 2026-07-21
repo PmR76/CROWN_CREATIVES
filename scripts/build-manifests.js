@@ -6,10 +6,14 @@ import fs from "fs";
 import path from "path";
 
 // ------------------------------------------------------------
-// FOLDERS
+// ROOT & FOLDERS (Cloudflare + local safe)
 // ------------------------------------------------------------
-const galleryFolder = path.join(process.cwd(), "public/assets/images/gallery");
-const soundFolder   = path.join(process.cwd(), "public/sounds");
+const ROOT = fs.existsSync(path.join(process.cwd(), "corelab"))
+  ? path.join(process.cwd(), "corelab")
+  : process.cwd();
+
+const galleryFolder = path.join(ROOT, "public/assets/images/gallery");
+const soundFolder   = path.join(ROOT, "public/sounds");
 
 // ------------------------------------------------------------
 // OUTPUT MANIFESTS
