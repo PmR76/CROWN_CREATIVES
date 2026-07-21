@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "prebuild": "node scripts/build-manifests.js && node scripts/build-sound-manifest.js"
+    "prebuild": "node scripts/build-manifests.cjs && node scripts/build-sound-manifest.cjs"
   },
 
   "dependencies": {
@@ -41,4 +41,3 @@
     "@vitejs/plugin-react": "^4.0.0"
   }
 }
-
