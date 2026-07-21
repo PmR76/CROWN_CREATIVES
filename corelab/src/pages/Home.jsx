@@ -1,15 +1,22 @@
+// ============================================================
+// Home.jsx — Crown Creatives Homepage (GR1 Stable)
+// ============================================================
+
 import { useEffect, useState } from "react";
 
-import Background3D from "../components/Background3D";
-import Header from "../components/Header";
-import HeroCrown from "../components/HeroCrown";
-import HeroGallery from "../components/HeroGallery";
-import FrostedCards from "../components/FrostedCards";
-import Ticker from "../components/Ticker";
-import Footer from "../components/Footer";
+// Components
+import Background3D from "../components/Background3D.jsx";
+import Header from "../components/Header.jsx";
+import HeroCrown from "../components/HeroCrown.jsx";
+import HeroGallery from "../components/HeroGallery.jsx";
+import FrostedCards from "../components/FrostedCards.jsx";
+import Ticker from "../components/Ticker.jsx";
+import Footer from "../components/Footer.jsx";
 
-import { runMusicSentinel } from "../sentinel/MusicSentinel";
+// Sentinel
+import { runMusicSentinel } from "../sentinel/MusicSentinel.js";
 
+// Styles
 import "../styles/background3d.css";
 import "../styles/header.css";
 import "../styles/hero-crown.css";
@@ -21,17 +28,21 @@ import "../styles/footer.css";
 export default function Home() {
   const [sentinelStatus, setSentinelStatus] = useState("BOOTING");
 
+  // ------------------------------------------------------------
+  // SENTINEL BOOT SEQUENCE
+  // ------------------------------------------------------------
   useEffect(() => {
     async function boot() {
       try {
         const musicReport = await runMusicSentinel();
 
-        if (musicReport.finalStatus === "OK") {
+        if (musicReport?.finalStatus === "OK") {
           setSentinelStatus("OK");
         } else {
           setSentinelStatus("WARN");
         }
-      } catch {
+      } catch (err) {
+        console.warn("MusicSentinel failed:", err);
         setSentinelStatus("ERROR");
       }
     }
@@ -48,13 +59,16 @@ export default function Home() {
       ? "🔴 Sentinel Error"
       : "⚪ Booting Sentinel…";
 
+  // ------------------------------------------------------------
+  // RENDER
+  // ------------------------------------------------------------
   return (
     <main className="home-page">
 
-      {/* ⭐ 3D background sits BEHIND everything */}
+      {/* Background sits behind everything */}
       <Background3D />
 
-      {/* ⭐ Your homepage content sits ABOVE it */}
+      {/* Header sits above background */}
       <Header />
 
       <div className="sentinel-status-badge">
