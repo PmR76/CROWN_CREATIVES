@@ -12,12 +12,10 @@ import { detectVitePort } from "./vite-port.js";
 import { runSentinelManifestScanner } from "./sentinel/SentinelManifestScanner.js";
 
 export default defineConfig({
-  // ------------------------------------------------------------
-  // PROJECT ROOT / PUBLIC / BUILD OUTPUT
-  // ------------------------------------------------------------
-  root: "corelab",
-  publicDir: "../public",
 
+  // ------------------------------------------------------------
+  // SERVER CONFIG (DEV ONLY)
+  // ------------------------------------------------------------
   server: {
     port: detectVitePort(),
     strictPort: false,          // Prevent hard failures if port is taken
@@ -56,12 +54,18 @@ export default defineConfig({
   ],
 
   // ------------------------------------------------------------
-  // BUILD CONFIG
+  // BUILD CONFIG (Cloudflare Pages Safe)
   // ------------------------------------------------------------
   build: {
-    outDir: "../dist",
+    // Cloudflare already sets root = /corelab
+    // So Vite must NOT override root or publicDir or outDir
     copyPublicDir: true,
     sourcemap: true,             // Helps diagnose white-screen issues
-    emptyOutDir: true            // Prevent stale build artifacts
+    emptyOutDir: true,           // Prevent stale build artifacts
+
+    rollupOptions: {
+      // Cloudflare runs inside /corelab, so index.html is correct
+      input: "index.html"
+    }
   }
 });
