@@ -12,7 +12,7 @@ import App from "./App.jsx";
 import { AdminProvider } from "./admin/AdminContext";
 
 // Watchkeeper HUD (Layer 3 — Bottom Drawer)
-import { WatchkeeperHUD } from "./components/WatchkeeperHUD/WatchkeeperHUD.jsx";
+import WatchkeeperHUD from "./components/WatchkeeperHUD/WatchkeeperHUD.jsx";
 
 // Buildstamp (Layer 3 — Bottom Left)
 import Buildstamp from "./components/Buildstamp.jsx";
