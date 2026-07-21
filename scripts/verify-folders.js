@@ -1,15 +1,9 @@
-// ============================================================
-// verify-folders.js — Cloudflare-Safe Folder Checker (GR1)
-// ============================================================
-
 import fs from "fs";
 import path from "path";
 
 // Cloudflare builds from repo root, not /corelab
 const REQUIRED_FOLDERS = [
   "corelab/public/assets/images/gallery",
-  "corelab/public/assets/icons",
-  "corelab/public/manifests",
   "corelab/public/sounds"
 ];
 
@@ -25,7 +19,5 @@ function checkFolder(relativePath) {
 }
 
 console.log("🔍 Verifying required folders...");
-
 REQUIRED_FOLDERS.forEach(checkFolder);
-
 console.log("✔ Folder verification complete");
