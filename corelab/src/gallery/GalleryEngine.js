@@ -1,19 +1,38 @@
 // ============================================================
-// GalleryEngine — Auto-Populated Manifest Loader (Correct Path)
+// GalleryEngine — Auto-Populated Manifest Loader (GR1 Stable)
 // ============================================================
 
 export async function loadGallery() {
-  // Correct manifest path (matches your screenshot)
-  const res = await fetch("/assets/images/gallery/gallery-manifest.json");
+  try {
+    // Correct manifest path (matches your public/assets structure)
+    const res = await fetch("/assets/images/gallery/gallery-manifest.json", {
+      cache: "no-store"
+    });
 
-  const data = await res.json();
+    if (!res.ok) {
+      console.warn("Gallery manifest fetch failed:", res.status);
+      return [];
+    }
 
-  // Manifest is a simple array of filenames
-  if (!Array.isArray(data)) {
-    console.warn("Gallery manifest is not an array:", data);
+    let data;
+    try {
+      data = await res.json();
+    } catch (err) {
+      console.warn("Gallery manifest is not valid JSON:", err);
+      return [];
+    }
+
+    // Manifest must be an array of filenames
+    if (!Array.isArray(data)) {
+      console.warn("Gallery manifest is not an array:", data);
+      return [];
+    }
+
+    // Map filenames to correct public path
+    return data.map((f) => `/assets/images/gallery/${f}`);
+
+  } catch (err) {
+    console.warn("GalleryEngine loadGallery() crashed:", err);
     return [];
   }
-
-  // Map filenames to correct public path
-  return data.map(f => `/assets/images/gallery/${f}`);
 }
