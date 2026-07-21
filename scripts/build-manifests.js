@@ -5,30 +5,21 @@
 
 import fs from "fs";
 import path from "path";
+import { getRoot } from "../sentinel-root.js";
 
 // ------------------------------------------------------------
-// ROOT DETECTION (works on Cloudflare + local)
+// ROOT & FOLDERS
 // ------------------------------------------------------------
-const ROOT = fs.existsSync(path.join(process.cwd(), "corelab"))
-  ? path.join(process.cwd(), "corelab")
-  : process.cwd();
+const ROOT = getRoot();
 
-// ------------------------------------------------------------
-// FOLDERS (correct new structure)
-// ------------------------------------------------------------
-const galleryFolder = path.join(ROOT, "public/assets/images/gallery");
-const soundFolder   = path.join(ROOT, "public/sounds");
+const galleryFolder  = path.join(ROOT, "public/assets/images/gallery");
+const soundFolder    = path.join(ROOT, "public/sounds");
 const manifestFolder = path.join(ROOT, "public/manifests");
 
-// ------------------------------------------------------------
-// OUTPUT MANIFEST PATHS
-// ------------------------------------------------------------
 const galleryManifest = path.join(manifestFolder, "gallery-manifest.json");
 const soundManifest   = path.join(manifestFolder, "sound-manifest.json");
 
-// ------------------------------------------------------------
-// ENSURE MANIFEST FOLDER EXISTS
-// ------------------------------------------------------------
+// Ensure manifest folder exists
 if (!fs.existsSync(manifestFolder)) {
   fs.mkdirSync(manifestFolder, { recursive: true });
 }
@@ -67,15 +58,11 @@ function writeManifest(filePath, list) {
 function run() {
   console.log("=== Unified Media Scanner ===");
 
-  // --------------------------------------------------------
-  // 1. Gallery Images
-  // --------------------------------------------------------
+  // 1. Gallery
   const galleryFiles = scanFolder(galleryFolder);
   writeManifest(galleryManifest, galleryFiles);
 
-  // --------------------------------------------------------
   // 2. Sounds (.mp3 only)
-  // --------------------------------------------------------
   const soundFiles = scanFolder(soundFolder, f => f.toLowerCase().endsWith(".mp3"));
   writeManifest(soundManifest, soundFiles);
 
