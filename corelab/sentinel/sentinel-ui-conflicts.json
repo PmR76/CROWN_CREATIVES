@@ -2,6 +2,7 @@
   "legacyActive": [],
   "labActive": [],
   "coreActive": [
+    "src\\admin",
     "src",
     "src\\components",
     "src\\components\\WatchkeeperHUD",

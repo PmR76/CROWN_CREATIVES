@@ -1,14 +1,24 @@
 📁 src
    📁 src\admin
+      🟢 AdminContext.jsx
+      🟢 AdminGate.jsx
+      🟢 AdminPanel.jsx
    🟢 App.jsx
    📁 src\assets
       📁 src\assets\cosmic
       📁 src\assets\images
       📁 src\assets\sounds
    📁 src\components
+      🟢 Background3D.jsx
       🟢 buildstamp.css
       🟢 Buildstamp.jsx
+      🟢 Footer.jsx
+      🟢 FrostedCards.jsx
+      🟢 Header.jsx
+      🟢 HeroCrown.jsx
+      🟢 HeroGallery.jsx
       🟢 Layout.jsx
+      🟢 Ticker.jsx
       📁 src\components\WatchkeeperHUD
          🟢 watchkeeper-hud.css
          🟢 WatchkeeperHUD.jsx
@@ -50,7 +60,22 @@
    📁 src\sound
       🟢 SoundEngine.js
    📁 src\styles
+      🟢 about.css
       🟢 app.css
+      🟢 background3d.css
+      🟢 core.css
+      🟢 corepanel.css
+      🟢 diagnostics.css
+      🟢 footer.css
+      🟢 frosted-cards.css
+      🟢 gradients.css
+      🟢 header.css
+      🟢 hero-crown.css
+      🟢 hero-gallery.css
+      🟢 sentinel-panel.css
+      🟢 theme-panel.css
+      🟢 theme.css
+      🟢 ticker.css
    📁 src\templates
       🟢 LabPage.jsx
    📁 src\theme
@@ -103,6 +128,7 @@
             🟢 tree.jpeg
             🟢 wave.jpeg
             🟢 white-butterfly.jpeg
+   🟢 favicon.ico
    🟢 index.html
    📁 public\manifests
       🟢 sound-manifest.json
@@ -249,6 +275,9 @@
       🟢 sentinel-2026-07-19T17_06_06.220Z.json
       🟢 sentinel-2026-07-19T17_11_28.213Z.json
       🟢 sentinel-2026-07-19T17_11_30.899Z.json
+      🟢 sentinel-2026-07-20T22_26_54.933Z.json
+      🟢 sentinel-2026-07-20T22_26_57.331Z.json
+      🟢 sentinel-2026-07-20T22_26_58.524Z.json
    🟢 sentinel-tree.txt
    🟢 sentinel-ui-conflicts.json
    🟢 sentinel.config.json
