@@ -1,3 +1,7 @@
+// ============================================================
+// WatchkeeperHUD.jsx — Dev Diagnostics Drawer (GR1 Stable)
+// ============================================================
+
 import React, { useState, useEffect } from "react";
 import "./watchkeeper-hud.css";
 
@@ -5,42 +9,65 @@ export default function WatchkeeperHUD() {
   const [open, setOpen] = useState(false);
   const [dataDump, setDataDump] = useState(null);
 
+  // ------------------------------------------------------------
   // Toggle HUD with Shift + W
+  // ------------------------------------------------------------
   useEffect(() => {
     const handler = (e) => {
-      if (e.shiftKey && e.key.toLowerCase() === "w") {
-        setOpen((prev) => !prev);
+      try {
+        if (e.shiftKey && e.key.toLowerCase() === "w") {
+          setOpen((prev) => !prev);
+        }
+      } catch {
+        // Prevent key handler crash
       }
     };
+
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
-  // Fetch live diagnostics (handshake + snapshots)
+  // ------------------------------------------------------------
+  // Fetch live diagnostics (sentinel tree)
+  // ------------------------------------------------------------
   useEffect(() => {
     async function loadData() {
       try {
         const res = await fetch("/sentinel/sentinel-tree.txt");
+
+        if (!res.ok) {
+          throw new Error("Sentinel tree missing");
+        }
+
         const text = await res.text();
+
         setDataDump({
           timestamp: new Date().toISOString(),
           sentinelTree: text,
         });
       } catch (err) {
-        setDataDump({ error: "Unable to load diagnostics" });
+        setDataDump({
+          error: "Unable to load diagnostics",
+          detail: err.message,
+        });
       }
     }
 
     if (open) loadData();
   }, [open]);
 
+  // ------------------------------------------------------------
   // Hide HUD for public users
+  // ------------------------------------------------------------
   const isDev =
     window.location.hostname === "localhost" ||
     window.location.search.includes("dev=true");
 
   if (!isDev) return null;
 
+  // ------------------------------------------------------------
+  // Render HUD
+  // ------------------------------------------------------------
   return (
     <div className={`wk-hud ${open ? "open" : ""}`}>
       <div className="wk-header">
