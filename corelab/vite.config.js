@@ -12,14 +12,26 @@ import { detectVitePort } from "./vite-port.js";
 import { runSentinelManifestScanner } from "./sentinel/SentinelManifestScanner.js";
 
 export default defineConfig({
+  // ------------------------------------------------------------
+  // ROOT + PUBLIC DIR (Critical for Cloudflare)
+  // ------------------------------------------------------------
+  root: "corelab",          // Your React app lives here
+  publicDir: "../public",   // Your public folder is one level up
+
+  // ------------------------------------------------------------
+  // DEV SERVER CONFIG
+  // ------------------------------------------------------------
   server: {
     port: detectVitePort(),
-    strictPort: false,          // Prevent hard failures if port is taken
+    strictPort: false,      // Prevent hard failures if port is taken
     fs: {
-      strict: false             // Allow scanning outside /corelab for Sentinel
+      strict: false         // Allow scanning outside /corelab for Sentinel
     }
   },
 
+  // ------------------------------------------------------------
+  // PLUGINS
+  // ------------------------------------------------------------
   plugins: [
     react(),
 
@@ -28,7 +40,7 @@ export default defineConfig({
     // ------------------------------------------------------------
     {
       name: "sentinel-manifest-scan-endpoint",
-      apply: "serve",            // Prevent running during build
+      apply: "serve",        // Prevent running during build
       configureServer(server) {
         server.middlewares.use("/sentinel-scan", async (req, res) => {
           try {
@@ -50,11 +62,12 @@ export default defineConfig({
   ],
 
   // ------------------------------------------------------------
-  // BUILD CONFIG
+  // BUILD CONFIG (Critical for Cloudflare)
   // ------------------------------------------------------------
   build: {
-    copyPublicDir: true,
-    sourcemap: true,             // Helps diagnose white-screen issues
-    emptyOutDir: true            // Prevent stale build artifacts
+    outDir: "../dist",       // Output folder at repo root
+    emptyOutDir: true,       // Prevent stale build artifacts
+    sourcemap: true,         // Helps diagnose white-screen issues
+    copyPublicDir: true      // Ensures public/ is included in dist
   }
 });
