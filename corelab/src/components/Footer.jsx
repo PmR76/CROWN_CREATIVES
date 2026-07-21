@@ -12,30 +12,46 @@ export default function Footer() {
      — Safe in Dev Mode Only
   ============================================================= */
   useEffect(() => {
+    // Only run diagnostics in localhost or ?dev=true
+    const isDev =
+      window.location.hostname === "localhost" ||
+      window.location.search.includes("dev=true");
+
+    if (!isDev) return;
+
     const footer = document.querySelector(".footer-glass");
     if (!footer) return;
 
-    const anim = footer.getAnimations()[0];
+    let anim;
+    try {
+      anim = footer.getAnimations()[0];
+    } catch {
+      anim = null;
+    }
 
     const debug = () => {
-      const style = getComputedStyle(footer);
+      try {
+        const style = getComputedStyle(footer);
 
-      console.table({
-        animationName: style.animationName,
-        animationDuration: style.animationDuration,
-        animationTimingFunction: style.animationTimingFunction,
-        animationIterationCount: style.animationIterationCount,
-        playState: anim?.playState,
-        currentTime: anim?.currentTime,
-        boxShadow: style.boxShadow,
-        backdropFilter: style.backdropFilter,
-        filter: style.filter,
-        border: style.border,
-        outline: style.outline,
-        zIndex: style.zIndex,
-        width: footer.offsetWidth,
-        height: footer.offsetHeight
-      });
+        console.table({
+          animationName: style.animationName,
+          animationDuration: style.animationDuration,
+          animationTimingFunction: style.animationTimingFunction,
+          animationIterationCount: style.animationIterationCount,
+          playState: anim?.playState,
+          currentTime: anim?.currentTime,
+          boxShadow: style.boxShadow,
+          backdropFilter: style.backdropFilter,
+          filter: style.filter,
+          border: style.border,
+          outline: style.outline,
+          zIndex: style.zIndex,
+          width: footer.offsetWidth,
+          height: footer.offsetHeight
+        });
+      } catch (err) {
+        console.warn("Footer diagnostics failed:", err);
+      }
     };
 
     const interval = setInterval(debug, 1000);
@@ -46,21 +62,32 @@ export default function Footer() {
      ICON HANDLERS
   ============================================================= */
   const handleIconClick = useCallback((id) => {
-    const links = {
-      facebook: "https://facebook.com/crowncreatives",
-      instagram: "https://instagram.com/crowncreatives",
-      email: "mailto:contact@crowncreatives.com",
-      copilot: "https://copilot.microsoft.com"
-    };
+    try {
+      const links = {
+        facebook: "https://facebook.com/crowncreatives",
+        instagram: "https://instagram.com/crowncreatives",
+        email: "mailto:contact@crowncreatives.com",
+        copilot: "https://copilot.microsoft.com"
+      };
 
-    window.open(links[id], "_blank");
+      const url = links[id];
+      if (!url) return;
+
+      window.open(url, "_blank");
+    } catch (err) {
+      console.warn("Footer icon click failed:", err);
+    }
   }, []);
 
   const handleBackToTop = useCallback(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    try {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    } catch (err) {
+      console.warn("Back-to-top failed:", err);
+    }
   }, []);
 
   /* ============================================================
@@ -73,21 +100,25 @@ export default function Footer() {
         <div className="footer-icons">
           <img
             src="/assets/icons/facebook.svg"
+            alt="Facebook"
             className="footer-icon"
             onClick={() => handleIconClick("facebook")}
           />
           <img
             src="/assets/icons/instagram.svg"
+            alt="Instagram"
             className="footer-icon"
             onClick={() => handleIconClick("instagram")}
           />
           <img
             src="/assets/icons/email.svg"
+            alt="Email"
             className="footer-icon"
             onClick={() => handleIconClick("email")}
           />
           <img
             src="/assets/icons/copilot.svg"
+            alt="Copilot"
             className="footer-icon"
             onClick={() => handleIconClick("copilot")}
           />
