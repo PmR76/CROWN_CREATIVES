@@ -4,7 +4,11 @@
 
 import React, { useEffect } from "react";
 import "../styles/header.css";
+
+// Hooks
 import { useSoundEngine } from "../hooks/useSoundEngine.js";
+
+// Theme Engine
 import { initThemeEngine, toggleTheme } from "../theme/themeEngine.js";
 
 export default function Header() {
