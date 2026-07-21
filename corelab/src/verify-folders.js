@@ -6,7 +6,6 @@ import fs from "fs";
 import path from "path";
 
 // Cloudflare builds from repo root, not /corelab
-// So all required folders must be prefixed with corelab/
 const REQUIRED_FOLDERS = [
   "corelab/public/assets/images/gallery",
   "corelab/public/assets/icons",
