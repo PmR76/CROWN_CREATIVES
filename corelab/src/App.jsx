@@ -6,18 +6,18 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 // OS Layout + Cosmic Background
-import Layout from "./components/Layout";
-import Background3D from "./components/Background3D";
+import Layout from "./components/Layout.jsx";
+import Background3D from "./components/Background3D.jsx";
 
 // Pages
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Blog from "./pages/Blog";
-import Contact from "./pages/Contact";
-import Gallery from "./pages/Gallery";
-import Podcasts from "./pages/Podcasts";
-import Projects from "./pages/Projects";
-import Videos from "./pages/Videos";
+import Home from "./pages/Home.jsx";
+import About from "./pages/About.jsx";
+import Blog from "./pages/Blog.jsx";
+import Contact from "./pages/Contact.jsx";
+import Gallery from "./pages/Gallery.jsx";
+import Podcasts from "./pages/Podcasts.jsx";
+import Projects from "./pages/Projects.jsx";
+import Videos from "./pages/Videos.jsx";
 
 export default function App() {
   return (
