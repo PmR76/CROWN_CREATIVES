@@ -1,5 +1,5 @@
 // ============================================================
-// FrostedCards.jsx — Cinematic Glass Cards (GR1 Unified)
+// FrostedCards.jsx — Cinematic Glass Cards (GR1 Stable)
 // ============================================================
 
 export default function FrostedCards() {
