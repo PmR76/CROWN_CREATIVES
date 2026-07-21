@@ -1,21 +1,38 @@
 // ============================================================
-// useThemeEngine.js — Theme Hook for Components (GR1)
+// useThemeEngine.js — Theme Hook for Components (GR1 Stable)
 // ============================================================
 
 import { useEffect, useState } from "react";
-import { initThemeEngine, setThemeDirect as setThemeDirectEngine } from "../theme/themeEngine.js";
+import {
+  initThemeEngine,
+  setThemeDirect as setThemeDirectEngine
+} from "../theme/themeEngine.js";
 
 export function useThemeEngine() {
-  const [theme, setTheme] = useState(
-    document.body.dataset.theme || "day"
-  );
+  // ------------------------------------------------------------
+  // SAFE INITIAL STATE
+  // ------------------------------------------------------------
+  const safeInitialTheme =
+    document.body?.dataset?.theme === "night" ? "night" : "day";
 
+  const [theme, setTheme] = useState(safeInitialTheme);
+
+  // ------------------------------------------------------------
+  // INITIALISE + SUBSCRIBE TO THEME EVENTS
+  // ------------------------------------------------------------
   useEffect(() => {
-    // Ensure initial theme is applied once
-    initThemeEngine();
+    try {
+      initThemeEngine();
+    } catch (err) {
+      console.warn("ThemeEngine init failed:", err);
+    }
 
     const handler = (e) => {
-      setTheme(e.detail);
+      try {
+        setTheme(e.detail || "day");
+      } catch {
+        // Prevent React crash if event detail is malformed
+      }
     };
 
     window.addEventListener("theme-set", handler);
@@ -25,8 +42,15 @@ export function useThemeEngine() {
     };
   }, []);
 
+  // ------------------------------------------------------------
+  // DIRECT SETTER (ADMIN PANEL)
+  // ------------------------------------------------------------
   const setThemeDirect = (next) => {
-    setThemeDirectEngine(next);
+    try {
+      setThemeDirectEngine(next);
+    } catch (err) {
+      console.warn("setThemeDirect failed:", err);
+    }
   };
 
   return { theme, setThemeDirect };
