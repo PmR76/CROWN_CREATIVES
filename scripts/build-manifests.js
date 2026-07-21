@@ -1,35 +1,44 @@
 // ============================================================
 // build-manifests.js — Unified Media Scanner (Images + Sounds)
-// Cloudflare‑safe + corelab‑aligned
+// Stable version — never hard-fails on missing folders
 // ============================================================
 
 import fs from "fs";
 import path from "path";
-import { getRoot } from "../sentinel-root.js";
 
 // ------------------------------------------------------------
-// ROOT & FOLDERS
+// FOLDERS (match current repo structure)
 // ------------------------------------------------------------
-const ROOT = getRoot();
+const galleryFolder  = path.join(process.cwd(), "public/assets/images/gallery");
+const soundFolder    = path.join(process.cwd(), "public/sounds");
+const manifestFolder = path.join(process.cwd(), "public/manifests");
 
-const galleryFolder  = path.join(ROOT, "public/assets/images/gallery");
-const soundFolder    = path.join(ROOT, "public/sounds");
-const manifestFolder = path.join(ROOT, "public/manifests");
-
+// ------------------------------------------------------------
+// OUTPUT MANIFEST PATHS
+// ------------------------------------------------------------
 const galleryManifest = path.join(manifestFolder, "gallery-manifest.json");
 const soundManifest   = path.join(manifestFolder, "sound-manifest.json");
 
-// Ensure manifest folder exists
-if (!fs.existsSync(manifestFolder)) {
-  fs.mkdirSync(manifestFolder, { recursive: true });
+// ------------------------------------------------------------
+// ENSURE REQUIRED FOLDERS EXIST
+// ------------------------------------------------------------
+function ensureFolder(folder) {
+  if (!fs.existsSync(folder)) {
+    fs.mkdirSync(folder, { recursive: true });
+    console.log("Created folder:", folder);
+  }
 }
+
+ensureFolder(manifestFolder);
+ensureFolder(galleryFolder);
+ensureFolder(soundFolder);
 
 // ------------------------------------------------------------
 // SCAN A FOLDER
 // ------------------------------------------------------------
 function scanFolder(folder, filterFn = null) {
   if (!fs.existsSync(folder)) {
-    console.error("Folder missing:", folder);
+    console.error("Folder missing (will use empty list):", folder);
     return [];
   }
 
@@ -48,7 +57,8 @@ function scanFolder(folder, filterFn = null) {
 // WRITE MANIFEST
 // ------------------------------------------------------------
 function writeManifest(filePath, list) {
-  fs.writeFileSync(filePath, JSON.stringify(list, null, 2));
+  const json = JSON.stringify(list, null, 2);
+  fs.writeFileSync(filePath, json);
   console.log("Updated manifest:", filePath);
 }
 
