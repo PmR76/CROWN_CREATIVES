@@ -5,7 +5,6 @@
 import { useEffect, useState } from "react";
 
 // Components
-import Background3D from "../components/Background3D.jsx";
 import Header from "../components/Header.jsx";
 import HeroCrown from "../components/HeroCrown.jsx";
 import HeroGallery from "../components/HeroGallery.jsx";
@@ -17,7 +16,6 @@ import Footer from "../components/Footer.jsx";
 import { runMusicSentinel } from "../sentinel/MusicSentinel.js";
 
 // Styles
-import "../styles/background3d.css";
 import "../styles/header.css";
 import "../styles/hero-crown.css";
 import "../styles/hero-gallery.css";
@@ -65,10 +63,7 @@ export default function Home() {
   return (
     <main className="home-page">
 
-      {/* Background sits behind everything */}
-      <Background3D />
-
-      {/* Header sits above background */}
+      {/* Header sits above global Background3D */}
       <Header />
 
       <div className="sentinel-status-badge">
