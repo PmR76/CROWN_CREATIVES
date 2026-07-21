@@ -1,0 +1,6 @@
+{
+  "env": "prod",
+  "tree": "static",
+  "message": "Static file tree snapshot. Live pipeline controlled via core-lab registry.",
+  "timestamp": "2026-07-19T20:00:00Z"
+}
