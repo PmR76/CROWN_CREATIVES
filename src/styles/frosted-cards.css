@@ -1,0 +1,109 @@
+/* ============================================================
+   Frosted Cards — Cinematic Glass UI (Unified Version)
+============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
+
+:root {
+  --cinzel-night-color: #f6f6ff;
+  --cinzel-night-shadow: 0 0 10px rgba(255,255,255,0.55);
+}
+
+/* ============================================================
+   WRAPPER — Under HeroGallery
+============================================================ */
+
+.frosted-cards {
+  width: 100%;
+  max-width: 1400px;
+  margin: 120px auto;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+  z-index: 30;
+  position: relative;
+}
+
+/* ============================================================
+   FROSTED CARD — Cinematic Glass
+============================================================ */
+
+.frosted-card {
+  width: 360px;
+  padding: 28px;
+  border-radius: 22px;
+
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.15),
+    0 0 40px rgba(255, 255, 255, 0.10);
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+  position: relative;
+}
+
+.frosted-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.25),
+    0 0 60px rgba(255, 255, 255, 0.20);
+}
+
+/* ============================================================
+   TEXT — Cinzel Decorative
+============================================================ */
+
+.frosted-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.frosted-card p {
+  font-size: 1rem;
+  text-align: center;
+  opacity: 0.9;
+  font-family: 'Cinzel Decorative', serif;
+}
+
+body[data-theme="night"] .frosted-card h3,
+body[data-theme="night"] .frosted-card p {
+  color: var(--cinzel-night-color);
+  text-shadow: var(--cinzel-night-shadow);
+}
+
+/* ============================================================
+   ADMIN MODE — Draggable Cards
+============================================================ */
+
+.card-edit-mode {
+  position: absolute !important;
+  cursor: move !important;
+  pointer-events: auto !important;
+  z-index: 9999;
+}
+
+.cards-paused {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Snapping Grid (visual optional)
+============================================================ */
+
+body[data-admin="true"] .frosted-cards {
+  background-size: 20px 20px;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px);
+}

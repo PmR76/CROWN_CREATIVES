@@ -1,37 +1,50 @@
 // ============================================================
-// Header.jsx — Final Sound + Theme Toggle + Crown Fade
+// Header.jsx — Cinematic Centered Crown + Nav (GR1 Restored)
 // ============================================================
 
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/header.css";
 import { useSoundEngine } from "../hooks/useSoundEngine.js";
-import { useThemeEngine } from "../hooks/useThemeEngine.js";
+import { initThemeEngine, toggleTheme } from "../theme/themeEngine.js";
 
 export default function Header() {
   const { toggleSound } = useSoundEngine();
-  const { toggleTheme } = useThemeEngine();
+
+  useEffect(() => {
+    initThemeEngine();
+  }, []);
 
   return (
     <header className="hero-header">
 
-      {/* SOUND TOGGLE */}
+      {/* LEFT — Sound */}
       <div className="hero-header-left">
-        <button id="soundToggle" className="sound-toggle" onClick={toggleSound}>
-          <img src="/assets/icons/music.png" alt="Sound Toggle" className="sound-toggle-icon" />
+        <button
+          id="soundToggle"
+          className="sound-toggle"
+          onClick={toggleSound}
+        >
+          <img
+            src="/assets/icons/music.png"
+            alt="Sound Toggle"
+            className="sound-toggle-icon"
+          />
         </button>
       </div>
 
-      {/* CENTER */}
+      {/* CENTER — Crown + Title + Tagline + Nav */}
       <div className="hero-header-center">
-        <img src="/assets/icons/head-crown.svg" alt="Crown Creatives Crown" className="reduced-crown" />
 
-        <div className="hero-crown">
-          <img src="/assets/icons/day-crown.svg" className="crown crown-day" />
-          <img src="/assets/icons/night-crown.svg" className="crown crown-night" />
-        </div>
+        <img
+          src="/assets/icons/head-crown.svg"
+          alt="Crown Creatives Crown"
+          className="reduced-crown"
+        />
 
         <h1 className="cc-header-title">Crown Creatives</h1>
-        <p className="cc-header-tagline">Artistry • Resilience • Imagination</p>
+        <p className="cc-header-tagline">
+          Artistry • Resilience • Imagination
+        </p>
 
         <nav className="cc-header-nav">
           <button>HOME</button>
@@ -45,10 +58,18 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* THEME TOGGLE */}
+      {/* RIGHT — Theme */}
       <div className="hero-header-right">
-        <button id="themeToggle" className="theme-toggle" onClick={toggleTheme}>
-          <img src="/assets/icons/sun-moon2.png" alt="Theme Toggle" className="theme-toggle-icon" />
+        <button
+          id="themeToggle"
+          className="theme-toggle"
+          onClick={toggleTheme}
+        >
+          <img
+            src="/assets/icons/sun-moon.png"
+            alt="Theme Toggle"
+            className="theme-toggle-icon"
+          />
         </button>
       </div>
 
