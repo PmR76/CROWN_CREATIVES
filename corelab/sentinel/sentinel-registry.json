@@ -152,7 +152,8 @@
           "theme-rotation.js",
           "themeEngine.js"
         ]
-      }
+      },
+      "verify-folders.js"
     ]
   },
   {

@@ -81,6 +81,7 @@
    📁 src\theme
       🟢 theme-rotation.js
       🟢 themeEngine.js
+   🟢 verify-folders.js
 📁 public
    📁 public\assets
       📁 public\assets\icons
