@@ -1,3 +1,7 @@
+// ============================================================
+// Footer.jsx — Core Lab Footer (GR1 Stable)
+// ============================================================
+
 import { useCallback, useEffect } from "react";
 import "../styles/footer.css";
 
@@ -5,6 +9,7 @@ export default function Footer() {
 
   /* ============================================================
      FOOTER GLOW DIAGNOSTICS (runs every 1s)
+     — Safe in Dev Mode Only
   ============================================================= */
   useEffect(() => {
     const footer = document.querySelector(".footer-glass");
