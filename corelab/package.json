@@ -3,41 +3,34 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "prebuild": "node scripts/build-manifests.cjs && node scripts/build-sound-manifest.cjs"
   },
-
   "dependencies": {
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-
-    "@react-three/fiber": "^9.6.1",
     "@react-three/drei": "^10.7.7",
-    "three": "^0.185.1",
-
-    "zustand": "^5.0.14",
-    "react-spring": "^10.0.4",
-
-    "detect-gpu": "^5.0.70",
+    "@react-three/fiber": "^9.6.1",
     "camera-controls": "^3.1.2",
+    "detect-gpu": "^5.0.70",
     "hls.js": "^1.6.16",
     "maath": "^0.10.8",
     "meshline": "^3.3.1",
-
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.1",
+    "react-spring": "^10.0.4",
+    "stats.js": "^0.17.0",
+    "three": "^0.185.1",
     "troika-three-text": "^0.52.4",
     "troika-three-utils": "^0.52.4",
     "troika-worker-utils": "^0.52.0",
-
-    "stats.js": "^0.17.0",
-    "webgl-constants": "^1.1.1"
+    "webgl-constants": "^1.1.1",
+    "zustand": "^5.0.14"
   },
-
   "devDependencies": {
-    "vite": "^5.0.0",
-    "@vitejs/plugin-react": "^4.0.0"
+    "@vitejs/plugin-react": "^4.0.0",
+    "vite": "^5.0.0"
   }
 }
