@@ -1,6 +1,14 @@
+// ============================================================
+// Layout.jsx — Core Lab OS Shell (GR1)
+// ============================================================
+
 import React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+
+// Components
+import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
+
+// Styles
 import "./styles/gradients.css";
 import "./styles/app.css";
 
@@ -35,7 +43,7 @@ export default function Layout({ children }) {
         <a href="/contact">Contact</a>
       </div>
 
-      {/* FOOTER (optional) */}
+      {/* FOOTER */}
       <Footer />
     </div>
   );
