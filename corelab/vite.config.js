@@ -37,7 +37,12 @@ export default defineConfig({
             res.end(JSON.stringify(results));
           } catch (err) {
             res.statusCode = 500;
-            res.end(JSON.stringify({ error: "Sentinel scan failed", detail: err.message }));
+            res.end(
+              JSON.stringify({
+                error: "Sentinel scan failed",
+                detail: err.message
+              })
+            );
           }
         });
       }
