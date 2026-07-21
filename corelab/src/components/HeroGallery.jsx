@@ -1,46 +1,51 @@
 // ============================================================
-// HeroGallery.jsx — Draggable, Snapping, Persistent Dual-Lane Gallery
+// HeroGallery.jsx — Draggable, Snapping, Persistent Dual-Lane Gallery (GR1 Stable)
 // Crown Creatives Editor OS Integration
 // ============================================================
 
 import { useEffect, useState, useRef } from "react";
-import { loadGallery } from "../gallery/GalleryEngine";
-import { runGallerySentinel } from "../sentinel/GallerySentinel";
-import { useAdmin } from "../admin/AdminContext";
+import { loadGallery } from "../gallery/GalleryEngine.js";
+import { runGallerySentinel } from "../sentinel/GallerySentinel.js";
+import { useAdmin } from "../admin/AdminContext.jsx";
 
 export default function HeroGallery() {
-  const { isAdmin, isPaused } = useAdmin();   // ⭐ Global Admin OS state
+  const { isAdmin, isPaused } = useAdmin(); // ⭐ Global Admin OS state
+
   const [images, setImages] = useState([]);
 
   const leftLaneRef = useRef(null);
   const rightLaneRef = useRef(null);
 
   // ------------------------------------------------------------
-  // LOAD SAVED POSITIONS
+  // LOAD SAVED POSITIONS SAFELY
   // ------------------------------------------------------------
   useEffect(() => {
-    const leftPos = JSON.parse(localStorage.getItem("lane-left-pos"));
-    const rightPos = JSON.parse(localStorage.getItem("lane-right-pos"));
+    try {
+      const leftPos = JSON.parse(localStorage.getItem("lane-left-pos") || "null");
+      const rightPos = JSON.parse(localStorage.getItem("lane-right-pos") || "null");
 
-    if (leftPos && leftLaneRef.current) {
-      leftLaneRef.current.style.left = leftPos.left;
-      leftLaneRef.current.style.top = leftPos.top;
-    }
+      if (leftPos && leftLaneRef.current) {
+        leftLaneRef.current.style.left = leftPos.left;
+        leftLaneRef.current.style.top = leftPos.top;
+      }
 
-    if (rightPos && rightLaneRef.current) {
-      rightLaneRef.current.style.left = rightPos.left;
-      rightLaneRef.current.style.top = rightPos.top;
+      if (rightPos && rightLaneRef.current) {
+        rightLaneRef.current.style.left = rightPos.left;
+        rightLaneRef.current.style.top = rightPos.top;
+      }
+    } catch (err) {
+      console.warn("Gallery lane position load failed:", err);
     }
   }, []);
 
   // ------------------------------------------------------------
-  // DRAG LOGIC WITH SNAPPING + LOCALSTORAGE
+  // DRAG LOGIC WITH SNAPPING + LOCALSTORAGE (SAFE)
   // ------------------------------------------------------------
   function makeDraggable(ref, storageKey) {
     let pos = { x: 0, y: 0 };
 
     function onMouseDown(e) {
-      if (!isAdmin) return;  // ⭐ Only draggable in Admin Mode
+      if (!isAdmin) return; // ⭐ Only draggable in Admin Mode
       e.preventDefault();
 
       pos.x = e.clientX;
@@ -51,49 +56,60 @@ export default function HeroGallery() {
     }
 
     function onMouseMove(e) {
-      const dx = e.clientX - pos.x;
-      const dy = e.clientY - pos.y;
+      try {
+        const el = ref.current;
+        if (!el) return;
 
-      pos.x = e.clientX;
-      pos.y = e.clientY;
+        const dx = e.clientX - pos.x;
+        const dy = e.clientY - pos.y;
 
-      const el = ref.current;
-      let newLeft = el.offsetLeft + dx;
-      let newTop = el.offsetTop + dy;
+        pos.x = e.clientX;
+        pos.y = e.clientY;
 
-      // ⭐ Snapping guides
-      const snapDistance = 20;
+        let newLeft = el.offsetLeft + dx;
+        let newTop = el.offsetTop + dy;
 
-      // Snap to left edge
-      if (Math.abs(newLeft) < snapDistance) newLeft = 0;
+        const snapDistance = 20;
 
-      // Snap to right edge
-      const rightEdge = window.innerWidth - el.offsetWidth;
-      if (Math.abs(newLeft - rightEdge) < snapDistance) newLeft = rightEdge;
+        // Snap left
+        if (Math.abs(newLeft) < snapDistance) newLeft = 0;
 
-      // Snap to center
-      const center = (window.innerWidth - el.offsetWidth) / 2;
-      if (Math.abs(newLeft - center) < snapDistance) newLeft = center;
+        // Snap right
+        const rightEdge = window.innerWidth - el.offsetWidth;
+        if (Math.abs(newLeft - rightEdge) < snapDistance) newLeft = rightEdge;
 
-      // Snap vertical increments
-      newTop = Math.round(newTop / snapDistance) * snapDistance;
+        // Snap center
+        const center = (window.innerWidth - el.offsetWidth) / 2;
+        if (Math.abs(newLeft - center) < snapDistance) newLeft = center;
 
-      el.style.left = newLeft + "px";
-      el.style.top = newTop + "px";
+        // Snap vertical increments
+        newTop = Math.round(newTop / snapDistance) * snapDistance;
+
+        el.style.left = `${newLeft}px`;
+        el.style.top = `${newTop}px`;
+      } catch (err) {
+        console.warn("Gallery drag move failed:", err);
+      }
     }
 
     function onMouseUp() {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
+      try {
+        const el = ref.current;
+        if (!el) return;
 
-      const el = ref.current;
-      localStorage.setItem(
-        storageKey,
-        JSON.stringify({
-          left: el.style.left,
-          top: el.style.top,
-        })
-      );
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+
+        localStorage.setItem(
+          storageKey,
+          JSON.stringify({
+            left: el.style.left,
+            top: el.style.top
+          })
+        );
+      } catch (err) {
+        console.warn("Gallery drag save failed:", err);
+      }
     }
 
     if (ref.current) {
@@ -105,12 +121,16 @@ export default function HeroGallery() {
   // ENABLE DRAGGING WHEN ADMIN MODE ACTIVATES
   // ------------------------------------------------------------
   useEffect(() => {
-    if (isAdmin) {
-      document.body.classList.add("gallery-edit-mode");
-      makeDraggable(leftLaneRef, "lane-left-pos");
-      makeDraggable(rightLaneRef, "lane-right-pos");
-    } else {
-      document.body.classList.remove("gallery-edit-mode");
+    try {
+      if (isAdmin) {
+        document.body.classList.add("gallery-edit-mode");
+        makeDraggable(leftLaneRef, "lane-left-pos");
+        makeDraggable(rightLaneRef, "lane-right-pos");
+      } else {
+        document.body.classList.remove("gallery-edit-mode");
+      }
+    } catch (err) {
+      console.warn("Gallery admin mode failed:", err);
     }
   }, [isAdmin]);
 
@@ -119,10 +139,10 @@ export default function HeroGallery() {
   // ------------------------------------------------------------
   useEffect(() => {
     async function init() {
-      const sentinelReport = await runGallerySentinel();
-      console.log("[HeroGallery] Sentinel report:", sentinelReport);
-
       try {
+        const sentinelReport = await runGallerySentinel();
+        console.log("[HeroGallery] Sentinel report:", sentinelReport);
+
         const loaded = await loadGallery();
 
         if (!loaded || loaded.length === 0) {
@@ -131,6 +151,7 @@ export default function HeroGallery() {
           setImages(loaded);
         }
       } catch (err) {
+        console.warn("Gallery load failed:", err);
         setImages(["/assets/images/fallback.jpeg"]);
       }
     }
@@ -142,7 +163,7 @@ export default function HeroGallery() {
   // MAGICAL ALTERNATING LANE LOGIC (PAUSES IN ADMIN MODE)
   // ------------------------------------------------------------
   useEffect(() => {
-    if (images.length === 0) return;
+    if (!images.length) return;
 
     let index = 0;
     let showLeft = true;
@@ -153,26 +174,31 @@ export default function HeroGallery() {
     if (leftImg && rightImg) {
       leftImg.src = images[index];
       rightImg.src = images[(index + 1) % images.length];
+
       leftImg.classList.add("visible");
       rightImg.classList.remove("visible");
     }
 
     const interval = setInterval(() => {
-      if (isPaused) return;  // ⭐ Pause everything in Admin Mode
+      try {
+        if (isPaused) return;
 
-      index = (index + 1) % images.length;
+        index = (index + 1) % images.length;
 
-      if (showLeft) {
-        rightImg.classList.remove("visible");
-        leftImg.src = images[index];
-        leftImg.classList.add("visible");
-      } else {
-        leftImg.classList.remove("visible");
-        rightImg.src = images[index];
-        rightImg.classList.add("visible");
+        if (showLeft) {
+          rightImg?.classList.remove("visible");
+          leftImg.src = images[index];
+          leftImg?.classList.add("visible");
+        } else {
+          leftImg?.classList.remove("visible");
+          rightImg.src = images[index];
+          rightImg?.classList.add("visible");
+        }
+
+        showLeft = !showLeft;
+      } catch (err) {
+        console.warn("Gallery interval failed:", err);
       }
-
-      showLeft = !showLeft;
     }, 8000);
 
     return () => clearInterval(interval);
@@ -192,12 +218,12 @@ export default function HeroGallery() {
 
       {/* LEFT LANE — DRAGGABLE */}
       <div ref={leftLaneRef} className="hero-gallery-lane hero-gallery-left">
-        <img className="hero-gallery-img" src={left} />
+        <img className="hero-gallery-img" src={left} alt="Gallery Left" />
       </div>
 
       {/* RIGHT LANE — DRAGGABLE */}
       <div ref={rightLaneRef} className="hero-gallery-lane hero-gallery-right">
-        <img className="hero-gallery-img" src={right} />
+        <img className="hero-gallery-img" src={right} alt="Gallery Right" />
       </div>
 
       {/* GLOW OVERLAY */}
