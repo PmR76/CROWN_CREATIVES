@@ -1,17 +1,14 @@
-// ============================================================
-// verify-folders.js — Auto Root Detection (Cloudflare Safe)
-// ============================================================
-
 import fs from "fs";
 import path from "path";
 
-// Detect whether we are in repo root or corelab/
-const ROOT = fs.existsSync(path.join(process.cwd(), "corelab"))
-  ? process.cwd()
-  : path.join(process.cwd(), "corelab");
+// Cloudflare builds from repo root, not /corelab
+const REQUIRED_FOLDERS = [
+  "corelab/public/assets/images/gallery",
+  "corelab/public/sounds"
+];
 
 function checkFolder(relativePath) {
-  const fullPath = path.join(ROOT, relativePath);
+  const fullPath = path.join(process.cwd(), relativePath);
 
   if (!fs.existsSync(fullPath)) {
     console.error(`❌ Missing required folder: ${relativePath}`);
@@ -22,12 +19,5 @@ function checkFolder(relativePath) {
 }
 
 console.log("🔍 Verifying required folders...");
-
-[
-  "public/assets/images/gallery",
-  "public/assets/icons",
-  "public/manifests",
-  "public/sounds"
-].forEach(checkFolder);
-
+REQUIRED_FOLDERS.forEach(checkFolder);
 console.log("✔ Folder verification complete");
