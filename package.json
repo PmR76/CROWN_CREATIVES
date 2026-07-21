@@ -1,42 +1,35 @@
 {
+  "type": "module",
   "name": "core-lab-react",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "//": "Sentinel Build Guard — prevents catastrophic breakage",
-    "verify": "node scripts/verify-folders.js",
-  "prebuild": "node scripts/build-manifests.js && node scripts/build-sound-manifest.js",
-
-    "build": "vite build",
     "dev": "vite",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "prebuild": "node scripts/build-manifests.js && node scripts/build-sound-manifest.js"
   },
   "dependencies": {
-    "@dimforge/rapier3d-compat": "^0.19.3",
-    "@react-three/drei": "^10.7.7",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "@react-three/fiber": "^9.6.1",
-    "camera-controls": "^3.1.2",
+    "@react-three/drei": "^10.7.7",
+    "three": "^0.185.1",
+    "zustand": "^5.0.14",
+    "react-spring": "^10.0.4",
     "detect-gpu": "^5.0.70",
-    "draco3d": "^1.5.7",
+    "camera-controls": "^3.1.2",
     "hls.js": "^1.6.16",
     "maath": "^0.10.8",
     "meshline": "^3.3.1",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "react-router-dom": "^7.18.1",
-    "react-spring": "^10.0.4",
-    "stats.js": "^0.17.0",
-    "three": "^0.185.1",
-    "three-mesh-bvh": "^0.9.13",
-    "three-stdlib": "^2.36.1",
     "troika-three-text": "^0.52.4",
     "troika-three-utils": "^0.52.4",
     "troika-worker-utils": "^0.52.0",
-    "webgl-constants": "^1.1.1",
-    "zustand": "^5.0.14"
+    "stats.js": "^0.17.0",
+    "webgl-constants": "^1.1.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.0.0",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.0.0"
   }
 }
