@@ -1,4 +1,4 @@
-// build-sound-manifest.js — Sound manifest builder (Cloudflare + corelab safe)
+// build-sound-manifest.cjs — Sound manifest builder (CommonJS)
 
 const fs = require("fs");
 const path = require("path");

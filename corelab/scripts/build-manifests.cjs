@@ -1,5 +1,7 @@
-import fs from "fs";
-import path from "path";
+// build-manifests.cjs — Unified Media Scanner (CommonJS)
+
+const fs = require("fs");
+const path = require("path");
 
 const galleryFolder  = path.join(process.cwd(), "public/assets/images/gallery");
 const soundFolder    = path.join(process.cwd(), "public/sounds");
