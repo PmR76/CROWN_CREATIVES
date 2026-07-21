@@ -33,14 +33,14 @@ const rootElement = document.getElementById("root");
 // Safety: prevent null-root crash (white screen)
 if (!rootElement) {
   console.error("❌ Root element #root not found — React cannot mount.");
+} else {
+  ReactDOM.createRoot(rootElement).render(
+    <Router>
+      <AdminProvider>
+        <App />
+        <WatchkeeperHUD />
+        <Buildstamp />
+      </AdminProvider>
+    </Router>
+  );
 }
-
-ReactDOM.createRoot(rootElement).render(
-  <Router>
-    <AdminProvider>
-      <App />
-      <WatchkeeperHUD />
-      <Buildstamp />
-    </AdminProvider>
-  </Router>
-);

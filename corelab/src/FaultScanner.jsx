@@ -8,17 +8,17 @@ export default function FaultScanner() {
   useEffect(() => {
     console.log("FaultScanner: ACTIVE");
 
-    // GLOBAL ERROR CATCHER
-    window.addEventListener("error", (e) => {
+    const onError = (e) => {
       console.log("❌ GLOBAL ERROR:", e.error);
-    });
+    };
 
-    // PROMISE / REACT ERROR CATCHER
-    window.addEventListener("unhandledrejection", (e) => {
+    const onUnhandled = (e) => {
       console.log("❌ PROMISE ERROR:", e.reason);
-    });
+    };
 
-    // COMPONENT MOUNT CHECKS (simple visibility flags)
+    window.addEventListener("error", onError);
+    window.addEventListener("unhandledrejection", onUnhandled);
+
     const components = [
       "Header",
       "Background3D",
@@ -34,6 +34,11 @@ export default function FaultScanner() {
     components.forEach((name) => {
       console.log(`🔍 Checking mount: ${name}`);
     });
+
+    return () => {
+      window.removeEventListener("error", onError);
+      window.removeEventListener("unhandledrejection", onUnhandled);
+    };
   }, []);
 
   return null;
