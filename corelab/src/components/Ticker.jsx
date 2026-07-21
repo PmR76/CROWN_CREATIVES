@@ -4,7 +4,7 @@
 // ============================================================
 
 import { useEffect, useRef } from "react";
-import { useAdmin } from "../admin/AdminContext";
+import { useAdmin } from "../admin/AdminContext.jsx";
 import "../styles/ticker.css";
 
 export default function Ticker() {
@@ -12,18 +12,22 @@ export default function Ticker() {
   const tickerRef = useRef(null);
 
   // ------------------------------------------------------------
-  // LOAD SAVED POSITION
+  // LOAD SAVED POSITION (SAFE)
   // ------------------------------------------------------------
   useEffect(() => {
-    const savedPos = JSON.parse(localStorage.getItem("ticker-pos"));
-    if (savedPos && tickerRef.current) {
-      tickerRef.current.style.left = savedPos.left;
-      tickerRef.current.style.top = savedPos.top;
+    try {
+      const savedPos = JSON.parse(localStorage.getItem("ticker-pos") || "null");
+      if (savedPos && tickerRef.current) {
+        tickerRef.current.style.left = savedPos.left;
+        tickerRef.current.style.top = savedPos.top;
+      }
+    } catch (err) {
+      console.warn("Ticker position load failed:", err);
     }
   }, []);
 
   // ------------------------------------------------------------
-  // DRAG LOGIC (Admin Mode Only)
+  // DRAG LOGIC (Admin Mode Only, Safe)
   // ------------------------------------------------------------
   function makeDraggable(ref) {
     let pos = { x: 0, y: 0 };
@@ -40,37 +44,49 @@ export default function Ticker() {
     }
 
     function onMouseMove(e) {
-      const dx = e.clientX - pos.x;
-      const dy = e.clientY - pos.y;
+      try {
+        const el = ref.current;
+        if (!el) return;
 
-      pos.x = e.clientX;
-      pos.y = e.clientY;
+        const dx = e.clientX - pos.x;
+        const dy = e.clientY - pos.y;
 
-      const el = ref.current;
-      let newLeft = el.offsetLeft + dx;
-      let newTop = el.offsetTop + dy;
+        pos.x = e.clientX;
+        pos.y = e.clientY;
 
-      // ⭐ Snapping (20px grid)
-      const snap = 20;
-      newLeft = Math.round(newLeft / snap) * snap;
-      newTop = Math.round(newTop / snap) * snap;
+        let newLeft = el.offsetLeft + dx;
+        let newTop = el.offsetTop + dy;
 
-      el.style.left = newLeft + "px";
-      el.style.top = newTop + "px";
+        // ⭐ Snapping (20px grid)
+        const snap = 20;
+        newLeft = Math.round(newLeft / snap) * snap;
+        newTop = Math.round(newTop / snap) * snap;
+
+        el.style.left = `${newLeft}px`;
+        el.style.top = `${newTop}px`;
+      } catch (err) {
+        console.warn("Ticker drag move failed:", err);
+      }
     }
 
     function onMouseUp() {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
+      try {
+        const el = ref.current;
+        if (!el) return;
 
-      const el = ref.current;
-      localStorage.setItem(
-        "ticker-pos",
-        JSON.stringify({
-          left: el.style.left,
-          top: el.style.top,
-        })
-      );
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+
+        localStorage.setItem(
+          "ticker-pos",
+          JSON.stringify({
+            left: el.style.left,
+            top: el.style.top
+          })
+        );
+      } catch (err) {
+        console.warn("Ticker drag save failed:", err);
+      }
     }
 
     if (ref.current) {
@@ -82,11 +98,15 @@ export default function Ticker() {
   // ENABLE DRAGGING WHEN ADMIN MODE ACTIVATES
   // ------------------------------------------------------------
   useEffect(() => {
-    if (isAdmin) {
-      tickerRef.current?.classList.add("ticker-edit-mode");
-      makeDraggable(tickerRef);
-    } else {
-      tickerRef.current?.classList.remove("ticker-edit-mode");
+    try {
+      if (isAdmin) {
+        tickerRef.current?.classList.add("ticker-edit-mode");
+        makeDraggable(tickerRef);
+      } else {
+        tickerRef.current?.classList.remove("ticker-edit-mode");
+      }
+    } catch (err) {
+      console.warn("Ticker admin mode failed:", err);
     }
   }, [isAdmin]);
 
