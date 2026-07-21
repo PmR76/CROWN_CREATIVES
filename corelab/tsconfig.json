@@ -1,29 +1,22 @@
 {
   "compilerOptions": {
     "ignoreDeprecations": "6.0",
-
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
-
     "jsx": "react-jsx",
-
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "allowJs": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
-
     "types": ["react"],
-
     "baseUrl": "./",
     "paths": {
       "*": ["./src/*"]
     }
   },
-
   "include": ["src"],
   "exclude": ["node_modules"]
 }
-  
