@@ -1,10 +1,10 @@
 // ============================================================
-// MusicSentinel — Safe, Non‑Blocking Diagnostics (Final Fix)
+// MusicSentinel — Safe, Non‑Blocking Diagnostics (GR1 Stable)
 // ============================================================
 
 export async function runMusicSentinel() {
   const report = {
-    manifestUrl: "/manifests/sound-manifest.json", // ✅ correct path
+    manifestUrl: "/manifests/sound-manifest.json",
     manifestExists: false,
     manifestValid: false,
     manifestLength: 0,
@@ -25,6 +25,10 @@ export async function runMusicSentinel() {
 
     const text = await res.text();
     let data;
+
+    // ------------------------------------------------------------
+    // SAFE JSON PARSE
+    // ------------------------------------------------------------
     try {
       data = JSON.parse(text);
     } catch {
@@ -33,6 +37,9 @@ export async function runMusicSentinel() {
       return report;
     }
 
+    // ------------------------------------------------------------
+    // VALIDATE SHAPE
+    // ------------------------------------------------------------
     if (!Array.isArray(data.tracks)) {
       report.error = "Sound manifest JSON does not contain a 'tracks' array.";
       report.finalStatus = "MANIFEST_INVALID_SHAPE";
@@ -45,7 +52,7 @@ export async function runMusicSentinel() {
     return report;
 
   } catch (err) {
-    report.error = err.message;
+    report.error = err.message || "Unknown error";
     report.finalStatus = "UNEXPECTED_ERROR";
     return report;
   }
