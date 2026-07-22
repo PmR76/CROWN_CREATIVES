@@ -2,7 +2,7 @@
 // HeroCrown.jsx — Cinematic Day/Night Crown (GR1 Stable)
 // ============================================================
 
-import useThemeEngine from "../hooks/useThemeEngine.js";
+import { useThemeEngine } from "../hooks/useThemeEngine.js";
 
 export default function HeroCrown() {
   const themeState = useThemeEngine() || {};
