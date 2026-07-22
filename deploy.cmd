@@ -6,7 +6,7 @@ REM  Crown Creatives — Core Lab React Launcher (Vite + Watchers)
 REM ============================================================
 
 REM --- Always start from the project root ---
-cd /d "%~dp0"
+cd /d "C:\DEV\CROWN_CREATIVES\corelab"
 
 echo.
 echo  🔵 Launching Core Lab React (Vite Dev Server)
@@ -26,7 +26,8 @@ echo.
 
 REM --- START WATCHERS ---
 echo [WATCHERS] Starting gallery + sound watchers...
-cd /d C:\DEV\CROWN_CREATIVES\scripts
+
+cd /d "C:\DEV\CROWN_CREATIVES\scripts"
 start "Gallery Watcher" cmd /k "node build-manifests.js"
 start "Sound Watcher" cmd /k "node build-sound-manifest.js"
 
