@@ -19,16 +19,5 @@
     "src\\theme"
   ],
   "cssConflicts": [],
-  "componentConflicts": [
-    {
-      "name": "gallery-manifest.json",
-      "folder": "public\\assets\\images\\gallery",
-      "group": "other"
-    },
-    {
-      "name": "gallery-manifest.json",
-      "folder": "public\\manifests",
-      "group": "other"
-    }
-  ]
+  "componentConflicts": []
 }

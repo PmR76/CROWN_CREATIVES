@@ -8,6 +8,7 @@
       🟢 Background3D.jsx
       🟢 buildstamp.css
       🟢 Buildstamp.jsx
+      🟢 CorePanel.jsx
       🟢 Footer.jsx
       🟢 FrostedCards.jsx
       🟢 Header.jsx
