@@ -12,23 +12,6 @@
       },
       "App.jsx",
       {
-        "folder": "src\\assets",
-        "items": [
-          {
-            "folder": "src\\assets\\cosmic",
-            "items": []
-          },
-          {
-            "folder": "src\\assets\\images",
-            "items": []
-          },
-          {
-            "folder": "src\\assets\\sounds",
-            "items": []
-          }
-        ]
-      },
-      {
         "folder": "src\\components",
         "items": [
           "Background3D.jsx",
@@ -226,6 +209,7 @@
       {
         "folder": "public\\manifests",
         "items": [
+          "gallery-manifest.json",
           "sound-manifest.json"
         ]
       },
@@ -271,15 +255,7 @@
           "cloudflare.js"
         ]
       },
-      {
-        "folder": "sentinel\\public",
-        "items": [
-          {
-            "folder": "sentinel\\public\\watchkeeper",
-            "items": []
-          }
-        ]
-      },
+      "README.md",
       "run-sentinel-manifest-scan.js",
       "sentinel-cleanup.json",
       "sentinel-cli.js",
@@ -292,6 +268,7 @@
       "sentinel-gr3.js",
       "sentinel-health.json",
       "sentinel-registry.json",
+      "sentinel-root-check.js",
       {
         "folder": "sentinel\\sentinel-snapshots",
         "items": [

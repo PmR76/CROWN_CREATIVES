@@ -4,10 +4,6 @@
       🟢 AdminGate.jsx
       🟢 AdminPanel.jsx
    🟢 App.jsx
-   📁 src\assets
-      📁 src\assets\cosmic
-      📁 src\assets\images
-      📁 src\assets\sounds
    📁 src\components
       🟢 Background3D.jsx
       🟢 buildstamp.css
@@ -163,8 +159,7 @@
    🟢 package.json
    📁 sentinel\profiles
       🟢 cloudflare.js
-   📁 sentinel\public
-      📁 sentinel\public\watchkeeper
+   🟢 README.md
    🟢 run-sentinel-manifest-scan.js
    🟢 sentinel-cleanup.json
    🟢 sentinel-cli.js
@@ -177,6 +172,7 @@
    🟢 sentinel-gr3.js
    🟢 sentinel-health.json
    🟢 sentinel-registry.json
+   🟢 sentinel-root-check.js
    📁 sentinel\sentinel-snapshots
       🟢 GR1-1784246019954.json
       🟢 GR1-1784482352134.json

@@ -1,18 +1,6 @@
 [
   {
-    "name": "StatusPanel.jsx",
-    "deletedFrom": "sentinel"
-  },
-  {
-    "name": "SentinelPanel.tsx",
-    "deletedFrom": "sentinel"
-  },
-  {
-    "name": "index.html",
-    "deletedFrom": "sentinel\\public\\watchkeeper"
-  },
-  {
-    "name": "sound-manifest.json",
-    "deletedFrom": "public\\sounds"
+    "name": "gallery-manifest.json",
+    "deletedFrom": "public\\manifests"
   }
 ]
