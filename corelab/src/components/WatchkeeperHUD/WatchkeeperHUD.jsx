@@ -57,6 +57,25 @@ export default function WatchkeeperHUD() {
   }, [open]);
 
   // ------------------------------------------------------------
+  // Snapshot Handler (Dev-only)
+  // ------------------------------------------------------------
+  function handleSnapshot() {
+    try {
+      const snapshot = {
+        timestamp: new Date().toISOString(),
+        tree: window.__SENTINEL_TREE__,        // sentinel-filetree.json
+        diagnostics: window.__SENTINEL_DIAG__, // diagnostics feed
+        buildstamp: window.__BUILDSTAMP__,     // buildstamp.json
+        status: "OK",
+      };
+
+      console.log("Watchkeeper Snapshot:", snapshot);
+    } catch (err) {
+      console.error("Snapshot failed:", err);
+    }
+  }
+
+  // ------------------------------------------------------------
   // Hide HUD for public users
   // ------------------------------------------------------------
   const isDev =
@@ -72,7 +91,14 @@ export default function WatchkeeperHUD() {
     <div className={`wk-hud ${open ? "open" : ""}`}>
       <div className="wk-header">
         <span>Watchkeeper HUD</span>
-        <button onClick={() => setOpen(false)}>Close</button>
+      </div>
+
+      {/* Snapshot Button Section */}
+      <div className="wk-section">
+        <div className="wk-label">Snapshot</div>
+        <button className="wk-btn" onClick={handleSnapshot}>
+          Take Snapshot
+        </button>
       </div>
 
       <div className="wk-content">
