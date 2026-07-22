@@ -9,6 +9,9 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
 import Background3D from "./components/Background3D.jsx";
 
+// Watchkeeper HUD (global overlay)
+import WatchkeeperHUD from "./components/WatchkeeperHUD/WatchkeeperHUD.jsx";
+
 // Pages
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
@@ -24,6 +27,9 @@ export default function App() {
     <>
       {/* GLOBAL COSMIC BACKDROP */}
       <Background3D />
+
+      {/* GLOBAL HUD OVERLAY */}
+      <WatchkeeperHUD />
 
       {/* OS-LIKE LAYOUT SHELL */}
       <Layout>
