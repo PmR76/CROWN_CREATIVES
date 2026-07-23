@@ -1,5 +1,5 @@
 // ============================================================
-// Background3D.jsx — Immersive Particle Field + Magical Gradient
+// Background3D.jsx — Stable Cosmic Background (GR1)
 // ============================================================
 
 import { useEffect } from "react";
@@ -8,7 +8,6 @@ import { GradientShader } from "./Background3DGradient";
 
 export default function Background3D() {
   useEffect(() => {
-    // ⭐ FIXED — React-controlled container reference
     const container = document.querySelector("#webgl-background");
     if (!container) return;
 
@@ -16,18 +15,22 @@ export default function Background3D() {
     const scene = new THREE.Scene();
 
     // Camera
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
+    const camera = new THREE.OrthographicCamera(
+      -10, 10,
+      10, -10,
       0.1,
-      1000
+      100
     );
-    camera.position.z = 5;
+    camera.position.z = 10;
 
-    // Renderer (opaque so gradient is visible)
-    const renderer = new THREE.WebGLRenderer({ alpha: false });
-    renderer.setPixelRatio(window.devicePixelRatio);
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({
+      alpha: false,
+      antialias: true
+    });
+
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
 
     renderer.domElement.style.position = "absolute";
     renderer.domElement.style.top = "0";
@@ -38,27 +41,28 @@ export default function Background3D() {
     container.appendChild(renderer.domElement);
 
     // ============================================================
-    // Magical Gradient Background (full-screen plane)
+    // Magical Gradient Background (fullscreen plane)
     // ============================================================
     const gradientMaterial = new THREE.ShaderMaterial({
-      uniforms: GradientShader.uniforms,
+      uniforms: {
+        uTheme: { value: 0 }
+      },
       vertexShader: GradientShader.vertexShader,
       fragmentShader: GradientShader.fragmentShader,
       side: THREE.DoubleSide
     });
 
-    // Fullscreen plane in front of camera
     const gradientGeometry = new THREE.PlaneGeometry(20, 20);
     const gradientMesh = new THREE.Mesh(gradientGeometry, gradientMaterial);
+    gradientMesh.position.z = -1;
 
-    gradientMesh.position.z = 0; // visible
     scene.add(gradientMesh);
 
     // ============================================================
-    // Particles (unchanged)
+    // Particle Field
     // ============================================================
     const particles = new THREE.BufferGeometry();
-    const count = 800;
+    const count = 1200;
     const positions = new Float32Array(count * 3);
 
     for (let i = 0; i < count * 3; i++) {
@@ -67,21 +71,25 @@ export default function Background3D() {
 
     particles.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-    const material = new THREE.PointsMaterial({
+    const particleMaterial = new THREE.PointsMaterial({
       color: 0xffffff,
-      size: 0.03,
+      size: 0.04,
       transparent: true,
-      opacity: 0.5
+      opacity: 0.6
     });
 
-    const points = new THREE.Points(particles, material);
+    const points = new THREE.Points(particles, particleMaterial);
     scene.add(points);
 
     // ============================================================
     // Theme Listener
     // ============================================================
     const updateTheme = () => {
-      const theme = document.body.getAttribute("data-theme");
+      const theme =
+        document.body.dataset.theme ||
+        document.documentElement.dataset.theme ||
+        "day";
+
       gradientMaterial.uniforms.uTheme.value = theme === "night" ? 1 : 0;
     };
 
@@ -89,6 +97,7 @@ export default function Background3D() {
 
     const observer = new MutationObserver(updateTheme);
     observer.observe(document.body, { attributes: true });
+    observer.observe(document.documentElement, { attributes: true });
 
     // ============================================================
     // Animation Loop
@@ -97,7 +106,7 @@ export default function Background3D() {
 
     const animate = () => {
       frameId = requestAnimationFrame(animate);
-      points.rotation.y += 0.0008;
+      points.rotation.y += 0.0006;
       renderer.render(scene, camera);
     };
 
@@ -105,8 +114,6 @@ export default function Background3D() {
 
     // Resize
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
