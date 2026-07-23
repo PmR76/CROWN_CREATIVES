@@ -63,3 +63,11 @@ pre {
   background: rgba(255, 255, 255, 0.14);
   border-color: rgba(255, 255, 255, 0.18);
 }
+.wk-hud {
+  position: fixed;
+  cursor: grab;
+}
+
+.wk-hud:active {
+  cursor: grabbing;
+}
