@@ -59,27 +59,27 @@ export default function WatchkeeperHUD() {
   // ------------------------------------------------------------
   // Snapshot Handler (Dev-only)
   // ------------------------------------------------------------
-async function handleSnapshot() {
-  try {
-    const res = await fetch("/sentinel/sentinel-tree.txt");
-    const text = await res.text();
+  async function handleSnapshot() {
+    try {
+      const res = await fetch("/sentinel/sentinel-tree.txt");
+      const text = await res.text();
 
-    const snapshot = {
-      timestamp: new Date().toISOString(),
-      sentinelTree: text,
-      status: "OK"
-    };
+      const snapshot = {
+        timestamp: new Date().toISOString(),
+        sentinelTree: text,
+        status: "OK",
+      };
 
-    console.log("Watchkeeper Snapshot:", snapshot);
-    setDataDump(snapshot);   // show snapshot inside HUD
-  } catch (err) {
-    console.error("Snapshot failed:", err);
-    setDataDump({
-      error: "Snapshot failed",
-      detail: err.message
-    });
+      console.log("Watchkeeper Snapshot:", snapshot);
+      setDataDump(snapshot); // show snapshot inside HUD
+    } catch (err) {
+      console.error("Snapshot failed:", err);
+      setDataDump({
+        error: "Snapshot failed",
+        detail: err.message,
+      });
+    }
   }
-}
 
   // ------------------------------------------------------------
   // Hide HUD for public users
@@ -89,6 +89,46 @@ async function handleSnapshot() {
     window.location.search.includes("dev=true");
 
   if (!isDev) return null;
+
+  // ------------------------------------------------------------
+  // Draggable HUD (calm, ND-friendly)
+  // ------------------------------------------------------------
+  useEffect(() => {
+    if (!open) return;
+
+    const hud = document.querySelector(".wk-hud");
+    if (!hud) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+
+    const onMouseDown = (e) => {
+      isDragging = true;
+      startX = e.clientX - hud.offsetLeft;
+      startY = e.clientY - hud.offsetTop;
+    };
+
+    const onMouseMove = (e) => {
+      if (!isDragging) return;
+      hud.style.left = `${e.clientX - startX}px`;
+      hud.style.top = `${e.clientY - startY}px`;
+    };
+
+    const onMouseUp = () => {
+      isDragging = false;
+    };
+
+    hud.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+
+    return () => {
+      hud.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+  }, [open]);
 
   // ------------------------------------------------------------
   // Render HUD
@@ -114,42 +154,3 @@ async function handleSnapshot() {
     </div>
   );
 }
-// ------------------------------------------------------------
-// Draggable HUD (calm, ND-friendly)
-// ------------------------------------------------------------
-useEffect(() => {
-  if (!open) return;
-
-  const hud = document.querySelector(".wk-hud");
-  if (!hud) return;
-
-  let isDragging = false;
-  let startX = 0;
-  let startY = 0;
-
-  const onMouseDown = (e) => {
-    isDragging = true;
-    startX = e.clientX - hud.offsetLeft;
-    startY = e.clientY - hud.offsetTop;
-  };
-
-  const onMouseMove = (e) => {
-    if (!isDragging) return;
-    hud.style.left = `${e.clientX - startX}px`;
-    hud.style.top = `${e.clientY - startY}px`;
-  };
-
-  const onMouseUp = () => {
-    isDragging = false;
-  };
-
-  hud.addEventListener("mousedown", onMouseDown);
-  window.addEventListener("mousemove", onMouseMove);
-  window.addEventListener("mouseup", onMouseUp);
-
-  return () => {
-    hud.removeEventListener("mousedown", onMouseDown);
-    window.removeEventListener("mousemove", onMouseMove);
-    window.removeEventListener("mouseup", onMouseUp);
-  };
-}, [open]);

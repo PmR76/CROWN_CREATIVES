@@ -1,53 +1,75 @@
+/* ============================================================
+   Watchkeeper HUD — Stylish Dev Panel (No Drag Handle)
+   ============================================================ */
+
 .wk-hud {
   position: fixed;
-  bottom: 20px;       /* lift it up from bottom */
-  left: 20px;         /* move it into view */
-  width: 380px;
-  height: auto;
+  bottom: 32px;
+  left: 32px;
+  width: 420px;
   max-height: 70vh;
-  background: rgba(20, 20, 20, 0.85);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 16px;
-  color: white;
-  z-index: 9999;      /* ensure it’s above everything */
+  padding: 20px;
+
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(14px);
+  border-radius: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+
+  color: #f0f0f0;
+  font-family: "Segoe UI", sans-serif;
+
   overflow-y: auto;
-  display: none;      /* hidden until opened */
+  z-index: 9999;
+
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+
+  cursor: grab;
 }
 
 .wk-hud.open {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
+.wk-hud:active {
+  cursor: grabbing;
+}
+
+/* Header */
 .wk-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #555;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
-.wk-header button {
-  background: #333;
-  color: #eee;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
+/* Section blocks */
+.wk-section {
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.wk-content {
-  margin-top: 12px;
-  overflow-y: auto;
-  height: calc(100% - 60px);
+.wk-section:last-child {
+  border-bottom: none;
 }
 
-pre {
-  background: #222;
-  padding: 12px;
-  border-radius: 6px;
-  overflow-x: auto;
+/* Labels */
+.wk-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #cfcfcf;
+  margin-bottom: 6px;
 }
+
+/* Button */
 .wk-btn {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -63,11 +85,15 @@ pre {
   background: rgba(255, 255, 255, 0.14);
   border-color: rgba(255, 255, 255, 0.18);
 }
-.wk-hud {
-  position: fixed;
-  cursor: grab;
+
+/* Content */
+.wk-content {
+  margin-top: 12px;
 }
 
-.wk-hud:active {
-  cursor: grabbing;
+pre {
+  background: #222;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
 }
