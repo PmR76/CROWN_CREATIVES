@@ -61,11 +61,10 @@ export default defineConfig({
     // So Vite must NOT override root or publicDir or outDir
     copyPublicDir: true,
     sourcemap: true,             // Helps diagnose white-screen issues
-    emptyOutDir: true,           // Prevent stale build artifacts
+    emptyOutDir: true            // Prevent stale build artifacts
 
-    rollupOptions: {
-      // Cloudflare runs inside /corelab, so index.html is correct
-      input: "index.html"
-    }
+    // ❗ IMPORTANT:
+    // rollupOptions.input MUST NOT be set for Vite dev server.
+    // Cloudflare Pages automatically resolves index.html correctly.
   }
 });

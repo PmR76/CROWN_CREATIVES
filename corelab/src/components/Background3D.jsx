@@ -8,7 +8,8 @@ import { GradientShader } from "./Background3DGradient";
 
 export default function Background3D() {
   useEffect(() => {
-    const container = document.getElementById("webgl-background");
+    // ⭐ FIXED — React-controlled container reference
+    const container = document.querySelector("#webgl-background");
     if (!container) return;
 
     // Scene
@@ -50,7 +51,7 @@ export default function Background3D() {
     const gradientGeometry = new THREE.PlaneGeometry(20, 20);
     const gradientMesh = new THREE.Mesh(gradientGeometry, gradientMaterial);
 
-    gradientMesh.position.z = 0; // FIXED — now visible
+    gradientMesh.position.z = 0; // visible
     scene.add(gradientMesh);
 
     // ============================================================

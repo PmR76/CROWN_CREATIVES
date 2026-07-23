@@ -7,15 +7,22 @@ import React from "react";
 // Components
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
+import Background3D from "./Background3D.jsx";   // ⭐ ADDED
 
 // Styles
 import "../styles/gradients.css";
 import "../styles/app.css";
+import "../styles/background3d.css";            // ⭐ ENSURES BACKGROUND CSS LOADS
 
 export default function Layout({ children }) {
   return (
     <div className="corelab-shell gradient-night">
-      
+
+      {/* ⭐ Cosmic Background Layer (React-controlled) */}
+      <div id="webgl-background" className="background3d-container">
+        <Background3D />
+      </div>
+
       {/* OS TOP BAR */}
       <div className="os-topbar">
         <div className="os-left">
