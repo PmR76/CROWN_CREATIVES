@@ -23,7 +23,7 @@ export default function Background3D() {
     );
     camera.position.z = 5;
 
-    // Renderer
+    // Renderer (opaque so gradient is visible)
     const renderer = new THREE.WebGLRenderer({ alpha: false });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -46,9 +46,11 @@ export default function Background3D() {
       side: THREE.DoubleSide
     });
 
+    // Fullscreen plane in front of camera
     const gradientGeometry = new THREE.PlaneGeometry(20, 20);
     const gradientMesh = new THREE.Mesh(gradientGeometry, gradientMaterial);
-    gradientMesh.position.z = -5;
+
+    gradientMesh.position.z = 0; // FIXED — now visible
     scene.add(gradientMesh);
 
     // ============================================================
