@@ -3,6 +3,7 @@
 // ============================================================
 
 import React, { useState, useEffect } from "react";
+import * as THREE from "three";
 import "./watchkeeper-hud.css";
 
 export default function WatchkeeperHUD() {
@@ -140,7 +141,8 @@ export default function WatchkeeperHUD() {
       let rendererError = null;
 
       try {
-        const testRenderer = new WebGLRenderingContext();
+        const testCanvas = document.createElement("canvas");
+        const testRenderer = testCanvas.getContext("webgl2");
         rendererCreated = !!testRenderer;
       } catch (err) {
         rendererError = err.message;
@@ -162,110 +164,10 @@ export default function WatchkeeperHUD() {
         sceneObjectCount = testScene.children.length;
         sceneHasMesh = sceneObjectCount > 0;
       } catch {}
-
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 3 — Render Loop Activity Test
-      // ------------------------------------------------------------
-      let renderFrames = 0;
-      let renderLoopActive = false;
-
-      try {
-        const testCanvas = document.createElement("canvas");
-        const testRenderer = new THREE.WebGLRenderer({ canvas: testCanvas });
-        const testScene = new THREE.Scene();
-        const testCamera = new THREE.PerspectiveCamera();
-        const tick = () => {
-          renderFrames++;
-          if (renderFrames > 5) renderLoopActive = true;
-          testRenderer.render(testScene, testCamera);
-          requestAnimationFrame(tick);
-        };
-        tick();
-      } catch {}
-
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 4 — Shader Uniform Live Update Test
-      // ------------------------------------------------------------
-      let uniformTime = null;
-      let uniformTheme = null;
-      let uniformsUpdating = false;
-
-      try {
-        uniformTime = window.__bg3d_lastTime || 0;
-        uniformTheme = window.__bg3d_lastTheme || 0;
-        uniformsUpdating = uniformTime > 0;
-      } catch {}
-
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 5 — Shader Material Attachment Test
-      // ------------------------------------------------------------
-      let materialType = null;
-      let materialAttached = false;
-      let meshAttached = false;
-
-      try {
-        const testMaterial = new THREE.ShaderMaterial();
-        materialType = testMaterial.type;
-        const testMesh = new THREE.Mesh(new THREE.PlaneGeometry(), testMaterial);
-        meshAttached = !!testMesh.material;
-        materialAttached = testMesh.material instanceof THREE.ShaderMaterial;
-      } catch {}
-
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 6 — Camera Projection Test
-      // ------------------------------------------------------------
-      let cameraType = null;
-      let cameraValid = false;
-
-      try {
-        const testCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-        cameraType = testCamera.type;
-        cameraValid = !!testCamera.projectionMatrix;
-      } catch {}
-
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 7 — Canvas Paint Timing Test
-      // ------------------------------------------------------------
-      let canvasPainted = false;
-
-      try {
-        const ctx = canvas?.getContext("2d");
-        if (ctx) {
-          const pixel = ctx.getImageData(1, 1, 1, 1).data;
-          canvasPainted = pixel[0] !== 0 || pixel[1] !== 0 || pixel[2] !== 0;
-        }
-      } catch {}
-
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 8 — DOM Mount Order Test
-      // ------------------------------------------------------------
-      let backgroundMountedFirst = false;
-
-      try {
-        const bg = document.querySelector("#webgl-background");
-        const firstChild = document.body.firstElementChild;
-        backgroundMountedFirst = bg === firstChild;
-      } catch {}
-
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 9 — Shader Compilation Log Capture
-      // ------------------------------------------------------------
-      let shaderWarnings = [];
-
-      try {
-        const glTest = document.createElement("canvas").getContext("webgl2");
-        const shader = glTest.createShader(glTest.FRAGMENT_SHADER);
-        glTest.shaderSource(shader, "precision highp float; void main(){ }");
-        glTest.compileShader(shader);
-        const log = glTest.getShaderInfoLog(shader);
-        if (log) shaderWarnings.push(log);
-      } catch {}
-
       // ------------------------------------------------------------
       // NEW DIAGNOSTIC 10 — Three.js Internal Error Log
       // ------------------------------------------------------------
       let threeErrors = [];
-
       try {
         THREE.onError = (msg) => threeErrors.push(msg);
       } catch {}
@@ -312,6 +214,7 @@ export default function WatchkeeperHUD() {
 
       console.log("Watchkeeper Snapshot:", snapshot);
       setDataDump(snapshot);
+
     } catch (err) {
       console.error("Snapshot failed:", err);
       setDataDump({
@@ -420,9 +323,14 @@ export default function WatchkeeperHUD() {
       {/* Local GPU + WebGL Status */}
       <div className="wk-section">
         <div className="wk-label">Local GPU Status</div>
+
         <div className="wk-status">
           <span className="wk-status-label">WebGL2 Support</span>
-          <span className={`wk-light ${webgl2Supported ? "wk-green" : "wk-red"}`}></span>
+          <span
+            className={`wk-light ${
+              webgl2Supported ? "wk-green" : "wk-red"
+            }`}
+          ></span>
         </div>
 
         <div className="wk-status">
