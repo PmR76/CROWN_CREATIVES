@@ -1,5 +1,5 @@
 // ============================================================
-// WatchkeeperHUD.jsx — Dev Diagnostics Drawer (GR1 Stable + WebGL Tools)
+// WatchkeeperHUD.jsx — Dev Diagnostics Drawer (GR1 Stable + Full Render Chain Diagnostics)
 // ============================================================
 
 import React, { useState, useEffect } from "react";
@@ -133,12 +133,152 @@ export default function WatchkeeperHUD() {
       let themeUniform = document.body.dataset.theme || "unknown";
 
       // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 1 — Renderer Health Test
+      // ------------------------------------------------------------
+      let rendererCreated = false;
+      let rendererContextLost = false;
+      let rendererError = null;
+
+      try {
+        const testRenderer = new WebGLRenderingContext();
+        rendererCreated = !!testRenderer;
+      } catch (err) {
+        rendererError = err.message;
+      }
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 2 — Scene Object Count Test
+      // ------------------------------------------------------------
+      let sceneObjectCount = 0;
+      let sceneHasMesh = false;
+
+      try {
+        const testScene = new THREE.Scene();
+        const testMesh = new THREE.Mesh(
+          new THREE.BoxGeometry(1, 1, 1),
+          new THREE.MeshBasicMaterial()
+        );
+        testScene.add(testMesh);
+        sceneObjectCount = testScene.children.length;
+        sceneHasMesh = sceneObjectCount > 0;
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 3 — Render Loop Activity Test
+      // ------------------------------------------------------------
+      let renderFrames = 0;
+      let renderLoopActive = false;
+
+      try {
+        const testCanvas = document.createElement("canvas");
+        const testRenderer = new THREE.WebGLRenderer({ canvas: testCanvas });
+        const testScene = new THREE.Scene();
+        const testCamera = new THREE.PerspectiveCamera();
+        const tick = () => {
+          renderFrames++;
+          if (renderFrames > 5) renderLoopActive = true;
+          testRenderer.render(testScene, testCamera);
+          requestAnimationFrame(tick);
+        };
+        tick();
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 4 — Shader Uniform Live Update Test
+      // ------------------------------------------------------------
+      let uniformTime = null;
+      let uniformTheme = null;
+      let uniformsUpdating = false;
+
+      try {
+        uniformTime = window.__bg3d_lastTime || 0;
+        uniformTheme = window.__bg3d_lastTheme || 0;
+        uniformsUpdating = uniformTime > 0;
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 5 — Shader Material Attachment Test
+      // ------------------------------------------------------------
+      let materialType = null;
+      let materialAttached = false;
+      let meshAttached = false;
+
+      try {
+        const testMaterial = new THREE.ShaderMaterial();
+        materialType = testMaterial.type;
+        const testMesh = new THREE.Mesh(new THREE.PlaneGeometry(), testMaterial);
+        meshAttached = !!testMesh.material;
+        materialAttached = testMesh.material instanceof THREE.ShaderMaterial;
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 6 — Camera Projection Test
+      // ------------------------------------------------------------
+      let cameraType = null;
+      let cameraValid = false;
+
+      try {
+        const testCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        cameraType = testCamera.type;
+        cameraValid = !!testCamera.projectionMatrix;
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 7 — Canvas Paint Timing Test
+      // ------------------------------------------------------------
+      let canvasPainted = false;
+
+      try {
+        const ctx = canvas?.getContext("2d");
+        if (ctx) {
+          const pixel = ctx.getImageData(1, 1, 1, 1).data;
+          canvasPainted = pixel[0] !== 0 || pixel[1] !== 0 || pixel[2] !== 0;
+        }
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 8 — DOM Mount Order Test
+      // ------------------------------------------------------------
+      let backgroundMountedFirst = false;
+
+      try {
+        const bg = document.querySelector("#webgl-background");
+        const firstChild = document.body.firstElementChild;
+        backgroundMountedFirst = bg === firstChild;
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 9 — Shader Compilation Log Capture
+      // ------------------------------------------------------------
+      let shaderWarnings = [];
+
+      try {
+        const glTest = document.createElement("canvas").getContext("webgl2");
+        const shader = glTest.createShader(glTest.FRAGMENT_SHADER);
+        glTest.shaderSource(shader, "precision highp float; void main(){ }");
+        glTest.compileShader(shader);
+        const log = glTest.getShaderInfoLog(shader);
+        if (log) shaderWarnings.push(log);
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 10 — Three.js Internal Error Log
+      // ------------------------------------------------------------
+      let threeErrors = [];
+
+      try {
+        THREE.onError = (msg) => threeErrors.push(msg);
+      } catch {}
+
+      // ------------------------------------------------------------
       // Build Snapshot
       // ------------------------------------------------------------
       const snapshot = {
         timestamp: new Date().toISOString(),
         sentinelTree: text,
         status: "OK",
+
+        // Existing diagnostics
         webgl2: webgl2Supported,
         gpu: gpuRenderer,
         webglStress,
@@ -147,6 +287,27 @@ export default function WatchkeeperHUD() {
         canvasOpacity,
         canvasZIndex,
         themeUniform,
+
+        // New diagnostics
+        rendererCreated,
+        rendererContextLost,
+        rendererError,
+        sceneObjectCount,
+        sceneHasMesh,
+        renderFrames,
+        renderLoopActive,
+        uniformTime,
+        uniformTheme,
+        uniformsUpdating,
+        materialType,
+        materialAttached,
+        meshAttached,
+        cameraType,
+        cameraValid,
+        canvasPainted,
+        backgroundMountedFirst,
+        shaderWarnings,
+        threeErrors
       };
 
       console.log("Watchkeeper Snapshot:", snapshot);
