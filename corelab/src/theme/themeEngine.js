@@ -15,7 +15,6 @@ export function initThemeEngine() {
     const initial = stored === "night" ? "night" : "day";
     applyTheme(initial, false);
   } catch {
-    // Prevent crash if localStorage is blocked
     applyTheme("day", false);
   }
 }
@@ -24,7 +23,11 @@ export function initThemeEngine() {
 // TOGGLE THEME (DAY ↔ NIGHT)
 // ------------------------------------------------------------
 export function toggleTheme() {
-  const current = document.body.dataset.theme || "day";
+  const current =
+    document.body.dataset.theme ||
+    document.documentElement.dataset.theme ||
+    "day";
+
   const next = current === "day" ? "night" : "day";
   applyTheme(next, true);
 }
@@ -40,26 +43,23 @@ export function setThemeDirect(theme) {
 // INTERNAL APPLY FUNCTION
 // ------------------------------------------------------------
 function applyTheme(theme, dispatch = true) {
-  // Prevent undefined theme crash
   if (!theme) theme = "day";
 
+  // ⭐ CRITICAL FIX — apply theme to BOTH body and html
   document.body.dataset.theme = theme;
+  document.documentElement.dataset.theme = theme;
 
   try {
     localStorage.setItem(THEME_KEY, theme);
-  } catch {
-    // Ignore storage errors (private mode, blocked storage)
-  }
+  } catch {}
 
   const dayBg = localStorage.getItem(THEME_DAY_BG_KEY);
   const nightBg = localStorage.getItem(THEME_NIGHT_BG_KEY);
 
   if (theme === "day") {
-    if (dayBg) document.body.style.background = dayBg;
-    else document.body.style.background = "";
+    document.body.style.background = dayBg || "";
   } else {
-    if (nightBg) document.body.style.background = nightBg;
-    else document.body.style.background = "";
+    document.body.style.background = nightBg || "";
   }
 
   if (dispatch) {
@@ -69,8 +69,6 @@ function applyTheme(theme, dispatch = true) {
           detail: theme,
         })
       );
-    } catch {
-      // Prevent crash if CustomEvent fails
-    }
+    } catch {}
   }
 }
