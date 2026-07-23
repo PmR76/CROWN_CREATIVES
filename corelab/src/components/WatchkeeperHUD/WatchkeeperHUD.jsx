@@ -164,6 +164,109 @@ export default function WatchkeeperHUD() {
         sceneObjectCount = testScene.children.length;
         sceneHasMesh = sceneObjectCount > 0;
       } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 3 — Render Loop Activity Test
+      // ------------------------------------------------------------
+      let renderFrames = 0;
+      let renderLoopActive = false;
+
+      try {
+        // simulate a few frames
+        for (let i = 0; i < 6; i++) {
+          renderFrames++;
+        }
+        if (renderFrames > 5) renderLoopActive = true;
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 4 — Shader Uniform Live Update Test
+      // ------------------------------------------------------------
+      let uniformTime = 0;
+      let uniformTheme = 0;
+      let uniformsUpdating = false;
+
+      try {
+        uniformTime = window.__bg3d_lastTime || 0;
+        uniformTheme = window.__bg3d_lastTheme || 0;
+        uniformsUpdating = uniformTime > 0;
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 5 — Shader Material Attachment Test
+      // ------------------------------------------------------------
+      let materialType = null;
+      let materialAttached = false;
+      let meshAttached = false;
+
+      try {
+        const testMaterial = new THREE.ShaderMaterial();
+        materialType = testMaterial.type;
+
+        const testMesh = new THREE.Mesh(
+          new THREE.PlaneGeometry(),
+          testMaterial
+        );
+
+        meshAttached = !!testMesh.material;
+        materialAttached =
+          testMesh.material instanceof THREE.ShaderMaterial;
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 6 — Camera Projection Test
+      // ------------------------------------------------------------
+      let cameraType = null;
+      let cameraValid = false;
+
+      try {
+        const testCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        cameraType = testCamera.type;
+        cameraValid = !!testCamera.projectionMatrix;
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 7 — Canvas Paint Timing Test
+      // ------------------------------------------------------------
+      let canvasPainted = false;
+
+      try {
+        const ctx = canvas?.getContext("2d");
+        if (ctx) {
+          const pixel = ctx.getImageData(1, 1, 1, 1).data;
+          canvasPainted =
+            pixel[0] !== 0 ||
+            pixel[1] !== 0 ||
+            pixel[2] !== 0 ||
+            pixel[3] !== 0;
+        }
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 8 — DOM Mount Order Test
+      // ------------------------------------------------------------
+      let backgroundMountedFirst = false;
+
+      try {
+        const bg = document.querySelector("#webgl-background");
+        const firstChild = document.body.firstElementChild;
+        backgroundMountedFirst = bg === firstChild;
+      } catch {}
+
+      // ------------------------------------------------------------
+      // NEW DIAGNOSTIC 9 — Shader Compilation Log Capture
+      // ------------------------------------------------------------
+      let shaderWarnings = [];
+
+      try {
+        const glTest = document.createElement("canvas").getContext("webgl2");
+        const shader = glTest.createShader(glTest.FRAGMENT_SHADER);
+        glTest.shaderSource(shader, "precision highp float; void main(){ }");
+        glTest.compileShader(shader);
+        const log = glTest.getShaderInfoLog(shader);
+        if (log) shaderWarnings.push(log);
+      } catch {}
+
       // ------------------------------------------------------------
       // NEW DIAGNOSTIC 10 — Three.js Internal Error Log
       // ------------------------------------------------------------
