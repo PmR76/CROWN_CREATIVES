@@ -1,10 +1,5 @@
-// ============================================================
-// Background3D.jsx — Stable Cosmic Background (GR1)
-// ============================================================
-
 import { useEffect } from "react";
 import * as THREE from "three";
-import { GradientShader } from "./Background3DGradient";
 
 export default function Background3D() {
   useEffect(() => {
@@ -15,118 +10,62 @@ export default function Background3D() {
     const scene = new THREE.Scene();
 
     // Camera
-    const camera = new THREE.OrthographicCamera(
-      -10, 10,
-      10, -10,
+    const camera = new THREE.PerspectiveCamera(
+      60,
+      window.innerWidth / window.innerHeight,
       0.1,
       100
     );
-    camera.position.z = 10;
+    camera.position.z = 3;
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({
-      alpha: false,
+      alpha: true,
       antialias: true
     });
-
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
-    renderer.domElement.style.position = "absolute";
-    renderer.domElement.style.top = "0";
-    renderer.domElement.style.left = "0";
-    renderer.domElement.style.width = "100%";
-    renderer.domElement.style.height = "100%";
-
     container.appendChild(renderer.domElement);
 
-    // ============================================================
-    // Magical Gradient Background (fullscreen plane)
-    // ============================================================
-    const gradientMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        uTheme: { value: 0 }
-      },
-      vertexShader: GradientShader.vertexShader,
-      fragmentShader: GradientShader.fragmentShader,
-      side: THREE.DoubleSide
+    // Forced‑render cube (diagnostic)
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0x66ccff,
+      roughness: 0.4,
+      metalness: 0.2
     });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
 
-    const gradientGeometry = new THREE.PlaneGeometry(20, 20);
-    const gradientMesh = new THREE.Mesh(gradientGeometry, gradientMaterial);
-    gradientMesh.position.z = -1;
+    // Light
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(2, 2, 2);
+    scene.add(light);
 
-    scene.add(gradientMesh);
-
-    // ============================================================
-    // Particle Field
-    // ============================================================
-    const particles = new THREE.BufferGeometry();
-    const count = 1200;
-    const positions = new Float32Array(count * 3);
-
-    for (let i = 0; i < count * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 20;
-    }
-
-    particles.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-    const particleMaterial = new THREE.PointsMaterial({
-      color: 0xffffff,
-      size: 0.04,
-      transparent: true,
-      opacity: 0.6
-    });
-
-    const points = new THREE.Points(particles, particleMaterial);
-    scene.add(points);
-
-    // ============================================================
-    // Theme Listener
-    // ============================================================
-    const updateTheme = () => {
-      const theme =
-        document.body.dataset.theme ||
-        document.documentElement.dataset.theme ||
-        "day";
-
-      gradientMaterial.uniforms.uTheme.value = theme === "night" ? 1 : 0;
-    };
-
-    updateTheme();
-
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.body, { attributes: true });
-    observer.observe(document.documentElement, { attributes: true });
-
-    // ============================================================
-    // Animation Loop
-    // ============================================================
-    let frameId;
-
+    // Animation
     const animate = () => {
-      frameId = requestAnimationFrame(animate);
-      points.rotation.y += 0.0006;
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
       renderer.render(scene, camera);
+      requestAnimationFrame(animate);
     };
-
     animate();
 
     // Resize
     const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
-
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      observer.disconnect();
-      if (frameId) cancelAnimationFrame(frameId);
+      renderer.dispose();
       try {
         container.removeChild(renderer.domElement);
       } catch {}
-      renderer.dispose();
     };
   }, []);
 
