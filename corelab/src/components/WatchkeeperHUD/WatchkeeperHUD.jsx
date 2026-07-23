@@ -59,21 +59,27 @@ export default function WatchkeeperHUD() {
   // ------------------------------------------------------------
   // Snapshot Handler (Dev-only)
   // ------------------------------------------------------------
-  function handleSnapshot() {
-    try {
-      const snapshot = {
-        timestamp: new Date().toISOString(),
-        tree: window.__SENTINEL_TREE__,        // sentinel-filetree.json
-        diagnostics: window.__SENTINEL_DIAG__, // diagnostics feed
-        buildstamp: window.__BUILDSTAMP__,     // buildstamp.json
-        status: "OK",
-      };
+async function handleSnapshot() {
+  try {
+    const res = await fetch("/sentinel/sentinel-tree.txt");
+    const text = await res.text();
 
-      console.log("Watchkeeper Snapshot:", snapshot);
-    } catch (err) {
-      console.error("Snapshot failed:", err);
-    }
+    const snapshot = {
+      timestamp: new Date().toISOString(),
+      sentinelTree: text,
+      status: "OK"
+    };
+
+    console.log("Watchkeeper Snapshot:", snapshot);
+    setDataDump(snapshot);   // show snapshot inside HUD
+  } catch (err) {
+    console.error("Snapshot failed:", err);
+    setDataDump({
+      error: "Snapshot failed",
+      detail: err.message
+    });
   }
+}
 
   // ------------------------------------------------------------
   // Hide HUD for public users
@@ -108,3 +114,42 @@ export default function WatchkeeperHUD() {
     </div>
   );
 }
+// ------------------------------------------------------------
+// Draggable HUD (calm, ND-friendly)
+// ------------------------------------------------------------
+useEffect(() => {
+  if (!open) return;
+
+  const hud = document.querySelector(".wk-hud");
+  if (!hud) return;
+
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+
+  const onMouseDown = (e) => {
+    isDragging = true;
+    startX = e.clientX - hud.offsetLeft;
+    startY = e.clientY - hud.offsetTop;
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    hud.style.left = `${e.clientX - startX}px`;
+    hud.style.top = `${e.clientY - startY}px`;
+  };
+
+  const onMouseUp = () => {
+    isDragging = false;
+  };
+
+  hud.addEventListener("mousedown", onMouseDown);
+  window.addEventListener("mousemove", onMouseMove);
+  window.addEventListener("mouseup", onMouseUp);
+
+  return () => {
+    hud.removeEventListener("mousedown", onMouseDown);
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("mouseup", onMouseUp);
+  };
+}, [open]);
