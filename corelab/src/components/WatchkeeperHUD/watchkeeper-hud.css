@@ -1,11 +1,11 @@
 /* ============================================================
-   Watchkeeper HUD — Stylish Dev Panel (No Drag Handle)
+   Watchkeeper HUD — Stylish Dev Panel (Draggable + Traffic Light Ready)
    ============================================================ */
 
 .wk-hud {
   position: fixed;
-  bottom: 32px;
-  left: 32px;
+  top: 32px;              /* changed from bottom: 32px */
+  left: 32px;             /* draggable starting point */
   width: 420px;
   max-height: 70vh;
   padding: 20px;
@@ -29,6 +29,7 @@
   transition: opacity 0.25s ease, transform 0.25s ease;
 
   cursor: grab;
+  pointer-events: auto;   /* ensures dragging works */
 }
 
 .wk-hud.open {
