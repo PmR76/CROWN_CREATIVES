@@ -1,15 +1,22 @@
 export const GradientShader = {
   uniforms: {
-    uTheme: { value: 0 } // 0 = day, 1 = night
+    uTheme: { value: 0 }
   },
+
   vertexShader: `
+    precision mediump float;
+
     varying vec2 vUv;
+
     void main() {
       vUv = uv;
       gl_Position = vec4(position, 1.0);
     }
   `,
+
   fragmentShader: `
+    precision mediump float;
+
     varying vec2 vUv;
     uniform float uTheme;
 
@@ -24,6 +31,7 @@ export const GradientShader = {
       vec3 bottomColor = mix(dayBottom, nightBottom, uTheme);
 
       vec3 color = mix(bottomColor, topColor, vUv.y);
+
       gl_FragColor = vec4(color, 1.0);
     }
   `
