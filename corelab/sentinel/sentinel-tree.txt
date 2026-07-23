@@ -130,7 +130,6 @@
             🟢 wave.jpeg
             🟢 white-butterfly.jpeg
    🟢 favicon.ico
-   🟢 index.html
    📁 public\manifests
       🟢 sound-manifest.json
    🟢 sentinel-filetree.json

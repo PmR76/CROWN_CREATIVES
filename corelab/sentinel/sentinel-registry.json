@@ -209,7 +209,6 @@
         ]
       },
       "favicon.ico",
-      "index.html",
       {
         "folder": "public\\manifests",
         "items": [
