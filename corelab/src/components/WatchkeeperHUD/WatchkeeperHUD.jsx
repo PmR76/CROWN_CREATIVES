@@ -1,5 +1,5 @@
 // ============================================================
-// WatchkeeperHUD.jsx — Dev Diagnostics Drawer (GR1 Stable)
+// WatchkeeperHUD.jsx — Dev Diagnostics Drawer (GR1 Stable + WebGL Tools)
 // ============================================================
 
 import React, { useState, useEffect } from "react";
@@ -8,6 +8,17 @@ import "./watchkeeper-hud.css";
 export default function WatchkeeperHUD() {
   const [open, setOpen] = useState(false);
   const [dataDump, setDataDump] = useState(null);
+
+  // ------------------------------------------------------------
+  // Local WebGL Diagnostics (GPU + WebGL2)
+  // ------------------------------------------------------------
+  const gl = document.createElement("canvas").getContext("webgl2");
+  const webgl2Supported = !!gl;
+
+  const gpuInfo = gl?.getExtension("WEBGL_debug_renderer_info");
+  const gpuRenderer = gpuInfo
+    ? gl.getParameter(gpuInfo.UNMASKED_RENDERER_WEBGL)
+    : "Unknown GPU";
 
   // ------------------------------------------------------------
   // Toggle HUD with Shift + W
@@ -40,11 +51,15 @@ export default function WatchkeeperHUD() {
         setDataDump({
           timestamp: new Date().toISOString(),
           sentinelTree: text,
+          webgl2: webgl2Supported,
+          gpu: gpuRenderer,
         });
       } catch (err) {
         setDataDump({
           error: "Unable to load diagnostics",
           detail: err.message,
+          webgl2: webgl2Supported,
+          gpu: gpuRenderer,
         });
       }
     }
@@ -60,10 +75,78 @@ export default function WatchkeeperHUD() {
       const res = await fetch("/sentinel/sentinel-tree.txt");
       const text = await res.text();
 
+      // ------------------------------------------------------------
+      // WebGL Stress Test
+      // ------------------------------------------------------------
+      let webglStress = "PASS";
+      try {
+        const glTest = document.createElement("canvas").getContext("webgl2");
+        const buffer = glTest.createBuffer();
+        glTest.bindBuffer(glTest.ARRAY_BUFFER, buffer);
+        glTest.bufferData(
+          glTest.ARRAY_BUFFER,
+          new Float32Array(500000),
+          glTest.STATIC_DRAW
+        );
+      } catch (err) {
+        webglStress = "FAIL: " + err.message;
+      }
+
+      // ------------------------------------------------------------
+      // Shader Compilation Test
+      // ------------------------------------------------------------
+      let shaderCompile = "PASS";
+      try {
+        const glTest = document.createElement("canvas").getContext("webgl2");
+        const shader = glTest.createShader(glTest.FRAGMENT_SHADER);
+        glTest.shaderSource(
+          shader,
+          "precision highp float; void main(){ gl_FragColor = vec4(1.0); }"
+        );
+        glTest.compileShader(shader);
+        if (!glTest.getShaderParameter(shader, glTest.COMPILE_STATUS)) {
+          shaderCompile = "FAIL: " + glTest.getShaderInfoLog(shader);
+        }
+      } catch (err) {
+        shaderCompile = "FAIL: " + err.message;
+      }
+
+      // ------------------------------------------------------------
+      // Canvas Visibility Test
+      // ------------------------------------------------------------
+      const canvas = document.querySelector("#webgl-background canvas");
+      let canvasVisible = false;
+      let canvasOpacity = null;
+      let canvasZIndex = null;
+
+      if (canvas) {
+        const style = window.getComputedStyle(canvas);
+        canvasVisible =
+          style.display !== "none" && style.visibility !== "hidden";
+        canvasOpacity = style.opacity;
+        canvasZIndex = style.zIndex;
+      }
+
+      // ------------------------------------------------------------
+      // Theme Uniform Test
+      // ------------------------------------------------------------
+      let themeUniform = document.body.dataset.theme || "unknown";
+
+      // ------------------------------------------------------------
+      // Build Snapshot
+      // ------------------------------------------------------------
       const snapshot = {
         timestamp: new Date().toISOString(),
         sentinelTree: text,
         status: "OK",
+        webgl2: webgl2Supported,
+        gpu: gpuRenderer,
+        webglStress,
+        shaderCompile,
+        canvasVisible,
+        canvasOpacity,
+        canvasZIndex,
+        themeUniform,
       };
 
       console.log("Watchkeeper Snapshot:", snapshot);
@@ -73,6 +156,8 @@ export default function WatchkeeperHUD() {
       setDataDump({
         error: "Snapshot failed",
         detail: err.message,
+        webgl2: webgl2Supported,
+        gpu: gpuRenderer,
       });
     }
   }
@@ -143,38 +228,45 @@ export default function WatchkeeperHUD() {
         </button>
       </div>
 
-      {/* Pipeline Traffic Light System */}
+      {/* WebGL Diagnostics Button */}
       <div className="wk-section">
-        <div className="wk-label">Pipeline Status</div>
+        <div className="wk-label">WebGL Tools</div>
 
+        <button
+          className="wk-btn"
+          onClick={() => window.open("https://webglreport.com", "_blank")}
+        >
+          WebGL Diagnostics
+        </button>
+
+        <button
+          className="wk-btn"
+          onClick={() => window.open("chrome://inspect/#devices", "_blank")}
+        >
+          Lighthouse (Chrome)
+        </button>
+
+        <button
+          className="wk-btn"
+          onClick={() =>
+            window.open("https://threejs.org/editor/", "_blank")
+          }
+        >
+          Three.js Shader Test
+        </button>
+      </div>
+
+      {/* Local GPU + WebGL Status */}
+      <div className="wk-section">
+        <div className="wk-label">Local GPU Status</div>
         <div className="wk-status">
-          <span className="wk-status-label">GitHub Sync</span>
-          <span className="wk-light wk-green"></span>
+          <span className="wk-status-label">WebGL2 Support</span>
+          <span className={`wk-light ${webgl2Supported ? "wk-green" : "wk-red"}`}></span>
         </div>
 
         <div className="wk-status">
-          <span className="wk-status-label">Cloudflare Build</span>
-          <span className="wk-light wk-green"></span>
-        </div>
-
-        <div className="wk-status">
-          <span className="wk-status-label">Sentinel Diagnostics</span>
-          <span className="wk-light wk-green"></span>
-        </div>
-
-        <div className="wk-status">
-          <span className="wk-status-label">Filetree Integrity</span>
-          <span className="wk-light wk-green"></span>
-        </div>
-
-        <div className="wk-status">
-          <span className="wk-status-label">Manifests</span>
-          <span className="wk-light wk-green"></span>
-        </div>
-
-        <div className="wk-status">
-          <span className="wk-status-label">Vite Dev Server</span>
-          <span className="wk-light wk-green"></span>
+          <span className="wk-status-label">GPU Renderer</span>
+          <span className="wk-status-value">{gpuRenderer}</span>
         </div>
       </div>
 
