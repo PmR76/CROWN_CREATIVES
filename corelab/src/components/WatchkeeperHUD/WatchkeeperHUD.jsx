@@ -18,9 +18,7 @@ export default function WatchkeeperHUD() {
         if (e.shiftKey && e.key.toLowerCase() === "w") {
           setOpen((prev) => !prev);
         }
-      } catch {
-        // Prevent key handler crash
-      }
+      } catch {}
     };
 
     window.addEventListener("keydown", handler);
@@ -35,9 +33,7 @@ export default function WatchkeeperHUD() {
       try {
         const res = await fetch("/sentinel/sentinel-tree.txt");
 
-        if (!res.ok) {
-          throw new Error("Sentinel tree missing");
-        }
+        if (!res.ok) throw new Error("Sentinel tree missing");
 
         const text = await res.text();
 
@@ -71,7 +67,7 @@ export default function WatchkeeperHUD() {
       };
 
       console.log("Watchkeeper Snapshot:", snapshot);
-      setDataDump(snapshot); // show snapshot inside HUD
+      setDataDump(snapshot);
     } catch (err) {
       console.error("Snapshot failed:", err);
       setDataDump({
@@ -80,15 +76,6 @@ export default function WatchkeeperHUD() {
       });
     }
   }
-
-  // ------------------------------------------------------------
-  // Hide HUD for public users
-  // ------------------------------------------------------------
-  const isDev =
-    window.location.hostname === "localhost" ||
-    window.location.search.includes("dev=true");
-
-  if (!isDev) return null;
 
   // ------------------------------------------------------------
   // Draggable HUD (calm, ND-friendly)
@@ -131,6 +118,15 @@ export default function WatchkeeperHUD() {
   }, [open]);
 
   // ------------------------------------------------------------
+  // Hide HUD for public users
+  // ------------------------------------------------------------
+  const isDev =
+    window.location.hostname === "localhost" ||
+    window.location.search.includes("dev=true");
+
+  if (!isDev) return null;
+
+  // ------------------------------------------------------------
   // Render HUD
   // ------------------------------------------------------------
   return (
@@ -139,7 +135,6 @@ export default function WatchkeeperHUD() {
         <span>Watchkeeper HUD</span>
       </div>
 
-      {/* Snapshot Button Section */}
       <div className="wk-section">
         <div className="wk-label">Snapshot</div>
         <button className="wk-btn" onClick={handleSnapshot}>
