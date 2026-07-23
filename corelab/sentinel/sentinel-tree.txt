@@ -6,15 +6,18 @@
    🟢 App.jsx
    📁 src\components
       🟢 Background3D.jsx
+      🟢 Background3DGradient.js
       🟢 buildstamp.css
       🟢 Buildstamp.jsx
       🟢 CorePanel.jsx
+      🟢 DiagnosticsPanel.jsx
       🟢 Footer.jsx
       🟢 FrostedCards.jsx
       🟢 Header.jsx
       🟢 HeroCrown.jsx
       🟢 HeroGallery.jsx
       🟢 Layout.jsx
+      🟢 ThemePanel.jsx
       🟢 Ticker.jsx
       📁 src\components\WatchkeeperHUD
          🟢 watchkeeper-hud.css
