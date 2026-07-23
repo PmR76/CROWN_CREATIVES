@@ -135,11 +135,47 @@ export default function WatchkeeperHUD() {
         <span>Watchkeeper HUD</span>
       </div>
 
+      {/* Snapshot Button Section */}
       <div className="wk-section">
         <div className="wk-label">Snapshot</div>
         <button className="wk-btn" onClick={handleSnapshot}>
           Take Snapshot
         </button>
+      </div>
+
+      {/* Pipeline Traffic Light System */}
+      <div className="wk-section">
+        <div className="wk-label">Pipeline Status</div>
+
+        <div className="wk-status">
+          <span className="wk-status-label">GitHub Sync</span>
+          <span className="wk-light wk-green"></span>
+        </div>
+
+        <div className="wk-status">
+          <span className="wk-status-label">Cloudflare Build</span>
+          <span className="wk-light wk-green"></span>
+        </div>
+
+        <div className="wk-status">
+          <span className="wk-status-label">Sentinel Diagnostics</span>
+          <span className="wk-light wk-green"></span>
+        </div>
+
+        <div className="wk-status">
+          <span className="wk-status-label">Filetree Integrity</span>
+          <span className="wk-light wk-green"></span>
+        </div>
+
+        <div className="wk-status">
+          <span className="wk-status-label">Manifests</span>
+          <span className="wk-light wk-green"></span>
+        </div>
+
+        <div className="wk-status">
+          <span className="wk-status-label">Vite Dev Server</span>
+          <span className="wk-light wk-green"></span>
+        </div>
       </div>
 
       <div className="wk-content">

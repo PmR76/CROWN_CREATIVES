@@ -1,3 +1,7 @@
+/* ============================================================
+   Watchkeeper HUD — Stylish Dev Panel (Draggable + Traffic Light)
+   ============================================================ */
+
 .wk-hud {
   position: fixed !important;
   pointer-events: auto;
@@ -31,9 +35,100 @@
 .wk-hud.open {
   display: block;
   opacity: 1;
-  transform: none !important; /* critical for dragging */
+  transform: none !important;
 }
 
 .wk-hud:active {
   cursor: grabbing;
+}
+
+/* Header */
+.wk-header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* Section blocks */
+.wk-section {
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.wk-section:last-child {
+  border-bottom: none;
+}
+
+/* Labels */
+.wk-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #cfcfcf;
+  margin-bottom: 6px;
+}
+
+/* Button */
+.wk-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.wk-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Traffic Light System */
+.wk-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+
+.wk-status-label {
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.wk-light {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-left: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Colours */
+.wk-green {
+  background: #3ddc84;
+}
+
+.wk-amber {
+  background: #ffcc00;
+}
+
+.wk-red {
+  background: #ff4d4d;
+}
+
+/* Content */
+.wk-content {
+  margin-top: 12px;
+}
+
+pre {
+  background: #222;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
 }
