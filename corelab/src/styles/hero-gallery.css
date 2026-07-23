@@ -111,3 +111,7 @@
 .hero-gallery-glow-right {
   background: rgba(255, 210, 150, 0.4);
 }
+/* Move both gallery lanes UP by 200px */
+.hero-gallery-lane {
+  top: -200px;
+}
