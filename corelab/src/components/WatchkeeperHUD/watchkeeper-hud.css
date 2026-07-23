@@ -1,11 +1,9 @@
-/* ============================================================
-   Watchkeeper HUD — Stylish Dev Panel (Draggable + Traffic Light Ready)
-   ============================================================ */
-
 .wk-hud {
-  position: fixed;
-  top: 32px;              /* changed from bottom: 32px */
-  left: 32px;             /* draggable starting point */
+  position: fixed !important;
+  pointer-events: auto;
+  top: 32px !important;
+  left: 32px !important;
+
   width: 420px;
   max-height: 70vh;
   padding: 20px;
@@ -25,76 +23,17 @@
 
   display: none;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition: opacity 0.25s ease;
 
   cursor: grab;
-  pointer-events: auto;   /* ensures dragging works */
 }
 
 .wk-hud.open {
   display: block;
   opacity: 1;
-  transform: translateY(0);
+  transform: none !important; /* critical for dragging */
 }
 
 .wk-hud:active {
   cursor: grabbing;
-}
-
-/* Header */
-.wk-header {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-}
-
-/* Section blocks */
-.wk-section {
-  margin-bottom: 18px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.wk-section:last-child {
-  border-bottom: none;
-}
-
-/* Labels */
-.wk-label {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #cfcfcf;
-  margin-bottom: 6px;
-}
-
-/* Button */
-.wk-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 10px 16px;
-  border-radius: 8px;
-  color: #ffffff;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.wk-btn:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.18);
-}
-
-/* Content */
-.wk-content {
-  margin-top: 12px;
-}
-
-pre {
-  background: #222;
-  padding: 12px;
-  border-radius: 6px;
-  overflow-x: auto;
 }
