@@ -14,13 +14,19 @@ import { runSentinelManifestScanner } from "./sentinel/SentinelManifestScanner.j
 export default defineConfig({
 
   // ------------------------------------------------------------
+  // ROOT CONFIG (CRITICAL FIX)
+  // ------------------------------------------------------------
+  root: ".",              // ⭐ Forces Vite to use /corelab as project root
+  publicDir: "public",    // ⭐ Ensures correct index.html is used
+
+  // ------------------------------------------------------------
   // SERVER CONFIG (DEV ONLY)
   // ------------------------------------------------------------
   server: {
     port: detectVitePort(),
-    strictPort: false,          // Prevent hard failures if port is taken
+    strictPort: false,
     fs: {
-      strict: false             // Allow scanning outside /corelab for Sentinel
+      strict: false
     }
   },
 
@@ -32,7 +38,7 @@ export default defineConfig({
     // ------------------------------------------------------------
     {
       name: "sentinel-manifest-scan-endpoint",
-      apply: "serve",            // Prevent running during build
+      apply: "serve",
       configureServer(server) {
         server.middlewares.use("/sentinel-scan", async (req, res) => {
           try {
@@ -57,14 +63,8 @@ export default defineConfig({
   // BUILD CONFIG (Cloudflare Pages Safe)
   // ------------------------------------------------------------
   build: {
-    // Cloudflare already sets root = /corelab
-    // So Vite must NOT override root or publicDir or outDir
     copyPublicDir: true,
-    sourcemap: true,             // Helps diagnose white-screen issues
-    emptyOutDir: true            // Prevent stale build artifacts
-
-    // ❗ IMPORTANT:
-    // rollupOptions.input MUST NOT be set for Vite dev server.
-    // Cloudflare Pages automatically resolves index.html correctly.
+    sourcemap: true,
+    emptyOutDir: true
   }
 });
