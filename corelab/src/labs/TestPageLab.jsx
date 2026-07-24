@@ -12,8 +12,8 @@ export default function TestPageLab() {
         width: "100vw",
         height: "100vh",
         overflow: "hidden",
-        zIndex: 0,               // sits behind streamed modules
-        pointerEvents: "none",   // allows clicking modules above
+        zIndex: 0,
+        pointerEvents: "none",
         background: "black"
       }}
     >
