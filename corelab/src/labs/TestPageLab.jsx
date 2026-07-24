@@ -28,9 +28,9 @@ export default function TestPageLab() {
           top: "50%",
           left: "50%",
           width: "100vw",
-          height: "56.25vw",     // 16:9 ratio based on width
+          height: "56.25vw",
           maxHeight: "100vh",
-          maxWidth: "177.78vh",  // 16:9 ratio based on height
+          maxWidth: "177.78vh",
           transform: "translate(-50%, -50%)",
           objectFit: "cover"
         }}
