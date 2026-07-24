@@ -2,7 +2,7 @@
 // GalleryLab.jsx — Isolated Gallery Test Environment (GR2)
 // ============================================================
 
-import Gallery from "../pages/Gallery.jsx";
+import HeroGallery from "../components/HeroGallery.jsx";
 
 export default function GalleryLab() {
   return (
@@ -17,7 +17,7 @@ export default function GalleryLab() {
         paddingTop: "40px"
       }}
     >
-      <Gallery />
+      <HeroGallery />
     </div>
   );
 }
