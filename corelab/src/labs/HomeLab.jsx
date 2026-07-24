@@ -1,15 +1,18 @@
-// ============================================================
-// HomeLab.jsx — GR3 Composition Lab
-// ============================================================
-
+import { useState, useEffect } from "react";
 import ModuleStreamer from "../labs/ModuleStreamer.jsx";
 
 export default function HomeLab() {
+  const [inject, setInject] = useState(null);
+
+  useEffect(() => {
+    const handler = (e) => setInject(e.detail);
+    window.addEventListener("stream-module", handler);
+    return () => window.removeEventListener("stream-module", handler);
+  }, []);
+
   return (
     <div className="lab-shell">
-      <ModuleStreamer inject="header" />
-      <ModuleStreamer inject="crown" />
-      <ModuleStreamer inject="gallery" />
+      {inject && <ModuleStreamer inject={inject} />}
     </div>
   );
 }
