@@ -17,7 +17,7 @@ export default function HeaderLab() {
         paddingTop: "40px"
       }}
     >
-      {/* LAB: Header only — no CoreHome, no Background3D, no global layout */}
+      {/* LAB: Header only — no CoreHome, no Background3D */}
       <Header />
     </div>
   );

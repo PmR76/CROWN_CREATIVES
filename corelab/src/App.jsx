@@ -11,6 +11,9 @@ import Blog from "./pages/Blog.jsx";
 
 import LabHome from "./pages/LabHome.jsx";
 
+// GR2 Labs
+import HeaderLab from "./labs/HeaderLab.jsx";
+
 import WatchkeeperHUD from "./components/WatchkeeperHUD/WatchkeeperHUD.jsx";
 
 export default function App() {
@@ -19,6 +22,7 @@ export default function App() {
       <WatchkeeperHUD />
 
       <Routes>
+        {/* MAIN SITE ROUTES */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
@@ -28,8 +32,9 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
 
-        {/* LAB ROUTE — clean slate for testing */}
+        {/* LAB ROUTES — GR2 isolated environments */}
         <Route path="/lab-home" element={<LabHome />} />
+        <Route path="/lab-header" element={<HeaderLab />} />
       </Routes>
     </BrowserRouter>
   );

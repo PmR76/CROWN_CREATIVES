@@ -449,3 +449,44 @@ export default function WatchkeeperHUD() {
     </div>
   );
 }
+{/* ============================================================
+   Lab Streaming Controls (GR3)
+   ============================================================ */}
+<div className="wk-section">
+  <div className="wk-label">Lab Module Streaming</div>
+
+  <button
+    className="wk-btn"
+    onClick={() => window.dispatchEvent(new CustomEvent("stream-module", { detail: "header" }))}
+  >
+    Stream HeaderLab
+  </button>
+
+  <button
+    className="wk-btn"
+    onClick={() => window.dispatchEvent(new CustomEvent("stream-module", { detail: "crown" }))}
+  >
+    Stream HeroCrownLab
+  </button>
+
+  <button
+    className="wk-btn"
+    onClick={() => window.dispatchEvent(new CustomEvent("stream-module", { detail: "gallery" }))}
+  >
+    Stream GalleryLab
+  </button>
+
+  <button
+    className="wk-btn"
+    onClick={() => window.dispatchEvent(new CustomEvent("stream-module", { detail: "all" }))}
+  >
+    Stream ALL Modules
+  </button>
+
+  <button
+    className="wk-btn danger"
+    onClick={() => window.dispatchEvent(new CustomEvent("stream-module", { detail: "clear" }))}
+  >
+    Clear Stream
+  </button>
+</div>
