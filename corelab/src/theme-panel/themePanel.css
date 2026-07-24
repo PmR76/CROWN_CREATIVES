@@ -1,0 +1,29 @@
+#theme-panel {
+  position: fixed;
+  top: 80px;
+  right: 40px;
+  width: 260px;
+  background: rgba(20, 20, 20, 0.85);
+  border-radius: 12px;
+  padding: 16px;
+  z-index: 9999;
+  display: none;
+  backdrop-filter: blur(10px);
+  color: white;
+  font-family: sans-serif;
+}
+
+#theme-panel button {
+  width: 100%;
+  margin: 6px 0;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  cursor: pointer;
+}
+
+#theme-panel button:hover {
+  background: rgba(255,255,255,0.2);
+}
