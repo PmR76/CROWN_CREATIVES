@@ -3,9 +3,9 @@ import HeroCrown from "../components/HeroCrown.jsx";
 
 export default function LabHome() {
   return (
-    <CoreHome>
-      {/* LAB: only HeroCrown for now */}
+    <div style={{ width: "100%", minHeight: "100vh" }}>
+      {/* CLEAN LAB — no Header, no Footer, no Gallery */}
       <HeroCrown />
-    </CoreHome>
+    </div>
   );
 }

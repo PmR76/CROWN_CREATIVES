@@ -1,12 +1,25 @@
 import { useEffect, useState } from "react";
-import { initThemeEngine, getTheme } from "../theme/themeEngine.js";
+import { initThemeEngine } from "../theme/themeEngine.js";
 
 export default function HeroCrown() {
   const [theme, setTheme] = useState("day");
 
   useEffect(() => {
+    // Initialise your existing theme engine
     initThemeEngine();
-    setTheme(getTheme());
+
+    // Read the theme directly from the DOM (your engine sets this)
+    const currentTheme = document.body.dataset.theme || "day";
+    setTheme(currentTheme);
+
+    // Listen for theme changes
+    const observer = new MutationObserver(() => {
+      setTheme(document.body.dataset.theme || "day");
+    });
+
+    observer.observe(document.body, { attributes: true });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
