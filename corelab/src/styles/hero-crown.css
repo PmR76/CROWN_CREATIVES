@@ -71,3 +71,15 @@
 .hero-crown-container svg {
   transform: scale(0.9);
 }
+.hero-crown-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+}
+
+.hero-crown-container img,
+.hero-crown-container svg {
+  transform: scale(0.9);
+}
