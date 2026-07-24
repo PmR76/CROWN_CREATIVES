@@ -3,7 +3,7 @@
 // ============================================================
 
 import React, { useEffect, useState, useRef } from "react";
-import "../styles/theme-panel.css";
+import "./theme-panel/themePanel.css";
 import { useThemeEngine } from "../hooks/useThemeEngine.js";
 
 // ============================================================
