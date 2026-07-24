@@ -1,7 +1,3 @@
-// ============================================================
-// Background3D.jsx — Gradient‑Aware Background Layer
-// ============================================================
-
 import { useEffect, useRef } from "react";
 
 export default function Background3D() {

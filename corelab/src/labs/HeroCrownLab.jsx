@@ -1,17 +1,10 @@
-// ============================================================
-// HeroCrownLab.jsx — 8s Day/Night Crown Transition
-// ============================================================
-
 import { useEffect, useState } from "react";
 
 export default function HeroCrownLab() {
   const [isNight, setIsNight] = useState(false);
 
   useEffect(() => {
-    const handler = () => {
-      setIsNight((prev) => !prev);
-    };
-
+    const handler = () => setIsNight((prev) => !prev);
     window.addEventListener("themeChanged", handler);
     return () => window.removeEventListener("themeChanged", handler);
   }, []);
