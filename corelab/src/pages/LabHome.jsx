@@ -8,7 +8,6 @@ import ModuleStreamer from "../labs/ModuleStreamer.jsx";
 export default function LabHome() {
   const [inject, setInject] = useState(null);
 
-  // Listen for Watchkeeper streaming events
   useEffect(() => {
     const handler = (e) => setInject(e.detail);
     window.addEventListener("stream-module", handler);
@@ -26,7 +25,6 @@ export default function LabHome() {
         justifyContent: "center"
       }}
     >
-      {/* Render nothing until a module is streamed */}
       {inject && <ModuleStreamer inject={inject} />}
     </div>
   );
