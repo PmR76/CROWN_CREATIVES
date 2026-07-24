@@ -9,6 +9,8 @@ import Podcasts from "./pages/Podcasts.jsx";
 import Contact from "./pages/Contact.jsx";
 import Blog from "./pages/Blog.jsx";
 
+import LabHome from "./pages/LabHome.jsx";
+
 import WatchkeeperHUD from "./components/WatchkeeperHUD/WatchkeeperHUD.jsx";
 
 export default function App() {
@@ -25,6 +27,9 @@ export default function App() {
         <Route path="/podcasts" element={<Podcasts />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
+
+        {/* LAB ROUTE — clean slate for testing */}
+        <Route path="/lab-home" element={<LabHome />} />
       </Routes>
     </BrowserRouter>
   );
