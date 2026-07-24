@@ -1,7 +1,3 @@
-// ============================================================
-// App.jsx — CoreHome Router Wrapper (GR1 Stable)
-// ============================================================
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home.jsx";
@@ -18,7 +14,6 @@ import WatchkeeperHUD from "./components/WatchkeeperHUD/WatchkeeperHUD.jsx";
 export default function App() {
   return (
     <BrowserRouter>
-      {/* Global HUD overlay */}
       <WatchkeeperHUD />
 
       <Routes>
