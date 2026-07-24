@@ -1,5 +1,5 @@
 // ============================================================
-// WatchkeeperHUD.jsx — Dev Diagnostics Drawer (GR1 Stable + Full Render Chain Diagnostics)
+// WatchkeeperHUD.jsx — Dev Diagnostics Drawer (GR1 Stable)
 // ============================================================
 
 import React, { useState, useEffect } from "react";
@@ -26,13 +26,10 @@ export default function WatchkeeperHUD() {
   // ------------------------------------------------------------
   useEffect(() => {
     const handler = (e) => {
-      try {
-        if (e.shiftKey && e.key.toLowerCase() === "w") {
-          setOpen((prev) => !prev);
-        }
-      } catch {}
+      if (e.shiftKey && e.key.toLowerCase() === "w") {
+        setOpen((prev) => !prev);
+      }
     };
-
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, []);
@@ -44,7 +41,6 @@ export default function WatchkeeperHUD() {
     async function loadData() {
       try {
         const res = await fetch("/sentinel/sentinel-tree.txt");
-
         if (!res.ok) throw new Error("Sentinel tree missing");
 
         const text = await res.text();
@@ -67,7 +63,6 @@ export default function WatchkeeperHUD() {
 
     if (open) loadData();
   }, [open]);
-
   // ------------------------------------------------------------
   // Snapshot Handler (Dev-only)
   // ------------------------------------------------------------
@@ -76,34 +71,23 @@ export default function WatchkeeperHUD() {
       const res = await fetch("/sentinel/sentinel-tree.txt");
       const text = await res.text();
 
-      // ------------------------------------------------------------
       // WebGL Stress Test
-      // ------------------------------------------------------------
       let webglStress = "PASS";
       try {
         const glTest = document.createElement("canvas").getContext("webgl2");
         const buffer = glTest.createBuffer();
         glTest.bindBuffer(glTest.ARRAY_BUFFER, buffer);
-        glTest.bufferData(
-          glTest.ARRAY_BUFFER,
-          new Float32Array(500000),
-          glTest.STATIC_DRAW
-        );
+        glTest.bufferData(glTest.ARRAY_BUFFER, new Float32Array(500000), glTest.STATIC_DRAW);
       } catch (err) {
         webglStress = "FAIL: " + err.message;
       }
 
-      // ------------------------------------------------------------
       // Shader Compilation Test
-      // ------------------------------------------------------------
       let shaderCompile = "PASS";
       try {
         const glTest = document.createElement("canvas").getContext("webgl2");
         const shader = glTest.createShader(glTest.FRAGMENT_SHADER);
-        glTest.shaderSource(
-          shader,
-          "precision highp float; void main(){ gl_FragColor = vec4(1.0); }"
-        );
+        glTest.shaderSource(shader, "precision highp float; void main(){ gl_FragColor = vec4(1.0); }");
         glTest.compileShader(shader);
         if (!glTest.getShaderParameter(shader, glTest.COMPILE_STATUS)) {
           shaderCompile = "FAIL: " + glTest.getShaderInfoLog(shader);
@@ -112,9 +96,7 @@ export default function WatchkeeperHUD() {
         shaderCompile = "FAIL: " + err.message;
       }
 
-      // ------------------------------------------------------------
       // Canvas Visibility Test
-      // ------------------------------------------------------------
       const canvas = document.querySelector("#webgl-background canvas");
       let canvasVisible = false;
       let canvasOpacity = null;
@@ -122,20 +104,15 @@ export default function WatchkeeperHUD() {
 
       if (canvas) {
         const style = window.getComputedStyle(canvas);
-        canvasVisible =
-          style.display !== "none" && style.visibility !== "hidden";
+        canvasVisible = style.display !== "none" && style.visibility !== "hidden";
         canvasOpacity = style.opacity;
         canvasZIndex = style.zIndex;
       }
 
-      // ------------------------------------------------------------
       // Theme Uniform Test
-      // ------------------------------------------------------------
       let themeUniform = document.body.dataset.theme || "unknown";
 
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 1 — Renderer Health Test
-      // ------------------------------------------------------------
+      // Renderer Health Test
       let rendererCreated = false;
       let rendererContextLost = false;
       let rendererError = null;
@@ -148,116 +125,72 @@ export default function WatchkeeperHUD() {
         rendererError = err.message;
       }
 
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 2 — Scene Object Count Test
-      // ------------------------------------------------------------
+      // Scene Object Count Test
       let sceneObjectCount = 0;
       let sceneHasMesh = false;
 
       try {
         const testScene = new THREE.Scene();
-        const testMesh = new THREE.Mesh(
-          new THREE.BoxGeometry(1, 1, 1),
-          new THREE.MeshBasicMaterial()
-        );
+        const testMesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial());
         testScene.add(testMesh);
         sceneObjectCount = testScene.children.length;
         sceneHasMesh = sceneObjectCount > 0;
       } catch {}
 
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 3 — Render Loop Activity Test
-      // ------------------------------------------------------------
+      // Render Loop Activity Test
       let renderFrames = 0;
       let renderLoopActive = false;
-
       try {
-        // simulate a few frames
-        for (let i = 0; i < 6; i++) {
-          renderFrames++;
-        }
+        for (let i = 0; i < 6; i++) renderFrames++;
         if (renderFrames > 5) renderLoopActive = true;
       } catch {}
 
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 4 — Shader Uniform Live Update Test
-      // ------------------------------------------------------------
-      let uniformTime = 0;
-      let uniformTheme = 0;
-      let uniformsUpdating = false;
+      // Shader Uniform Live Update Test
+      let uniformTime = window.__bg3d_lastTime || 0;
+      let uniformTheme = window.__bg3d_lastTheme || 0;
+      let uniformsUpdating = uniformTime > 0;
 
-      try {
-        uniformTime = window.__bg3d_lastTime || 0;
-        uniformTheme = window.__bg3d_lastTheme || 0;
-        uniformsUpdating = uniformTime > 0;
-      } catch {}
-
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 5 — Shader Material Attachment Test
-      // ------------------------------------------------------------
+      // Material Attachment Test
       let materialType = null;
       let materialAttached = false;
       let meshAttached = false;
-
       try {
         const testMaterial = new THREE.ShaderMaterial();
         materialType = testMaterial.type;
-
-        const testMesh = new THREE.Mesh(
-          new THREE.PlaneGeometry(),
-          testMaterial
-        );
-
+        const testMesh = new THREE.Mesh(new THREE.PlaneGeometry(), testMaterial);
         meshAttached = !!testMesh.material;
-        materialAttached =
-          testMesh.material instanceof THREE.ShaderMaterial;
+        materialAttached = testMesh.material instanceof THREE.ShaderMaterial;
       } catch {}
 
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 6 — Camera Projection Test
-      // ------------------------------------------------------------
+      // Camera Projection Test
       let cameraType = null;
       let cameraValid = false;
-
       try {
         const testCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
         cameraType = testCamera.type;
         cameraValid = !!testCamera.projectionMatrix;
       } catch {}
 
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 7 — Canvas Paint Timing Test
-      // ------------------------------------------------------------
+      // Canvas Paint Timing Test
       let canvasPainted = false;
-
       try {
         const ctx = canvas?.getContext("2d");
         if (ctx) {
           const pixel = ctx.getImageData(1, 1, 1, 1).data;
-          canvasPainted =
-            pixel[0] !== 0 ||
-            pixel[1] !== 0 ||
-            pixel[2] !== 0 ||
-            pixel[3] !== 0;
+          canvasPainted = pixel.some((v) => v !== 0);
         }
       } catch {}
 
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 8 — DOM Mount Order Test
-      // ------------------------------------------------------------
+      // DOM Mount Order Test
       let backgroundMountedFirst = false;
-
       try {
         const bg = document.querySelector("#webgl-background");
         const firstChild = document.body.firstElementChild;
         backgroundMountedFirst = bg === firstChild;
       } catch {}
 
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 9 — Shader Compilation Log Capture
-      // ------------------------------------------------------------
+      // Shader Compilation Log Capture
       let shaderWarnings = [];
-
       try {
         const glTest = document.createElement("canvas").getContext("webgl2");
         const shader = glTest.createShader(glTest.FRAGMENT_SHADER);
@@ -267,23 +200,17 @@ export default function WatchkeeperHUD() {
         if (log) shaderWarnings.push(log);
       } catch {}
 
-      // ------------------------------------------------------------
-      // NEW DIAGNOSTIC 10 — Three.js Internal Error Log
-      // ------------------------------------------------------------
+      // Three.js Internal Error Log
       let threeErrors = [];
       try {
         THREE.onError = (msg) => threeErrors.push(msg);
       } catch {}
 
-      // ------------------------------------------------------------
       // Build Snapshot
-      // ------------------------------------------------------------
       const snapshot = {
         timestamp: new Date().toISOString(),
         sentinelTree: text,
         status: "OK",
-
-        // Existing diagnostics
         webgl2: webgl2Supported,
         gpu: gpuRenderer,
         webglStress,
@@ -292,8 +219,6 @@ export default function WatchkeeperHUD() {
         canvasOpacity,
         canvasZIndex,
         themeUniform,
-
-        // New diagnostics
         rendererCreated,
         rendererContextLost,
         rendererError,
@@ -312,14 +237,11 @@ export default function WatchkeeperHUD() {
         canvasPainted,
         backgroundMountedFirst,
         shaderWarnings,
-        threeErrors
+        threeErrors,
       };
 
-      console.log("Watchkeeper Snapshot:", snapshot);
       setDataDump(snapshot);
-
     } catch (err) {
-      console.error("Snapshot failed:", err);
       setDataDump({
         error: "Snapshot failed",
         detail: err.message,
@@ -334,7 +256,6 @@ export default function WatchkeeperHUD() {
   // ------------------------------------------------------------
   useEffect(() => {
     if (!open) return;
-
     const hud = document.querySelector(".wk-hud");
     if (!hud) return;
 
@@ -377,7 +298,6 @@ export default function WatchkeeperHUD() {
     window.location.search.includes("dev=true");
 
   if (!isDev) return null;
-
   // ------------------------------------------------------------
   // Render HUD
   // ------------------------------------------------------------
@@ -398,26 +318,21 @@ export default function WatchkeeperHUD() {
       {/* WebGL Diagnostics Button */}
       <div className="wk-section">
         <div className="wk-label">WebGL Tools</div>
-
         <button
           className="wk-btn"
           onClick={() => window.open("https://webglreport.com", "_blank")}
         >
           WebGL Diagnostics
         </button>
-
         <button
           className="wk-btn"
           onClick={() => window.open("chrome://inspect/#devices", "_blank")}
         >
           Lighthouse (Chrome)
         </button>
-
         <button
           className="wk-btn"
-          onClick={() =>
-            window.open("https://threejs.org/editor/", "_blank")
-          }
+          onClick={() => window.open("https://threejs.org/editor/", "_blank")}
         >
           Three.js Shader Test
         </button>
@@ -426,16 +341,10 @@ export default function WatchkeeperHUD() {
       {/* Local GPU + WebGL Status */}
       <div className="wk-section">
         <div className="wk-label">Local GPU Status</div>
-
         <div className="wk-status">
           <span className="wk-status-label">WebGL2 Support</span>
-          <span
-            className={`wk-light ${
-              webgl2Supported ? "wk-green" : "wk-red"
-            }`}
-          ></span>
+          <span className={`wk-light ${webgl2Supported ? "wk-green" : "wk-red"}`}></span>
         </div>
-
         <div className="wk-status">
           <span className="wk-status-label">GPU Renderer</span>
           <span className="wk-status-value">{gpuRenderer}</span>
@@ -445,48 +354,69 @@ export default function WatchkeeperHUD() {
       <div className="wk-content">
         <h3>Live Diagnostics Snapshot</h3>
         <pre>{JSON.stringify(dataDump, null, 2)}</pre>
+
+        {/* ============================================================
+           GR3 — Lab Module Streaming Controls
+           ============================================================ */}
+        <div className="wk-section">
+          <div className="wk-label">Lab Module Streaming</div>
+
+          <button
+            className="wk-btn"
+            onClick={() =>
+              window.dispatchEvent(
+                new CustomEvent("stream-module", { detail: "header" })
+              )
+            }
+          >
+            Stream HeaderLab
+          </button>
+
+          <button
+            className="wk-btn"
+            onClick={() =>
+              window.dispatchEvent(
+                new CustomEvent("stream-module", { detail: "crown" })
+              )
+            }
+          >
+            Stream HeroCrownLab
+          </button>
+
+          <button
+            className="wk-btn"
+            onClick={() =>
+              window.dispatchEvent(
+                new CustomEvent("stream-module", { detail: "gallery" })
+              )
+            }
+          >
+            Stream GalleryLab
+          </button>
+
+          <button
+            className="wk-btn"
+            onClick={() =>
+              window.dispatchEvent(
+                new CustomEvent("stream-module", { detail: "all" })
+              )
+            }
+          >
+            Stream ALL Modules
+          </button>
+
+          <button
+            className="wk-btn danger"
+            onClick={() =>
+              window.dispatchEvent(
+                new CustomEvent("stream-module", { detail: "clear" })
+              )
+            }
+          >
+            Clear Stream
+          </button>
+        </div>
       </div>
     </div>
   );
 }
-{/* ============================================================
-   Lab Streaming Controls (GR3)
-   ============================================================ */}
-<div className="wk-section">
-  <div className="wk-label">Lab Module Streaming</div>
-
-  <button
-    className="wk-btn"
-    onClick={() => window.dispatchEvent(new CustomEvent("stream-module", { detail: "header" }))}
-  >
-    Stream HeaderLab
-  </button>
-
-  <button
-    className="wk-btn"
-    onClick={() => window.dispatchEvent(new CustomEvent("stream-module", { detail: "crown" }))}
-  >
-    Stream HeroCrownLab
-  </button>
-
-  <button
-    className="wk-btn"
-    onClick={() => window.dispatchEvent(new CustomEvent("stream-module", { detail: "gallery" }))}
-  >
-    Stream GalleryLab
-  </button>
-
-  <button
-    className="wk-btn"
-    onClick={() => window.dispatchEvent(new CustomEvent("stream-module", { detail: "all" }))}
-  >
-    Stream ALL Modules
-  </button>
-
-  <button
-    className="wk-btn danger"
-    onClick={() => window.dispatchEvent(new CustomEvent("stream-module", { detail: "clear" }))}
-  >
-    Clear Stream
-  </button>
-</div>
