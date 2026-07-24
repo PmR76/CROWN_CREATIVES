@@ -1,11 +1,19 @@
 // ============================================================
-// App.jsx — CoreLab OS Routing + LIVE Pointer (GR4)
+// App.jsx — CoreLab OS Routing + Background3D + Theme Panel + GR3 Streaming
 // ============================================================
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 
 // LIVE pointer
 import { LIVE_PAGE } from "./live/livePointer.js";
+
+// Background + Theme Panel
+import Background3D from "./components/Background3D.jsx";
+import "./theme-panel/themePanel.js"; // auto‑registers SHIFT+T
+
+// HUD
+import WatchkeeperHUD from "./components/WatchkeeperHUD/WatchkeeperHUD.jsx";
 
 // Main site pages
 import Home from "./pages/Home.jsx";
@@ -16,9 +24,6 @@ import Videos from "./pages/Videos.jsx";
 import Podcasts from "./pages/Podcasts.jsx";
 import Contact from "./pages/Contact.jsx";
 import Blog from "./pages/Blog.jsx";
-
-// HUD
-import WatchkeeperHUD from "./components/WatchkeeperHUD/WatchkeeperHUD.jsx";
 
 // GR3 Sandbox
 import LabHome from "./pages/LabHome.jsx";
@@ -45,8 +50,19 @@ const liveMap = {
 };
 
 export default function App() {
+  useEffect(() => {
+    // Initialize theme panel once
+    if (window.initThemePanel) {
+      window.initThemePanel();
+    }
+  }, []);
+
   return (
     <BrowserRouter>
+      {/* Background layer */}
+      <Background3D />
+
+      {/* HUD */}
       <WatchkeeperHUD />
 
       <Routes>
