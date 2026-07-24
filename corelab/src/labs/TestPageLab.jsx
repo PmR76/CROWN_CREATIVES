@@ -1,5 +1,5 @@
 // ============================================================
-// TestPageLab.jsx — Temporary Construction Page (Mini Viewport)
+// TestPageLab.jsx — Responsive 16:9 Construction Panel
 // ============================================================
 
 export default function TestPageLab() {
@@ -9,12 +9,17 @@ export default function TestPageLab() {
         position: "fixed",
         bottom: "20px",
         right: "20px",
-        width: "360px",
-        height: "240px",
+
+        // Responsive width (desktop/tablet/mobile)
+        width: "min(50vw, 480px)",   // max 480px, but shrinks on small screens
+
+        // Maintain perfect 16:9 aspect ratio
+        aspectRatio: "16 / 9",
+
         borderRadius: "12px",
         overflow: "hidden",
         zIndex: 9999,
-        pointerEvents: "none",   // allows clicking modules behind it
+        pointerEvents: "none", // allows clicking modules behind it
         boxShadow: "0 0 20px rgba(0,0,0,0.4)"
       }}
     >
