@@ -1,5 +1,5 @@
 // ============================================================
-// TestPageLab.jsx — Responsive 16:9 Construction Panel
+// TestPageLab.jsx — Fullscreen Adaptive 16:9 Background Video
 // ============================================================
 
 export default function TestPageLab() {
@@ -7,20 +7,14 @@ export default function TestPageLab() {
     <div
       style={{
         position: "fixed",
-        bottom: "20px",
-        right: "20px",
-
-        // Responsive width (desktop/tablet/mobile)
-        width: "min(50vw, 480px)",   // max 480px, but shrinks on small screens
-
-        // Maintain perfect 16:9 aspect ratio
-        aspectRatio: "16 / 9",
-
-        borderRadius: "12px",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
         overflow: "hidden",
-        zIndex: 9999,
-        pointerEvents: "none", // allows clicking modules behind it
-        boxShadow: "0 0 20px rgba(0,0,0,0.4)"
+        zIndex: 0,               // sits behind streamed modules
+        pointerEvents: "none",   // allows clicking modules above
+        background: "black"
       }}
     >
       <video
@@ -30,8 +24,14 @@ export default function TestPageLab() {
         muted
         playsInline
         style={{
-          width: "100%",
-          height: "100%",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          width: "100vw",
+          height: "56.25vw",     // 16:9 ratio based on width
+          maxHeight: "100vh",
+          maxWidth: "177.78vh",  // 16:9 ratio based on height
+          transform: "translate(-50%, -50%)",
           objectFit: "cover"
         }}
       />
