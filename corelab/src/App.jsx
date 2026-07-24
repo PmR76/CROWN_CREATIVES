@@ -1,4 +1,11 @@
+// ============================================================
+// App.jsx — CoreLab OS Routing + LIVE Pointer (GR4)
+// ============================================================
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// LIVE pointer
+import { LIVE_PAGE } from "./live/livePointer.js";
 
 // Main site pages
 import Home from "./pages/Home.jsx";
@@ -23,6 +30,19 @@ import GalleryLab from "./labs/GalleryLab.jsx";
 import CardsLab from "./labs/CardsLab.jsx";
 import TickerLab from "./labs/TickerLab.jsx";
 import FooterLab from "./labs/FooterLab.jsx";
+import TestPageLab from "./labs/TestPageLab.jsx";
+
+// LIVE PAGE MAP — controls what goes live
+const liveMap = {
+  "test-page": <TestPageLab />,
+  "home": <Home />,
+  "header": <HeaderLab />,
+  "crown": <HeroCrownLab />,
+  "gallery": <GalleryLab />,
+  "cards": <CardsLab />,
+  "ticker": <TickerLab />,
+  "footer": <FooterLab />,
+};
 
 export default function App() {
   return (
@@ -30,8 +50,10 @@ export default function App() {
       <WatchkeeperHUD />
 
       <Routes>
+        {/* LIVE PAGE — controlled by livePointer.js */}
+        <Route path="/" element={liveMap[LIVE_PAGE]} />
+
         {/* Main Site */}
-        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/projects" element={<Projects />} />
@@ -50,6 +72,7 @@ export default function App() {
         <Route path="/lab-cards" element={<CardsLab />} />
         <Route path="/lab-ticker" element={<TickerLab />} />
         <Route path="/lab-footer" element={<FooterLab />} />
+        <Route path="/lab-test-page" element={<TestPageLab />} />
 
         {/* Page Labs */}
         <Route path="/lab-about" element={<About />} />
