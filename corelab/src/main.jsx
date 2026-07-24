@@ -12,7 +12,6 @@ import { AdminProvider } from "./admin/AdminContext.jsx";
 
 // Global CSS
 import "./styles/core.css";
-import "./styles/theme-panel.css";
 import "./styles/background3d.css";
 import "./styles/header.css";
 import "./styles/footer.css";
