@@ -11,6 +11,7 @@ import { LIVE_PAGE } from "./live/livePointer.js";
 // Background + Theme Panel
 import Background3D from "./components/Background3D.jsx";
 import "./theme-panel/themePanel.js"; // auto‑registers SHIFT+T
+import "./theme-panel/themePanel.css";
 
 // HUD
 import WatchkeeperHUD from "./components/WatchkeeperHUD/WatchkeeperHUD.jsx";
@@ -36,6 +37,7 @@ import CardsLab from "./labs/CardsLab.jsx";
 import TickerLab from "./labs/TickerLab.jsx";
 import FooterLab from "./labs/FooterLab.jsx";
 import TestPageLab from "./labs/TestPageLab.jsx";
+
 
 // LIVE PAGE MAP — controls what goes live
 const liveMap = {

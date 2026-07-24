@@ -1,163 +1,29 @@
-/* ============================================================
-   Crown Creatives Editor OS — Admin Panel Styling (GR1)
-============================================================ */
-
-/* ============================================================
-   PANEL WRAPPER
-============================================================ */
-.admin-panel {
+#theme-panel {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 480px;
-  max-height: 80vh;
-  transform: translate(-50%, -50%);
-  z-index: 999999;
-
-  background: rgba(20, 20, 30, 0.92);
-  border-radius: 16px;
-  padding: 24px;
-
-  color: #fff;
-  font-family: "Cinzel Decorative", serif;
-
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(18px);
-
-  overflow-y: auto;
-
-  opacity: 0;
-  animation: adminPanelFadeIn 0.4s ease forwards;
+  top: 80px;
+  right: 40px;
+  width: 260px;
+  background: rgba(20, 20, 20, 0.85);
+  border-radius: 12px;
+  padding: 16px;
+  z-index: 9999;
+  display: none;
+  backdrop-filter: blur(10px);
+  color: white;
+  font-family: sans-serif;
 }
 
-@keyframes adminPanelFadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, calc(-50% + 10px));
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
-/* ============================================================
-   TITLES
-============================================================ */
-.admin-panel-title {
-  margin: 0 0 20px 0;
-  font-size: 22px;
-  font-weight: 700;
-  text-align: center;
-  letter-spacing: 1px;
-}
-
-.admin-section-title {
-  margin: 20px 0 10px 0;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.admin-section-subtitle {
-  margin: 0 0 12px 0;
-  font-size: 13px;
-  opacity: 0.7;
-}
-
-/* ============================================================
-   SWATCH GRID (60 swatches)
-============================================================ */
-.swatch-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.swatch {
+#theme-panel button {
   width: 100%;
-  height: 34px;
+  margin: 6px 0;
+  padding: 8px;
   border-radius: 6px;
   border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
   cursor: pointer;
-
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.swatch:hover {
-  transform: scale(1.06);
-}
-
-.swatch.active {
-  outline: 3px solid #fff;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
-}
-
-body[data-theme="night"] .swatch.active {
-  outline: 3px solid #88ccff;
-  box-shadow: 0 0 12px rgba(120, 200, 255, 0.8);
-}
-
-/* ============================================================
-   INPUTS (Cards + Ticker)
-============================================================ */
-.admin-label {
-  display: block;
-  margin-bottom: 12px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.admin-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-
-  border-radius: 6px;
-  border: none;
-
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-
-  font-family: system-ui, sans-serif;
-  font-size: 14px;
-}
-
-.admin-input:focus {
-  outline: 2px solid #4a90e2;
-}
-
-/* ============================================================
-   SAVE BUTTON
-============================================================ */
-.admin-save-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-
-  border-radius: 8px;
-  border: none;
-
-  background: #4a90e2;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.admin-save-button:hover {
-  background: #6ab0ff;
-}
-
-/* ============================================================
-   PAUSE MODE VISUALS
-============================================================ */
-body.gallery-edit-mode .hero-gallery-img,
-body.gallery-edit-mode .ticker-track,
-body.gallery-edit-mode .frosted-card {
-  animation-play-state: paused !important;
-  opacity: 0.7;
-  filter: blur(1px);
+#theme-panel button:hover {
+  background: rgba(255,255,255,0.2);
 }

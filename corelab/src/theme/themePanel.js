@@ -1,12 +1,12 @@
 // ============================================================
-// themePanel.js — Page‑Specific Themes + SHIFT+T Toggle
+// themePanel.js — SHIFT+T Theme Panel + Page Themes + Gradients
 // ============================================================
 
 window.initThemePanel = function () {
   const panel = document.getElementById("theme-panel");
   if (!panel) return;
 
-  // Toggle with SHIFT + T
+  // SHIFT + T toggle
   window.addEventListener("keydown", (e) => {
     if (e.shiftKey && e.key.toLowerCase() === "t") {
       panel.style.display =
