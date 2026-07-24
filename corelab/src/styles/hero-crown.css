@@ -1,23 +1,26 @@
 /* ============================================================
-   HERO CROWN — Cinematic Neon Transition (GR1)
-============================================================ */
+   HERO CROWN — Clean, Centered, GR1-Stable
+   ============================================================ */
 
+/* Wrapper that centers the crown on the page */
 .hero-crown-wrapper {
   position: relative;
-  width: 100vw;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 375px;
+
+  /* Adjust vertical placement */
+  margin-top: 160px;
+
   z-index: 30;
 }
 
+/* Crown image (day + night) */
 .hero-crown-img {
-  width: 550px;
+  width: 495px; /* 550px reduced by ~10% */
   height: auto;
-  position: absolute;
+
   opacity: 0;
   transition:
     opacity 8s ease-in-out,
@@ -25,7 +28,14 @@
     transform 8s ease-in-out;
 }
 
-/* DAY GLOW */
+/* Active crown */
+.hero-crown-img.active {
+  opacity: 1;
+}
+
+/* ============================================================
+   DAY GLOW — Warm Gold
+   ============================================================ */
 #hero-crown-day {
   filter:
     drop-shadow(0 0 22px rgba(255,255,255,0.9))
@@ -33,53 +43,25 @@
     drop-shadow(0 0 66px rgba(255,180,80,0.5));
 }
 
-/* NIGHT GLOW */
+/* ============================================================
+   NIGHT GLOW — Cool Neon
+   ============================================================ */
 #hero-crown-night.active {
-  opacity: 1;
   filter:
     drop-shadow(0 0 32px rgba(120,200,255,1))
     drop-shadow(0 0 64px rgba(160,120,255,0.9))
     drop-shadow(0 0 96px rgba(120,80,255,0.8));
 }
 
-.hero-crown-img.active {
-  opacity: 1;
-}
-
-/* FLOAT */
+/* ============================================================
+   FLOAT ANIMATION
+   ============================================================ */
 .float {
   animation: crownFloat 12s ease-in-out infinite;
 }
 
 @keyframes crownFloat {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
-}
-/* Center HeroCrown on screen */
-.hero-crown-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 120px; /* adjust as needed */
-}
-
-/* Reduce size by 10% */
-.hero-crown-container img,
-.hero-crown-container svg {
-  transform: scale(0.9);
-}
-.hero-crown-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 120px;
-}
-
-.hero-crown-container img,
-.hero-crown-container svg {
-  transform: scale(0.9);
 }
