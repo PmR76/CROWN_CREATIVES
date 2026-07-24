@@ -56,3 +56,18 @@
   50% { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
 }
+/* Center HeroCrown on screen */
+.hero-crown-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px; /* adjust as needed */
+}
+
+/* Reduce size by 10% */
+.hero-crown-container img,
+.hero-crown-container svg {
+  transform: scale(0.9);
+}
