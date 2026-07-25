@@ -1,1 +1,2 @@
-start http://localhost:5173/
+cd /d C:\DEV\CROWN_CREATIVES\corelab
+npm run dev
