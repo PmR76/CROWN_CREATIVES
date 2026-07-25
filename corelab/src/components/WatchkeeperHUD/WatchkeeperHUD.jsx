@@ -15,7 +15,6 @@ export default function WatchkeeperHUD() {
   // ------------------------------------------------------------
   const gl = document.createElement("canvas").getContext("webgl2");
   const webgl2Supported = !!gl;
-
   const gpuInfo = gl?.getExtension("WEBGL_debug_renderer_info");
   const gpuRenderer = gpuInfo
     ? gl.getParameter(gpuInfo.UNMASKED_RENDERER_WEBGL)
@@ -44,7 +43,6 @@ export default function WatchkeeperHUD() {
         if (!res.ok) throw new Error("Sentinel tree missing");
 
         const text = await res.text();
-
         setDataDump({
           timestamp: new Date().toISOString(),
           sentinelTree: text,
@@ -63,6 +61,7 @@ export default function WatchkeeperHUD() {
 
     if (open) loadData();
   }, [open]);
+
   // ------------------------------------------------------------
   // Snapshot Handler (Dev-only)
   // ------------------------------------------------------------
@@ -77,7 +76,11 @@ export default function WatchkeeperHUD() {
         const glTest = document.createElement("canvas").getContext("webgl2");
         const buffer = glTest.createBuffer();
         glTest.bindBuffer(glTest.ARRAY_BUFFER, buffer);
-        glTest.bufferData(glTest.ARRAY_BUFFER, new Float32Array(500000), glTest.STATIC_DRAW);
+        glTest.bufferData(
+          glTest.ARRAY_BUFFER,
+          new Float32Array(500000),
+          glTest.STATIC_DRAW
+        );
       } catch (err) {
         webglStress = "FAIL: " + err.message;
       }
@@ -87,7 +90,10 @@ export default function WatchkeeperHUD() {
       try {
         const glTest = document.createElement("canvas").getContext("webgl2");
         const shader = glTest.createShader(glTest.FRAGMENT_SHADER);
-        glTest.shaderSource(shader, "precision highp float; void main(){ gl_FragColor = vec4(1.0); }");
+        glTest.shaderSource(
+          shader,
+          "precision highp float; void main(){ gl_FragColor = vec4(1.0); }"
+        );
         glTest.compileShader(shader);
         if (!glTest.getShaderParameter(shader, glTest.COMPILE_STATUS)) {
           shaderCompile = "FAIL: " + glTest.getShaderInfoLog(shader);
@@ -101,10 +107,10 @@ export default function WatchkeeperHUD() {
       let canvasVisible = false;
       let canvasOpacity = null;
       let canvasZIndex = null;
-
       if (canvas) {
         const style = window.getComputedStyle(canvas);
-        canvasVisible = style.display !== "none" && style.visibility !== "hidden";
+        canvasVisible =
+          style.display !== "none" && style.visibility !== "hidden";
         canvasOpacity = style.opacity;
         canvasZIndex = style.zIndex;
       }
@@ -116,7 +122,6 @@ export default function WatchkeeperHUD() {
       let rendererCreated = false;
       let rendererContextLost = false;
       let rendererError = null;
-
       try {
         const testCanvas = document.createElement("canvas");
         const testRenderer = testCanvas.getContext("webgl2");
@@ -128,10 +133,12 @@ export default function WatchkeeperHUD() {
       // Scene Object Count Test
       let sceneObjectCount = 0;
       let sceneHasMesh = false;
-
       try {
         const testScene = new THREE.Scene();
-        const testMesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial());
+        const testMesh = new THREE.Mesh(
+          new THREE.BoxGeometry(1, 1, 1),
+          new THREE.MeshBasicMaterial()
+        );
         testScene.add(testMesh);
         sceneObjectCount = testScene.children.length;
         sceneHasMesh = sceneObjectCount > 0;
@@ -157,7 +164,10 @@ export default function WatchkeeperHUD() {
       try {
         const testMaterial = new THREE.ShaderMaterial();
         materialType = testMaterial.type;
-        const testMesh = new THREE.Mesh(new THREE.PlaneGeometry(), testMaterial);
+        const testMesh = new THREE.Mesh(
+          new THREE.PlaneGeometry(),
+          testMaterial
+        );
         meshAttached = !!testMesh.material;
         materialAttached = testMesh.material instanceof THREE.ShaderMaterial;
       } catch {}
@@ -166,7 +176,14 @@ export default function WatchkeeperHUD() {
       let cameraType = null;
       let cameraValid = false;
       try {
-        const testCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        const testCamera = new THREE.OrthographicCamera(
+          -1,
+          1,
+          1,
+          -1,
+          0,
+          1
+        );
         cameraType = testCamera.type;
         cameraValid = !!testCamera.projectionMatrix;
       } catch {}
@@ -256,12 +273,15 @@ export default function WatchkeeperHUD() {
   // ------------------------------------------------------------
   useEffect(() => {
     if (!open) return;
+
     const hud = document.querySelector(".wk-hud");
     if (!hud) return;
 
     let isDragging = false;
     let startX = 0;
     let startY = 0;
+
+    const header = hud.querySelector(".wk-header");
 
     const onMouseDown = (e) => {
       isDragging = true;
@@ -279,12 +299,12 @@ export default function WatchkeeperHUD() {
       isDragging = false;
     };
 
-    hud.addEventListener("mousedown", onMouseDown);
+    header.addEventListener("mousedown", onMouseDown);
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseup", onMouseUp);
 
     return () => {
-      hud.removeEventListener("mousedown", onMouseDown);
+      header.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
     };
@@ -298,6 +318,7 @@ export default function WatchkeeperHUD() {
     window.location.search.includes("dev=true");
 
   if (!isDev) return null;
+
   // ------------------------------------------------------------
   // Render HUD
   // ------------------------------------------------------------
@@ -343,7 +364,9 @@ export default function WatchkeeperHUD() {
         <div className="wk-label">Local GPU Status</div>
         <div className="wk-status">
           <span className="wk-status-label">WebGL2 Support</span>
-          <span className={`wk-light ${webgl2Supported ? "wk-green" : "wk-red"}`}></span>
+          <span
+            className={`wk-light ${webgl2Supported ? "wk-green" : "wk-red"}`}
+          ></span>
         </div>
         <div className="wk-status">
           <span className="wk-status-label">GPU Renderer</span>
@@ -356,8 +379,8 @@ export default function WatchkeeperHUD() {
         <pre>{JSON.stringify(dataDump, null, 2)}</pre>
 
         {/* ============================================================
-           GR3 — Lab Module Streaming Controls
-           ============================================================ */}
+            GR3 — Lab Module Streaming Controls
+        ============================================================ */}
         <div className="wk-section">
           <div className="wk-label">Lab Module Streaming</div>
 
