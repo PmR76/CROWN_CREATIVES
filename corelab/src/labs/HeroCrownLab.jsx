@@ -10,17 +10,17 @@ export default function HeroCrownLab() {
   }, []);
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: "300px",
-        height: "300px",
-        zIndex: 2,
-      }}
-    >
+<div
+  style={{
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "540px",   // was 300px
+    height: "540px",  // was 300px
+    zIndex: 2,
+  }}
+>
       <img
         src="/assets/icons/day-crown.svg"
         style={{
