@@ -15,16 +15,7 @@ export default function LabHome() {
   }, []);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        minHeight: "100vh",
-        background: "transparent",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
+    <div className="lab-shell">
       {inject && <ModuleStreamer inject={inject} />}
     </div>
   );
