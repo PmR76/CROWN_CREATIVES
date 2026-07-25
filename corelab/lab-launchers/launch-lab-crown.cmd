@@ -1,2 +1,2 @@
-cd /d C:\DEV\CROWN_CREATIVES\corelab
-npm run devstart http://localhost:5173/lab-crown
+cd /d C:\DEV\CROWN_CREATIVES\corelab http://localhost:5173/lab-crown
+npm run devstart 
