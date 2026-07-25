@@ -1,2 +1,3 @@
-cd /d C:\DEV\CROWN_CREATIVES\corelab: 5173/lab-crown
-npm run devstart 
+:: launch-lab-crown.cmd
+@echo off
+start http://localhost:5173/lab-crown
