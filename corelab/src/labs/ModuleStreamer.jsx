@@ -1,30 +1,53 @@
-useEffect(() => {
-  window.__MODULE_STREAMER_ACTIVE = true;
-  window.__GR3_ACTIVE = true;
+// ============================================================
+// ModuleStreamer.jsx — GR3 Multi‑Module Injection System
+// ============================================================
 
-  const handler = (e) => {
-    const detail = e.detail;
+import { useEffect, useState } from "react";
+import { modules } from "./moduleRegistry.js";
 
-    if (detail === "clear") {
-      setActiveModules([]);
-      return;
-    }
+export default function ModuleStreamer() {
+  const [activeModules, setActiveModules] = useState([]);
 
-    if (detail === "all") {
-      setActiveModules(Object.keys(modules));
-      return;
-    }
+  useEffect(() => {
+    // Diagnostic flags
+    window.__MODULE_STREAMER_ACTIVE = true;
+    window.__GR3_ACTIVE = true;
 
-    setActiveModules((prev) =>
-      prev.includes(detail) ? prev : [...prev, detail]
-    );
-  };
+    const handler = (e) => {
+      const detail = e.detail;
 
-  window.addEventListener("stream-module", handler);
+      if (detail === "clear") {
+        setActiveModules([]);
+        return;
+      }
 
-  return () => {
-    window.removeEventListener("stream-module", handler);
-    window.__MODULE_STREAMER_ACTIVE = false;
-    window.__GR3_ACTIVE = false;
-  };
-}, []);
+      if (detail === "all") {
+        setActiveModules(Object.keys(modules));
+        return;
+      }
+
+      setActiveModules((prev) =>
+        prev.includes(detail) ? prev : [...prev, detail]
+      );
+    };
+
+    window.addEventListener("stream-module", handler);
+
+    return () => {
+      window.removeEventListener("stream-module", handler);
+      window.__MODULE_STREAMER_ACTIVE = false;
+      window.__GR3_ACTIVE = false;
+    };
+  }, []);
+
+  return (
+    <div style={{ width: "100%", minHeight: "100%" }}>
+      {activeModules.map((key) => {
+        const LazyModule = modules[key];
+        if (!LazyModule) return null;
+        const Component = LazyModule;
+        return <Component key={key} />;
+      })}
+    </div>
+  );
+}
