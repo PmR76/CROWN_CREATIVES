@@ -5,16 +5,18 @@
 /* Wrapper that centers the crown on the page */
 .hero-crown-wrapper {
   position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 480px;
+  height: 480px;
 
-  /* Adjust vertical placement */
-  margin-top: 160px;
+  /* FIX: Always above theme backgrounds */
+  z-index: 9999 !important;
 
-  z-index: 30;
+  /* FIX: Prevent opacity inheritance */
+  isolation: isolate;
+
+  pointer-events: none;
 }
+
 
 /* Crown image (day + night) */
 .hero-crown-img {
