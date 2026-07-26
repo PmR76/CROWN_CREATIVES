@@ -1,6 +1,4 @@
-// ============================================================
-// LabHome.jsx — GR3 Composition Sandbox (Blank Until Streamed)
-// ============================================================
+// C:\DEV\CROWN_CREATIVES\corelab\src\pages\LabHome.jsx
 
 import { useState, useEffect } from "react";
 import ModuleStreamer from "../labs/ModuleStreamer.jsx";
@@ -16,7 +14,8 @@ export default function LabHome() {
 
   return (
     <div className="lab-shell">
-      {inject && <ModuleStreamer inject={inject} />}
+      {/* GR3 streaming shell */}
+      <ModuleStreamer />
     </div>
   );
 }

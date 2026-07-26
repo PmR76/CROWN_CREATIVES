@@ -1,6 +1,4 @@
-// ============================================================
-// ModuleStreamer.jsx — GR3 Multi‑Module Injection System
-// ============================================================
+// C:\DEV\CROWN_CREATIVES\corelab\src\labs\ModuleStreamer.jsx
 
 import { useEffect, useState } from "react";
 import { modules } from "./moduleRegistry.js";
@@ -9,6 +7,10 @@ export default function ModuleStreamer() {
   const [activeModules, setActiveModules] = useState([]);
 
   useEffect(() => {
+    // Mark GR3 as active for diagnostics
+    window.__MODULE_STREAMER_ACTIVE = true;
+    window.__GR3_ACTIVE = true;
+
     const handler = (e) => {
       const detail = e.detail;
 
@@ -22,14 +24,17 @@ export default function ModuleStreamer() {
         return;
       }
 
-      // Add module if not already present
       setActiveModules((prev) =>
         prev.includes(detail) ? prev : [...prev, detail]
       );
     };
 
     window.addEventListener("stream-module", handler);
-    return () => window.removeEventListener("stream-module", handler);
+    return () => {
+      window.removeEventListener("stream-module", handler);
+      window.__MODULE_STREAMER_ACTIVE = false;
+      window.__GR3_ACTIVE = false;
+    };
   }, []);
 
   return (
@@ -37,7 +42,6 @@ export default function ModuleStreamer() {
       {activeModules.map((key) => {
         const LazyModule = modules[key];
         if (!LazyModule) return null;
-
         const Component = LazyModule;
         return <Component key={key} />;
       })}

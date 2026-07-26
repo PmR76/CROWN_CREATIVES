@@ -1,3 +1,5 @@
+// C:\DEV\CROWN_CREATIVES\corelab\src\App.jsx
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -27,6 +29,7 @@ import CardsLab from "./labs/CardsLab.jsx";
 import TickerLab from "./labs/TickerLab.jsx";
 import FooterLab from "./labs/FooterLab.jsx";
 import TestPageLab from "./labs/TestPageLab.jsx";
+import LabCrown from "./labs/LabCrown.jsx";
 
 const liveMap = {
   "test-page": <TestPageLab />,
@@ -62,7 +65,7 @@ export default function App() {
 
         <Route path="/lab-home" element={<LabHome />} />
         <Route path="/lab-header" element={<HeaderLab />} />
-        <Route path="/lab-crown" element={<HeroCrownLab />} />
+        <Route path="/lab-crown" element={<LabCrown />} />
         <Route path="/lab-gallery" element={<GalleryLab />} />
         <Route path="/lab-cards" element={<CardsLab />} />
         <Route path="/lab-ticker" element={<TickerLab />} />
