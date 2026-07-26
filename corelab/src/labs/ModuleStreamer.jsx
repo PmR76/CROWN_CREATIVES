@@ -1,6 +1,4 @@
-// ============================================================
-// ModuleStreamer.jsx — GR3 Multi‑Module Injection System
-// ============================================================
+// C:\DEV\CROWN_CREATIVES\corelab\src\labs\ModuleStreamer.jsx
 
 import { useEffect, useState } from "react";
 import { modules } from "./moduleRegistry.js";
@@ -9,7 +7,6 @@ export default function ModuleStreamer() {
   const [activeModules, setActiveModules] = useState([]);
 
   useEffect(() => {
-    // Diagnostic flags
     window.__MODULE_STREAMER_ACTIVE = true;
     window.__GR3_ACTIVE = true;
 
