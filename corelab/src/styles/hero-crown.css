@@ -68,7 +68,7 @@
 }
 
 @keyframes crownFloat {
-  0%   { transform: translateY(0px); }
-  50%  { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
+  0%   { transform: translateX(-50%) translateY(100px); }
+  50%  { transform: translateX(-50%) translateY(90px); }
+  100% { transform: translateX(-50%) translateY(100px); }
 }
