@@ -4,13 +4,13 @@
 
 .diagnostics-panel {
   position: absolute;
-  left: 20px;
-  top: 20px;
+  left: 2px0px;
+  top: 2px0px;
 
   background: rgba(10, 10, 20, 0.85);
   backdrop-filter: blur(12px);
 
-  padding: 16px 20px;
+  padding: 1px6px 20px;
   border-radius: 12px;
 
   color: #fff;
@@ -24,20 +24,21 @@
   pointer-events: auto;
 
   opacity: 0;
-  animation: diagFadeIn 0.6s ease forwards;
+  animation: diagFadeIn_diagnostics_diagnostics 0.6s ease forwards;
+  transform: uppercase;
 }
 
-@keyframes diagFadeIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes diagFadeIn_diagnostics {
+  from { opacity: 0;  }
+  to   { opacity: 1;  }
 }
 
 /* Drag handle */
 .diag-drag-handle {
   font-weight: 700;
-  text-transform: uppercase;
+  text-
   letter-spacing: 1px;
-  margin-bottom: 10px;
+  margin-bottom: 1px0px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(255,255,255,0.25);
   cursor: move;

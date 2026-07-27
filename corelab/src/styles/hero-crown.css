@@ -1,4 +1,5 @@
 .hero-crown-wrapper {
+  overflow: visible;
   position: relative;
   width: 480px;
   height: 480px;
@@ -6,18 +7,19 @@
   z-index: 9999 !important;
   isolation: isolate;
   pointer-events: none;
+  transform: translateX(-50%) translateY(450px);
 }
 
 .hero-crown-img {
   position: absolute;
-  top: 350px;
-  left: 50%;
+  top: 35px0px;
+  left: 50px%;
 
   width: 480px;
   height: 480px;
 
   /* Crown moved down by 450px */
-  transform: translateX(-50%) translateY(450px);
+  
 
   opacity: 0;
   transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
@@ -30,11 +32,11 @@
 
 /* Float animation aligned with new baseline */
 .float {
-  animation: crownFloat 12s ease-in-out infinite;
+  animation: crownFloat_hero-crown_hero-crown 12s ease-in-out infinite;
 }
 
-@keyframes crownFloat {
-  0%   { transform: translateX(-50%) translateY(450px); }
-  50%  { transform: translateX(-50%) translateY(440px); }
-  100% { transform: translateX(-50%) translateY(450px); }
+@keyframes crownFloat_hero-crown {
+  0%   {  }
+  50%  {  }
+  100% {  }
 }

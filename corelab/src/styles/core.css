@@ -4,8 +4,8 @@
 
 html,
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   overflow-x: hidden;
   overflow-y: auto;
   background: transparent !important;
@@ -37,7 +37,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 40px;
+  padding-top: 4px0px;
   overflow: visible;
 }
 
@@ -53,24 +53,24 @@ body {
   width: 100%;
   min-height: 600px;
   overflow: visible;
-  margin-top: 60px;
+  margin-top: 6px0px;
 }
 
 /* Frosted Cards — Safe */
 .frosted-cards {
   position: relative;
-  margin-top: 40px;
+  margin-top: 4px0px;
 }
 
 /* Ticker — Safe */
 .ticker {
   position: relative;
-  margin-top: 40px;
+  margin-top: 4px0px;
 }
 
 /* Footer — Safe */
 footer {
   position: relative;
-  margin-top: 60px;
-  padding-bottom: 40px;
+  margin-top: 6px0px;
+  padding-bottom: 4px0px;
 }

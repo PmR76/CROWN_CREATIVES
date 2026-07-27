@@ -16,11 +16,11 @@
 .frosted-cards {
   width: 100%;
   max-width: 1400px;
-  margin: 120px auto;
+  margin: 12px0px auto;
   display: flex;
   justify-content: center;
   gap: 40px;
-  padding: 20px;
+  padding: 2px0px;
   z-index: 30;
   position: relative;
 }
@@ -31,7 +31,7 @@
 
 .frosted-card {
   width: 360px;
-  padding: 28px;
+  padding: 2px8px;
   border-radius: 22px;
 
   backdrop-filter: blur(18px) saturate(180%);

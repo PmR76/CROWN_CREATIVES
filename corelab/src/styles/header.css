@@ -11,11 +11,11 @@
 
 .hero-header {
   position: fixed;
-  top: 10px;
-  left: 0;
-  right: 0;
+  top: 1px0px;
+  left: 0px;
+  right: 0px;
   height: 140px;
-  padding: 20px 32px 12px 32px;
+  padding: 2px0px 32px 12px 32px;
 
   display: flex;
   align-items: center;
@@ -26,6 +26,7 @@
 
   z-index: 1000;
   pointer-events: none;
+  transform: scale(1);
 }
 
 .hero-header-left,
@@ -85,7 +86,7 @@
 .cc-header-tagline {
   font-size: 0.85rem;
   opacity: 0.85;
-  margin-bottom: 10px;
+  margin-bottom: 1px0px;
   text-align: center;
 }
 
@@ -137,8 +138,8 @@ body[data-theme="day"] .cc-header-nav button {
 .theme-toggle {
   border: none;
   background: none;
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -147,7 +148,7 @@ body[data-theme="day"] .cc-header-nav button {
 }
 
 .theme-toggle:hover {
-  transform: scale(1.08);
+  
 }
 
 .theme-toggle-icon {
@@ -177,8 +178,8 @@ body[data-theme="night"] .theme-toggle-icon {
 .sound-toggle {
   border: none;
   background: none;
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -188,7 +189,7 @@ body[data-theme="night"] .theme-toggle-icon {
 }
 
 .sound-toggle:hover {
-  transform: scale(1.08);
+  
 }
 
 .sound-toggle-icon {
@@ -219,13 +220,13 @@ body[data-theme="night"] .sound-toggle-icon {
 }
 
 .sound-toggle-icon.playing {
-  animation: pulseGlow 1.4s infinite ease-in-out;
+  animation: pulseGlow_header_header 1.4s infinite ease-in-out;
 }
 
-@keyframes pulseGlow {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-  100% { transform: scale(1); }
+@keyframes pulseGlow_header {
+  0% {  }
+  50% {  }
+  100% {  }
 }
 
 /* ============================================================

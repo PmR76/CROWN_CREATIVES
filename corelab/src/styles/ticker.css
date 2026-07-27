@@ -8,6 +8,7 @@
   overflow: hidden;
   white-space: nowrap;
   margin-top: -50px;
+  transform: translateX(-100%);
 }
 
 /* Ticker track */
@@ -20,13 +21,13 @@
   font-size: 26px;
   font-weight: 700;
 
-  animation: tickerMove var(--ticker-speed) linear infinite;
+  animation: tickerMove_ticker_ticker var(--ticker-speed) linear infinite;
 }
 
 /* Perfect continuous scroll */
-@keyframes tickerMove {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-100%); }
+@keyframes tickerMove_ticker {
+  from {  }
+  to   {  }
 }
 
 /* Magical glow */

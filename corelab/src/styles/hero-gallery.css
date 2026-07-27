@@ -30,8 +30,8 @@
 /* ⭐ FIX: Remove 70vh lane height — prevents page overflow */
 .hero-gallery-lane {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
 
   width: 260px;
   height: auto;          /* FIXED */
@@ -79,8 +79,8 @@
 
 .hero-gallery-glow-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
 
   width: 100%;
   height: auto;          /* FIXED */

@@ -18,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 18px;
+  padding: 0px 18px;
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -27,7 +27,7 @@
 /* MAIN WINDOW */
 .os-window {
   flex: 1;
-  padding: 24px;
+  padding: 2px4px;
   backdrop-filter: blur(6px);
   overflow: visible;
 }

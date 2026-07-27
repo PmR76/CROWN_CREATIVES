@@ -8,10 +8,10 @@
   z-index: -1;
   pointer-events: none !important;
   opacity: 0;
-  animation: bgFadeIn 2s ease forwards;
+  animation: bgFadeIn_background3d_background3d 2s ease forwards;
 }
 
-@keyframes bgFadeIn {
+@keyframes bgFadeIn_background3d {
   from {
     opacity: 0;
   }

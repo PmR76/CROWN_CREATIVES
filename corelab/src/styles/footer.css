@@ -6,7 +6,7 @@
 /* FOOTER WRAPPER */
 .cc-footer {
   width: 100%;
-  padding: 40px 0;
+  padding: 4px0px 0;
   display: flex;
   justify-content: center;
 
@@ -14,6 +14,7 @@
   z-index: 10;
 
   margin-top: 0px;
+  transform: scale(1.15);
 }
 
 /* ============================================================
@@ -23,7 +24,7 @@
 .footer-glass {
   width: 92%;
   max-width: 1400px;
-  padding: 28px 32px;
+  padding: 2px8px 32px;
   border-radius: 26px;
 
   background: rgba(255, 255, 255, 0.08);
@@ -42,7 +43,7 @@
 
   transition: outline 0.25s ease;
 
-  animation: headerGlow var(--glow-speed, 6s) ease-in-out infinite;
+  animation: headerGlow_footer_footer var(--glow-speed, 6s) ease-in-out infinite;
 }
 
 /* ADMIN MODE — DRAGGABLE FOOTER */
@@ -56,7 +57,7 @@
   display: flex;
   gap: 28px;
   justify-content: center;
-  margin-bottom: 22px;
+  margin-bottom: 2px2px;
   position: relative;
 }
 
@@ -71,7 +72,7 @@
 }
 
 .footer-icon:hover {
-  transform: scale(1.2);
+  
   filter: drop-shadow(0 0 16px rgba(255,255,255,1));
 }
 
@@ -85,14 +86,14 @@
 /* BACK TO TOP BUTTON */
 .back-to-top {
   position: absolute;
-  right: 24px;
-  bottom: 24px;
+  right: 2px4px;
+  bottom: 2px4px;
 
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.25);
 
-  padding: 12px 16px;
+  padding: 1px2px 16px;
   border-radius: 14px;
   cursor: pointer;
 
@@ -105,13 +106,13 @@
 }
 
 .back-to-top:hover {
-  transform: scale(1.15);
+  
   box-shadow: 0 0 20px rgba(255,255,255,1);
 }
 
 /* COPYRIGHT */
 .footer-copy {
-  margin-top: 26px;
+  margin-top: 2px6px;
   font-size: 15px;
   letter-spacing: 0.6px;
 
@@ -127,7 +128,7 @@
    SHARED GLOW ANIMATION (HEADER + CARDS + FOOTER)
 ============================================================ */
 
-@keyframes headerGlow {
+@keyframes headerGlow_footer {
   0%   { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
   50%  { box-shadow: 0 0 26px rgba(255,255,255,0.45); }
   100% { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
