@@ -12,6 +12,7 @@ echo   3. Run GR3 Diagnostic
 echo   4. Run Quarantine Ghosts
 echo   5. Run Restore Core Files
 echo   6. Run Auto Restore Core
+echo   7. Run CSS Auto-Fixer
 echo   0. Exit
 echo.
 set /p choice="Select an option: "
@@ -58,6 +59,13 @@ if "%choice%"=="6" (
     exit /b
 )
 
+if "%choice%"=="7" (
+    echo Running CSS Auto-Fixer...
+    node src/diagnostics/cssAutoFixer.js
+    pause
+    exit /b
+)
+
 if "%choice%"=="0" (
     exit /b
 )
@@ -65,9 +73,3 @@ if "%choice%"=="0" (
 echo Invalid choice.
 pause
 exit /b
-if "%choice%"=="7" (
-    echo Running CSS Auto-Fixer...
-    node src/diagnostics/cssAutoFixer.js
-    pause
-    exit /b
-)
