@@ -1,5 +1,5 @@
 // src/pages/Home.jsx (or LabHome.jsx)
-import CharacterBg from "../components/CharacterBg";
+import CharacterBg from "../components/CharacterBg.jsx";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FrostedCards from "../components/FrostedCards";
