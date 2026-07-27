@@ -1,33 +1,29 @@
 /* ============================================================
-   HERO CROWN — Clean, Centered, GR1-Stable
+   HERO CROWN — Clean, Centered, GR1/GR3-Stable
    ============================================================ */
 
-/* Wrapper that centers the crown on the page */
 .hero-crown-wrapper {
   position: relative;
   width: 480px;
   height: 480px;
 
-  /* FIX: Always above theme backgrounds */
+  /* Always above theme backgrounds */
   z-index: 9999 !important;
-
-  /* FIX: Prevent opacity inheritance */
   isolation: isolate;
 
   pointer-events: none;
 }
 
-
 /* Crown image (day + night) */
 .hero-crown-img {
   position: absolute;
-  top: 350;
+  top: 0;
   left: 50%;
 
   width: 480px;
   height: 480px;
 
-  /* FIX: Move crown down by 350px */
+  /* Move crown down by 350px */
   transform: translateX(-50%) translateY(350px);
 
   opacity: 0;
@@ -41,34 +37,15 @@
 }
 
 /* ============================================================
-   DAY GLOW — Warm Gold
+   FLOAT ANIMATION — aligned with new baseline
    ============================================================ */
-#hero-crown-day {
-  filter:
-    drop-shadow(0 0 22px rgba(255,255,255,0.9))
-    drop-shadow(0 0 44px rgba(255,215,120,0.7))
-    drop-shadow(0 0 66px rgba(255,180,80,0.5));
-}
 
-/* ============================================================
-   NIGHT GLOW — Cool Neon
-   ============================================================ */
-#hero-crown-night.active {
-  filter:
-    drop-shadow(0 0 32px rgba(120,200,255,1))
-    drop-shadow(0 0 64px rgba(160,120,255,0.9))
-    drop-shadow(0 0 96px rgba(120,80,255,0.8));
-}
-
-/* ============================================================
-   FLOAT ANIMATION
-   ============================================================ */
 .float {
   animation: crownFloat 12s ease-in-out infinite;
 }
 
 @keyframes crownFloat {
-  0%   { transform: translateX(-50%) translateY(100px); }
-  50%  { transform: translateX(-50%) translateY(90px); }
-  100% { transform: translateX(-50%) translateY(100px); }
+  0%   { transform: translateX(-50%) translateY(350px); }
+  50%  { transform: translateX(-50%) translateY(340px); }
+  100% { transform: translateX(-50%) translateY(350px); }
 }
