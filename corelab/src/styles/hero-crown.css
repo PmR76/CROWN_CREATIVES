@@ -1,20 +1,13 @@
-/* ============================================================
-   HERO CROWN — Clean, Centered, GR1/GR3-Stable
-   ============================================================ */
-
 .hero-crown-wrapper {
   position: relative;
   width: 480px;
   height: 480px;
 
-  /* Always above theme backgrounds */
   z-index: 9999 !important;
   isolation: isolate;
-
   pointer-events: none;
 }
 
-/* Crown image (day + night) */
 .hero-crown-img {
   position: absolute;
   top: 0;
@@ -23,29 +16,25 @@
   width: 480px;
   height: 480px;
 
-  /* Move crown down by 350px */
-  transform: translateX(-50%) translateY(350px);
+  /* Crown moved down by 450px */
+  transform: translateX(-50%) translateY(450px);
 
   opacity: 0;
   transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
   object-fit: contain;
 }
 
-/* Active crown */
 .hero-crown-img.active {
   opacity: 1;
 }
 
-/* ============================================================
-   FLOAT ANIMATION — aligned with new baseline
-   ============================================================ */
-
+/* Float animation aligned with new baseline */
 .float {
   animation: crownFloat 12s ease-in-out infinite;
 }
 
 @keyframes crownFloat {
-  0%   { transform: translateX(-50%) translateY(350px); }
-  50%  { transform: translateX(-50%) translateY(340px); }
-  100% { transform: translateX(-50%) translateY(350px); }
+  0%   { transform: translateX(-50%) translateY(450px); }
+  50%  { transform: translateX(-50%) translateY(440px); }
+  100% { transform: translateX(-50%) translateY(450px); }
 }
