@@ -7,7 +7,7 @@ import Ticker from "../components/Ticker";
 import HeroCrown from "../components/HeroCrown";
 import HeroGallery from "../components/HeroGallery";
 import ThemePanel from "../components/ThemePanel";
-import WatchkeeperHUD from "../components/WatchkeeperHUD";
+import WatchkeeperHUD from "../components/WatchkeeperHUD/WatchkeeperHUD.jsx";
 
 export default function LabHome() {
   return (
