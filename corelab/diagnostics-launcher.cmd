@@ -65,3 +65,9 @@ if "%choice%"=="0" (
 echo Invalid choice.
 pause
 exit /b
+if "%choice%"=="7" (
+    echo Running CSS Auto-Fixer...
+    node src/diagnostics/cssAutoFixer.js
+    pause
+    exit /b
+)
