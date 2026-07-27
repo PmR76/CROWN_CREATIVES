@@ -21,14 +21,14 @@
 /* Crown image (day + night) */
 .hero-crown-img {
   position: absolute;
-  top: 400;
+  top: 200;
   left: 50%;
 
   width: 480px;
   height: 480px;
 
   /* FIX: Move crown down by 100px */
-  transform: translateX(-50%) translateY(400px);
+  transform: translateX(-50%) translateY(200px);
 
   opacity: 0;
   transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
