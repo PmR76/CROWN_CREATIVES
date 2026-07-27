@@ -73,3 +73,11 @@ if "%choice%"=="0" (
 echo Invalid choice.
 pause
 exit /b
+echo   8. Merge CSS Patches
+
+if "%choice%"=="8" (
+    echo Merging CSS patches...
+    node src/diagnostics/cssPatchMerger.js
+    pause
+    exit /b
+)
