@@ -21,7 +21,7 @@
 /* Crown image (day + night) */
 .hero-crown-img {
   position: absolute;
-  top: 0;
+  top: 200;
   left: 50%;
 
   width: 480px;
